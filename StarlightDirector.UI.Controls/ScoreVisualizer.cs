@@ -9,6 +9,10 @@ namespace StarlightDirector.UI.Controls {
             InitializeComponent();
         }
 
+        public ScoreRenderer Renderer => scoreRenderer1;
+
+        public VScrollBar ScrollBar => vScrollBar1;
+
         protected override void OnLayout(LayoutEventArgs e) {
             base.OnLayout(e);
 

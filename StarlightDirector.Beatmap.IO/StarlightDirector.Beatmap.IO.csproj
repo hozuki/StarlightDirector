@@ -46,7 +46,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KnownScoreFormats.cs" />
-    <Compile Include="Project.cs" />
+    <Compile Include="ProjectVersion.cs" />
+    <Compile Include="SldprojV3Reader.SQLiteHelper.cs" />
     <Compile Include="ProjectReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProjectWriter.cs" />

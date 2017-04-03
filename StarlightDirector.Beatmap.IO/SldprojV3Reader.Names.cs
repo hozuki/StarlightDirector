@@ -33,11 +33,7 @@
             public static readonly string Column_Signature = "signature";
             public static readonly string Column_NoteType = "note_type";
             public static readonly string Column_ParamValues = "param_values";
-
-            // Legacy. Do not use.
-            public static readonly string Table_Scores = "scores";
-            // Legacy. I made a spelling mistake in all v0.2 save files. :-(
-            public static readonly string Field_Vesion = "vesion";
+            
             // Lagacy. Saved for forward compatibility
             public static readonly string Column_SyncTargetID = "sync_target_id";
 

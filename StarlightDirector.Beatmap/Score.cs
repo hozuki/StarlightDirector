@@ -5,7 +5,14 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap {
     public sealed class Score {
 
-        public Difficulty Difficulty { get; set; }
+        public Score(Project project, Difficulty difficulty) {
+            Project = project;
+            Difficulty = difficulty;
+        }
+
+        public Difficulty Difficulty { get; }
+
+        public Project Project { get; }
 
         public InternalList<Bar> Bars { get; } = new InternalList<Bar>();
 

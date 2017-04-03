@@ -5,10 +5,15 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap {
     public sealed class Note : IStarlightObject {
 
-        public Note() {
-            Basic = new NoteBasicProperties();
+        public Note(Bar bar)
+            : this(bar, Guid.NewGuid()) {
+        }
+
+        public Note(Bar bar, Guid id) {
+            Basic = new NoteBasicProperties(bar);
             Helper = new NoteHelperProperties(this);
             Editor = new NoteEditorProperties();
+            StarlightID = id;
         }
 
         public Guid StarlightID {
@@ -24,22 +29,29 @@ namespace StarlightDirector.Beatmap {
 
         public NoteEditorProperties Editor { get; }
 
+        public NoteExtraParams Params { get; internal set; }
+
         public sealed class NoteBasicProperties {
 
-            internal NoteBasicProperties() {
+            internal NoteBasicProperties(Bar bar) {
+                Bar = bar;
             }
 
             public Guid ID { get; internal set; }
 
-            public NoteType Type { get; set; }
+            public Bar Bar { get; }
+
+            public NoteType Type { get; set; } = NoteType.TapOrFlick;
+
+            public int IndexInGrid { get; set; }
 
             public double HitTiming { get; set; }
 
-            public NotePosition StartPosition { get; set; }
+            public NotePosition StartPosition { get; set; } = NotePosition.Nowhere;
 
-            public NotePosition FinishPosition { get; set; }
+            public NotePosition FinishPosition { get; set; } = NotePosition.Nowhere;
 
-            public NoteFlickType FlickType { get; set; }
+            public NoteFlickType FlickType { get; set; } = NoteFlickType.None;
 
         }
 
@@ -49,9 +61,39 @@ namespace StarlightDirector.Beatmap {
                 _note = note;
             }
 
+            public bool IsGaming {
+                [DebuggerStepThrough]
+                get { return IsTypeGaming(_note.Basic.Type); }
+            }
+
+            public bool IsSpecial {
+                [DebuggerStepThrough]
+                get { return IsTypeSpecial(_note.Basic.Type); }
+            }
+
+            public bool IsCgssInternal {
+                [DebuggerStepThrough]
+                get { return IsTypeCgssInternal(_note.Basic.Type); }
+            }
+
             public bool IsTap {
                 [DebuggerStepThrough]
                 get { return _note.Basic.Type == NoteType.TapOrFlick && _note.Basic.FlickType == NoteFlickType.None; }
+            }
+
+            public bool IsSync {
+                [DebuggerStepThrough]
+                get { return HasPrevSync || HasNextSync; }
+            }
+
+            public bool HasPrevSync {
+                [DebuggerStepThrough]
+                get { return _note.Editor.PrevSync != null; }
+            }
+
+            public bool HasNextSync {
+                [DebuggerStepThrough]
+                get { return _note.Editor.NextSync != null; }
             }
 
             public bool IsFlick {
@@ -140,11 +182,11 @@ namespace StarlightDirector.Beatmap {
 
         public sealed class NoteEditorProperties {
 
-            public int BarIndex { get; set; }
-
             public bool IsSelected { get; set; }
 
-            public Note SyncPair { get; internal set; }
+            public Note NextSync { get; internal set; }
+
+            public Note PrevSync { get; internal set; }
 
             public Note NextFlick { get; internal set; }
 
@@ -157,6 +199,81 @@ namespace StarlightDirector.Beatmap {
             public Note HoldPair { get; internal set; }
 
         }
+
+        public static readonly Comparison<Note> TimingThenPositionComparison = (x, y) => {
+            var r = TimingComparison(x, y);
+            return r == 0 ? TrackPositionComparison(x, y) : r;
+        };
+
+        public static readonly Comparison<Note> TimingComparison = (x, y) => {
+            if (x == null) {
+                throw new ArgumentNullException(nameof(x));
+            }
+            if (y == null) {
+                throw new ArgumentNullException(nameof(y));
+            }
+            if (x.Equals(y)) {
+                return 0;
+            }
+            if (x.Basic.Bar.StarlightID != y.Basic.Bar.StarlightID) {
+                return x.Basic.Bar.Index.CompareTo(y.Basic.Bar.Index);
+            }
+            var r = x.Basic.IndexInGrid.CompareTo(y.Basic.IndexInGrid);
+            if (r == 0 && x.Basic.Type != y.Basic.Type && (x.Basic.Type == NoteType.VariantBpm || y.Basic.Type == NoteType.VariantBpm)) {
+                // The Variant BPM note is always placed at the end on the same grid line.
+                return x.Basic.Type == NoteType.VariantBpm ? 1 : -1;
+            } else {
+                return r;
+            }
+        };
+
+        public static readonly Comparison<Note> TrackPositionComparison = (n1, n2) => ((int)n1.Basic.FinishPosition).CompareTo((int)n2.Basic.FinishPosition);
+
+        public static bool IsTypeGaming(NoteType type) {
+            switch (type) {
+                case NoteType.TapOrFlick:
+                case NoteType.Hold:
+                case NoteType.Slide:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        public static bool IsTypeSpecial(NoteType type) {
+            switch (type) {
+                case NoteType.Avatar:
+                case NoteType.VariantBpm:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        public static bool IsTypeCgssInternal(NoteType type) {
+            switch (type) {
+                case NoteType.FeverStart:
+                case NoteType.FeverEnd:
+                case NoteType.MusicStart:
+                case NoteType.MusicEnd:
+                case NoteType.NoteCount:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+
+        internal sealed class TemporaryProperties {
+
+            public Guid PrevFlickNoteID { get; set; }
+
+            public Guid NextFlickNoteID { get; set; }
+
+            public Guid HoldTargetID { get; set; }
+
+        }
+
+        internal TemporaryProperties Temporary { get; } = new TemporaryProperties();
 
     }
 }

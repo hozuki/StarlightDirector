@@ -40,16 +40,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BarParams.cs" />
     <Compile Include="CompiledNote.cs" />
     <Compile Include="CompiledScore.cs" />
     <Compile Include="DescribedEnumConverter.cs" />
     <Compile Include="Difficulty.cs" />
     <Compile Include="Bar.cs" />
+    <Compile Include="Extensions\BarExtensions.cs" />
+    <Compile Include="Extensions\NoteExtensions.cs" />
     <Compile Include="Extensions\ScoreExtension.cs" />
     <Compile Include="Note.cs" />
+    <Compile Include="NoteExtraParams.cs" />
     <Compile Include="NoteFlickType.cs" />
     <Compile Include="NotePosition.cs" />
     <Compile Include="NoteType.cs" />
+    <Compile Include="Project.cs" />
     <Compile Include="Score.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ScoreSettings.cs" />

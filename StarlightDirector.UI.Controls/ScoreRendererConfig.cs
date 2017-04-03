@@ -3,7 +3,7 @@
 
         public float NoteRadius { get; set; } = 30;
 
-        public float BarLineSpace { get; set; } = 70;
+        public float BarLineSpaceUnit { get; set; } = 5;
 
     }
 }

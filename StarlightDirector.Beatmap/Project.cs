@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap {
     public sealed class Project {
 
         public Project() {
             var scores = Scores = new Dictionary<Difficulty, Score>();
             for (var i = Difficulty.Debut; i < Difficulty.MasterPlus; ++i) {
-                scores.Add(i, new Score());
+                scores.Add(i, new Score(this, i));
             }
             Settings = new ScoreSettings();
         }
@@ -17,21 +17,19 @@ namespace StarlightDirector.Beatmap.IO {
 
         public ScoreSettings Settings { get; }
 
-        public HashSet<Guid> ExistingIDs { get; } = new HashSet<Guid>();
-
         public string MusicFileName { get; set; } = string.Empty;
 
         public bool HasMusic => !string.IsNullOrEmpty(MusicFileName);
 
         public string SaveFileName { get; set; } = string.Empty;
 
+        public int Version { get; internal set; }
+
+        public HashSet<Guid> UsedNoteIDs { get; } = new HashSet<Guid>();
+
         internal bool IsChanged { get; set; }
 
         internal bool IsSaved => !string.IsNullOrEmpty(SaveFileName) && File.Exists(SaveFileName);
-
-        public int Version { get; internal set; } = CurrentDefaultVersion;
-
-        public static int CurrentDefaultVersion => 301;
 
     }
 }

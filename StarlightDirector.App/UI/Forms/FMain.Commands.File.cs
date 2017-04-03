@@ -1,4 +1,8 @@
 ﻿using System;
+using System.IO;
+using System.Windows.Forms;
+using StarlightDirector.Beatmap;
+using StarlightDirector.Beatmap.IO;
 using StarlightDirector.Commanding;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -10,7 +14,18 @@ namespace StarlightDirector.App.UI.Forms {
             openFileDialog.ShowReadOnly = false;
             openFileDialog.ValidateNames = true;
             openFileDialog.Filter = "StarlightDirector Project (*.sldproj)|*.sldproj";
-            openFileDialog.ShowDialog(this);
+            var r = openFileDialog.ShowDialog(this);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            if (!File.Exists(openFileDialog.FileName)) {
+                return;
+            }
+
+            var reader = new SldprojV3Reader();
+            var project = reader.ReadProject(openFileDialog.FileName);
+            visualizer.Renderer.Project = project;
+            visualizer.Renderer.Difficulty = Difficulty.MasterPlus;
         }
 
         private void CmdFileSave_Executed(object sender, EventArgs e) {

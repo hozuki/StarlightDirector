@@ -1,4 +1,6 @@
-﻿namespace StarlightDirector.UI.Controls {
+﻿using System.Drawing;
+
+namespace StarlightDirector.UI.Controls {
     partial class ScoreVisualizer {
         /// <summary> 
         /// 必需的设计器变量。
@@ -24,7 +26,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.scoreRenderer1 = new StarlightDirector.UI.Controls.ScoreRenderer();
+            this.scoreRenderer1 = new StarlightDirector.UI.Controls.ScoreRenderer(this);
             this.SuspendLayout();
             // 
             // vScrollBar1
@@ -36,12 +38,12 @@
             // 
             // scoreRenderer1
             // 
-            this.scoreRenderer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.scoreRenderer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.scoreRenderer1.ClearColor = System.Drawing.SystemColors.Control;
+            this.scoreRenderer1.ClearColor = Color.Black;
             this.scoreRenderer1.Location = new System.Drawing.Point(3, 3);
             this.scoreRenderer1.Name = "scoreRenderer1";
-            this.scoreRenderer1.Score = null;
+            this.scoreRenderer1.Project = null;
             this.scoreRenderer1.Size = new System.Drawing.Size(433, 504);
             this.scoreRenderer1.TabIndex = 2;
             this.scoreRenderer1.Text = "scoreRenderer1";
@@ -59,7 +61,7 @@
         }
 
         #endregion
-        
+
         private System.Windows.Forms.VScrollBar vScrollBar1;
         private ScoreRenderer scoreRenderer1;
     }

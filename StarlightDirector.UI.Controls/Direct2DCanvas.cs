@@ -21,7 +21,7 @@ namespace StarlightDirector.UI.Controls {
                 _renderThread = new Thread(RenderThreadProc);
                 _renderThread.IsBackground = true;
             }
-            ClearColor = DefaultBackColor;
+            ClearColor = Color.Black;
         }
 
         protected sealed override void Dispose(bool disposing) {
