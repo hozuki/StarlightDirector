@@ -3,9 +3,9 @@ using System.Data.SQLite;
 using System.IO;
 
 namespace StarlightDirector.Beatmap.IO {
-    public sealed partial class SldprojV3Reader : ScoreReader {
+    public sealed partial class SldprojV3Reader : ProjectReader {
 
-        public override Score ReadScore(string fileName) {
+        public override Project ReadProject(string fileName) {
             var fileInfo = new FileInfo(fileName);
             if (!fileInfo.Exists) {
                 throw new IOException($"File '{fileName}' does not exist.");
@@ -18,13 +18,13 @@ namespace StarlightDirector.Beatmap.IO {
             };
             using (var db = new SQLiteConnection(builder.ToString())) {
                 db.Open();
-                var score = ReadScore(db);
+                var score = ReadProject(db);
                 db.Close();
                 return score;
             }
         }
 
-        private static Score ReadScore(SQLiteConnection db) {
+        private static Project ReadProject(SQLiteConnection db) {
             var score = new Score();
             throw new NotImplementedException();
         }

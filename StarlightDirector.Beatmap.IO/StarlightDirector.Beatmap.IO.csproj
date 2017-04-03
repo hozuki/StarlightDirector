@@ -46,9 +46,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="KnownScoreFormats.cs" />
-    <Compile Include="ScoreReader.cs" />
+    <Compile Include="Project.cs" />
+    <Compile Include="ProjectReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreWriter.cs" />
+    <Compile Include="ProjectWriter.cs" />
     <Compile Include="SldprojV3Reader.cs" />
     <Compile Include="SldprojV3Reader.Names.cs" />
   </ItemGroup>
