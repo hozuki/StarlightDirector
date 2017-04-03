@@ -1,0 +1,53 @@
+﻿using System;
+using StarlightDirector.Core;
+
+namespace StarlightDirector.Beatmap {
+    public sealed class ScoreSettings : ICloneable, ICloneable<ScoreSettings> {
+
+        /// <summary>
+        /// Tempo，每分钟四分音符出现次数。
+        /// </summary>
+        public double BeatPerMinute { get; set; }
+
+        public double StartTimeOffset { get; set; }
+
+        /// <summary>
+        /// 细分级别，一个四分音符被分成多少份。
+        /// 例如，分成2份，拍号3（3/4拍），速度120，则每一个小节长度为1.5秒（=60÷120×3），每个note定位精度为一个八分音符（=1/2四分音符）。
+        /// </summary>
+        public int GridPerSignature { get; set; }
+
+        /// <summary>
+        /// 拍号，以四分音符为标准，即 x/4 拍。
+        /// </summary>
+        public int Signature { get; set; }
+
+        public static ScoreSettings CreateDefault() {
+            return new ScoreSettings {
+                BeatPerMinute = DefaultBeatPerMinute,
+                StartTimeOffset = DefaultStartTimeOffset,
+                GridPerSignature = DefaultGridPerSignature, // 最高分辨率为九十六分音符
+                Signature = DefaultSignature // 4/4拍
+            };
+        }
+
+        public ScoreSettings Clone() {
+            return new ScoreSettings {
+                BeatPerMinute = BeatPerMinute,
+                StartTimeOffset = StartTimeOffset,
+                GridPerSignature = GridPerSignature,
+                Signature = Signature
+            };
+        }
+
+        public static readonly double DefaultBeatPerMinute = 120;
+        public static readonly double DefaultStartTimeOffset = 0;
+        public static readonly int DefaultGridPerSignature = 24;
+        public static readonly int DefaultSignature = 4;
+
+        object ICloneable.Clone() {
+            return Clone();
+        }
+
+    }
+}
