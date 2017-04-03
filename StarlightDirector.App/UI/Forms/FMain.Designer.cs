@@ -720,7 +720,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(9, 38);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(293, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(385, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -791,7 +791,7 @@
             // 
             this.mnuFileExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
             this.mnuFileExit.Size = new System.Drawing.Size(208, 22);
             this.mnuFileExit.Text = "E&xit";
             // 
