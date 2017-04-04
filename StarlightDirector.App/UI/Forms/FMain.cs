@@ -1,4 +1,5 @@
 ﻿using System.Windows.Forms;
+using StarlightDirector.Beatmap;
 using StarlightDirector.UI.Controls;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -10,7 +11,6 @@ namespace StarlightDirector.App.UI.Forms {
             InitializeComponent();
             RegisterEventHandlers();
             RegisterCommands();
-            EditingFileName = "ABC.sldproj";
         }
 
         ~FMain() {
@@ -32,16 +32,24 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        public string EditingFileName {
-            get { return _editingFileName; }
-            set {
-                if (value == null) {
-                    value = string.Empty;
-                }
-                _editingFileName = value;
-                var applicationTitle = ApplicationHelper.GetTitle();
-                Text = !string.IsNullOrEmpty(value) ? $"{value} - {applicationTitle}" : applicationTitle;
+        public void UpdateUIIndications(Difficulty currentDifficulty) {
+            UpdateUIIndications(_editingFileName, currentDifficulty);
+        }
+
+        public void UpdateUIIndications(string editingFileName) {
+            UpdateUIIndications(editingFileName, _cachedTitleDifficulty);
+        }
+
+        public void UpdateUIIndications(string editingFileName, Difficulty currentDifficulty) {
+            if (editingFileName == null) {
+                editingFileName = string.Empty;
             }
+            var applicationTitle = ApplicationHelper.GetTitle();
+            var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty, typeof(Difficulty));
+            Text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
+            btnDifficultySelection.Text = difficultyDescription;
+            _editingFileName = editingFileName;
+            _cachedTitleDifficulty = currentDifficulty;
         }
 
         public void ApplyColorScheme(ColorScheme scheme) {
@@ -75,9 +83,17 @@ namespace StarlightDirector.App.UI.Forms {
             panel2.BackColor = scheme.ToolbarBackground;
             visualizer.BackColor = scheme.Workspace;
 
+            btnDifficultySelection.BackColor = scheme.WindowNormalStatusBackground;
+            btnDifficultySelection.ForeColor = scheme.WindowNormalStatusText;
+            btnDifficultySelection.HoveringBackColor = scheme.WindowHoveringStatusBackground;
+            btnDifficultySelection.HoveringTextColor = scheme.WindowHoveringStatusText;
+            btnDifficultySelection.PressedBackColor = scheme.WindowPressedStatusBackground;
+            btnDifficultySelection.PressedTextColor = scheme.WindowPressedStatusText;
+
             var toolStripRenderer = new StarlightToolStripRenderer(scheme);
             mainMenuStrip.Renderer = toolStripRenderer;
-            context.Renderer = toolStripRenderer;
+            ctxMain.Renderer = toolStripRenderer;
+            ctxDifficultySelection.Renderer = toolStripRenderer;
             tlbNote.Renderer = toolStripRenderer;
             tlbEdit.Renderer = toolStripRenderer;
             tlbPostprocessing.Renderer = toolStripRenderer;
@@ -87,8 +103,10 @@ namespace StarlightDirector.App.UI.Forms {
         private static readonly int CaptionMargin = 65;
         private static readonly int ToolbarMargin = 250;
 
-        private string _statusText = string.Empty;
         private string _editingFileName = string.Empty;
+        private Difficulty _cachedTitleDifficulty = Difficulty.Debut;
+
+        private string _statusText = string.Empty;
 
     }
 }

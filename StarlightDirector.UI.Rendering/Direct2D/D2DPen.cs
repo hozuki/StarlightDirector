@@ -5,7 +5,7 @@ using StarlightDirector.UI.Rendering.Extensions;
 namespace StarlightDirector.UI.Rendering.Direct2D {
     public sealed class D2DPen : Pen {
 
-        public D2DPen(Color color, D2DRenderContext context)
+        public D2DPen(D2DRenderContext context, Color color)
            : base(null, 1) {
             var nativeBrush = new SolidColorBrush(context.RenderTarget, color.ToRC4());
             Brush = new D2DBrush(nativeBrush, context);
@@ -13,7 +13,7 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
             _isExternalBrush = false;
         }
 
-        public D2DPen(Color color, float strokeWidth, D2DRenderContext context)
+        public D2DPen(D2DRenderContext context, Color color, float strokeWidth)
             : base(null, strokeWidth) {
             var nativeBrush = new SolidColorBrush(context.RenderTarget, color.ToRC4());
             Brush = new D2DBrush(nativeBrush, context);

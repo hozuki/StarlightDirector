@@ -1,32 +1,127 @@
-﻿using System.Drawing;
+﻿using System;
+using System.ComponentModel;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 using StarlightDirector.Beatmap;
+using StarlightDirector.Beatmap.Extensions;
+using StarlightDirector.Core;
 using StarlightDirector.UI.Rendering.Direct2D;
 using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
 
 namespace StarlightDirector.UI.Controls {
     public sealed partial class ScoreRenderer : Direct2DCanvas {
 
-        internal ScoreRenderer(ScoreVisualizer visualizer) {
-            Visualizer = visualizer;
+        [Browsable(false)]
+        public ScrollBar ScrollBar { get; internal set; }
+
+        [Browsable(false)]
+        public Project Project {
+            get => _project;
+            set {
+                var b = value != _project;
+                if (b) {
+                    _project = value;
+                    RecalcLayout();
+                    Invalidate();
+                }
+            }
         }
 
-        public ScoreVisualizer Visualizer { get; }
+        [Browsable(false)]
+        public Difficulty Difficulty {
+            get => _difficulty;
+            set {
+                var b = value != _difficulty;
+                if (b) {
+                    _difficulty = value;
+                    RecalcLayout();
+                    Invalidate();
+                }
+            }
+        }
 
-        public Project Project { get; set; }
+        [Browsable(false)]
+        public int ScrollOffsetX { get; set; }
 
-        public Difficulty Difficulty { get; set; }
+        [Browsable(false)]
+        public int ScrollOffsetY {
+            get => _scrollOffsetY;
+            set {
+                var b = value != _scrollOffsetY;
+                if (b) {
+                    _scrollOffsetY = value;
+                    Invalidate();
+                }
+            }
+        }
 
-        public float ScrollOffsetX { get; set; }
+        [Browsable(false)]
+        public float BarLineSpaceUnit {
+            get => _barLineSpaceUnit;
+            set {
+                var b = !value.Equals(_barLineSpaceUnit);
+                if (b) {
+                    _barLineSpaceUnit = value;
+                    RecalcLayout();
+                    Invalidate();
+                }
+            }
+        }
 
-        public float ScrollOffsetY { get; set; }
+        [Browsable(false)]
+        public PrimaryBeatMode PrimaryBeatMode { get; set; } = PrimaryBeatMode.EveryFourBeats;
 
-        // 3/4
-        public int PrimaryBeat { get; set; } = 4;
-
+        [Browsable(false)]
         public ScoreRendererConfig Config { get; } = new ScoreRendererConfig();
 
+        public float GetFullHeight() {
+            var score = Project?.GetScore(Difficulty);
+            if (score == null) {
+                return 0;
+            }
+            var height = score.Bars.Sum(bar => BarLineSpaceUnit * bar.GetNumberOfGrids());
+            return height;
+        }
+
+        public void ZoomIn() {
+            var max = 2.1f * Config.NoteRadius;
+            var min = max / MaxNumberOfGrids;
+            var unit = BarLineSpaceUnit;
+            unit *= ZoomScale;
+            unit = unit.Clamp(min, max);
+            BarLineSpaceUnit = unit;
+        }
+
+        public void ZoomOut() {
+            var max = 2.1f * Config.NoteRadius;
+            var min = max / MaxNumberOfGrids;
+            var unit = BarLineSpaceUnit;
+            unit /= ZoomScale;
+            unit = unit.Clamp(min, max);
+            BarLineSpaceUnit = unit;
+        }
+
+        internal ScoreRenderer() {
+        }
+
+        internal void RecalcLayout() {
+            var scrollBar = ScrollBar;
+            var clientSize = ClientSize;
+            if (scrollBar != null) {
+                var expectedHeight = GetFullHeight();
+                scrollBar.Minimum = clientSize.Height / 2;
+                scrollBar.Maximum = clientSize.Height / 2 + (int)Math.Round(expectedHeight);
+            }
+        }
+
+        protected override void OnClientSizeChanged(EventArgs e) {
+            base.OnClientSizeChanged(e);
+            RecalcLayout();
+        }
+
         protected override void OnRender(D2DRenderContext context) {
-            var score = Project?.Scores?[Difficulty];
+            var score = Project?.GetScore(Difficulty);
             var hasAnyBar = score?.HasAnyBar ?? false;
             if (hasAnyBar) {
                 RenderBars(context, score);
@@ -38,12 +133,25 @@ namespace StarlightDirector.UI.Controls {
         }
 
         protected override void OnCreateResources(D2DRenderContext context) {
-            _barGridOutlinePen = new D2DPen(Color.White, 4, context);
-            _barNormalGridPen = new D2DPen(Color.White, 4, context);
-            _barGridStartBeatPen = new D2DPen(Color.Red, 4, context);
-            _barPrimaryBeatPen = new D2DPen(Color.Yellow, 4, context);
-            _barSecondaryBeatPen = new D2DPen(Color.Violet, 4, context);
-            _scoreBarFont = new D2DFont(context.DirectWriteFactory, DefaultFont.Name, 10, FontStyle.None, 10);
+            _barGridOutlinePen = new D2DPen(context, Color.White, 2);
+            _barNormalGridPen = new D2DPen(context, Color.White, 2);
+            _barGridStartBeatPen = new D2DPen(context, Color.Red, 2);
+            _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 2);
+            _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 2);
+
+            _gridNumberBrush = new D2DSolidBrush(context, Color.White);
+
+            _scoreBarFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints, FontStyle.Regular, 10);
+            _scoreBarBoldFont = new D2DFont(context.DirectWriteFactory, _scoreBarFont.FamilyName, _scoreBarFont.Size, FontStyle.Bold, _scoreBarFont.Weight);
+
+            _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
+            _noteCommonFill = new D2DSolidBrush(context, Color.White);
+            _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), NoteShapeStrokeWidth);
+            _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), NoteShapeStrokeWidth);
+            _holdNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
+            _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), NoteShapeStrokeWidth);
+            _flickNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
+            _slideNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
@@ -52,8 +160,30 @@ namespace StarlightDirector.UI.Controls {
             _barSecondaryBeatPen?.Dispose();
             _barGridStartBeatPen?.Dispose();
             _barGridOutlinePen?.Dispose();
+
+            _gridNumberBrush?.Dispose();
+
             _scoreBarFont?.Dispose();
+            _scoreBarBoldFont?.Dispose();
+
+            _noteCommonStroke?.Dispose();
+            _noteCommonFill?.Dispose();
+            _tapNoteShapeStroke?.Dispose();
+            _holdNoteShapeStroke?.Dispose();
+            _holdNoteShapeFillInner?.Dispose();
+            _flickNoteShapeStroke?.Dispose();
+            _flickNoteShapeFillInner?.Dispose();
+            _slideNoteShapeFillInner?.Dispose();
         }
+
+        private int _scrollOffsetY;
+        private Project _project;
+        private Difficulty _difficulty = Difficulty.Debut;
+        private float _barLineSpaceUnit = 5;
+
+        private static readonly float ZoomScale = 1.2f;
+        // This is used for scaling. It can be different with signature*gps.
+        private static readonly int MaxNumberOfGrids = 96;
 
     }
 }

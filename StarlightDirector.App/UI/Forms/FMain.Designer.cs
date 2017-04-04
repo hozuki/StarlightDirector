@@ -161,7 +161,7 @@
             this.mnuViewInvertedScrolling = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
-            this.muPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewStop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTool = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolExport = new System.Windows.Forms.ToolStripMenuItem();
@@ -175,7 +175,7 @@
             this.mnuToolOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.context = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.ctxMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.copyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pasteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -205,6 +205,8 @@
             this.picIcon = new System.Windows.Forms.PictureBox();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.btnDifficultySelection = new StarlightDirector.UI.Controls.ModernButton();
+            this.ctxDifficultySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tlbPostprocessing.SuspendLayout();
@@ -215,7 +217,7 @@
             this.groupBox1.SuspendLayout();
             this.tlbMeasure.SuspendLayout();
             this.mainMenuStrip.SuspendLayout();
-            this.context.SuspendLayout();
+            this.ctxMain.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).BeginInit();
             this.SuspendLayout();
             // 
@@ -578,7 +580,7 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
             this.toolStripMenuItem1.Text = "Add &Many...";
             // 
             // toolStripButton27
@@ -1375,7 +1377,7 @@
             // 
             this.mnuPreview.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuPreviewFromThisMeasure,
-            this.muPreviewFromStart,
+            this.mnuPreviewFromStart,
             this.mnuPreviewStop});
             this.mnuPreview.Name = "mnuPreview";
             this.mnuPreview.Size = new System.Drawing.Size(64, 21);
@@ -1389,13 +1391,13 @@
             this.mnuPreviewFromThisMeasure.Size = new System.Drawing.Size(209, 22);
             this.mnuPreviewFromThisMeasure.Text = "From &This Measure";
             // 
-            // muPreviewFromStart
+            // mnuPreviewFromStart
             // 
-            this.muPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
-            this.muPreviewFromStart.Name = "muPreviewFromStart";
-            this.muPreviewFromStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
-            this.muPreviewFromStart.Size = new System.Drawing.Size(209, 22);
-            this.muPreviewFromStart.Text = "From &Start";
+            this.mnuPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
+            this.mnuPreviewFromStart.Name = "mnuPreviewFromStart";
+            this.mnuPreviewFromStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+            this.mnuPreviewFromStart.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewFromStart.Text = "From &Start";
             // 
             // mnuPreviewStop
             // 
@@ -1496,9 +1498,9 @@
             this.mnuHelpAbout.Size = new System.Drawing.Size(111, 22);
             this.mnuHelpAbout.Text = "&About";
             // 
-            // context
+            // ctxMain
             // 
-            this.context.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ctxMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cutToolStripMenuItem,
             this.copyToolStripMenuItem,
             this.pasteToolStripMenuItem,
@@ -1513,8 +1515,8 @@
             this.deleteSelectedMeasuresToolStripMenuItem,
             this.toolStripMenuItem39,
             this.addSpecialNoteToolStripMenuItem});
-            this.context.Name = "contextMenuStrip1";
-            this.context.Size = new System.Drawing.Size(183, 232);
+            this.ctxMain.Name = "contextMenuStrip1";
+            this.ctxMain.Size = new System.Drawing.Size(183, 232);
             // 
             // cutToolStripMenuItem
             // 
@@ -1688,7 +1690,7 @@
             this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualizer.ContextMenuStrip = this.context;
+            this.visualizer.ContextMenuStrip = this.ctxMain;
             this.visualizer.Location = new System.Drawing.Point(9, 77);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.visualizer.Name = "visualizer";
@@ -1704,12 +1706,35 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
+            // btnDifficultySelection
+            // 
+            this.btnDifficultySelection.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDifficultySelection.HoveringBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
+            this.btnDifficultySelection.HoveringImage = null;
+            this.btnDifficultySelection.HoveringTextColor = System.Drawing.Color.Black;
+            this.btnDifficultySelection.Location = new System.Drawing.Point(866, 593);
+            this.btnDifficultySelection.Name = "btnDifficultySelection";
+            this.btnDifficultySelection.Pressed = false;
+            this.btnDifficultySelection.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(160)))), ((int)(((byte)(192)))));
+            this.btnDifficultySelection.PressedImage = null;
+            this.btnDifficultySelection.PressedTextColor = System.Drawing.Color.White;
+            this.btnDifficultySelection.Size = new System.Drawing.Size(76, 20);
+            this.btnDifficultySelection.TabIndex = 13;
+            this.btnDifficultySelection.Text = "Debut";
+            this.btnDifficultySelection.UseVisualStyleBackColor = true;
+            // 
+            // ctxDifficultySelection
+            // 
+            this.ctxDifficultySelection.Name = "ctxDifficultySelection";
+            this.ctxDifficultySelection.Size = new System.Drawing.Size(61, 4);
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(960, 615);
+            this.Controls.Add(this.btnDifficultySelection);
             this.Controls.Add(this.sysClose);
             this.Controls.Add(this.sysMaximizeRestore);
             this.Controls.Add(this.sysMinimize);
@@ -1745,7 +1770,7 @@
             this.tlbMeasure.PerformLayout();
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
-            this.context.ResumeLayout(false);
+            this.ctxMain.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.picIcon)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -1843,9 +1868,9 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteInsertSpecial;
         private System.Windows.Forms.ToolStripMenuItem mnuPreview;
         private System.Windows.Forms.ToolStripMenuItem mnuPreviewFromThisMeasure;
-        private System.Windows.Forms.ToolStripMenuItem muPreviewFromStart;
+        private System.Windows.Forms.ToolStripMenuItem mnuPreviewFromStart;
         private System.Windows.Forms.ToolStripMenuItem mnuPreviewStop;
-        private System.Windows.Forms.ContextMenuStrip context;
+        private System.Windows.Forms.ContextMenuStrip ctxMain;
         private System.Windows.Forms.ToolStripMenuItem cutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem copyToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pasteToolStripMenuItem;
@@ -1933,6 +1958,8 @@
         private System.Windows.Forms.ToolStripButton toolStripButton27;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private StarlightDirector.UI.Controls.ModernButton btnDifficultySelection;
+        private System.Windows.Forms.ContextMenuStrip ctxDifficultySelection;
     }
 }
 

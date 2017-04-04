@@ -60,6 +60,7 @@
     <Compile Include="Direct2D\D2DLinearGradientBrush.cs" />
     <Compile Include="Direct2D\D2DPen.cs" />
     <Compile Include="Direct2D\D2DRenderContext.cs" />
+    <Compile Include="Direct2D\D2DSolidBrush.cs" />
     <Compile Include="Extensions\Direct2DExtensions.cs" />
     <Compile Include="Extensions\DrawingComponentExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />

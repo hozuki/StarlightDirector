@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -12,6 +13,20 @@ namespace StarlightDirector.App.UI.Forms {
             mnuFileSave.Attach(CmdFileSave);
             mnuFileExit.Attach(CmdFileExit);
             sysClose.Attach(CmdFileExit);
+
+            mnuEditDifficultyDebut.Tag = Difficulty.Debut;
+            mnuEditDifficultyRegular.Tag = Difficulty.Regular;
+            mnuEditDifficultyPro.Tag = Difficulty.Pro;
+            mnuEditDifficultyMaster.Tag = Difficulty.Master;
+            mnuEditDifficultyMasterPlus.Tag = Difficulty.MasterPlus;
+            mnuEditDifficultyDebut.Attach(CmdEditDifficultySelect);
+            mnuEditDifficultyRegular.Attach(CmdEditDifficultySelect);
+            mnuEditDifficultyPro.Attach(CmdEditDifficultySelect);
+            mnuEditDifficultyMaster.Attach(CmdEditDifficultySelect);
+            mnuEditDifficultyMasterPlus.Attach(CmdEditDifficultySelect);
+
+            mnuViewZoomIn.Attach(CmdViewZoomIn);
+            mnuViewZoomOut.Attach(CmdViewZoomOut);
 
             CommandManager.HookForm(this);
             RegisterCommandEvents(this);

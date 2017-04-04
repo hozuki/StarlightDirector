@@ -40,6 +40,11 @@ namespace StarlightDirector.Beatmap {
             return string.IsNullOrEmpty(stringValue) ? 0 : Enum.Parse(_enumType, stringValue);
         }
 
+        public static string GetEnumDescription(Enum value, Type enumType) {
+            var converter = new DescribedEnumConverter(enumType);
+            return converter.ConvertToInvariantString(value);
+        }
+
         private readonly Type _enumType;
 
     }

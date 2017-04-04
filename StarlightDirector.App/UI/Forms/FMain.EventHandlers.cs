@@ -9,7 +9,14 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void UnregisterEventHandlers() {
+            SystemEvents.DisplaySettingsChanged -= SystemEventsOnDisplaySettingsChanged;
             Load -= OnLoad;
+            sysMaximizeRestore.Click -= SysMaximizeRestoreOnClick;
+            sysMinimize.Click -= SysMinimizeOnClick;
+            lblCaption.MouseDoubleClick -= LblCaptionOnMouseDoubleClick;
+            lblCaption.MouseMove -= LblCaptionOnMouseMove;
+            picIcon.MouseDown -= PicIconOnMouseDown;
+            btnDifficultySelection.Click -= BtnDifficultySelectionOnClick;
         }
 
         private void RegisterEventHandlers() {
@@ -20,6 +27,21 @@ namespace StarlightDirector.App.UI.Forms {
             lblCaption.MouseDoubleClick += LblCaptionOnMouseDoubleClick;
             lblCaption.MouseMove += LblCaptionOnMouseMove;
             picIcon.MouseDown += PicIconOnMouseDown;
+            btnDifficultySelection.Click += BtnDifficultySelectionOnClick;
+        }
+
+        private void BtnDifficultySelectionOnClick(object sender, EventArgs e) {
+            var items = new ToolStripItem[mnuEditDifficulty.DropDownItems.Count];
+            mnuEditDifficulty.DropDownItems.CopyTo(items, 0);
+            ctxDifficultySelection.Items.AddRange(items);
+            ctxDifficultySelection.Closed += CtxClosed;
+            ctxDifficultySelection.Show(btnDifficultySelection, Point.Empty, ToolStripDropDownDirection.AboveRight);
+
+            void CtxClosed(object s, EventArgs ev)
+            {
+                mnuEditDifficulty.DropDownItems.AddRange(items);
+                ctxDifficultySelection.Closed -= CtxClosed;
+            }
         }
 
         private void PicIconOnMouseDown(object sender, MouseEventArgs e) {

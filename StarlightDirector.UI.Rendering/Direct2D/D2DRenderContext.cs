@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using SharpDX.Direct2D1;
+using SharpDX.DirectWrite;
 using SharpDX.Mathematics.Interop;
 using StarlightDirector.UI.Rendering.Extensions;
 using Factory = SharpDX.DirectWrite.Factory;
@@ -178,6 +179,19 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
             var d2dBrush = brush.AsD2DBrush();
             var destRect = new RawRectangleF(destX, destY, destX + destWidth, destY + destHeight);
             RenderTarget.DrawText(text, d2dFont.NativeFont, destRect, d2dBrush.NativeBrush);
+        }
+
+        public override SizeF MeasureText(string text, Font font) {
+            var d2dFont = font.AsD2DFont();
+            using (var layout = new TextLayout(DirectWriteFactory, text, d2dFont.NativeFont, float.MaxValue, float.MaxValue)) {
+                var width = layout.DetermineMinWidth();
+                var hasNewLine = text.IndexOf('\n') >= 0;
+                if (hasNewLine) {
+                    return new SizeF(width, 0);
+                } else {
+                    return new SizeF(width, font.Size * 4 / 3);
+                }
+            }
         }
 
     }

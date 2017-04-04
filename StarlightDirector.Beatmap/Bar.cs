@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap {
@@ -21,6 +22,11 @@ namespace StarlightDirector.Beatmap {
         public BarParams Params { get; internal set; }
 
         public InternalList<Note> Notes { get; } = new InternalList<Note>();
+
+        public bool HasAnyNote {
+            [DebuggerStepThrough]
+            get { return Notes.Count > 0; }
+        }
 
         public Guid StarlightID { get; internal set; }
 

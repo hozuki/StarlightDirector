@@ -56,7 +56,13 @@
     <Compile Include="UI\Forms\FMain.Commands.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.File.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.View.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Forms\FMain.cs">

@@ -85,9 +85,9 @@ namespace StarlightDirector.App.UI.Forms {
             const int gripSize = 16;
             const int statusBarHeight = 24;
             const int statusTextLeftMargin = 5;
-            var statusRect = new Rectangle(0, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width, statusBarHeight);
-            g.FillRectangle(colorScheme.WindowStatusBackground, statusRect);
-            g.DrawLine(colorScheme.WindowStatusSeparator, statusRect.Left, statusRect.Top, statusRect.Right, statusRect.Top);
+            var statusRect = new Rectangle(clientRectangle.Left, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width - (clientRectangle.Width - btnDifficultySelection.Left), statusBarHeight);
+            g.FillRectangle(colorScheme.WindowNormalStatusBackground, statusRect);
+            g.DrawLine(colorScheme.WindowStatusSeparator, clientRectangle.Left, statusRect.Top, clientRectangle.Right, statusRect.Top);
             if (!string.IsNullOrEmpty(StatusText)) {
                 using (var tf = new StringFormat()) {
                     tf.FormatFlags = StringFormatFlags.NoWrap;
@@ -95,7 +95,7 @@ namespace StarlightDirector.App.UI.Forms {
                     tf.HotkeyPrefix = HotkeyPrefix.Show;
                     tf.Alignment = StringAlignment.Near;
                     tf.LineAlignment = StringAlignment.Center;
-                    using (var tb = new SolidBrush(colorScheme.WindowStatusText)) {
+                    using (var tb = new SolidBrush(colorScheme.WindowNormalStatusText)) {
                         statusRect.X += statusTextLeftMargin;
                         statusRect.Width -= gripSize + statusTextLeftMargin;
                         g.DrawString(StatusText, Font, tb, statusRect, tf);
@@ -105,7 +105,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             // Grip.
             if (WindowState == FormWindowState.Normal) {
-                using (var p = new Pen(colorScheme.WindowStatusText, 1)) {
+                using (var p = new Pen(colorScheme.WindowNormalStatusText, 1)) {
                     for (var i = 2; i < gripSize; i += 2) {
                         var x1 = clientRectangle.Width - i;
                         var y1 = clientRectangle.Height;
@@ -128,13 +128,12 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private static void CursorFixup(Control control) {
-            control.Cursor = Cursors.Default;
             if (!control.HasChildren) {
                 return;
             }
             foreach (var c in control.Controls) {
-                if (c is Control ctl && ctl.Cursor == null) {
-                    CursorFixup(ctl);
+                if (c is Control ctl) {
+                    ctl.Cursor = Cursors.Default;
                 }
             }
         }

@@ -25,7 +25,7 @@ namespace StarlightDirector.App.UI.Forms {
             var reader = new SldprojV3Reader();
             var project = reader.ReadProject(openFileDialog.FileName);
             visualizer.Renderer.Project = project;
-            visualizer.Renderer.Difficulty = Difficulty.MasterPlus;
+            UpdateUIIndications(openFileDialog.SafeFileName);
         }
 
         private void CmdFileSave_Executed(object sender, EventArgs e) {

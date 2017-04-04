@@ -17,11 +17,19 @@ namespace StarlightDirector.UI.Controls {
 
         public Color ControlText { get; } = Color.FromArgb(255, 255, 255);
 
-        public Color WindowStatusText { get; } = Color.FromArgb(116, 116, 116);
+        public Color WindowNormalStatusText { get; } = Color.FromArgb(116, 116, 116);
+
+        public Color WindowHoveringStatusText { get; } = Color.FromArgb(116, 116, 116);
+
+        public Color WindowPressedStatusText { get; } = Color.FromArgb(116, 116, 116);
 
         public Color WindowStatusSeparator { get; } = Color.FromArgb(213, 213, 213);
 
-        public Color WindowStatusBackground { get; } = Color.FromArgb(241, 241, 241);
+        public Color WindowNormalStatusBackground { get; } = Color.FromArgb(241, 241, 241);
+
+        public Color WindowHoveringStatusBackground { get; } = Color.FromArgb(197, 197, 197);
+
+        public Color WindowPressedStatusBackground { get; } = Color.FromArgb(174, 174, 174);
 
         public Color SysMinNormalBackground { get; } = Color.FromArgb(42, 87, 154);
 

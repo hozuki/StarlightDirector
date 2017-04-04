@@ -26,27 +26,34 @@ namespace StarlightDirector.UI.Controls {
         /// </summary>
         private void InitializeComponent() {
             this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.scoreRenderer1 = new StarlightDirector.UI.Controls.ScoreRenderer(this);
+            this.scoreRenderer1 = new StarlightDirector.UI.Controls.ScoreRenderer();
             this.SuspendLayout();
             // 
             // vScrollBar1
             // 
+            this.vScrollBar1.LargeChange = 100;
             this.vScrollBar1.Location = new System.Drawing.Point(439, 3);
             this.vScrollBar1.Name = "vScrollBar1";
             this.vScrollBar1.Size = new System.Drawing.Size(20, 504);
+            this.vScrollBar1.SmallChange = 29;
             this.vScrollBar1.TabIndex = 1;
             // 
             // scoreRenderer1
             // 
             this.scoreRenderer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.scoreRenderer1.ClearColor = Color.Black;
+            this.scoreRenderer1.BarLineSpaceUnit = 5F;
+            this.scoreRenderer1.ClearColor = System.Drawing.Color.Black;
+            this.scoreRenderer1.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
             this.scoreRenderer1.Location = new System.Drawing.Point(3, 3);
             this.scoreRenderer1.Name = "scoreRenderer1";
+            this.scoreRenderer1.PrimaryBeatMode = StarlightDirector.UI.Controls.PrimaryBeatMode.EveryFourBeats;
             this.scoreRenderer1.Project = null;
+            this.scoreRenderer1.ScrollOffsetX = 0;
+            this.scoreRenderer1.ScrollOffsetY = 0;
             this.scoreRenderer1.Size = new System.Drawing.Size(433, 504);
             this.scoreRenderer1.TabIndex = 2;
-            this.scoreRenderer1.Text = "scoreRenderer1";
+            this.scoreRenderer1.Text = "Score Renderer";
             // 
             // ScoreVisualizer
             // 

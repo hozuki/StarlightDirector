@@ -56,7 +56,7 @@ namespace StarlightDirector.Beatmap.IO {
                 ReadScore(db, score, projectVersion);
                 ResolveReferences(score);
                 FixSyncNotes(score);
-                project.Scores[difficulty] = score;
+                project.SetScore(difficulty, score);
             }
 
             // Score settings
@@ -70,7 +70,7 @@ namespace StarlightDirector.Beatmap.IO {
             // Bar params
             if (SQLiteHelper.DoesTableExist(db, Names.Table_BarParams)) {
                 foreach (var difficulty in Difficulties) {
-                    var score = project.Scores[difficulty];
+                    var score = project.GetScore(difficulty);
                     ReadBarParams(db, score);
                 }
             }
@@ -78,7 +78,7 @@ namespace StarlightDirector.Beatmap.IO {
             // Special notes
             if (SQLiteHelper.DoesTableExist(db, Names.Table_SpecialNotes)) {
                 foreach (var difficulty in Difficulties) {
-                    var score = project.Scores[difficulty];
+                    var score = project.GetScore(difficulty);
                     ReadSpecialNotes(db, score);
                 }
             }

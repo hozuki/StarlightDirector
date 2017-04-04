@@ -4,7 +4,7 @@ using StarlightDirector.App.UI.Forms;
 
 namespace StarlightDirector.App {
     internal static class Program {
-        
+
         /// <summary>
         /// Main entry point of the application.
         /// </summary>
@@ -12,6 +12,7 @@ namespace StarlightDirector.App {
         private static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            Control.CheckForIllegalCrossThreadCalls = false;
             Application.Run(new FMain());
         }
 

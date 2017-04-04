@@ -4,7 +4,7 @@ namespace StarlightDirector.UI.Rendering {
     [Flags]
     public enum FontStyle {
 
-        None = 0,
+        Regular = 0,
         Bold = 1,
         Italic = 2
 

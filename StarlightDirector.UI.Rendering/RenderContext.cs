@@ -173,6 +173,8 @@ namespace StarlightDirector.UI.Rendering {
             DrawText(text, brush, font, destRect.X, destRect.Y, destRect.Width, destRect.Height);
         }
 
+        public abstract SizeF MeasureText(string text, Font font);
+
         private static PointF[] PointsToPointFs(Point[] points) {
             if (points.Length == 0) {
                 return EmptyPointFArray;
