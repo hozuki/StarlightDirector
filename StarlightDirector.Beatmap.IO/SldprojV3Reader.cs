@@ -196,6 +196,9 @@ namespace StarlightDirector.Beatmap.IO {
                 if (note.Temporary.PrevFlickNoteID != Guid.Empty) {
                     note.Editor.PrevFlick = score.FindNoteByID(note.Temporary.PrevFlickNoteID);
                 }
+                if (note.Temporary.HoldTargetID != Guid.Empty) {
+                    note.Editor.HoldPair = score.FindNoteByID(note.Temporary.HoldTargetID);
+                }
             }
         }
 

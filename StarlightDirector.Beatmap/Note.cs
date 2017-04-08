@@ -263,6 +263,16 @@ namespace StarlightDirector.Beatmap {
             }
         }
 
+        public static bool operator >(Note left, Note right) {
+            var r = TimingComparison(left, right);
+            return r > 0;
+        }
+
+        public static bool operator <(Note left, Note right) {
+            var r = TimingComparison(left, right);
+            return r < 0;
+        }
+
         internal sealed class TemporaryProperties {
 
             public Guid PrevFlickNoteID { get; set; }

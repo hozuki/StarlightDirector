@@ -133,11 +133,11 @@ namespace StarlightDirector.UI.Controls {
         }
 
         protected override void OnCreateResources(D2DRenderContext context) {
-            _barGridOutlinePen = new D2DPen(context, Color.White, 2);
-            _barNormalGridPen = new D2DPen(context, Color.White, 2);
-            _barGridStartBeatPen = new D2DPen(context, Color.Red, 2);
-            _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 2);
-            _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 2);
+            _barGridOutlinePen = new D2DPen(context, Color.White, 1);
+            _barNormalGridPen = new D2DPen(context, Color.White, 1);
+            _barGridStartBeatPen = new D2DPen(context, Color.Red, 1);
+            _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 1);
+            _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 1);
 
             _gridNumberBrush = new D2DSolidBrush(context, Color.White);
 
@@ -145,13 +145,19 @@ namespace StarlightDirector.UI.Controls {
             _scoreBarBoldFont = new D2DFont(context.DirectWriteFactory, _scoreBarFont.FamilyName, _scoreBarFont.Size, FontStyle.Bold, _scoreBarFont.Weight);
 
             _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
-            _noteCommonFill = new D2DSolidBrush(context, Color.White);
             _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), NoteShapeStrokeWidth);
             _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), NoteShapeStrokeWidth);
-            _holdNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
             _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), NoteShapeStrokeWidth);
+
+            _noteCommonFill = new D2DSolidBrush(context, Color.White);
+            _holdNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
             _flickNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
             _slideNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
+
+            _syncLineStroke = new D2DPen(context, Color.White, 4);
+            _holdLineStroke = new D2DPen(context, Color.White, 10);
+            _flickLineStroke = new D2DPen(context, Color.White, 14.1f);
+            _slideLineStroke = new D2DPen(context, Color.White, 14.1f);
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
@@ -167,13 +173,19 @@ namespace StarlightDirector.UI.Controls {
             _scoreBarBoldFont?.Dispose();
 
             _noteCommonStroke?.Dispose();
-            _noteCommonFill?.Dispose();
             _tapNoteShapeStroke?.Dispose();
             _holdNoteShapeStroke?.Dispose();
-            _holdNoteShapeFillInner?.Dispose();
             _flickNoteShapeStroke?.Dispose();
+
+            _noteCommonFill?.Dispose();
+            _holdNoteShapeFillInner?.Dispose();
             _flickNoteShapeFillInner?.Dispose();
             _slideNoteShapeFillInner?.Dispose();
+
+            _syncLineStroke?.Dispose();
+            _holdLineStroke?.Dispose();
+            _flickLineStroke?.Dispose();
+            _slideLineStroke?.Dispose();
         }
 
         private int _scrollOffsetY;
