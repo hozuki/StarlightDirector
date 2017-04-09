@@ -69,19 +69,27 @@ namespace StarlightDirector.UI.Controls {
             var g = e.Graphics;
             var item = e.Item;
             if (item.Enabled) {
-                if (item.Pressed) {
-                    item.ForeColor = scheme.MenuItemPressedText;
-                    g.Clear(scheme.MenuItemPressedBackground);
+                if (e.Item.Pressed) {
+                    item.ForeColor = scheme.ToolbarItemPressedText;
+                    g.Clear(scheme.ToolbarItemPressedBackground);
                 } else if (item.Selected) {
-                    item.ForeColor = scheme.MenuItemHoveringText;
-                    g.Clear(scheme.MenuItemHoveringBackground);
+                    item.ForeColor = scheme.ToolbarItemHoveringText;
+                    g.Clear(scheme.ToolbarItemHoveringBackground);
                 } else {
-                    item.ForeColor = scheme.MenuItemText;
-                    g.Clear(scheme.MenuItemBackground);
+                    item.ForeColor = scheme.ToolbarItemText;
+                    g.Clear(scheme.ToolbarItemBackground);
                 }
             } else {
-                item.ForeColor = scheme.MenuItemDisabledText;
-                g.Clear(scheme.MenuItemDisabledBackground);
+                Color backColor;
+                if (e.ToolStrip is MenuStrip) {
+                    backColor = scheme.MenuBarBackground;
+                } else if (e.ToolStrip is ToolStripDropDownMenu) {
+                    backColor = scheme.MenuItemDisabledBackground;
+                } else {
+                    backColor = scheme.ToolbarItemDisabledBackground;
+                }
+                item.ForeColor = scheme.ToolbarItemDisabledText;
+                g.Clear(backColor);
             }
         }
 

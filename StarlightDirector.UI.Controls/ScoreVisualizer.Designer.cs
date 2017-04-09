@@ -25,42 +25,42 @@ namespace StarlightDirector.UI.Controls {
         /// 使用代码编辑器修改此方法的内容。
         /// </summary>
         private void InitializeComponent() {
-            this.vScrollBar1 = new System.Windows.Forms.VScrollBar();
-            this.scoreRenderer1 = new StarlightDirector.UI.Controls.ScoreRenderer();
+            this.vScroll = new System.Windows.Forms.VScrollBar();
+            this.editor = new StarlightDirector.UI.Controls.ScoreEditor();
             this.SuspendLayout();
             // 
-            // vScrollBar1
+            // vScroll
             // 
-            this.vScrollBar1.LargeChange = 100;
-            this.vScrollBar1.Location = new System.Drawing.Point(439, 3);
-            this.vScrollBar1.Name = "vScrollBar1";
-            this.vScrollBar1.Size = new System.Drawing.Size(20, 504);
-            this.vScrollBar1.SmallChange = 29;
-            this.vScrollBar1.TabIndex = 1;
+            this.vScroll.LargeChange = 100;
+            this.vScroll.Location = new System.Drawing.Point(439, 3);
+            this.vScroll.Name = "vScroll";
+            this.vScroll.Size = new System.Drawing.Size(20, 504);
+            this.vScroll.SmallChange = 29;
+            this.vScroll.TabIndex = 1;
             // 
-            // scoreRenderer1
+            // editor
             // 
-            this.scoreRenderer1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.editor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.scoreRenderer1.BarLineSpaceUnit = 5F;
-            this.scoreRenderer1.ClearColor = System.Drawing.Color.Black;
-            this.scoreRenderer1.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
-            this.scoreRenderer1.Location = new System.Drawing.Point(3, 3);
-            this.scoreRenderer1.Name = "scoreRenderer1";
-            this.scoreRenderer1.PrimaryBeatMode = StarlightDirector.UI.Controls.PrimaryBeatMode.EveryFourBeats;
-            this.scoreRenderer1.Project = null;
-            this.scoreRenderer1.ScrollOffsetX = 0;
-            this.scoreRenderer1.ScrollOffsetY = 0;
-            this.scoreRenderer1.Size = new System.Drawing.Size(433, 504);
-            this.scoreRenderer1.TabIndex = 2;
-            this.scoreRenderer1.Text = "Score Renderer";
+            this.editor.BarLineSpaceUnit = 5F;
+            this.editor.ClearColor = System.Drawing.Color.Black;
+            this.editor.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
+            this.editor.Location = new System.Drawing.Point(3, 3);
+            this.editor.Name = "editor";
+            this.editor.PrimaryBeatMode = StarlightDirector.UI.Controls.PrimaryBeatMode.EveryFourBeats;
+            this.editor.Project = null;
+            this.editor.ScrollOffsetX = 0;
+            this.editor.ScrollOffsetY = 0;
+            this.editor.Size = new System.Drawing.Size(433, 504);
+            this.editor.TabIndex = 2;
+            this.editor.Text = "Score Editor";
             // 
             // ScoreVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.scoreRenderer1);
-            this.Controls.Add(this.vScrollBar1);
+            this.Controls.Add(this.editor);
+            this.Controls.Add(this.vScroll);
             this.Name = "ScoreVisualizer";
             this.Size = new System.Drawing.Size(459, 510);
             this.ResumeLayout(false);
@@ -69,7 +69,7 @@ namespace StarlightDirector.UI.Controls {
 
         #endregion
 
-        private System.Windows.Forms.VScrollBar vScrollBar1;
-        private ScoreRenderer scoreRenderer1;
+        private System.Windows.Forms.VScrollBar vScroll;
+        private ScoreEditor editor;
     }
 }

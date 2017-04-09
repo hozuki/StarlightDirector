@@ -5,11 +5,11 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void CmdViewZoomIn_Executed(object sender, EventArgs e) {
-            visualizer.Renderer.ZoomIn();
+            visualizer.Editor.ZoomIn();
         }
 
         private void CmdViewZoomOut_Executed(object sender, EventArgs e) {
-            visualizer.Renderer.ZoomOut();
+            visualizer.Editor.ZoomOut();
         }
 
         private readonly Command CmdViewZoomIn = CommandManager.CreateCommand();

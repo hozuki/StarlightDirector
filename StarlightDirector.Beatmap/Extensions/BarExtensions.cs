@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using StarlightDirector.Core;
 
@@ -42,18 +43,22 @@ namespace StarlightDirector.Beatmap.Extensions {
             return note;
         }
 
+        [DebuggerStepThrough]
         public static Note FindNoteByID(this Bar bar, Guid id) {
             return bar.Notes.FirstOrDefault(n => n.StarlightID == id);
         }
 
+        [DebuggerStepThrough]
         public static int GetSignature(this Bar bar) {
             return bar.Params?.UserDefinedSignature ?? bar.Score.Project.Settings.Signature;
         }
 
+        [DebuggerStepThrough]
         public static int GetGridPerSignature(this Bar bar) {
             return bar.Params?.UserDefinedGridPerSignature ?? bar.Score.Project.Settings.GridPerSignature;
         }
 
+        [DebuggerStepThrough]
         public static int GetNumberOfGrids(this Bar bar) {
             return GetGridPerSignature(bar) * GetSignature(bar);
         }

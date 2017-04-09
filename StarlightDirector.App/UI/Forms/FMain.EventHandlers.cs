@@ -17,6 +17,7 @@ namespace StarlightDirector.App.UI.Forms {
             lblCaption.MouseMove -= LblCaptionOnMouseMove;
             picIcon.MouseDown -= PicIconOnMouseDown;
             btnDifficultySelection.Click -= BtnDifficultySelectionOnClick;
+            visualizer.ContextMenuRequested -= VisualizerOnContextMenuRequested;
         }
 
         private void RegisterEventHandlers() {
@@ -28,6 +29,47 @@ namespace StarlightDirector.App.UI.Forms {
             lblCaption.MouseMove += LblCaptionOnMouseMove;
             picIcon.MouseDown += PicIconOnMouseDown;
             btnDifficultySelection.Click += BtnDifficultySelectionOnClick;
+            visualizer.ContextMenuRequested += VisualizerOnContextMenuRequested;
+        }
+
+        private void VisualizerOnContextMenuRequested(object sender, ContextMenuRequestedEventArgs e) {
+            var hasSelectedNotes = visualizer.Editor.HasSelectedNotes;
+            var hasSelectedBars = visualizer.Editor.HasSelectedBars;
+            if (!hasSelectedNotes && !hasSelectedBars) {
+                return;
+            }
+            switch (e.MenuType) {
+                case VisualizerContextMenu.Note:
+                    ctxSep1.Visible = hasSelectedNotes;
+                    ctxEditDeleteNotes.Visible = hasSelectedNotes;
+                    ctxSep2.Visible = hasSelectedNotes;
+                    ctxEditCreateRelation.Visible = hasSelectedNotes;
+                    ctxEditClearRelations.Visible = hasSelectedNotes;
+                    ctxSep3.Visible = hasSelectedNotes;
+                    ctxEditNoteStartPosition.Visible = hasSelectedNotes;
+                    ctxSep4.Visible = false;
+                    ctxEditDeleteMeasures.Visible = false;
+                    ctxSep5.Visible = false;
+                    ctxEditAddSpecialNote.Visible = false;
+                    break;
+                case VisualizerContextMenu.Bar:
+                    ctxSep1.Visible = false;
+                    ctxEditDeleteNotes.Visible = false;
+                    ctxSep2.Visible = false;
+                    ctxEditCreateRelation.Visible = false;
+                    ctxEditClearRelations.Visible = false;
+                    ctxSep3.Visible = false;
+                    ctxEditNoteStartPosition.Visible = false;
+                    ctxSep4.Visible = hasSelectedBars;
+                    ctxEditDeleteMeasures.Visible = hasSelectedBars;
+                    ctxSep5.Visible = false;
+                    ctxEditAddSpecialNote.Visible = false;
+                    break;
+                default:
+                    break;
+            }
+
+            ctxMain.Show(visualizer, e.Location);
         }
 
         private void BtnDifficultySelectionOnClick(object sender, EventArgs e) {

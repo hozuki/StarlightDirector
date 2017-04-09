@@ -10,7 +10,7 @@ using StarlightDirector.UI.Rendering.Direct2D;
 using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
 
 namespace StarlightDirector.UI.Controls {
-    public sealed partial class ScoreRenderer : Direct2DCanvas {
+    public sealed partial class ScoreEditor : Direct2DCanvas {
 
         [Browsable(false)]
         public ScrollBar ScrollBar { get; internal set; }
@@ -73,7 +73,7 @@ namespace StarlightDirector.UI.Controls {
         public PrimaryBeatMode PrimaryBeatMode { get; set; } = PrimaryBeatMode.EveryFourBeats;
 
         [Browsable(false)]
-        public ScoreRendererConfig Config { get; } = new ScoreRendererConfig();
+        public ScoreEditorConfig Config { get; } = new ScoreEditorConfig();
 
         public float GetFullHeight() {
             var score = Project?.GetScore(Difficulty);
@@ -102,7 +102,7 @@ namespace StarlightDirector.UI.Controls {
             BarLineSpaceUnit = unit;
         }
 
-        internal ScoreRenderer() {
+        internal ScoreEditor() {
         }
 
         internal void RecalcLayout() {
@@ -133,8 +133,9 @@ namespace StarlightDirector.UI.Controls {
         }
 
         protected override void OnCreateResources(D2DRenderContext context) {
-            _barGridOutlinePen = new D2DPen(context, Color.White, 1);
-            _barNormalGridPen = new D2DPen(context, Color.White, 1);
+            _barSelectedOutlinePen = new D2DPen(context, Color.White, 2);
+            _barGridOutlinePen = new D2DPen(context, Color.Gray, 1);
+            _barNormalGridPen = new D2DPen(context, Color.Gray, 1);
             _barGridStartBeatPen = new D2DPen(context, Color.Red, 1);
             _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 1);
             _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 1);
@@ -145,6 +146,7 @@ namespace StarlightDirector.UI.Controls {
             _scoreBarBoldFont = new D2DFont(context.DirectWriteFactory, _scoreBarFont.FamilyName, _scoreBarFont.Size, FontStyle.Bold, _scoreBarFont.Weight);
 
             _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
+            _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), NoteShapeStrokeWidth * 3);
             _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), NoteShapeStrokeWidth);
             _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), NoteShapeStrokeWidth);
             _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), NoteShapeStrokeWidth);
@@ -154,13 +156,16 @@ namespace StarlightDirector.UI.Controls {
             _flickNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
             _slideNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
 
-            _syncLineStroke = new D2DPen(context, Color.White, 4);
-            _holdLineStroke = new D2DPen(context, Color.White, 10);
-            _flickLineStroke = new D2DPen(context, Color.White, 14.1f);
-            _slideLineStroke = new D2DPen(context, Color.White, 14.1f);
+            _syncLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 4);
+            _holdLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 10);
+            _flickLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
+            _slideLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
+
+            _noteStartPositionFont = new D2DFont(context.DirectWriteFactory, Font.Name, StartPositionFontSize, FontStyle.Regular, 10);
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
+            _barSelectedOutlinePen?.Dispose();
             _barNormalGridPen?.Dispose();
             _barPrimaryBeatPen?.Dispose();
             _barSecondaryBeatPen?.Dispose();
@@ -173,6 +178,7 @@ namespace StarlightDirector.UI.Controls {
             _scoreBarBoldFont?.Dispose();
 
             _noteCommonStroke?.Dispose();
+            _noteSelectedStroke?.Dispose();
             _tapNoteShapeStroke?.Dispose();
             _holdNoteShapeStroke?.Dispose();
             _flickNoteShapeStroke?.Dispose();
@@ -186,6 +192,8 @@ namespace StarlightDirector.UI.Controls {
             _holdLineStroke?.Dispose();
             _flickLineStroke?.Dispose();
             _slideLineStroke?.Dispose();
+
+            _noteStartPositionFont?.Dispose();
         }
 
         private int _scrollOffsetY;

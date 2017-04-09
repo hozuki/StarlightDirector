@@ -24,7 +24,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             var reader = new SldprojV3Reader();
             var project = reader.ReadProject(openFileDialog.FileName);
-            visualizer.Renderer.Project = project;
+            visualizer.Editor.Project = project;
             UpdateUIIndications(openFileDialog.SafeFileName);
         }
 

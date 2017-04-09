@@ -139,6 +139,8 @@
     <Content Include="Resources\Icons\Notes\IconNoteFlickRight.png" />
     <Content Include="Resources\Icons\Notes\IconNoteSlide.png" />
     <Content Include="Resources\Icons\SD-Icon.ico" />
+    <Content Include="Resources\Icons\Toolbar\IconEditNoteDelete.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditNoteCreateRelation.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureAdd.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureDelete.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />

@@ -9,14 +9,14 @@ namespace StarlightDirector.App.UI.Forms {
         private void CmdEditDifficultySelect_Executed(object sender, EventArgs e) {
             var menuItem = (ToolStripMenuItem)sender;
             var difficulty = (Difficulty)menuItem.Tag;
-            if (difficulty == visualizer.Renderer.Difficulty) {
+            if (difficulty == visualizer.Editor.Difficulty) {
                 return;
             }
             foreach (ToolStripMenuItem item in mnuEditDifficulty.DropDownItems) {
                 item.Checked = false;
             }
             menuItem.Checked = true;
-            visualizer.Renderer.Difficulty = difficulty;
+            visualizer.Editor.Difficulty = difficulty;
             UpdateUIIndications(difficulty);
         }
 

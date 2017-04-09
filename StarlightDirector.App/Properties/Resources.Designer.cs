@@ -123,6 +123,26 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
+        internal static System.Drawing.Bitmap IconEditNoteCreateRelation {
+            get {
+                object obj = ResourceManager.GetObject("IconEditNoteCreateRelation", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconEditNoteDelete {
+            get {
+                object obj = ResourceManager.GetObject("IconEditNoteDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
         internal static System.Drawing.Bitmap IconEditNotePosition1 {
             get {
                 object obj = ResourceManager.GetObject("IconEditNotePosition1", resourceCulture);

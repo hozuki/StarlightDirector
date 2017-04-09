@@ -173,6 +173,18 @@ namespace StarlightDirector.UI.Rendering {
             DrawText(text, brush, font, destRect.X, destRect.Y, destRect.Width, destRect.Height);
         }
 
+        public void DrawText(string text, Brush brush, Font font, float destX, float destY) {
+            DrawText(text, brush, font, destX, destY, float.MaxValue, float.MaxValue);
+        }
+
+        public void DrawText(string text, Brush brush, Font font, Point destLocation) {
+            DrawText(text, brush, font, destLocation.X, destLocation.Y, float.MaxValue, float.MaxValue);
+        }
+
+        public void DrawText(string text, Brush brush, Font font, PointF destLocation) {
+            DrawText(text, brush, font, destLocation.X, destLocation.Y, float.MaxValue, float.MaxValue);
+        }
+
         public abstract SizeF MeasureText(string text, Font font);
 
         private static PointF[] PointsToPointFs(Point[] points) {

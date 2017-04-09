@@ -58,6 +58,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorScheme.cs" />
+    <Compile Include="ContextMenuRequestedEventArgs.cs" />
     <Compile Include="ControlUtils.cs" />
     <Compile Include="Direct2DCanvas.cs">
       <SubType>Component</SubType>
@@ -75,17 +76,20 @@
     <Compile Include="MouseButtonAction.cs" />
     <Compile Include="PrimaryBeatMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ScoreRenderer.Bars.cs">
+    <Compile Include="ScoreEditor.Editing.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScoreRenderer.cs">
+    <Compile Include="ScoreEditor.Bars.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScoreRenderer.Notes.cs">
+    <Compile Include="ScoreEditor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScoreRendererConfig.cs" />
-    <Compile Include="ScoreRendererHitTestResult.cs" />
+    <Compile Include="ScoreEditor.Notes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditorConfig.cs" />
+    <Compile Include="ScoreEditorHitTestResult.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -96,6 +100,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="StarlightToolStripRenderer.cs" />
+    <Compile Include="VisualizerContextMenu.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StarlightDirector.Beatmap\StarlightDirector.Beatmap.csproj">
@@ -113,7 +118,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
-    <Compile Include="ScoreRenderer.HitTesting.cs">
+    <Compile Include="ScoreEditor.HitTesting.cs">
       <SubType>Component</SubType>
     </Compile>
   </ItemGroup>

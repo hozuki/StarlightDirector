@@ -5,11 +5,11 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap {
     public sealed class Note : IStarlightObject {
 
-        public Note(Bar bar)
+        internal Note(Bar bar)
             : this(bar, Guid.NewGuid()) {
         }
 
-        public Note(Bar bar, Guid id) {
+        internal Note(Bar bar, Guid id) {
             Basic = new NoteBasicProperties(bar);
             Helper = new NoteHelperProperties(this);
             Editor = new NoteEditorProperties();
@@ -44,8 +44,6 @@ namespace StarlightDirector.Beatmap {
             public NoteType Type { get; set; } = NoteType.TapOrFlick;
 
             public int IndexInGrid { get; set; }
-
-            public double HitTiming { get; set; }
 
             public NotePosition StartPosition { get; set; } = NotePosition.Nowhere;
 
@@ -280,6 +278,8 @@ namespace StarlightDirector.Beatmap {
             public Guid NextFlickNoteID { get; set; }
 
             public Guid HoldTargetID { get; set; }
+
+            public double HitTiming { get; set; }
 
         }
 

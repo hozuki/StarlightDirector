@@ -1,55 +1,64 @@
 ﻿using System;
-using System.Collections;
 using System.Drawing;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Rendering;
 using StarlightDirector.UI.Rendering.Direct2D;
 using StarlightDirector.UI.Rendering.Extensions;
-using Brush = StarlightDirector.UI.Rendering.Brush;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace StarlightDirector.UI.Controls {
-    partial class ScoreRenderer {
+    partial class ScoreEditor {
 
         private void RenderNotes(D2DRenderContext context, Score score) {
             var config = Config;
-            var clientSize = context.ClientSize;
-            var barArea = new RectangleF((clientSize.Width - config.EditingAreaWidth) / 2 + (config.LeftAreaWidth + config.GridNumberAreaWidth), 0, config.BarAreaWidth, clientSize.Height);
+            var gridArea = GetGridArea(context.ClientSize);
             var radius = config.NoteRadius;
             var noteStartY = (float)ScrollOffsetY;
 
-            DrawNoteConnections(context, score, barArea, noteStartY, radius);
-            DrawNotes(context, score, barArea, noteStartY, radius);
+            DrawNoteConnections(context, score, gridArea, noteStartY, radius);
+            DrawNotes(context, score, gridArea, noteStartY, radius);
         }
 
-        private void DrawNotes(D2DRenderContext context, Score score, RectangleF barArea, float noteStartY, float radius) {
+        private void DrawNotes(D2DRenderContext context, Score score, RectangleF gridArea, float noteStartY, float radius) {
             if (!score.HasAnyNote) {
                 return;
             }
 
             var unit = BarLineSpaceUnit;
+            var startPositionFont = _noteStartPositionFont;
             foreach (var bar in score.Bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.HasAnyNote) {
                     foreach (var note in bar.Notes) {
-                        if (!IsNoteVisible(note, barArea, noteStartY, unit, radius)) {
+                        if (!IsNoteVisible(note, gridArea, noteStartY, unit, radius)) {
                             continue;
                         }
 
-                        var x = GetNotePositionX(note, barArea);
+                        var x = GetNotePositionX(note, gridArea);
                         var y = GetNotePositionY(note, unit, noteStartY);
                         var h = note.Helper;
                         if (h.IsSlide) {
-                            DrawSlideNote(context, x, y, radius, h.IsSlideMidway);
+                            DrawSlideNote(context, note, x, y, radius, h.IsSlideMidway);
                         } else if (h.IsHoldStart) {
-                            DrawHoldNote(context, x, y, radius);
+                            DrawHoldNote(context, note, x, y, radius);
                         } else {
                             if (note.Basic.FlickType != NoteFlickType.None) {
-                                DrawFlickNote(context, x, y, radius, note.Basic.FlickType);
+                                DrawFlickNote(context, note, x, y, radius, note.Basic.FlickType);
                             } else {
-                                DrawTapNote(context, x, y, radius);
+                                DrawTapNote(context, note, x, y, radius);
                             }
+                        }
+
+                        // Indicators
+
+                        // Start position
+                        if (note.Basic.StartPosition != note.Basic.FinishPosition) {
+                            var startPositionX = x - radius - StartPositionFontSize / 2;
+                            var startPositionY = y - radius - StartPositionFontSize / 2;
+                            var text = ((int)note.Basic.StartPosition).ToString();
+                            context.DrawText(text, _noteCommonFill, startPositionFont, startPositionX, startPositionY);
                         }
                     }
                 }
@@ -57,7 +66,7 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        private void DrawNoteConnections(RenderContext context, Score score, RectangleF barArea, float noteStartY, float radius) {
+        private void DrawNoteConnections(RenderContext context, Score score, RectangleF gridArea, float noteStartY, float radius) {
             if (!score.HasAnyNote) {
                 return;
             }
@@ -68,34 +77,34 @@ namespace StarlightDirector.UI.Controls {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.HasAnyNote) {
                     foreach (var note in bar.Notes) {
-                        var x1 = GetNotePositionX(note, barArea);
+                        var x1 = GetNotePositionX(note, gridArea);
                         var y1 = GetNotePositionY(note, unit, noteStartY);
-                        var isThisNoteVisible = IsNoteVisible(note, barArea, noteStartY, unit, radius);
+                        var isThisNoteVisible = IsNoteVisible(note, gridArea, noteStartY, unit, radius);
                         Note n2;
                         if (note.Helper.HasNextSync && isThisNoteVisible) {
                             n2 = note.Editor.NextSync;
-                            var x2 = GetNotePositionX(n2, barArea);
+                            var x2 = GetNotePositionX(n2, gridArea);
                             // Draw sync line
                             context.DrawLine(_syncLineStroke, x1, y1, x2, y1);
                         }
                         n2 = note.Editor.HoldPair;
                         if (n2 != null)
-                            if ((isThisNoteVisible || (n2 > note && IsNoteVisible(n2, barArea, noteStartY, unit, radius)))) {
-                                var x2 = GetNotePositionX(n2, barArea);
+                            if ((isThisNoteVisible || (n2 > note && IsNoteVisible(n2, gridArea, noteStartY, unit, radius)))) {
+                                var x2 = GetNotePositionX(n2, gridArea);
                                 var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                                 // Draw hold line
                                 context.DrawLine(_holdLineStroke, x1, y1, x2, y2);
                             }
                         n2 = note.Editor.NextFlick;
-                        if (n2 != null && (isThisNoteVisible || IsNoteVisible(n2, barArea, noteStartY, unit, radius))) {
-                            var x2 = GetNotePositionX(n2, barArea);
+                        if (n2 != null && (isThisNoteVisible || IsNoteVisible(n2, gridArea, noteStartY, unit, radius))) {
+                            var x2 = GetNotePositionX(n2, gridArea);
                             var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                             // Draw flick line
                             context.DrawLine(_flickLineStroke, x1, y1, x2, y2);
                         }
                         n2 = note.Editor.NextSlide;
-                        if (n2 != null && (isThisNoteVisible || IsNoteVisible(n2, barArea, noteStartY, unit, radius))) {
-                            var x2 = GetNotePositionX(n2, barArea);
+                        if (n2 != null && (isThisNoteVisible || IsNoteVisible(n2, gridArea, noteStartY, unit, radius))) {
+                            var x2 = GetNotePositionX(n2, gridArea);
                             var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                             // Draw slide line
                             context.DrawLine(_slideLineStroke, x1, y1, x2, y2);
@@ -106,13 +115,16 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        private void DrawCommonNoteOutline(RenderContext context, float x, float y, float r) {
+        private void DrawCommonNoteOutline(RenderContext context, Note note, float x, float y, float r) {
             context.FillCircle(_noteCommonFill, x, y, r);
             context.DrawCircle(_noteCommonStroke, x, y, r);
+            if (note.Editor.IsSelected) {
+                context.DrawCircle(_noteSelectedStroke, x, y, r * 1.15f);
+            }
         }
 
-        private void DrawTapNote(D2DRenderContext context, float x, float y, float r) {
-            DrawCommonNoteOutline(context, x, y, r);
+        private void DrawTapNote(D2DRenderContext context, Note note, float x, float y, float r) {
+            DrawCommonNoteOutline(context, note, x, y, r);
 
             var r1 = r * ScaleFactor1;
             using (var fill = GetFillBrush(context, x, y, r, TapNoteShapeFillColors)) {
@@ -121,8 +133,8 @@ namespace StarlightDirector.UI.Controls {
             context.DrawEllipse(_tapNoteShapeStroke, x - r1, y - r1, r1 * 2, r1 * 2);
         }
 
-        private void DrawFlickNote(D2DRenderContext context, float x, float y, float r, NoteFlickType flickType) {
-            DrawCommonNoteOutline(context, x, y, r);
+        private void DrawFlickNote(D2DRenderContext context, Note note, float x, float y, float r, NoteFlickType flickType) {
+            DrawCommonNoteOutline(context, note, x, y, r);
 
             var r1 = r * ScaleFactor1;
             // Triangle
@@ -143,8 +155,8 @@ namespace StarlightDirector.UI.Controls {
             context.DrawPolygon(_flickNoteShapeStroke, polygon);
         }
 
-        private void DrawHoldNote(D2DRenderContext context, float x, float y, float r) {
-            DrawCommonNoteOutline(context, x, y, r);
+        private void DrawHoldNote(D2DRenderContext context, Note note, float x, float y, float r) {
+            DrawCommonNoteOutline(context, note, x, y, r);
 
             var r1 = r * ScaleFactor1;
             using (var fill = GetFillBrush(context, x, y, r, HoldNoteShapeFillOuterColors)) {
@@ -155,8 +167,8 @@ namespace StarlightDirector.UI.Controls {
             context.FillEllipse(_holdNoteShapeFillInner, x - r2, y - r2, r2 * 2, r2 * 2);
         }
 
-        private void DrawSlideNote(D2DRenderContext context, float x, float y, float r, bool isMidway) {
-            DrawCommonNoteOutline(context, x, y, r);
+        private void DrawSlideNote(D2DRenderContext context, Note note, float x, float y, float r, bool isMidway) {
+            DrawCommonNoteOutline(context, note, x, y, r);
 
             var fillColors = isMidway ? SlideNoteShapeFillOuterTranslucentColors : SlideNoteShapeFillOuterColors;
             var r1 = r * ScaleFactor1;
@@ -169,22 +181,25 @@ namespace StarlightDirector.UI.Controls {
             context.FillRectangle(_slideNoteShapeFillInner, x - r1 - 1, y - l, r1 * 2 + 2, l * 2);
         }
 
-        private static bool IsNoteVisible(Note note, RectangleF barArea, float noteStartY, float u, float r) {
+        private static bool IsNoteVisible(Note note, RectangleF gridArea, float noteStartY, float u, float r) {
             if (note == null) {
                 return false;
             }
             var y = GetNotePositionY(note, u, noteStartY);
-            return barArea.Top - r <= y && y <= barArea.Bottom + r;
+            return gridArea.Top - r <= y && y <= gridArea.Bottom + r;
         }
 
+        [DebuggerStepThrough]
         private static D2DLinearGradientBrush GetFillBrush(D2DRenderContext context, float x, float y, float r, Color[] colors) {
             return new D2DLinearGradientBrush(context, new PointF(x, y - r), new PointF(x, y + r), colors);
         }
 
-        private static float GetNotePositionX(Note note, RectangleF barArea) {
-            return ((int)note.Basic.FinishPosition - 1) * barArea.Width / (5 - 1) + barArea.Left;
+        [DebuggerStepThrough]
+        private static float GetNotePositionX(Note note, RectangleF gridArea) {
+            return ((int)note.Basic.FinishPosition - 1) * gridArea.Width / (5 - 1) + gridArea.Left;
         }
 
+        [DebuggerStepThrough]
         private static float GetNotePositionY(Note note, float unit, float noteStartY) {
             return noteStartY - unit * note.Basic.IndexInGrid;
         }
@@ -206,6 +221,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private D2DPen _noteCommonStroke;
+        private D2DPen _noteSelectedStroke;
         private D2DPen _tapNoteShapeStroke;
         private D2DPen _holdNoteShapeStroke;
         private D2DPen _flickNoteShapeStroke;
@@ -219,6 +235,9 @@ namespace StarlightDirector.UI.Controls {
         private D2DBrush _holdNoteShapeFillInner;
         private D2DBrush _flickNoteShapeFillInner;
         private D2DBrush _slideNoteShapeFillInner;
+
+        private D2DFont _noteStartPositionFont;
+        private static readonly float StartPositionFontSize = 10;
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };

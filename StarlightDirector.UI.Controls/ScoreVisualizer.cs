@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.UI.Controls {
@@ -12,39 +12,42 @@ namespace StarlightDirector.UI.Controls {
             InitializeComponent();
             RegisterEventHandlers();
 
-            scoreRenderer1.ScrollBar = vScrollBar1;
+            editor.ScrollBar = vScroll;
         }
 
         ~ScoreVisualizer() {
             UnregisterEventHandlers();
         }
 
-        [Browsable(false)]
-        public ScoreRenderer Renderer => scoreRenderer1;
+        public event EventHandler<ContextMenuRequestedEventArgs> ContextMenuRequested;
 
         [Browsable(false)]
-        public VScrollBar ScrollBar => vScrollBar1;
+        public ScoreEditor Editor => editor;
+
+        [Browsable(false)]
+        public VScrollBar ScrollBar => vScroll;
 
         public void RedrawScore() {
-            scoreRenderer1.Invalidate();
+            editor.Invalidate();
         }
 
         protected override void OnLayout(LayoutEventArgs e) {
+            // Anchor doesn't seem to work.
             base.OnLayout(e);
 
             var clientSize = ClientSize;
-            var scrollBarLeft = clientSize.Width - vScrollBar1.Width - ConstMargin * 2;
+            var scrollBarLeft = clientSize.Width - vScroll.Width - ConstMargin * 2;
             var scrollBarTop = ConstMargin;
             var scrollBarHeight = clientSize.Height - ConstMargin * 2;
-            vScrollBar1.Location = new Point(scrollBarLeft, scrollBarTop);
-            vScrollBar1.Height = scrollBarHeight;
+            vScroll.Location = new Point(scrollBarLeft, scrollBarTop);
+            vScroll.Height = scrollBarHeight;
 
             var rendererLeft = ConstMargin;
             var rendererTop = ConstMargin;
             var rendererWidth = scrollBarLeft - ConstMargin;
             var rendererHeight = clientSize.Height - ConstMargin * 2;
-            scoreRenderer1.Location = new Point(rendererLeft, rendererTop);
-            scoreRenderer1.Size = new Size(rendererWidth, rendererHeight);
+            editor.Location = new Point(rendererLeft, rendererTop);
+            editor.Size = new Size(rendererWidth, rendererHeight);
         }
 
         protected override void OnMouseWheel(MouseEventArgs e) {
@@ -53,43 +56,113 @@ namespace StarlightDirector.UI.Controls {
             var modifiers = ModifierKeys;
             if ((modifiers & Keys.Control) != 0) {
                 if (e.Delta > 0) {
-                    scoreRenderer1.ZoomIn();
+                    editor.ZoomIn();
                 } else {
-                    scoreRenderer1.ZoomOut();
+                    editor.ZoomOut();
                 }
                 return;
             }
 
-            var newScrollValue = vScrollBar1.Value;
+            var newScrollValue = vScroll.Value;
             if (e.Delta > 0) {
                 // Up
                 if ((modifiers & Keys.Shift) != 0) {
-                    newScrollValue -= vScrollBar1.LargeChange;
+                    newScrollValue -= vScroll.LargeChange;
                 } else {
-                    newScrollValue -= vScrollBar1.SmallChange;
+                    newScrollValue -= vScroll.SmallChange;
                 }
             } else if (e.Delta < 0) {
                 // Down
                 if ((modifiers & Keys.Shift) != 0) {
-                    newScrollValue += vScrollBar1.LargeChange;
+                    newScrollValue += vScroll.LargeChange;
                 } else {
-                    newScrollValue += vScrollBar1.SmallChange;
+                    newScrollValue += vScroll.SmallChange;
                 }
             }
-            newScrollValue = newScrollValue.Clamp(vScrollBar1.Minimum, vScrollBar1.Maximum);
-            vScrollBar1.Value = newScrollValue;
+            newScrollValue = newScrollValue.Clamp(vScroll.Minimum, vScroll.Maximum);
+            vScroll.Value = newScrollValue;
         }
 
         private void UnregisterEventHandlers() {
-            vScrollBar1.ValueChanged -= VScrollBar1OnValueChanged;
+            vScroll.ValueChanged -= VScroll_ValueChanged;
+            editor.MouseDown -= Editor_MouseDown;
         }
 
         private void RegisterEventHandlers() {
-            vScrollBar1.ValueChanged += VScrollBar1OnValueChanged;
+            vScroll.ValueChanged += VScroll_ValueChanged;
+            editor.MouseDown += Editor_MouseDown;
         }
 
-        private void VScrollBar1OnValueChanged(object sender, EventArgs eventArgs) {
-            scoreRenderer1.ScrollOffsetY = vScrollBar1.Value;
+        private void Editor_MouseDown(object sender, MouseEventArgs e) {
+            var hit = editor.HitTest(e.Location);
+            if (!hit.HitAnyBar) {
+                return;
+            }
+
+            if (e.Button == MouseButtons.Left) {
+                var modifiers = ModifierKeys;
+                if (hit.HitAnyNote) {
+                    if (editor.HasSelectedBars) {
+                        editor.ClearSelectedBars();
+                    } else {
+                        var note = hit.Note;
+                        switch (modifiers) {
+                            case Keys.Control:
+                                note.Editor.IsSelected = !note.Editor.IsSelected;
+                                break;
+                            case Keys.Shift:
+                            // TODO
+                            //break;
+                            case Keys.None:
+                                if (editor.HasSelectedNotes) {
+                                    editor.ClearSelectedNotesExcept(note);
+                                }
+                                note.Editor.IsSelected = !note.Editor.IsSelected;
+                                break;
+                        }
+                    }
+                    editor.Invalidate();
+                } else if (hit.HitBarGridIntersection) {
+                    // Add a note
+                    var note = hit.Bar.AddNote();
+                    note.Basic.IndexInGrid = hit.Row;
+                    note.Basic.StartPosition = note.Basic.FinishPosition = hit.Column;
+                    editor.Invalidate();
+                } else {
+                    if (editor.HasSelectedNotes) {
+                        // Clear note selection first.
+                        editor.ClearSelectedNotes();
+                    } else {
+                        // Select/unselect bar(s).
+                        var bar = hit.Bar;
+                        switch (modifiers) {
+                            case Keys.Control:
+                                bar.IsSelected = !bar.IsSelected;
+                                break;
+                            case Keys.Shift:
+                            // TODO
+                            //break;
+                            case Keys.None:
+                                if (editor.HasSelectedBars) {
+                                    editor.ClearSelectedBarsExcept(bar);
+                                }
+                                bar.IsSelected = !bar.IsSelected;
+                                break;
+                        }
+                    }
+                    editor.Invalidate();
+                }
+            } else if (e.Button == MouseButtons.Right) {
+                if (hit.HitAnyNote) {
+                    ContextMenuRequested?.Invoke(this, new ContextMenuRequestedEventArgs(VisualizerContextMenu.Note, e.Location));
+                } else {
+                    ContextMenuRequested?.Invoke(this, new ContextMenuRequestedEventArgs(VisualizerContextMenu.Bar, e.Location));
+                }
+            }
+        }
+
+        private void VScroll_ValueChanged(object sender, EventArgs eventArgs) {
+            editor.ScrollOffsetY = vScroll.Value;
         }
 
         private static readonly int ConstMargin = 3;
