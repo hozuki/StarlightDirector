@@ -1,14 +1,12 @@
-﻿using System;
-using System.IO;
+﻿using System.IO;
 using System.Windows.Forms;
-using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.IO;
 using StarlightDirector.Commanding;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
-        private void CmdFileOpen_Executed(object sender, EventArgs e) {
+        private void CmdFileOpen_Executed(object sender, ExecutedEventArgs e) {
             openFileDialog.CheckFileExists = true;
             openFileDialog.ReadOnlyChecked = false;
             openFileDialog.ShowReadOnly = false;
@@ -28,7 +26,7 @@ namespace StarlightDirector.App.UI.Forms {
             UpdateUIIndications(openFileDialog.SafeFileName);
         }
 
-        private void CmdFileSave_Executed(object sender, EventArgs e) {
+        private void CmdFileSave_Executed(object sender, ExecutedEventArgs e) {
             saveFileDialog.CheckFileExists = true;
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
@@ -36,7 +34,7 @@ namespace StarlightDirector.App.UI.Forms {
             saveFileDialog.ShowDialog(this);
         }
 
-        private void CmdFileExit_Executed(object sender, EventArgs e) {
+        private void CmdFileExit_Executed(object sender, ExecutedEventArgs e) {
             Close();
         }
 

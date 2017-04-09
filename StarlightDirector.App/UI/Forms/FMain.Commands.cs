@@ -25,6 +25,20 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditDifficultyMaster.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyMasterPlus.Attach(CmdEditDifficultySelect);
 
+            mnuEditNoteStartPosition1.Tag = NotePosition.Left;
+            mnuEditNoteStartPosition2.Tag = NotePosition.CenterLeft;
+            mnuEditNoteStartPosition3.Tag = NotePosition.Center;
+            mnuEditNoteStartPosition4.Tag = NotePosition.CenterRight;
+            mnuEditNoteStartPosition5.Tag = NotePosition.Right;
+            mnuEditNoteStartPosition1.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteStartPosition2.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
+
+            mnuEditSelectAllMeasures.Attach(CmdEditSelectAllBars);
+            mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
+
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             mnuViewZoomOut.Attach(CmdViewZoomOut);
 
@@ -49,8 +63,8 @@ namespace StarlightDirector.App.UI.Forms {
                     continue;
                 }
                 var commandName = field.Name;
-                SubscribeEvent(commandObject, commandName, "Executed", typeof(EventHandler<EventArgs>));
-                SubscribeEvent(commandObject, commandName, "Reverted", typeof(EventHandler<EventArgs>));
+                SubscribeEvent(commandObject, commandName, "Executed", typeof(ExecutedEventHandler));
+                SubscribeEvent(commandObject, commandName, "Reverted", typeof(RevertedEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryCanExecute", typeof(QueryCanExecuteEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryCanRevert", typeof(QueryCanRevertEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(QueryRecordToHistoryEventHandler));

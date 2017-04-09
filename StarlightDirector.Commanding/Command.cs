@@ -10,24 +10,24 @@ namespace StarlightDirector.Commanding {
         public event QueryCanExecuteEventHandler QueryCanExecute;
         public event QueryCanRevertEventHandler QueryCanRevert;
         public event QueryRecordToHistoryEventHandler QueryRecordToHistory;
-        public event EventHandler<EventArgs> Executed;
-        public event EventHandler<EventArgs> Reverted;
+        public event ExecutedEventHandler Executed;
+        public event RevertedEventHandler Reverted;
 
         internal Command() {
         }
 
-        public void Execute(object sender) {
+        public void Execute(object sender, object parameter) {
             if (!CanExecute) {
                 return;
             }
-            OnExecuted(sender, EventArgs.Empty);
+            OnExecuted(sender, new ExecutedEventArgs(parameter));
         }
 
-        public void Revert(object sender) {
+        public void Revert(object sender, object parameter) {
             if (!CanRevert) {
                 throw new InvalidOperationException("This command cannot revert.");
             }
-            OnReverted(sender, EventArgs.Empty);
+            OnReverted(sender, new RevertedEventArgs(parameter));
         }
 
         public bool CanExecute { get; private set; } = true;
@@ -48,15 +48,15 @@ namespace StarlightDirector.Commanding {
             var canExecute = CanExecute;
             switch (control) {
                 case ButtonBase button:
-                    button.Click += OnExecuted;
+                    button.Click += OnControlInteract;
                     button.Enabled = canExecute;
                     break;
                 case MenuItem menuItem:
-                    menuItem.Click += OnExecuted;
+                    menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
                     break;
                 case ToolStripItem toolStripItem:
-                    toolStripItem.Click += OnExecuted;
+                    toolStripItem.Click += OnControlInteract;
                     toolStripItem.Enabled = canExecute;
                     break;
                 default:
@@ -74,13 +74,13 @@ namespace StarlightDirector.Commanding {
             }
             switch (control) {
                 case ButtonBase button:
-                    button.Click -= OnExecuted;
+                    button.Click -= OnControlInteract;
                     break;
                 case MenuItem menuItem:
-                    menuItem.Click -= OnExecuted;
+                    menuItem.Click -= OnControlInteract;
                     break;
                 case ToolStripItem toolStripItem:
-                    toolStripItem.Click -= OnExecuted;
+                    toolStripItem.Click -= OnControlInteract;
                     break;
                 default:
                     throw new NotSupportedException();
@@ -149,12 +149,30 @@ namespace StarlightDirector.Commanding {
             QueryRecordToHistory?.Invoke(sender, e);
         }
 
-        private void OnExecuted(object sender, EventArgs e) {
+        private void OnControlInteract(object sender, EventArgs e) {
+            object tag = null;
+            switch (sender) {
+                case ButtonBase button:
+                    tag = button.Tag;
+                    break;
+                case MenuItem menuItem:
+                    tag = menuItem.Tag;
+                    break;
+                case ToolStripItem toolStripItem:
+                    tag = toolStripItem.Tag;
+                    break;
+                default:
+                    break;
+            }
+            Execute(sender, tag);
+        }
+
+        private void OnExecuted(object sender, ExecutedEventArgs e) {
             Executed?.Invoke(sender, e);
             CommandManager.UpdateCommandListStatus();
         }
 
-        private void OnReverted(object sender, EventArgs e) {
+        private void OnReverted(object sender, RevertedEventArgs e) {
             Reverted?.Invoke(sender, e);
             CommandManager.UpdateCommandListStatus();
         }

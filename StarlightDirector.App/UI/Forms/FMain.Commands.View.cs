@@ -1,14 +1,13 @@
 ﻿using StarlightDirector.Commanding;
-using System;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
-        private void CmdViewZoomIn_Executed(object sender, EventArgs e) {
+        private void CmdViewZoomIn_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.ZoomIn();
         }
 
-        private void CmdViewZoomOut_Executed(object sender, EventArgs e) {
+        private void CmdViewZoomOut_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.ZoomOut();
         }
 

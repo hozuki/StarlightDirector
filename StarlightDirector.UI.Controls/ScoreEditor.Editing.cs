@@ -86,5 +86,29 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
+        [DebuggerStepThrough]
+        public void SelectAllNotes() {
+            var score = Project?.GetScore(Difficulty);
+            if (score == null) {
+                return;
+            }
+            foreach (var bar in score.Bars) {
+                foreach (var note in bar.Notes) {
+                    note.Editor.IsSelected = true;
+                }
+            }
+        }
+
+        [DebuggerStepThrough]
+        public void SelectAllBars() {
+            var score = Project?.GetScore(Difficulty);
+            if (score == null) {
+                return;
+            }
+            foreach (var bar in score.Bars) {
+                bar.IsSelected = true;
+            }
+        }
+
     }
 }

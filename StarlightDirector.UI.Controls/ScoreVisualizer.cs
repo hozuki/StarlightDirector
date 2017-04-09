@@ -96,6 +96,9 @@ namespace StarlightDirector.UI.Controls {
         private void Editor_MouseDown(object sender, MouseEventArgs e) {
             var hit = editor.HitTest(e.Location);
             if (!hit.HitAnyBar) {
+                editor.ClearSelectedBars();
+                editor.ClearSelectedNotes();
+                editor.Invalidate();
                 return;
             }
 
