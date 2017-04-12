@@ -150,21 +150,12 @@ namespace StarlightDirector.Commanding {
         }
 
         private void OnControlInteract(object sender, EventArgs e) {
-            object tag = null;
-            switch (sender) {
-                case ButtonBase button:
-                    tag = button.Tag;
-                    break;
-                case MenuItem menuItem:
-                    tag = menuItem.Tag;
-                    break;
-                case ToolStripItem toolStripItem:
-                    tag = toolStripItem.Tag;
-                    break;
-                default:
-                    break;
+            var comp = sender as Component;
+            if (comp == null) {
+                throw new InvalidCastException("Activation listening is only available on subclasses of Component.");
             }
-            Execute(sender, tag);
+            var param = comp.GetParameter();
+            Execute(sender, param);
         }
 
         private void OnExecuted(object sender, ExecutedEventArgs e) {

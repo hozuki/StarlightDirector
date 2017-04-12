@@ -14,22 +14,22 @@ namespace StarlightDirector.App.UI.Forms {
             mnuFileExit.Attach(CmdFileExit);
             sysClose.Attach(CmdFileExit);
 
-            mnuEditDifficultyDebut.Tag = Difficulty.Debut;
-            mnuEditDifficultyRegular.Tag = Difficulty.Regular;
-            mnuEditDifficultyPro.Tag = Difficulty.Pro;
-            mnuEditDifficultyMaster.Tag = Difficulty.Master;
-            mnuEditDifficultyMasterPlus.Tag = Difficulty.MasterPlus;
+            mnuEditDifficultyDebut.SetParameter(Difficulty.Debut);
+            mnuEditDifficultyRegular.SetParameter(Difficulty.Regular);
+            mnuEditDifficultyPro.SetParameter(Difficulty.Pro);
+            mnuEditDifficultyMaster.SetParameter(Difficulty.Master);
+            mnuEditDifficultyMasterPlus.SetParameter(Difficulty.MasterPlus);
             mnuEditDifficultyDebut.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyRegular.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyPro.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyMaster.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyMasterPlus.Attach(CmdEditDifficultySelect);
 
-            mnuEditNoteStartPosition1.Tag = NotePosition.Left;
-            mnuEditNoteStartPosition2.Tag = NotePosition.CenterLeft;
-            mnuEditNoteStartPosition3.Tag = NotePosition.Center;
-            mnuEditNoteStartPosition4.Tag = NotePosition.CenterRight;
-            mnuEditNoteStartPosition5.Tag = NotePosition.Right;
+            mnuEditNoteStartPosition1.SetParameter(NotePosition.Left);
+            mnuEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
+            mnuEditNoteStartPosition3.SetParameter(NotePosition.Center);
+            mnuEditNoteStartPosition4.SetParameter(NotePosition.CenterRight);
+            mnuEditNoteStartPosition5.SetParameter(NotePosition.Right);
             mnuEditNoteStartPosition1.Attach(CmdEditNoteStartPosition);
             mnuEditNoteStartPosition2.Attach(CmdEditNoteStartPosition);
             mnuEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
