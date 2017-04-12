@@ -1,8 +1,9 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using StarlightDirector.Core.Interop;
 
 namespace StarlightDirector.UI.Controls {
     public sealed class SingleLineLabel : Control {
@@ -11,6 +12,11 @@ namespace StarlightDirector.UI.Controls {
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.Opaque | ControlStyles.ContainerControl, false);
         }
+
+        [Browsable(true)]
+        [Description("Gets/sets whether this label is click-through.")]
+        [DefaultValue(false)]
+        public bool ClickThrough { get; set; } = false;
 
         protected override void OnTextChanged(EventArgs e) {
             base.OnTextChanged(e);
@@ -34,6 +40,14 @@ namespace StarlightDirector.UI.Controls {
             rect.X = (clientRectangle.Width - rect.Width) / 2;
             using (var brush = new SolidBrush(ForeColor)) {
                 e.Graphics.DrawString(Text, Font, brush, rect, _stringFormat);
+            }
+        }
+
+        protected override void WndProc(ref Message m) {
+            if (ClickThrough && m.Msg == NativeConstants.WM_NCHITTEST) {
+                m.Result = (IntPtr)NativeConstants.HTTRANSPARENT;
+            } else {
+                base.WndProc(ref m);
             }
         }
 

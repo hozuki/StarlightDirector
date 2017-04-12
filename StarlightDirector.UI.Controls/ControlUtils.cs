@@ -17,6 +17,37 @@ namespace StarlightDirector.UI.Controls {
             return x >= rectangle.X && y >= rectangle.Y && x < rectangle.Right && y < rectangle.Bottom;
         }
 
+        public static int DetermineNcRegion(this Form form, Point mouseLocation, int horizontalMargin, int verticalMargin, int captionMargin) {
+            var size = form.Size;
+            if (mouseLocation.X <= horizontalMargin) {
+                if (mouseLocation.Y <= verticalMargin) {
+                    return NativeConstants.HTTOPLEFT;
+                } else if (mouseLocation.Y > size.Height - verticalMargin) {
+                    return NativeConstants.HTBOTTOMLEFT;
+                } else {
+                    return NativeConstants.HTLEFT;
+                }
+            } else if (mouseLocation.X >= size.Width - horizontalMargin) {
+                if (mouseLocation.Y <= verticalMargin) {
+                    return NativeConstants.HTTOPRIGHT;
+                } else if (mouseLocation.Y > size.Height - verticalMargin) {
+                    return NativeConstants.HTBOTTOMRIGHT;
+                } else {
+                    return NativeConstants.HTRIGHT;
+                }
+            } else {
+                if (mouseLocation.Y <= verticalMargin) {
+                    return NativeConstants.HTTOP;
+                } else if (mouseLocation.Y <= captionMargin) {
+                    return NativeConstants.HTCAPTION;
+                } else if (mouseLocation.Y > size.Height - verticalMargin) {
+                    return NativeConstants.HTBOTTOM;
+                } else {
+                    return NativeConstants.HTCLIENT;
+                }
+            }
+        }
+
         public static IntPtr NcHitTest(this Form form, Point mouseLocation, MouseButtonAction action, int horizontalMargin, int verticalMargin, int captionMargin) {
             if (action == MouseButtonAction.None) {
                 return IntPtr.Zero;
@@ -54,23 +85,30 @@ namespace StarlightDirector.UI.Controls {
 
                 int ncLocation;
                 Cursor formCursor;
-                if (form.WindowState != FormWindowState.Maximized) {
-                    if (mouseLocation.X <= horizontalMargin) {
+                var size = form.Size;
+                var isMaximized = form.WindowState == FormWindowState.Maximized;
+                if (mouseLocation.X <= horizontalMargin) {
+                    if (!isMaximized) {
                         if (mouseLocation.Y <= verticalMargin) {
                             formCursor = Cursors.SizeNWSE;
                             ncLocation = NativeConstants.HTTOPLEFT;
-                        } else if (mouseLocation.Y >= form.Height - verticalMargin) {
+                        } else if (mouseLocation.Y >= size.Height - verticalMargin) {
                             formCursor = Cursors.SizeNESW;
                             ncLocation = NativeConstants.HTBOTTOMLEFT;
                         } else {
                             formCursor = Cursors.SizeWE;
                             ncLocation = NativeConstants.HTLEFT;
                         }
-                    } else if (mouseLocation.X >= form.Width - horizontalMargin) {
+                    } else {
+                        formCursor = Cursors.Default;
+                        ncLocation = NativeConstants.HTCLIENT;
+                    }
+                } else if (mouseLocation.X >= size.Width - horizontalMargin) {
+                    if (!isMaximized) {
                         if (mouseLocation.Y <= verticalMargin) {
                             formCursor = Cursors.SizeNESW;
                             ncLocation = NativeConstants.HTTOPRIGHT;
-                        } else if (mouseLocation.Y >= form.Height - verticalMargin) {
+                        } else if (mouseLocation.Y >= size.Height - verticalMargin) {
                             formCursor = Cursors.SizeNWSE;
                             ncLocation = NativeConstants.HTBOTTOMRIGHT;
                         } else {
@@ -78,28 +116,38 @@ namespace StarlightDirector.UI.Controls {
                             ncLocation = NativeConstants.HTRIGHT;
                         }
                     } else {
-                        if (mouseLocation.Y <= verticalMargin) {
+                        formCursor = Cursors.Default;
+                        ncLocation = NativeConstants.HTCLIENT;
+                    }
+                } else {
+                    if (mouseLocation.Y <= verticalMargin) {
+                        if (!isMaximized) {
                             formCursor = Cursors.SizeNS;
                             ncLocation = NativeConstants.HTTOP;
-                        } else if (mouseLocation.Y <= captionMargin) {
+                        } else {
                             formCursor = Cursors.Default;
-                            ncLocation = NativeConstants.HTCAPTION;
-                            if (action == MouseButtonAction.LeftButtonDoubleClick) {
-                                form.Cursor = formCursor;
-                                form.WindowState = form.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-                                return IntPtr.Zero;
-                            }
-                        } else if (mouseLocation.Y >= form.Height - verticalMargin) {
+                            ncLocation = NativeConstants.HTCLIENT;
+                        }
+                    } else if (mouseLocation.Y <= captionMargin) {
+                        formCursor = Cursors.Default;
+                        ncLocation = NativeConstants.HTCAPTION;
+                        if (action == MouseButtonAction.LeftButtonDoubleClick) {
+                            form.Cursor = formCursor;
+                            form.WindowState = form.WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
+                            return IntPtr.Zero;
+                        }
+                    } else if (mouseLocation.Y >= size.Height - verticalMargin) {
+                        if (!isMaximized) {
                             formCursor = Cursors.SizeNS;
                             ncLocation = NativeConstants.HTBOTTOM;
                         } else {
                             formCursor = Cursors.Default;
                             ncLocation = NativeConstants.HTCLIENT;
                         }
+                    } else {
+                        formCursor = Cursors.Default;
+                        ncLocation = NativeConstants.HTCLIENT;
                     }
-                } else {
-                    formCursor = Cursors.Default;
-                    ncLocation = NativeConstants.HTCLIENT;
                 }
 
                 form.Cursor = formCursor;

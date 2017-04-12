@@ -28,29 +28,53 @@ namespace StarlightDirector.App.UI.Forms {
 
         protected override void OnMouseDown(MouseEventArgs e) {
             base.OnMouseDown(e);
-            if (WindowState != FormWindowState.Maximized) {
-                if (e.Button == MouseButtons.Left) {
-                    const int horizontalMargin = 5;
-                    const int verticalMargin = 5;
-                    this.NcHitTest(e.Location, MouseButtonAction.LeftButtonDown, horizontalMargin, verticalMargin, CaptionMargin);
+            var region = this.DetermineNcRegion(e.Location, HorizontalMargin, VerticalMargin, CaptionMargin);
+            if (region != NativeConstants.HTCLIENT) {
+                if (WindowState != FormWindowState.Maximized) {
+                    MouseButtonAction action;
+                    if (e.Button == MouseButtons.Left)
+                        action = MouseButtonAction.LeftButtonDown;
+                    else if (e.Button == MouseButtons.Right) {
+                        action = MouseButtonAction.RightButtonDown;
+                    } else {
+                        return;
+                    }
+                    this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
                 }
             }
-            if (e.Button == MouseButtons.Right) {
-                if (e.Y <= lblCaption.Bottom) {
-                    var mousePosition = MousePosition;
-                    var displayRect = NativeStructures.RECT.FromRectangle(DisplayRectangle);
-                    NativeMethods.TrackPopupMenu(NativeMethods.GetSystemMenu(Handle, false), NativeConstants.TPM_LEFTBUTTON, mousePosition.X, mousePosition.Y, 0, Handle, ref displayRect);
+            if (e.Button == MouseButtons.Right && e.Y <= lblCaption.Bottom) {
+                var mousePosition = MousePosition;
+                var displayRect = NativeStructures.RECT.FromRectangle(DisplayRectangle);
+                var hMenu = NativeMethods.GetSystemMenu(Handle, false);
+                NativeMethods.TrackPopupMenu(hMenu, NativeConstants.TPM_LEFTBUTTON, mousePosition.X, mousePosition.Y, 0, Handle, ref displayRect);
+            }
+            if (e.Clicks == 2) {
+                MouseButtonAction action;
+                if (e.Button == MouseButtons.Left)
+                    action = MouseButtonAction.LeftButtonDoubleClick;
+                else if (e.Button == MouseButtons.Right) {
+                    action = MouseButtonAction.RightButtonDoubleClick;
+                } else {
+                    return;
                 }
+                this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
             }
         }
 
         protected override void OnMouseUp(MouseEventArgs e) {
             base.OnMouseUp(e);
-            if (WindowState != FormWindowState.Maximized) {
-                if (e.Button == MouseButtons.Left) {
-                    const int horizontalMargin = 5;
-                    const int verticalMargin = 5;
-                    this.NcHitTest(e.Location, MouseButtonAction.LeftButtonUp, horizontalMargin, verticalMargin, CaptionMargin);
+            var region = this.DetermineNcRegion(e.Location, HorizontalMargin, VerticalMargin, CaptionMargin);
+            if (region != NativeConstants.HTCLIENT) {
+                if (WindowState != FormWindowState.Maximized) {
+                    MouseButtonAction action;
+                    if (e.Button == MouseButtons.Left)
+                        action = MouseButtonAction.LeftButtonUp;
+                    else if (e.Button == MouseButtons.Right) {
+                        action = MouseButtonAction.RightButtonUp;
+                    } else {
+                        return;
+                    }
+                    this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
                 }
             }
         }
@@ -58,9 +82,7 @@ namespace StarlightDirector.App.UI.Forms {
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
             if (WindowState != FormWindowState.Maximized) {
-                const int horizontalMargin = 5;
-                const int verticalMargin = 5;
-                this.NcHitTest(e.Location, MouseButtonAction.MouseMove, horizontalMargin, verticalMargin, CaptionMargin);
+                this.NcHitTest(e.Location, MouseButtonAction.MouseMove, HorizontalMargin, VerticalMargin, CaptionMargin);
             }
         }
 
@@ -125,6 +147,46 @@ namespace StarlightDirector.App.UI.Forms {
         protected override void OnSizeChanged(EventArgs e) {
             base.OnSizeChanged(e);
             sysMaximizeRestore.Icon = WindowState == FormWindowState.Maximized ? ModernSystemButtonIcon.Restore : ModernSystemButtonIcon.Maximize;
+        }
+
+        protected override void WndProc(ref Message m) {
+            switch (m.Msg) {
+                case NativeConstants.WM_NCCALCSIZE:
+                    // Set to 0 to hide the frames while not deleting system menu.
+                    // This is a trick that I found when I was in high school, but over the years I forgot it. :(
+                    m.Result = IntPtr.Zero;
+                    break;
+                case NativeConstants.WM_COMMAND:
+                    // Yep, so we must handle the command messages ourselves.
+                    var commandID = m.WParam.ToInt32();
+                    switch (commandID) {
+                        case NativeConstants.SC_CLOSE:
+                            Close();
+                            break;
+                        case NativeConstants.SC_MAXIMIZE:
+                            WindowState = FormWindowState.Maximized;
+                            break;
+                        case NativeConstants.SC_MINIMIZE:
+                            WindowState = FormWindowState.Minimized;
+                            break;
+                        case NativeConstants.SC_RESTORE:
+                            WindowState = FormWindowState.Normal;
+                            if (Left < 0) {
+                                Left = 0;
+                            }
+                            if (Top < 0) {
+                                Top = 0;
+                            }
+                            break;
+                        default:
+                            base.WndProc(ref m);
+                            break;
+                    }
+                    break;
+                default:
+                    base.WndProc(ref m);
+                    break;
+            }
         }
 
         private static void CursorFixup(Control control) {

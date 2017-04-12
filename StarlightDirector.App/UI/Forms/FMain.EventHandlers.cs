@@ -91,7 +91,7 @@ namespace StarlightDirector.App.UI.Forms {
                 if (e.Clicks == 1) {
                     var pt = picIcon.Location;
                     pt.Y = picIcon.Bottom;
-                    pt = picIcon.PointToScreen(pt);
+                    pt = PointToScreen(pt);
                     var dispRect = NativeStructures.RECT.FromRectangle(ClientRectangle);
                     var hMenu = NativeMethods.GetSystemMenu(Handle, false);
                     NativeMethods.TrackPopupMenu(hMenu, NativeConstants.TPM_LEFTBUTTON, pt.X, pt.Y, 0, Handle, ref dispRect);
@@ -101,7 +101,8 @@ namespace StarlightDirector.App.UI.Forms {
             } else if (e.Button == MouseButtons.Right) {
                 var mouseScreen = MousePosition;
                 var dispRect = NativeStructures.RECT.FromRectangle(ClientRectangle);
-                NativeMethods.TrackPopupMenu(NativeMethods.GetSystemMenu(Handle, false), NativeConstants.TPM_LEFTBUTTON, mouseScreen.X, mouseScreen.Y, 0, Handle, ref dispRect);
+                var hMenu = NativeMethods.GetSystemMenu(Handle, false);
+                NativeMethods.TrackPopupMenu(hMenu, NativeConstants.TPM_LEFTBUTTON, mouseScreen.X, mouseScreen.Y, 0, Handle, ref dispRect);
             }
         }
 

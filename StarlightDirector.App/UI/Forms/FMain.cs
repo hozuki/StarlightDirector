@@ -100,6 +100,8 @@ namespace StarlightDirector.App.UI.Forms {
             tlbMeasure.Renderer = toolStripRenderer;
         }
 
+        private static readonly int HorizontalMargin = 5;
+        private static readonly int VerticalMargin = 5;
         private static readonly int CaptionMargin = 65;
         private static readonly int ToolbarMargin = 250;
 

@@ -28,29 +28,63 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tlbPostprocessing = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton24 = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tlbEdit = new System.Windows.Forms.ToolStrip();
+            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
             this.toolStripButton16 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tlbNote = new System.Windows.Forms.ToolStrip();
+            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
+            this.holdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.slideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
+            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator10 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tlbMeasure = new System.Windows.Forms.ToolStrip();
+            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripButton27 = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton22 = new System.Windows.Forms.ToolStripTextBox();
             this.toolStripButton25 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton26 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripButton31 = new System.Windows.Forms.ToolStripButton();
             this.lblCaption = new StarlightDirector.UI.Controls.SingleLineLabel();
             this.sysMinimize = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMaximizeRestore = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysClose = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuFileBeatmapInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -131,12 +165,17 @@
             this.mnuViewRelationIndicator = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewInvertedScrolling = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreview = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuPreviewStop = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuTool = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolExport = new System.Windows.Forms.ToolStripMenuItem();
             this.cGSSBeatmapCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuToolBuild = new System.Windows.Forms.ToolStripMenuItem();
+            this.cGSSBeatmapBundleBDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cGSSLiveMusicACBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuToolOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
@@ -172,46 +211,7 @@
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.btnDifficultySelection = new StarlightDirector.UI.Controls.ModernButton();
             this.ctxDifficultySelection = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.toolStripButton19 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton20 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton23 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton24 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton10 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton11 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton12 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton14 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton15 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton17 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton18 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton13 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripDropDownButton1 = new System.Windows.Forms.ToolStripDropDownButton();
-            this.holdToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flickToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.slideToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton3 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton4 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton6 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton7 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton8 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripButton27 = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton26 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton31 = new System.Windows.Forms.ToolStripButton();
-            this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuPreviewStop = new System.Windows.Forms.ToolStripMenuItem();
-            this.cGSSBeatmapBundleBDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cGSSLiveMusicACBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.tlbPostprocessing.SuspendLayout();
@@ -234,9 +234,9 @@
             this.panel2.Controls.Add(this.groupBox3);
             this.panel2.Controls.Add(this.groupBox2);
             this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Location = new System.Drawing.Point(715, 74);
+            this.panel2.Location = new System.Drawing.Point(715, 75);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(234, 510);
+            this.panel2.Size = new System.Drawing.Size(234, 509);
             this.panel2.TabIndex = 3;
             // 
             // groupBox4
@@ -265,10 +265,48 @@
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
+            // toolStripButton19
+            // 
+            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton19.Enabled = false;
+            this.toolStripButton19.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
+            this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton19.Name = "toolStripButton19";
+            this.toolStripButton19.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton19.Text = "Preview from This Measure";
+            // 
+            // toolStripButton20
+            // 
+            this.toolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton20.Enabled = false;
+            this.toolStripButton20.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
+            this.toolStripButton20.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton20.Name = "toolStripButton20";
+            this.toolStripButton20.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton20.Text = "Stop Previewing";
+            // 
             // toolStripSeparator9
             // 
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton23
+            // 
+            this.toolStripButton23.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton23.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
+            this.toolStripButton23.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton23.Name = "toolStripButton23";
+            this.toolStripButton23.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton23.Text = "Build CGSS Beatmap Bundle";
+            // 
+            // toolStripButton24
+            // 
+            this.toolStripButton24.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton24.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
+            this.toolStripButton24.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton24.Name = "toolStripButton24";
+            this.toolStripButton24.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton24.Text = "Build CGSS Live Music";
             // 
             // groupBox3
             // 
@@ -301,15 +339,92 @@
             this.tlbEdit.TabIndex = 1;
             this.tlbEdit.Text = "Edit";
             // 
+            // toolStripButton10
+            // 
+            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton10.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
+            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton10.Name = "toolStripButton10";
+            this.toolStripButton10.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton10.Text = "New Project";
+            // 
+            // toolStripButton11
+            // 
+            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton11.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
+            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton11.Name = "toolStripButton11";
+            this.toolStripButton11.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton11.Text = "Open Project";
+            // 
+            // toolStripButton12
+            // 
+            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton12.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
+            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton12.Name = "toolStripButton12";
+            this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton12.Text = "Save Project";
+            // 
             // toolStripSeparator8
             // 
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButton14
+            // 
+            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton14.Enabled = false;
+            this.toolStripButton14.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
+            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton14.Name = "toolStripButton14";
+            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton14.Text = "Undo";
+            // 
+            // toolStripButton15
+            // 
+            this.toolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton15.Enabled = false;
+            this.toolStripButton15.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
+            this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton15.Name = "toolStripButton15";
+            this.toolStripButton15.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton15.Text = "Redo";
+            // 
             // toolStripButton16
             // 
             this.toolStripButton16.Name = "toolStripButton16";
             this.toolStripButton16.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton17
+            // 
+            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton17.Enabled = false;
+            this.toolStripButton17.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
+            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton17.Name = "toolStripButton17";
+            this.toolStripButton17.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton17.Text = "Cut";
+            // 
+            // toolStripButton18
+            // 
+            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton18.Enabled = false;
+            this.toolStripButton18.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
+            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton18.Name = "toolStripButton18";
+            this.toolStripButton18.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton18.Text = "Copy";
+            // 
+            // toolStripButton13
+            // 
+            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton13.Enabled = false;
+            this.toolStripButton13.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
+            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton13.Name = "toolStripButton13";
+            this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton13.Text = "Paste";
             // 
             // groupBox2
             // 
@@ -343,15 +458,117 @@
             this.tlbNote.TabIndex = 0;
             this.tlbNote.Text = "Note";
             // 
+            // toolStripDropDownButton1
+            // 
+            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.holdToolStripMenuItem,
+            this.flickToolStripMenuItem,
+            this.slideToolStripMenuItem});
+            this.toolStripDropDownButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteCreateRelation;
+            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
+            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
+            this.toolStripDropDownButton1.Text = "Create Note Relation";
+            // 
+            // holdToolStripMenuItem
+            // 
+            this.holdToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteHold;
+            this.holdToolStripMenuItem.Name = "holdToolStripMenuItem";
+            this.holdToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.holdToolStripMenuItem.Text = "&Hold";
+            // 
+            // flickToolStripMenuItem
+            // 
+            this.flickToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteFlickRight;
+            this.flickToolStripMenuItem.Name = "flickToolStripMenuItem";
+            this.flickToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.flickToolStripMenuItem.Text = "&Flick";
+            // 
+            // slideToolStripMenuItem
+            // 
+            this.slideToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteSlide;
+            this.slideToolStripMenuItem.Name = "slideToolStripMenuItem";
+            this.slideToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
+            this.slideToolStripMenuItem.Text = "&Slide";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteDelete;
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton1.Text = "Delete Selected Note(s)";
+            // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
+            // toolStripButton3
+            // 
+            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton3.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition1;
+            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton3.Name = "toolStripButton3";
+            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton3.Text = "Set Start Position to Left";
+            // 
+            // toolStripButton4
+            // 
+            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton4.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition2;
+            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton4.Name = "toolStripButton4";
+            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton4.Text = "Set Start Position to Center Left";
+            // 
+            // toolStripButton6
+            // 
+            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton6.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition3;
+            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton6.Name = "toolStripButton6";
+            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton6.Text = "Set Start Position to Center";
+            // 
+            // toolStripButton7
+            // 
+            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton7.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition4;
+            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton7.Name = "toolStripButton7";
+            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton7.Text = "Set Start Position to Center Right";
+            // 
+            // toolStripButton8
+            // 
+            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton8.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition5;
+            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton8.Name = "toolStripButton8";
+            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton8.Text = "Set Start Position to Right";
+            // 
             // toolStripSeparator10
             // 
             this.toolStripSeparator10.Name = "toolStripSeparator10";
             this.toolStripSeparator10.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripButton2
+            // 
+            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton2.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteAddSpecial;
+            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton2.Name = "toolStripButton2";
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton2.Text = "Insert Special Note";
             // 
             // groupBox1
             // 
@@ -381,6 +598,32 @@
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
+            // toolStripSplitButton1
+            // 
+            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.toolStripSplitButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureAdd;
+            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
+            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
+            this.toolStripSplitButton1.Text = "Add Measure(s)";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
+            this.toolStripMenuItem1.Text = "Add &Many...";
+            // 
+            // toolStripButton27
+            // 
+            this.toolStripButton27.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton27.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureDelete;
+            this.toolStripButton27.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton27.Name = "toolStripButton27";
+            this.toolStripButton27.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton27.Text = "Delete Selected Measure(s)";
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
@@ -398,16 +641,35 @@
             this.toolStripButton25.Size = new System.Drawing.Size(13, 22);
             this.toolStripButton25.Text = "/";
             // 
+            // toolStripButton26
+            // 
+            this.toolStripButton26.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton26.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton26.Image")));
+            this.toolStripButton26.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton26.Name = "toolStripButton26";
+            this.toolStripButton26.Size = new System.Drawing.Size(29, 22);
+            this.toolStripButton26.Text = "100";
+            // 
+            // toolStripButton31
+            // 
+            this.toolStripButton31.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.toolStripButton31.Image = global::StarlightDirector.App.Properties.Resources.IconEditGoToMeasure;
+            this.toolStripButton31.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton31.Name = "toolStripButton31";
+            this.toolStripButton31.Size = new System.Drawing.Size(23, 22);
+            this.toolStripButton31.Text = "Go to Measure";
+            // 
             // lblCaption
             // 
             this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblCaption.ClickThrough = true;
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCaption.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCaption.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblCaption.Location = new System.Drawing.Point(25, 3);
+            this.lblCaption.Location = new System.Drawing.Point(30, 6);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(818, 32);
+            this.lblCaption.Size = new System.Drawing.Size(809, 32);
             this.lblCaption.TabIndex = 5;
             this.lblCaption.Text = "Title";
             // 
@@ -423,7 +685,7 @@
             this.sysMinimize.IconColor = System.Drawing.Color.Black;
             this.sysMinimize.IconSize = new System.Drawing.Size(9, 9);
             this.sysMinimize.IconStrokeWidth = 2F;
-            this.sysMinimize.Location = new System.Drawing.Point(849, 3);
+            this.sysMinimize.Location = new System.Drawing.Point(845, 6);
             this.sysMinimize.Name = "sysMinimize";
             this.sysMinimize.Pressed = false;
             this.sysMinimize.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(160)))), ((int)(((byte)(192)))));
@@ -446,7 +708,7 @@
             this.sysMaximizeRestore.IconColor = System.Drawing.Color.Black;
             this.sysMaximizeRestore.IconSize = new System.Drawing.Size(9, 9);
             this.sysMaximizeRestore.IconStrokeWidth = 2F;
-            this.sysMaximizeRestore.Location = new System.Drawing.Point(887, 4);
+            this.sysMaximizeRestore.Location = new System.Drawing.Point(883, 7);
             this.sysMaximizeRestore.Name = "sysMaximizeRestore";
             this.sysMaximizeRestore.Pressed = false;
             this.sysMaximizeRestore.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(160)))), ((int)(((byte)(192)))));
@@ -469,7 +731,7 @@
             this.sysClose.IconColor = System.Drawing.Color.Black;
             this.sysClose.IconSize = new System.Drawing.Size(9, 9);
             this.sysClose.IconStrokeWidth = 2F;
-            this.sysClose.Location = new System.Drawing.Point(925, 3);
+            this.sysClose.Location = new System.Drawing.Point(921, 6);
             this.sysClose.Name = "sysClose";
             this.sysClose.Pressed = false;
             this.sysClose.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(160)))), ((int)(((byte)(192)))));
@@ -490,7 +752,7 @@
             this.mnuPreview,
             this.mnuTool,
             this.mnuHelp});
-            this.mainMenuStrip.Location = new System.Drawing.Point(9, 38);
+            this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(293, 25);
@@ -512,6 +774,38 @@
             this.mnuFile.Size = new System.Drawing.Size(39, 21);
             this.mnuFile.Text = "&File";
             // 
+            // mnuFileNew
+            // 
+            this.mnuFileNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
+            this.mnuFileNew.Name = "mnuFileNew";
+            this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.mnuFileNew.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileNew.Text = "&New Project";
+            // 
+            // mnuFileOpen
+            // 
+            this.mnuFileOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
+            this.mnuFileOpen.Name = "mnuFileOpen";
+            this.mnuFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.mnuFileOpen.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileOpen.Text = "&Open Project...";
+            // 
+            // mnuFileSave
+            // 
+            this.mnuFileSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
+            this.mnuFileSave.Name = "mnuFileSave";
+            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mnuFileSave.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileSave.Text = "&Save Project";
+            // 
+            // mnuFileSaveAs
+            // 
+            this.mnuFileSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
+            this.mnuFileSaveAs.Name = "mnuFileSaveAs";
+            this.mnuFileSaveAs.ShortcutKeys = System.Windows.Forms.Keys.F12;
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileSaveAs.Text = "Save Project &As...";
+            // 
             // mnuFileSep1
             // 
             this.mnuFileSep1.Name = "mnuFileSep1";
@@ -527,6 +821,14 @@
             // 
             this.mnuFileSep2.Name = "mnuFileSep2";
             this.mnuFileSep2.Size = new System.Drawing.Size(205, 6);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
+            this.mnuFileExit.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileExit.Text = "E&xit";
             // 
             // mnuEdit
             // 
@@ -1128,6 +1430,31 @@
             this.mnuPreview.Size = new System.Drawing.Size(64, 21);
             this.mnuPreview.Text = "&Preview";
             // 
+            // mnuPreviewFromThisMeasure
+            // 
+            this.mnuPreviewFromThisMeasure.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
+            this.mnuPreviewFromThisMeasure.Name = "mnuPreviewFromThisMeasure";
+            this.mnuPreviewFromThisMeasure.ShortcutKeys = System.Windows.Forms.Keys.F5;
+            this.mnuPreviewFromThisMeasure.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewFromThisMeasure.Text = "From &This Measure";
+            // 
+            // mnuPreviewFromStart
+            // 
+            this.mnuPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
+            this.mnuPreviewFromStart.Name = "mnuPreviewFromStart";
+            this.mnuPreviewFromStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
+            this.mnuPreviewFromStart.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewFromStart.Text = "From &Start";
+            // 
+            // mnuPreviewStop
+            // 
+            this.mnuPreviewStop.Enabled = false;
+            this.mnuPreviewStop.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
+            this.mnuPreviewStop.Name = "mnuPreviewStop";
+            this.mnuPreviewStop.ShortcutKeys = System.Windows.Forms.Keys.F6;
+            this.mnuPreviewStop.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewStop.Text = "S&top";
+            // 
             // mnuTool
             // 
             this.mnuTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1174,6 +1501,24 @@
             this.mnuToolBuild.Name = "mnuToolBuild";
             this.mnuToolBuild.Size = new System.Drawing.Size(131, 22);
             this.mnuToolBuild.Text = "&Build";
+            // 
+            // cGSSBeatmapBundleBDBToolStripMenuItem
+            // 
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.Name = "cGSSBeatmapBundleBDBToolStripMenuItem";
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.B)));
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.Text = "CGSS Beatmap &Bundle (BDB)...";
+            // 
+            // cGSSLiveMusicACBToolStripMenuItem
+            // 
+            this.cGSSLiveMusicACBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
+            this.cGSSLiveMusicACBToolStripMenuItem.Name = "cGSSLiveMusicACBToolStripMenuItem";
+            this.cGSSLiveMusicACBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.B)));
+            this.cGSSLiveMusicACBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
+            this.cGSSLiveMusicACBToolStripMenuItem.Text = "CGSS Live &Music (ACB)...";
             // 
             // mnuToolSep2
             // 
@@ -1395,10 +1740,10 @@
             this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.visualizer.Location = new System.Drawing.Point(9, 74);
+            this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.visualizer.Name = "visualizer";
-            this.visualizer.Size = new System.Drawing.Size(696, 510);
+            this.visualizer.Size = new System.Drawing.Size(696, 509);
             this.visualizer.TabIndex = 12;
             // 
             // btnDifficultySelection
@@ -1423,358 +1768,14 @@
             this.ctxDifficultySelection.Name = "ctxDifficultySelection";
             this.ctxDifficultySelection.Size = new System.Drawing.Size(61, 4);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
-            // 
             // picIcon
             // 
             this.picIcon.Cursor = System.Windows.Forms.Cursors.Default;
-            this.picIcon.Location = new System.Drawing.Point(9, 9);
+            this.picIcon.Location = new System.Drawing.Point(8, 8);
             this.picIcon.Name = "picIcon";
             this.picIcon.Size = new System.Drawing.Size(16, 16);
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
-            // 
-            // toolStripButton19
-            // 
-            this.toolStripButton19.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton19.Enabled = false;
-            this.toolStripButton19.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
-            this.toolStripButton19.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton19.Name = "toolStripButton19";
-            this.toolStripButton19.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton19.Text = "Preview from This Measure";
-            // 
-            // toolStripButton20
-            // 
-            this.toolStripButton20.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton20.Enabled = false;
-            this.toolStripButton20.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
-            this.toolStripButton20.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton20.Name = "toolStripButton20";
-            this.toolStripButton20.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton20.Text = "Stop Previewing";
-            // 
-            // toolStripButton23
-            // 
-            this.toolStripButton23.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton23.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
-            this.toolStripButton23.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton23.Name = "toolStripButton23";
-            this.toolStripButton23.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton23.Text = "Build CGSS Beatmap Bundle";
-            // 
-            // toolStripButton24
-            // 
-            this.toolStripButton24.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton24.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
-            this.toolStripButton24.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton24.Name = "toolStripButton24";
-            this.toolStripButton24.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton24.Text = "Build CGSS Live Music";
-            // 
-            // toolStripButton10
-            // 
-            this.toolStripButton10.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton10.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
-            this.toolStripButton10.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton10.Name = "toolStripButton10";
-            this.toolStripButton10.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton10.Text = "New Project";
-            // 
-            // toolStripButton11
-            // 
-            this.toolStripButton11.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton11.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
-            this.toolStripButton11.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton11.Name = "toolStripButton11";
-            this.toolStripButton11.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton11.Text = "Open Project";
-            // 
-            // toolStripButton12
-            // 
-            this.toolStripButton12.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton12.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
-            this.toolStripButton12.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton12.Name = "toolStripButton12";
-            this.toolStripButton12.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton12.Text = "Save Project";
-            // 
-            // toolStripButton14
-            // 
-            this.toolStripButton14.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton14.Enabled = false;
-            this.toolStripButton14.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
-            this.toolStripButton14.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton14.Name = "toolStripButton14";
-            this.toolStripButton14.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton14.Text = "Undo";
-            // 
-            // toolStripButton15
-            // 
-            this.toolStripButton15.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton15.Enabled = false;
-            this.toolStripButton15.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
-            this.toolStripButton15.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton15.Name = "toolStripButton15";
-            this.toolStripButton15.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton15.Text = "Redo";
-            // 
-            // toolStripButton17
-            // 
-            this.toolStripButton17.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton17.Enabled = false;
-            this.toolStripButton17.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
-            this.toolStripButton17.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton17.Name = "toolStripButton17";
-            this.toolStripButton17.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton17.Text = "Cut";
-            // 
-            // toolStripButton18
-            // 
-            this.toolStripButton18.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton18.Enabled = false;
-            this.toolStripButton18.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
-            this.toolStripButton18.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton18.Name = "toolStripButton18";
-            this.toolStripButton18.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton18.Text = "Copy";
-            // 
-            // toolStripButton13
-            // 
-            this.toolStripButton13.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton13.Enabled = false;
-            this.toolStripButton13.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
-            this.toolStripButton13.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton13.Name = "toolStripButton13";
-            this.toolStripButton13.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton13.Text = "Paste";
-            // 
-            // toolStripDropDownButton1
-            // 
-            this.toolStripDropDownButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripDropDownButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.holdToolStripMenuItem,
-            this.flickToolStripMenuItem,
-            this.slideToolStripMenuItem});
-            this.toolStripDropDownButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteCreateRelation;
-            this.toolStripDropDownButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripDropDownButton1.Name = "toolStripDropDownButton1";
-            this.toolStripDropDownButton1.Size = new System.Drawing.Size(29, 22);
-            this.toolStripDropDownButton1.Text = "Create Note Relation";
-            // 
-            // holdToolStripMenuItem
-            // 
-            this.holdToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteHold;
-            this.holdToolStripMenuItem.Name = "holdToolStripMenuItem";
-            this.holdToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.holdToolStripMenuItem.Text = "&Hold";
-            // 
-            // flickToolStripMenuItem
-            // 
-            this.flickToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteFlickRight;
-            this.flickToolStripMenuItem.Name = "flickToolStripMenuItem";
-            this.flickToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.flickToolStripMenuItem.Text = "&Flick";
-            // 
-            // slideToolStripMenuItem
-            // 
-            this.slideToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteSlide;
-            this.slideToolStripMenuItem.Name = "slideToolStripMenuItem";
-            this.slideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.slideToolStripMenuItem.Text = "&Slide";
-            // 
-            // toolStripButton1
-            // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteDelete;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "Delete Selected Note(s)";
-            // 
-            // toolStripButton3
-            // 
-            this.toolStripButton3.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton3.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition1;
-            this.toolStripButton3.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton3.Name = "toolStripButton3";
-            this.toolStripButton3.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton3.Text = "Set Start Position to Left";
-            // 
-            // toolStripButton4
-            // 
-            this.toolStripButton4.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton4.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition2;
-            this.toolStripButton4.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton4.Name = "toolStripButton4";
-            this.toolStripButton4.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton4.Text = "Set Start Position to Center Left";
-            // 
-            // toolStripButton6
-            // 
-            this.toolStripButton6.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton6.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition3;
-            this.toolStripButton6.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton6.Name = "toolStripButton6";
-            this.toolStripButton6.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton6.Text = "Set Start Position to Center";
-            // 
-            // toolStripButton7
-            // 
-            this.toolStripButton7.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton7.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition4;
-            this.toolStripButton7.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton7.Name = "toolStripButton7";
-            this.toolStripButton7.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton7.Text = "Set Start Position to Center Right";
-            // 
-            // toolStripButton8
-            // 
-            this.toolStripButton8.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton8.Image = global::StarlightDirector.App.Properties.Resources.IconEditNotePosition5;
-            this.toolStripButton8.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton8.Name = "toolStripButton8";
-            this.toolStripButton8.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton8.Text = "Set Start Position to Right";
-            // 
-            // toolStripButton2
-            // 
-            this.toolStripButton2.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton2.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteAddSpecial;
-            this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton2.Text = "Insert Special Note";
-            // 
-            // toolStripSplitButton1
-            // 
-            this.toolStripSplitButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
-            this.toolStripSplitButton1.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureAdd;
-            this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripSplitButton1.Name = "toolStripSplitButton1";
-            this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 22);
-            this.toolStripSplitButton1.Text = "Add Measure(s)";
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(145, 22);
-            this.toolStripMenuItem1.Text = "Add &Many...";
-            // 
-            // toolStripButton27
-            // 
-            this.toolStripButton27.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton27.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureDelete;
-            this.toolStripButton27.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton27.Name = "toolStripButton27";
-            this.toolStripButton27.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton27.Text = "Delete Selected Measure(s)";
-            // 
-            // toolStripButton26
-            // 
-            this.toolStripButton26.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton26.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton26.Image")));
-            this.toolStripButton26.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton26.Name = "toolStripButton26";
-            this.toolStripButton26.Size = new System.Drawing.Size(29, 22);
-            this.toolStripButton26.Text = "100";
-            // 
-            // toolStripButton31
-            // 
-            this.toolStripButton31.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton31.Image = global::StarlightDirector.App.Properties.Resources.IconEditGoToMeasure;
-            this.toolStripButton31.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton31.Name = "toolStripButton31";
-            this.toolStripButton31.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton31.Text = "Go to Measure";
-            // 
-            // mnuFileNew
-            // 
-            this.mnuFileNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
-            this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mnuFileNew.Size = new System.Drawing.Size(208, 22);
-            this.mnuFileNew.Text = "&New Project";
-            // 
-            // mnuFileOpen
-            // 
-            this.mnuFileOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
-            this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mnuFileOpen.Size = new System.Drawing.Size(208, 22);
-            this.mnuFileOpen.Text = "&Open Project...";
-            // 
-            // mnuFileSave
-            // 
-            this.mnuFileSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
-            this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuFileSave.Size = new System.Drawing.Size(208, 22);
-            this.mnuFileSave.Text = "&Save Project";
-            // 
-            // mnuFileSaveAs
-            // 
-            this.mnuFileSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
-            this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(208, 22);
-            this.mnuFileSaveAs.Text = "Save Project &As...";
-            // 
-            // mnuFileExit
-            // 
-            this.mnuFileExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
-            this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.mnuFileExit.Size = new System.Drawing.Size(208, 22);
-            this.mnuFileExit.Text = "E&xit";
-            // 
-            // mnuPreviewFromThisMeasure
-            // 
-            this.mnuPreviewFromThisMeasure.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
-            this.mnuPreviewFromThisMeasure.Name = "mnuPreviewFromThisMeasure";
-            this.mnuPreviewFromThisMeasure.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mnuPreviewFromThisMeasure.Size = new System.Drawing.Size(209, 22);
-            this.mnuPreviewFromThisMeasure.Text = "From &This Measure";
-            // 
-            // mnuPreviewFromStart
-            // 
-            this.mnuPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
-            this.mnuPreviewFromStart.Name = "mnuPreviewFromStart";
-            this.mnuPreviewFromStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
-            this.mnuPreviewFromStart.Size = new System.Drawing.Size(209, 22);
-            this.mnuPreviewFromStart.Text = "From &Start";
-            // 
-            // mnuPreviewStop
-            // 
-            this.mnuPreviewStop.Enabled = false;
-            this.mnuPreviewStop.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
-            this.mnuPreviewStop.Name = "mnuPreviewStop";
-            this.mnuPreviewStop.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.mnuPreviewStop.Size = new System.Drawing.Size(209, 22);
-            this.mnuPreviewStop.Text = "S&top";
-            // 
-            // cGSSBeatmapBundleBDBToolStripMenuItem
-            // 
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Name = "cGSSBeatmapBundleBDBToolStripMenuItem";
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.B)));
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Text = "CGSS Beatmap &Bundle (BDB)...";
-            // 
-            // cGSSLiveMusicACBToolStripMenuItem
-            // 
-            this.cGSSLiveMusicACBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
-            this.cGSSLiveMusicACBToolStripMenuItem.Name = "cGSSLiveMusicACBToolStripMenuItem";
-            this.cGSSLiveMusicACBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.B)));
-            this.cGSSLiveMusicACBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
-            this.cGSSLiveMusicACBToolStripMenuItem.Text = "CGSS Live &Music (ACB)...";
             // 
             // FMain
             // 
@@ -1791,8 +1792,8 @@
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.visualizer);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.mainMenuStrip;
             this.MinimumSize = new System.Drawing.Size(600, 540);
