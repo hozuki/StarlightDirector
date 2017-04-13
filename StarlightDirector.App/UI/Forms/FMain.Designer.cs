@@ -236,7 +236,7 @@
             this.panel2.Controls.Add(this.groupBox1);
             this.panel2.Location = new System.Drawing.Point(715, 75);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(234, 509);
+            this.panel2.Size = new System.Drawing.Size(234, 497);
             this.panel2.TabIndex = 3;
             // 
             // groupBox4
@@ -667,9 +667,9 @@
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Default;
             this.lblCaption.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.lblCaption.ForeColor = System.Drawing.SystemColors.GrayText;
-            this.lblCaption.Location = new System.Drawing.Point(30, 6);
+            this.lblCaption.Location = new System.Drawing.Point(38, 6);
             this.lblCaption.Name = "lblCaption";
-            this.lblCaption.Size = new System.Drawing.Size(809, 32);
+            this.lblCaption.Size = new System.Drawing.Size(801, 26);
             this.lblCaption.TabIndex = 5;
             this.lblCaption.Text = "Title";
             // 
@@ -1743,7 +1743,7 @@
             this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.visualizer.Name = "visualizer";
-            this.visualizer.Size = new System.Drawing.Size(696, 509);
+            this.visualizer.Size = new System.Drawing.Size(696, 497);
             this.visualizer.TabIndex = 12;
             // 
             // btnDifficultySelection
@@ -1752,13 +1752,13 @@
             this.btnDifficultySelection.HoveringBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(23)))), ((int)(((byte)(181)))), ((int)(((byte)(254)))));
             this.btnDifficultySelection.HoveringImage = null;
             this.btnDifficultySelection.HoveringTextColor = System.Drawing.Color.Black;
-            this.btnDifficultySelection.Location = new System.Drawing.Point(866, 593);
+            this.btnDifficultySelection.Location = new System.Drawing.Point(866, 585);
             this.btnDifficultySelection.Name = "btnDifficultySelection";
             this.btnDifficultySelection.Pressed = false;
             this.btnDifficultySelection.PressedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(16)))), ((int)(((byte)(160)))), ((int)(((byte)(192)))));
             this.btnDifficultySelection.PressedImage = null;
             this.btnDifficultySelection.PressedTextColor = System.Drawing.Color.White;
-            this.btnDifficultySelection.Size = new System.Drawing.Size(76, 20);
+            this.btnDifficultySelection.Size = new System.Drawing.Size(76, 24);
             this.btnDifficultySelection.TabIndex = 13;
             this.btnDifficultySelection.Text = "Debut";
             this.btnDifficultySelection.UseVisualStyleBackColor = true;
@@ -1773,7 +1773,8 @@
             this.picIcon.Cursor = System.Windows.Forms.Cursors.Default;
             this.picIcon.Location = new System.Drawing.Point(8, 8);
             this.picIcon.Name = "picIcon";
-            this.picIcon.Size = new System.Drawing.Size(16, 16);
+            this.picIcon.Size = new System.Drawing.Size(24, 24);
+            this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 

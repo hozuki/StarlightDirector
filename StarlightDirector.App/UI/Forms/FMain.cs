@@ -1,6 +1,7 @@
 ﻿using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.UI.Controls;
+using System.Drawing;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FMain : Form {
@@ -100,8 +101,7 @@ namespace StarlightDirector.App.UI.Forms {
             tlbMeasure.Renderer = toolStripRenderer;
         }
 
-        private static readonly int HorizontalMargin = 5;
-        private static readonly int VerticalMargin = 5;
+        private static readonly Size FrameBorderSize = SystemInformation.FrameBorderSize;
         private static readonly int CaptionMargin = 65;
         private static readonly int ToolbarMargin = 250;
 

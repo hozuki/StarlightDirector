@@ -28,7 +28,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         protected override void OnMouseDown(MouseEventArgs e) {
             base.OnMouseDown(e);
-            var region = this.DetermineNcRegion(e.Location, HorizontalMargin, VerticalMargin, CaptionMargin);
+            var region = this.DetermineNcRegion(e.Location, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
             if (region != NativeConstants.HTCLIENT) {
                 if (WindowState != FormWindowState.Maximized) {
                     MouseButtonAction action;
@@ -39,7 +39,7 @@ namespace StarlightDirector.App.UI.Forms {
                     } else {
                         return;
                     }
-                    this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
+                    this.NcHitTest(e.Location, action, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
                 }
             }
             if (e.Button == MouseButtons.Right && e.Y <= lblCaption.Bottom) {
@@ -57,13 +57,13 @@ namespace StarlightDirector.App.UI.Forms {
                 } else {
                     return;
                 }
-                this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
+                this.NcHitTest(e.Location, action, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
             }
         }
 
         protected override void OnMouseUp(MouseEventArgs e) {
             base.OnMouseUp(e);
-            var region = this.DetermineNcRegion(e.Location, HorizontalMargin, VerticalMargin, CaptionMargin);
+            var region = this.DetermineNcRegion(e.Location, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
             if (region != NativeConstants.HTCLIENT) {
                 if (WindowState != FormWindowState.Maximized) {
                     MouseButtonAction action;
@@ -74,7 +74,7 @@ namespace StarlightDirector.App.UI.Forms {
                     } else {
                         return;
                     }
-                    this.NcHitTest(e.Location, action, HorizontalMargin, VerticalMargin, CaptionMargin);
+                    this.NcHitTest(e.Location, action, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
                 }
             }
         }
@@ -82,7 +82,7 @@ namespace StarlightDirector.App.UI.Forms {
         protected override void OnMouseMove(MouseEventArgs e) {
             base.OnMouseMove(e);
             if (WindowState != FormWindowState.Maximized) {
-                this.NcHitTest(e.Location, MouseButtonAction.MouseMove, HorizontalMargin, VerticalMargin, CaptionMargin);
+                this.NcHitTest(e.Location, MouseButtonAction.MouseMove, FrameBorderSize.Width, FrameBorderSize.Height, CaptionMargin);
             }
         }
 
@@ -105,7 +105,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             // Status text and status text area.
             const int gripSize = 16;
-            const int statusBarHeight = 24;
+            const int statusBarHeight = 36;
             const int statusTextLeftMargin = 5;
             var statusRect = new Rectangle(clientRectangle.Left, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width - (clientRectangle.Width - btnDifficultySelection.Left), statusBarHeight);
             g.FillRectangle(colorScheme.WindowNormalStatusBackground, statusRect);

@@ -9,30 +9,26 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void UnregisterEventHandlers() {
-            SystemEvents.DisplaySettingsChanged -= SystemEventsOnDisplaySettingsChanged;
-            Load -= OnLoad;
-            sysMaximizeRestore.Click -= SysMaximizeRestoreOnClick;
-            sysMinimize.Click -= SysMinimizeOnClick;
-            lblCaption.MouseDoubleClick -= LblCaptionOnMouseDoubleClick;
-            lblCaption.MouseMove -= LblCaptionOnMouseMove;
-            picIcon.MouseDown -= PicIconOnMouseDown;
-            btnDifficultySelection.Click -= BtnDifficultySelectionOnClick;
-            visualizer.ContextMenuRequested -= VisualizerOnContextMenuRequested;
+            SystemEvents.DisplaySettingsChanged -= SystemEvents_DisplaySettingsChanged;
+            Load -= FMain_Load;
+            sysMaximizeRestore.Click -= SysMaximizeRestore_Click;
+            sysMinimize.Click -= SysMinimize_Click;
+            picIcon.MouseDown -= PicIcon_MouseDown;
+            btnDifficultySelection.Click -= BtnDifficultySelection_Click;
+            visualizer.ContextMenuRequested -= Visualizer_ContextMenuRequested;
         }
 
         private void RegisterEventHandlers() {
-            SystemEvents.DisplaySettingsChanged += SystemEventsOnDisplaySettingsChanged;
-            Load += OnLoad;
-            sysMaximizeRestore.Click += SysMaximizeRestoreOnClick;
-            sysMinimize.Click += SysMinimizeOnClick;
-            lblCaption.MouseDoubleClick += LblCaptionOnMouseDoubleClick;
-            lblCaption.MouseMove += LblCaptionOnMouseMove;
-            picIcon.MouseDown += PicIconOnMouseDown;
-            btnDifficultySelection.Click += BtnDifficultySelectionOnClick;
-            visualizer.ContextMenuRequested += VisualizerOnContextMenuRequested;
+            SystemEvents.DisplaySettingsChanged += SystemEvents_DisplaySettingsChanged;
+            Load += FMain_Load;
+            sysMaximizeRestore.Click += SysMaximizeRestore_Click;
+            sysMinimize.Click += SysMinimize_Click;
+            picIcon.MouseDown += PicIcon_MouseDown;
+            btnDifficultySelection.Click += BtnDifficultySelection_Click;
+            visualizer.ContextMenuRequested += Visualizer_ContextMenuRequested;
         }
 
-        private void VisualizerOnContextMenuRequested(object sender, ContextMenuRequestedEventArgs e) {
+        private void Visualizer_ContextMenuRequested(object sender, ContextMenuRequestedEventArgs e) {
             var hasSelectedNotes = visualizer.Editor.HasSelectedNotes;
             var hasSelectedBars = visualizer.Editor.HasSelectedBars;
             if (!hasSelectedNotes && !hasSelectedBars) {
@@ -72,7 +68,7 @@ namespace StarlightDirector.App.UI.Forms {
             ctxMain.Show(visualizer, e.Location);
         }
 
-        private void BtnDifficultySelectionOnClick(object sender, EventArgs e) {
+        private void BtnDifficultySelection_Click(object sender, EventArgs e) {
             var items = new ToolStripItem[mnuEditDifficulty.DropDownItems.Count];
             mnuEditDifficulty.DropDownItems.CopyTo(items, 0);
             ctxDifficultySelection.Items.AddRange(items);
@@ -86,7 +82,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        private void PicIconOnMouseDown(object sender, MouseEventArgs e) {
+        private void PicIcon_MouseDown(object sender, MouseEventArgs e) {
             if (e.Button == MouseButtons.Left) {
                 if (e.Clicks == 1) {
                     var pt = picIcon.Location;
@@ -106,31 +102,17 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        private void LblCaptionOnMouseMove(object sender, MouseEventArgs e) {
-            var activeForm = ActiveForm;
-            if (activeForm == this) {
-                NativeMethods.ReleaseCapture();
-                NativeMethods.SendMessage(Handle, NativeConstants.WM_NCLBUTTONDOWN, (IntPtr)NativeConstants.HTCAPTION, IntPtr.Zero);
-            }
-        }
-
-        private void LblCaptionOnMouseDoubleClick(object sender, MouseEventArgs e) {
-            if (e.Button == MouseButtons.Left) {
-                WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
-            }
-        }
-
-        private void SysMinimizeOnClick(object sender, EventArgs eventArgs) {
+        private void SysMinimize_Click(object sender, EventArgs eventArgs) {
             WindowState = FormWindowState.Minimized;
         }
 
-        private void SysMaximizeRestoreOnClick(object sender, EventArgs eventArgs) {
+        private void SysMaximizeRestore_Click(object sender, EventArgs eventArgs) {
             WindowState = WindowState == FormWindowState.Maximized ? FormWindowState.Normal : FormWindowState.Maximized;
         }
 
-        private void OnLoad(object sender, EventArgs eventArgs) {
+        private void FMain_Load(object sender, EventArgs eventArgs) {
             MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
-            using (var smallIcon = new Icon(Icon, picIcon.ClientSize)) {
+            using (var smallIcon = new Icon(Icon, new Size(16, 16))) {
                 picIcon.InitialImage = picIcon.Image = smallIcon.ToBitmap();
                 picIcon.ErrorImage = ToolStripRenderer.CreateDisabledImage(picIcon.InitialImage);
             }
@@ -139,7 +121,7 @@ namespace StarlightDirector.App.UI.Forms {
             CursorFixup(this);
         }
 
-        private void SystemEventsOnDisplaySettingsChanged(object sender, EventArgs eventArgs) {
+        private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {
             MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
         }
 
