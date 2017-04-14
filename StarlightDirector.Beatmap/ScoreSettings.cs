@@ -4,6 +4,11 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap {
     public sealed class ScoreSettings : ICloneable, ICloneable<ScoreSettings> {
 
+        public static readonly double DefaultBeatPerMinute = 120;
+        public static readonly double DefaultStartTimeOffset = 0;
+        public static readonly int DefaultGridPerSignature = 24;
+        public static readonly int DefaultSignature = 4;
+
         /// <summary>
         /// Tempo，每分钟四分音符出现次数。
         /// </summary>
@@ -40,10 +45,8 @@ namespace StarlightDirector.Beatmap {
             };
         }
 
-        public static readonly double DefaultBeatPerMinute = 120;
-        public static readonly double DefaultStartTimeOffset = 0;
-        public static readonly int DefaultGridPerSignature = 24;
-        public static readonly int DefaultSignature = 4;
+        private ScoreSettings() {
+        }
 
         object ICloneable.Clone() {
             return Clone();

@@ -55,12 +55,24 @@ namespace StarlightDirector.Commanding {
                     menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
                     break;
-                case ToolStripItem toolStripItem:
-                    toolStripItem.Click += OnControlInteract;
-                    toolStripItem.Enabled = canExecute;
+                case ToolStripButton button:
+                    button.Click += OnControlInteract;
+                    button.Enabled = canExecute;
+                    break;
+                case ToolStripSplitButton button:
+                    button.ButtonClick += OnControlInteract;
+                    button.Enabled = canExecute;
+                    break;
+                case ToolStripOverflowButton button:
+                    button.Click += OnControlInteract;
+                    button.Enabled = canExecute;
+                    break;
+                case ToolStripMenuItem menuItem:
+                    menuItem.Click += OnControlInteract;
+                    menuItem.Enabled = canExecute;
                     break;
                 default:
-                    throw new NotSupportedException();
+                    throw new NotSupportedException($"The type of control ({control.GetType().Name}) is not supported.");
             }
             _subscribedControls.Add(control);
         }
@@ -79,8 +91,17 @@ namespace StarlightDirector.Commanding {
                 case MenuItem menuItem:
                     menuItem.Click -= OnControlInteract;
                     break;
-                case ToolStripItem toolStripItem:
-                    toolStripItem.Click -= OnControlInteract;
+                case ToolStripButton button:
+                    button.Click -= OnControlInteract;
+                    break;
+                case ToolStripSplitButton button:
+                    button.ButtonClick -= OnControlInteract;
+                    break;
+                case ToolStripOverflowButton button:
+                    button.Click -= OnControlInteract;
+                    break;
+                case ToolStripMenuItem menuItem:
+                    menuItem.Click -= OnControlInteract;
                     break;
                 default:
                     throw new NotSupportedException();
@@ -110,8 +131,17 @@ namespace StarlightDirector.Commanding {
                     case MenuItem menuItem:
                         menuItem.Enabled = canExecute;
                         break;
-                    case ToolStripItem toolStripItem:
-                        toolStripItem.Enabled = canExecute;
+                    case ToolStripButton button:
+                        button.Enabled = canExecute;
+                        break;
+                    case ToolStripSplitButton button:
+                        button.Enabled = canExecute;
+                        break;
+                    case ToolStripOverflowButton button:
+                        button.Enabled = canExecute;
+                        break;
+                    case ToolStripMenuItem menuItem:
+                        menuItem.Enabled = canExecute;
                         break;
                     default:
                         throw new NotSupportedException();

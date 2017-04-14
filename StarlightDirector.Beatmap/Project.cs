@@ -10,7 +10,7 @@ namespace StarlightDirector.Beatmap {
             for (var i = Difficulty.Debut; i <= Difficulty.MasterPlus; ++i) {
                 scores.Add(i, new Score(this, i));
             }
-            Settings = new ScoreSettings();
+            Settings = ScoreSettings.CreateDefault();
         }
 
         public Score GetScore(Difficulty difficulty) {

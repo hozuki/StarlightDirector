@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.UI.Controls;
 
@@ -119,6 +120,8 @@ namespace StarlightDirector.App.UI.Forms {
 
             ApplyColorScheme(ColorScheme.Default);
             CursorFixup(this);
+
+            CmdFileNew.Execute(null, null);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

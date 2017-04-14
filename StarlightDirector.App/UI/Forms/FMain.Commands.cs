@@ -9,8 +9,12 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void RegisterCommands() {
+            mnuFileNew.Attach(CmdFileNew);
+            tsbFileNew.Attach(CmdFileNew);
             mnuFileOpen.Attach(CmdFileOpen);
+            tsbFileOpen.Attach(CmdFileOpen);
             mnuFileSave.Attach(CmdFileSave);
+            tsbFileSave.Attach(CmdFileSave);
             mnuFileExit.Attach(CmdFileExit);
             sysClose.Attach(CmdFileExit);
 
@@ -35,11 +39,25 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
             mnuEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
             mnuEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
+            tsbEditNoteStartPosition1.SetParameter(NotePosition.Left);
+            tsbEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
+            tsbEditNoteStartPosition3.SetParameter(NotePosition.Center);
+            tsbEditNoteStartPosition4.SetParameter(NotePosition.CenterRight);
+            tsbEditNoteStartPosition5.SetParameter(NotePosition.Right);
+            tsbEditNoteStartPosition1.Attach(CmdEditNoteStartPosition);
+            tsbEditNoteStartPosition2.Attach(CmdEditNoteStartPosition);
+            tsbEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
+            tsbEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
+            tsbEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
+            mnuEditMeasureAppend.Attach(CmdEditMeasureAppend);
+            tsbEditMeasureAppend.Attach(CmdEditMeasureAppend);
             mnuEditMeasureDelete.Attach(CmdEditMeasureDelete);
+            tsbEditMeasureDelete.Attach(CmdEditMeasureDelete);
             mnuEditNoteDelete.Attach(CmdEditNoteDelete);
+            tsbEditNoteDelete.Attach(CmdEditNoteDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             mnuViewZoomOut.Attach(CmdViewZoomOut);

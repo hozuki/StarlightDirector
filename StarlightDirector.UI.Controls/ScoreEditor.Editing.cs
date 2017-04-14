@@ -37,6 +37,12 @@ namespace StarlightDirector.UI.Controls {
         }
 
         [DebuggerStepThrough]
+        public Bar AppendBar() {
+            var score = CurrentScore;
+            return score?.AppendBar();
+        }
+
+        [DebuggerStepThrough]
         public IReadOnlyList<Note> RemoveSelectedNotes() {
             var selectedNotes = GetSelectedNotes().ToArray();
             foreach (var selectedNote in selectedNotes) {

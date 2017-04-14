@@ -31,6 +31,10 @@ namespace StarlightDirector.UI.Controls {
         [DefaultValue(true)]
         public bool InvertedScrolling { get; set; } = true;
 
+        public void RecalcLayout() {
+            editor.RecalcLayout();
+        }
+
         public void RedrawScore() {
             editor.Invalidate();
         }

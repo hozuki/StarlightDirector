@@ -46,24 +46,84 @@ namespace StarlightDirector.Commanding {
             Attach(menuItem as Component, command);
         }
 
-        public static void SetParameter(this ToolStripItem toolStripItem, object parameter) {
-            SetParameter(toolStripItem as Component, parameter);
+        public static void SetParameter(this ToolStripButton button, object parameter) {
+            SetParameter(button as Component, parameter);
         }
 
-        public static void DeleteParameter(this ToolStripItem toolStripItem) {
-            DeleteParameter(toolStripItem as Component);
+        public static void DeleteParameter(this ToolStripButton button) {
+            DeleteParameter(button as Component);
         }
 
-        public static object GetParameter(this ToolStripItem toolStripItem) {
-            return GetParameter(toolStripItem as Component);
+        public static object GetParameter(this ToolStripButton button) {
+            return GetParameter(button as Component);
         }
 
-        public static bool DefinedParameter(this ToolStripItem toolStripItem) {
-            return DefinedParameter(toolStripItem as Component);
+        public static bool DefinedParameter(this ToolStripButton button) {
+            return DefinedParameter(button as Component);
         }
 
-        public static void Attach(this ToolStripItem toolStripItem, Command command) {
-            Attach(toolStripItem as Component, command);
+        public static void Attach(this ToolStripButton button, Command command) {
+            Attach(button as Component, command);
+        }
+
+        public static void SetParameter(this ToolStripSplitButton button, object parameter) {
+            SetParameter(button as Component, parameter);
+        }
+
+        public static void DeleteParameter(this ToolStripSplitButton button) {
+            DeleteParameter(button as Component);
+        }
+
+        public static object GetParameter(this ToolStripSplitButton button) {
+            return GetParameter(button as Component);
+        }
+
+        public static bool DefinedParameter(this ToolStripSplitButton button) {
+            return DefinedParameter(button as Component);
+        }
+
+        public static void Attach(this ToolStripSplitButton button, Command command) {
+            Attach(button as Component, command);
+        }
+
+        public static void SetParameter(this ToolStripOverflowButton button, object parameter) {
+            SetParameter(button as Component, parameter);
+        }
+
+        public static void DeleteParameter(this ToolStripOverflowButton button) {
+            DeleteParameter(button as Component);
+        }
+
+        public static object GetParameter(this ToolStripOverflowButton button) {
+            return GetParameter(button as Component);
+        }
+
+        public static bool DefinedParameter(this ToolStripOverflowButton button) {
+            return DefinedParameter(button as Component);
+        }
+
+        public static void Attach(this ToolStripOverflowButton button, Command command) {
+            Attach(button as Component, command);
+        }
+
+        public static void SetParameter(this ToolStripMenuItem menuItem, object parameter) {
+            SetParameter(menuItem as Component, parameter);
+        }
+
+        public static void DeleteParameter(this ToolStripMenuItem menuItem) {
+            DeleteParameter(menuItem as Component);
+        }
+
+        public static object GetParameter(this ToolStripMenuItem menuItem) {
+            return GetParameter(menuItem as Component);
+        }
+
+        public static bool DefinedParameter(this ToolStripMenuItem menuItem) {
+            return DefinedParameter(menuItem as Component);
+        }
+
+        public static void Attach(this ToolStripMenuItem menuItem, Command command) {
+            Attach(menuItem as Component, command);
         }
 
         internal static void SetParameter(this Component component, object parameter) {

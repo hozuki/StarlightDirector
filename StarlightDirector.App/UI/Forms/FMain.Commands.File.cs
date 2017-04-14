@@ -1,10 +1,16 @@
 ﻿using System.IO;
 using System.Windows.Forms;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.IO;
 using StarlightDirector.Commanding;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
+
+        private void CmdFileNew_Executed(object sender, ExecutedEventArgs e) {
+            visualizer.Editor.Project = new Project();
+            UpdateUIIndications("Untitled");
+        }
 
         private void CmdFileOpen_Executed(object sender, ExecutedEventArgs e) {
             openFileDialog.CheckFileExists = true;
@@ -38,9 +44,10 @@ namespace StarlightDirector.App.UI.Forms {
             Close();
         }
 
+        private readonly Command CmdFileNew = CommandManager.CreateCommand();
         private readonly Command CmdFileOpen = CommandManager.CreateCommand();
-        private readonly Command CmdFileExit = CommandManager.CreateCommand();
         private readonly Command CmdFileSave = CommandManager.CreateCommand();
+        private readonly Command CmdFileExit = CommandManager.CreateCommand();
 
     }
 }

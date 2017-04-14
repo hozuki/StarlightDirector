@@ -7,6 +7,7 @@ using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Rendering.Direct2D;
 using JetBrains.Annotations;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.UI.Controls {
     public sealed partial class ScoreEditor : Direct2DCanvas {
@@ -53,7 +54,11 @@ namespace StarlightDirector.UI.Controls {
         [Browsable(false)]
         public int ScrollOffsetY {
             get => _scrollOffsetY;
-            set {
+            internal set {
+                var scrollBar = ScrollBar;
+                if (scrollBar != null) {
+                    value = value.Clamp(scrollBar.Minimum, scrollBar.Maximum);
+                }
                 var b = value != _scrollOffsetY;
                 if (b) {
                     _scrollOffsetY = value;
