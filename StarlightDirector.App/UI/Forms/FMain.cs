@@ -4,7 +4,7 @@ using StarlightDirector.UI.Controls;
 using System.Drawing;
 
 namespace StarlightDirector.App.UI.Forms {
-    public partial class FMain : Form {
+    public sealed partial class FMain : Form {
 
         public FMain() {
             SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque | ControlStyles.ResizeRedraw, true);

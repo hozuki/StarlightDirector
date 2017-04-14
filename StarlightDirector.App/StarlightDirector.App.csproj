@@ -41,6 +41,9 @@
     <Reference Include="System.Data.SQLite, Version=1.0.104.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Data.SQLite.Core.1.0.104.0\lib\net45\System.Data.SQLite.dll</HintPath>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -53,6 +56,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="UI\Forms\FAppendMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FAppendMeasures.Designer.cs">
+      <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +88,9 @@
     <Compile Include="UI\Forms\FMain.Private.cs">
       <SubType>Form</SubType>
     </Compile>
+    <EmbeddedResource Include="UI\Forms\FAppendMeasures.resx">
+      <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>
     </EmbeddedResource>

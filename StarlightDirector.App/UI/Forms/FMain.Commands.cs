@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
@@ -52,6 +53,8 @@ namespace StarlightDirector.App.UI.Forms {
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
+            mnuEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
+            tsbEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
             mnuEditMeasureAppend.Attach(CmdEditMeasureAppend);
             tsbEditMeasureAppend.Attach(CmdEditMeasureAppend);
             mnuEditMeasureDelete.Attach(CmdEditMeasureDelete);
@@ -83,14 +86,14 @@ namespace StarlightDirector.App.UI.Forms {
                     continue;
                 }
                 var commandName = field.Name;
-                SubscribeEvent(commandObject, commandName, "Executed", typeof(ExecutedEventHandler));
+                SubscribeEvent(commandObject, commandName, "Executed", typeof(ExecutedEventHandler), true);
                 SubscribeEvent(commandObject, commandName, "Reverted", typeof(RevertedEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryCanExecute", typeof(QueryCanExecuteEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryCanRevert", typeof(QueryCanRevertEventHandler));
                 SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(QueryRecordToHistoryEventHandler));
             }
 
-            void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType)
+            void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType, bool warnIfNotFound = false)
             {
                 var handlerName = commandName + "_" + eventName;
                 MethodInfo handlerMethod;
@@ -100,6 +103,9 @@ namespace StarlightDirector.App.UI.Forms {
                     return;
                 }
                 if (handlerMethod == null) {
+                    if (warnIfNotFound) {
+                        Debug.Print($"Warning: required instance handler method '{handlerName}' is not found in this class.");
+                    }
                     return;
                 }
                 var cmdType = commandObject.GetType();

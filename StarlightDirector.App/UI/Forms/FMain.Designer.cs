@@ -64,7 +64,7 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tlbMeasure = new System.Windows.Forms.ToolStrip();
             this.tsbEditMeasureAppend = new System.Windows.Forms.ToolStripSplitButton();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbEditMeasureAppendMany = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbEditMeasureDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripButton22 = new System.Windows.Forms.ToolStripTextBox();
@@ -475,21 +475,21 @@
             // 
             this.holdToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteHold;
             this.holdToolStripMenuItem.Name = "holdToolStripMenuItem";
-            this.holdToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.holdToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.holdToolStripMenuItem.Text = "&Hold";
             // 
             // flickToolStripMenuItem
             // 
             this.flickToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteFlickRight;
             this.flickToolStripMenuItem.Name = "flickToolStripMenuItem";
-            this.flickToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.flickToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.flickToolStripMenuItem.Text = "&Flick";
             // 
             // slideToolStripMenuItem
             // 
             this.slideToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconNoteSlide;
             this.slideToolStripMenuItem.Name = "slideToolStripMenuItem";
-            this.slideToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.slideToolStripMenuItem.Size = new System.Drawing.Size(104, 22);
             this.slideToolStripMenuItem.Text = "&Slide";
             // 
             // toolStripSeparator2
@@ -594,7 +594,7 @@
             this.tsbEditGoToMeasure});
             this.tlbMeasure.Location = new System.Drawing.Point(3, 19);
             this.tlbMeasure.Name = "tlbMeasure";
-            this.tlbMeasure.Size = new System.Drawing.Size(161, 25);
+            this.tlbMeasure.Size = new System.Drawing.Size(192, 25);
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
@@ -602,18 +602,18 @@
             // 
             this.tsbEditMeasureAppend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbEditMeasureAppend.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripMenuItem1});
+            this.tsbEditMeasureAppendMany});
             this.tsbEditMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureAdd;
             this.tsbEditMeasureAppend.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditMeasureAppend.Name = "tsbEditMeasureAppend";
             this.tsbEditMeasureAppend.Size = new System.Drawing.Size(32, 22);
             this.tsbEditMeasureAppend.Text = "Add Measure(s)";
             // 
-            // toolStripMenuItem1
+            // tsbEditMeasureAppendMany
             // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
-            this.toolStripMenuItem1.Text = "Add &Many...";
+            this.tsbEditMeasureAppendMany.Name = "tsbEditMeasureAppendMany";
+            this.tsbEditMeasureAppendMany.Size = new System.Drawing.Size(152, 22);
+            this.tsbEditMeasureAppendMany.Text = "Add &Many...";
             // 
             // tsbEditMeasureDelete
             // 
@@ -2009,7 +2009,7 @@
         private System.Windows.Forms.ToolStripSplitButton tsbEditMeasureAppend;
         private System.Windows.Forms.ToolStripButton tsbEditMeasureDelete;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem tsbEditMeasureAppendMany;
         private StarlightDirector.UI.Controls.ModernButton btnDifficultySelection;
         private System.Windows.Forms.ContextMenuStrip ctxDifficultySelection;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteDelete;
