@@ -86,9 +86,10 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        protected override void OnPaint(PaintEventArgs e) {
-            base.OnPaint(e);
+        protected override void OnPaintBackground(PaintEventArgs e) {
+        }
 
+        protected override void OnPaint(PaintEventArgs e) {
             var g = e.Graphics;
             g.Clear(BackColor);
 

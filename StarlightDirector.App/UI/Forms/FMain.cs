@@ -7,8 +7,8 @@ namespace StarlightDirector.App.UI.Forms {
     public partial class FMain : Form {
 
         public FMain() {
-            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw, true);
-            SetStyle(ControlStyles.Opaque, false);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.Opaque, true);
+            SetStyle(ControlStyles.SupportsTransparentBackColor, false);
             InitializeComponent();
             RegisterEventHandlers();
             RegisterCommands();

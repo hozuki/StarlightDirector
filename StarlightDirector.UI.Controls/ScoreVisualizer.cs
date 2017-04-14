@@ -27,6 +27,10 @@ namespace StarlightDirector.UI.Controls {
         [Browsable(false)]
         public VScrollBar ScrollBar => vScroll;
 
+        [Browsable(false)]
+        [DefaultValue(true)]
+        public bool InvertedScrolling { get; set; } = true;
+
         public void RedrawScore() {
             editor.Invalidate();
         }
@@ -64,21 +68,17 @@ namespace StarlightDirector.UI.Controls {
             }
 
             var newScrollValue = vScroll.Value;
+            var deltaScrollValue = 0;
             if (e.Delta > 0) {
                 // Up
-                if ((modifiers & Keys.Shift) != 0) {
-                    newScrollValue -= vScroll.LargeChange;
-                } else {
-                    newScrollValue -= vScroll.SmallChange;
-                }
+                deltaScrollValue = (modifiers & Keys.Shift) != 0 ? -vScroll.LargeChange : -vScroll.SmallChange;
             } else if (e.Delta < 0) {
                 // Down
-                if ((modifiers & Keys.Shift) != 0) {
-                    newScrollValue += vScroll.LargeChange;
-                } else {
-                    newScrollValue += vScroll.SmallChange;
-                }
+                deltaScrollValue = (modifiers & Keys.Shift) != 0 ? vScroll.LargeChange : vScroll.SmallChange;
             }
+            var invertFactor = InvertedScrolling ? 1 : -1;
+            deltaScrollValue *= invertFactor;
+            newScrollValue += deltaScrollValue;
             newScrollValue = newScrollValue.Clamp(vScroll.Minimum, vScroll.Maximum);
             vScroll.Value = newScrollValue;
         }
