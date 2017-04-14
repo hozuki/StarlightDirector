@@ -59,7 +59,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdEditMeasureAppendMany_Executed(object sender, ExecutedEventArgs e) {
-            var (dialogResult, numberOfMeasures) = FAppendMeasures.RequestInput();
+            var (dialogResult, numberOfMeasures) = FAppendMeasures.RequestInput(this);
             if (dialogResult == DialogResult.Cancel) {
                 return;
             }

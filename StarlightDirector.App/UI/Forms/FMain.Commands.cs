@@ -65,6 +65,8 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             mnuViewZoomOut.Attach(CmdViewZoomOut);
 
+            mnuHelpAbout.Attach(CmdHelpAbout);
+
             CommandManager.HookForm(this);
             RegisterCommandEvents(this);
         }

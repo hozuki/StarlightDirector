@@ -13,9 +13,9 @@ namespace StarlightDirector.App.UI.Forms {
             UnregisterEventHandlers();
         }
 
-        public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput() {
+        public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput(IWin32Window parentWindow) {
             using (var f = new FAppendMeasures()) {
-                var r = f.ShowDialog();
+                var r = f.ShowDialog(parentWindow);
                 var n = f._numberOfMeasures;
                 return (r, n);
             }
