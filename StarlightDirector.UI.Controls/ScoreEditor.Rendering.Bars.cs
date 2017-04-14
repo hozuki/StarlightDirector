@@ -5,7 +5,6 @@ using System.Linq;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Rendering;
-using StarlightDirector.UI.Rendering.Direct2D;
 using Pen = StarlightDirector.UI.Rendering.Pen;
 
 namespace StarlightDirector.UI.Controls {
@@ -154,18 +153,6 @@ namespace StarlightDirector.UI.Controls {
         private static readonly int[] BarZoomRatio = { 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96 };
 
         private static readonly float GridNumberMargin = 22;
-
-        private D2DPen _barSelectedOutlinePen;
-        private D2DPen _barGridOutlinePen;
-        private D2DPen _barGridStartBeatPen;
-        private D2DPen _barPrimaryBeatPen;
-        private D2DPen _barSecondaryBeatPen;
-        private D2DPen _barNormalGridPen;
-
-        private D2DBrush _gridNumberBrush;
-
-        private D2DFont _scoreBarFont;
-        private D2DFont _scoreBarBoldFont;
 
     }
 }

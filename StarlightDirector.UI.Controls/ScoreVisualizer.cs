@@ -111,7 +111,7 @@ namespace StarlightDirector.UI.Controls {
                         var note = hit.Note;
                         switch (modifiers) {
                             case Keys.Control:
-                                note.Editor.IsSelected = !note.Editor.IsSelected;
+                                note.EditorToggleSelected();
                                 break;
                             case Keys.Shift:
                             // TODO
@@ -120,16 +120,14 @@ namespace StarlightDirector.UI.Controls {
                                 if (editor.HasSelectedNotes) {
                                     editor.ClearSelectedNotesExcept(note);
                                 }
-                                note.Editor.IsSelected = !note.Editor.IsSelected;
+                                note.EditorToggleSelected();
                                 break;
                         }
                     }
                     editor.Invalidate();
                 } else if (hit.HitBarGridIntersection) {
                     // Add a note
-                    var note = hit.Bar.AddNote();
-                    note.Basic.IndexInGrid = hit.Row;
-                    note.Basic.StartPosition = note.Basic.FinishPosition = hit.Column;
+                    editor.AddNoteAt(hit.Bar, hit.Row, hit.Column);
                     editor.Invalidate();
                 } else {
                     if (editor.HasSelectedNotes) {
@@ -140,7 +138,7 @@ namespace StarlightDirector.UI.Controls {
                         var bar = hit.Bar;
                         switch (modifiers) {
                             case Keys.Control:
-                                bar.IsSelected = !bar.IsSelected;
+                                bar.EditorToggleSelected();
                                 break;
                             case Keys.Shift:
                             // TODO
@@ -149,18 +147,15 @@ namespace StarlightDirector.UI.Controls {
                                 if (editor.HasSelectedBars) {
                                     editor.ClearSelectedBarsExcept(bar);
                                 }
-                                bar.IsSelected = !bar.IsSelected;
+                                bar.EditorToggleSelected();
                                 break;
                         }
                     }
                     editor.Invalidate();
                 }
             } else if (e.Button == MouseButtons.Right) {
-                if (hit.HitAnyNote) {
-                    ContextMenuRequested?.Invoke(this, new ContextMenuRequestedEventArgs(VisualizerContextMenu.Note, e.Location));
-                } else {
-                    ContextMenuRequested?.Invoke(this, new ContextMenuRequestedEventArgs(VisualizerContextMenu.Bar, e.Location));
-                }
+                var ea = new ContextMenuRequestedEventArgs(hit.HitAnyNote ? VisualizerContextMenu.Note : VisualizerContextMenu.Bar, e.Location);
+                ContextMenuRequested?.Invoke(this, ea);
             }
         }
 

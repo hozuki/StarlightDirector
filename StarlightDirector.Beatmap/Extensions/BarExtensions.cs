@@ -38,6 +38,10 @@ namespace StarlightDirector.Beatmap.Extensions {
             if (!bar.Notes.Contains(note)) {
                 throw new ArgumentException("Note is not found in bar.");
             }
+
+            // TODO
+            // Relations
+
             bar.Notes.Remove(note);
             bar.Score.Project.UsedNoteIDs.Remove(note.StarlightID);
             return note;
@@ -61,6 +65,21 @@ namespace StarlightDirector.Beatmap.Extensions {
         [DebuggerStepThrough]
         public static int GetNumberOfGrids(this Bar bar) {
             return GetGridPerSignature(bar) * GetSignature(bar);
+        }
+
+        [DebuggerStepThrough]
+        public static void EditorToggleSelected(this Bar bar) {
+            bar.IsSelected = !bar.IsSelected;
+        }
+
+        [DebuggerStepThrough]
+        public static void EditorSelect(this Bar bar) {
+            bar.IsSelected = true;
+        }
+
+        [DebuggerStepThrough]
+        public static void EditorUnselect(this Bar bar) {
+            bar.IsSelected = false;
         }
 
     }

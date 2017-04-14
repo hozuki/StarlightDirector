@@ -180,7 +180,7 @@ namespace StarlightDirector.Beatmap {
 
         public sealed class NoteEditorProperties {
 
-            public bool IsSelected { get; set; }
+            public bool IsSelected { get; internal set; }
 
             public Note NextSync { get; internal set; }
 

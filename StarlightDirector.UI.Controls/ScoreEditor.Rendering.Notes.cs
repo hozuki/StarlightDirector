@@ -220,31 +220,6 @@ namespace StarlightDirector.UI.Controls {
             return noteStartY - unit * indexInGrid;
         }
 
-        private D2DPen _noteCommonStroke;
-        private D2DPen _noteSelectedStroke;
-        private D2DPen _tapNoteShapeStroke;
-        private D2DPen _holdNoteShapeStroke;
-        private D2DPen _flickNoteShapeStroke;
-
-        private D2DPen _syncLineStroke;
-        private D2DPen _holdLineStroke;
-        private D2DPen _flickLineStroke;
-        private D2DPen _slideLineStroke;
-
-        private D2DBrush _noteCommonFill;
-        private D2DBrush _holdNoteShapeFillInner;
-        private D2DBrush _flickNoteShapeFillInner;
-        private D2DBrush _slideNoteShapeFillInner;
-
-        private D2DFont _noteStartPositionFont;
-        private static readonly float StartPositionFontSize = 10;
-
-        private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
-        private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };
-        private static readonly Color[] FlickNoteShapeFillOuterColors = { Color.FromArgb(0x88, 0xBB, 0xFF), Color.FromArgb(0x22, 0x55, 0xBB) };
-        private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xA5, 0x46, 0xDA), Color.FromArgb(0xE1, 0xA8, 0xFB) };
-        private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xA5, 0x46, 0xDA), Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB) };
-
         private static readonly float NoteShapeStrokeWidth = 1;
 
         private static readonly float ScaleFactor1 = 0.8f;

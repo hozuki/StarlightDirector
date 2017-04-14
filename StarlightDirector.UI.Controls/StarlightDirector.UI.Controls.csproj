@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=10.4.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.10.4.0\lib\net\JetBrains.Annotations.dll</HintPath>
+    </Reference>
     <Reference Include="SharpDX, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.3.1.1\lib\net45\SharpDX.dll</HintPath>
     </Reference>
@@ -79,13 +82,22 @@
     <Compile Include="ScoreEditor.Editing.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScoreEditor.Bars.cs">
+    <Compile Include="ScoreEditor.Layout.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditor.Rendering.Bars.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreEditor.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ScoreEditor.Notes.cs">
+    <Compile Include="ScoreEditor.Rendering.Notes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditor.Resources.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditor.Viewing.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreEditorConfig.cs" />

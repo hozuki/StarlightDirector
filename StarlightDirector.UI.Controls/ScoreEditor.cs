@@ -1,13 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Drawing;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
-using StarlightDirector.Core;
 using StarlightDirector.UI.Rendering.Direct2D;
-using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
+using JetBrains.Annotations;
 
 namespace StarlightDirector.UI.Controls {
     public sealed partial class ScoreEditor : Direct2DCanvas {
@@ -39,6 +38,13 @@ namespace StarlightDirector.UI.Controls {
                     Invalidate();
                 }
             }
+        }
+
+        [Browsable(false)]
+        [CanBeNull]
+        public Score CurrentScore {
+            [DebuggerStepThrough]
+            get { return Project?.GetScore(Difficulty); }
         }
 
         [Browsable(false)]
@@ -76,7 +82,7 @@ namespace StarlightDirector.UI.Controls {
         public ScoreEditorConfig Config { get; } = new ScoreEditorConfig();
 
         public float GetFullHeight() {
-            var score = Project?.GetScore(Difficulty);
+            var score = CurrentScore;
             if (score == null) {
                 return 0;
             }
@@ -84,35 +90,7 @@ namespace StarlightDirector.UI.Controls {
             return height;
         }
 
-        public void ZoomIn() {
-            var max = 2.1f * Config.NoteRadius;
-            var min = max / MaxNumberOfGrids;
-            var unit = BarLineSpaceUnit;
-            unit *= ZoomScale;
-            unit = unit.Clamp(min, max);
-            BarLineSpaceUnit = unit;
-        }
-
-        public void ZoomOut() {
-            var max = 2.1f * Config.NoteRadius;
-            var min = max / MaxNumberOfGrids;
-            var unit = BarLineSpaceUnit;
-            unit /= ZoomScale;
-            unit = unit.Clamp(min, max);
-            BarLineSpaceUnit = unit;
-        }
-
         internal ScoreEditor() {
-        }
-
-        internal void RecalcLayout() {
-            var scrollBar = ScrollBar;
-            var clientSize = ClientSize;
-            if (scrollBar != null) {
-                var expectedHeight = GetFullHeight();
-                scrollBar.Minimum = clientSize.Height / 2;
-                scrollBar.Maximum = clientSize.Height / 2 + (int)Math.Round(expectedHeight);
-            }
         }
 
         protected override void OnClientSizeChanged(EventArgs e) {
@@ -121,7 +99,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         protected override void OnRender(D2DRenderContext context) {
-            var score = Project?.GetScore(Difficulty);
+            var score = CurrentScore;
             var hasAnyBar = score?.HasAnyBar ?? false;
             if (hasAnyBar) {
                 RenderBars(context, score);
@@ -132,78 +110,13 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        protected override void OnCreateResources(D2DRenderContext context) {
-            _barSelectedOutlinePen = new D2DPen(context, Color.White, 2);
-            _barGridOutlinePen = new D2DPen(context, Color.Gray, 1);
-            _barNormalGridPen = new D2DPen(context, Color.Gray, 1);
-            _barGridStartBeatPen = new D2DPen(context, Color.Red, 1);
-            _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 1);
-            _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 1);
-
-            _gridNumberBrush = new D2DSolidBrush(context, Color.White);
-
-            _scoreBarFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints, FontStyle.Regular, 10);
-            _scoreBarBoldFont = new D2DFont(context.DirectWriteFactory, _scoreBarFont.FamilyName, _scoreBarFont.Size, FontStyle.Bold, _scoreBarFont.Weight);
-
-            _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
-            _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), NoteShapeStrokeWidth * 3);
-            _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), NoteShapeStrokeWidth);
-            _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), NoteShapeStrokeWidth);
-            _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), NoteShapeStrokeWidth);
-
-            _noteCommonFill = new D2DSolidBrush(context, Color.White);
-            _holdNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
-            _flickNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
-            _slideNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
-
-            _syncLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 4);
-            _holdLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 10);
-            _flickLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
-            _slideLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
-
-            _noteStartPositionFont = new D2DFont(context.DirectWriteFactory, Font.Name, StartPositionFontSize, FontStyle.Regular, 10);
-        }
-
-        protected override void OnDisposeResources(D2DRenderContext context) {
-            _barSelectedOutlinePen?.Dispose();
-            _barNormalGridPen?.Dispose();
-            _barPrimaryBeatPen?.Dispose();
-            _barSecondaryBeatPen?.Dispose();
-            _barGridStartBeatPen?.Dispose();
-            _barGridOutlinePen?.Dispose();
-
-            _gridNumberBrush?.Dispose();
-
-            _scoreBarFont?.Dispose();
-            _scoreBarBoldFont?.Dispose();
-
-            _noteCommonStroke?.Dispose();
-            _noteSelectedStroke?.Dispose();
-            _tapNoteShapeStroke?.Dispose();
-            _holdNoteShapeStroke?.Dispose();
-            _flickNoteShapeStroke?.Dispose();
-
-            _noteCommonFill?.Dispose();
-            _holdNoteShapeFillInner?.Dispose();
-            _flickNoteShapeFillInner?.Dispose();
-            _slideNoteShapeFillInner?.Dispose();
-
-            _syncLineStroke?.Dispose();
-            _holdLineStroke?.Dispose();
-            _flickLineStroke?.Dispose();
-            _slideLineStroke?.Dispose();
-
-            _noteStartPositionFont?.Dispose();
-        }
+        // This is used for scaling. It can be different with signature*gps.
+        private static readonly int MaxNumberOfGrids = 96;
 
         private int _scrollOffsetY;
         private Project _project;
         private Difficulty _difficulty = Difficulty.Debut;
         private float _barLineSpaceUnit = 5;
-
-        private static readonly float ZoomScale = 1.2f;
-        // This is used for scaling. It can be different with signature*gps.
-        private static readonly int MaxNumberOfGrids = 96;
 
     }
 }

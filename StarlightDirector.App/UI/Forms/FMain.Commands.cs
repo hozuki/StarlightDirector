@@ -36,8 +36,10 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
             mnuEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
 
-            mnuEditSelectAllMeasures.Attach(CmdEditSelectAllBars);
+            mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
+            mnuEditMeasureDelete.Attach(CmdEditMeasureDelete);
+            mnuEditNoteDelete.Attach(CmdEditNoteDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             mnuViewZoomOut.Attach(CmdViewZoomOut);

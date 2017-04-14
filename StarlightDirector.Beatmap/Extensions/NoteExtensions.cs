@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 
 namespace StarlightDirector.Beatmap.Extensions {
     public static class NoteExtensions {
@@ -51,6 +52,7 @@ namespace StarlightDirector.Beatmap.Extensions {
         }
 
         public static void FixSyncWhenAdded(this Note @this) {
+            // TODO
             if (!@this.Helper.IsGaming) {
                 return;
             }
@@ -80,10 +82,27 @@ namespace StarlightDirector.Beatmap.Extensions {
             ConnectSync(@this, next);
         }
 
+        [DebuggerStepThrough]
+        public static void EditorToggleSelected(this Note note) {
+            note.Editor.IsSelected = !note.Editor.IsSelected;
+        }
+
+        [DebuggerStepThrough]
+        public static void EditorSelect(this Note note) {
+            note.Editor.IsSelected = true;
+        }
+
+        [DebuggerStepThrough]
+        public static void EditorUnselect(this Note note) {
+            note.Editor.IsSelected = false;
+        }
+
+        [DebuggerStepThrough]
         private static void SetPrevSyncTargetInternal(this Note @this, Note prev) {
             @this.Editor.PrevSync = prev;
         }
 
+        [DebuggerStepThrough]
         private static void SetNextSyncTargetInternal(this Note @this, Note next) {
             @this.Editor.NextSync = next;
         }

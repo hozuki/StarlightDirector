@@ -21,7 +21,7 @@ namespace StarlightDirector.Beatmap {
 
         public BarParams Params { get; internal set; }
 
-        public bool IsSelected { get; set; }
+        public bool IsSelected { get; internal set; }
 
         public InternalList<Note> Notes { get; } = new InternalList<Note>();
 
