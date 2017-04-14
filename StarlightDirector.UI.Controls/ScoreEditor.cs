@@ -119,7 +119,8 @@ namespace StarlightDirector.UI.Controls {
         private int _scrollOffsetY;
         private Project _project;
         private Difficulty _difficulty = Difficulty.Debut;
-        private float _barLineSpaceUnit = 7;
+        private static readonly float DefaultBarLineSpaceUnit = 7;
+        private float _barLineSpaceUnit = DefaultBarLineSpaceUnit;
 
     }
 }
