@@ -28,6 +28,7 @@ namespace StarlightDirector.UI.Controls {
 
             var unit = BarLineSpaceUnit;
             var startPositionFont = _noteStartPositionFont;
+            var shouldDrawIndicators = IndicatorsVisible;
             foreach (var bar in score.Bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.HasAnyNote) {
@@ -52,6 +53,19 @@ namespace StarlightDirector.UI.Controls {
                         }
 
                         // Indicators
+                        if (shouldDrawIndicators) {
+                            if (note.Helper.IsSync) {
+                                context.FillCircle(_syncIndicatorBrush, x + radius, y - radius, IndicatorRadius);
+                            }
+                            if (note.Helper.IsHold) {
+                                context.FillCircle(_holdIndicatorBrush, x - radius, y + radius, IndicatorRadius);
+                            }
+                            if (note.Helper.IsSlide) {
+                                context.FillCircle(_slideIndicatorBrush, x + radius, y + radius, IndicatorRadius);
+                            } else if (note.Helper.IsFlick) {
+                                context.FillCircle(_flickIndicatorBrush, x + radius, y + radius, IndicatorRadius);
+                            }
+                        }
 
                         // Start position
                         if (note.Basic.StartPosition != note.Basic.FinishPosition) {
@@ -226,6 +240,9 @@ namespace StarlightDirector.UI.Controls {
         private static readonly float ScaleFactor2 = 0.5f;
         private static readonly float ScaleFactor3 = 1 / 3f;
         private static readonly float SlideNoteStrikeHeightFactor = (float)4 / 30;
+
+        private static readonly float StartPositionFontSize = 10;
+        private static readonly float IndicatorRadius = 4;
 
         private static readonly float Sqrt3 = (float)Math.Sqrt(3);
 

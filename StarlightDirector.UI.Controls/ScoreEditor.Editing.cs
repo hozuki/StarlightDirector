@@ -120,7 +120,7 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        [DebuggerStepThrough]
+        //[DebuggerStepThrough]
         public void ClearSelectedBarsExcept(Bar bar) {
             if (!HasSelectedBars) {
                 return;
@@ -128,7 +128,7 @@ namespace StarlightDirector.UI.Controls {
             var score = CurrentScore;
             foreach (var b in score.Bars) {
                 if (b != bar) {
-                    bar.EditorUnselect();
+                    b.EditorUnselect();
                 }
             }
         }

@@ -76,6 +76,9 @@ namespace StarlightDirector.UI.Controls {
         }
 
         [Browsable(false)]
+        public bool IndicatorsVisible { get; set; } = true;
+
+        [Browsable(false)]
         public PrimaryBeatMode PrimaryBeatMode { get; set; } = PrimaryBeatMode.EveryFourBeats;
 
         [Browsable(false)]
@@ -116,7 +119,7 @@ namespace StarlightDirector.UI.Controls {
         private int _scrollOffsetY;
         private Project _project;
         private Difficulty _difficulty = Difficulty.Debut;
-        private float _barLineSpaceUnit = 5;
+        private float _barLineSpaceUnit = 7;
 
     }
 }

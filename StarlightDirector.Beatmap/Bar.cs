@@ -32,5 +32,9 @@ namespace StarlightDirector.Beatmap {
 
         public Guid StarlightID { get; internal set; }
 
+        public override string ToString() {
+            return $"Bar (Index={Index}, ID={StarlightID}, Notes={Notes.Count})";
+        }
+
     }
 }

@@ -34,6 +34,11 @@ namespace StarlightDirector.UI.Controls {
             _flickLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
             _slideLineStroke = new D2DPen(context, Color.FromArgb(0xA0, 0xA0, 0xA0), 14.1f);
 
+            _syncIndicatorBrush = new D2DSolidBrush(context, Color.MediumSeaGreen);
+            _holdIndicatorBrush = new D2DSolidBrush(context, Color.FromArgb(0xFF, 0xBB, 0x22));
+            _flickIndicatorBrush = new D2DSolidBrush(context, Color.FromArgb(0x88, 0xBB, 0xFF));
+            _slideIndicatorBrush = new D2DSolidBrush(context, Color.FromArgb(0xE1, 0xA8, 0xFB));
+
             _noteStartPositionFont = new D2DFont(context.DirectWriteFactory, Font.Name, StartPositionFontSize, FontStyle.Regular, 10);
         }
 
@@ -65,6 +70,11 @@ namespace StarlightDirector.UI.Controls {
             _holdLineStroke?.Dispose();
             _flickLineStroke?.Dispose();
             _slideLineStroke?.Dispose();
+
+            _syncIndicatorBrush?.Dispose();
+            _holdIndicatorBrush?.Dispose();
+            _flickIndicatorBrush?.Dispose();
+            _slideIndicatorBrush?.Dispose();
 
             _noteStartPositionFont?.Dispose();
         }
@@ -101,13 +111,17 @@ namespace StarlightDirector.UI.Controls {
         private D2DBrush _flickNoteShapeFillInner;
         private D2DBrush _slideNoteShapeFillInner;
 
+        private D2DBrush _syncIndicatorBrush;
+        private D2DBrush _holdIndicatorBrush;
+        private D2DBrush _flickIndicatorBrush;
+        private D2DBrush _slideIndicatorBrush;
+
         private D2DFont _noteStartPositionFont;
-        private static readonly float StartPositionFontSize = 10;
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };
         private static readonly Color[] FlickNoteShapeFillOuterColors = { Color.FromArgb(0x88, 0xBB, 0xFF), Color.FromArgb(0x22, 0x55, 0xBB) };
-        private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xA5, 0x46, 0xDA), Color.FromArgb(0xE1, 0xA8, 0xFB) };
+        private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xE1, 0xA8, 0xFB), Color.FromArgb(0xA5, 0x46, 0xDA) };
         private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xA5, 0x46, 0xDA), Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB) };
 
     }

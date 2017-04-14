@@ -27,7 +27,7 @@ namespace StarlightDirector.UI.Controls {
                     RenderBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
                     RenderBarGrid(context, gridArea, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
                 }
-                barStartY -= numberOfGrids * BarLineSpaceUnit;
+                barStartY -= numberOfGrids * unit;
             }
         }
 
@@ -51,7 +51,7 @@ namespace StarlightDirector.UI.Controls {
             }
 
             // Calculate zooming compensation.
-            var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= noteRadius * 2);
+            var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= noteRadius * SpaceUnitRadiusRatio);
             if (firstClearDrawnRatio == 0) {
                 firstClearDrawnRatio = numberOfGrids;
             }
@@ -153,6 +153,7 @@ namespace StarlightDirector.UI.Controls {
         private static readonly int[] BarZoomRatio = { 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96 };
 
         private static readonly float GridNumberMargin = 22;
+        private static readonly float SpaceUnitRadiusRatio = 2.2f;
 
     }
 }
