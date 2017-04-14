@@ -9,7 +9,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void CmdFileNew_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.Project = new Project();
-            UpdateUIIndications("Untitled");
+            UpdateUIIndications(DefaultDocumentName);
         }
 
         private void CmdFileOpen_Executed(object sender, ExecutedEventArgs e) {

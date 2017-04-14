@@ -7,7 +7,7 @@ namespace StarlightDirector.App.UI.Forms {
     public partial class FMain : Form {
 
         public FMain() {
-            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.ResizeRedraw | ControlStyles.Opaque, true);
+            SetStyle(ControlStyles.UserPaint | ControlStyles.OptimizedDoubleBuffer | ControlStyles.AllPaintingInWmPaint | ControlStyles.Opaque | ControlStyles.ResizeRedraw, true);
             SetStyle(ControlStyles.SupportsTransparentBackColor, false);
             InitializeComponent();
             RegisterEventHandlers();
@@ -104,6 +104,7 @@ namespace StarlightDirector.App.UI.Forms {
         private static readonly Size FrameBorderSize = SystemInformation.FrameBorderSize;
         private static readonly int CaptionMargin = 65;
         private static readonly int ToolbarMargin = 250;
+        private static readonly string DefaultDocumentName = "Untitled";
 
         private string _editingFileName = string.Empty;
         private Difficulty _cachedTitleDifficulty = Difficulty.Debut;

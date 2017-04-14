@@ -106,9 +106,14 @@ namespace StarlightDirector.App.UI.Forms {
 
             // Status text and status text area.
             const int gripSize = 16;
-            const int statusBarHeight = 36;
-            const int statusTextLeftMargin = 5;
+            const int statusBarHeight = 22;
+            var statusTextLeftMargin = 5;
             var statusRect = new Rectangle(clientRectangle.Left, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width - (clientRectangle.Width - btnDifficultySelection.Left), statusBarHeight);
+            var windowState = WindowState;
+            if (windowState == FormWindowState.Maximized) {
+                statusRect.Y -= FrameBorderSize.Height + 3;
+                statusTextLeftMargin += FrameBorderSize.Width;
+            }
             g.FillRectangle(colorScheme.WindowNormalStatusBackground, statusRect);
             g.DrawLine(colorScheme.WindowStatusSeparator, clientRectangle.Left, statusRect.Top, clientRectangle.Right, statusRect.Top);
             if (!string.IsNullOrEmpty(StatusText)) {
@@ -147,7 +152,10 @@ namespace StarlightDirector.App.UI.Forms {
 
         protected override void OnSizeChanged(EventArgs e) {
             base.OnSizeChanged(e);
-            sysMaximizeRestore.Icon = WindowState == FormWindowState.Maximized ? ModernSystemButtonIcon.Restore : ModernSystemButtonIcon.Maximize;
+            var newWindowState = WindowState;
+            sysMaximizeRestore.Icon = newWindowState == FormWindowState.Maximized ? ModernSystemButtonIcon.Restore : ModernSystemButtonIcon.Maximize;
+            var clientSize = ClientSize;
+            btnDifficultySelection.Top = clientSize.Height - btnDifficultySelection.Height - 2 - (newWindowState == FormWindowState.Maximized ? FrameBorderSize.Height + 3 : 0);
         }
 
         protected override void WndProc(ref Message m) {
