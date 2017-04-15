@@ -40,6 +40,9 @@ namespace StarlightDirector.Beatmap.Extensions {
                     --b.Index;
                 }
             }
+            foreach (var note in bar.Notes) {
+                note.ResetAsTap();
+            }
             score.Bars.Remove(bar);
             return bar;
         }
@@ -54,6 +57,9 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
             var barIndices = barArr.Select(b => b.Index).ToArray();
             foreach (var bar in barArr) {
+                foreach (var note in bar.Notes) {
+                    note.ResetAsTap();
+                }
                 score.Bars.Remove(bar);
             }
             foreach (var bar in score.Bars) {
