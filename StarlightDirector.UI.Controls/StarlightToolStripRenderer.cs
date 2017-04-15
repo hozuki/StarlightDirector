@@ -235,6 +235,23 @@ namespace StarlightDirector.UI.Controls {
             DrawArrow(arrowEventArgs);
         }
 
+        protected override void OnRenderItemCheck(ToolStripItemImageRenderEventArgs e) {
+            var item = e.Item as ToolStripMenuItem;
+            if (item?.Image == null || !item.Checked) {
+                base.OnRenderItemCheck(e);
+            } else {
+                var scheme = _scheme;
+                var g = e.Graphics;
+                var selectRect = e.ImageRectangle;
+                selectRect.X -= 2;
+                selectRect.Y -= 2;
+                selectRect.Width += 2;
+                selectRect.Height += 2;
+                g.FillRectangle(scheme.MenuItemCheckBoxBackground, selectRect);
+                g.DrawRectangle(scheme.MenuItemCheckBoxBorder, selectRect);
+            }
+        }
+
         private readonly ColorScheme _scheme;
 
     }

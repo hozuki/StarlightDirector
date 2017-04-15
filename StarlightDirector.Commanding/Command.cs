@@ -89,6 +89,7 @@ namespace StarlightDirector.Commanding {
                     menuItem.Enabled = canExecute;
                     if (ShortcutKeys != Keys.None) {
                         menuItem.ShortcutKeys = ShortcutKeys;
+                        menuItem.ShortcutKeyDisplayString = ShortcutMapper.GetDescription(ShortcutKeys);
                     }
                     break;
                 default:
@@ -139,6 +140,7 @@ namespace StarlightDirector.Commanding {
                     menuItem.Click -= OnControlInteract;
                     if (ShortcutKeys != Keys.None) {
                         menuItem.ShortcutKeys = Keys.None;
+                        menuItem.ShortcutKeyDisplayString = string.Empty;
                     }
                     break;
                 default:

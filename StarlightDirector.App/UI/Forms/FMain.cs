@@ -48,7 +48,7 @@ namespace StarlightDirector.App.UI.Forms {
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty, typeof(Difficulty));
             Text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
-            btnDifficultySelection.Text = difficultyDescription;
+            tsbDifficultySelection.Text = difficultyDescription;
             _editingFileName = editingFileName;
             _cachedTitleDifficulty = currentDifficulty;
         }
@@ -84,21 +84,14 @@ namespace StarlightDirector.App.UI.Forms {
             panel2.BackColor = scheme.ToolbarBackground;
             visualizer.BackColor = scheme.Workspace;
 
-            btnDifficultySelection.BackColor = scheme.WindowNormalStatusBackground;
-            btnDifficultySelection.ForeColor = scheme.WindowNormalStatusText;
-            btnDifficultySelection.HoveringBackColor = scheme.WindowHoveringStatusBackground;
-            btnDifficultySelection.HoveringTextColor = scheme.WindowHoveringStatusText;
-            btnDifficultySelection.PressedBackColor = scheme.WindowPressedStatusBackground;
-            btnDifficultySelection.PressedTextColor = scheme.WindowPressedStatusText;
-
             var toolStripRenderer = new StarlightToolStripRenderer(scheme);
             mainMenuStrip.Renderer = toolStripRenderer;
             ctxMain.Renderer = toolStripRenderer;
-            ctxDifficultySelection.Renderer = toolStripRenderer;
             tlbNote.Renderer = toolStripRenderer;
-            tlbEdit.Renderer = toolStripRenderer;
+            tlbStandard.Renderer = toolStripRenderer;
             tlbPostprocessing.Renderer = toolStripRenderer;
             tlbMeasure.Renderer = toolStripRenderer;
+            tlbEditAndView.Renderer = toolStripRenderer;
         }
 
         private static readonly Size FrameBorderSize = SystemInformation.FrameBorderSize;

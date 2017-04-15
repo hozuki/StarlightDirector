@@ -95,6 +95,10 @@ namespace StarlightDirector.UI.Controls {
 
         public Color MenuItemDisabledText { get; } = Color.FromArgb(152, 152, 152);
 
+        public Color MenuItemCheckBoxBackground { get; } = Color.FromArgb(230, 238, 250);
+
+        public Color MenuItemCheckBoxBorder { get; } = Color.FromArgb(163, 189, 227);
+
         public Color ToolbarItemBackground { get; } = Color.FromArgb(241, 241, 241);
 
         public Color ToolbarItemHoveringBackground { get; } = Color.FromArgb(197, 197, 197);

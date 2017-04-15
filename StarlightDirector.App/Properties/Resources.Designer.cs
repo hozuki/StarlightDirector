@@ -113,9 +113,9 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconEditNoteAddSpecial {
+        internal static System.Drawing.Bitmap IconEditModeSelect {
             get {
-                object obj = ResourceManager.GetObject("IconEditNoteAddSpecial", resourceCulture);
+                object obj = ResourceManager.GetObject("IconEditModeSelect", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -123,9 +123,9 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconEditNoteCreateRelation {
+        internal static System.Drawing.Bitmap IconEditNoteAddSpecial {
             get {
-                object obj = ResourceManager.GetObject("IconEditNoteCreateRelation", resourceCulture);
+                object obj = ResourceManager.GetObject("IconEditNoteAddSpecial", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -366,6 +366,26 @@ namespace StarlightDirector.App.Properties {
         internal static System.Drawing.Bitmap IconToolBuildScoreBundle {
             get {
                 object obj = ResourceManager.GetObject("IconToolBuildScoreBundle", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconViewZoomIn {
+            get {
+                object obj = ResourceManager.GetObject("IconViewZoomIn", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconViewZoomOut {
+            get {
+                object obj = ResourceManager.GetObject("IconViewZoomOut", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

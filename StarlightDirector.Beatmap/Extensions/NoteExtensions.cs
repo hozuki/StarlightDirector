@@ -148,6 +148,11 @@ namespace StarlightDirector.Beatmap.Extensions {
         }
 
         [DebuggerStepThrough]
+        public static bool IsOnTheSameRowWith(this Note @this, Note toTest) {
+            return @this.Basic.Bar == toTest.Basic.Bar && @this.Basic.IndexInGrid == toTest.Basic.IndexInGrid;
+        }
+
+        [DebuggerStepThrough]
         public static void EditorToggleSelected(this Note note) {
             note.Editor.IsSelected = !note.Editor.IsSelected;
         }

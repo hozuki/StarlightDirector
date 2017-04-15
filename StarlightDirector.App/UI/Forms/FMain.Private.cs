@@ -107,12 +107,12 @@ namespace StarlightDirector.App.UI.Forms {
             // Status text and status text area.
             const int gripSize = 16;
             const int statusBarHeight = 22;
-            var statusTextLeftMargin = 5;
-            var statusRect = new Rectangle(clientRectangle.Left, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width - (clientRectangle.Width - btnDifficultySelection.Left), statusBarHeight);
+            var statusTextHorizontalMargin = 5;
+            var statusRect = new Rectangle(clientRectangle.Left, clientRectangle.Bottom - statusBarHeight, clientRectangle.Width - statusTextHorizontalMargin, statusBarHeight);
             var windowState = WindowState;
             if (windowState == FormWindowState.Maximized) {
                 statusRect.Y -= FrameBorderSize.Height + 3;
-                statusTextLeftMargin += FrameBorderSize.Width;
+                statusTextHorizontalMargin += FrameBorderSize.Width;
             }
             g.FillRectangle(colorScheme.WindowNormalStatusBackground, statusRect);
             g.DrawLine(colorScheme.WindowStatusSeparator, clientRectangle.Left, statusRect.Top, clientRectangle.Right, statusRect.Top);
@@ -124,8 +124,8 @@ namespace StarlightDirector.App.UI.Forms {
                     tf.Alignment = StringAlignment.Near;
                     tf.LineAlignment = StringAlignment.Center;
                     using (var tb = new SolidBrush(colorScheme.WindowNormalStatusText)) {
-                        statusRect.X += statusTextLeftMargin;
-                        statusRect.Width -= gripSize + statusTextLeftMargin;
+                        statusRect.X += statusTextHorizontalMargin;
+                        statusRect.Width -= gripSize + statusTextHorizontalMargin;
                         g.DrawString(StatusText, Font, tb, statusRect, tf);
                     }
                 }
@@ -154,8 +154,6 @@ namespace StarlightDirector.App.UI.Forms {
             base.OnSizeChanged(e);
             var newWindowState = WindowState;
             sysMaximizeRestore.Icon = newWindowState == FormWindowState.Maximized ? ModernSystemButtonIcon.Restore : ModernSystemButtonIcon.Maximize;
-            var clientSize = ClientSize;
-            btnDifficultySelection.Top = clientSize.Height - btnDifficultySelection.Height - 2 - (newWindowState == FormWindowState.Maximized ? FrameBorderSize.Height + 3 : 0);
         }
 
         protected override void WndProc(ref Message m) {

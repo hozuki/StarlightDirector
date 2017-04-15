@@ -88,5 +88,19 @@ namespace StarlightDirector.UI.Controls.Extensions {
             }
         }
 
+        [DebuggerStepThrough]
+        public static void DrawRectangle(this Graphics graphics, Color color, Rectangle rect) {
+            using (var p = new Pen(color)) {
+                graphics.DrawRectangle(p, rect);
+            }
+        }
+
+        [DebuggerStepThrough]
+        public static void DrawRectangle(this Graphics graphics, Color color, float width, Rectangle rect) {
+            using (var p = new Pen(color, width)) {
+                graphics.DrawRectangle(p, rect);
+            }
+        }
+
     }
 }

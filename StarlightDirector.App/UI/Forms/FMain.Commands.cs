@@ -53,6 +53,8 @@ namespace StarlightDirector.App.UI.Forms {
             tsbEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
             tsbEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
             tsbEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteDelete.Attach(CmdEditNoteDelete);
+            tsbEditNoteDelete.Attach(CmdEditNoteDelete);
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
@@ -62,11 +64,11 @@ namespace StarlightDirector.App.UI.Forms {
             tsbEditMeasureAppend.Attach(CmdEditMeasureAppend);
             mnuEditMeasureDelete.Attach(CmdEditMeasureDelete);
             tsbEditMeasureDelete.Attach(CmdEditMeasureDelete);
-            mnuEditNoteDelete.Attach(CmdEditNoteDelete);
-            tsbEditNoteDelete.Attach(CmdEditNoteDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
+            tsbViewZoomIn.Attach(CmdViewZoomIn);
             mnuViewZoomOut.Attach(CmdViewZoomOut);
+            tsbViewZoomOut.Attach(CmdViewZoomOut);
 
             mnuHelpAbout.Attach(CmdHelpAbout);
 

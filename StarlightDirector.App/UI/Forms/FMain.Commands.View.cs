@@ -16,8 +16,8 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.ZoomOut(clientCenter);
         }
 
-        private readonly Command CmdViewZoomIn = CommandManager.CreateCommand();
-        private readonly Command CmdViewZoomOut = CommandManager.CreateCommand();
+        private readonly Command CmdViewZoomIn = CommandManager.CreateCommand("Ctrl+=");
+        private readonly Command CmdViewZoomOut = CommandManager.CreateCommand("Ctrl+-");
 
     }
 }

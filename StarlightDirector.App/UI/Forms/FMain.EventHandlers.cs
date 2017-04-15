@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using StarlightDirector.Beatmap;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.UI.Controls;
 
@@ -15,8 +14,9 @@ namespace StarlightDirector.App.UI.Forms {
             sysMaximizeRestore.Click -= SysMaximizeRestore_Click;
             sysMinimize.Click -= SysMinimize_Click;
             picIcon.MouseDown -= PicIcon_MouseDown;
-            btnDifficultySelection.Click -= BtnDifficultySelection_Click;
+            tsbDifficultySelection.Click -= TsbDifficultySelection_Click;
             visualizer.ContextMenuRequested -= Visualizer_ContextMenuRequested;
+            tsbEditMode.Click -= TsbEditMode_Click;
         }
 
         private void RegisterEventHandlers() {
@@ -25,8 +25,23 @@ namespace StarlightDirector.App.UI.Forms {
             sysMaximizeRestore.Click += SysMaximizeRestore_Click;
             sysMinimize.Click += SysMinimize_Click;
             picIcon.MouseDown += PicIcon_MouseDown;
-            btnDifficultySelection.Click += BtnDifficultySelection_Click;
+            tsbDifficultySelection.Click += TsbDifficultySelection_Click;
             visualizer.ContextMenuRequested += Visualizer_ContextMenuRequested;
+            tsbEditMode.Click += TsbEditMode_Click;
+        }
+
+        private void TsbEditMode_Click(object sender, EventArgs e) {
+            var items = new ToolStripItem[mnuEditMode.DropDownItems.Count];
+            mnuEditMode.DropDownItems.CopyTo(items, 0);
+            tsbEditMode.DropDownItems.AddRange(items);
+            tsbEditMode.DropDownClosed += DropDownClosed;
+            tsbEditMode.ShowDropDown();
+
+            void DropDownClosed(object s, EventArgs ev)
+            {
+                mnuEditMode.DropDownItems.AddRange(items);
+                tsbEditMode.DropDownClosed -= DropDownClosed;
+            }
         }
 
         private void Visualizer_ContextMenuRequested(object sender, ContextMenuRequestedEventArgs e) {
@@ -69,17 +84,17 @@ namespace StarlightDirector.App.UI.Forms {
             ctxMain.Show(visualizer, e.Location);
         }
 
-        private void BtnDifficultySelection_Click(object sender, EventArgs e) {
+        private void TsbDifficultySelection_Click(object sender, EventArgs e) {
             var items = new ToolStripItem[mnuEditDifficulty.DropDownItems.Count];
             mnuEditDifficulty.DropDownItems.CopyTo(items, 0);
-            ctxDifficultySelection.Items.AddRange(items);
-            ctxDifficultySelection.Closed += CtxClosed;
-            ctxDifficultySelection.Show(btnDifficultySelection, Point.Empty, ToolStripDropDownDirection.AboveRight);
+            tsbDifficultySelection.DropDownItems.AddRange(items);
+            tsbDifficultySelection.DropDownClosed += DropDownClosed;
+            tsbDifficultySelection.ShowDropDown();
 
-            void CtxClosed(object s, EventArgs ev)
+            void DropDownClosed(object s, EventArgs ev)
             {
                 mnuEditDifficulty.DropDownItems.AddRange(items);
-                ctxDifficultySelection.Closed -= CtxClosed;
+                tsbDifficultySelection.DropDownClosed -= DropDownClosed;
             }
         }
 

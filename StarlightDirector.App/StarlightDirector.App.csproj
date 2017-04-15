@@ -86,6 +86,12 @@
     <Compile Include="UI\Forms\FMain.Commands.Edit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Edit.Measures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Edit.Notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.File.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -179,7 +185,6 @@
     <Content Include="Resources\Icons\Notes\IconNoteSlide.png" />
     <Content Include="Resources\Icons\SD-Icon.ico" />
     <Content Include="Resources\Icons\Toolbar\IconEditNoteDelete.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNoteCreateRelation.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureAdd.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureDelete.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
@@ -204,6 +209,9 @@
     <Content Include="Resources\Icons\Toolbar\IconPreviewFromStart.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewStop.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditNoteAddSpecial.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditModeSelect.png" />
+    <Content Include="Resources\Icons\Toolbar\IconViewZoomIn.png" />
+    <Content Include="Resources\Icons\Toolbar\IconViewZoomOut.png" />
     <EmbeddedResource Include="Resources\WebPages\About.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

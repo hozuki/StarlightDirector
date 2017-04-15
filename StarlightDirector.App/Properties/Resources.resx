@@ -133,11 +133,11 @@
   <data name="IconEditMeasureDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\toolbar\iconeditmeasuredelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconEditModeSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\toolbar\iconeditmodeselect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconEditNoteAddSpecial" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\toolbar\iconeditnoteaddspecial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconEditNoteCreateRelation" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnotecreaterelation.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconEditNoteDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\toolbar\iconeditnotedelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -210,6 +210,12 @@
   </data>
   <data name="IconToolBuildScoreBundle" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconToolBuildScoreBundle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconViewZoomIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\toolbar\iconviewzoomin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="IconViewZoomOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\toolbar\iconviewzoomout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SD_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\SD-Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>

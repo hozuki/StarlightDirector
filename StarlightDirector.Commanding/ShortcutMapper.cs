@@ -28,8 +28,26 @@ namespace StarlightDirector.Commanding {
                 keys &= ~Keys.Alt;
                 s += "Alt+";
             }
-            var raw = Enum.GetName(typeof(Keys), keys);
-            s += raw;
+            string keyName;
+            if (Keys.NumPad0 <= keys && keys <= Keys.NumPad9) {
+                keyName = (keys - Keys.NumPad0).ToString();
+            } else {
+                switch (keys) {
+                    case Keys.Oemtilde:
+                        keyName = "~";
+                        break;
+                    case Keys.Oemplus:
+                        keyName = "=";
+                        break;
+                    case Keys.OemMinus:
+                        keyName = "-";
+                        break;
+                    default:
+                        keyName = Enum.GetName(typeof(Keys), keys);
+                        break;
+                }
+            }
+            s += keyName;
             return s;
         }
 
@@ -77,8 +95,19 @@ namespace StarlightDirector.Commanding {
             var k = Keys.None;
             foreach (var seg in segs) {
                 var s = seg;
-                if (string.Equals("Ctrl", seg, StringComparison.InvariantCultureIgnoreCase)) {
+                if (seg == "Ctrl") {
                     s = "Control";
+                } else if (seg == "-") {
+                    s = "OemMinus";
+                } else if (seg == "=") {
+                    // This is a spelling mistake in .NET Framework.
+                    s = "Oemplus";
+                } else if (int.TryParse(seg, out var num)) {
+                    if (0 <= num && num <= 9) {
+                        s = "NumPad" + num;
+                    } else {
+                        throw new ArgumentOutOfRangeException(nameof(num), "Invalid key for shortcut.");
+                    }
                 }
                 var e = (Keys)Enum.Parse(typeof(Keys), s, false);
                 k |= e;
