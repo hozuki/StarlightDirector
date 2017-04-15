@@ -106,7 +106,7 @@ namespace StarlightDirector.App.UI.Forms {
                 }
                 if (handlerMethod == null) {
                     if (warnIfNotFound) {
-                        Debug.Print($"Warning: required instance handler method '{handlerName}' is not found in this class.");
+                        Debug.Print($"Warning: required instance handler method '{handlerName}' is not found in class '{formType.Name}'.");
                     }
                     return;
                 }

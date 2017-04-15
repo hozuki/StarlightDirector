@@ -35,8 +35,8 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        private static readonly string VersionSuffix = " alpha ";
-        private static readonly string VersionCode = "Miku";
+        private static readonly string VersionSuffix = " beta ";
+        private static readonly string VersionCode = "Riina";
 
     }
 }

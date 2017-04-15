@@ -95,6 +95,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FAppendMeasures";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Append Measures";
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberOfMeasures)).EndInit();
