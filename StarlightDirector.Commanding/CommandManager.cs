@@ -15,9 +15,24 @@ namespace StarlightDirector.Commanding {
         }
 
         public static Command CreateCommand() {
-            var command = new Command();
+            return CreateCommand(Keys.None);
+        }
+
+        public static Command CreateCommand(Keys shortcut) {
+            var command = new Command {
+                ShortcutKeys = shortcut
+            };
             CreatedCommands.Add(command);
             return command;
+        }
+
+        public static Command CreateCommand(Shortcut shortcut) {
+            return CreateCommand(ShortcutMapper.Map(shortcut));
+        }
+
+        public static Command CreateCommand(string shortcut) {
+            var k = ShortcutMapper.ParseShortcutKeys(shortcut);
+            return CreateCommand(k);
         }
 
         public static Stack<Command> CommandStack { get; } = new Stack<Command>();

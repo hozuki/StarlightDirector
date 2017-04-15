@@ -37,16 +37,16 @@ namespace StarlightDirector.Beatmap {
 
         public HashSet<Guid> UsedNoteIDs { get; } = new HashSet<Guid>();
 
+        public bool IsChanged { get; internal set; }
+
+        public bool WasSaved => !string.IsNullOrEmpty(SaveFileName) && File.Exists(SaveFileName);
+
         internal void SetScore(Difficulty difficulty, Score score) {
             if (difficulty == Difficulty.Invalid) {
                 throw new ArgumentOutOfRangeException(nameof(difficulty), "Difficulty is invalid.");
             }
             _scores[difficulty] = score;
         }
-
-        internal bool IsChanged { get; set; }
-
-        internal bool IsSaved => !string.IsNullOrEmpty(SaveFileName) && File.Exists(SaveFileName);
 
         private readonly Dictionary<Difficulty, Score> _scores;
 

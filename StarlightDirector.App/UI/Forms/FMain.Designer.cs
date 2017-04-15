@@ -355,7 +355,7 @@
             this.tsbFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbFileOpen.Name = "tsbFileOpen";
             this.tsbFileOpen.Size = new System.Drawing.Size(23, 22);
-            this.tsbFileOpen.Text = "Open Project";
+            this.tsbFileOpen.Text = "Open Project...";
             // 
             // tsbFileSave
             // 
@@ -594,7 +594,7 @@
             this.tsbEditGoToMeasure});
             this.tlbMeasure.Location = new System.Drawing.Point(3, 19);
             this.tlbMeasure.Name = "tlbMeasure";
-            this.tlbMeasure.Size = new System.Drawing.Size(192, 25);
+            this.tlbMeasure.Size = new System.Drawing.Size(161, 25);
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
@@ -612,7 +612,7 @@
             // tsbEditMeasureAppendMany
             // 
             this.tsbEditMeasureAppendMany.Name = "tsbEditMeasureAppendMany";
-            this.tsbEditMeasureAppendMany.Size = new System.Drawing.Size(152, 22);
+            this.tsbEditMeasureAppendMany.Size = new System.Drawing.Size(145, 22);
             this.tsbEditMeasureAppendMany.Text = "Add &Many...";
             // 
             // tsbEditMeasureDelete
@@ -778,32 +778,28 @@
             // 
             this.mnuFileNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
             this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.mnuFileNew.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileNew.Size = new System.Drawing.Size(174, 22);
             this.mnuFileNew.Text = "&New Project";
             // 
             // mnuFileOpen
             // 
             this.mnuFileOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
             this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.mnuFileOpen.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileOpen.Size = new System.Drawing.Size(174, 22);
             this.mnuFileOpen.Text = "&Open Project...";
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
             this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuFileSave.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileSave.Size = new System.Drawing.Size(174, 22);
             this.mnuFileSave.Text = "&Save Project";
             // 
             // mnuFileSaveAs
             // 
             this.mnuFileSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
             this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.ShortcutKeys = System.Windows.Forms.Keys.F12;
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileSaveAs.Size = new System.Drawing.Size(174, 22);
             this.mnuFileSaveAs.Text = "Save Project &As...";
             // 
             // mnuFileSep1
@@ -826,8 +822,7 @@
             // 
             this.mnuFileExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
             this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.W)));
-            this.mnuFileExit.Size = new System.Drawing.Size(208, 22);
+            this.mnuFileExit.Size = new System.Drawing.Size(174, 22);
             this.mnuFileExit.Text = "E&xit";
             // 
             // mnuEdit
@@ -858,7 +853,6 @@
             this.mnuEditUndo.Enabled = false;
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z)));
             this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
@@ -867,7 +861,6 @@
             this.mnuEditRedo.Enabled = false;
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y)));
             this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
@@ -881,7 +874,6 @@
             this.mnuEditCut.Enabled = false;
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.X)));
             this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
@@ -890,7 +882,6 @@
             this.mnuEditCopy.Enabled = false;
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.C)));
             this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
@@ -899,7 +890,6 @@
             this.mnuEditPaste.Enabled = false;
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.V)));
             this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
@@ -915,16 +905,13 @@
             // mnuEditSelectAllNotes
             // 
             this.mnuEditSelectAllNotes.Name = "mnuEditSelectAllNotes";
-            this.mnuEditSelectAllNotes.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A)));
-            this.mnuEditSelectAllNotes.Size = new System.Drawing.Size(230, 22);
+            this.mnuEditSelectAllNotes.Size = new System.Drawing.Size(152, 22);
             this.mnuEditSelectAllNotes.Text = "All &Notes";
             // 
             // mnuEditSelectAllMeasures
             // 
             this.mnuEditSelectAllMeasures.Name = "mnuEditSelectAllMeasures";
-            this.mnuEditSelectAllMeasures.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.A)));
-            this.mnuEditSelectAllMeasures.Size = new System.Drawing.Size(230, 22);
+            this.mnuEditSelectAllMeasures.Size = new System.Drawing.Size(152, 22);
             this.mnuEditSelectAllMeasures.Text = "All &Measures";
             // 
             // mnuEditSep2
@@ -1022,19 +1009,19 @@
             // mnuEditMeasureAppend
             // 
             this.mnuEditMeasureAppend.Name = "mnuEditMeasureAppend";
-            this.mnuEditMeasureAppend.Size = new System.Drawing.Size(170, 22);
-            this.mnuEditMeasureAppend.Text = "&Add Measure";
+            this.mnuEditMeasureAppend.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditMeasureAppend.Text = "&Append Measure";
             // 
             // mnuEditMeasureAppendMany
             // 
             this.mnuEditMeasureAppendMany.Name = "mnuEditMeasureAppendMany";
-            this.mnuEditMeasureAppendMany.Size = new System.Drawing.Size(170, 22);
-            this.mnuEditMeasureAppendMany.Text = "Add &Measures...";
+            this.mnuEditMeasureAppendMany.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditMeasureAppendMany.Text = "Append &Measures...";
             // 
             // mnuEditMeasureDelete
             // 
             this.mnuEditMeasureDelete.Name = "mnuEditMeasureDelete";
-            this.mnuEditMeasureDelete.Size = new System.Drawing.Size(170, 22);
+            this.mnuEditMeasureDelete.Size = new System.Drawing.Size(192, 22);
             this.mnuEditMeasureDelete.Text = "&Delete Selected";
             // 
             // mnuEditNote
@@ -1138,36 +1125,31 @@
             // mnuEditNoteStartPosition1
             // 
             this.mnuEditNoteStartPosition1.Name = "mnuEditNoteStartPosition1";
-            this.mnuEditNoteStartPosition1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D1)));
-            this.mnuEditNoteStartPosition1.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditNoteStartPosition1.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNoteStartPosition1.Text = "&Left";
             // 
             // mnuEditNoteStartPosition2
             // 
             this.mnuEditNoteStartPosition2.Name = "mnuEditNoteStartPosition2";
-            this.mnuEditNoteStartPosition2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D2)));
-            this.mnuEditNoteStartPosition2.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditNoteStartPosition2.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNoteStartPosition2.Text = "Cen&ter Left";
             // 
             // mnuEditNoteStartPosition3
             // 
             this.mnuEditNoteStartPosition3.Name = "mnuEditNoteStartPosition3";
-            this.mnuEditNoteStartPosition3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D3)));
-            this.mnuEditNoteStartPosition3.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditNoteStartPosition3.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNoteStartPosition3.Text = "&Center";
             // 
             // mnuEditNoteStartPosition4
             // 
             this.mnuEditNoteStartPosition4.Name = "mnuEditNoteStartPosition4";
-            this.mnuEditNoteStartPosition4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D4)));
-            this.mnuEditNoteStartPosition4.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditNoteStartPosition4.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNoteStartPosition4.Text = "Center R&ight";
             // 
             // mnuEditNoteStartPosition5
             // 
             this.mnuEditNoteStartPosition5.Name = "mnuEditNoteStartPosition5";
-            this.mnuEditNoteStartPosition5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D5)));
-            this.mnuEditNoteStartPosition5.Size = new System.Drawing.Size(192, 22);
+            this.mnuEditNoteStartPosition5.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNoteStartPosition5.Text = "&Right";
             // 
             // mnuEditNoteInsertSpecial
@@ -1227,17 +1209,15 @@
             // mnuViewZoomIn
             // 
             this.mnuViewZoomIn.Name = "mnuViewZoomIn";
-            this.mnuViewZoomIn.ShortcutKeyDisplayString = "Ctrl+=";
-            this.mnuViewZoomIn.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Oemplus)));
-            this.mnuViewZoomIn.Size = new System.Drawing.Size(177, 22);
+            this.mnuViewZoomIn.ShortcutKeyDisplayString = "";
+            this.mnuViewZoomIn.Size = new System.Drawing.Size(156, 22);
             this.mnuViewZoomIn.Text = "Zoom &In";
             // 
             // mnuViewZoomOut
             // 
             this.mnuViewZoomOut.Name = "mnuViewZoomOut";
-            this.mnuViewZoomOut.ShortcutKeyDisplayString = "Ctrl+-";
-            this.mnuViewZoomOut.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.OemMinus)));
-            this.mnuViewZoomOut.Size = new System.Drawing.Size(177, 22);
+            this.mnuViewZoomOut.ShortcutKeyDisplayString = "";
+            this.mnuViewZoomOut.Size = new System.Drawing.Size(156, 22);
             this.mnuViewZoomOut.Text = "Zoom &Out";
             // 
             // mnuViewZoomToBeat
@@ -1439,16 +1419,14 @@
             // 
             this.mnuPreviewFromThisMeasure.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
             this.mnuPreviewFromThisMeasure.Name = "mnuPreviewFromThisMeasure";
-            this.mnuPreviewFromThisMeasure.ShortcutKeys = System.Windows.Forms.Keys.F5;
-            this.mnuPreviewFromThisMeasure.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewFromThisMeasure.Size = new System.Drawing.Size(188, 22);
             this.mnuPreviewFromThisMeasure.Text = "From &This Measure";
             // 
             // mnuPreviewFromStart
             // 
             this.mnuPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
             this.mnuPreviewFromStart.Name = "mnuPreviewFromStart";
-            this.mnuPreviewFromStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F5)));
-            this.mnuPreviewFromStart.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewFromStart.Size = new System.Drawing.Size(188, 22);
             this.mnuPreviewFromStart.Text = "From &Start";
             // 
             // mnuPreviewStop
@@ -1456,8 +1434,7 @@
             this.mnuPreviewStop.Enabled = false;
             this.mnuPreviewStop.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
             this.mnuPreviewStop.Name = "mnuPreviewStop";
-            this.mnuPreviewStop.ShortcutKeys = System.Windows.Forms.Keys.F6;
-            this.mnuPreviewStop.Size = new System.Drawing.Size(209, 22);
+            this.mnuPreviewStop.Size = new System.Drawing.Size(188, 22);
             this.mnuPreviewStop.Text = "S&top";
             // 
             // mnuTool
@@ -1504,25 +1481,21 @@
             this.cGSSBeatmapBundleBDBToolStripMenuItem,
             this.cGSSLiveMusicACBToolStripMenuItem});
             this.mnuToolBuild.Name = "mnuToolBuild";
-            this.mnuToolBuild.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolBuild.Size = new System.Drawing.Size(152, 22);
             this.mnuToolBuild.Text = "&Build";
             // 
             // cGSSBeatmapBundleBDBToolStripMenuItem
             // 
             this.cGSSBeatmapBundleBDBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
             this.cGSSBeatmapBundleBDBToolStripMenuItem.Name = "cGSSBeatmapBundleBDBToolStripMenuItem";
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.B)));
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
+            this.cGSSBeatmapBundleBDBToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.cGSSBeatmapBundleBDBToolStripMenuItem.Text = "CGSS Beatmap &Bundle (BDB)...";
             // 
             // cGSSLiveMusicACBToolStripMenuItem
             // 
             this.cGSSLiveMusicACBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
             this.cGSSLiveMusicACBToolStripMenuItem.Name = "cGSSLiveMusicACBToolStripMenuItem";
-            this.cGSSLiveMusicACBToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.B)));
-            this.cGSSLiveMusicACBToolStripMenuItem.Size = new System.Drawing.Size(322, 22);
+            this.cGSSLiveMusicACBToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
             this.cGSSLiveMusicACBToolStripMenuItem.Text = "CGSS Live &Music (ACB)...";
             // 
             // mnuToolSep2

@@ -55,6 +55,7 @@
     <Compile Include="QueryCanRevertEventArgs.cs" />
     <Compile Include="RevertedEventArgs.cs" />
     <Compile Include="RevertedEventHandler.cs" />
+    <Compile Include="ShortcutMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StarlightDirector.Core\StarlightDirector.Core.csproj">

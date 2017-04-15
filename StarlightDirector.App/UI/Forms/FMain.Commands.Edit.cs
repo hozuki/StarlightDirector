@@ -110,12 +110,12 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdEditDifficultySelect = CommandManager.CreateCommand();
         private readonly Command CmdEditBeatmapSettings = CommandManager.CreateCommand();
         private readonly Command CmdEditNoteStartPosition = CommandManager.CreateCommand();
-        private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand();
-        private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand();
+        private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
+        private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
         private readonly Command CmdEditMeasureAppend = CommandManager.CreateCommand();
         private readonly Command CmdEditMeasureAppendMany = CommandManager.CreateCommand();
-        private readonly Command CmdEditMeasureDelete = CommandManager.CreateCommand();
-        private readonly Command CmdEditNoteDelete = CommandManager.CreateCommand();
+        private readonly Command CmdEditMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
+        private readonly Command CmdEditNoteDelete = CommandManager.CreateCommand("Delete");
 
     }
 }

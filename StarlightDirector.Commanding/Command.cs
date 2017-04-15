@@ -16,6 +16,8 @@ namespace StarlightDirector.Commanding {
         internal Command() {
         }
 
+        public Keys ShortcutKeys { get; internal set; }
+
         public void Execute(object sender, object parameter) {
             if (!CanExecute) {
                 return;
@@ -54,22 +56,40 @@ namespace StarlightDirector.Commanding {
                 case MenuItem menuItem:
                     menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
+                    if (ShortcutKeys != Keys.None) {
+                        menuItem.Shortcut = ShortcutMapper.Map(ShortcutKeys);
+                    }
                     break;
                 case ToolStripButton button:
                     button.Click += OnControlInteract;
                     button.Enabled = canExecute;
+                    if (ShortcutKeys != Keys.None) {
+                        button.AutoToolTip = false;
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                    }
                     break;
                 case ToolStripSplitButton button:
                     button.ButtonClick += OnControlInteract;
                     button.Enabled = canExecute;
+                    if (ShortcutKeys != Keys.None) {
+                        button.AutoToolTip = false;
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                    }
                     break;
                 case ToolStripOverflowButton button:
                     button.Click += OnControlInteract;
                     button.Enabled = canExecute;
+                    if (ShortcutKeys != Keys.None) {
+                        button.AutoToolTip = false;
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                    }
                     break;
                 case ToolStripMenuItem menuItem:
                     menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
+                    if (ShortcutKeys != Keys.None) {
+                        menuItem.ShortcutKeys = ShortcutKeys;
+                    }
                     break;
                 default:
                     throw new NotSupportedException($"The type of control ({control.GetType().Name}) is not supported.");
@@ -90,18 +110,36 @@ namespace StarlightDirector.Commanding {
                     break;
                 case MenuItem menuItem:
                     menuItem.Click -= OnControlInteract;
+                    if (ShortcutKeys != Keys.None) {
+                        menuItem.Shortcut = Shortcut.None;
+                    }
                     break;
                 case ToolStripButton button:
                     button.Click -= OnControlInteract;
+                    if (ShortcutKeys != Keys.None) {
+                        button.ToolTipText = string.Empty;
+                        button.AutoToolTip = true;
+                    }
                     break;
                 case ToolStripSplitButton button:
                     button.ButtonClick -= OnControlInteract;
+                    if (ShortcutKeys != Keys.None) {
+                        button.ToolTipText = string.Empty;
+                        button.AutoToolTip = true;
+                    }
                     break;
                 case ToolStripOverflowButton button:
                     button.Click -= OnControlInteract;
+                    if (ShortcutKeys != Keys.None) {
+                        button.ToolTipText = string.Empty;
+                        button.AutoToolTip = true;
+                    }
                     break;
                 case ToolStripMenuItem menuItem:
                     menuItem.Click -= OnControlInteract;
+                    if (ShortcutKeys != Keys.None) {
+                        menuItem.ShortcutKeys = Keys.None;
+                    }
                     break;
                 default:
                     throw new NotSupportedException();

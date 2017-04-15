@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.IO;
@@ -33,6 +34,21 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdFileSave_Executed(object sender, ExecutedEventArgs e) {
+            var project = visualizer.Editor.Project;
+            if (project == null) {
+                throw new InvalidOperationException();
+            }
+            if (!project.IsChanged) {
+                return;
+            }
+            if (project.WasSaved) {
+                // TODO: Silent save.
+            } else {
+                CmdFileSaveAs.Execute(sender, e.Parameter);
+            }
+        }
+
+        private void CmdFileSaveAs_Executed(object sender, ExecutedEventArgs e) {
             saveFileDialog.CheckFileExists = true;
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
@@ -44,10 +60,11 @@ namespace StarlightDirector.App.UI.Forms {
             Close();
         }
 
-        private readonly Command CmdFileNew = CommandManager.CreateCommand();
-        private readonly Command CmdFileOpen = CommandManager.CreateCommand();
-        private readonly Command CmdFileSave = CommandManager.CreateCommand();
-        private readonly Command CmdFileExit = CommandManager.CreateCommand();
+        private readonly Command CmdFileNew = CommandManager.CreateCommand("Ctrl+N");
+        private readonly Command CmdFileOpen = CommandManager.CreateCommand("Ctrl+O");
+        private readonly Command CmdFileSave = CommandManager.CreateCommand("Ctrl+S");
+        private readonly Command CmdFileSaveAs = CommandManager.CreateCommand("F12");
+        private readonly Command CmdFileExit = CommandManager.CreateCommand("Ctrl+W");
 
     }
 }

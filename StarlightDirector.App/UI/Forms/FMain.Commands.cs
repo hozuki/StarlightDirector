@@ -16,6 +16,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbFileOpen.Attach(CmdFileOpen);
             mnuFileSave.Attach(CmdFileSave);
             tsbFileSave.Attach(CmdFileSave);
+            mnuFileSaveAs.Attach(CmdFileSaveAs);
             mnuFileExit.Attach(CmdFileExit);
             sysClose.Attach(CmdFileExit);
 
