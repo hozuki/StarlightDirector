@@ -21,6 +21,21 @@ namespace StarlightDirector.App.UI.Forms {
             UpdateUIIndications(difficulty);
         }
 
+        private void CmdEditBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {
+            var project = visualizer.Editor.Project;
+            if (project == null) {
+                return;
+            }
+            var (r, bpm, offset) = FBeatmapSettings.RequestInput(this, project.Settings);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            project.Settings.BeatPerMinute = bpm;
+            project.Settings.StartTimeOffset = offset;
+            visualizer.RecalcLayout();
+            visualizer.RedrawScore();
+        }
+
         private void CmdEditNoteStartPosition_Executed(object sender, ExecutedEventArgs e) {
             if (!visualizer.Editor.HasSelectedNotes) {
                 return;
@@ -93,6 +108,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private readonly Command CmdEditDifficultySelect = CommandManager.CreateCommand();
+        private readonly Command CmdEditBeatmapSettings = CommandManager.CreateCommand();
         private readonly Command CmdEditNoteStartPosition = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand();

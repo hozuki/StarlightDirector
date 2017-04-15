@@ -74,6 +74,12 @@
     <Compile Include="UI\Forms\FAppendMeasures.Designer.cs">
       <DependentUpon>FAppendMeasures.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.Designer.cs">
+      <DependentUpon>FBeatmapSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -108,6 +114,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FAppendMeasures.resx">
       <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FBeatmapSettings.resx">
+      <DependentUpon>FBeatmapSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>

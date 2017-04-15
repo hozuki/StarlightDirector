@@ -19,6 +19,8 @@ namespace StarlightDirector.App.UI.Forms {
             mnuFileExit.Attach(CmdFileExit);
             sysClose.Attach(CmdFileExit);
 
+            mnuEditBeatmapSettings.Attach(CmdEditBeatmapSettings);
+
             mnuEditDifficultyDebut.SetParameter(Difficulty.Debut);
             mnuEditDifficultyRegular.SetParameter(Difficulty.Regular);
             mnuEditDifficultyPro.SetParameter(Difficulty.Pro);

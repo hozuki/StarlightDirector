@@ -1,5 +1,5 @@
 ﻿namespace StarlightDirector.App.UI.Forms {
-    partial class FAppendMeasures {
+    partial class FBeatmapSettings {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,82 +23,93 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtNumberOfMeasures = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtBPM = new System.Windows.Forms.TextBox();
+            this.txtMusicOffset = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.txtNumberOfMeasures)).BeginInit();
+            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(13, 27);
+            this.label1.Location = new System.Drawing.Point(26, 30);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Number of measures:";
+            this.label1.Size = new System.Drawing.Size(107, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Beats per minute:";
             // 
-            // txtNumberOfMeasures
+            // label2
             // 
-            this.txtNumberOfMeasures.Location = new System.Drawing.Point(138, 25);
-            this.txtNumberOfMeasures.Maximum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            0});
-            this.txtNumberOfMeasures.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.txtNumberOfMeasures.Name = "txtNumberOfMeasures";
-            this.txtNumberOfMeasures.Size = new System.Drawing.Size(105, 21);
-            this.txtNumberOfMeasures.TabIndex = 2;
-            this.txtNumberOfMeasures.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(26, 62);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(125, 12);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Music offset (secs):";
+            // 
+            // txtBPM
+            // 
+            this.txtBPM.Location = new System.Drawing.Point(157, 27);
+            this.txtBPM.Name = "txtBPM";
+            this.txtBPM.Size = new System.Drawing.Size(131, 21);
+            this.txtBPM.TabIndex = 2;
+            // 
+            // txtMusicOffset
+            // 
+            this.txtMusicOffset.Location = new System.Drawing.Point(157, 59);
+            this.txtMusicOffset.Name = "txtMusicOffset";
+            this.txtMusicOffset.Size = new System.Drawing.Size(131, 21);
+            this.txtMusicOffset.TabIndex = 3;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(84, 65);
+            this.btnOK.Location = new System.Drawing.Point(102, 104);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
-            this.btnOK.TabIndex = 3;
+            this.btnOK.TabIndex = 4;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             // 
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(180, 65);
+            this.btnCancel.Location = new System.Drawing.Point(198, 104);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // FAppendMeasures
+            // errProvider
+            // 
+            this.errProvider.ContainerControl = this;
+            // 
+            // FBeatmapSettings
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(282, 100);
+            this.ClientSize = new System.Drawing.Size(324, 139);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.txtNumberOfMeasures);
+            this.Controls.Add(this.txtMusicOffset);
+            this.Controls.Add(this.txtBPM);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FAppendMeasures";
+            this.Name = "FBeatmapSettings";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Append Measures";
-            ((System.ComponentModel.ISupportInitialize)(this.txtNumberOfMeasures)).EndInit();
+            this.Text = "Beatmap Settings";
+            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -107,8 +118,11 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.NumericUpDown txtNumberOfMeasures;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtBPM;
+        private System.Windows.Forms.TextBox txtMusicOffset;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.ErrorProvider errProvider;
     }
 }
