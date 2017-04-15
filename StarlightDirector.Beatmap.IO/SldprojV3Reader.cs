@@ -56,6 +56,7 @@ namespace StarlightDirector.Beatmap.IO {
                 ReadScore(db, score, projectVersion);
                 ResolveReferences(score);
                 FixSyncNotes(score);
+                FixSlideNotes(score);
                 project.SetScore(difficulty, score);
             }
 
@@ -221,6 +222,19 @@ namespace StarlightDirector.Beatmap.IO {
                     }
                     NoteExtensions.ConnectSync(prev, null);
                 }
+            }
+        }
+
+        // Fix the design mistake in v0.3.1 projects: slide notes use flick note fields (next/prev & flick type).
+        private static void FixSlideNotes(Score score) {
+            foreach (var note in score.GetAllNotes()) {
+                if (!note.Helper.IsSlide) {
+                    continue;
+                }
+                note.Editor.NextSlide = note.Editor.NextFlick;
+                note.Editor.PrevSlide = note.Editor.PrevFlick;
+                note.Editor.NextFlick = note.Editor.PrevFlick = null;
+                note.Basic.FlickType = NoteFlickType.None;
             }
         }
 

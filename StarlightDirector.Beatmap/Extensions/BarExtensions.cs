@@ -20,6 +20,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             bar.Notes.Add(note);
             bar.Notes.Sort(Note.TimingThenPositionComparison);
             bar.Score.Project.UsedNoteIDs.Add(id);
+            note.FixSyncWhenAdded();
             return note;
         }
 
@@ -39,8 +40,8 @@ namespace StarlightDirector.Beatmap.Extensions {
                 throw new ArgumentException("Note is not found in bar.");
             }
 
-            // TODO
             // Relations
+            note.ResetAsTap();
 
             bar.Notes.Remove(note);
             bar.Score.Project.UsedNoteIDs.Remove(note.StarlightID);

@@ -131,7 +131,7 @@ namespace StarlightDirector.Beatmap {
 
             public bool IsHoldEnd {
                 [DebuggerStepThrough]
-                get { return HasHold && IsTap; }
+                get { return HasHoldPair && _note.Basic.Type != NoteType.Hold; }
             }
 
             public bool IsHold {
@@ -139,7 +139,7 @@ namespace StarlightDirector.Beatmap {
                 get { return IsHoldStart || IsHoldEnd; }
             }
 
-            public bool HasHold {
+            public bool HasHoldPair {
                 [DebuggerStepThrough]
                 get { return _note.Editor.HoldPair != null; }
             }
