@@ -1,11 +1,14 @@
 ﻿using System.Diagnostics;
+using System.Drawing;
 using StarlightDirector.Beatmap;
 
 namespace StarlightDirector.UI.Controls {
     public sealed class ScoreEditorHitTestResult {
 
         [DebuggerStepThrough]
-        internal ScoreEditorHitTestResult(Bar bar, Note note, int row, NotePosition column) {
+        internal ScoreEditorHitTestResult(Point location, ScoreEditorHitRegion hitRegion, Bar bar, Note note, int row, NotePosition column) {
+            Location = location;
+            HitRegion = hitRegion;
             Bar = bar;
             Note = note;
             Row = row;
@@ -13,9 +16,11 @@ namespace StarlightDirector.UI.Controls {
         }
 
         [DebuggerStepThrough]
-        internal ScoreEditorHitTestResult(Bar bar, Note note, int row, int track)
-            : this(bar, note, row, (NotePosition)track) {
+        internal ScoreEditorHitTestResult(Point location, ScoreEditorHitRegion hitRegion, Bar bar, Note note, int row, int track)
+            : this(location, hitRegion, bar, note, row, (NotePosition)track) {
         }
+
+        public Point Location { get; }
 
         public Bar Bar { get; }
 
@@ -25,13 +30,21 @@ namespace StarlightDirector.UI.Controls {
 
         public NotePosition Column { get; }
 
+        public ScoreEditorHitRegion HitRegion { get; }
+
         public bool HitAnyBar => Bar != null;
 
         public bool HitBarGridIntersection => Bar != null && Row >= 0 && Column != NotePosition.Nowhere;
 
         public bool HitAnyNote => Note != null;
 
-        public static readonly ScoreEditorHitTestResult Invalid = new ScoreEditorHitTestResult(null, null, -1, NotePosition.Nowhere);
+        internal static ScoreEditorHitTestResult GetInvalidResult(Point location) {
+            return new ScoreEditorHitTestResult(location, ScoreEditorHitRegion.None, null, null, -1, NotePosition.Nowhere);
+        }
+
+        internal static ScoreEditorHitTestResult GetInvalidResult(int x, int y) {
+            return new ScoreEditorHitTestResult(new Point(x, y), ScoreEditorHitRegion.None, null, null, -1, NotePosition.Nowhere);
+        }
 
     }
 }

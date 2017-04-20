@@ -17,6 +17,7 @@ namespace StarlightDirector.UI.Controls {
 
         [Browsable(false)]
         public Project Project {
+            [DebuggerStepThrough]
             get => _project;
             set {
                 var b = value != _project;
@@ -30,6 +31,7 @@ namespace StarlightDirector.UI.Controls {
 
         [Browsable(false)]
         public Difficulty Difficulty {
+            [DebuggerStepThrough]
             get => _difficulty;
             set {
                 var b = value != _difficulty;
@@ -45,7 +47,7 @@ namespace StarlightDirector.UI.Controls {
         [CanBeNull]
         public Score CurrentScore {
             [DebuggerStepThrough]
-            get { return Project?.GetScore(Difficulty); }
+            get => Project?.GetScore(Difficulty);
         }
 
         [Browsable(false)]
@@ -53,6 +55,7 @@ namespace StarlightDirector.UI.Controls {
 
         [Browsable(false)]
         public int ScrollOffsetY {
+            [DebuggerStepThrough]
             get => _scrollOffsetY;
             internal set {
                 var scrollBar = ScrollBar;
@@ -69,6 +72,7 @@ namespace StarlightDirector.UI.Controls {
 
         [Browsable(false)]
         public float BarLineSpaceUnit {
+            [DebuggerStepThrough]
             get => _barLineSpaceUnit;
             set {
                 var b = !value.Equals(_barLineSpaceUnit);
@@ -76,6 +80,17 @@ namespace StarlightDirector.UI.Controls {
                     _barLineSpaceUnit = value;
                     RecalcLayout();
                     Invalidate();
+                }
+            }
+        }
+
+        public ScoreEditMode EditMode {
+            get => _editMode;
+            set {
+                var b = value != _editMode;
+                if (b) {
+                    _editMode = value;
+                    OnEditModeChanged(EventArgs.Empty);
                 }
             }
         }
@@ -124,6 +139,7 @@ namespace StarlightDirector.UI.Controls {
         private int _scrollOffsetY;
         private Project _project;
         private Difficulty _difficulty = Difficulty.Debut;
+        private ScoreEditMode _editMode;
         private static readonly float DefaultBarLineSpaceUnit = 7;
         private float _barLineSpaceUnit = DefaultBarLineSpaceUnit;
 

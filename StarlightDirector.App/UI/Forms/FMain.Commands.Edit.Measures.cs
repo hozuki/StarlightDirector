@@ -19,7 +19,7 @@ namespace StarlightDirector.App.UI.Forms {
                 visualizer.ScrollBar.Value = (int)estY;
             }
 
-            visualizer.RedrawScore();
+            visualizer.Editor.Invalidate();
         }
 
         private void CmdEditMeasureAppendMany_Executed(object sender, ExecutedEventArgs e) {
@@ -42,13 +42,13 @@ namespace StarlightDirector.App.UI.Forms {
                 visualizer.ScrollBar.Value = (int)estY;
             }
 
-            visualizer.RedrawScore();
+            visualizer.Editor.Invalidate();
         }
 
         private void CmdEditMeasureDelete_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.RemoveSelectedBars();
             visualizer.RecalcLayout();
-            visualizer.RedrawScore();
+            visualizer.Editor.Invalidate();
         }
 
         private readonly Command CmdEditMeasureAppend = CommandManager.CreateCommand();

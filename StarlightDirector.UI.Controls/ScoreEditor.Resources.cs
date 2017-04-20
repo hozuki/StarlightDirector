@@ -15,8 +15,10 @@ namespace StarlightDirector.UI.Controls {
 
             _gridNumberBrush = new D2DSolidBrush(context, Color.White);
 
-            _scoreBarFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints, FontStyle.Regular, 10);
-            _scoreBarBoldFont = new D2DFont(context.DirectWriteFactory, _scoreBarFont.FamilyName, _scoreBarFont.Size, FontStyle.Bold, _scoreBarFont.Weight);
+            _gridNumberFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints, FontStyle.Regular, 10);
+            _gridNumberBoldFont = new D2DFont(context.DirectWriteFactory, _gridNumberFont.FamilyName, _gridNumberFont.Size, FontStyle.Bold, _gridNumberFont.Weight);
+            _barInfoFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints * 1.5f, FontStyle.Regular, 10);
+            _barInfoBoldFont = new D2DFont(context.DirectWriteFactory, _barInfoFont.FamilyName, _barInfoFont.Size, FontStyle.Bold, _barInfoFont.Weight);
 
             _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
             _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), NoteShapeStrokeWidth * 3);
@@ -52,8 +54,10 @@ namespace StarlightDirector.UI.Controls {
 
             _gridNumberBrush?.Dispose();
 
-            _scoreBarFont?.Dispose();
-            _scoreBarBoldFont?.Dispose();
+            _gridNumberFont?.Dispose();
+            _gridNumberBoldFont?.Dispose();
+            _barInfoFont?.Dispose();
+            _barInfoBoldFont?.Dispose();
 
             _noteCommonStroke?.Dispose();
             _noteSelectedStroke?.Dispose();
@@ -90,8 +94,10 @@ namespace StarlightDirector.UI.Controls {
 
         private D2DBrush _gridNumberBrush;
 
-        private D2DFont _scoreBarFont;
-        private D2DFont _scoreBarBoldFont;
+        private D2DFont _gridNumberFont;
+        private D2DFont _gridNumberBoldFont;
+        private D2DFont _barInfoFont;
+        private D2DFont _barInfoBoldFont;
 
         // Note resources
 

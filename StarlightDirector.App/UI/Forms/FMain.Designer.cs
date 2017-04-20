@@ -31,6 +31,9 @@
             this.tsbEditMode = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbDifficultySelection = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbViewZoomIn = new System.Windows.Forms.ToolStripButton();
+            this.tsbViewZoomOut = new System.Windows.Forms.ToolStripButton();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.tlbPostprocessing = new System.Windows.Forms.ToolStrip();
             this.tsbPreviewFromStart = new System.Windows.Forms.ToolStripButton();
@@ -208,9 +211,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbViewZoomIn = new System.Windows.Forms.ToolStripButton();
-            this.tsbViewZoomOut = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -284,11 +284,36 @@
             // 
             // tsbDifficultySelection
             // 
+            this.tsbDifficultySelection.AutoToolTip = false;
             this.tsbDifficultySelection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
             this.tsbDifficultySelection.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbDifficultySelection.Name = "tsbDifficultySelection";
             this.tsbDifficultySelection.Size = new System.Drawing.Size(56, 22);
             this.tsbDifficultySelection.Text = "Debut";
+            this.tsbDifficultySelection.ToolTipText = "Difficulty";
+            // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbViewZoomIn
+            // 
+            this.tsbViewZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbViewZoomIn.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomIn;
+            this.tsbViewZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbViewZoomIn.Name = "tsbViewZoomIn";
+            this.tsbViewZoomIn.Size = new System.Drawing.Size(23, 22);
+            this.tsbViewZoomIn.Text = "Zoom In";
+            // 
+            // tsbViewZoomOut
+            // 
+            this.tsbViewZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbViewZoomOut.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomOut;
+            this.tsbViewZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbViewZoomOut.Name = "tsbViewZoomOut";
+            this.tsbViewZoomOut.Size = new System.Drawing.Size(23, 22);
+            this.tsbViewZoomOut.Text = "Zoom Out";
             // 
             // groupBox4
             // 
@@ -1735,29 +1760,6 @@
             this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
-            // tsbViewZoomIn
-            // 
-            this.tsbViewZoomIn.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbViewZoomIn.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomIn;
-            this.tsbViewZoomIn.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbViewZoomIn.Name = "tsbViewZoomIn";
-            this.tsbViewZoomIn.Size = new System.Drawing.Size(23, 22);
-            this.tsbViewZoomIn.Text = "Zoom In";
-            // 
-            // tsbViewZoomOut
-            // 
-            this.tsbViewZoomOut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbViewZoomOut.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomOut;
-            this.tsbViewZoomOut.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbViewZoomOut.Name = "tsbViewZoomOut";
-            this.tsbViewZoomOut.Size = new System.Drawing.Size(23, 22);
-            this.tsbViewZoomOut.Text = "Zoom Out";
             // 
             // FMain
             // 

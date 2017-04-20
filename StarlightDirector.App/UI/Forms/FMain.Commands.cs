@@ -5,6 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
+using StarlightDirector.UI.Controls;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -32,6 +33,17 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditDifficultyPro.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyMaster.Attach(CmdEditDifficultySelect);
             mnuEditDifficultyMasterPlus.Attach(CmdEditDifficultySelect);
+
+            mnuEditModeSelect.SetParameter(ScoreEditMode.Select);
+            mnuEditModeTap.SetParameter(ScoreEditMode.Tap);
+            mnuEditModeHold.SetParameter(ScoreEditMode.Hold);
+            mnuEditModeFlick.SetParameter(ScoreEditMode.Flick);
+            mnuEditModeSlide.SetParameter(ScoreEditMode.Slide);
+            mnuEditModeSelect.Attach(CmdEditModeSelect);
+            mnuEditModeTap.Attach(CmdEditModeSelect);
+            mnuEditModeHold.Attach(CmdEditModeSelect);
+            mnuEditModeFlick.Attach(CmdEditModeSelect);
+            mnuEditModeSlide.Attach(CmdEditModeSelect);
 
             mnuEditNoteStartPosition1.SetParameter(NotePosition.Left);
             mnuEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
@@ -93,11 +105,11 @@ namespace StarlightDirector.App.UI.Forms {
                     continue;
                 }
                 var commandName = field.Name;
-                SubscribeEvent(commandObject, commandName, "Executed", typeof(ExecutedEventHandler), true);
-                SubscribeEvent(commandObject, commandName, "Reverted", typeof(RevertedEventHandler));
-                SubscribeEvent(commandObject, commandName, "QueryCanExecute", typeof(QueryCanExecuteEventHandler));
-                SubscribeEvent(commandObject, commandName, "QueryCanRevert", typeof(QueryCanRevertEventHandler));
-                SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(QueryRecordToHistoryEventHandler));
+                SubscribeEvent(commandObject, commandName, "Executed", typeof(EventHandler<ExecutedEventArgs>), true);
+                SubscribeEvent(commandObject, commandName, "Reverted", typeof(EventHandler<RevertedEventArgs>));
+                SubscribeEvent(commandObject, commandName, "QueryCanExecute", typeof(EventHandler<QueryCanExecuteEventArgs>));
+                SubscribeEvent(commandObject, commandName, "QueryCanRevert", typeof(EventHandler<QueryCanRevertEventArgs>));
+                SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(EventHandler<QueryRecordToHistoryEventArgs>));
             }
 
             void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType, bool warnIfNotFound = false)

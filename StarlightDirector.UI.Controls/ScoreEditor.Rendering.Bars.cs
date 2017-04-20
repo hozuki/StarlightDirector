@@ -16,6 +16,7 @@ namespace StarlightDirector.UI.Controls {
             var primaryBeatMode = PrimaryBeatMode;
             var gridArea = GetGridArea(context.ClientSize);
             var barArea = GetBarArea(context.ClientSize);
+            var infoArea = GetInfoArea(context.ClientSize);
             var barStartY = (float)ScrollOffsetY;
 
             var unit = BarLineSpaceUnit;
@@ -24,8 +25,9 @@ namespace StarlightDirector.UI.Controls {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 var visible = IsBarVisible(barArea, barStartY, numberOfGrids, unit);
                 if (visible) {
-                    RenderBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
+                    RenderBarInfo(context, bar, infoArea, barStartY);
                     RenderBarGrid(context, gridArea, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
+                    RenderBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
                 }
                 barStartY -= numberOfGrids * unit;
             }
@@ -38,6 +40,19 @@ namespace StarlightDirector.UI.Controls {
             var barHeight = numberOfGrids * unit;
             var rect = new RectangleF(barArea.Left, barStartY, barArea.Width, -barHeight);
             context.DrawRectangle(_barSelectedOutlinePen, rect);
+        }
+
+        private void RenderBarInfo(RenderContext context, Bar bar, RectangleF infoArea, float barStartY) {
+            var textFont = _barInfoFont;
+            var lineHeight = textFont.Size * 1.2f;
+            var x = infoArea.Left + 2;
+            var y = barStartY - lineHeight;
+            var textBrush = _gridNumberBrush;
+
+            // Bar index, at the bottom.
+            context.DrawText($"#{bar.Index + 1}", textBrush, textFont, x, y);
+            // Other text
+            //y -= lineHeight;
         }
 
         private void RenderBarGrid(RenderContext context, RectangleF gridArea, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
@@ -72,7 +87,7 @@ namespace StarlightDirector.UI.Controls {
             var secondaryBeatIndex = primaryBeatIndex / 2;
 
             var textBrush = _gridNumberBrush;
-            var textFont = _scoreBarFont;
+            var textFont = _gridNumberFont;
             // Horizontal
             for (var i = 0; i <= numberOfGrids; ++i) {
                 if (i % firstClearDrawnRatio != 0) {
@@ -98,7 +113,7 @@ namespace StarlightDirector.UI.Controls {
 
                 if (i < numberOfGrids) {
                     var text = (i + 1).ToString();
-                    var textSize = context.MeasureText(text, _scoreBarFont);
+                    var textSize = context.MeasureText(text, _gridNumberFont);
                     var textLeft = gridArea.Left - textSize.Width - GridNumberMargin;
                     var textTop = currentY - textSize.Height / 2;
                     context.DrawText(text, textBrush, textFont, textLeft, textTop, textSize.Width, textSize.Height);
@@ -120,14 +135,26 @@ namespace StarlightDirector.UI.Controls {
         [DebuggerStepThrough]
         private RectangleF GetGridArea(SizeF clientSize) {
             var config = Config;
-            var area = new RectangleF((clientSize.Width - config.EditingAreaWidth) / 2 + (config.LeftAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
             return area;
         }
 
         [DebuggerStepThrough]
         private RectangleF GetGridArea(Size clientSize) {
             var config = Config;
-            var area = new RectangleF((clientSize.Width - config.EditingAreaWidth) / 2 + (config.LeftAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
+            return area;
+        }
+
+        [DebuggerStepThrough]
+        private RectangleF GetInfoArea() {
+            return GetInfoArea(ClientSize);
+        }
+
+        [DebuggerStepThrough]
+        private RectangleF GetInfoArea(SizeF clientSize) {
+            var config = Config;
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.InfoAreaWidth, clientSize.Height);
             return area;
         }
 
@@ -139,14 +166,14 @@ namespace StarlightDirector.UI.Controls {
         [DebuggerStepThrough]
         private RectangleF GetBarArea(SizeF clientSize) {
             var config = Config;
-            var area = new RectangleF((clientSize.Width - config.EditingAreaWidth) / 2, 0, config.EditingAreaWidth, clientSize.Height);
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.BarAreaWidth, clientSize.Height);
             return area;
         }
 
         [DebuggerStepThrough]
         private RectangleF GetBarArea(Size clientSize) {
             var config = Config;
-            var area = new RectangleF((clientSize.Width - config.EditingAreaWidth) / 2, 0, config.EditingAreaWidth, clientSize.Height);
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.BarAreaWidth, clientSize.Height);
             return area;
         }
 

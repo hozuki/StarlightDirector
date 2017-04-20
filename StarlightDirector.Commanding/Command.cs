@@ -7,11 +7,11 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Commanding {
     public sealed class Command : DisposableBase {
 
-        public event QueryCanExecuteEventHandler QueryCanExecute;
-        public event QueryCanRevertEventHandler QueryCanRevert;
-        public event QueryRecordToHistoryEventHandler QueryRecordToHistory;
-        public event ExecutedEventHandler Executed;
-        public event RevertedEventHandler Reverted;
+        public event EventHandler<QueryCanExecuteEventArgs> QueryCanExecute;
+        public event EventHandler<QueryCanRevertEventArgs> QueryCanRevert;
+        public event EventHandler<QueryRecordToHistoryEventArgs> QueryRecordToHistory;
+        public event EventHandler<ExecutedEventArgs> Executed;
+        public event EventHandler<RevertedEventArgs> Reverted;
 
         internal Command() {
         }

@@ -31,21 +31,33 @@ namespace StarlightDirector.UI.Controls {
         public ScoreEditorHitTestResult HitTest(int x, int y) {
             var score = Project?.GetScore(Difficulty);
             if (score == null || !score.HasAnyBar) {
-                return ScoreEditorHitTestResult.Invalid;
+                return ScoreEditorHitTestResult.GetInvalidResult(x, y);
+            }
+
+            var barArea = GetBarArea();
+            if (!barArea.Contains(x, y)) {
+                return ScoreEditorHitTestResult.GetInvalidResult(x, y);
             }
 
             var config = Config;
-            var barArea = GetBarArea();
+            ScoreEditorHitRegion hitRegion;
+            var relativeX = x - barArea.Left;
+            if (relativeX < config.InfoAreaWidth) {
+                hitRegion = ScoreEditorHitRegion.InfoArea;
+            } else if (relativeX < config.InfoAreaWidth + config.GridNumberAreaWidth) {
+                hitRegion = ScoreEditorHitRegion.GridNumberArea;
+            } else if (relativeX < config.InfoAreaWidth + config.GridNumberAreaWidth + config.GridAreaWidth) {
+                hitRegion = ScoreEditorHitRegion.GridArea;
+            } else {
+                hitRegion = ScoreEditorHitRegion.SpecialNoteArea;
+            }
+
             var gridArea = GetGridArea();
             var columnWidth = gridArea.Width / (5 - 1);
-            var hitArea = barArea;
-            if (!hitArea.Contains(x, y)) {
-                return ScoreEditorHitTestResult.Invalid;
-            }
 
             var barStartY = (float)ScrollOffsetY;
             if (y > barStartY + config.NoteRadius) {
-                return ScoreEditorHitTestResult.Invalid;
+                return ScoreEditorHitTestResult.GetInvalidResult(x, y);
             }
 
             var unit = BarLineSpaceUnit;
@@ -80,35 +92,35 @@ namespace StarlightDirector.UI.Controls {
                 } else if (Math.Abs(relativeY - (testY + newUnit)) < config.NoteRadius) {
                     row = testRow + 1;
                 } else {
-                    return new ScoreEditorHitTestResult(bar, null, -1, NotePosition.Nowhere);
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
                 }
                 row *= firstClearDrawnRatio;
 
                 // Locate the column.
                 // Remember, gridArea is already adjusted.
-                var relativeX = x - gridArea.Left;
-                var testCol = (int)((relativeX + config.NoteRadius) / columnWidth);
+                var relativeGridX = x - gridArea.Left;
+                var testCol = (int)((relativeGridX + config.NoteRadius) / columnWidth);
                 if (testCol < 0) {
-                    break;
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
                 }
                 var testX = testCol * columnWidth;
                 int col;
-                if (Math.Abs(relativeX - testX) < config.NoteRadius) {
+                if (Math.Abs(relativeGridX - testX) < config.NoteRadius) {
                     col = testCol;
-                } else if (Math.Abs(relativeX - (testX + columnWidth)) < config.NoteRadius) {
+                } else if (Math.Abs(relativeGridX - (testX + columnWidth)) < config.NoteRadius) {
                     col = testCol + 1;
                 } else {
-                    return new ScoreEditorHitTestResult(bar, null, -1, NotePosition.Nowhere);
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
                 }
 
                 // Hit any note?
                 var note = bar.Notes.FirstOrDefault(n => n.Basic.IndexInGrid == row && (int)n.Basic.FinishPosition == col + 1);
 
-                var result = new ScoreEditorHitTestResult(bar, note, row, col + 1);
+                var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, note, row, col + 1);
                 return result;
             }
 
-            return ScoreEditorHitTestResult.Invalid;
+            return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, null, null, -1, NotePosition.Nowhere);
         }
     }
 

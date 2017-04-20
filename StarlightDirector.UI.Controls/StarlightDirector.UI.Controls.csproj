@@ -79,7 +79,11 @@
     <Compile Include="MouseButtonAction.cs" />
     <Compile Include="PrimaryBeatMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreEditMode.cs" />
     <Compile Include="ScoreEditor.Editing.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditor.EditMode.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreEditor.Layout.cs">
@@ -101,7 +105,10 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreEditorConfig.cs" />
+    <Compile Include="ScoreEditorHitRegion.cs" />
     <Compile Include="ScoreEditorHitTestResult.cs" />
+    <Compile Include="ScoreEditorSelectionHandler.cs" />
+    <Compile Include="ScoreEditorSelectionHandler.ElementSelection.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>

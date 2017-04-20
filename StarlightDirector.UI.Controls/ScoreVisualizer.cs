@@ -2,7 +2,6 @@
 using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
-using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.UI.Controls {
@@ -13,6 +12,7 @@ namespace StarlightDirector.UI.Controls {
             RegisterEventHandlers();
 
             editor.ScrollBar = vScroll;
+            _scoreEditorSelectionHandler = new ScoreEditorSelectionHandler(this);
         }
 
         ~ScoreVisualizer() {
@@ -33,10 +33,6 @@ namespace StarlightDirector.UI.Controls {
 
         public void RecalcLayout() {
             editor.RecalcLayout();
-        }
-
-        public void RedrawScore() {
-            editor.Invalidate();
         }
 
         protected override void OnLayout(LayoutEventArgs e) {
@@ -90,77 +86,37 @@ namespace StarlightDirector.UI.Controls {
         private void UnregisterEventHandlers() {
             vScroll.ValueChanged -= VScroll_ValueChanged;
             editor.MouseDown -= Editor_MouseDown;
+            editor.MouseUp -= Editor_MouseUp;
+            editor.MouseMove -= Editor_MouseMove;
+            editor.EditModeChanged -= Editor_EditModeChanged;
         }
 
         private void RegisterEventHandlers() {
             vScroll.ValueChanged += VScroll_ValueChanged;
             editor.MouseDown += Editor_MouseDown;
+            editor.MouseUp += Editor_MouseUp;
+            editor.MouseMove += Editor_MouseMove;
+            editor.EditModeChanged += Editor_EditModeChanged;
+        }
+
+        internal void RequestContextMenu(ContextMenuRequestedEventArgs e) {
+            ContextMenuRequested?.Invoke(this, e);
         }
 
         private void Editor_MouseDown(object sender, MouseEventArgs e) {
-            var hit = editor.HitTest(e.Location);
-            if (!hit.HitAnyBar) {
-                editor.ClearSelectedBars();
-                editor.ClearSelectedNotes();
-                editor.Invalidate();
-                return;
-            }
+            _scoreEditorSelectionHandler.OnMouseDown(e);
+        }
 
-            if (e.Button == MouseButtons.Left) {
-                var modifiers = ModifierKeys;
-                if (hit.HitAnyNote) {
-                    if (editor.HasSelectedBars) {
-                        editor.ClearSelectedBars();
-                    } else {
-                        var note = hit.Note;
-                        switch (modifiers) {
-                            case Keys.Control:
-                                note.EditorToggleSelected();
-                                break;
-                            case Keys.Shift:
-                            // TODO
-                            //break;
-                            case Keys.None:
-                                if (editor.HasSelectedNotes) {
-                                    editor.ClearSelectedNotesExcept(note);
-                                }
-                                note.EditorToggleSelected();
-                                break;
-                        }
-                    }
-                    editor.Invalidate();
-                } else if (hit.HitBarGridIntersection) {
-                    // Add a note
-                    editor.AddNoteAt(hit.Bar, hit.Row, hit.Column);
-                    editor.Invalidate();
-                } else {
-                    if (editor.HasSelectedNotes) {
-                        // Clear note selection first.
-                        editor.ClearSelectedNotes();
-                    } else {
-                        // Select/unselect bar(s).
-                        var bar = hit.Bar;
-                        switch (modifiers) {
-                            case Keys.Control:
-                                bar.EditorToggleSelected();
-                                break;
-                            case Keys.Shift:
-                            // TODO
-                            //break;
-                            case Keys.None:
-                                if (editor.HasSelectedBars) {
-                                    editor.ClearSelectedBarsExcept(bar);
-                                }
-                                bar.EditorToggleSelected();
-                                break;
-                        }
-                    }
-                    editor.Invalidate();
-                }
-            } else if (e.Button == MouseButtons.Right) {
-                var ea = new ContextMenuRequestedEventArgs(hit.HitAnyNote ? VisualizerContextMenu.Note : VisualizerContextMenu.Bar, e.Location);
-                ContextMenuRequested?.Invoke(this, ea);
-            }
+        private void Editor_MouseUp(object sender, MouseEventArgs e) {
+            _scoreEditorSelectionHandler.OnMouseUp(e);
+        }
+
+        private void Editor_MouseMove(object sender, MouseEventArgs e) {
+            _scoreEditorSelectionHandler.OnMouseMove(e);
+        }
+
+        private void Editor_EditModeChanged(object sender, EventArgs e) {
+            _scoreEditorSelectionHandler.OnEditModeChanged();
         }
 
         private void VScroll_ValueChanged(object sender, EventArgs eventArgs) {
@@ -168,6 +124,8 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private static readonly int ConstMargin = 3;
+
+        private readonly ScoreEditorSelectionHandler _scoreEditorSelectionHandler;
 
     }
 }

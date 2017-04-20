@@ -245,8 +245,8 @@ namespace StarlightDirector.UI.Controls {
                 var selectRect = e.ImageRectangle;
                 selectRect.X -= 2;
                 selectRect.Y -= 2;
-                selectRect.Width += 2;
-                selectRect.Height += 2;
+                selectRect.Width += 3;
+                selectRect.Height += 3;
                 g.FillRectangle(scheme.MenuItemCheckBoxBackground, selectRect);
                 g.DrawRectangle(scheme.MenuItemCheckBoxBorder, selectRect);
             }
