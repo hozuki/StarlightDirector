@@ -70,40 +70,46 @@ namespace StarlightDirector.UI.Controls {
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
             } else if (editor.HasSelectedNotes) {
-                MessageBox.Show("You can only select one note to create a hold note.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("You can only select one note to create a hold pair.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Note thisHoldNote = null;
+            Note thisNote = null;
             bool isNoteAdded = false;
             if (hit.HitAnyNote) {
                 // The clicked note is always selected.
-                thisHoldNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
+                thisNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
             } else if (hit.HitBarGridIntersection) {
                 // If not selected, add a note and select it.
-                thisHoldNote = EditorAddNote(hit);
+                thisNote = EditorAddNote(hit);
                 isNoteAdded = true;
             }
-            if (thisHoldNote != null) {
-                if (lastNote != null) {
-                    try {
-                        EnsureHoldValid(thisHoldNote, lastNote);
-                    } catch (InvalidOperationException ex) {
-                        if (isNoteAdded) {
-                            thisHoldNote.Basic.Bar.RemoveNote(thisHoldNote);
+
+            if (thisNote != null) {
+                if (lastNote != null && lastNote != thisNote) {
+                    // If the selected note is already a hold note (start/end) and there is a hold relation between the
+                    // two notes, then switch selection.
+                    if (NoteUtilities.AreNotesInHoldChain(thisNote, lastNote)) {
+                        // Yep just switch selection. Do nothing in this branch.
+                    } else {
+                        try {
+                            EnsureHoldValid(thisNote, lastNote);
+                        } catch (InvalidOperationException ex) {
+                            if (isNoteAdded) {
+                                thisNote.Basic.Bar.RemoveNote(thisNote);
+                            }
+                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
-                        MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+
+                        // Make hold.
+                        var (first, second) = NoteUtilities.Split(thisNote, lastNote);
+                        NoteUtilities.MakeHold(first, second);
                     }
-
-                    // Make hold.
-                    var (first, second) = NoteUtilities.Split(thisHoldNote, lastNote);
-                    NoteUtilities.MakeHold(first, second);
-
-                    thisHoldNote.EditorUnselect();
+                    thisNote.EditorUnselect();
                     lastNote.EditorUnselect();
                 } else {
-                    thisHoldNote.EditorSelect();
+                    thisNote.EditorSelect();
                 }
             } else {
                 ClearNoteAndBarSelection();
@@ -117,32 +123,48 @@ namespace StarlightDirector.UI.Controls {
             Note lastNote = null;
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
-                try {
-                    EnsureFlickValid(hit.Bar, hit.Row, hit.Column, lastNote);
-                } catch (InvalidOperationException ex) {
-                    MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
             } else if (editor.HasSelectedNotes) {
                 MessageBox.Show("You can only select one note to create a flick group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Note thisFlickNote = null;
+            Note thisNote = null;
+            bool isNoteAdded = false;
             if (hit.HitAnyNote) {
                 // The clicked note is always selected.
-                thisFlickNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
+                thisNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
             } else if (hit.HitBarGridIntersection) {
                 // If not selected, add a note and select it.
-                thisFlickNote = EditorAddNote(hit);
+                thisNote = EditorAddNote(hit);
+                isNoteAdded = true;
             }
-            if (thisFlickNote != null) {
-                if (lastNote != null) {
-                    // TODO: Make flick.
 
+            if (thisNote != null) {
+                if (lastNote != null && lastNote != thisNote) {
+                    // If the selected note is already a flick note and there is a flick relation between the
+                    // two notes, then switch selection.
+                    if (NoteUtilities.AreNotesInFlickChain(thisNote, lastNote)) {
+                        // Yep just switch selection. Do nothing in this branch.
+                    } else {
+                        try {
+                            EnsureFlickValid(thisNote, lastNote);
+                        } catch (InvalidOperationException ex) {
+                            if (isNoteAdded) {
+                                thisNote.Basic.Bar.RemoveNote(thisNote);
+                            }
+                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Make flick.
+                        var (first, second) = NoteUtilities.Split(thisNote, lastNote);
+                        NoteUtilities.MakeFlick(first, second);
+                    }
                     lastNote.EditorUnselect();
+                    thisNote.EditorSelect();
+                } else {
+                    thisNote.EditorSelect();
                 }
-                thisFlickNote.EditorSelect();
             } else {
                 ClearNoteAndBarSelection();
             }
@@ -152,30 +174,51 @@ namespace StarlightDirector.UI.Controls {
         private void EditNoteModeSlide(ScoreEditorHitTestResult hit, MouseEventArgs e) {
             var editor = _visualizer.Editor;
 
+            Note lastNote = null;
             if (editor.HasOneSelectedNote) {
-                try {
-                    EnsureSlideValid(hit.Bar, hit.Row, hit.Column, editor.GetSelectedNote());
-                } catch (InvalidOperationException ex) {
-                    MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                lastNote = editor.GetSelectedNote();
             } else if (editor.HasSelectedNotes) {
                 MessageBox.Show("You can only select one note to create a slide group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            Note thisSlideNote = null;
+            Note thisNote = null;
+            bool isNoteAdded = false;
             if (hit.HitAnyNote) {
                 // The clicked note is always selected.
-                thisSlideNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
+                thisNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
             } else if (hit.HitBarGridIntersection) {
                 // If not selected, add a note and select it.
-                thisSlideNote = EditorAddNote(hit);
+                thisNote = EditorAddNote(hit);
+                isNoteAdded = true;
             }
-            if (thisSlideNote != null) {
-                thisSlideNote.EditorSelect();
 
-                // TODO: Make slide.
+            if (thisNote != null) {
+                if (lastNote != null && lastNote != thisNote) {
+                    // If the selected note is already a slide note and there is a slide relation between the
+                    // two notes, then switch selection.
+                    if (NoteUtilities.AreNotesInSlideChain(thisNote, lastNote)) {
+                        // Yep just switch selection. Do nothing in this branch.
+                    } else {
+                        try {
+                            EnsureSlideValid(thisNote, lastNote);
+                        } catch (InvalidOperationException ex) {
+                            if (isNoteAdded) {
+                                thisNote.Basic.Bar.RemoveNote(thisNote);
+                            }
+                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+
+                        // Make slide.
+                        var (first, second) = NoteUtilities.Split(thisNote, lastNote);
+                        NoteUtilities.MakeSlide(first, second);
+                    }
+                    lastNote.EditorUnselect();
+                    thisNote.EditorSelect();
+                } else {
+                    thisNote.EditorSelect();
+                }
             } else {
                 ClearNoteAndBarSelection();
             }
@@ -185,7 +228,7 @@ namespace StarlightDirector.UI.Controls {
         private void EnsureHoldValid(Note targetNote, Note lastNote) {
             // Check: columns must be the same.
             if (lastNote.Basic.FinishPosition != targetNote.Basic.FinishPosition) {
-                throw new InvalidOperationException("Both hold notes should be on the same column.");
+                throw new InvalidOperationException("Both notes should be on the same column.");
             }
 
             var (firstNote, secondNote) = NoteUtilities.Split(targetNote, lastNote);
@@ -246,36 +289,76 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        private void EnsureFlickValid(Bar targetBar, int targetRow, NotePosition targetColumn, Note lastNote) {
-            // Check: note selection must not be 0 or 1 note.
-            // Done.
-            Note previousNote = null;
-            //foreach (var note in selectedNotes) {
-            //    // Check: any note must not be a hold start.
-            //    if (note.Helper.IsHoldStart) {
-            //        return;
-            //    }
-            //    // Check: any note must not be a note in the middle of a flick group.
-            //    if (note.Helper.IsFlickMidway) {
-            //        return;
-            //    }
-            //    // Check: any note must not be a note in the middle of a slide group.
-            //    if (note.Helper.IsSlideMidway) {
-            //        return;
-            //    }
-            //    // Check: the note and its previous note must not be on the same row.
-            //    if (previousNote != null && previousNote.IsOnTheSameRowWith(note)) {
-            //        return;
-            //    }
-            //    // Check: the note and its previous note must not be on the same column.
-            //    if (previousNote != null && previousNote.Basic.FinishPosition == note.Basic.FinishPosition) {
-            //        return;
-            //    }
-            //    // TODO: Check: there must no be any slide groups between two notes.
-            //}
+        private void EnsureFlickValid(Note targetNote, Note lastNote) {
+            // Check: rows must not be the same.
+            if (targetNote.Basic.Bar == lastNote.Basic.Bar && targetNote.Basic.IndexInGrid == lastNote.Basic.IndexInGrid) {
+                throw new InvalidOperationException("The rows of the notes must be different.");
+            }
+            // Check: columns must not be the same.
+            if (targetNote.Basic.FinishPosition == lastNote.Basic.FinishPosition) {
+                throw new InvalidOperationException("The columns of the notes must be different.");
+            }
+
+            var (firstNote, secondNote) = NoteUtilities.Split(targetNote, lastNote);
+
+            // Check: the first note must not be a hold start.
+            if (firstNote.Helper.IsHoldStart) {
+                throw new InvalidOperationException("The first note must not be a hold start note.");
+            }
+            // Check: the second note must not be a hold start.
+            if (secondNote.Helper.IsHoldStart) {
+                throw new InvalidOperationException("The second note must not be a hold start note.");
+            }
+            // Check: the first note must not be a note in the middle of a flick group or start of a flick group.
+            if (firstNote.Helper.IsFlickMidway || firstNote.Helper.IsFlickStart) {
+                throw new InvalidOperationException("The first note must not be the start or middle of a flick group.");
+            }
+            // Check: the second note must not be a note in the middle of a flick group or end of a flick group.
+            if (secondNote.Helper.IsFlickMidway || secondNote.Helper.IsFlickEnd) {
+                throw new InvalidOperationException("The second note must not be the middle or end a flick group.");
+            }
+            // Check: the first note must not be a note in the middle of a slide group or start of a slide group.
+            if (firstNote.Helper.IsSlideMidway || firstNote.Helper.IsSlideStart) {
+                throw new InvalidOperationException("The first note must not be the start or middle a slide group.");
+            }
+            // Check: the second note must not be a note in the middle of a slide group or end of a slide group.
+            if (secondNote.Helper.IsSlideMidway || secondNote.Helper.IsSlideEnd) {
+                throw new InvalidOperationException("The second note must not be the middle or end a slide group.");
+            }
         }
 
-        private void EnsureSlideValid(Bar targetBar, int targetRow, NotePosition targetColumn, Note lastNote) {
+        private void EnsureSlideValid(Note targetNote, Note lastNote) {
+            // Check: rows must not be the same.
+            if (targetNote.Basic.Bar == lastNote.Basic.Bar && targetNote.Basic.IndexInGrid == lastNote.Basic.IndexInGrid) {
+                throw new InvalidOperationException("The rows of the notes must be different.");
+            }
+
+            var (firstNote, secondNote) = NoteUtilities.Split(targetNote, lastNote);
+
+            // Check: the first note must not be a hold start.
+            if (firstNote.Helper.IsHoldStart) {
+                throw new InvalidOperationException("The first note must not be a hold start note.");
+            }
+            // Check: the second note must not be a hold start.
+            if (secondNote.Helper.IsHoldStart) {
+                throw new InvalidOperationException("The second note must not be a hold start note.");
+            }
+            // Check: the first note must not be a note in the middle of a flick group or start of a flick group.
+            if (firstNote.Helper.IsFlickMidway || firstNote.Helper.IsFlickStart) {
+                throw new InvalidOperationException("The first note must not be the start or middle of a flick group.");
+            }
+            // Check: the second note must not be a note in the middle of a flick group or end of a flick group.
+            if (secondNote.Helper.IsFlickMidway || secondNote.Helper.IsFlickEnd) {
+                throw new InvalidOperationException("The second note must not be the middle or end a flick group.");
+            }
+            // Check: the first note must not be a note in the middle of a slide group or start of a slide group.
+            if (firstNote.Helper.IsSlideMidway || firstNote.Helper.IsSlideStart) {
+                throw new InvalidOperationException("The first note must not be the start or middle a slide group.");
+            }
+            // Check: the second note must not be a note in the middle of a slide group or end of a slide group.
+            if (secondNote.Helper.IsSlideMidway || secondNote.Helper.IsSlideEnd) {
+                throw new InvalidOperationException("The second note must not be the middle or end a slide group.");
+            }
         }
 
     }

@@ -78,15 +78,10 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public void OnEditModeChanged() {
-            ClearGroupNotes();
             var editor = _visualizer.Editor;
             editor.ClearSelectedBars();
             editor.ClearSelectedNotes();
             editor.Invalidate();
-        }
-
-        public void ClearGroupNotes() {
-            _groupNotes.Clear();
         }
 
         private void InfoAreaOnMouseDown(ScoreEditorHitTestResult hit, MouseEventArgs e) {
@@ -230,10 +225,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private ScoreEditorHitTestResult _mouseDownHitResult;
-
-        // Previously created/selected notes
-        private readonly List<Note> _groupNotes = new List<Note>();
-
+        
         private Note _lastMouseDownNote;
 
         private Rectangle _selectionRectangle;

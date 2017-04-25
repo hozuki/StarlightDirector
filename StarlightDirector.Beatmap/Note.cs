@@ -146,7 +146,7 @@ namespace StarlightDirector.Beatmap {
 
             public bool IsSlide {
                 [DebuggerStepThrough]
-                get { return _note.Basic.Type == NoteType.Slide && _note.Basic.FlickType == NoteFlickType.None; }
+                get { return _note.Basic.Type == NoteType.Slide; }
             }
 
             public bool IsSlideStart {
