@@ -17,6 +17,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbDifficultySelection.Click -= TsbDifficultySelection_Click;
             visualizer.ContextMenuRequested -= Visualizer_ContextMenuRequested;
             tsbEditMode.Click -= TsbEditMode_Click;
+            tsbEditNoteStartPosition.Click -= TsbEditNoteStartPosition_Click;
         }
 
         private void RegisterEventHandlers() {
@@ -28,6 +29,21 @@ namespace StarlightDirector.App.UI.Forms {
             tsbDifficultySelection.Click += TsbDifficultySelection_Click;
             visualizer.ContextMenuRequested += Visualizer_ContextMenuRequested;
             tsbEditMode.Click += TsbEditMode_Click;
+            tsbEditNoteStartPosition.Click += TsbEditNoteStartPosition_Click;
+        }
+
+        private void TsbEditNoteStartPosition_Click(object sender, EventArgs e) {
+            var items = new ToolStripItem[mnuEditNoteStartPosition.DropDownItems.Count];
+            mnuEditNoteStartPosition.DropDownItems.CopyTo(items, 0);
+            tsbEditNoteStartPosition.DropDownItems.AddRange(items);
+            tsbEditNoteStartPosition.DropDownClosed += DropDownClosed;
+            tsbEditNoteStartPosition.ShowDropDown();
+
+            void DropDownClosed(object s, EventArgs ev)
+            {
+                mnuEditNoteStartPosition.DropDownItems.AddRange(items);
+                tsbEditNoteStartPosition.DropDownClosed -= DropDownClosed;
+            }
         }
 
         private void TsbEditMode_Click(object sender, EventArgs e) {
@@ -135,6 +151,8 @@ namespace StarlightDirector.App.UI.Forms {
 
             ApplyColorScheme(ColorScheme.Default);
             CursorFixup(this);
+
+            mnuEditSelectClearAll.ShortcutKeyDisplayString = "Esc";
 
             CmdFileNew.Execute(null, null);
         }

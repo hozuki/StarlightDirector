@@ -1,7 +1,8 @@
-﻿using System.Windows.Forms;
+﻿using System.Drawing;
+using System.Windows.Forms;
 using StarlightDirector.Beatmap;
+using StarlightDirector.Core;
 using StarlightDirector.UI.Controls;
-using System.Drawing;
 
 namespace StarlightDirector.App.UI.Forms {
     public sealed partial class FMain : Form {
@@ -46,7 +47,7 @@ namespace StarlightDirector.App.UI.Forms {
                 editingFileName = string.Empty;
             }
             var applicationTitle = ApplicationHelper.GetTitle();
-            var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty, typeof(Difficulty));
+            var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
             Text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
             tsbDifficultySelection.Text = difficultyDescription;
             _editingFileName = editingFileName;

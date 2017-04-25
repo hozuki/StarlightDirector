@@ -86,6 +86,16 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            switch (keyData) {
+                case Keys.Escape:
+                    CmdEditSelectClearAll.Execute(this, null);
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
         protected override void OnPaintBackground(PaintEventArgs e) {
         }
 

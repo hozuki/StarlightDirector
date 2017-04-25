@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApplicationHelper.cs" />
     <Compile Include="DisposableBase.cs" />
     <Compile Include="GameTime.cs" />
     <Compile Include="ICloneable.cs" />

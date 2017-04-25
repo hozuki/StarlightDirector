@@ -23,7 +23,7 @@ namespace StarlightDirector.Commanding {
         }
 
         public static void Attach(this ButtonBase button, Command command) {
-            Attach(button as Component, command);
+            Attach(button as Component, command, false);
         }
 
         public static void SetParameter(this MenuItem menuItem, object parameter) {
@@ -42,8 +42,8 @@ namespace StarlightDirector.Commanding {
             return DefinedParameter(menuItem as Component);
         }
 
-        public static void Attach(this MenuItem menuItem, Command command) {
-            Attach(menuItem as Component, command);
+        public static void Attach(this MenuItem menuItem, Command command, bool setShortcut = true) {
+            Attach(menuItem as Component, command, setShortcut);
         }
 
         public static void SetParameter(this ToolStripButton button, object parameter) {
@@ -62,8 +62,8 @@ namespace StarlightDirector.Commanding {
             return DefinedParameter(button as Component);
         }
 
-        public static void Attach(this ToolStripButton button, Command command) {
-            Attach(button as Component, command);
+        public static void Attach(this ToolStripButton button, Command command, bool setShortcut = true) {
+            Attach(button as Component, command, setShortcut);
         }
 
         public static void SetParameter(this ToolStripSplitButton button, object parameter) {
@@ -82,8 +82,8 @@ namespace StarlightDirector.Commanding {
             return DefinedParameter(button as Component);
         }
 
-        public static void Attach(this ToolStripSplitButton button, Command command) {
-            Attach(button as Component, command);
+        public static void Attach(this ToolStripSplitButton button, Command command, bool setShortcut = true) {
+            Attach(button as Component, command, setShortcut);
         }
 
         public static void SetParameter(this ToolStripOverflowButton button, object parameter) {
@@ -102,8 +102,8 @@ namespace StarlightDirector.Commanding {
             return DefinedParameter(button as Component);
         }
 
-        public static void Attach(this ToolStripOverflowButton button, Command command) {
-            Attach(button as Component, command);
+        public static void Attach(this ToolStripOverflowButton button, Command command, bool setShortcut = true) {
+            Attach(button as Component, command, setShortcut);
         }
 
         public static void SetParameter(this ToolStripMenuItem menuItem, object parameter) {
@@ -122,8 +122,8 @@ namespace StarlightDirector.Commanding {
             return DefinedParameter(menuItem as Component);
         }
 
-        public static void Attach(this ToolStripMenuItem menuItem, Command command) {
-            Attach(menuItem as Component, command);
+        public static void Attach(this ToolStripMenuItem menuItem, Command command, bool setShortcut = true) {
+            Attach(menuItem as Component, command, setShortcut);
         }
 
         internal static void SetParameter(this Component component, object parameter) {
@@ -158,13 +158,13 @@ namespace StarlightDirector.Commanding {
             return CommandParameters.ContainsKey(component);
         }
 
-        internal static void Attach(this Component component, Command command) {
+        internal static void Attach(this Component component, Command command, bool setShortcut) {
             var reg = CommandManager.RegisteredCommandPairs;
             if (reg.ContainsKey(component)) {
                 reg[component].UnsubscribeControl(component);
             }
             if (command != null) {
-                command.SubscribeControl(component);
+                command.SubscribeControl(component, setShortcut);
                 reg[component] = command;
             } else {
                 if (reg.ContainsKey(component)) {

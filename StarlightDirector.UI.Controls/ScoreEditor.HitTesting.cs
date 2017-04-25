@@ -44,7 +44,7 @@ namespace StarlightDirector.UI.Controls {
             var relativeX = x - barArea.Left;
             if (relativeX < config.InfoAreaWidth) {
                 hitRegion = ScoreEditorHitRegion.InfoArea;
-            } else if (relativeX < config.InfoAreaWidth + config.GridNumberAreaWidth) {
+            } else if (relativeX < config.InfoAreaWidth + config.GridNumberAreaWidth - config.NoteRadius) {
                 hitRegion = ScoreEditorHitRegion.GridNumberArea;
             } else if (relativeX < config.InfoAreaWidth + config.GridNumberAreaWidth + config.GridAreaWidth) {
                 hitRegion = ScoreEditorHitRegion.GridArea;

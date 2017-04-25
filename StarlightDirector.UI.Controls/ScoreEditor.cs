@@ -84,6 +84,7 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
+        [Browsable(false)]
         public ScoreEditMode EditMode {
             get => _editMode;
             set {
@@ -94,6 +95,9 @@ namespace StarlightDirector.UI.Controls {
                 }
             }
         }
+
+        [Browsable(false)]
+        public NotePosition NoteStartPosition { get; set; }
 
         [Browsable(false)]
         public bool IndicatorsVisible { get; set; } = true;

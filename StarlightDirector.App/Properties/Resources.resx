@@ -142,21 +142,6 @@
   <data name="IconEditNoteDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\toolbar\iconeditnotedelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="IconEditNotePosition1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnoteposition1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconEditNotePosition2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnoteposition2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconEditNotePosition3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnoteposition3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconEditNotePosition4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnoteposition4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="IconEditNotePosition5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditnoteposition5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="IconEditPaste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconEditPaste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

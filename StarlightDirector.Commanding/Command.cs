@@ -40,7 +40,7 @@ namespace StarlightDirector.Commanding {
 
         public string Description { get; set; } = string.Empty;
 
-        internal void SubscribeControl(Component control) {
+        internal void SubscribeControl(Component control, bool setShortcut) {
             if (control == null) {
                 return;
             }
@@ -56,14 +56,14 @@ namespace StarlightDirector.Commanding {
                 case MenuItem menuItem:
                     menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         menuItem.Shortcut = ShortcutMapper.Map(ShortcutKeys);
                     }
                     break;
                 case ToolStripButton button:
                     button.Click += OnControlInteract;
                     button.Enabled = canExecute;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.AutoToolTip = false;
                         button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
                     }
@@ -71,7 +71,7 @@ namespace StarlightDirector.Commanding {
                 case ToolStripSplitButton button:
                     button.ButtonClick += OnControlInteract;
                     button.Enabled = canExecute;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.AutoToolTip = false;
                         button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
                     }
@@ -79,7 +79,7 @@ namespace StarlightDirector.Commanding {
                 case ToolStripOverflowButton button:
                     button.Click += OnControlInteract;
                     button.Enabled = canExecute;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.AutoToolTip = false;
                         button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
                     }
@@ -87,7 +87,7 @@ namespace StarlightDirector.Commanding {
                 case ToolStripMenuItem menuItem:
                     menuItem.Click += OnControlInteract;
                     menuItem.Enabled = canExecute;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         menuItem.ShortcutKeys = ShortcutKeys;
                         menuItem.ShortcutKeyDisplayString = ShortcutMapper.GetDescription(ShortcutKeys);
                     }
@@ -96,6 +96,7 @@ namespace StarlightDirector.Commanding {
                     throw new NotSupportedException($"The type of control ({control.GetType().Name}) is not supported.");
             }
             _subscribedControls.Add(control);
+            _setShortcuts[control] = setShortcut;
         }
 
         internal void UnsubscribeControl(Component control) {
@@ -105,40 +106,41 @@ namespace StarlightDirector.Commanding {
             if (!_subscribedControls.Contains(control)) {
                 return;
             }
+            var setShortcut = _setShortcuts.ContainsKey(control) && _setShortcuts[control];
             switch (control) {
                 case ButtonBase button:
                     button.Click -= OnControlInteract;
                     break;
                 case MenuItem menuItem:
                     menuItem.Click -= OnControlInteract;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         menuItem.Shortcut = Shortcut.None;
                     }
                     break;
                 case ToolStripButton button:
                     button.Click -= OnControlInteract;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.ToolTipText = string.Empty;
                         button.AutoToolTip = true;
                     }
                     break;
                 case ToolStripSplitButton button:
                     button.ButtonClick -= OnControlInteract;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.ToolTipText = string.Empty;
                         button.AutoToolTip = true;
                     }
                     break;
                 case ToolStripOverflowButton button:
                     button.Click -= OnControlInteract;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         button.ToolTipText = string.Empty;
                         button.AutoToolTip = true;
                     }
                     break;
                 case ToolStripMenuItem menuItem:
                     menuItem.Click -= OnControlInteract;
-                    if (ShortcutKeys != Keys.None) {
+                    if (setShortcut && ShortcutKeys != Keys.None) {
                         menuItem.ShortcutKeys = Keys.None;
                         menuItem.ShortcutKeyDisplayString = string.Empty;
                     }
@@ -147,6 +149,7 @@ namespace StarlightDirector.Commanding {
                     throw new NotSupportedException();
             }
             _subscribedControls.Remove(control);
+            _setShortcuts.Remove(control);
         }
 
         internal void UnsubscribeAllControls() {
@@ -239,6 +242,7 @@ namespace StarlightDirector.Commanding {
         }
 
         private readonly List<Component> _subscribedControls = new List<Component>();
+        private readonly Dictionary<Component, bool> _setShortcuts = new Dictionary<Component, bool>();
 
     }
 }

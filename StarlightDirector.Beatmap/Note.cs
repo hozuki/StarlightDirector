@@ -271,6 +271,10 @@ namespace StarlightDirector.Beatmap {
             return r < 0;
         }
 
+        public override string ToString() {
+            return $"Note (ID={StarlightID}, Type={Basic.Type}, Flick={Basic.FlickType}, Row={Basic.IndexInGrid}, Col={Basic.FinishPosition})";
+        }
+
         internal sealed class TemporaryProperties {
 
             public Guid PrevFlickNoteID { get; set; }
@@ -284,10 +288,6 @@ namespace StarlightDirector.Beatmap {
         }
 
         internal TemporaryProperties Temporary { get; } = new TemporaryProperties();
-
-        public override string ToString() {
-            return $"Note (ID={StarlightID}, Type={Basic.Type}, Flick={Basic.FlickType}, Row={Basic.IndexInGrid}, Col={Basic.FinishPosition})";
-        }
 
     }
 }

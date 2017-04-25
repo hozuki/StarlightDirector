@@ -46,6 +46,9 @@ namespace StarlightDirector.UI.Controls {
                 } else if (item.Selected) {
                     item.ForeColor = scheme.ToolbarItemHoveringText;
                     g.Clear(scheme.ToolbarItemHoveringBackground);
+                } else if (item.SafeGetChecked()) {
+                    item.ForeColor = scheme.ToolbarItemPressedText;
+                    g.Clear(scheme.ToolbarItemPressedBackground);
                 } else {
                     item.ForeColor = scheme.ToolbarItemText;
                     g.Clear(scheme.ToolbarItemBackground);

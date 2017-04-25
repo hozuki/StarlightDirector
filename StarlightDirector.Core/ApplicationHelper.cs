@@ -2,7 +2,7 @@
 using System.IO;
 using System.Reflection;
 
-namespace StarlightDirector.App {
+namespace StarlightDirector.Core {
     public static class ApplicationHelper {
 
         [DebuggerStepThrough]

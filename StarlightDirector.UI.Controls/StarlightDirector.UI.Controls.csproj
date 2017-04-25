@@ -68,6 +68,8 @@
     </Compile>
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\GraphicsExtensions.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Extensions\ToolStripItemExtensions.cs" />
     <Compile Include="ModernSystemButton.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -108,7 +110,7 @@
     <Compile Include="ScoreEditorHitRegion.cs" />
     <Compile Include="ScoreEditorHitTestResult.cs" />
     <Compile Include="ScoreEditorSelectionHandler.cs" />
-    <Compile Include="ScoreEditorSelectionHandler.ElementSelection.cs" />
+    <Compile Include="ScoreEditorSelectionHandler.EditNote.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -145,6 +147,13 @@
     <EmbeddedResource Include="ScoreVisualizer.resx">
       <DependentUpon>ScoreVisualizer.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Docs\DesignedUsage.md" />
+    <Content Include="Docs\Images\IconNoteFlickRight.png" />
+    <Content Include="Docs\Images\IconNoteHold.png" />
+    <Content Include="Docs\Images\IconNoteSlide.png" />
+    <Content Include="Docs\Images\IconNoteTap.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

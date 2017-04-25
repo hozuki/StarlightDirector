@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
@@ -21,29 +22,53 @@ namespace StarlightDirector.App.UI.Forms {
             UpdateUIIndications(difficulty);
         }
 
-        private void CmdEditModeSelect_Executed(object sender, ExecutedEventArgs e) {
-            var menuItem = (ToolStripMenuItem)sender;
-            var parentItem = menuItem.OwnerItem;
-            ToolStripItemCollection menuItemCollection;
-            switch (parentItem) {
-                case ToolStripMenuItem m:
-                    menuItemCollection = m.DropDownItems;
-                    break;
-                case ToolStripDropDownButton b:
-                    menuItemCollection = b.DropDownItems;
-                    break;
-                default:
-                    throw new NotSupportedException();
-            }
-            foreach (ToolStripItem item in menuItemCollection) {
-                if (item is ToolStripMenuItem tsmi) {
-                    tsmi.Checked = tsmi == menuItem;
-                }
-            }
-
+        private void CmdEditModeSet_Executed(object sender, ExecutedEventArgs e) {
+            var modeMenuItems = new[] { mnuEditModeSelect, mnuEditModeTap, mnuEditModeHold, mnuEditModeFlick, mnuEditModeSlide };
             var mode = (ScoreEditMode)e.Parameter;
+            var pressedItem = modeMenuItems.First(m => (ScoreEditMode)m.GetParameter() == mode);
+            foreach (var item in modeMenuItems) {
+                item.Checked = item == pressedItem;
+            }
             visualizer.Editor.EditMode = mode;
-            tsbEditMode.Image = menuItem.Image;
+            tsbEditMode.Image = pressedItem.Image;
+        }
+
+        private void CmdEditModeSelect_Executed(object sender, ExecutedEventArgs e) {
+            CmdEditModeSet.Execute(sender, e.Parameter);
+        }
+
+        private void CmdEditModeTap_Executed(object sender, ExecutedEventArgs e) {
+            CmdEditModeSet.Execute(sender, e.Parameter);
+        }
+
+        private void CmdEditModeHold_Executed(object sender, ExecutedEventArgs e) {
+            CmdEditModeSet.Execute(sender, e.Parameter);
+        }
+
+        private void CmdEditModeFlick_Executed(object sender, ExecutedEventArgs e) {
+            CmdEditModeSet.Execute(sender, e.Parameter);
+        }
+
+        private void CmdEditModeSlide_Executed(object sender, ExecutedEventArgs e) {
+            CmdEditModeSet.Execute(sender, e.Parameter);
+        }
+
+        private void CmdEditModePrevious_Executed(object sender, ExecutedEventArgs e) {
+            var currentEditMode = visualizer.Editor.EditMode;
+            if (currentEditMode <= ScoreEditMode.Min) {
+                return;
+            }
+            var newEditMode = currentEditMode - 1;
+            CmdEditModeSet.Execute(sender, newEditMode);
+        }
+
+        private void CmdEditModeNext_Executed(object sender, ExecutedEventArgs e) {
+            var currentEditMode = visualizer.Editor.EditMode;
+            if (currentEditMode >= ScoreEditMode.Max) {
+                return;
+            }
+            var newEditMode = currentEditMode + 1;
+            CmdEditModeSet.Execute(sender, newEditMode);
         }
 
         private void CmdEditBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {
@@ -71,11 +96,25 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
+        private void CmdEditSelectClearAll_Executed(object sender, ExecutedEventArgs e) {
+            visualizer.Editor.ClearSelectedBars();
+            visualizer.Editor.ClearSelectedNotes();
+            visualizer.Editor.Invalidate();
+        }
+
         private readonly Command CmdEditDifficultySelect = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeSet = CommandManager.CreateCommand();
         private readonly Command CmdEditModeSelect = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeTap = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeHold = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeFlick = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
+        private readonly Command CmdEditModePrevious = CommandManager.CreateCommand("Alt+A");
+        private readonly Command CmdEditModeNext = CommandManager.CreateCommand("Alt+D");
         private readonly Command CmdEditBeatmapSettings = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
+        private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();
 
     }
 }

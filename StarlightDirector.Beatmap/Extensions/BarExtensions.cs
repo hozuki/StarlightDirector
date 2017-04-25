@@ -6,30 +6,53 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap.Extensions {
     public static class BarExtensions {
 
-        public static Note AddNote(this Bar bar) {
-            return AddNote(bar, Guid.NewGuid());
+        public static Note AddNote(this Bar bar, int row, NotePosition column) {
+            return AddNote(bar, Guid.NewGuid(), row, column);
         }
 
-        public static Note AddNote(this Bar bar, int id) {
+        public static Note AddNote(this Bar bar, int id, int row, NotePosition column) {
             var guid = StarlightID.GetGuidFromInt32(id);
-            return AddNote(bar, guid);
+            return AddNote(bar, guid, row, column);
         }
 
-        public static Note AddNote(this Bar bar, Guid id) {
+        public static Note AddNote(this Bar bar, Guid id, int row, NotePosition column) {
+            if (row < 0 || row >= bar.GetNumberOfGrids()) {
+                throw new ArgumentOutOfRangeException(nameof(row), row, null);
+            }
+            if (column == NotePosition.Nowhere) {
+                throw new ArgumentOutOfRangeException(nameof(column), column, null);
+            }
+            if (bar.Notes.Any(n => n.Basic.IndexInGrid == row && n.Basic.FinishPosition == column)) {
+                throw new InvalidOperationException($"A note exists at row {row}, column {column}.");
+            }
+
             var note = new Note(bar, id);
             bar.Notes.Add(note);
-            bar.Notes.Sort(Note.TimingThenPositionComparison);
             bar.Score.Project.UsedNoteIDs.Add(id);
+            // IndexInGrid must be set before calling FixSyncWhenAdded.
+            note.Basic.IndexInGrid = row;
+            note.Basic.StartPosition = note.Basic.FinishPosition = column;
             note.FixSyncWhenAdded();
+            bar.Notes.Sort(Note.TimingThenPositionComparison);
+            return note;
+        }
+
+        public static Note AddSpecialNote(this Bar bar, int id, NoteType specialNoteType) {
+            var guid = StarlightID.GetGuidFromInt32(id);
+            return AddSpecialNote(bar, guid, specialNoteType);
+        }
+
+        public static Note AddSpecialNote(this Bar bar, Guid id, NoteType specialNoteType) {
+            var note = new Note(bar, id);
+            note.SetSpecialType(specialNoteType);
+            bar.Notes.Add(note);
+            bar.Score.Project.UsedNoteIDs.Add(id);
             return note;
         }
 
         public static Note RemoveNote(this Bar bar, Guid id) {
             var note = FindNoteByID(bar, id);
-            if (note == null) {
-                return null;
-            }
-            return RemoveNote(bar, note);
+            return note == null ? null : RemoveNote(bar, note);
         }
 
         public static Note RemoveNote(this Bar bar, Note note) {

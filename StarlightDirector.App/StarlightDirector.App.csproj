@@ -61,7 +61,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ApplicationHelper.cs" />
     <Compile Include="UI\Forms\FAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -188,11 +187,6 @@
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureAdd.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditMeasureDelete.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNotePosition1.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNotePosition2.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNotePosition3.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNotePosition4.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNotePosition5.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewFromCurrent.png" />
     <Content Include="Resources\Icons\Toolbar\IconFileOpen.png" />
     <Content Include="Resources\Icons\Toolbar\IconToolBuildScoreBundle.png" />

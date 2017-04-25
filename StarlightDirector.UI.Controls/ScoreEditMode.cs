@@ -8,5 +8,8 @@
         Flick,
         Slide,
 
+        Min = Select,
+        Max = Slide,
+
     }
 }

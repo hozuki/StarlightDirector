@@ -40,36 +40,33 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModeFlick.SetParameter(ScoreEditMode.Flick);
             mnuEditModeSlide.SetParameter(ScoreEditMode.Slide);
             mnuEditModeSelect.Attach(CmdEditModeSelect);
-            mnuEditModeTap.Attach(CmdEditModeSelect);
-            mnuEditModeHold.Attach(CmdEditModeSelect);
-            mnuEditModeFlick.Attach(CmdEditModeSelect);
-            mnuEditModeSlide.Attach(CmdEditModeSelect);
+            mnuEditModeTap.Attach(CmdEditModeTap);
+            mnuEditModeHold.Attach(CmdEditModeHold);
+            mnuEditModeFlick.Attach(CmdEditModeFlick);
+            mnuEditModeSlide.Attach(CmdEditModeSlide);
+            mnuEditModePrevious.Attach(CmdEditModePrevious);
+            mnuEditModeNext.Attach(CmdEditModeNext);
 
+            mnuEditNoteStartPosition0.SetParameter(NotePosition.Nowhere);
             mnuEditNoteStartPosition1.SetParameter(NotePosition.Left);
             mnuEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
             mnuEditNoteStartPosition3.SetParameter(NotePosition.Center);
             mnuEditNoteStartPosition4.SetParameter(NotePosition.CenterRight);
             mnuEditNoteStartPosition5.SetParameter(NotePosition.Right);
-            mnuEditNoteStartPosition1.Attach(CmdEditNoteStartPosition);
-            mnuEditNoteStartPosition2.Attach(CmdEditNoteStartPosition);
-            mnuEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
-            mnuEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
-            mnuEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
-            tsbEditNoteStartPosition1.SetParameter(NotePosition.Left);
-            tsbEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
-            tsbEditNoteStartPosition3.SetParameter(NotePosition.Center);
-            tsbEditNoteStartPosition4.SetParameter(NotePosition.CenterRight);
-            tsbEditNoteStartPosition5.SetParameter(NotePosition.Right);
-            tsbEditNoteStartPosition1.Attach(CmdEditNoteStartPosition);
-            tsbEditNoteStartPosition2.Attach(CmdEditNoteStartPosition);
-            tsbEditNoteStartPosition3.Attach(CmdEditNoteStartPosition);
-            tsbEditNoteStartPosition4.Attach(CmdEditNoteStartPosition);
-            tsbEditNoteStartPosition5.Attach(CmdEditNoteStartPosition);
+            mnuEditNoteStartPosition0.Attach(CmdEditNoteStartPosition0);
+            mnuEditNoteStartPosition1.Attach(CmdEditNoteStartPosition1);
+            mnuEditNoteStartPosition2.Attach(CmdEditNoteStartPosition2);
+            mnuEditNoteStartPosition3.Attach(CmdEditNoteStartPosition3);
+            mnuEditNoteStartPosition4.Attach(CmdEditNoteStartPosition4);
+            mnuEditNoteStartPosition5.Attach(CmdEditNoteStartPosition5);
             mnuEditNoteDelete.Attach(CmdEditNoteDelete);
             tsbEditNoteDelete.Attach(CmdEditNoteDelete);
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
+            // For its key handling, see FMain.OnProcessCmdKey: http://stackoverflow.com/questions/18930318/previewkeydown-not-firing.
+            mnuEditSelectClearAll.Attach(CmdEditSelectClearAll);
+
             mnuEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
             tsbEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
             mnuEditMeasureAppend.Attach(CmdEditMeasureAppend);
@@ -83,6 +80,22 @@ namespace StarlightDirector.App.UI.Forms {
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
             mnuHelpAbout.Attach(CmdHelpAbout);
+
+            // Attach invisible menu items.
+
+            // Start positions (Ctrl + D-keys)
+            mnuInvisibleEditNoteStartPosition0.SetParameter(NotePosition.Nowhere);
+            mnuInvisibleEditNoteStartPosition1.SetParameter(NotePosition.Left);
+            mnuInvisibleEditNoteStartPosition2.SetParameter(NotePosition.CenterLeft);
+            mnuInvisibleEditNoteStartPosition3.SetParameter(NotePosition.Center);
+            mnuInvisibleEditNoteStartPosition4.SetParameter(NotePosition.CenterRight);
+            mnuInvisibleEditNoteStartPosition5.SetParameter(NotePosition.Right);
+            mnuInvisibleEditNoteStartPosition0.Attach(CmdEditNoteStartPosition0, false);
+            mnuInvisibleEditNoteStartPosition1.Attach(CmdEditNoteStartPosition1, false);
+            mnuInvisibleEditNoteStartPosition2.Attach(CmdEditNoteStartPosition2, false);
+            mnuInvisibleEditNoteStartPosition3.Attach(CmdEditNoteStartPosition3, false);
+            mnuInvisibleEditNoteStartPosition4.Attach(CmdEditNoteStartPosition4, false);
+            mnuInvisibleEditNoteStartPosition5.Attach(CmdEditNoteStartPosition5, false);
 
             CommandManager.HookForm(this);
             RegisterCommandEvents(this);

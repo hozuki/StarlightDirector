@@ -112,11 +112,9 @@ namespace StarlightDirector.Beatmap.IO {
 
                     EnsureBarIndex(score, barIndex);
                     var bar = score.Bars[barIndex];
-                    var note = bar.AddNote(id);
+                    var note = bar.AddNote(id, grid, finish);
                     if (note != null) {
-                        note.Basic.IndexInGrid = grid;
                         note.Basic.StartPosition = start;
-                        note.Basic.FinishPosition = finish;
                         note.Basic.Type = noteType;
                         note.Basic.FlickType = flick;
                         note.Temporary.PrevFlickNoteID = StarlightID.GetGuidFromInt32(prevFlick);
@@ -155,18 +153,18 @@ namespace StarlightDirector.Beatmap.IO {
                     var grid = (int)(long)row[Names.Column_IndexInGrid];
                     var type = (int)(long)row[Names.Column_NoteType];
                     var paramsString = (string)row[Names.Column_ParamValues];
-                    if (barIndex < score.Bars.Count) {
-                        var bar = score.Bars[barIndex];
-                        // Special notes are not added during the ReadScores() process, so we call AddNote() rather than AddNoteWithoutUpdatingGlobalNotes().
-                        var note = bar.Notes.FirstOrDefault(n => n.Basic.Type == (NoteType)type && n.Basic.IndexInGrid == grid);
-                        if (note == null) {
-                            note = bar.AddNote(id);
-                            note.SetSpecialType((NoteType)type);
-                            note.Basic.IndexInGrid = grid;
-                            note.Params = NoteExtraParams.FromDataString(paramsString, note);
-                        } else {
-                            note.Params.UpdateByDataString(paramsString);
-                        }
+                    if (barIndex >= score.Bars.Count) {
+                        continue;
+                    }
+                    var bar = score.Bars[barIndex];
+                    // Special notes are not added during the ReadScores() process, so we call AddNote() rather than AddNoteWithoutUpdatingGlobalNotes().
+                    var note = bar.Notes.FirstOrDefault(n => n.Basic.Type == (NoteType)type && n.Basic.IndexInGrid == grid);
+                    if (note == null) {
+                        note = bar.AddSpecialNote(id, (NoteType)type);
+                        note.Basic.IndexInGrid = grid;
+                        note.Params = NoteExtraParams.FromDataString(paramsString, note);
+                    } else {
+                        note.Params.UpdateByDataString(paramsString);
                     }
                 }
             }
@@ -208,7 +206,8 @@ namespace StarlightDirector.Beatmap.IO {
                 var gridIndexGroups =
                     from n in bar.Notes
                     where n.Helper.IsGaming
-                    group n by n.Basic.IndexInGrid into g
+                    group n by n.Basic.IndexInGrid
+                    into g
                     select g;
                 foreach (var group in gridIndexGroups) {
                     var sortedNotesInGroup =
@@ -238,7 +237,7 @@ namespace StarlightDirector.Beatmap.IO {
             }
         }
 
-        private static readonly Difficulty[] Difficulties = { Difficulty.Debut, Difficulty.Regular, Difficulty.Pro, Difficulty.Master, Difficulty.MasterPlus };
+        private static readonly Difficulty[] Difficulties = {Difficulty.Debut, Difficulty.Regular, Difficulty.Pro, Difficulty.Master, Difficulty.MasterPlus};
 
     }
 }

@@ -57,8 +57,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                 return;
             }
             @this.RemoveSync();
-            Note prev = null;
-            Note next = null;
+            Note prev = null, next = null;
             foreach (var note in @this.Basic.Bar.Notes) {
                 if (note == @this) {
                     continue;
@@ -66,15 +65,16 @@ namespace StarlightDirector.Beatmap.Extensions {
                 if (!note.Helper.IsGaming) {
                     continue;
                 }
-                if (note.Basic.IndexInGrid == @this.Basic.IndexInGrid) {
-                    if (note.Basic.FinishPosition < @this.Basic.FinishPosition) {
-                        if (prev == null || prev.Basic.FinishPosition < note.Basic.FinishPosition) {
-                            prev = note;
-                        }
-                    } else {
-                        if (next == null || note.Basic.FinishPosition < next.Basic.FinishPosition) {
-                            next = note;
-                        }
+                if (note.Basic.IndexInGrid != @this.Basic.IndexInGrid) {
+                    continue;
+                }
+                if (note.Basic.FinishPosition < @this.Basic.FinishPosition) {
+                    if (prev == null || prev.Basic.FinishPosition < note.Basic.FinishPosition) {
+                        prev = note;
+                    }
+                } else {
+                    if (next == null || note.Basic.FinishPosition < next.Basic.FinishPosition) {
+                        next = note;
                     }
                 }
             }

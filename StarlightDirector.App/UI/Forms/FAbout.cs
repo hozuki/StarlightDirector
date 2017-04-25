@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FAbout : Form {

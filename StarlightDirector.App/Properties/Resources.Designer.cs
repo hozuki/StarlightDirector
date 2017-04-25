@@ -143,56 +143,6 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconEditNotePosition1 {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNotePosition1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNotePosition2 {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNotePosition2", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNotePosition3 {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNotePosition3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNotePosition4 {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNotePosition4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNotePosition5 {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNotePosition5", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap IconEditPaste {
             get {
                 object obj = ResourceManager.GetObject("IconEditPaste", resourceCulture);

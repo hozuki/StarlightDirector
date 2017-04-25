@@ -17,9 +17,10 @@ namespace StarlightDirector.UI.Controls {
             if (!score.Bars.Contains(bar)) {
                 throw new ArgumentException("Assigned bar is not in current score.", nameof(bar));
             }
-            var note = bar.AddNote();
-            note.Basic.IndexInGrid = row;
-            note.Basic.StartPosition = note.Basic.FinishPosition = column;
+            var note = bar.AddNote(row, column);
+            if (NoteStartPosition != NotePosition.Nowhere) {
+                note.Basic.StartPosition = NoteStartPosition;
+            }
             return note;
         }
 
@@ -74,6 +75,26 @@ namespace StarlightDirector.UI.Controls {
         }
 
         [DebuggerStepThrough]
+        public int GetSelectedNoteCount() {
+            return GetSelectedNotes().Count();
+        }
+
+        /// <summary>
+        /// Get the only selected note. If there is no selected notes, or there are more than one selected notes,
+        /// this method returns null.
+        /// </summary>
+        /// <returns>The only selected note, or null.</returns>
+        [DebuggerStepThrough]
+        public Note GetSelectedNote() {
+            return GetSelectedNotes().SingleOrDefault();
+        }
+
+        public bool HasOneSelectedNote {
+            [DebuggerStepThrough]
+            get { return GetSelectedNotes().SingleOrDefault() != null; }
+        }
+
+        [DebuggerStepThrough]
         public IEnumerable<Bar> GetSelectedBars() {
             var score = CurrentScore;
             if (score == null) {
@@ -85,6 +106,21 @@ namespace StarlightDirector.UI.Controls {
         public bool HasSelectedBars {
             [DebuggerStepThrough]
             get { return GetSelectedBars().Any(); }
+        }
+
+        [DebuggerStepThrough]
+        public int GetSelectedBarCount() {
+            return GetSelectedBars().Count();
+        }
+
+        [DebuggerStepThrough]
+        public Bar GetSelectedBar() {
+            return GetSelectedBars().SingleOrDefault();
+        }
+
+        public bool HasOneSelectedBar {
+            [DebuggerStepThrough]
+            get { return GetSelectedBars().SingleOrDefault() != null; }
         }
 
         [DebuggerStepThrough]
