@@ -1,6 +1,4 @@
-﻿using System;
-using System.Windows.Forms;
-using StarlightDirector.Beatmap;
+﻿using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -8,19 +6,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void CmdEditNoteStartPositionSetAt_Executed(object sender, ExecutedEventArgs e) {
             var startPosition = (NotePosition)e.Parameter;
-            var hasSelectedNotes = visualizer.Editor.HasSelectedNotes;
-
-            if (hasSelectedNotes) {
-                foreach (var note in visualizer.Editor.GetSelectedNotes()) {
-                    note.Basic.StartPosition = startPosition == NotePosition.Default ? note.Basic.FinishPosition : startPosition;
-                }
-            }
-
             visualizer.Editor.NoteStartPosition = startPosition;
-
-            if (hasSelectedNotes) {
-                visualizer.Editor.Invalidate();
-            }
 
             var atMenuItems = new[] {
                 mnuEditNoteStartPositionAt0, mnuEditNoteStartPositionAt1, mnuEditNoteStartPositionAt2,
