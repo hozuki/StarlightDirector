@@ -55,19 +55,13 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void CmdEditModePrevious_Executed(object sender, ExecutedEventArgs e) {
             var currentEditMode = visualizer.Editor.EditMode;
-            if (currentEditMode <= ScoreEditMode.Min) {
-                return;
-            }
-            var newEditMode = currentEditMode - 1;
+            var newEditMode = currentEditMode > ScoreEditMode.Min ? currentEditMode - 1 : ScoreEditMode.Max;
             CmdEditModeSet.Execute(sender, newEditMode);
         }
 
         private void CmdEditModeNext_Executed(object sender, ExecutedEventArgs e) {
             var currentEditMode = visualizer.Editor.EditMode;
-            if (currentEditMode >= ScoreEditMode.Max) {
-                return;
-            }
-            var newEditMode = currentEditMode + 1;
+            var newEditMode = currentEditMode < ScoreEditMode.Max ? currentEditMode + 1 : ScoreEditMode.Min;
             CmdEditModeSet.Execute(sender, newEditMode);
         }
 
