@@ -85,8 +85,8 @@ namespace StarlightDirector.Beatmap.Extensions {
             // First, calculate all timing at the grid lines.
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
             var timings = new Dictionary<Bar, double[]>();
-            var currentTiming = score.Settings.StartTimeOffset;
-            var currentBpm = score.Settings.BeatPerMinute;
+            var currentTiming = score.Project.Settings.StartTimeOffset;
+            var currentBpm = score.Project.Settings.BeatPerMinute;
             var currentInterval = MathUtils.BpmToInterval(currentBpm);
             foreach (var bar in score.Bars) {
                 var currentGridPerSignature = bar.GetGridPerSignature();
@@ -150,7 +150,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                     continue;
                 }
                 var note = noteMap1[compiledNote];
-                if (!note.Helper.IsFlick || !note.Helper.IsSlide) {
+                if (!note.Helper.IsFlick && !note.Helper.IsSlide) {
                     continue;
                 }
                 var cn = compiledNote;

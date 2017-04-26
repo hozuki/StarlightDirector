@@ -28,7 +28,5 @@ namespace StarlightDirector.Beatmap {
 
         public bool HasAnyBar => Bars.Count != 0;
 
-        public ScoreSettings Settings { get; } = ScoreSettings.CreateDefault();
-
     }
 }

@@ -177,16 +177,16 @@
             this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewStop = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuTool = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolExport = new System.Windows.Forms.ToolStripMenuItem();
-            this.cGSSBeatmapCSVToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolImport = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuToolBuild = new System.Windows.Forms.ToolStripMenuItem();
-            this.cGSSBeatmapBundleBDBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cGSSLiveMusicACBToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuToolSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuToolOptions = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsExport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsExportCsv = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsImport = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuToolsBuild = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsBuildBdb = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsBuildAcb = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuToolsOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMain = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -223,7 +223,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.groupBox5);
             this.panel2.Controls.Add(this.groupBox4);
@@ -621,7 +621,7 @@
             // 
             // lblCaption
             // 
-            this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaption.ClickThrough = true;
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Default;
@@ -710,7 +710,7 @@
             this.mnuEdit,
             this.mnuView,
             this.mnuPreview,
-            this.mnuTool,
+            this.mnuTools,
             this.mnuHelp});
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
@@ -1495,75 +1495,75 @@
             // 
             // mnuTool
             // 
-            this.mnuTool.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuToolExport,
-            this.mnuToolImport,
-            this.mnuToolSep1,
-            this.mnuToolBuild,
-            this.mnuToolSep2,
-            this.mnuToolOptions});
-            this.mnuTool.Name = "mnuTool";
-            this.mnuTool.Size = new System.Drawing.Size(46, 21);
-            this.mnuTool.Text = "&Tool";
+            this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsExport,
+            this.mnuToolsImport,
+            this.mnuToolsSep1,
+            this.mnuToolsBuild,
+            this.mnuToolsSep2,
+            this.mnuToolsOptions});
+            this.mnuTools.Name = "mnuTools";
+            this.mnuTools.Size = new System.Drawing.Size(46, 21);
+            this.mnuTools.Text = "&Tools";
             // 
             // mnuToolExport
             // 
-            this.mnuToolExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cGSSBeatmapCSVToolStripMenuItem});
-            this.mnuToolExport.Name = "mnuToolExport";
-            this.mnuToolExport.Size = new System.Drawing.Size(131, 22);
-            this.mnuToolExport.Text = "&Export";
+            this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsExportCsv});
+            this.mnuToolsExport.Name = "mnuToolsExport";
+            this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsExport.Text = "&Export";
             // 
             // cGSSBeatmapCSVToolStripMenuItem
             // 
-            this.cGSSBeatmapCSVToolStripMenuItem.Name = "cGSSBeatmapCSVToolStripMenuItem";
-            this.cGSSBeatmapCSVToolStripMenuItem.Size = new System.Drawing.Size(246, 22);
-            this.cGSSBeatmapCSVToolStripMenuItem.Text = "&CGSS Single Beatmap (CSV)...";
+            this.mnuToolsExportCsv.Name = "mnuToolsExportCsv";
+            this.mnuToolsExportCsv.Size = new System.Drawing.Size(246, 22);
+            this.mnuToolsExportCsv.Text = "&CGSS Single Beatmap (CSV)...";
             // 
             // mnuToolImport
             // 
-            this.mnuToolImport.Name = "mnuToolImport";
-            this.mnuToolImport.Size = new System.Drawing.Size(131, 22);
-            this.mnuToolImport.Text = "&Import";
+            this.mnuToolsImport.Name = "mnuToolsImport";
+            this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsImport.Text = "&Import";
             // 
             // mnuToolSep1
             // 
-            this.mnuToolSep1.Name = "mnuToolSep1";
-            this.mnuToolSep1.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep1.Name = "mnuToolsSep1";
+            this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
             // 
             // mnuToolBuild
             // 
-            this.mnuToolBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cGSSBeatmapBundleBDBToolStripMenuItem,
-            this.cGSSLiveMusicACBToolStripMenuItem});
-            this.mnuToolBuild.Name = "mnuToolBuild";
-            this.mnuToolBuild.Size = new System.Drawing.Size(131, 22);
-            this.mnuToolBuild.Text = "&Build";
+            this.mnuToolsBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuToolsBuildBdb,
+            this.mnuToolsBuildAcb});
+            this.mnuToolsBuild.Name = "mnuToolsBuild";
+            this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsBuild.Text = "&Build";
             // 
             // cGSSBeatmapBundleBDBToolStripMenuItem
             // 
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Name = "cGSSBeatmapBundleBDBToolStripMenuItem";
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.cGSSBeatmapBundleBDBToolStripMenuItem.Text = "CGSS Beatmap &Bundle (BDB)...";
+            this.mnuToolsBuildBdb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
+            this.mnuToolsBuildBdb.Name = "mnuToolsBuildBdb";
+            this.mnuToolsBuildBdb.Size = new System.Drawing.Size(253, 22);
+            this.mnuToolsBuildBdb.Text = "CGSS Beatmap &Bundle (BDB)...";
             // 
             // cGSSLiveMusicACBToolStripMenuItem
             // 
-            this.cGSSLiveMusicACBToolStripMenuItem.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
-            this.cGSSLiveMusicACBToolStripMenuItem.Name = "cGSSLiveMusicACBToolStripMenuItem";
-            this.cGSSLiveMusicACBToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
-            this.cGSSLiveMusicACBToolStripMenuItem.Text = "CGSS Live &Music (ACB)...";
+            this.mnuToolsBuildAcb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
+            this.mnuToolsBuildAcb.Name = "mnuToolsBuildAcb";
+            this.mnuToolsBuildAcb.Size = new System.Drawing.Size(253, 22);
+            this.mnuToolsBuildAcb.Text = "CGSS Live &Music (ACB)...";
             // 
             // mnuToolSep2
             // 
-            this.mnuToolSep2.Name = "mnuToolSep2";
-            this.mnuToolSep2.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep2.Name = "mnuToolsSep2";
+            this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
             // 
             // mnuToolOptions
             // 
-            this.mnuToolOptions.Name = "mnuToolOptions";
-            this.mnuToolOptions.Size = new System.Drawing.Size(131, 22);
-            this.mnuToolOptions.Text = "&Options...";
+            this.mnuToolsOptions.Name = "mnuToolsOptions";
+            this.mnuToolsOptions.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsOptions.Text = "&Options...";
             // 
             // mnuHelp
             // 
@@ -1655,8 +1655,8 @@
             // 
             // visualizer
             // 
-            this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1748,7 +1748,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuView;
-        private System.Windows.Forms.ToolStripMenuItem mnuTool;
+        private System.Windows.Forms.ToolStripMenuItem mnuTools;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
         private System.Windows.Forms.ToolStripMenuItem mnuFileNew;
         private System.Windows.Forms.ToolStripMenuItem mnuFileOpen;
@@ -1767,16 +1767,16 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureAppend;
         private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureAppendMany;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNote;
-        private System.Windows.Forms.ToolStripMenuItem mnuToolExport;
-        private System.Windows.Forms.ToolStripMenuItem cGSSBeatmapCSVToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mnuToolImport;
-        private System.Windows.Forms.ToolStripSeparator mnuToolSep1;
-        private System.Windows.Forms.ToolStripMenuItem mnuToolBuild;
-        private System.Windows.Forms.ToolStripMenuItem cGSSBeatmapBundleBDBToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cGSSLiveMusicACBToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsExport;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsExportCsv;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsImport;
+        private System.Windows.Forms.ToolStripSeparator mnuToolsSep1;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsBuild;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsBuildBdb;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsBuildAcb;
         private System.Windows.Forms.ToolStripMenuItem mnuHelpAbout;
-        private System.Windows.Forms.ToolStripSeparator mnuToolSep2;
-        private System.Windows.Forms.ToolStripMenuItem mnuToolOptions;
+        private System.Windows.Forms.ToolStripSeparator mnuToolsSep2;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsOptions;
         private StarlightDirector.UI.Controls.SingleLineLabel lblCaption;
         private System.Windows.Forms.ToolStripMenuItem mnuEditDifficulty;
         private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyDebut;

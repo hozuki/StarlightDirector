@@ -97,6 +97,8 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewZoomOut.Attach(CmdViewZoomOut);
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
+            mnuToolsExportCsv.Attach(CmdToolsExportCsv);
+
             mnuHelpAbout.Attach(CmdHelpAbout);
 
             CommandManager.HookForm(this);

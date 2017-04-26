@@ -2,7 +2,7 @@
 using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap {
-    public sealed class ScoreSettings : ICloneable, ICloneable<ScoreSettings> {
+    public sealed class ProjectSettings : ICloneable, ICloneable<ProjectSettings> {
 
         public static readonly double DefaultBeatPerMinute = 120;
         public static readonly double DefaultStartTimeOffset = 0;
@@ -27,8 +27,8 @@ namespace StarlightDirector.Beatmap {
         /// </summary>
         public int Signature { get; set; }
 
-        public static ScoreSettings CreateDefault() {
-            return new ScoreSettings {
+        public static ProjectSettings CreateDefault() {
+            return new ProjectSettings {
                 BeatPerMinute = DefaultBeatPerMinute,
                 StartTimeOffset = DefaultStartTimeOffset,
                 GridPerSignature = DefaultGridPerSignature, // 最高分辨率为九十六分音符
@@ -36,8 +36,8 @@ namespace StarlightDirector.Beatmap {
             };
         }
 
-        public ScoreSettings Clone() {
-            return new ScoreSettings {
+        public ProjectSettings Clone() {
+            return new ProjectSettings {
                 BeatPerMinute = BeatPerMinute,
                 StartTimeOffset = StartTimeOffset,
                 GridPerSignature = GridPerSignature,
@@ -45,7 +45,7 @@ namespace StarlightDirector.Beatmap {
             };
         }
 
-        private ScoreSettings() {
+        private ProjectSettings() {
         }
 
         object ICloneable.Clone() {

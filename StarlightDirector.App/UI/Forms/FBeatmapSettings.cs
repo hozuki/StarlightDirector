@@ -16,7 +16,7 @@ namespace StarlightDirector.App.UI.Forms {
             UnregisterEventHandlers();
         }
 
-        public static (DialogResult DialogResult, double BPM, double MusicOffset) RequestInput(IWin32Window parentWindow, ScoreSettings scoreSettings) {
+        public static (DialogResult DialogResult, double BPM, double MusicOffset) RequestInput(IWin32Window parentWindow, ProjectSettings scoreSettings) {
             using (var f = new FBeatmapSettings()) {
                 f.InitUI(scoreSettings);
                 var r = f.ShowDialog(parentWindow);
@@ -82,7 +82,7 @@ namespace StarlightDirector.App.UI.Forms {
             errProvider.SetError(control, null);
         }
 
-        private void InitUI(ScoreSettings scoreSettings) {
+        private void InitUI(ProjectSettings scoreSettings) {
             txtBPM.Text = scoreSettings.BeatPerMinute.ToString("0.00");
             txtMusicOffset.Text = scoreSettings.StartTimeOffset.ToString("0.00");
         }

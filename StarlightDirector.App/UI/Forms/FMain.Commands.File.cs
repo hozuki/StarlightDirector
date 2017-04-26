@@ -49,7 +49,6 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdFileSaveAs_Executed(object sender, ExecutedEventArgs e) {
-            saveFileDialog.CheckFileExists = true;
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
             saveFileDialog.Filter = "StarlightDirector Project (*.sldproj)|*.sldproj";

@@ -10,7 +10,7 @@ namespace StarlightDirector.Beatmap {
             for (var i = Difficulty.Debut; i <= Difficulty.MasterPlus; ++i) {
                 scores.Add(i, new Score(this, i));
             }
-            Settings = ScoreSettings.CreateDefault();
+            Settings = ProjectSettings.CreateDefault();
         }
 
         public Score GetScore(Difficulty difficulty) {
@@ -25,7 +25,7 @@ namespace StarlightDirector.Beatmap {
             }
         }
 
-        public ScoreSettings Settings { get; }
+        public ProjectSettings Settings { get; }
 
         public string MusicFileName { get; set; } = string.Empty;
 
