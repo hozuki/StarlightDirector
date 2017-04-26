@@ -16,12 +16,13 @@ namespace StarlightDirector.UI.Controls {
             var gridArea = GetGridArea(context.ClientSize);
             var radius = config.NoteRadius;
             var noteStartY = (float)ScrollOffsetY;
+            var specialNoteArea = GetSpecialNoteArea(context.ClientSize);
 
             DrawNoteConnections(context, score, gridArea, noteStartY, radius);
-            DrawNotes(context, score, gridArea, noteStartY, radius);
+            DrawNotes(context, score, gridArea, specialNoteArea, noteStartY, radius);
         }
 
-        private void DrawNotes(D2DRenderContext context, Score score, RectangleF gridArea, float noteStartY, float radius) {
+        private void DrawNotes(D2DRenderContext context, Score score, RectangleF gridArea, RectangleF specialNoteArea, float noteStartY, float radius) {
             if (!score.HasAnyNote) {
                 return;
             }
@@ -37,42 +38,66 @@ namespace StarlightDirector.UI.Controls {
                             continue;
                         }
 
-                        var x = GetNotePositionX(note, gridArea);
-                        var y = GetNotePositionY(note, unit, noteStartY);
-                        var h = note.Helper;
-                        if (h.IsSlide) {
-                            DrawSlideNote(context, note, x, y, radius, h.IsSlideMidway);
-                        } else if (h.IsHoldStart) {
-                            DrawHoldNote(context, note, x, y, radius);
-                        } else {
-                            if (note.Basic.FlickType != NoteFlickType.None) {
-                                DrawFlickNote(context, note, x, y, radius, note.Basic.FlickType);
+                        if (note.Helper.IsGaming) {
+                            var x = GetNotePositionX(note, gridArea);
+                            var y = GetNotePositionY(note, unit, noteStartY);
+                            var h = note.Helper;
+                            if (h.IsSlide) {
+                                DrawSlideNote(context, note, x, y, radius, h.IsSlideMidway);
+                            } else if (h.IsHoldStart) {
+                                DrawHoldNote(context, note, x, y, radius);
                             } else {
-                                DrawTapNote(context, note, x, y, radius);
+                                if (note.Basic.FlickType != NoteFlickType.None) {
+                                    DrawFlickNote(context, note, x, y, radius, note.Basic.FlickType);
+                                } else {
+                                    DrawTapNote(context, note, x, y, radius);
+                                }
                             }
-                        }
 
-                        // Indicators
-                        if (shouldDrawIndicators) {
-                            if (note.Helper.IsSync) {
-                                context.FillCircle(_syncIndicatorBrush, x + radius, y - radius, IndicatorRadius);
+                            // Indicators
+                            if (shouldDrawIndicators) {
+                                if (note.Helper.IsSync) {
+                                    context.FillCircle(_syncIndicatorBrush, x + radius, y - radius, IndicatorRadius);
+                                }
+                                if (note.Helper.IsHold) {
+                                    context.FillCircle(_holdIndicatorBrush, x - radius, y + radius, IndicatorRadius);
+                                }
+                                if (note.Helper.IsSlide) {
+                                    context.FillCircle(_slideIndicatorBrush, x + radius, y + radius, IndicatorRadius);
+                                } else if (note.Helper.IsFlick) {
+                                    context.FillCircle(_flickIndicatorBrush, x + radius, y + radius, IndicatorRadius);
+                                }
                             }
-                            if (note.Helper.IsHold) {
-                                context.FillCircle(_holdIndicatorBrush, x - radius, y + radius, IndicatorRadius);
-                            }
-                            if (note.Helper.IsSlide) {
-                                context.FillCircle(_slideIndicatorBrush, x + radius, y + radius, IndicatorRadius);
-                            } else if (note.Helper.IsFlick) {
-                                context.FillCircle(_flickIndicatorBrush, x + radius, y + radius, IndicatorRadius);
-                            }
-                        }
 
-                        // Start position
-                        if (note.Basic.StartPosition != note.Basic.FinishPosition) {
-                            var startPositionX = x - radius - StartPositionFontSize / 2;
-                            var startPositionY = y - radius - StartPositionFontSize / 2;
-                            var text = ((int)note.Basic.StartPosition).ToString();
-                            context.DrawText(text, _noteCommonFill, startPositionFont, startPositionX, startPositionY);
+                            // Start position
+                            if (note.Basic.StartPosition != note.Basic.FinishPosition) {
+                                var startPositionX = x - radius - StartPositionFontSize / 2;
+                                var startPositionY = y - radius - StartPositionFontSize / 2;
+                                var text = ((int)note.Basic.StartPosition).ToString();
+                                context.DrawText(text, _noteCommonFill, startPositionFont, startPositionX, startPositionY);
+                            }
+                        } else if (note.Helper.IsSpecial) {
+                            // Draw a special note (a rectangle)
+                            var left = specialNoteArea.Left + radius * 4;
+                            var gridY = GetNotePositionY(note, unit, noteStartY);
+                            var top = gridY - radius * SpecialNoteHeightFactor;
+                            var width = specialNoteArea.Right - left;
+                            var height = radius * 2 * SpecialNoteHeightFactor;
+                            context.DrawRectangle(_specialNoteStroke, left, top, width, height);
+                            context.FillRectangle(_specialNoteFill, left, top, width, height);
+
+                            string specialNoteText;
+                            switch (note.Basic.Type) {
+                                case NoteType.VariantBpm:
+                                    specialNoteText = $"BPM: {note.Params.NewBpm:0.00}";
+                                    break;
+                                default:
+                                    throw new ArgumentOutOfRangeException(nameof(note.Basic.Type), note.Basic.Type, null);
+                            }
+                            var rect = context.MeasureText(specialNoteText, _specialNoteDescriptionFont);
+                            var textLeft = left + 2;
+                            var textTop = gridY - rect.Height / 2;
+                            context.DrawText(specialNoteText, _specialNoteTextBrush, _specialNoteDescriptionFont, textLeft, textTop);
                         }
                     }
                 }
@@ -243,6 +268,8 @@ namespace StarlightDirector.UI.Controls {
 
         private static readonly float StartPositionFontSize = 10;
         private static readonly float IndicatorRadius = 4;
+
+        private static readonly float SpecialNoteHeightFactor = 2 / 3f;
 
         private static readonly float Sqrt3 = (float)Math.Sqrt(3);
 

@@ -3,7 +3,7 @@
 
         public float NoteRadius { get; set; } = 15;
 
-        public float BarAreaWidth { get; set; } = 500;
+        public float BarAreaWidth { get; set; } = 560;
 
         public float GridAreaWidth { get; set; } = 320;
 
@@ -11,7 +11,7 @@
 
         public float InfoAreaWidth { get; set; } = 85;
 
-        public float SpecialNotesAreaWidth { get; set; } = 60;
+        public float SpecialNotesAreaWidth { get; set; } = 120;
 
     }
 }

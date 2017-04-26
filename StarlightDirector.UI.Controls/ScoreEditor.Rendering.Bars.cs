@@ -140,13 +140,6 @@ namespace StarlightDirector.UI.Controls {
         }
 
         [DebuggerStepThrough]
-        private RectangleF GetGridArea(Size clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        [DebuggerStepThrough]
         private RectangleF GetInfoArea() {
             return GetInfoArea(ClientSize);
         }
@@ -174,6 +167,18 @@ namespace StarlightDirector.UI.Controls {
         private RectangleF GetBarArea(Size clientSize) {
             var config = Config;
             var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.BarAreaWidth, clientSize.Height);
+            return area;
+        }
+
+        [DebuggerStepThrough]
+        private RectangleF GetSpecialNoteArea() {
+            return GetSpecialNoteArea(ClientSize);
+        }
+
+        [DebuggerStepThrough]
+        private RectangleF GetSpecialNoteArea(SizeF clientSize) {
+            var config = Config;
+            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth + config.GridAreaWidth), 0, config.SpecialNotesAreaWidth, clientSize.Height);
             return area;
         }
 
