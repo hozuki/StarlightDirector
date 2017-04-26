@@ -104,7 +104,7 @@ namespace StarlightDirector.Commanding {
                     s = "Oemplus";
                 } else if (int.TryParse(seg, out var num)) {
                     if (0 <= num && num <= 9) {
-                        s = "NumPad" + num;
+                        s = "D" + num;
                     } else {
                         throw new ArgumentOutOfRangeException(nameof(num), "Invalid key for shortcut.");
                     }

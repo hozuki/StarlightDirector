@@ -67,11 +67,6 @@
             this.tsbEditMeasureAppend = new System.Windows.Forms.ToolStripSplitButton();
             this.tsbEditMeasureAppendMany = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbEditMeasureDelete = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripButton22 = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStripButton25 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripButton26 = new System.Windows.Forms.ToolStripLabel();
-            this.tsbEditGoToMeasure = new System.Windows.Forms.ToolStripButton();
             this.lblCaption = new StarlightDirector.UI.Controls.SingleLineLabel();
             this.sysMinimize = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMaximizeRestore = new StarlightDirector.UI.Controls.ModernSystemButton();
@@ -127,12 +122,12 @@
             this.mnuEditNoteDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditNoteSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditNoteStartPosition = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition0 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPosition5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionAt5 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditSep4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditGoTo = new System.Windows.Forms.ToolStripMenuItem();
@@ -184,14 +179,6 @@
             this.mnuToolOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuHelpAbout = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisible = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition0 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuInvisibleEditNoteStartPosition5 = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxMain = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.ctxEditCut = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxEditCopy = new System.Windows.Forms.ToolStripMenuItem();
@@ -222,6 +209,16 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
+            this.mnuEditNoteStartPositionMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuEditNoteStartPositionMoveRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNotePositionSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuEditNoteStartPositionTo0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -603,15 +600,10 @@
             this.tlbMeasure.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbMeasure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbEditMeasureAppend,
-            this.tsbEditMeasureDelete,
-            this.toolStripSeparator1,
-            this.toolStripButton22,
-            this.toolStripButton25,
-            this.toolStripButton26,
-            this.tsbEditGoToMeasure});
+            this.tsbEditMeasureDelete});
             this.tlbMeasure.Location = new System.Drawing.Point(3, 19);
             this.tlbMeasure.Name = "tlbMeasure";
-            this.tlbMeasure.Size = new System.Drawing.Size(161, 25);
+            this.tlbMeasure.Size = new System.Drawing.Size(58, 25);
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
@@ -640,41 +632,6 @@
             this.tsbEditMeasureDelete.Name = "tsbEditMeasureDelete";
             this.tsbEditMeasureDelete.Size = new System.Drawing.Size(23, 22);
             this.tsbEditMeasureDelete.Text = "Delete Selected Measure(s)";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
-            // toolStripButton22
-            // 
-            this.toolStripButton22.Name = "toolStripButton22";
-            this.toolStripButton22.Size = new System.Drawing.Size(30, 25);
-            this.toolStripButton22.Text = "100";
-            // 
-            // toolStripButton25
-            // 
-            this.toolStripButton25.Name = "toolStripButton25";
-            this.toolStripButton25.Size = new System.Drawing.Size(13, 22);
-            this.toolStripButton25.Text = "/";
-            // 
-            // toolStripButton26
-            // 
-            this.toolStripButton26.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton26.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton26.Image")));
-            this.toolStripButton26.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton26.Name = "toolStripButton26";
-            this.toolStripButton26.Size = new System.Drawing.Size(29, 22);
-            this.toolStripButton26.Text = "100";
-            // 
-            // tsbEditGoToMeasure
-            // 
-            this.tsbEditGoToMeasure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditGoToMeasure.Image = global::StarlightDirector.App.Properties.Resources.IconEditGoToMeasure;
-            this.tsbEditGoToMeasure.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditGoToMeasure.Name = "tsbEditGoToMeasure";
-            this.tsbEditGoToMeasure.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditGoToMeasure.Text = "Go to Measure";
             // 
             // lblCaption
             // 
@@ -768,12 +725,11 @@
             this.mnuView,
             this.mnuPreview,
             this.mnuTool,
-            this.mnuHelp,
-            this.mnuInvisible});
+            this.mnuHelp});
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(293, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(385, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -872,7 +828,7 @@
             this.mnuEditUndo.Enabled = false;
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
@@ -880,20 +836,20 @@
             this.mnuEditRedo.Enabled = false;
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Enabled = false;
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
@@ -901,7 +857,7 @@
             this.mnuEditCopy.Enabled = false;
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
@@ -909,7 +865,7 @@
             this.mnuEditPaste.Enabled = false;
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -919,7 +875,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -943,7 +899,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditDifficulty
             // 
@@ -954,7 +910,7 @@
             this.mnuEditDifficultyMaster,
             this.mnuEditDifficultyMasterPlus});
             this.mnuEditDifficulty.Name = "mnuEditDifficulty";
-            this.mnuEditDifficulty.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditDifficulty.Size = new System.Drawing.Size(152, 22);
             this.mnuEditDifficulty.Text = "&Difficulty";
             // 
             // mnuEditDifficultyDebut
@@ -994,7 +950,7 @@
             this.mnuEditBeatmap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditBeatmapSettings});
             this.mnuEditBeatmap.Name = "mnuEditBeatmap";
-            this.mnuEditBeatmap.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditBeatmap.Size = new System.Drawing.Size(152, 22);
             this.mnuEditBeatmap.Text = "&Beatmap";
             // 
             // mnuEditBeatmapSettings
@@ -1008,7 +964,7 @@
             this.mnuEditMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditMusicSettings});
             this.mnuEditMusic.Name = "mnuEditMusic";
-            this.mnuEditMusic.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditMusic.Size = new System.Drawing.Size(152, 22);
             this.mnuEditMusic.Text = "Mus&ic";
             // 
             // mnuEditMusicSettings
@@ -1020,7 +976,7 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditMode
             // 
@@ -1035,7 +991,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -1104,7 +1060,7 @@
             this.mnuEditMeasureAppendMany,
             this.mnuEditMeasureDelete});
             this.mnuEditMeasure.Name = "mnuEditMeasure";
-            this.mnuEditMeasure.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditMeasure.Size = new System.Drawing.Size(152, 22);
             this.mnuEditMeasure.Text = "&Measure";
             // 
             // mnuEditMeasureAppend
@@ -1133,7 +1089,7 @@
             this.mnuEditNoteStartPosition,
             this.mnuEditNoteInsertSpecial});
             this.mnuEditNote.Name = "mnuEditNote";
-            this.mnuEditNote.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditNote.Size = new System.Drawing.Size(152, 22);
             this.mnuEditNote.Text = "&Note";
             // 
             // mnuEditNoteDelete
@@ -1150,53 +1106,63 @@
             // mnuEditNoteStartPosition
             // 
             this.mnuEditNoteStartPosition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditNoteStartPosition0,
-            this.mnuEditNoteStartPosition1,
-            this.mnuEditNoteStartPosition2,
-            this.mnuEditNoteStartPosition3,
-            this.mnuEditNoteStartPosition4,
-            this.mnuEditNoteStartPosition5});
+            this.mnuEditNoteStartPositionAt0,
+            this.mnuEditNoteStartPositionAt1,
+            this.mnuEditNoteStartPositionAt2,
+            this.mnuEditNoteStartPositionAt3,
+            this.mnuEditNoteStartPositionAt4,
+            this.mnuEditNoteStartPositionAt5,
+            this.mnuEditNoteStartPositionSep1,
+            this.mnuEditNoteStartPositionMoveLeft,
+            this.mnuEditNoteStartPositionMoveRight,
+            this.mnuEditNotePositionSep2,
+            this.mnuEditNoteStartPositionTo0,
+            this.mnuEditNoteStartPositionTo1,
+            this.mnuEditNoteStartPositionTo2,
+            this.mnuEditNoteStartPositionTo3,
+            this.mnuEditNoteStartPositionTo4,
+            this.mnuEditNoteStartPositionTo5});
             this.mnuEditNoteStartPosition.Name = "mnuEditNoteStartPosition";
             this.mnuEditNoteStartPosition.Size = new System.Drawing.Size(166, 22);
             this.mnuEditNoteStartPosition.Text = "Start &Position";
             // 
-            // mnuEditNoteStartPosition0
+            // mnuEditNoteStartPositionAt0
             // 
-            this.mnuEditNoteStartPosition0.Checked = true;
-            this.mnuEditNoteStartPosition0.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnuEditNoteStartPosition0.Name = "mnuEditNoteStartPosition0";
-            this.mnuEditNoteStartPosition0.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition0.Text = "&Default";
+            this.mnuEditNoteStartPositionAt0.Checked = true;
+            this.mnuEditNoteStartPositionAt0.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuEditNoteStartPositionAt0.Name = "mnuEditNoteStartPositionAt0";
+            this.mnuEditNoteStartPositionAt0.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt0.Text = "At &Default";
             // 
-            // mnuEditNoteStartPosition1
+            // mnuEditNoteStartPositionAt1
             // 
-            this.mnuEditNoteStartPosition1.Name = "mnuEditNoteStartPosition1";
-            this.mnuEditNoteStartPosition1.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition1.Text = "&Left";
+            this.mnuEditNoteStartPositionAt1.Name = "mnuEditNoteStartPositionAt1";
+            this.mnuEditNoteStartPositionAt1.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt1.Text = "At &Left";
             // 
-            // mnuEditNoteStartPosition2
+            // mnuEditNoteStartPositionAt2
             // 
-            this.mnuEditNoteStartPosition2.Name = "mnuEditNoteStartPosition2";
-            this.mnuEditNoteStartPosition2.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition2.Text = "Cen&ter Left";
+            this.mnuEditNoteStartPositionAt2.Name = "mnuEditNoteStartPositionAt2";
+            this.mnuEditNoteStartPositionAt2.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt2.Text = "At Cen&ter Left";
             // 
-            // mnuEditNoteStartPosition3
+            // mnuEditNoteStartPositionAt3
             // 
-            this.mnuEditNoteStartPosition3.Name = "mnuEditNoteStartPosition3";
-            this.mnuEditNoteStartPosition3.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition3.Text = "&Center";
+            this.mnuEditNoteStartPositionAt3.Name = "mnuEditNoteStartPositionAt3";
+            this.mnuEditNoteStartPositionAt3.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt3.Text = "At &Center";
             // 
-            // mnuEditNoteStartPosition4
+            // mnuEditNoteStartPositionAt4
             // 
-            this.mnuEditNoteStartPosition4.Name = "mnuEditNoteStartPosition4";
-            this.mnuEditNoteStartPosition4.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition4.Text = "Center R&ight";
+            this.mnuEditNoteStartPositionAt4.Name = "mnuEditNoteStartPositionAt4";
+            this.mnuEditNoteStartPositionAt4.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt4.Text = "At Center R&ight";
             // 
-            // mnuEditNoteStartPosition5
+            // mnuEditNoteStartPositionAt5
             // 
-            this.mnuEditNoteStartPosition5.Name = "mnuEditNoteStartPosition5";
-            this.mnuEditNoteStartPosition5.Size = new System.Drawing.Size(148, 22);
-            this.mnuEditNoteStartPosition5.Text = "&Right";
+            this.mnuEditNoteStartPositionAt5.Name = "mnuEditNoteStartPositionAt5";
+            this.mnuEditNoteStartPositionAt5.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionAt5.Text = "At &Right";
             // 
             // mnuEditNoteInsertSpecial
             // 
@@ -1207,7 +1173,7 @@
             // mnuEditSep4
             // 
             this.mnuEditSep4.Name = "mnuEditSep4";
-            this.mnuEditSep4.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep4.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditGoTo
             // 
@@ -1215,7 +1181,7 @@
             this.measureToolStripMenuItem1,
             this.timeToolStripMenuItem});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // measureToolStripMenuItem1
@@ -1569,70 +1535,6 @@
             this.mnuHelpAbout.Size = new System.Drawing.Size(111, 22);
             this.mnuHelpAbout.Text = "&About";
             // 
-            // mnuInvisible
-            // 
-            this.mnuInvisible.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuInvisibleEditNoteStartPosition});
-            this.mnuInvisible.Name = "mnuInvisible";
-            this.mnuInvisible.Size = new System.Drawing.Size(67, 21);
-            this.mnuInvisible.Text = "&Invisible";
-            this.mnuInvisible.Visible = false;
-            // 
-            // mnuInvisibleEditNoteStartPosition
-            // 
-            this.mnuInvisibleEditNoteStartPosition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuInvisibleEditNoteStartPosition0,
-            this.mnuInvisibleEditNoteStartPosition1,
-            this.mnuInvisibleEditNoteStartPosition2,
-            this.mnuInvisibleEditNoteStartPosition3,
-            this.mnuInvisibleEditNoteStartPosition4,
-            this.mnuInvisibleEditNoteStartPosition5});
-            this.mnuInvisibleEditNoteStartPosition.Name = "mnuInvisibleEditNoteStartPosition";
-            this.mnuInvisibleEditNoteStartPosition.Size = new System.Drawing.Size(186, 22);
-            this.mnuInvisibleEditNoteStartPosition.Text = "Note Start Position";
-            // 
-            // mnuInvisibleEditNoteStartPosition0
-            // 
-            this.mnuInvisibleEditNoteStartPosition0.Name = "mnuInvisibleEditNoteStartPosition0";
-            this.mnuInvisibleEditNoteStartPosition0.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D0)));
-            this.mnuInvisibleEditNoteStartPosition0.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition0.Text = "Default";
-            // 
-            // mnuInvisibleEditNoteStartPosition1
-            // 
-            this.mnuInvisibleEditNoteStartPosition1.Name = "mnuInvisibleEditNoteStartPosition1";
-            this.mnuInvisibleEditNoteStartPosition1.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D1)));
-            this.mnuInvisibleEditNoteStartPosition1.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition1.Text = "Left";
-            // 
-            // mnuInvisibleEditNoteStartPosition2
-            // 
-            this.mnuInvisibleEditNoteStartPosition2.Name = "mnuInvisibleEditNoteStartPosition2";
-            this.mnuInvisibleEditNoteStartPosition2.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D2)));
-            this.mnuInvisibleEditNoteStartPosition2.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition2.Text = "Center Left";
-            // 
-            // mnuInvisibleEditNoteStartPosition3
-            // 
-            this.mnuInvisibleEditNoteStartPosition3.Name = "mnuInvisibleEditNoteStartPosition3";
-            this.mnuInvisibleEditNoteStartPosition3.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D3)));
-            this.mnuInvisibleEditNoteStartPosition3.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition3.Text = "Center";
-            // 
-            // mnuInvisibleEditNoteStartPosition4
-            // 
-            this.mnuInvisibleEditNoteStartPosition4.Name = "mnuInvisibleEditNoteStartPosition4";
-            this.mnuInvisibleEditNoteStartPosition4.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D4)));
-            this.mnuInvisibleEditNoteStartPosition4.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition4.Text = "Center Right";
-            // 
-            // mnuInvisibleEditNoteStartPosition5
-            // 
-            this.mnuInvisibleEditNoteStartPosition5.Name = "mnuInvisibleEditNoteStartPosition5";
-            this.mnuInvisibleEditNoteStartPosition5.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.D5)));
-            this.mnuInvisibleEditNoteStartPosition5.Size = new System.Drawing.Size(187, 22);
-            this.mnuInvisibleEditNoteStartPosition5.Text = "Right";
-            // 
             // ctxMain
             // 
             this.ctxMain.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1844,6 +1746,64 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
+            // mnuEditNoteStartPositionMoveLeft
+            // 
+            this.mnuEditNoteStartPositionMoveLeft.Name = "mnuEditNoteStartPositionMoveLeft";
+            this.mnuEditNoteStartPositionMoveLeft.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionMoveLeft.Text = "Move L&eft";
+            // 
+            // mnuEditNoteStartPositionSep1
+            // 
+            this.mnuEditNoteStartPositionSep1.Name = "mnuEditNoteStartPositionSep1";
+            this.mnuEditNoteStartPositionSep1.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuEditNoteStartPositionMoveRight
+            // 
+            this.mnuEditNoteStartPositionMoveRight.Name = "mnuEditNoteStartPositionMoveRight";
+            this.mnuEditNoteStartPositionMoveRight.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionMoveRight.Text = "Mo&ve Right";
+            // 
+            // mnuEditNotePositionSep2
+            // 
+            this.mnuEditNotePositionSep2.Name = "mnuEditNotePositionSep2";
+            this.mnuEditNotePositionSep2.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuEditNoteStartPositionTo0
+            // 
+            this.mnuEditNoteStartPositionTo0.Name = "mnuEditNoteStartPositionTo0";
+            this.mnuEditNoteStartPositionTo0.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo0.Text = "&Set To Default";
+            // 
+            // mnuEditNoteStartPositionTo1
+            // 
+            this.mnuEditNoteStartPositionTo1.Name = "mnuEditNoteStartPositionTo1";
+            this.mnuEditNoteStartPositionTo1.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo1.Text = "Set T&o Left";
+            // 
+            // mnuEditNoteStartPositionTo2
+            // 
+            this.mnuEditNoteStartPositionTo2.Name = "mnuEditNoteStartPositionTo2";
+            this.mnuEditNoteStartPositionTo2.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo2.Text = "Set To Center Le&ft";
+            // 
+            // mnuEditNoteStartPositionTo3
+            // 
+            this.mnuEditNoteStartPositionTo3.Name = "mnuEditNoteStartPositionTo3";
+            this.mnuEditNoteStartPositionTo3.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo3.Text = "Set To Cente&r";
+            // 
+            // mnuEditNoteStartPositionTo4
+            // 
+            this.mnuEditNoteStartPositionTo4.Name = "mnuEditNoteStartPositionTo4";
+            this.mnuEditNoteStartPositionTo4.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo4.Text = "Set To Center Ri&ght";
+            // 
+            // mnuEditNoteStartPositionTo5
+            // 
+            this.mnuEditNoteStartPositionTo5.Name = "mnuEditNoteStartPositionTo5";
+            this.mnuEditNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo5.Text = "Set To Rig&ht";
+            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1980,11 +1940,11 @@
         private System.Windows.Forms.ToolStripSeparator mnuEditSep2;
         private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition3;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition4;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition5;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt2;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt3;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt4;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt5;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteInsertSpecial;
         private System.Windows.Forms.ToolStripMenuItem mnuPreview;
         private System.Windows.Forms.ToolStripMenuItem mnuPreviewFromThisMeasure;
@@ -2044,10 +2004,6 @@
         private System.Windows.Forms.ToolStripButton tsbToolBuildBeatmapBundle;
         private System.Windows.Forms.ToolStripButton tsbToolBuildMusic;
         private System.Windows.Forms.ToolStrip tlbMeasure;
-        private System.Windows.Forms.ToolStripTextBox toolStripButton22;
-        private System.Windows.Forms.ToolStripLabel toolStripButton25;
-        private System.Windows.Forms.ToolStripLabel toolStripButton26;
-        private System.Windows.Forms.ToolStripButton tsbEditGoToMeasure;
         private System.Windows.Forms.ToolStripSeparator mnuEditSep4;
         private System.Windows.Forms.ToolStripMenuItem mnuEditGoTo;
         private System.Windows.Forms.ToolStripMenuItem measureToolStripMenuItem1;
@@ -2058,7 +2014,6 @@
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
         private System.Windows.Forms.ToolStripSplitButton tsbEditMeasureAppend;
         private System.Windows.Forms.ToolStripButton tsbEditMeasureDelete;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem tsbEditMeasureAppendMany;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteDelete;
         private System.Windows.Forms.ToolStripSeparator mnuEditNoteSep1;
@@ -2082,19 +2037,21 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
         private System.Windows.Forms.ToolStripDropDownButton tsbEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition0;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisible;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition0;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition1;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition2;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition3;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition5;
-        private System.Windows.Forms.ToolStripMenuItem mnuInvisibleEditNoteStartPosition4;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt0;
         private System.Windows.Forms.ToolStripSeparator mnuEditModeSep2;
         private System.Windows.Forms.ToolStripMenuItem mnuEditModePrevious;
         private System.Windows.Forms.ToolStripMenuItem mnuEditModeNext;
         private System.Windows.Forms.ToolStripMenuItem mnuEditSelectClearAll;
+        private System.Windows.Forms.ToolStripSeparator mnuEditNoteStartPositionSep1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionMoveLeft;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionMoveRight;
+        private System.Windows.Forms.ToolStripSeparator mnuEditNotePositionSep2;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo0;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo1;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo2;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo3;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo4;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo5;
     }
 }
 

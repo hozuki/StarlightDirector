@@ -141,7 +141,7 @@ namespace StarlightDirector.UI.Controls {
                     // Whatever note you hit, change its start up position.
                     // If no note is hit and we are hitting a grid crossing, the EditorAddNote method is invoked
                     // and the newly added note's StartPosition is automatically set there.
-                    if (hit.HitAnyNote && editor.NoteStartPosition != NotePosition.Nowhere) {
+                    if (hit.HitAnyNote && editor.NoteStartPosition != NotePosition.Default) {
                         hit.Note.Basic.StartPosition = editor.NoteStartPosition;
                     }
                     // Then handle the mode-specific actions.

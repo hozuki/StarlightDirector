@@ -45,9 +45,9 @@ namespace StarlightDirector.Beatmap {
 
             public int IndexInGrid { get; set; }
 
-            public NotePosition StartPosition { get; set; } = NotePosition.Nowhere;
+            public NotePosition StartPosition { get; set; } = NotePosition.Default;
 
-            public NotePosition FinishPosition { get; set; } = NotePosition.Nowhere;
+            public NotePosition FinishPosition { get; set; } = NotePosition.Default;
 
             public NoteFlickType FlickType { get; set; } = NoteFlickType.None;
 

@@ -61,6 +61,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="UI\Forms\FAbout.cs">
       <SubType>Form</SubType>
     </Compile>

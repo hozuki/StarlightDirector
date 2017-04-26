@@ -19,7 +19,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             if (row < 0 || row >= bar.GetNumberOfGrids()) {
                 throw new ArgumentOutOfRangeException(nameof(row), row, null);
             }
-            if (column == NotePosition.Nowhere) {
+            if (column == NotePosition.Default) {
                 throw new ArgumentOutOfRangeException(nameof(column), column, null);
             }
             if (bar.Notes.Any(n => n.Basic.IndexInGrid == row && n.Basic.FinishPosition == column)) {

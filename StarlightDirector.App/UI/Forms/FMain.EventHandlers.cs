@@ -153,6 +153,12 @@ namespace StarlightDirector.App.UI.Forms {
             CursorFixup(this);
 
             mnuEditSelectClearAll.ShortcutKeyDisplayString = "Esc";
+            mnuEditNoteStartPositionAt0.ShortcutKeyDisplayString = "0";
+            mnuEditNoteStartPositionAt1.ShortcutKeyDisplayString = "1";
+            mnuEditNoteStartPositionAt2.ShortcutKeyDisplayString = "2";
+            mnuEditNoteStartPositionAt3.ShortcutKeyDisplayString = "3";
+            mnuEditNoteStartPositionAt4.ShortcutKeyDisplayString = "4";
+            mnuEditNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
 
             CmdFileNew.Execute(null, null);
         }

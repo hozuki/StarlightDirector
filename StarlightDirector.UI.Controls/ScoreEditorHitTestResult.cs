@@ -34,16 +34,16 @@ namespace StarlightDirector.UI.Controls {
 
         public bool HitAnyBar => Bar != null;
 
-        public bool HitBarGridIntersection => Bar != null && Row >= 0 && Column != NotePosition.Nowhere;
+        public bool HitBarGridIntersection => Bar != null && Row >= 0 && Column != NotePosition.Default;
 
         public bool HitAnyNote => Note != null;
 
         internal static ScoreEditorHitTestResult GetInvalidResult(Point location) {
-            return new ScoreEditorHitTestResult(location, ScoreEditorHitRegion.None, null, null, -1, NotePosition.Nowhere);
+            return new ScoreEditorHitTestResult(location, ScoreEditorHitRegion.None, null, null, -1, NotePosition.Default);
         }
 
         internal static ScoreEditorHitTestResult GetInvalidResult(int x, int y) {
-            return new ScoreEditorHitTestResult(new Point(x, y), ScoreEditorHitRegion.None, null, null, -1, NotePosition.Nowhere);
+            return new ScoreEditorHitTestResult(new Point(x, y), ScoreEditorHitRegion.None, null, null, -1, NotePosition.Default);
         }
 
     }

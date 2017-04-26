@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
+using StarlightDirector.App.Extensions;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.UI.Controls;
 using StarlightDirector.UI.Controls.Extensions;
@@ -93,6 +96,60 @@ namespace StarlightDirector.App.UI.Forms {
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
+        protected override void OnKeyDown(KeyEventArgs e) {
+            switch (e.KeyData) {
+                case Keys.D0:
+                case Keys.NumPad0:
+                    CmdEditNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    break;
+                case Keys.D1:
+                case Keys.NumPad1:
+                    CmdEditNoteStartPositionAt1.Execute(this, NotePosition.Left);
+                    break;
+                case Keys.D2:
+                case Keys.NumPad2:
+                    CmdEditNoteStartPositionAt2.Execute(this, NotePosition.CenterLeft);
+                    break;
+                case Keys.D3:
+                case Keys.NumPad3:
+                    CmdEditNoteStartPositionAt3.Execute(this, NotePosition.Center);
+                    break;
+                case Keys.D4:
+                case Keys.NumPad4:
+                    CmdEditNoteStartPositionAt4.Execute(this, NotePosition.CenterRight);
+                    break;
+                case Keys.D5:
+                case Keys.NumPad5:
+                    CmdEditNoteStartPositionAt5.Execute(this, NotePosition.Right);
+                    break;
+                default:
+                    base.OnKeyDown(e);
+                    break;
+            }
+        }
+
+        protected override void OnKeyUp(KeyEventArgs e) {
+            switch (e.KeyData) {
+                case Keys.D0:
+                case Keys.NumPad0:
+                case Keys.D1:
+                case Keys.NumPad1:
+                case Keys.D2:
+                case Keys.NumPad2:
+                case Keys.D3:
+                case Keys.NumPad3:
+                case Keys.D4:
+                case Keys.NumPad4:
+                case Keys.D5:
+                case Keys.NumPad5:
+                    CmdEditNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    break;
+                default:
+                    base.OnKeyUp(e);
+                    break;
             }
         }
 

@@ -18,7 +18,7 @@ namespace StarlightDirector.UI.Controls {
                 throw new ArgumentException("Assigned bar is not in current score.", nameof(bar));
             }
             var note = bar.AddNote(row, column);
-            if (NoteStartPosition != NotePosition.Nowhere) {
+            if (NoteStartPosition != NotePosition.Default) {
                 note.Basic.StartPosition = NoteStartPosition;
             }
             return note;

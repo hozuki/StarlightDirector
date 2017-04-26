@@ -92,7 +92,7 @@ namespace StarlightDirector.UI.Controls {
                 } else if (Math.Abs(relativeY - (testY + newUnit)) < config.NoteRadius) {
                     row = testRow + 1;
                 } else {
-                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
                 }
                 row *= firstClearDrawnRatio;
 
@@ -101,7 +101,7 @@ namespace StarlightDirector.UI.Controls {
                 var relativeGridX = x - gridArea.Left;
                 var testCol = (int)((relativeGridX + config.NoteRadius) / columnWidth);
                 if (testCol < 0) {
-                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
                 }
                 var testX = testCol * columnWidth;
                 int col;
@@ -110,7 +110,7 @@ namespace StarlightDirector.UI.Controls {
                 } else if (Math.Abs(relativeGridX - (testX + columnWidth)) < config.NoteRadius) {
                     col = testCol + 1;
                 } else {
-                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Nowhere);
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
                 }
 
                 // Hit any note?
@@ -120,7 +120,7 @@ namespace StarlightDirector.UI.Controls {
                 return result;
             }
 
-            return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, null, null, -1, NotePosition.Nowhere);
+            return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, null, null, -1, NotePosition.Default);
         }
     }
 

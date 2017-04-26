@@ -4,7 +4,7 @@ namespace StarlightDirector.Beatmap {
     public enum NotePosition {
 
         [Description("Default")]
-        Nowhere = 0,
+        Default = 0,
         [Description("Left")]
         Left = 1,
         [Description("Center Left")]
