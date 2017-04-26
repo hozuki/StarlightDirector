@@ -70,7 +70,8 @@ namespace StarlightDirector.UI.Controls {
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
             } else if (editor.HasSelectedNotes) {
-                MessageBox.Show("You can only select one note to create a hold pair.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("You can only select one note to create a hold pair.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Debug.Print("You can only select one note to create a hold pair.");
                 return;
             }
 
@@ -98,7 +99,8 @@ namespace StarlightDirector.UI.Controls {
                             if (isNoteAdded) {
                                 thisNote.Basic.Bar.RemoveNote(thisNote);
                             }
-                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            Debug.Print(ex.Message);
                             return;
                         }
 
@@ -124,7 +126,8 @@ namespace StarlightDirector.UI.Controls {
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
             } else if (editor.HasSelectedNotes) {
-                MessageBox.Show("You can only select one note to create a flick group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("You can only select one note to create a flick group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Debug.Print("You can only select one note to create a flick group.");
                 return;
             }
 
@@ -152,7 +155,8 @@ namespace StarlightDirector.UI.Controls {
                             if (isNoteAdded) {
                                 thisNote.Basic.Bar.RemoveNote(thisNote);
                             }
-                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            Debug.Print(ex.Message);
                             return;
                         }
 
@@ -178,7 +182,8 @@ namespace StarlightDirector.UI.Controls {
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
             } else if (editor.HasSelectedNotes) {
-                MessageBox.Show("You can only select one note to create a slide group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                //MessageBox.Show("You can only select one note to create a slide group.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                Debug.Print("You can only select one note to create a slide group.");
                 return;
             }
 
@@ -206,7 +211,8 @@ namespace StarlightDirector.UI.Controls {
                             if (isNoteAdded) {
                                 thisNote.Basic.Bar.RemoveNote(thisNote);
                             }
-                            MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            //MessageBox.Show(ex.Message, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            Debug.Print(ex.Message);
                             return;
                         }
 
