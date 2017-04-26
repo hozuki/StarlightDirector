@@ -66,17 +66,34 @@ namespace StarlightDirector.UI.Controls {
                 relativeY = oldHeight;
             }
 
+            var barIndex = 0;
+            var y2 = relativeY;
+            var oldRatio = 0f;
+            foreach (var bar in score.Bars) {
+                var barHeight = bar.GetNumberOfGrids() * oldUnit;
+                if (y2 > barHeight) {
+                    y2 -= barHeight;
+                    ++barIndex;
+                } else {
+                    oldRatio = y2 / barHeight;
+                    break;
+                }
+            }
+
             var clientSize = ClientSize;
-            var ratio = relativeY / oldHeight;
             var newHeight = newUnit * totalNumberOfGrids;
-            var newScrollOffset = (int)(ratio * newHeight + (float)clientSize.Height / 2);
+
+            var prevBarHeight = 0f;
+            for (var i = 0; i < barIndex; ++i) {
+                prevBarHeight += score.Bars[i].GetNumberOfGrids() * newUnit;
+            }
+            prevBarHeight += score.Bars[barIndex].GetNumberOfGrids() * newUnit * oldRatio;
+            var newScrollOffset = (int)(prevBarHeight + (mouseLocation.Y - clientSize.Height / 2) + (float)clientSize.Height / 2);
 
             var anythingChanged = newScrollOffset != oldScrollOffset || !newHeight.Equals(oldHeight);
-            if (anythingChanged) {
-                BarLineSpaceUnit = newUnit;
-                RecalcLayout();
-                ScrollOffsetY = newScrollOffset;
-            }
+            BarLineSpaceUnit = newUnit;
+            RecalcLayout();
+            ScrollBar.Value = newScrollOffset;
 
             return anythingChanged;
         }

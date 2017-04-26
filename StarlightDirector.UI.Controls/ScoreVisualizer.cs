@@ -58,7 +58,7 @@ namespace StarlightDirector.UI.Controls {
             base.OnMouseWheel(e);
 
             var modifiers = ModifierKeys;
-            if ((modifiers & Keys.Control) != 0) {
+            if (modifiers == Keys.Control) {
                 if (e.Delta > 0) {
                     editor.ZoomIn();
                 } else {
