@@ -216,10 +216,10 @@ namespace StarlightDirector.Beatmap.IO {
                         select n;
                     Note prev = null;
                     foreach (var note in sortedNotesInGroup) {
-                        NoteExtensions.ConnectSync(prev, note);
+                        NoteUtilities.MakeSync(prev, note);
                         prev = note;
                     }
-                    NoteExtensions.ConnectSync(prev, null);
+                    NoteUtilities.MakeSync(prev, null);
                 }
             }
         }

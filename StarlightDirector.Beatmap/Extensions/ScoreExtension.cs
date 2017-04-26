@@ -7,8 +7,14 @@ using StarlightDirector.Core;
 namespace StarlightDirector.Beatmap.Extensions {
     public static class ScoreExtension {
 
+        [DebuggerStepThrough]
         public static CompiledScore Compile(this Score score) {
-            throw new NotImplementedException();
+            return Compile(score, null);
+        }
+
+        [DebuggerStepThrough]
+        public static CompiledScore Compile(this Score score, TimeSpan userDefinedEnding) {
+            return Compile(score, (TimeSpan?)userDefinedEnding);
         }
 
         [DebuggerStepThrough]
@@ -71,6 +77,135 @@ namespace StarlightDirector.Beatmap.Extensions {
         [DebuggerStepThrough]
         public static Note FindNoteByID(this Score score, Guid id) {
             return score.Bars.SelectMany(bar => bar.Notes).FirstOrDefault(note => note.StarlightID == id);
+        }
+
+        private static CompiledScore Compile(Score score, TimeSpan? userDefinedEnding) {
+            var notes = score.GetAllNotes().ToArray();
+
+            // First, calculate all timing at the grid lines.
+            var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
+            var timings = new Dictionary<Bar, double[]>();
+            var currentTiming = score.Settings.StartTimeOffset;
+            var currentBpm = score.Settings.BeatPerMinute;
+            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            foreach (var bar in score.Bars) {
+                var currentGridPerSignature = bar.GetGridPerSignature();
+                var numGrids = bar.GetNumberOfGrids();
+                var t = new double[numGrids];
+                if (allBpmNotes.Any(n => n.Basic.Bar == bar)) {
+                    // If there are variant BPM notes, we have to do some math...
+                    var bpmNotesInThisBar = allBpmNotes.Where(n => n.Basic.Bar == bar).ToList();
+                    bpmNotesInThisBar.Sort((n1, n2) => n1.Basic.IndexInGrid.CompareTo(n2.Basic.IndexInGrid));
+                    var bpmNoteIndex = 0;
+                    for (var i = 0; i < numGrids; ++i) {
+                        if (bpmNoteIndex <= bpmNotesInThisBar.Count) {
+                            var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
+                            if (i == bpmNote.Basic.IndexInGrid) {
+                                // Yes! We have a visitor: a variant BPM note!
+                                currentBpm = bpmNote.Params.NewBpm;
+                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                ++bpmNoteIndex;
+                            }
+                        }
+                        t[i] = currentTiming;
+                        currentTiming += currentInterval * i / currentGridPerSignature;
+                    }
+                } else {
+                    // If there are no variant BPM notes, things get a lot easier.
+                    for (var i = 0; i < numGrids; ++i) {
+                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
+                    }
+                    var currentSignature = bar.GetSignature();
+                    currentTiming += currentInterval * currentSignature;
+                }
+                timings[bar] = t;
+            }
+
+            // Then, create a list and fill in basic information.
+            var compiledNotes = new List<CompiledNote>();
+            var noteMap1 = new Dictionary<CompiledNote, Note>();
+            var noteMap2 = new Dictionary<Note, CompiledNote>();
+            foreach (var note in notes) {
+                if (!note.Helper.IsGaming) {
+                    continue;
+                }
+                var compiledNote = new CompiledNote {
+                    Type = note.Basic.Type,
+                    HitTiming = timings[note.Basic.Bar][note.Basic.IndexInGrid],
+                    StartPosition = note.Basic.StartPosition,
+                    FinishPosition = note.Basic.FinishPosition,
+                    FlickType = note.Basic.FlickType,
+                    IsSync = note.Helper.IsSync
+                };
+                compiledNotes.Add(compiledNote);
+                noteMap1[compiledNote] = note;
+                noteMap2[note] = compiledNote;
+            }
+            compiledNotes.Sort((n1, n2) => n1.HitTiming.CompareTo(n2.HitTiming));
+
+            // Then, calculate group IDs.
+            var currentGroupID = 1;
+            foreach (var compiledNote in compiledNotes) {
+                if (compiledNote.GroupID != 0) {
+                    continue;
+                }
+                var note = noteMap1[compiledNote];
+                if (!note.Helper.IsFlick || !note.Helper.IsSlide) {
+                    continue;
+                }
+                var cn = compiledNote;
+                if (note.Helper.IsFlick) {
+                    var n = note;
+                    while (n != null) {
+                        cn.GroupID = currentGroupID;
+                        n = n.Editor.NextFlick;
+                        if (n != null) {
+                            cn = noteMap2[n];
+                        }
+                    }
+                    ++currentGroupID;
+                } else if (note.Helper.IsSlide) {
+                    var n = note;
+                    while (n != null) {
+                        cn.GroupID = currentGroupID;
+                        n = n.Editor.NextSlide;
+                        if (n != null) {
+                            cn = noteMap2[n];
+                        }
+                    }
+                    ++currentGroupID;
+                }
+            }
+
+            // Then, add three key notes. (Keynotes, hahaha.)
+            var totalNoteCount = compiledNotes.Count;
+            var scoreInfoNote = new CompiledNote {
+                Type = NoteType.NoteCount,
+                // Here I used a trick. This will run well while violating the meaning of enum.
+                FlickType = (NoteFlickType)totalNoteCount
+            };
+            var songStartNote = new CompiledNote {
+                Type = NoteType.MusicStart
+            };
+            var endTiming = userDefinedEnding?.TotalSeconds ?? currentTiming;
+            var songEndNote = new CompiledNote {
+                Type = NoteType.MusicEnd,
+                HitTiming = endTiming
+            };
+            compiledNotes.Insert(0, scoreInfoNote);
+            compiledNotes.Insert(1, songStartNote);
+            compiledNotes.Add(songEndNote);
+
+            // Finally, ID them.
+            var currentNoteID = 1;
+            foreach (var note in compiledNotes) {
+                note.ID = currentNoteID;
+                ++currentNoteID;
+            }
+
+            // We did it! Oh yeah!
+            var compiledScore = new CompiledScore(compiledNotes);
+            return compiledScore;
         }
 
     }

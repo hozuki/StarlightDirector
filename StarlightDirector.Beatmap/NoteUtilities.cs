@@ -1,4 +1,8 @@
-﻿namespace StarlightDirector.Beatmap {
+﻿using System;
+using System.Diagnostics;
+using StarlightDirector.Beatmap.Extensions;
+
+namespace StarlightDirector.Beatmap {
     public static class NoteUtilities {
 
         public static (Note First, Note Second) Split(Note note1, Note note2) {
@@ -10,6 +14,28 @@
             } else {
                 return (note1, note2);
             }
+        }
+
+        public static void MakeSync(Note first, Note second) {
+            /*
+             * Before:
+             *     ... <==>    first    <==> first_next   <==> ...
+             *     ... <==> second_prev <==>   second     <==> ...
+             *
+             * After:
+             *                               first_next   <==> ...
+             *     ... <==>    first    <==>   second     <==> ...
+             *     ... <==> second_prev
+             */
+            if (first == second) {
+                throw new ArgumentException("A note should not be connected to itself", nameof(second));
+            } else if (first?.Editor?.NextSync == second && second?.Editor.PrevSync == first) {
+                return;
+            }
+            first?.Editor?.NextSync?.SetPrevSyncTargetInternal(null);
+            second?.Editor?.PrevSync?.SetNextSyncTargetInternal(null);
+            first?.SetNextSyncTargetInternal(second);
+            second?.SetPrevSyncTargetInternal(first);
         }
 
         public static void MakeHold(Note startNote, Note endNote) {

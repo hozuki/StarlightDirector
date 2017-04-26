@@ -1,21 +1,21 @@
 ﻿namespace StarlightDirector.Beatmap {
     public sealed class CompiledNote {
 
-        public int ID { get; set; }
+        public int ID { get; internal set; }
 
-        public NoteType Type { get; set; }
+        public NoteType Type { get; internal set; }
 
-        public double HitTiming { get; set; }
+        public double HitTiming { get; internal set; }
 
-        public NotePosition StartPosition { get; set; }
+        public NotePosition StartPosition { get; internal set; }
 
-        public NotePosition FinishPosition { get; set; }
+        public NotePosition FinishPosition { get; internal set; }
 
-        public NoteFlickType FlickType { get; set; }
+        public NoteFlickType FlickType { get; internal set; }
 
-        public bool IsSync { get; set; }
+        public bool IsSync { get; internal set; }
 
-        public int GroupID { get; set; }
+        public int GroupID { get; internal set; }
 
     }
 }
