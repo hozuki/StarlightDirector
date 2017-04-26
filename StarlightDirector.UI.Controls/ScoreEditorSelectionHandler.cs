@@ -175,7 +175,14 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private void SpecialNoteAreaOnMouseUp(ScoreEditorHitTestResult hit, MouseEventArgs e) {
-            ClearNoteAndBarSelection();
+            switch (e.Button) {
+                case MouseButtons.Left:
+                    ClearNoteAndBarSelection();
+                    break;
+                case MouseButtons.Right:
+                    EditorPopupContextMenu(hit, e.Location);
+                    break;
+            }
         }
 
         private void EditorToggleNoteSelection(Note note) {
@@ -209,7 +216,13 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private void EditorPopupContextMenu(ScoreEditorHitTestResult hit, Point location) {
-            var ea = new ContextMenuRequestedEventArgs(hit.HitAnyNote ? VisualizerContextMenu.Note : VisualizerContextMenu.Bar, location);
+            VisualizerContextMenu menu;
+            if (hit.HitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
+                menu = hit.HitAnyNote ? VisualizerContextMenu.SpecialNoteModify : VisualizerContextMenu.SpecialNoteAdd;
+            } else {
+                menu = hit.HitAnyNote ? VisualizerContextMenu.Note : VisualizerContextMenu.Bar;
+            }
+            var ea = new ContextMenuRequestedEventArgs(menu, location);
             _visualizer.RequestContextMenu(ea);
         }
 
@@ -225,7 +238,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private ScoreEditorHitTestResult _mouseDownHitResult;
-        
+
         private Note _lastMouseDownNote;
 
         private Rectangle _selectionRectangle;

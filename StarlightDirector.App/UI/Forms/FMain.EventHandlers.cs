@@ -63,35 +63,49 @@ namespace StarlightDirector.App.UI.Forms {
         private void Visualizer_ContextMenuRequested(object sender, ContextMenuRequestedEventArgs e) {
             var hasSelectedNotes = visualizer.Editor.HasSelectedNotes;
             var hasSelectedBars = visualizer.Editor.HasSelectedBars;
-            if (!hasSelectedNotes && !hasSelectedBars) {
+            if ((e.MenuType == VisualizerContextMenu.Note || e.MenuType == VisualizerContextMenu.Bar) && (!hasSelectedNotes && !hasSelectedBars)) {
                 return;
             }
             switch (e.MenuType) {
                 case VisualizerContextMenu.Note:
                     ctxSep1.Visible = hasSelectedNotes;
                     ctxEditDeleteNotes.Visible = hasSelectedNotes;
-                    ctxSep2.Visible = hasSelectedNotes;
-                    ctxEditCreateRelation.Visible = hasSelectedNotes;
-                    ctxEditClearRelations.Visible = hasSelectedNotes;
-                    ctxSep3.Visible = hasSelectedNotes;
-                    ctxEditNoteStartPosition.Visible = hasSelectedNotes;
-                    ctxSep4.Visible = false;
+                    ctxSep2.Visible = false;
                     ctxEditDeleteMeasures.Visible = false;
-                    ctxSep5.Visible = false;
+                    ctxSep3.Visible = false;
                     ctxEditAddSpecialNote.Visible = false;
+                    ctxSep4.Visible = false;
+                    ctxEditModifySpecialNote.Visible = false;
                     break;
                 case VisualizerContextMenu.Bar:
                     ctxSep1.Visible = false;
                     ctxEditDeleteNotes.Visible = false;
-                    ctxSep2.Visible = false;
-                    ctxEditCreateRelation.Visible = false;
-                    ctxEditClearRelations.Visible = false;
-                    ctxSep3.Visible = false;
-                    ctxEditNoteStartPosition.Visible = false;
-                    ctxSep4.Visible = hasSelectedBars;
+                    ctxSep2.Visible = hasSelectedBars;
                     ctxEditDeleteMeasures.Visible = hasSelectedBars;
-                    ctxSep5.Visible = false;
+                    ctxSep3.Visible = false;
                     ctxEditAddSpecialNote.Visible = false;
+                    ctxSep4.Visible = false;
+                    ctxEditModifySpecialNote.Visible = false;
+                    break;
+                case VisualizerContextMenu.SpecialNoteAdd:
+                    ctxSep1.Visible = false;
+                    ctxEditDeleteNotes.Visible = false;
+                    ctxSep2.Visible = false;
+                    ctxEditDeleteMeasures.Visible = false;
+                    ctxSep3.Visible = true;
+                    ctxEditAddSpecialNote.Visible = true;
+                    ctxSep4.Visible = false;
+                    ctxEditModifySpecialNote.Visible = false;
+                    break;
+                case VisualizerContextMenu.SpecialNoteModify:
+                    ctxSep1.Visible = false;
+                    ctxEditDeleteNotes.Visible = false;
+                    ctxSep2.Visible = false;
+                    ctxEditDeleteMeasures.Visible = false;
+                    ctxSep3.Visible = false;
+                    ctxEditAddSpecialNote.Visible = false;
+                    ctxSep4.Visible = true;
+                    ctxEditModifySpecialNote.Visible = true;
                     break;
                 default:
                     break;

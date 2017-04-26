@@ -128,6 +128,16 @@
             this.mnuEditNoteStartPositionAt3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditNoteStartPositionAt4 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditNoteStartPositionAt5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuEditNoteStartPositionMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionMoveRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNotePositionSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuEditNoteStartPositionTo0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditSep4 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditGoTo = new System.Windows.Forms.ToolStripMenuItem();
@@ -186,39 +196,15 @@
             this.ctxSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxEditDeleteNotes = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditCreateRelation = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditCreateRelationHold = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditCreateRelationFlick = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditCreateRelationSlide = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditClearRelations = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditClearRelationsInternal = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditClearRelationsExternal = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditClearRelationsAll = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxSep3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditNoteStartPosition = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditNoteStartPosition1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditNoteStartPosition2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditNoteStartPosition3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditNoteStartPosition4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxEditNoteStartPosition5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxSep4 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxEditDeleteMeasures = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctxSep5 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxEditAddSpecialNote = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizer = new StarlightDirector.UI.Controls.ScoreVisualizer();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.mnuEditNoteStartPositionMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditNoteStartPositionMoveRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNotePositionSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditNoteStartPositionTo0 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxSep4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxEditModifySpecialNote = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -729,7 +715,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(385, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(293, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -828,7 +814,7 @@
             this.mnuEditUndo.Enabled = false;
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(128, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
@@ -836,20 +822,20 @@
             this.mnuEditRedo.Enabled = false;
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(128, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(125, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Enabled = false;
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(128, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
@@ -857,7 +843,7 @@
             this.mnuEditCopy.Enabled = false;
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(128, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
@@ -865,7 +851,7 @@
             this.mnuEditPaste.Enabled = false;
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(128, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -875,7 +861,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(128, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -899,7 +885,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(125, 6);
             // 
             // mnuEditDifficulty
             // 
@@ -910,7 +896,7 @@
             this.mnuEditDifficultyMaster,
             this.mnuEditDifficultyMasterPlus});
             this.mnuEditDifficulty.Name = "mnuEditDifficulty";
-            this.mnuEditDifficulty.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditDifficulty.Size = new System.Drawing.Size(128, 22);
             this.mnuEditDifficulty.Text = "&Difficulty";
             // 
             // mnuEditDifficultyDebut
@@ -950,7 +936,7 @@
             this.mnuEditBeatmap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditBeatmapSettings});
             this.mnuEditBeatmap.Name = "mnuEditBeatmap";
-            this.mnuEditBeatmap.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditBeatmap.Size = new System.Drawing.Size(128, 22);
             this.mnuEditBeatmap.Text = "&Beatmap";
             // 
             // mnuEditBeatmapSettings
@@ -964,7 +950,7 @@
             this.mnuEditMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditMusicSettings});
             this.mnuEditMusic.Name = "mnuEditMusic";
-            this.mnuEditMusic.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMusic.Size = new System.Drawing.Size(128, 22);
             this.mnuEditMusic.Text = "Mus&ic";
             // 
             // mnuEditMusicSettings
@@ -976,7 +962,7 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(125, 6);
             // 
             // mnuEditMode
             // 
@@ -991,7 +977,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(128, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -1060,7 +1046,7 @@
             this.mnuEditMeasureAppendMany,
             this.mnuEditMeasureDelete});
             this.mnuEditMeasure.Name = "mnuEditMeasure";
-            this.mnuEditMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMeasure.Size = new System.Drawing.Size(128, 22);
             this.mnuEditMeasure.Text = "&Measure";
             // 
             // mnuEditMeasureAppend
@@ -1089,7 +1075,7 @@
             this.mnuEditNoteStartPosition,
             this.mnuEditNoteInsertSpecial});
             this.mnuEditNote.Name = "mnuEditNote";
-            this.mnuEditNote.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditNote.Size = new System.Drawing.Size(128, 22);
             this.mnuEditNote.Text = "&Note";
             // 
             // mnuEditNoteDelete
@@ -1164,6 +1150,64 @@
             this.mnuEditNoteStartPositionAt5.Size = new System.Drawing.Size(189, 22);
             this.mnuEditNoteStartPositionAt5.Text = "At &Right";
             // 
+            // mnuEditNoteStartPositionSep1
+            // 
+            this.mnuEditNoteStartPositionSep1.Name = "mnuEditNoteStartPositionSep1";
+            this.mnuEditNoteStartPositionSep1.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuEditNoteStartPositionMoveLeft
+            // 
+            this.mnuEditNoteStartPositionMoveLeft.Name = "mnuEditNoteStartPositionMoveLeft";
+            this.mnuEditNoteStartPositionMoveLeft.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionMoveLeft.Text = "Move L&eft";
+            // 
+            // mnuEditNoteStartPositionMoveRight
+            // 
+            this.mnuEditNoteStartPositionMoveRight.Name = "mnuEditNoteStartPositionMoveRight";
+            this.mnuEditNoteStartPositionMoveRight.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionMoveRight.Text = "Mo&ve Right";
+            // 
+            // mnuEditNotePositionSep2
+            // 
+            this.mnuEditNotePositionSep2.Name = "mnuEditNotePositionSep2";
+            this.mnuEditNotePositionSep2.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuEditNoteStartPositionTo0
+            // 
+            this.mnuEditNoteStartPositionTo0.Name = "mnuEditNoteStartPositionTo0";
+            this.mnuEditNoteStartPositionTo0.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo0.Text = "&Set To Default";
+            // 
+            // mnuEditNoteStartPositionTo1
+            // 
+            this.mnuEditNoteStartPositionTo1.Name = "mnuEditNoteStartPositionTo1";
+            this.mnuEditNoteStartPositionTo1.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo1.Text = "Set T&o Left";
+            // 
+            // mnuEditNoteStartPositionTo2
+            // 
+            this.mnuEditNoteStartPositionTo2.Name = "mnuEditNoteStartPositionTo2";
+            this.mnuEditNoteStartPositionTo2.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo2.Text = "Set To Center Le&ft";
+            // 
+            // mnuEditNoteStartPositionTo3
+            // 
+            this.mnuEditNoteStartPositionTo3.Name = "mnuEditNoteStartPositionTo3";
+            this.mnuEditNoteStartPositionTo3.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo3.Text = "Set To Cente&r";
+            // 
+            // mnuEditNoteStartPositionTo4
+            // 
+            this.mnuEditNoteStartPositionTo4.Name = "mnuEditNoteStartPositionTo4";
+            this.mnuEditNoteStartPositionTo4.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo4.Text = "Set To Center Ri&ght";
+            // 
+            // mnuEditNoteStartPositionTo5
+            // 
+            this.mnuEditNoteStartPositionTo5.Name = "mnuEditNoteStartPositionTo5";
+            this.mnuEditNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
+            this.mnuEditNoteStartPositionTo5.Text = "Set To Rig&ht";
+            // 
             // mnuEditNoteInsertSpecial
             // 
             this.mnuEditNoteInsertSpecial.Name = "mnuEditNoteInsertSpecial";
@@ -1173,7 +1217,7 @@
             // mnuEditSep4
             // 
             this.mnuEditSep4.Name = "mnuEditSep4";
-            this.mnuEditSep4.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep4.Size = new System.Drawing.Size(125, 6);
             // 
             // mnuEditGoTo
             // 
@@ -1181,7 +1225,7 @@
             this.measureToolStripMenuItem1,
             this.timeToolStripMenuItem});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(128, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // measureToolStripMenuItem1
@@ -1544,23 +1588,20 @@
             this.ctxSep1,
             this.ctxEditDeleteNotes,
             this.ctxSep2,
-            this.ctxEditCreateRelation,
-            this.ctxEditClearRelations,
-            this.ctxSep3,
-            this.ctxEditNoteStartPosition,
-            this.ctxSep4,
             this.ctxEditDeleteMeasures,
-            this.ctxSep5,
-            this.ctxEditAddSpecialNote});
+            this.ctxSep3,
+            this.ctxEditAddSpecialNote,
+            this.ctxSep4,
+            this.ctxEditModifySpecialNote});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(183, 232);
+            this.ctxMain.Size = new System.Drawing.Size(196, 182);
             // 
             // ctxEditCut
             // 
             this.ctxEditCut.Enabled = false;
             this.ctxEditCut.Name = "ctxEditCut";
             this.ctxEditCut.ShortcutKeyDisplayString = "Ctrl+X";
-            this.ctxEditCut.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditCut.Size = new System.Drawing.Size(195, 22);
             this.ctxEditCut.Text = "Cu&t";
             // 
             // ctxEditCopy
@@ -1568,7 +1609,7 @@
             this.ctxEditCopy.Enabled = false;
             this.ctxEditCopy.Name = "ctxEditCopy";
             this.ctxEditCopy.ShortcutKeyDisplayString = "Ctrl+C";
-            this.ctxEditCopy.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditCopy.Size = new System.Drawing.Size(195, 22);
             this.ctxEditCopy.Text = "&Copy";
             // 
             // ctxEditPaste
@@ -1576,153 +1617,40 @@
             this.ctxEditPaste.Enabled = false;
             this.ctxEditPaste.Name = "ctxEditPaste";
             this.ctxEditPaste.ShortcutKeyDisplayString = "Ctrl+V";
-            this.ctxEditPaste.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditPaste.Size = new System.Drawing.Size(195, 22);
             this.ctxEditPaste.Text = "&Paste";
             // 
             // ctxSep1
             // 
             this.ctxSep1.Name = "ctxSep1";
-            this.ctxSep1.Size = new System.Drawing.Size(179, 6);
+            this.ctxSep1.Size = new System.Drawing.Size(192, 6);
             // 
             // ctxEditDeleteNotes
             // 
             this.ctxEditDeleteNotes.Name = "ctxEditDeleteNotes";
-            this.ctxEditDeleteNotes.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditDeleteNotes.Size = new System.Drawing.Size(195, 22);
             this.ctxEditDeleteNotes.Text = "&Delete Note(s)";
             // 
             // ctxSep2
             // 
             this.ctxSep2.Name = "ctxSep2";
-            this.ctxSep2.Size = new System.Drawing.Size(179, 6);
-            // 
-            // ctxEditCreateRelation
-            // 
-            this.ctxEditCreateRelation.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctxEditCreateRelationHold,
-            this.ctxEditCreateRelationFlick,
-            this.ctxEditCreateRelationSlide});
-            this.ctxEditCreateRelation.Name = "ctxEditCreateRelation";
-            this.ctxEditCreateRelation.Size = new System.Drawing.Size(182, 22);
-            this.ctxEditCreateRelation.Text = "Create &Relation";
-            // 
-            // ctxEditCreateRelationHold
-            // 
-            this.ctxEditCreateRelationHold.Name = "ctxEditCreateRelationHold";
-            this.ctxEditCreateRelationHold.Size = new System.Drawing.Size(104, 22);
-            this.ctxEditCreateRelationHold.Text = "&Hold";
-            // 
-            // ctxEditCreateRelationFlick
-            // 
-            this.ctxEditCreateRelationFlick.Name = "ctxEditCreateRelationFlick";
-            this.ctxEditCreateRelationFlick.Size = new System.Drawing.Size(104, 22);
-            this.ctxEditCreateRelationFlick.Text = "&Flick";
-            // 
-            // ctxEditCreateRelationSlide
-            // 
-            this.ctxEditCreateRelationSlide.Name = "ctxEditCreateRelationSlide";
-            this.ctxEditCreateRelationSlide.Size = new System.Drawing.Size(104, 22);
-            this.ctxEditCreateRelationSlide.Text = "&Slide";
-            // 
-            // ctxEditClearRelations
-            // 
-            this.ctxEditClearRelations.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctxEditClearRelationsInternal,
-            this.ctxEditClearRelationsExternal,
-            this.ctxEditClearRelationsAll});
-            this.ctxEditClearRelations.Name = "ctxEditClearRelations";
-            this.ctxEditClearRelations.Size = new System.Drawing.Size(182, 22);
-            this.ctxEditClearRelations.Text = "Clear Re&latons";
-            // 
-            // ctxEditClearRelationsInternal
-            // 
-            this.ctxEditClearRelationsInternal.Name = "ctxEditClearRelationsInternal";
-            this.ctxEditClearRelationsInternal.Size = new System.Drawing.Size(159, 22);
-            this.ctxEditClearRelationsInternal.Text = "&Internal";
-            // 
-            // ctxEditClearRelationsExternal
-            // 
-            this.ctxEditClearRelationsExternal.Name = "ctxEditClearRelationsExternal";
-            this.ctxEditClearRelationsExternal.Size = new System.Drawing.Size(159, 22);
-            this.ctxEditClearRelationsExternal.Text = "&External";
-            // 
-            // ctxEditClearRelationsAll
-            // 
-            this.ctxEditClearRelationsAll.Name = "ctxEditClearRelationsAll";
-            this.ctxEditClearRelationsAll.Size = new System.Drawing.Size(159, 22);
-            this.ctxEditClearRelationsAll.Text = "&All of Selected";
-            // 
-            // ctxSep3
-            // 
-            this.ctxSep3.Name = "ctxSep3";
-            this.ctxSep3.Size = new System.Drawing.Size(179, 6);
-            // 
-            // ctxEditNoteStartPosition
-            // 
-            this.ctxEditNoteStartPosition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.ctxEditNoteStartPosition1,
-            this.ctxEditNoteStartPosition2,
-            this.ctxEditNoteStartPosition3,
-            this.ctxEditNoteStartPosition4,
-            this.ctxEditNoteStartPosition5});
-            this.ctxEditNoteStartPosition.Name = "ctxEditNoteStartPosition";
-            this.ctxEditNoteStartPosition.Size = new System.Drawing.Size(182, 22);
-            this.ctxEditNoteStartPosition.Text = "Start &Position";
-            // 
-            // ctxEditNoteStartPosition1
-            // 
-            this.ctxEditNoteStartPosition1.Name = "ctxEditNoteStartPosition1";
-            this.ctxEditNoteStartPosition1.ShortcutKeyDisplayString = "Ctrl+1";
-            this.ctxEditNoteStartPosition1.Size = new System.Drawing.Size(192, 22);
-            this.ctxEditNoteStartPosition1.Text = "&Left";
-            // 
-            // ctxEditNoteStartPosition2
-            // 
-            this.ctxEditNoteStartPosition2.Name = "ctxEditNoteStartPosition2";
-            this.ctxEditNoteStartPosition2.ShortcutKeyDisplayString = "Ctrl+2";
-            this.ctxEditNoteStartPosition2.Size = new System.Drawing.Size(192, 22);
-            this.ctxEditNoteStartPosition2.Text = "Cen&ter Left";
-            // 
-            // ctxEditNoteStartPosition3
-            // 
-            this.ctxEditNoteStartPosition3.Name = "ctxEditNoteStartPosition3";
-            this.ctxEditNoteStartPosition3.ShortcutKeyDisplayString = "Ctrl+3";
-            this.ctxEditNoteStartPosition3.Size = new System.Drawing.Size(192, 22);
-            this.ctxEditNoteStartPosition3.Text = "&Center";
-            // 
-            // ctxEditNoteStartPosition4
-            // 
-            this.ctxEditNoteStartPosition4.Name = "ctxEditNoteStartPosition4";
-            this.ctxEditNoteStartPosition4.ShortcutKeyDisplayString = "Ctrl+4";
-            this.ctxEditNoteStartPosition4.Size = new System.Drawing.Size(192, 22);
-            this.ctxEditNoteStartPosition4.Text = "Center R&ight";
-            // 
-            // ctxEditNoteStartPosition5
-            // 
-            this.ctxEditNoteStartPosition5.Name = "ctxEditNoteStartPosition5";
-            this.ctxEditNoteStartPosition5.ShortcutKeyDisplayString = "Ctrl+5";
-            this.ctxEditNoteStartPosition5.Size = new System.Drawing.Size(192, 22);
-            this.ctxEditNoteStartPosition5.Text = "&Right";
-            // 
-            // ctxSep4
-            // 
-            this.ctxSep4.Name = "ctxSep4";
-            this.ctxSep4.Size = new System.Drawing.Size(179, 6);
+            this.ctxSep2.Size = new System.Drawing.Size(192, 6);
             // 
             // ctxEditDeleteMeasures
             // 
             this.ctxEditDeleteMeasures.Name = "ctxEditDeleteMeasures";
-            this.ctxEditDeleteMeasures.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditDeleteMeasures.Size = new System.Drawing.Size(195, 22);
             this.ctxEditDeleteMeasures.Text = "&Delete Measure(s)";
             // 
-            // ctxSep5
+            // ctxSep3
             // 
-            this.ctxSep5.Name = "ctxSep5";
-            this.ctxSep5.Size = new System.Drawing.Size(179, 6);
+            this.ctxSep3.Name = "ctxSep3";
+            this.ctxSep3.Size = new System.Drawing.Size(192, 6);
             // 
             // ctxEditAddSpecialNote
             // 
             this.ctxEditAddSpecialNote.Name = "ctxEditAddSpecialNote";
-            this.ctxEditAddSpecialNote.Size = new System.Drawing.Size(182, 22);
+            this.ctxEditAddSpecialNote.Size = new System.Drawing.Size(195, 22);
             this.ctxEditAddSpecialNote.Text = "Add &Special Note";
             // 
             // visualizer
@@ -1746,63 +1674,16 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
-            // mnuEditNoteStartPositionMoveLeft
+            // ctxSep4
             // 
-            this.mnuEditNoteStartPositionMoveLeft.Name = "mnuEditNoteStartPositionMoveLeft";
-            this.mnuEditNoteStartPositionMoveLeft.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionMoveLeft.Text = "Move L&eft";
+            this.ctxSep4.Name = "ctxSep4";
+            this.ctxSep4.Size = new System.Drawing.Size(192, 6);
             // 
-            // mnuEditNoteStartPositionSep1
+            // ctxEditModifySpecialNote
             // 
-            this.mnuEditNoteStartPositionSep1.Name = "mnuEditNoteStartPositionSep1";
-            this.mnuEditNoteStartPositionSep1.Size = new System.Drawing.Size(186, 6);
-            // 
-            // mnuEditNoteStartPositionMoveRight
-            // 
-            this.mnuEditNoteStartPositionMoveRight.Name = "mnuEditNoteStartPositionMoveRight";
-            this.mnuEditNoteStartPositionMoveRight.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionMoveRight.Text = "Mo&ve Right";
-            // 
-            // mnuEditNotePositionSep2
-            // 
-            this.mnuEditNotePositionSep2.Name = "mnuEditNotePositionSep2";
-            this.mnuEditNotePositionSep2.Size = new System.Drawing.Size(186, 6);
-            // 
-            // mnuEditNoteStartPositionTo0
-            // 
-            this.mnuEditNoteStartPositionTo0.Name = "mnuEditNoteStartPositionTo0";
-            this.mnuEditNoteStartPositionTo0.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo0.Text = "&Set To Default";
-            // 
-            // mnuEditNoteStartPositionTo1
-            // 
-            this.mnuEditNoteStartPositionTo1.Name = "mnuEditNoteStartPositionTo1";
-            this.mnuEditNoteStartPositionTo1.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo1.Text = "Set T&o Left";
-            // 
-            // mnuEditNoteStartPositionTo2
-            // 
-            this.mnuEditNoteStartPositionTo2.Name = "mnuEditNoteStartPositionTo2";
-            this.mnuEditNoteStartPositionTo2.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo2.Text = "Set To Center Le&ft";
-            // 
-            // mnuEditNoteStartPositionTo3
-            // 
-            this.mnuEditNoteStartPositionTo3.Name = "mnuEditNoteStartPositionTo3";
-            this.mnuEditNoteStartPositionTo3.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo3.Text = "Set To Cente&r";
-            // 
-            // mnuEditNoteStartPositionTo4
-            // 
-            this.mnuEditNoteStartPositionTo4.Name = "mnuEditNoteStartPositionTo4";
-            this.mnuEditNoteStartPositionTo4.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo4.Text = "Set To Center Ri&ght";
-            // 
-            // mnuEditNoteStartPositionTo5
-            // 
-            this.mnuEditNoteStartPositionTo5.Name = "mnuEditNoteStartPositionTo5";
-            this.mnuEditNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo5.Text = "Set To Rig&ht";
+            this.ctxEditModifySpecialNote.Name = "ctxEditModifySpecialNote";
+            this.ctxEditModifySpecialNote.Size = new System.Drawing.Size(195, 22);
+            this.ctxEditModifySpecialNote.Text = "Modify &Special Note";
             // 
             // FMain
             // 
@@ -1957,25 +1838,9 @@
         private System.Windows.Forms.ToolStripSeparator ctxSep1;
         private System.Windows.Forms.ToolStripMenuItem ctxEditDeleteNotes;
         private System.Windows.Forms.ToolStripMenuItem ctxEditDeleteMeasures;
-        private System.Windows.Forms.ToolStripSeparator ctxSep5;
+        private System.Windows.Forms.ToolStripSeparator ctxSep3;
         private System.Windows.Forms.ToolStripMenuItem ctxEditAddSpecialNote;
         private System.Windows.Forms.ToolStripSeparator ctxSep2;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditCreateRelation;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditCreateRelationHold;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditCreateRelationFlick;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditCreateRelationSlide;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditClearRelations;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditClearRelationsInternal;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditClearRelationsExternal;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditClearRelationsAll;
-        private System.Windows.Forms.ToolStripSeparator ctxSep3;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition1;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition2;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition3;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition4;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditNoteStartPosition5;
-        private System.Windows.Forms.ToolStripSeparator ctxSep4;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ToolStrip tlbNote;
@@ -2052,6 +1917,8 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo3;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo4;
         private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo5;
+        private System.Windows.Forms.ToolStripSeparator ctxSep4;
+        private System.Windows.Forms.ToolStripMenuItem ctxEditModifySpecialNote;
     }
 }
 

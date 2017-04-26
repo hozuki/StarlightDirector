@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
@@ -73,7 +74,7 @@ namespace StarlightDirector.UI.Controls {
                 }
 
                 // Calculate zooming compensation.
-                var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => BarLineSpaceUnit * i >= config.NoteRadius * 2);
+                var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= config.NoteRadius * 2);
                 if (firstClearDrawnRatio == 0) {
                     firstClearDrawnRatio = numGrids;
                 }
@@ -113,8 +114,13 @@ namespace StarlightDirector.UI.Controls {
                     return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
                 }
 
-                // Hit any note?
+                // Hit any gaming note?
                 var note = bar.Notes.FirstOrDefault(n => n.Basic.IndexInGrid == row && (int)n.Basic.FinishPosition == col + 1);
+
+                // Hit any special note?
+                if (note == null && hitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
+                    note = bar.Notes.FirstOrDefault(n => n.Helper.IsSpecial && n.Basic.IndexInGrid == row);
+                }
 
                 var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, note, row, col + 1);
                 return result;

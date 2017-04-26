@@ -3,7 +3,8 @@
 
         Note,
         Bar,
-        SpecialNote,
+        SpecialNoteAdd,
+        SpecialNoteModify,
 
     }
 }
