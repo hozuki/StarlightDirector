@@ -86,16 +86,19 @@
     <Compile Include="UI\Forms\FMain.Commands.Edit.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\FMain.Commands.Edit.Measures.cs">
+    <Compile Include="UI\Forms\FMain.Commands.Score.Measures.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\FMain.Commands.Edit.Notes.cs">
+    <Compile Include="UI\Forms\FMain.Commands.Score.Notes.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\FMain.Commands.File.cs">
+    <Compile Include="UI\Forms\FMain.Commands.Project.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Forms\FMain.Commands.Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Score.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Forms\FMain.Commands.Tools.cs">

@@ -31,7 +31,7 @@
             this.tsbEditMode = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.tsbDifficultySelection = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbScoreDifficultySelection = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbViewZoomIn = new System.Windows.Forms.ToolStripButton();
             this.tsbViewZoomOut = new System.Windows.Forms.ToolStripButton();
@@ -44,43 +44,45 @@
             this.tsbToolBuildMusic = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tlbStandard = new System.Windows.Forms.ToolStrip();
-            this.tsbFileNew = new System.Windows.Forms.ToolStripButton();
-            this.tsbFileOpen = new System.Windows.Forms.ToolStripButton();
-            this.tsbFileSave = new System.Windows.Forms.ToolStripButton();
+            this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
+            this.tsbProjectOpen = new System.Windows.Forms.ToolStripButton();
+            this.tsbProjectSave = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEditUndo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditRedo = new System.Windows.Forms.ToolStripButton();
-            this.toolStripButton16 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEditCut = new System.Windows.Forms.ToolStripButton();
             this.tsbEditCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbEditPaste = new System.Windows.Forms.ToolStripButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tlbNote = new System.Windows.Forms.ToolStrip();
-            this.tsbEditNoteDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbScoreNoteDelete = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
-            this.tsbEditNoteStartPosition = new System.Windows.Forms.ToolStripDropDownButton();
+            this.tsbScoreNoteStartPosition = new System.Windows.Forms.ToolStripDropDownButton();
             this.toolStripSeparator7 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbEditNoteAddSpecial = new System.Windows.Forms.ToolStripButton();
+            this.tsbScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tlbMeasure = new System.Windows.Forms.ToolStrip();
-            this.tsbEditMeasureAppend = new System.Windows.Forms.ToolStripSplitButton();
-            this.tsbEditMeasureAppendMany = new System.Windows.Forms.ToolStripMenuItem();
-            this.tsbEditMeasureDelete = new System.Windows.Forms.ToolStripButton();
+            this.tsbScoreMeasureAppend = new System.Windows.Forms.ToolStripSplitButton();
+            this.tsbScoreMeasureAppendMultiple = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbScoreMeasureDelete = new System.Windows.Forms.ToolStripButton();
             this.lblCaption = new StarlightDirector.UI.Controls.SingleLineLabel();
             this.sysMinimize = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMaximizeRestore = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysClose = new StarlightDirector.UI.Controls.ModernSystemButton();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
-            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileNew = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileOpen = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSaveAs = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuFileBeatmapInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProject = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjecgtSaveAs = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuProjectBeatmap = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectBeatmapSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectMusic = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditMusicSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuProjectExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditUndo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditRedo = new System.Windows.Forms.ToolStripMenuItem();
@@ -93,17 +95,6 @@
             this.mnuEditSelectAllMeasures = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditSelectClearAll = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditDifficulty = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditDifficultyDebut = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditDifficultyRegular = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditDifficultyPro = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditDifficultyMaster = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditDifficultyMasterPlus = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditBeatmap = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditBeatmapSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMusic = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMusicSettings = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditMode = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditModeSelect = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditModeSep1 = new System.Windows.Forms.ToolStripSeparator();
@@ -114,32 +105,7 @@
             this.mnuEditModeSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditModePrevious = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditModeNext = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMeasure = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMeasureAppend = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMeasureAppendMany = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMeasureDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNote = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteDelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditNoteStartPosition = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt0 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionAt5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditNoteStartPositionMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionMoveRight = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNotePositionSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuEditNoteStartPositionTo0 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditSep4 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuEditSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditGoTo = new System.Windows.Forms.ToolStripMenuItem();
             this.measureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -173,6 +139,38 @@
             this.mnuViewScrollSpeed10 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewRelationIndicator = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewInvertedScrolling = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScore = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficulty = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficultyDebut = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficultyRegular = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficultyPro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficultyMaster = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreDifficultyMasterPlus = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasure = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasureAppend = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasureAppendMultiple = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasureDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNote = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteDelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuScoreNoteStartPosition = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionAt5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuScoreNoteStartPositionMoveLeft = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionMoveRight = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNotePositionSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuScoreNoteStartPositionTo0 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionTo1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionTo2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
@@ -194,17 +192,22 @@
             this.ctxEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxEditPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditDeleteNotes = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxScoreNoteDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditDeleteMeasures = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxScoreMeasureDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep3 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditAddSpecialNote = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxSep4 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizer = new StarlightDirector.UI.Controls.ScoreVisualizer();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.ctxSep4 = new System.Windows.Forms.ToolStripSeparator();
-            this.ctxEditModifySpecialNote = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectBeatmapSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuProjectBeatmapInfo = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteSep2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -223,7 +226,7 @@
             // 
             // panel2
             // 
-            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            this.panel2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.Controls.Add(this.groupBox5);
             this.panel2.Controls.Add(this.groupBox4);
@@ -253,7 +256,7 @@
             this.tsbEditMode,
             this.toolStripSeparator2,
             this.toolStripLabel1,
-            this.tsbDifficultySelection,
+            this.tsbScoreDifficultySelection,
             this.toolStripSeparator3,
             this.tsbViewZoomIn,
             this.tsbViewZoomOut});
@@ -283,13 +286,13 @@
             this.toolStripLabel1.Size = new System.Drawing.Size(60, 22);
             this.toolStripLabel1.Text = "Difficulty:";
             // 
-            // tsbDifficultySelection
+            // tsbScoreDifficultySelection
             // 
-            this.tsbDifficultySelection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbDifficultySelection.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbDifficultySelection.Name = "tsbDifficultySelection";
-            this.tsbDifficultySelection.Size = new System.Drawing.Size(56, 22);
-            this.tsbDifficultySelection.Text = "Debut";
+            this.tsbScoreDifficultySelection.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbScoreDifficultySelection.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreDifficultySelection.Name = "tsbScoreDifficultySelection";
+            this.tsbScoreDifficultySelection.Size = new System.Drawing.Size(56, 22);
+            this.tsbScoreDifficultySelection.Text = "Debut";
             // 
             // toolStripSeparator3
             // 
@@ -398,48 +401,48 @@
             this.tlbStandard.Dock = System.Windows.Forms.DockStyle.None;
             this.tlbStandard.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbStandard.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbFileNew,
-            this.tsbFileOpen,
-            this.tsbFileSave,
+            this.tsbProjectNew,
+            this.tsbProjectOpen,
+            this.tsbProjectSave,
             this.toolStripSeparator8,
             this.tsbEditUndo,
             this.tsbEditRedo,
-            this.toolStripButton16,
+            this.toolStripSeparator1,
             this.tsbEditCut,
             this.tsbEditCopy,
             this.tsbEditPaste});
             this.tlbStandard.Location = new System.Drawing.Point(5, 19);
             this.tlbStandard.Name = "tlbStandard";
-            this.tlbStandard.Size = new System.Drawing.Size(199, 25);
+            this.tlbStandard.Size = new System.Drawing.Size(230, 25);
             this.tlbStandard.TabIndex = 1;
             this.tlbStandard.Text = "Standard";
             // 
-            // tsbFileNew
+            // tsbProjectNew
             // 
-            this.tsbFileNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFileNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
-            this.tsbFileNew.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFileNew.Name = "tsbFileNew";
-            this.tsbFileNew.Size = new System.Drawing.Size(23, 22);
-            this.tsbFileNew.Text = "New Project";
+            this.tsbProjectNew.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
+            this.tsbProjectNew.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectNew.Name = "tsbProjectNew";
+            this.tsbProjectNew.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectNew.Text = "New Project";
             // 
-            // tsbFileOpen
+            // tsbProjectOpen
             // 
-            this.tsbFileOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFileOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
-            this.tsbFileOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFileOpen.Name = "tsbFileOpen";
-            this.tsbFileOpen.Size = new System.Drawing.Size(23, 22);
-            this.tsbFileOpen.Text = "Open Project...";
+            this.tsbProjectOpen.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
+            this.tsbProjectOpen.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectOpen.Name = "tsbProjectOpen";
+            this.tsbProjectOpen.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectOpen.Text = "Open Project...";
             // 
-            // tsbFileSave
+            // tsbProjectSave
             // 
-            this.tsbFileSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbFileSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
-            this.tsbFileSave.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbFileSave.Name = "tsbFileSave";
-            this.tsbFileSave.Size = new System.Drawing.Size(23, 22);
-            this.tsbFileSave.Text = "Save Project";
+            this.tsbProjectSave.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProjectSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
+            this.tsbProjectSave.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProjectSave.Name = "tsbProjectSave";
+            this.tsbProjectSave.Size = new System.Drawing.Size(23, 22);
+            this.tsbProjectSave.Text = "Save Project";
             // 
             // toolStripSeparator8
             // 
@@ -449,7 +452,6 @@
             // tsbEditUndo
             // 
             this.tsbEditUndo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditUndo.Enabled = false;
             this.tsbEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.tsbEditUndo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditUndo.Name = "tsbEditUndo";
@@ -459,22 +461,15 @@
             // tsbEditRedo
             // 
             this.tsbEditRedo.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditRedo.Enabled = false;
             this.tsbEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.tsbEditRedo.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditRedo.Name = "tsbEditRedo";
             this.tsbEditRedo.Size = new System.Drawing.Size(23, 22);
             this.tsbEditRedo.Text = "Redo";
             // 
-            // toolStripButton16
-            // 
-            this.toolStripButton16.Name = "toolStripButton16";
-            this.toolStripButton16.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbEditCut
             // 
             this.tsbEditCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditCut.Enabled = false;
             this.tsbEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.tsbEditCut.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditCut.Name = "tsbEditCut";
@@ -484,7 +479,6 @@
             // tsbEditCopy
             // 
             this.tsbEditCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditCopy.Enabled = false;
             this.tsbEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.tsbEditCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditCopy.Name = "tsbEditCopy";
@@ -494,7 +488,6 @@
             // tsbEditPaste
             // 
             this.tsbEditPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditPaste.Enabled = false;
             this.tsbEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.tsbEditPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbEditPaste.Name = "tsbEditPaste";
@@ -516,26 +509,26 @@
             this.tlbNote.Dock = System.Windows.Forms.DockStyle.None;
             this.tlbNote.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbNote.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbEditNoteDelete,
+            this.tsbScoreNoteDelete,
             this.toolStripSeparator4,
             this.toolStripLabel2,
-            this.tsbEditNoteStartPosition,
+            this.tsbScoreNoteStartPosition,
             this.toolStripSeparator7,
-            this.tsbEditNoteAddSpecial});
+            this.tsbScoreNoteInsertSpecial});
             this.tlbNote.Location = new System.Drawing.Point(5, 19);
             this.tlbNote.Name = "tlbNote";
             this.tlbNote.Size = new System.Drawing.Size(161, 25);
             this.tlbNote.TabIndex = 0;
             this.tlbNote.Text = "Note";
             // 
-            // tsbEditNoteDelete
+            // tsbScoreNoteDelete
             // 
-            this.tsbEditNoteDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditNoteDelete.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteDelete;
-            this.tsbEditNoteDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditNoteDelete.Name = "tsbEditNoteDelete";
-            this.tsbEditNoteDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditNoteDelete.Text = "Delete Selected Note(s)";
+            this.tsbScoreNoteDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbScoreNoteDelete.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteDelete;
+            this.tsbScoreNoteDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreNoteDelete.Name = "tsbScoreNoteDelete";
+            this.tsbScoreNoteDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbScoreNoteDelete.Text = "Delete Selected Note(s)";
             // 
             // toolStripSeparator4
             // 
@@ -548,27 +541,27 @@
             this.toolStripLabel2.Size = new System.Drawing.Size(38, 22);
             this.toolStripLabel2.Text = "Start:";
             // 
-            // tsbEditNoteStartPosition
+            // tsbScoreNoteStartPosition
             // 
-            this.tsbEditNoteStartPosition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.tsbEditNoteStartPosition.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditNoteStartPosition.Name = "tsbEditNoteStartPosition";
-            this.tsbEditNoteStartPosition.Size = new System.Drawing.Size(62, 22);
-            this.tsbEditNoteStartPosition.Text = "Default";
+            this.tsbScoreNoteStartPosition.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.tsbScoreNoteStartPosition.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreNoteStartPosition.Name = "tsbScoreNoteStartPosition";
+            this.tsbScoreNoteStartPosition.Size = new System.Drawing.Size(62, 22);
+            this.tsbScoreNoteStartPosition.Text = "Default";
             // 
             // toolStripSeparator7
             // 
             this.toolStripSeparator7.Name = "toolStripSeparator7";
             this.toolStripSeparator7.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsbEditNoteAddSpecial
+            // tsbScoreNoteInsertSpecial
             // 
-            this.tsbEditNoteAddSpecial.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditNoteAddSpecial.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteAddSpecial;
-            this.tsbEditNoteAddSpecial.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditNoteAddSpecial.Name = "tsbEditNoteAddSpecial";
-            this.tsbEditNoteAddSpecial.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditNoteAddSpecial.Text = "Insert Special Note";
+            this.tsbScoreNoteInsertSpecial.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbScoreNoteInsertSpecial.Image = global::StarlightDirector.App.Properties.Resources.IconEditNoteAddSpecial;
+            this.tsbScoreNoteInsertSpecial.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreNoteInsertSpecial.Name = "tsbScoreNoteInsertSpecial";
+            this.tsbScoreNoteInsertSpecial.Size = new System.Drawing.Size(23, 22);
+            this.tsbScoreNoteInsertSpecial.Text = "Insert Special Note...";
             // 
             // groupBox1
             // 
@@ -585,43 +578,43 @@
             this.tlbMeasure.Dock = System.Windows.Forms.DockStyle.None;
             this.tlbMeasure.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbMeasure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbEditMeasureAppend,
-            this.tsbEditMeasureDelete});
+            this.tsbScoreMeasureAppend,
+            this.tsbScoreMeasureDelete});
             this.tlbMeasure.Location = new System.Drawing.Point(3, 19);
             this.tlbMeasure.Name = "tlbMeasure";
             this.tlbMeasure.Size = new System.Drawing.Size(58, 25);
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
-            // tsbEditMeasureAppend
+            // tsbScoreMeasureAppend
             // 
-            this.tsbEditMeasureAppend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditMeasureAppend.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbEditMeasureAppendMany});
-            this.tsbEditMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureAdd;
-            this.tsbEditMeasureAppend.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditMeasureAppend.Name = "tsbEditMeasureAppend";
-            this.tsbEditMeasureAppend.Size = new System.Drawing.Size(32, 22);
-            this.tsbEditMeasureAppend.Text = "Append Measure";
+            this.tsbScoreMeasureAppend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbScoreMeasureAppend.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbScoreMeasureAppendMultiple});
+            this.tsbScoreMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureAdd;
+            this.tsbScoreMeasureAppend.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreMeasureAppend.Name = "tsbScoreMeasureAppend";
+            this.tsbScoreMeasureAppend.Size = new System.Drawing.Size(32, 22);
+            this.tsbScoreMeasureAppend.Text = "Append Measure";
             // 
-            // tsbEditMeasureAppendMany
+            // tsbScoreMeasureAppendMultiple
             // 
-            this.tsbEditMeasureAppendMany.Name = "tsbEditMeasureAppendMany";
-            this.tsbEditMeasureAppendMany.Size = new System.Drawing.Size(192, 22);
-            this.tsbEditMeasureAppendMany.Text = "Append &Measures...";
+            this.tsbScoreMeasureAppendMultiple.Name = "tsbScoreMeasureAppendMultiple";
+            this.tsbScoreMeasureAppendMultiple.Size = new System.Drawing.Size(192, 22);
+            this.tsbScoreMeasureAppendMultiple.Text = "Append &Measures...";
             // 
-            // tsbEditMeasureDelete
+            // tsbScoreMeasureDelete
             // 
-            this.tsbEditMeasureDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbEditMeasureDelete.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureDelete;
-            this.tsbEditMeasureDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbEditMeasureDelete.Name = "tsbEditMeasureDelete";
-            this.tsbEditMeasureDelete.Size = new System.Drawing.Size(23, 22);
-            this.tsbEditMeasureDelete.Text = "Delete Selected Measure(s)";
+            this.tsbScoreMeasureDelete.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbScoreMeasureDelete.Image = global::StarlightDirector.App.Properties.Resources.IconEditMeasureDelete;
+            this.tsbScoreMeasureDelete.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreMeasureDelete.Name = "tsbScoreMeasureDelete";
+            this.tsbScoreMeasureDelete.Size = new System.Drawing.Size(23, 22);
+            this.tsbScoreMeasureDelete.Text = "Delete Selected Measure(s)";
             // 
             // lblCaption
             // 
-            this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblCaption.ClickThrough = true;
             this.lblCaption.Cursor = System.Windows.Forms.Cursors.Default;
@@ -706,84 +699,110 @@
             // 
             this.mainMenuStrip.Dock = System.Windows.Forms.DockStyle.None;
             this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile,
+            this.mnuProject,
             this.mnuEdit,
             this.mnuView,
+            this.mnuScore,
             this.mnuPreview,
             this.mnuTools,
             this.mnuHelp});
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(293, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
-            // mnuFile
+            // mnuProject
             // 
-            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileNew,
-            this.mnuFileOpen,
-            this.mnuFileSave,
-            this.mnuFileSaveAs,
-            this.mnuFileSep1,
-            this.mnuFileBeatmapInfo,
-            this.mnuFileSep2,
-            this.mnuFileExit});
-            this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(39, 21);
-            this.mnuFile.Text = "&File";
+            this.mnuProject.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuProjectNew,
+            this.mnuProjectOpen,
+            this.mnuProjectSave,
+            this.mnuProjecgtSaveAs,
+            this.mnuProjectSep1,
+            this.mnuProjectBeatmap,
+            this.mnuProjectMusic,
+            this.mnuProjectSep2,
+            this.mnuProjectExit});
+            this.mnuProject.Name = "mnuProject";
+            this.mnuProject.Size = new System.Drawing.Size(60, 21);
+            this.mnuProject.Text = "&Project";
             // 
-            // mnuFileNew
+            // mnuProjectNew
             // 
-            this.mnuFileNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
-            this.mnuFileNew.Name = "mnuFileNew";
-            this.mnuFileNew.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileNew.Text = "&New Project";
+            this.mnuProjectNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
+            this.mnuProjectNew.Name = "mnuProjectNew";
+            this.mnuProjectNew.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectNew.Text = "&New";
             // 
-            // mnuFileOpen
+            // mnuProjectOpen
             // 
-            this.mnuFileOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
-            this.mnuFileOpen.Name = "mnuFileOpen";
-            this.mnuFileOpen.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileOpen.Text = "&Open Project...";
+            this.mnuProjectOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
+            this.mnuProjectOpen.Name = "mnuProjectOpen";
+            this.mnuProjectOpen.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectOpen.Text = "&Open...";
             // 
-            // mnuFileSave
+            // mnuProjectSave
             // 
-            this.mnuFileSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
-            this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileSave.Text = "&Save Project";
+            this.mnuProjectSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
+            this.mnuProjectSave.Name = "mnuProjectSave";
+            this.mnuProjectSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectSave.Text = "&Save";
             // 
-            // mnuFileSaveAs
+            // mnuProjecgtSaveAs
             // 
-            this.mnuFileSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
-            this.mnuFileSaveAs.Name = "mnuFileSaveAs";
-            this.mnuFileSaveAs.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileSaveAs.Text = "Save Project &As...";
+            this.mnuProjecgtSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
+            this.mnuProjecgtSaveAs.Name = "mnuProjecgtSaveAs";
+            this.mnuProjecgtSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjecgtSaveAs.Text = "Save &As...";
             // 
-            // mnuFileSep1
+            // mnuProjectSep1
             // 
-            this.mnuFileSep1.Name = "mnuFileSep1";
-            this.mnuFileSep1.Size = new System.Drawing.Size(171, 6);
+            this.mnuProjectSep1.Name = "mnuProjectSep1";
+            this.mnuProjectSep1.Size = new System.Drawing.Size(149, 6);
             // 
-            // mnuFileBeatmapInfo
+            // mnuProjectBeatmap
             // 
-            this.mnuFileBeatmapInfo.Name = "mnuFileBeatmapInfo";
-            this.mnuFileBeatmapInfo.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileBeatmapInfo.Text = "Beatmap &Info";
+            this.mnuProjectBeatmap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuProjectBeatmapSettings,
+            this.mnuProjectBeatmapSep1,
+            this.mnuProjectBeatmapInfo});
+            this.mnuProjectBeatmap.Name = "mnuProjectBeatmap";
+            this.mnuProjectBeatmap.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectBeatmap.Text = "&Beatmap";
             // 
-            // mnuFileSep2
+            // mnuProjectBeatmapSettings
             // 
-            this.mnuFileSep2.Name = "mnuFileSep2";
-            this.mnuFileSep2.Size = new System.Drawing.Size(171, 6);
+            this.mnuProjectBeatmapSettings.Name = "mnuProjectBeatmapSettings";
+            this.mnuProjectBeatmapSettings.Size = new System.Drawing.Size(187, 22);
+            this.mnuProjectBeatmapSettings.Text = "Beatmap &Settings...";
             // 
-            // mnuFileExit
+            // mnuProjectMusic
             // 
-            this.mnuFileExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
-            this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.Size = new System.Drawing.Size(174, 22);
-            this.mnuFileExit.Text = "E&xit";
+            this.mnuProjectMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuEditMusicSettings});
+            this.mnuProjectMusic.Name = "mnuProjectMusic";
+            this.mnuProjectMusic.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectMusic.Text = "Mus&ic";
+            // 
+            // mnuEditMusicSettings
+            // 
+            this.mnuEditMusicSettings.Name = "mnuEditMusicSettings";
+            this.mnuEditMusicSettings.Size = new System.Drawing.Size(169, 22);
+            this.mnuEditMusicSettings.Text = "Music &Settings...";
+            // 
+            // mnuProjectSep2
+            // 
+            this.mnuProjectSep2.Name = "mnuProjectSep2";
+            this.mnuProjectSep2.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuProjectExit
+            // 
+            this.mnuProjectExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
+            this.mnuProjectExit.Name = "mnuProjectExit";
+            this.mnuProjectExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectExit.Text = "E&xit";
             // 
             // mnuEdit
             // 
@@ -796,14 +815,8 @@
             this.mnuEditPaste,
             this.mnuEditSelect,
             this.mnuEditSep2,
-            this.mnuEditDifficulty,
-            this.mnuEditBeatmap,
-            this.mnuEditMusic,
-            this.mnuEditSep3,
             this.mnuEditMode,
-            this.mnuEditMeasure,
-            this.mnuEditNote,
-            this.mnuEditSep4,
+            this.mnuEditSep3,
             this.mnuEditGoTo});
             this.mnuEdit.Name = "mnuEdit";
             this.mnuEdit.Size = new System.Drawing.Size(42, 21);
@@ -811,47 +824,42 @@
             // 
             // mnuEditUndo
             // 
-            this.mnuEditUndo.Enabled = false;
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
-            this.mnuEditRedo.Enabled = false;
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditCut
             // 
-            this.mnuEditCut.Enabled = false;
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
-            this.mnuEditCopy.Enabled = false;
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
-            this.mnuEditPaste.Enabled = false;
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -861,7 +869,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -885,84 +893,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(125, 6);
-            // 
-            // mnuEditDifficulty
-            // 
-            this.mnuEditDifficulty.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditDifficultyDebut,
-            this.mnuEditDifficultyRegular,
-            this.mnuEditDifficultyPro,
-            this.mnuEditDifficultyMaster,
-            this.mnuEditDifficultyMasterPlus});
-            this.mnuEditDifficulty.Name = "mnuEditDifficulty";
-            this.mnuEditDifficulty.Size = new System.Drawing.Size(128, 22);
-            this.mnuEditDifficulty.Text = "&Difficulty";
-            // 
-            // mnuEditDifficultyDebut
-            // 
-            this.mnuEditDifficultyDebut.Checked = true;
-            this.mnuEditDifficultyDebut.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnuEditDifficultyDebut.Name = "mnuEditDifficultyDebut";
-            this.mnuEditDifficultyDebut.Size = new System.Drawing.Size(126, 22);
-            this.mnuEditDifficultyDebut.Text = "&Debut";
-            // 
-            // mnuEditDifficultyRegular
-            // 
-            this.mnuEditDifficultyRegular.Name = "mnuEditDifficultyRegular";
-            this.mnuEditDifficultyRegular.Size = new System.Drawing.Size(126, 22);
-            this.mnuEditDifficultyRegular.Text = "&Regular";
-            // 
-            // mnuEditDifficultyPro
-            // 
-            this.mnuEditDifficultyPro.Name = "mnuEditDifficultyPro";
-            this.mnuEditDifficultyPro.Size = new System.Drawing.Size(126, 22);
-            this.mnuEditDifficultyPro.Text = "&Pro";
-            // 
-            // mnuEditDifficultyMaster
-            // 
-            this.mnuEditDifficultyMaster.Name = "mnuEditDifficultyMaster";
-            this.mnuEditDifficultyMaster.Size = new System.Drawing.Size(126, 22);
-            this.mnuEditDifficultyMaster.Text = "&Master";
-            // 
-            // mnuEditDifficultyMasterPlus
-            // 
-            this.mnuEditDifficultyMasterPlus.Name = "mnuEditDifficultyMasterPlus";
-            this.mnuEditDifficultyMasterPlus.Size = new System.Drawing.Size(126, 22);
-            this.mnuEditDifficultyMasterPlus.Text = "Mast&er+";
-            // 
-            // mnuEditBeatmap
-            // 
-            this.mnuEditBeatmap.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditBeatmapSettings});
-            this.mnuEditBeatmap.Name = "mnuEditBeatmap";
-            this.mnuEditBeatmap.Size = new System.Drawing.Size(128, 22);
-            this.mnuEditBeatmap.Text = "&Beatmap";
-            // 
-            // mnuEditBeatmapSettings
-            // 
-            this.mnuEditBeatmapSettings.Name = "mnuEditBeatmapSettings";
-            this.mnuEditBeatmapSettings.Size = new System.Drawing.Size(187, 22);
-            this.mnuEditBeatmapSettings.Text = "Beatmap &Settings...";
-            // 
-            // mnuEditMusic
-            // 
-            this.mnuEditMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditMusicSettings});
-            this.mnuEditMusic.Name = "mnuEditMusic";
-            this.mnuEditMusic.Size = new System.Drawing.Size(128, 22);
-            this.mnuEditMusic.Text = "Mus&ic";
-            // 
-            // mnuEditMusicSettings
-            // 
-            this.mnuEditMusicSettings.Name = "mnuEditMusicSettings";
-            this.mnuEditMusicSettings.Size = new System.Drawing.Size(169, 22);
-            this.mnuEditMusicSettings.Text = "Music &Settings...";
-            // 
-            // mnuEditSep3
-            // 
-            this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditMode
             // 
@@ -977,7 +908,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -1039,185 +970,10 @@
             this.mnuEditModeNext.Size = new System.Drawing.Size(125, 22);
             this.mnuEditModeNext.Text = "&Next";
             // 
-            // mnuEditMeasure
+            // mnuEditSep3
             // 
-            this.mnuEditMeasure.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditMeasureAppend,
-            this.mnuEditMeasureAppendMany,
-            this.mnuEditMeasureDelete});
-            this.mnuEditMeasure.Name = "mnuEditMeasure";
-            this.mnuEditMeasure.Size = new System.Drawing.Size(128, 22);
-            this.mnuEditMeasure.Text = "&Measure";
-            // 
-            // mnuEditMeasureAppend
-            // 
-            this.mnuEditMeasureAppend.Name = "mnuEditMeasureAppend";
-            this.mnuEditMeasureAppend.Size = new System.Drawing.Size(192, 22);
-            this.mnuEditMeasureAppend.Text = "&Append Measure";
-            // 
-            // mnuEditMeasureAppendMany
-            // 
-            this.mnuEditMeasureAppendMany.Name = "mnuEditMeasureAppendMany";
-            this.mnuEditMeasureAppendMany.Size = new System.Drawing.Size(192, 22);
-            this.mnuEditMeasureAppendMany.Text = "Append &Measures...";
-            // 
-            // mnuEditMeasureDelete
-            // 
-            this.mnuEditMeasureDelete.Name = "mnuEditMeasureDelete";
-            this.mnuEditMeasureDelete.Size = new System.Drawing.Size(192, 22);
-            this.mnuEditMeasureDelete.Text = "&Delete Selected";
-            // 
-            // mnuEditNote
-            // 
-            this.mnuEditNote.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditNoteDelete,
-            this.mnuEditNoteSep1,
-            this.mnuEditNoteStartPosition,
-            this.mnuEditNoteInsertSpecial});
-            this.mnuEditNote.Name = "mnuEditNote";
-            this.mnuEditNote.Size = new System.Drawing.Size(128, 22);
-            this.mnuEditNote.Text = "&Note";
-            // 
-            // mnuEditNoteDelete
-            // 
-            this.mnuEditNoteDelete.Name = "mnuEditNoteDelete";
-            this.mnuEditNoteDelete.Size = new System.Drawing.Size(166, 22);
-            this.mnuEditNoteDelete.Text = "&Delete Selected";
-            // 
-            // mnuEditNoteSep1
-            // 
-            this.mnuEditNoteSep1.Name = "mnuEditNoteSep1";
-            this.mnuEditNoteSep1.Size = new System.Drawing.Size(163, 6);
-            // 
-            // mnuEditNoteStartPosition
-            // 
-            this.mnuEditNoteStartPosition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditNoteStartPositionAt0,
-            this.mnuEditNoteStartPositionAt1,
-            this.mnuEditNoteStartPositionAt2,
-            this.mnuEditNoteStartPositionAt3,
-            this.mnuEditNoteStartPositionAt4,
-            this.mnuEditNoteStartPositionAt5,
-            this.mnuEditNoteStartPositionSep1,
-            this.mnuEditNoteStartPositionMoveLeft,
-            this.mnuEditNoteStartPositionMoveRight,
-            this.mnuEditNotePositionSep2,
-            this.mnuEditNoteStartPositionTo0,
-            this.mnuEditNoteStartPositionTo1,
-            this.mnuEditNoteStartPositionTo2,
-            this.mnuEditNoteStartPositionTo3,
-            this.mnuEditNoteStartPositionTo4,
-            this.mnuEditNoteStartPositionTo5});
-            this.mnuEditNoteStartPosition.Name = "mnuEditNoteStartPosition";
-            this.mnuEditNoteStartPosition.Size = new System.Drawing.Size(166, 22);
-            this.mnuEditNoteStartPosition.Text = "Start &Position";
-            // 
-            // mnuEditNoteStartPositionAt0
-            // 
-            this.mnuEditNoteStartPositionAt0.Checked = true;
-            this.mnuEditNoteStartPositionAt0.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnuEditNoteStartPositionAt0.Name = "mnuEditNoteStartPositionAt0";
-            this.mnuEditNoteStartPositionAt0.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt0.Text = "At &Default";
-            // 
-            // mnuEditNoteStartPositionAt1
-            // 
-            this.mnuEditNoteStartPositionAt1.Name = "mnuEditNoteStartPositionAt1";
-            this.mnuEditNoteStartPositionAt1.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt1.Text = "At &Left";
-            // 
-            // mnuEditNoteStartPositionAt2
-            // 
-            this.mnuEditNoteStartPositionAt2.Name = "mnuEditNoteStartPositionAt2";
-            this.mnuEditNoteStartPositionAt2.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt2.Text = "At Cen&ter Left";
-            // 
-            // mnuEditNoteStartPositionAt3
-            // 
-            this.mnuEditNoteStartPositionAt3.Name = "mnuEditNoteStartPositionAt3";
-            this.mnuEditNoteStartPositionAt3.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt3.Text = "At &Center";
-            // 
-            // mnuEditNoteStartPositionAt4
-            // 
-            this.mnuEditNoteStartPositionAt4.Name = "mnuEditNoteStartPositionAt4";
-            this.mnuEditNoteStartPositionAt4.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt4.Text = "At Center R&ight";
-            // 
-            // mnuEditNoteStartPositionAt5
-            // 
-            this.mnuEditNoteStartPositionAt5.Name = "mnuEditNoteStartPositionAt5";
-            this.mnuEditNoteStartPositionAt5.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionAt5.Text = "At &Right";
-            // 
-            // mnuEditNoteStartPositionSep1
-            // 
-            this.mnuEditNoteStartPositionSep1.Name = "mnuEditNoteStartPositionSep1";
-            this.mnuEditNoteStartPositionSep1.Size = new System.Drawing.Size(186, 6);
-            // 
-            // mnuEditNoteStartPositionMoveLeft
-            // 
-            this.mnuEditNoteStartPositionMoveLeft.Name = "mnuEditNoteStartPositionMoveLeft";
-            this.mnuEditNoteStartPositionMoveLeft.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionMoveLeft.Text = "Move L&eft";
-            // 
-            // mnuEditNoteStartPositionMoveRight
-            // 
-            this.mnuEditNoteStartPositionMoveRight.Name = "mnuEditNoteStartPositionMoveRight";
-            this.mnuEditNoteStartPositionMoveRight.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionMoveRight.Text = "Mo&ve Right";
-            // 
-            // mnuEditNotePositionSep2
-            // 
-            this.mnuEditNotePositionSep2.Name = "mnuEditNotePositionSep2";
-            this.mnuEditNotePositionSep2.Size = new System.Drawing.Size(186, 6);
-            // 
-            // mnuEditNoteStartPositionTo0
-            // 
-            this.mnuEditNoteStartPositionTo0.Name = "mnuEditNoteStartPositionTo0";
-            this.mnuEditNoteStartPositionTo0.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo0.Text = "&Set To Default";
-            // 
-            // mnuEditNoteStartPositionTo1
-            // 
-            this.mnuEditNoteStartPositionTo1.Name = "mnuEditNoteStartPositionTo1";
-            this.mnuEditNoteStartPositionTo1.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo1.Text = "Set T&o Left";
-            // 
-            // mnuEditNoteStartPositionTo2
-            // 
-            this.mnuEditNoteStartPositionTo2.Name = "mnuEditNoteStartPositionTo2";
-            this.mnuEditNoteStartPositionTo2.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo2.Text = "Set To Center Le&ft";
-            // 
-            // mnuEditNoteStartPositionTo3
-            // 
-            this.mnuEditNoteStartPositionTo3.Name = "mnuEditNoteStartPositionTo3";
-            this.mnuEditNoteStartPositionTo3.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo3.Text = "Set To Cente&r";
-            // 
-            // mnuEditNoteStartPositionTo4
-            // 
-            this.mnuEditNoteStartPositionTo4.Name = "mnuEditNoteStartPositionTo4";
-            this.mnuEditNoteStartPositionTo4.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo4.Text = "Set To Center Ri&ght";
-            // 
-            // mnuEditNoteStartPositionTo5
-            // 
-            this.mnuEditNoteStartPositionTo5.Name = "mnuEditNoteStartPositionTo5";
-            this.mnuEditNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
-            this.mnuEditNoteStartPositionTo5.Text = "Set To Rig&ht";
-            // 
-            // mnuEditNoteInsertSpecial
-            // 
-            this.mnuEditNoteInsertSpecial.Name = "mnuEditNoteInsertSpecial";
-            this.mnuEditNoteInsertSpecial.Size = new System.Drawing.Size(166, 22);
-            this.mnuEditNoteInsertSpecial.Text = "Insert &Special...";
-            // 
-            // mnuEditSep4
-            // 
-            this.mnuEditSep4.Name = "mnuEditSep4";
-            this.mnuEditSep4.Size = new System.Drawing.Size(125, 6);
+            this.mnuEditSep3.Name = "mnuEditSep3";
+            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditGoTo
             // 
@@ -1225,7 +981,7 @@
             this.measureToolStripMenuItem1,
             this.timeToolStripMenuItem});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(128, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // measureToolStripMenuItem1
@@ -1460,6 +1216,237 @@
             this.mnuViewInvertedScrolling.Size = new System.Drawing.Size(179, 22);
             this.mnuViewInvertedScrolling.Text = "&Inverted Scrolling";
             // 
+            // mnuScore
+            // 
+            this.mnuScore.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuScoreDifficulty,
+            this.mnuScoreMeasure,
+            this.mnuScoreNote});
+            this.mnuScore.Name = "mnuScore";
+            this.mnuScore.Size = new System.Drawing.Size(53, 21);
+            this.mnuScore.Text = "&Score";
+            // 
+            // mnuScoreDifficulty
+            // 
+            this.mnuScoreDifficulty.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuScoreDifficultyDebut,
+            this.mnuScoreDifficultyRegular,
+            this.mnuScoreDifficultyPro,
+            this.mnuScoreDifficultyMaster,
+            this.mnuScoreDifficultyMasterPlus});
+            this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficulty.Text = "&Difficulty";
+            // 
+            // mnuScoreDifficultyDebut
+            // 
+            this.mnuScoreDifficultyDebut.Checked = true;
+            this.mnuScoreDifficultyDebut.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuScoreDifficultyDebut.Name = "mnuScoreDifficultyDebut";
+            this.mnuScoreDifficultyDebut.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyDebut.Text = "&Debut";
+            // 
+            // mnuScoreDifficultyRegular
+            // 
+            this.mnuScoreDifficultyRegular.Name = "mnuScoreDifficultyRegular";
+            this.mnuScoreDifficultyRegular.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyRegular.Text = "&Regular";
+            // 
+            // mnuScoreDifficultyPro
+            // 
+            this.mnuScoreDifficultyPro.Name = "mnuScoreDifficultyPro";
+            this.mnuScoreDifficultyPro.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyPro.Text = "&Pro";
+            // 
+            // mnuScoreDifficultyMaster
+            // 
+            this.mnuScoreDifficultyMaster.Name = "mnuScoreDifficultyMaster";
+            this.mnuScoreDifficultyMaster.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyMaster.Text = "&Master";
+            // 
+            // mnuScoreDifficultyMasterPlus
+            // 
+            this.mnuScoreDifficultyMasterPlus.Name = "mnuScoreDifficultyMasterPlus";
+            this.mnuScoreDifficultyMasterPlus.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyMasterPlus.Text = "Mast&er+";
+            // 
+            // mnuScoreMeasure
+            // 
+            this.mnuScoreMeasure.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuScoreMeasureAppend,
+            this.mnuScoreMeasureAppendMultiple,
+            this.mnuScoreMeasureDelete});
+            this.mnuScoreMeasure.Name = "mnuScoreMeasure";
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreMeasure.Text = "&Measure";
+            // 
+            // mnuScoreMeasureAppend
+            // 
+            this.mnuScoreMeasureAppend.Name = "mnuScoreMeasureAppend";
+            this.mnuScoreMeasureAppend.Size = new System.Drawing.Size(192, 22);
+            this.mnuScoreMeasureAppend.Text = "&Append Measure";
+            // 
+            // mnuScoreMeasureAppendMultiple
+            // 
+            this.mnuScoreMeasureAppendMultiple.Name = "mnuScoreMeasureAppendMultiple";
+            this.mnuScoreMeasureAppendMultiple.Size = new System.Drawing.Size(192, 22);
+            this.mnuScoreMeasureAppendMultiple.Text = "Append &Measures...";
+            // 
+            // mnuScoreMeasureDelete
+            // 
+            this.mnuScoreMeasureDelete.Name = "mnuScoreMeasureDelete";
+            this.mnuScoreMeasureDelete.Size = new System.Drawing.Size(192, 22);
+            this.mnuScoreMeasureDelete.Text = "&Delete Selected";
+            // 
+            // mnuScoreNote
+            // 
+            this.mnuScoreNote.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuScoreNoteDelete,
+            this.mnuScoreNoteSep1,
+            this.mnuScoreNoteStartPosition,
+            this.mnuScoreNoteSep2,
+            this.mnuScoreNoteInsertSpecial,
+            this.mnuScoreNoteModifySpecial});
+            this.mnuScoreNote.Name = "mnuScoreNote";
+            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreNote.Text = "&Note";
+            // 
+            // mnuScoreNoteDelete
+            // 
+            this.mnuScoreNoteDelete.Name = "mnuScoreNoteDelete";
+            this.mnuScoreNoteDelete.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteDelete.Text = "&Delete Selected";
+            // 
+            // mnuScoreNoteSep1
+            // 
+            this.mnuScoreNoteSep1.Name = "mnuScoreNoteSep1";
+            this.mnuScoreNoteSep1.Size = new System.Drawing.Size(168, 6);
+            // 
+            // mnuScoreNoteStartPosition
+            // 
+            this.mnuScoreNoteStartPosition.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuScoreNoteStartPositionAt0,
+            this.mnuScoreNoteStartPositionAt1,
+            this.mnuScoreNoteStartPositionAt2,
+            this.mnuScoreNoteStartPositionAt3,
+            this.mnuScoreNoteStartPositionAt4,
+            this.mnuScoreNoteStartPositionAt5,
+            this.mnuScoreNoteStartPositionSep1,
+            this.mnuScoreNoteStartPositionMoveLeft,
+            this.mnuScoreNoteStartPositionMoveRight,
+            this.mnuScoreNotePositionSep2,
+            this.mnuScoreNoteStartPositionTo0,
+            this.mnuScoreNoteStartPositionTo1,
+            this.mnuScoreNoteStartPositionTo2,
+            this.mnuScoreNoteStartPositionTo3,
+            this.mnuScoreNoteStartPositionTo4,
+            this.mnuScoreNoteStartPositionTo5});
+            this.mnuScoreNoteStartPosition.Name = "mnuScoreNoteStartPosition";
+            this.mnuScoreNoteStartPosition.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteStartPosition.Text = "Start &Position";
+            // 
+            // mnuScoreNoteStartPositionAt0
+            // 
+            this.mnuScoreNoteStartPositionAt0.Checked = true;
+            this.mnuScoreNoteStartPositionAt0.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.mnuScoreNoteStartPositionAt0.Name = "mnuScoreNoteStartPositionAt0";
+            this.mnuScoreNoteStartPositionAt0.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt0.Text = "At &Default";
+            // 
+            // mnuScoreNoteStartPositionAt1
+            // 
+            this.mnuScoreNoteStartPositionAt1.Name = "mnuScoreNoteStartPositionAt1";
+            this.mnuScoreNoteStartPositionAt1.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt1.Text = "At &Left";
+            // 
+            // mnuScoreNoteStartPositionAt2
+            // 
+            this.mnuScoreNoteStartPositionAt2.Name = "mnuScoreNoteStartPositionAt2";
+            this.mnuScoreNoteStartPositionAt2.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt2.Text = "At Cen&ter Left";
+            // 
+            // mnuScoreNoteStartPositionAt3
+            // 
+            this.mnuScoreNoteStartPositionAt3.Name = "mnuScoreNoteStartPositionAt3";
+            this.mnuScoreNoteStartPositionAt3.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt3.Text = "At &Center";
+            // 
+            // mnuScoreNoteStartPositionAt4
+            // 
+            this.mnuScoreNoteStartPositionAt4.Name = "mnuScoreNoteStartPositionAt4";
+            this.mnuScoreNoteStartPositionAt4.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt4.Text = "At Center R&ight";
+            // 
+            // mnuScoreNoteStartPositionAt5
+            // 
+            this.mnuScoreNoteStartPositionAt5.Name = "mnuScoreNoteStartPositionAt5";
+            this.mnuScoreNoteStartPositionAt5.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionAt5.Text = "At &Right";
+            // 
+            // mnuScoreNoteStartPositionSep1
+            // 
+            this.mnuScoreNoteStartPositionSep1.Name = "mnuScoreNoteStartPositionSep1";
+            this.mnuScoreNoteStartPositionSep1.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuScoreNoteStartPositionMoveLeft
+            // 
+            this.mnuScoreNoteStartPositionMoveLeft.Name = "mnuScoreNoteStartPositionMoveLeft";
+            this.mnuScoreNoteStartPositionMoveLeft.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionMoveLeft.Text = "Move L&eft";
+            // 
+            // mnuScoreNoteStartPositionMoveRight
+            // 
+            this.mnuScoreNoteStartPositionMoveRight.Name = "mnuScoreNoteStartPositionMoveRight";
+            this.mnuScoreNoteStartPositionMoveRight.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionMoveRight.Text = "Mo&ve Right";
+            // 
+            // mnuScoreNotePositionSep2
+            // 
+            this.mnuScoreNotePositionSep2.Name = "mnuScoreNotePositionSep2";
+            this.mnuScoreNotePositionSep2.Size = new System.Drawing.Size(186, 6);
+            // 
+            // mnuScoreNoteStartPositionTo0
+            // 
+            this.mnuScoreNoteStartPositionTo0.Name = "mnuScoreNoteStartPositionTo0";
+            this.mnuScoreNoteStartPositionTo0.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo0.Text = "&Set To Default";
+            // 
+            // mnuScoreNoteStartPositionTo1
+            // 
+            this.mnuScoreNoteStartPositionTo1.Name = "mnuScoreNoteStartPositionTo1";
+            this.mnuScoreNoteStartPositionTo1.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo1.Text = "Set T&o Left";
+            // 
+            // mnuScoreNoteStartPositionTo2
+            // 
+            this.mnuScoreNoteStartPositionTo2.Name = "mnuScoreNoteStartPositionTo2";
+            this.mnuScoreNoteStartPositionTo2.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo2.Text = "Set To Center Le&ft";
+            // 
+            // mnuScoreNoteStartPositionTo3
+            // 
+            this.mnuScoreNoteStartPositionTo3.Name = "mnuScoreNoteStartPositionTo3";
+            this.mnuScoreNoteStartPositionTo3.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo3.Text = "Set To Cente&r";
+            // 
+            // mnuScoreNoteStartPositionTo4
+            // 
+            this.mnuScoreNoteStartPositionTo4.Name = "mnuScoreNoteStartPositionTo4";
+            this.mnuScoreNoteStartPositionTo4.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo4.Text = "Set To Center Ri&ght";
+            // 
+            // mnuScoreNoteStartPositionTo5
+            // 
+            this.mnuScoreNoteStartPositionTo5.Name = "mnuScoreNoteStartPositionTo5";
+            this.mnuScoreNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
+            this.mnuScoreNoteStartPositionTo5.Text = "Set To Rig&ht";
+            // 
+            // mnuScoreNoteInsertSpecial
+            // 
+            this.mnuScoreNoteInsertSpecial.Name = "mnuScoreNoteInsertSpecial";
+            this.mnuScoreNoteInsertSpecial.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteInsertSpecial.Text = "Insert &Special...";
+            // 
             // mnuPreview
             // 
             this.mnuPreview.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -1493,7 +1480,7 @@
             this.mnuPreviewStop.Size = new System.Drawing.Size(188, 22);
             this.mnuPreviewStop.Text = "S&top";
             // 
-            // mnuTool
+            // mnuTools
             // 
             this.mnuTools.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExport,
@@ -1503,10 +1490,10 @@
             this.mnuToolsSep2,
             this.mnuToolsOptions});
             this.mnuTools.Name = "mnuTools";
-            this.mnuTools.Size = new System.Drawing.Size(46, 21);
+            this.mnuTools.Size = new System.Drawing.Size(52, 21);
             this.mnuTools.Text = "&Tools";
             // 
-            // mnuToolExport
+            // mnuToolsExport
             // 
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExportCsv});
@@ -1514,24 +1501,24 @@
             this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsExport.Text = "&Export";
             // 
-            // cGSSBeatmapCSVToolStripMenuItem
+            // mnuToolsExportCsv
             // 
             this.mnuToolsExportCsv.Name = "mnuToolsExportCsv";
             this.mnuToolsExportCsv.Size = new System.Drawing.Size(246, 22);
             this.mnuToolsExportCsv.Text = "&CGSS Single Beatmap (CSV)...";
             // 
-            // mnuToolImport
+            // mnuToolsImport
             // 
             this.mnuToolsImport.Name = "mnuToolsImport";
             this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsImport.Text = "&Import";
             // 
-            // mnuToolSep1
+            // mnuToolsSep1
             // 
             this.mnuToolsSep1.Name = "mnuToolsSep1";
             this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
             // 
-            // mnuToolBuild
+            // mnuToolsBuild
             // 
             this.mnuToolsBuild.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsBuildBdb,
@@ -1540,26 +1527,26 @@
             this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsBuild.Text = "&Build";
             // 
-            // cGSSBeatmapBundleBDBToolStripMenuItem
+            // mnuToolsBuildBdb
             // 
             this.mnuToolsBuildBdb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
             this.mnuToolsBuildBdb.Name = "mnuToolsBuildBdb";
             this.mnuToolsBuildBdb.Size = new System.Drawing.Size(253, 22);
             this.mnuToolsBuildBdb.Text = "CGSS Beatmap &Bundle (BDB)...";
             // 
-            // cGSSLiveMusicACBToolStripMenuItem
+            // mnuToolsBuildAcb
             // 
             this.mnuToolsBuildAcb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
             this.mnuToolsBuildAcb.Name = "mnuToolsBuildAcb";
             this.mnuToolsBuildAcb.Size = new System.Drawing.Size(253, 22);
             this.mnuToolsBuildAcb.Text = "CGSS Live &Music (ACB)...";
             // 
-            // mnuToolSep2
+            // mnuToolsSep2
             // 
             this.mnuToolsSep2.Name = "mnuToolsSep2";
             this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
             // 
-            // mnuToolOptions
+            // mnuToolsOptions
             // 
             this.mnuToolsOptions.Name = "mnuToolsOptions";
             this.mnuToolsOptions.Size = new System.Drawing.Size(131, 22);
@@ -1586,22 +1573,22 @@
             this.ctxEditCopy,
             this.ctxEditPaste,
             this.ctxSep1,
-            this.ctxEditDeleteNotes,
+            this.ctxScoreNoteDelete,
             this.ctxSep2,
-            this.ctxEditDeleteMeasures,
+            this.ctxScoreMeasureDelete,
             this.ctxSep3,
-            this.ctxEditAddSpecialNote,
+            this.ctxScoreNoteInsertSpecial,
             this.ctxSep4,
-            this.ctxEditModifySpecialNote});
+            this.ctxScoreNoteModifySpecial});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(196, 182);
+            this.ctxMain.Size = new System.Drawing.Size(205, 182);
             // 
             // ctxEditCut
             // 
             this.ctxEditCut.Enabled = false;
             this.ctxEditCut.Name = "ctxEditCut";
             this.ctxEditCut.ShortcutKeyDisplayString = "Ctrl+X";
-            this.ctxEditCut.Size = new System.Drawing.Size(195, 22);
+            this.ctxEditCut.Size = new System.Drawing.Size(204, 22);
             this.ctxEditCut.Text = "Cu&t";
             // 
             // ctxEditCopy
@@ -1609,7 +1596,7 @@
             this.ctxEditCopy.Enabled = false;
             this.ctxEditCopy.Name = "ctxEditCopy";
             this.ctxEditCopy.ShortcutKeyDisplayString = "Ctrl+C";
-            this.ctxEditCopy.Size = new System.Drawing.Size(195, 22);
+            this.ctxEditCopy.Size = new System.Drawing.Size(204, 22);
             this.ctxEditCopy.Text = "&Copy";
             // 
             // ctxEditPaste
@@ -1617,46 +1604,57 @@
             this.ctxEditPaste.Enabled = false;
             this.ctxEditPaste.Name = "ctxEditPaste";
             this.ctxEditPaste.ShortcutKeyDisplayString = "Ctrl+V";
-            this.ctxEditPaste.Size = new System.Drawing.Size(195, 22);
+            this.ctxEditPaste.Size = new System.Drawing.Size(204, 22);
             this.ctxEditPaste.Text = "&Paste";
             // 
             // ctxSep1
             // 
             this.ctxSep1.Name = "ctxSep1";
-            this.ctxSep1.Size = new System.Drawing.Size(192, 6);
+            this.ctxSep1.Size = new System.Drawing.Size(201, 6);
             // 
-            // ctxEditDeleteNotes
+            // ctxScoreNoteDelete
             // 
-            this.ctxEditDeleteNotes.Name = "ctxEditDeleteNotes";
-            this.ctxEditDeleteNotes.Size = new System.Drawing.Size(195, 22);
-            this.ctxEditDeleteNotes.Text = "&Delete Note(s)";
+            this.ctxScoreNoteDelete.Name = "ctxScoreNoteDelete";
+            this.ctxScoreNoteDelete.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteDelete.Text = "&Delete Note(s)";
             // 
             // ctxSep2
             // 
             this.ctxSep2.Name = "ctxSep2";
-            this.ctxSep2.Size = new System.Drawing.Size(192, 6);
+            this.ctxSep2.Size = new System.Drawing.Size(201, 6);
             // 
-            // ctxEditDeleteMeasures
+            // ctxScoreMeasureDelete
             // 
-            this.ctxEditDeleteMeasures.Name = "ctxEditDeleteMeasures";
-            this.ctxEditDeleteMeasures.Size = new System.Drawing.Size(195, 22);
-            this.ctxEditDeleteMeasures.Text = "&Delete Measure(s)";
+            this.ctxScoreMeasureDelete.Name = "ctxScoreMeasureDelete";
+            this.ctxScoreMeasureDelete.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreMeasureDelete.Text = "&Delete Measure(s)";
             // 
             // ctxSep3
             // 
             this.ctxSep3.Name = "ctxSep3";
-            this.ctxSep3.Size = new System.Drawing.Size(192, 6);
+            this.ctxSep3.Size = new System.Drawing.Size(201, 6);
             // 
-            // ctxEditAddSpecialNote
+            // ctxScoreNoteInsertSpecial
             // 
-            this.ctxEditAddSpecialNote.Name = "ctxEditAddSpecialNote";
-            this.ctxEditAddSpecialNote.Size = new System.Drawing.Size(195, 22);
-            this.ctxEditAddSpecialNote.Text = "Add &Special Note";
+            this.ctxScoreNoteInsertSpecial.Name = "ctxScoreNoteInsertSpecial";
+            this.ctxScoreNoteInsertSpecial.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteInsertSpecial.Text = "Add &Special Note...";
+            // 
+            // ctxSep4
+            // 
+            this.ctxSep4.Name = "ctxSep4";
+            this.ctxSep4.Size = new System.Drawing.Size(201, 6);
+            // 
+            // ctxScoreNoteModifySpecial
+            // 
+            this.ctxScoreNoteModifySpecial.Name = "ctxScoreNoteModifySpecial";
+            this.ctxScoreNoteModifySpecial.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteModifySpecial.Text = "Modify &Special Note...";
             // 
             // visualizer
             // 
-            this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
+            this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -1674,16 +1672,32 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
-            // ctxSep4
+            // mnuProjectBeatmapSep1
             // 
-            this.ctxSep4.Name = "ctxSep4";
-            this.ctxSep4.Size = new System.Drawing.Size(192, 6);
+            this.mnuProjectBeatmapSep1.Name = "mnuProjectBeatmapSep1";
+            this.mnuProjectBeatmapSep1.Size = new System.Drawing.Size(184, 6);
             // 
-            // ctxEditModifySpecialNote
+            // mnuProjectBeatmapInfo
             // 
-            this.ctxEditModifySpecialNote.Name = "ctxEditModifySpecialNote";
-            this.ctxEditModifySpecialNote.Size = new System.Drawing.Size(195, 22);
-            this.ctxEditModifySpecialNote.Text = "Modify &Special Note";
+            this.mnuProjectBeatmapInfo.Name = "mnuProjectBeatmapInfo";
+            this.mnuProjectBeatmapInfo.Size = new System.Drawing.Size(187, 22);
+            this.mnuProjectBeatmapInfo.Text = "Beatmap &Info";
+            // 
+            // mnuScoreNoteSep2
+            // 
+            this.mnuScoreNoteSep2.Name = "mnuScoreNoteSep2";
+            this.mnuScoreNoteSep2.Size = new System.Drawing.Size(168, 6);
+            // 
+            // mnuScoreNoteModifySpecial
+            // 
+            this.mnuScoreNoteModifySpecial.Name = "mnuScoreNoteModifySpecial";
+            this.mnuScoreNoteModifySpecial.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteModifySpecial.Text = "Modi&fy Special...";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // FMain
             // 
@@ -1691,13 +1705,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(960, 615);
+            this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.sysClose);
             this.Controls.Add(this.sysMaximizeRestore);
             this.Controls.Add(this.sysMinimize);
             this.Controls.Add(this.lblCaption);
             this.Controls.Add(this.picIcon);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.mainMenuStrip);
             this.Controls.Add(this.visualizer);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
@@ -1745,28 +1759,27 @@
         private StarlightDirector.UI.Controls.ModernSystemButton sysMaximizeRestore;
         private StarlightDirector.UI.Controls.ModernSystemButton sysClose;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
-        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuProject;
         private System.Windows.Forms.ToolStripMenuItem mnuEdit;
         private System.Windows.Forms.ToolStripMenuItem mnuView;
         private System.Windows.Forms.ToolStripMenuItem mnuTools;
         private System.Windows.Forms.ToolStripMenuItem mnuHelp;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileNew;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileOpen;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileSaveAs;
-        private System.Windows.Forms.ToolStripSeparator mnuFileSep1;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileBeatmapInfo;
-        private System.Windows.Forms.ToolStripSeparator mnuFileSep2;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditBeatmap;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditBeatmapSettings;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMusic;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectNew;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectSave;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjecgtSaveAs;
+        private System.Windows.Forms.ToolStripSeparator mnuProjectSep1;
+        private System.Windows.Forms.ToolStripSeparator mnuProjectSep2;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmap;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmapSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectMusic;
         private System.Windows.Forms.ToolStripMenuItem mnuEditMusicSettings;
         private System.Windows.Forms.ToolStripSeparator mnuEditSep3;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMeasure;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureAppend;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureAppendMany;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNote;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasure;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureAppend;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureAppendMultiple;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNote;
         private System.Windows.Forms.ToolStripMenuItem mnuToolsExport;
         private System.Windows.Forms.ToolStripMenuItem mnuToolsExportCsv;
         private System.Windows.Forms.ToolStripMenuItem mnuToolsImport;
@@ -1778,12 +1791,12 @@
         private System.Windows.Forms.ToolStripSeparator mnuToolsSep2;
         private System.Windows.Forms.ToolStripMenuItem mnuToolsOptions;
         private StarlightDirector.UI.Controls.SingleLineLabel lblCaption;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficulty;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyDebut;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyRegular;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyPro;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyMaster;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditDifficultyMasterPlus;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficulty;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficultyDebut;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficultyRegular;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficultyPro;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficultyMaster;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreDifficultyMasterPlus;
         private System.Windows.Forms.ToolStripMenuItem mnuViewZoom;
         private System.Windows.Forms.ToolStripMenuItem mnuViewZoomIn;
         private System.Windows.Forms.ToolStripMenuItem mnuViewZoomOut;
@@ -1819,14 +1832,14 @@
         private System.Windows.Forms.ToolStripMenuItem mnuEditCopy;
         private System.Windows.Forms.ToolStripMenuItem mnuEditPaste;
         private System.Windows.Forms.ToolStripSeparator mnuEditSep2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMeasureDelete;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt3;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt4;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt5;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteInsertSpecial;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureDelete;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPosition;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt1;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt2;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt3;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt4;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt5;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteInsertSpecial;
         private System.Windows.Forms.ToolStripMenuItem mnuPreview;
         private System.Windows.Forms.ToolStripMenuItem mnuPreviewFromThisMeasure;
         private System.Windows.Forms.ToolStripMenuItem mnuPreviewFromStart;
@@ -1836,10 +1849,10 @@
         private System.Windows.Forms.ToolStripMenuItem ctxEditCopy;
         private System.Windows.Forms.ToolStripMenuItem ctxEditPaste;
         private System.Windows.Forms.ToolStripSeparator ctxSep1;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditDeleteNotes;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditDeleteMeasures;
+        private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteDelete;
+        private System.Windows.Forms.ToolStripMenuItem ctxScoreMeasureDelete;
         private System.Windows.Forms.ToolStripSeparator ctxSep3;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditAddSpecialNote;
+        private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteInsertSpecial;
         private System.Windows.Forms.ToolStripSeparator ctxSep2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -1851,13 +1864,12 @@
         private StarlightDirector.UI.Controls.ScoreVisualizer visualizer;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.ToolStrip tlbStandard;
-        private System.Windows.Forms.ToolStripButton tsbFileNew;
-        private System.Windows.Forms.ToolStripButton tsbFileOpen;
-        private System.Windows.Forms.ToolStripButton tsbFileSave;
+        private System.Windows.Forms.ToolStripButton tsbProjectNew;
+        private System.Windows.Forms.ToolStripButton tsbProjectOpen;
+        private System.Windows.Forms.ToolStripButton tsbProjectSave;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
         private System.Windows.Forms.ToolStripButton tsbEditUndo;
         private System.Windows.Forms.ToolStripButton tsbEditRedo;
-        private System.Windows.Forms.ToolStripSeparator toolStripButton16;
         private System.Windows.Forms.ToolStripButton tsbEditCut;
         private System.Windows.Forms.ToolStripButton tsbEditCopy;
         private System.Windows.Forms.ToolStripButton tsbEditPaste;
@@ -1869,20 +1881,19 @@
         private System.Windows.Forms.ToolStripButton tsbToolBuildBeatmapBundle;
         private System.Windows.Forms.ToolStripButton tsbToolBuildMusic;
         private System.Windows.Forms.ToolStrip tlbMeasure;
-        private System.Windows.Forms.ToolStripSeparator mnuEditSep4;
         private System.Windows.Forms.ToolStripMenuItem mnuEditGoTo;
         private System.Windows.Forms.ToolStripMenuItem measureToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem timeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripButton tsbEditNoteAddSpecial;
+        private System.Windows.Forms.ToolStripButton tsbScoreNoteInsertSpecial;
         private System.Windows.Forms.ToolStripMenuItem mnuViewZoomToBeat1O48;
         private System.Windows.Forms.OpenFileDialog openFileDialog;
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.ToolStripSplitButton tsbEditMeasureAppend;
-        private System.Windows.Forms.ToolStripButton tsbEditMeasureDelete;
-        private System.Windows.Forms.ToolStripMenuItem tsbEditMeasureAppendMany;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteDelete;
-        private System.Windows.Forms.ToolStripSeparator mnuEditNoteSep1;
-        private System.Windows.Forms.ToolStripButton tsbEditNoteDelete;
+        private System.Windows.Forms.ToolStripSplitButton tsbScoreMeasureAppend;
+        private System.Windows.Forms.ToolStripButton tsbScoreMeasureDelete;
+        private System.Windows.Forms.ToolStripMenuItem tsbScoreMeasureAppendMultiple;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteDelete;
+        private System.Windows.Forms.ToolStripSeparator mnuScoreNoteSep1;
+        private System.Windows.Forms.ToolStripButton tsbScoreNoteDelete;
         private System.Windows.Forms.ToolStripMenuItem mnuEditMode;
         private System.Windows.Forms.ToolStripMenuItem mnuEditModeSelect;
         private System.Windows.Forms.ToolStripSeparator mnuEditModeSep1;
@@ -1894,31 +1905,37 @@
         private System.Windows.Forms.ToolStrip tlbEditAndView;
         private System.Windows.Forms.ToolStripDropDownButton tsbEditMode;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripDropDownButton tsbDifficultySelection;
+        private System.Windows.Forms.ToolStripDropDownButton tsbScoreDifficultySelection;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripButton tsbViewZoomIn;
         private System.Windows.Forms.ToolStripButton tsbViewZoomOut;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
-        private System.Windows.Forms.ToolStripDropDownButton tsbEditNoteStartPosition;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionAt0;
+        private System.Windows.Forms.ToolStripDropDownButton tsbScoreNoteStartPosition;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionAt0;
         private System.Windows.Forms.ToolStripSeparator mnuEditModeSep2;
         private System.Windows.Forms.ToolStripMenuItem mnuEditModePrevious;
         private System.Windows.Forms.ToolStripMenuItem mnuEditModeNext;
         private System.Windows.Forms.ToolStripMenuItem mnuEditSelectClearAll;
-        private System.Windows.Forms.ToolStripSeparator mnuEditNoteStartPositionSep1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionMoveLeft;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionMoveRight;
-        private System.Windows.Forms.ToolStripSeparator mnuEditNotePositionSep2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo0;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo3;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo4;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditNoteStartPositionTo5;
+        private System.Windows.Forms.ToolStripSeparator mnuScoreNoteStartPositionSep1;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionMoveLeft;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionMoveRight;
+        private System.Windows.Forms.ToolStripSeparator mnuScoreNotePositionSep2;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo0;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo1;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo2;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo3;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo4;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteStartPositionTo5;
         private System.Windows.Forms.ToolStripSeparator ctxSep4;
-        private System.Windows.Forms.ToolStripMenuItem ctxEditModifySpecialNote;
+        private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteModifySpecial;
+        private System.Windows.Forms.ToolStripMenuItem mnuScore;
+        private System.Windows.Forms.ToolStripSeparator mnuProjectBeatmapSep1;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmapInfo;
+        private System.Windows.Forms.ToolStripSeparator mnuScoreNoteSep2;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteModifySpecial;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }
 

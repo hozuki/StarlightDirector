@@ -222,7 +222,7 @@ namespace StarlightDirector.UI.Controls {
             } else {
                 menu = hit.HitAnyNote ? VisualizerContextMenu.Note : VisualizerContextMenu.Bar;
             }
-            var ea = new ContextMenuRequestedEventArgs(menu, location);
+            var ea = new ContextMenuRequestedEventArgs(menu, hit);
             _visualizer.RequestContextMenu(ea);
         }
 

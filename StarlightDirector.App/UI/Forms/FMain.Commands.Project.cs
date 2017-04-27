@@ -8,12 +8,12 @@ using StarlightDirector.Commanding;
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
-        private void CmdFileNew_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdProjectNew_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.Project = new Project();
             UpdateUIIndications(DefaultDocumentName);
         }
 
-        private void CmdFileOpen_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdProjectOpen_Executed(object sender, ExecutedEventArgs e) {
             openFileDialog.CheckFileExists = true;
             openFileDialog.ReadOnlyChecked = false;
             openFileDialog.ShowReadOnly = false;
@@ -33,7 +33,7 @@ namespace StarlightDirector.App.UI.Forms {
             UpdateUIIndications(openFileDialog.SafeFileName);
         }
 
-        private void CmdFileSave_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdProjectSave_Executed(object sender, ExecutedEventArgs e) {
             var project = visualizer.Editor.Project;
             if (project == null) {
                 throw new InvalidOperationException();
@@ -44,26 +44,42 @@ namespace StarlightDirector.App.UI.Forms {
             if (project.WasSaved) {
                 // TODO: Silent save.
             } else {
-                CmdFileSaveAs.Execute(sender, e.Parameter);
+                CmdProjectSaveAs.Execute(sender, e.Parameter);
             }
         }
 
-        private void CmdFileSaveAs_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdProjectSaveAs_Executed(object sender, ExecutedEventArgs e) {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
             saveFileDialog.Filter = "StarlightDirector Project (*.sldproj)|*.sldproj";
             saveFileDialog.ShowDialog(this);
         }
 
-        private void CmdFileExit_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdProjectBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {
+            var project = visualizer.Editor.Project;
+            if (project == null) {
+                return;
+            }
+            var (r, bpm, offset) = FBeatmapSettings.RequestInput(this, project.Settings);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            project.Settings.BeatPerMinute = bpm;
+            project.Settings.StartTimeOffset = offset;
+            visualizer.RecalcLayout();
+            visualizer.Editor.Invalidate();
+        }
+
+        private void CmdProjectExit_Executed(object sender, ExecutedEventArgs e) {
             Close();
         }
 
-        private readonly Command CmdFileNew = CommandManager.CreateCommand("Ctrl+N");
-        private readonly Command CmdFileOpen = CommandManager.CreateCommand("Ctrl+O");
-        private readonly Command CmdFileSave = CommandManager.CreateCommand("Ctrl+S");
-        private readonly Command CmdFileSaveAs = CommandManager.CreateCommand("F12");
-        private readonly Command CmdFileExit = CommandManager.CreateCommand("Ctrl+W");
+        private readonly Command CmdProjectNew = CommandManager.CreateCommand("Ctrl+N");
+        private readonly Command CmdProjectOpen = CommandManager.CreateCommand("Ctrl+O");
+        private readonly Command CmdProjectSave = CommandManager.CreateCommand("Ctrl+S");
+        private readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
+        private readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
+        private readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
 
     }
 }

@@ -11,28 +11,39 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void RegisterCommands() {
-            mnuFileNew.Attach(CmdFileNew);
-            tsbFileNew.Attach(CmdFileNew);
-            mnuFileOpen.Attach(CmdFileOpen);
-            tsbFileOpen.Attach(CmdFileOpen);
-            mnuFileSave.Attach(CmdFileSave);
-            tsbFileSave.Attach(CmdFileSave);
-            mnuFileSaveAs.Attach(CmdFileSaveAs);
-            mnuFileExit.Attach(CmdFileExit);
-            sysClose.Attach(CmdFileExit);
+            mnuProjectNew.Attach(CmdProjectNew);
+            tsbProjectNew.Attach(CmdProjectNew);
+            mnuProjectOpen.Attach(CmdProjectOpen);
+            tsbProjectOpen.Attach(CmdProjectOpen);
+            mnuProjectSave.Attach(CmdProjectSave);
+            tsbProjectSave.Attach(CmdProjectSave);
+            mnuProjecgtSaveAs.Attach(CmdProjectSaveAs);
+            mnuProjectExit.Attach(CmdProjectExit);
+            sysClose.Attach(CmdProjectExit);
 
-            mnuEditBeatmapSettings.Attach(CmdEditBeatmapSettings);
+            mnuProjectBeatmapSettings.Attach(CmdProjectBeatmapSettings);
 
-            mnuEditDifficultyDebut.SetParameter(Difficulty.Debut);
-            mnuEditDifficultyRegular.SetParameter(Difficulty.Regular);
-            mnuEditDifficultyPro.SetParameter(Difficulty.Pro);
-            mnuEditDifficultyMaster.SetParameter(Difficulty.Master);
-            mnuEditDifficultyMasterPlus.SetParameter(Difficulty.MasterPlus);
-            mnuEditDifficultyDebut.Attach(CmdEditDifficultySelect);
-            mnuEditDifficultyRegular.Attach(CmdEditDifficultySelect);
-            mnuEditDifficultyPro.Attach(CmdEditDifficultySelect);
-            mnuEditDifficultyMaster.Attach(CmdEditDifficultySelect);
-            mnuEditDifficultyMasterPlus.Attach(CmdEditDifficultySelect);
+            mnuScoreDifficultyDebut.SetParameter(Difficulty.Debut);
+            mnuScoreDifficultyRegular.SetParameter(Difficulty.Regular);
+            mnuScoreDifficultyPro.SetParameter(Difficulty.Pro);
+            mnuScoreDifficultyMaster.SetParameter(Difficulty.Master);
+            mnuScoreDifficultyMasterPlus.SetParameter(Difficulty.MasterPlus);
+            mnuScoreDifficultyDebut.Attach(CmdScoreDifficultySelect);
+            mnuScoreDifficultyRegular.Attach(CmdScoreDifficultySelect);
+            mnuScoreDifficultyPro.Attach(CmdScoreDifficultySelect);
+            mnuScoreDifficultyMaster.Attach(CmdScoreDifficultySelect);
+            mnuScoreDifficultyMasterPlus.Attach(CmdScoreDifficultySelect);
+
+            mnuEditUndo.Attach(CmdEditUndo);
+            mnuEditRedo.Attach(CmdEditRedo);
+            mnuEditCut.Attach(CmdEditCut);
+            mnuEditCopy.Attach(CmdEditCopy);
+            mnuEditPaste.Attach(CmdEditPaste);
+            tsbEditUndo.Attach(CmdEditUndo);
+            tsbEditRedo.Attach(CmdEditRedo);
+            tsbEditCut.Attach(CmdEditCut);
+            tsbEditCopy.Attach(CmdEditCopy);
+            tsbEditPaste.Attach(CmdEditPaste);
 
             mnuEditModeSelect.SetParameter(ScoreEditMode.Select);
             mnuEditModeTap.SetParameter(ScoreEditMode.Tap);
@@ -48,49 +59,55 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModeNext.Attach(CmdEditModeNext);
 
             // The ShortcutDisplayStrings are set separately in Form_Load.
-            mnuEditNoteStartPositionAt0.SetParameter(NotePosition.Default);
-            mnuEditNoteStartPositionAt1.SetParameter(NotePosition.Left);
-            mnuEditNoteStartPositionAt2.SetParameter(NotePosition.CenterLeft);
-            mnuEditNoteStartPositionAt3.SetParameter(NotePosition.Center);
-            mnuEditNoteStartPositionAt4.SetParameter(NotePosition.CenterRight);
-            mnuEditNoteStartPositionAt5.SetParameter(NotePosition.Right);
-            mnuEditNoteStartPositionAt0.Attach(CmdEditNoteStartPositionAt0);
-            mnuEditNoteStartPositionAt1.Attach(CmdEditNoteStartPositionAt1);
-            mnuEditNoteStartPositionAt2.Attach(CmdEditNoteStartPositionAt2);
-            mnuEditNoteStartPositionAt3.Attach(CmdEditNoteStartPositionAt3);
-            mnuEditNoteStartPositionAt4.Attach(CmdEditNoteStartPositionAt4);
-            mnuEditNoteStartPositionAt5.Attach(CmdEditNoteStartPositionAt5);
+            mnuScoreNoteStartPositionAt0.SetParameter(NotePosition.Default);
+            mnuScoreNoteStartPositionAt1.SetParameter(NotePosition.Left);
+            mnuScoreNoteStartPositionAt2.SetParameter(NotePosition.CenterLeft);
+            mnuScoreNoteStartPositionAt3.SetParameter(NotePosition.Center);
+            mnuScoreNoteStartPositionAt4.SetParameter(NotePosition.CenterRight);
+            mnuScoreNoteStartPositionAt5.SetParameter(NotePosition.Right);
+            mnuScoreNoteStartPositionAt0.Attach(CmdScoreNoteStartPositionAt0);
+            mnuScoreNoteStartPositionAt1.Attach(CmdScoreNoteStartPositionAt1);
+            mnuScoreNoteStartPositionAt2.Attach(CmdScoreNoteStartPositionAt2);
+            mnuScoreNoteStartPositionAt3.Attach(CmdScoreNoteStartPositionAt3);
+            mnuScoreNoteStartPositionAt4.Attach(CmdScoreNoteStartPositionAt4);
+            mnuScoreNoteStartPositionAt5.Attach(CmdScoreNoteStartPositionAt5);
 
-            mnuEditNoteStartPositionMoveLeft.Attach(CmdEditNoteStartPositionMoveLeft);
-            mnuEditNoteStartPositionMoveRight.Attach(CmdEditNoteStartPositionMoveRight);
+            mnuScoreNoteStartPositionMoveLeft.Attach(CmdScoreNoteStartPositionMoveLeft);
+            mnuScoreNoteStartPositionMoveRight.Attach(CmdScoreNoteStartPositionMoveRight);
 
-            mnuEditNoteStartPositionTo0.SetParameter(NotePosition.Default);
-            mnuEditNoteStartPositionTo1.SetParameter(NotePosition.Left);
-            mnuEditNoteStartPositionTo2.SetParameter(NotePosition.CenterLeft);
-            mnuEditNoteStartPositionTo3.SetParameter(NotePosition.Center);
-            mnuEditNoteStartPositionTo4.SetParameter(NotePosition.CenterRight);
-            mnuEditNoteStartPositionTo5.SetParameter(NotePosition.Right);
-            mnuEditNoteStartPositionTo0.Attach(CmdEditNoteStartPositionTo0);
-            mnuEditNoteStartPositionTo1.Attach(CmdEditNoteStartPositionTo1);
-            mnuEditNoteStartPositionTo2.Attach(CmdEditNoteStartPositionTo2);
-            mnuEditNoteStartPositionTo3.Attach(CmdEditNoteStartPositionTo3);
-            mnuEditNoteStartPositionTo4.Attach(CmdEditNoteStartPositionTo4);
-            mnuEditNoteStartPositionTo5.Attach(CmdEditNoteStartPositionTo5);
+            mnuScoreNoteStartPositionTo0.SetParameter(NotePosition.Default);
+            mnuScoreNoteStartPositionTo1.SetParameter(NotePosition.Left);
+            mnuScoreNoteStartPositionTo2.SetParameter(NotePosition.CenterLeft);
+            mnuScoreNoteStartPositionTo3.SetParameter(NotePosition.Center);
+            mnuScoreNoteStartPositionTo4.SetParameter(NotePosition.CenterRight);
+            mnuScoreNoteStartPositionTo5.SetParameter(NotePosition.Right);
+            mnuScoreNoteStartPositionTo0.Attach(CmdScoreNoteStartPositionTo0);
+            mnuScoreNoteStartPositionTo1.Attach(CmdScoreNoteStartPositionTo1);
+            mnuScoreNoteStartPositionTo2.Attach(CmdScoreNoteStartPositionTo2);
+            mnuScoreNoteStartPositionTo3.Attach(CmdScoreNoteStartPositionTo3);
+            mnuScoreNoteStartPositionTo4.Attach(CmdScoreNoteStartPositionTo4);
+            mnuScoreNoteStartPositionTo5.Attach(CmdScoreNoteStartPositionTo5);
 
-            mnuEditNoteDelete.Attach(CmdEditNoteDelete);
-            tsbEditNoteDelete.Attach(CmdEditNoteDelete);
+            mnuScoreNoteDelete.Attach(CmdScoreNoteDelete);
+            tsbScoreNoteDelete.Attach(CmdScoreNoteDelete);
+
+            mnuScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
+            tsbScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
+            ctxScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
+            mnuScoreNoteModifySpecial.Attach(CmdScoreNoteModifySpecial);
+            ctxScoreNoteModifySpecial.Attach(CmdScoreNoteModifySpecial);
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
             // For its key handling, see FMain.OnProcessCmdKey: http://stackoverflow.com/questions/18930318/previewkeydown-not-firing.
             mnuEditSelectClearAll.Attach(CmdEditSelectClearAll);
 
-            mnuEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
-            tsbEditMeasureAppendMany.Attach(CmdEditMeasureAppendMany);
-            mnuEditMeasureAppend.Attach(CmdEditMeasureAppend);
-            tsbEditMeasureAppend.Attach(CmdEditMeasureAppend);
-            mnuEditMeasureDelete.Attach(CmdEditMeasureDelete);
-            tsbEditMeasureDelete.Attach(CmdEditMeasureDelete);
+            mnuScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
+            tsbScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
+            mnuScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
+            tsbScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
+            mnuScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
+            tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             tsbViewZoomIn.Attach(CmdViewZoomIn);

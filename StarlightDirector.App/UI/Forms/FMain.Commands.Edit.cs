@@ -1,25 +1,53 @@
-﻿using System;
-using System.Linq;
-using System.Windows.Forms;
-using StarlightDirector.Beatmap;
+﻿using System.Linq;
 using StarlightDirector.Commanding;
 using StarlightDirector.UI.Controls;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
-        private void CmdEditDifficultySelect_Executed(object sender, ExecutedEventArgs e) {
-            var menuItem = (ToolStripMenuItem)sender;
-            var difficulty = (Difficulty)e.Parameter;
-            if (difficulty == visualizer.Editor.Difficulty) {
-                return;
-            }
-            foreach (ToolStripMenuItem item in mnuEditDifficulty.DropDownItems) {
-                item.Checked = false;
-            }
-            menuItem.Checked = true;
-            visualizer.Editor.Difficulty = difficulty;
-            UpdateUIIndications(difficulty);
+        private void CmdEditUndo_Executed(object sender, ExecutedEventArgs e) {
+            // TODO
+        }
+
+        private void CmdEditUndo_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            // TODO
+            e.CanExecute = false;
+        }
+
+        private void CmdEditRedo_Executed(object sender, ExecutedEventArgs e) {
+            // TODO
+        }
+
+        private void CmdEditRedo_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            // TODO
+            e.CanExecute = false;
+        }
+
+        private void CmdEditCut_Executed(object sender, ExecutedEventArgs e) {
+            // TODO
+        }
+
+        private void CmdEditCut_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            // TODO
+            e.CanExecute = false;
+        }
+
+        private void CmdEditCopy_Executed(object sender, ExecutedEventArgs e) {
+            // TODO
+        }
+
+        private void CmdEditCopy_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            // TODO
+            e.CanExecute = false;
+        }
+
+        private void CmdEditPaste_Executed(object sender, ExecutedEventArgs e) {
+            // TODO
+        }
+
+        private void CmdEditPaste_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            // TODO
+            e.CanExecute = false;
         }
 
         private void CmdEditModeSet_Executed(object sender, ExecutedEventArgs e) {
@@ -65,21 +93,6 @@ namespace StarlightDirector.App.UI.Forms {
             CmdEditModeSet.Execute(sender, newEditMode);
         }
 
-        private void CmdEditBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {
-            var project = visualizer.Editor.Project;
-            if (project == null) {
-                return;
-            }
-            var (r, bpm, offset) = FBeatmapSettings.RequestInput(this, project.Settings);
-            if (r == DialogResult.Cancel) {
-                return;
-            }
-            project.Settings.BeatPerMinute = bpm;
-            project.Settings.StartTimeOffset = offset;
-            visualizer.RecalcLayout();
-            visualizer.Editor.Invalidate();
-        }
-
         private void CmdEditSelectAllMeasures_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.SelectAllBars();
             visualizer.Editor.Invalidate();
@@ -96,7 +109,11 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        private readonly Command CmdEditDifficultySelect = CommandManager.CreateCommand();
+        private readonly Command CmdEditUndo = CommandManager.CreateCommand("Ctrl+Z");
+        private readonly Command CmdEditRedo = CommandManager.CreateCommand("Ctrl+Y");
+        private readonly Command CmdEditCut = CommandManager.CreateCommand("Ctrl+X");
+        private readonly Command CmdEditCopy = CommandManager.CreateCommand("Ctrl+C");
+        private readonly Command CmdEditPaste = CommandManager.CreateCommand("Ctrl+V");
         private readonly Command CmdEditModeSet = CommandManager.CreateCommand();
         private readonly Command CmdEditModeSelect = CommandManager.CreateCommand();
         private readonly Command CmdEditModeTap = CommandManager.CreateCommand();
@@ -105,7 +122,6 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
         private readonly Command CmdEditModePrevious = CommandManager.CreateCommand("Alt+A");
         private readonly Command CmdEditModeNext = CommandManager.CreateCommand("Alt+D");
-        private readonly Command CmdEditBeatmapSettings = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
         private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();

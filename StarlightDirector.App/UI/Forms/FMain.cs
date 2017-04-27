@@ -49,7 +49,7 @@ namespace StarlightDirector.App.UI.Forms {
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
             Text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
-            tsbDifficultySelection.Text = difficultyDescription;
+            tsbScoreDifficultySelection.Text = difficultyDescription;
             _editingFileName = editingFileName;
             _cachedTitleDifficulty = currentDifficulty;
         }

@@ -138,9 +138,7 @@ namespace StarlightDirector.Commanding {
             if (component == null) {
                 return;
             }
-            if (CommandParameters.ContainsKey(component)) {
-                CommandParameters.Remove(component);
-            }
+            CommandParameters.Remove(component);
             component.Disposed -= ComponentOnDispose;
         }
 

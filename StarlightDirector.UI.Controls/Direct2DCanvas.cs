@@ -42,6 +42,10 @@ namespace StarlightDirector.UI.Controls {
         protected override void OnHandleCreated(EventArgs e) {
             base.OnHandleCreated(e);
 
+            if (DesignMode) {
+                return;
+            }
+
             // https://msdn.microsoft.com/en-us/magazine/dn198239.aspx
             SharpDX.Direct3D11.Device d3dDevice = null;
             try {
@@ -81,17 +85,21 @@ namespace StarlightDirector.UI.Controls {
 
         protected override void OnClientSizeChanged(EventArgs e) {
             base.OnClientSizeChanged(e);
-            if (_renderContext != null) {
-                lock (_sizeLock) {
-                    var newSize = ClientSize;
-                    RecreateD2d1BackBitmap(newSize.Width, newSize.Height);
-                    _renderContext.Resize(newSize.Width, newSize.Height);
-                }
+            if (_renderContext == null) {
+                return;
+            }
+            lock (_sizeLock) {
+                var newSize = ClientSize;
+                RecreateD2d1BackBitmap(newSize.Width, newSize.Height);
+                _renderContext.Resize(newSize.Width, newSize.Height);
             }
         }
 
         protected override void OnPaint(PaintEventArgs e) {
             base.OnPaint(e);
+            if (_renderContext == null) {
+                return;
+            }
             // Another method, DXGIAdapter.Output.WaitForNextVBlank()+multithreading, does not perform well though.
             lock (_sizeLock) {
                 var context = _renderContext;

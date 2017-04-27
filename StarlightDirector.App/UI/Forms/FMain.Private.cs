@@ -103,27 +103,27 @@ namespace StarlightDirector.App.UI.Forms {
             switch (e.KeyData) {
                 case Keys.D0:
                 case Keys.NumPad0:
-                    CmdEditNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
                     break;
                 case Keys.D1:
                 case Keys.NumPad1:
-                    CmdEditNoteStartPositionAt1.Execute(this, NotePosition.Left);
+                    CmdScoreNoteStartPositionAt1.Execute(this, NotePosition.Left);
                     break;
                 case Keys.D2:
                 case Keys.NumPad2:
-                    CmdEditNoteStartPositionAt2.Execute(this, NotePosition.CenterLeft);
+                    CmdScoreNoteStartPositionAt2.Execute(this, NotePosition.CenterLeft);
                     break;
                 case Keys.D3:
                 case Keys.NumPad3:
-                    CmdEditNoteStartPositionAt3.Execute(this, NotePosition.Center);
+                    CmdScoreNoteStartPositionAt3.Execute(this, NotePosition.Center);
                     break;
                 case Keys.D4:
                 case Keys.NumPad4:
-                    CmdEditNoteStartPositionAt4.Execute(this, NotePosition.CenterRight);
+                    CmdScoreNoteStartPositionAt4.Execute(this, NotePosition.CenterRight);
                     break;
                 case Keys.D5:
                 case Keys.NumPad5:
-                    CmdEditNoteStartPositionAt5.Execute(this, NotePosition.Right);
+                    CmdScoreNoteStartPositionAt5.Execute(this, NotePosition.Right);
                     break;
                 default:
                     base.OnKeyDown(e);
@@ -145,7 +145,7 @@ namespace StarlightDirector.App.UI.Forms {
                 case Keys.NumPad4:
                 case Keys.D5:
                 case Keys.NumPad5:
-                    CmdEditNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
                     break;
                 default:
                     base.OnKeyUp(e);

@@ -6,7 +6,7 @@ using StarlightDirector.Commanding;
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
-        private void CmdEditMeasureAppend_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdScoreMeasureAppend_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.AppendBar();
             visualizer.RecalcLayout();
 
@@ -22,7 +22,7 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        private void CmdEditMeasureAppendMany_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdScoreMeasureAppendMultiple_Executed(object sender, ExecutedEventArgs e) {
             var (dialogResult, numberOfMeasures) = FAppendMeasures.RequestInput(this);
             if (dialogResult == DialogResult.Cancel) {
                 return;
@@ -45,15 +45,15 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        private void CmdEditMeasureDelete_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdScoreMeasureDelete_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.RemoveSelectedBars();
             visualizer.RecalcLayout();
             visualizer.Editor.Invalidate();
         }
 
-        private readonly Command CmdEditMeasureAppend = CommandManager.CreateCommand();
-        private readonly Command CmdEditMeasureAppendMany = CommandManager.CreateCommand();
-        private readonly Command CmdEditMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
+        private readonly Command CmdScoreMeasureAppend = CommandManager.CreateCommand();
+        private readonly Command CmdScoreMeasureAppendMultiple = CommandManager.CreateCommand();
+        private readonly Command CmdScoreMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
 
     }
 }

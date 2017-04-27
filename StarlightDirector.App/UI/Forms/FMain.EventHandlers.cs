@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using StarlightDirector.Commanding;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.UI.Controls;
 
@@ -14,10 +15,10 @@ namespace StarlightDirector.App.UI.Forms {
             sysMaximizeRestore.Click -= SysMaximizeRestore_Click;
             sysMinimize.Click -= SysMinimize_Click;
             picIcon.MouseDown -= PicIcon_MouseDown;
-            tsbDifficultySelection.Click -= TsbDifficultySelection_Click;
+            tsbScoreDifficultySelection.Click -= TsbScoreDifficultySelection_Click;
             visualizer.ContextMenuRequested -= Visualizer_ContextMenuRequested;
             tsbEditMode.Click -= TsbEditMode_Click;
-            tsbEditNoteStartPosition.Click -= TsbEditNoteStartPosition_Click;
+            tsbScoreNoteStartPosition.Click -= TsbScoreNoteStartPosition_Click;
         }
 
         private void RegisterEventHandlers() {
@@ -26,23 +27,23 @@ namespace StarlightDirector.App.UI.Forms {
             sysMaximizeRestore.Click += SysMaximizeRestore_Click;
             sysMinimize.Click += SysMinimize_Click;
             picIcon.MouseDown += PicIcon_MouseDown;
-            tsbDifficultySelection.Click += TsbDifficultySelection_Click;
+            tsbScoreDifficultySelection.Click += TsbScoreDifficultySelection_Click;
             visualizer.ContextMenuRequested += Visualizer_ContextMenuRequested;
             tsbEditMode.Click += TsbEditMode_Click;
-            tsbEditNoteStartPosition.Click += TsbEditNoteStartPosition_Click;
+            tsbScoreNoteStartPosition.Click += TsbScoreNoteStartPosition_Click;
         }
 
-        private void TsbEditNoteStartPosition_Click(object sender, EventArgs e) {
-            var items = new ToolStripItem[mnuEditNoteStartPosition.DropDownItems.Count];
-            mnuEditNoteStartPosition.DropDownItems.CopyTo(items, 0);
-            tsbEditNoteStartPosition.DropDownItems.AddRange(items);
-            tsbEditNoteStartPosition.DropDownClosed += DropDownClosed;
-            tsbEditNoteStartPosition.ShowDropDown();
+        private void TsbScoreNoteStartPosition_Click(object sender, EventArgs e) {
+            var items = new ToolStripItem[mnuScoreNoteStartPosition.DropDownItems.Count];
+            mnuScoreNoteStartPosition.DropDownItems.CopyTo(items, 0);
+            tsbScoreNoteStartPosition.DropDownItems.AddRange(items);
+            tsbScoreNoteStartPosition.DropDownClosed += DropDownClosed;
+            tsbScoreNoteStartPosition.ShowDropDown();
 
             void DropDownClosed(object s, EventArgs ev)
             {
-                mnuEditNoteStartPosition.DropDownItems.AddRange(items);
-                tsbEditNoteStartPosition.DropDownClosed -= DropDownClosed;
+                mnuScoreNoteStartPosition.DropDownItems.AddRange(items);
+                tsbScoreNoteStartPosition.DropDownClosed -= DropDownClosed;
             }
         }
 
@@ -69,43 +70,51 @@ namespace StarlightDirector.App.UI.Forms {
             switch (e.MenuType) {
                 case VisualizerContextMenu.Note:
                     ctxSep1.Visible = hasSelectedNotes;
-                    ctxEditDeleteNotes.Visible = hasSelectedNotes;
+                    ctxScoreNoteDelete.Visible = hasSelectedNotes;
                     ctxSep2.Visible = false;
-                    ctxEditDeleteMeasures.Visible = false;
+                    ctxScoreMeasureDelete.Visible = false;
                     ctxSep3.Visible = false;
-                    ctxEditAddSpecialNote.Visible = false;
+                    ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = false;
-                    ctxEditModifySpecialNote.Visible = false;
+                    ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteInsertSpecial.DeleteParameter();
+                    ctxScoreNoteModifySpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.Bar:
                     ctxSep1.Visible = false;
-                    ctxEditDeleteNotes.Visible = false;
+                    ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = hasSelectedBars;
-                    ctxEditDeleteMeasures.Visible = hasSelectedBars;
+                    ctxScoreMeasureDelete.Visible = hasSelectedBars;
                     ctxSep3.Visible = false;
-                    ctxEditAddSpecialNote.Visible = false;
+                    ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = false;
-                    ctxEditModifySpecialNote.Visible = false;
+                    ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteInsertSpecial.DeleteParameter();
+                    ctxScoreNoteModifySpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteAdd:
                     ctxSep1.Visible = false;
-                    ctxEditDeleteNotes.Visible = false;
+                    ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = false;
-                    ctxEditDeleteMeasures.Visible = false;
+                    ctxScoreMeasureDelete.Visible = false;
                     ctxSep3.Visible = true;
-                    ctxEditAddSpecialNote.Visible = true;
+                    ctxScoreNoteInsertSpecial.Visible = true;
                     ctxSep4.Visible = false;
-                    ctxEditModifySpecialNote.Visible = false;
+                    ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteInsertSpecial.SetParameter(e.HitTestResult);
+                    ctxScoreNoteModifySpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteModify:
                     ctxSep1.Visible = false;
-                    ctxEditDeleteNotes.Visible = false;
+                    ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = false;
-                    ctxEditDeleteMeasures.Visible = false;
+                    ctxScoreMeasureDelete.Visible = false;
                     ctxSep3.Visible = false;
-                    ctxEditAddSpecialNote.Visible = false;
+                    ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = true;
-                    ctxEditModifySpecialNote.Visible = true;
+                    ctxScoreNoteModifySpecial.Visible = true;
+                    ctxScoreNoteInsertSpecial.DeleteParameter();
+                    ctxScoreNoteModifySpecial.SetParameter(e.HitTestResult);
                     break;
                 default:
                     break;
@@ -114,17 +123,17 @@ namespace StarlightDirector.App.UI.Forms {
             ctxMain.Show(visualizer, e.Location);
         }
 
-        private void TsbDifficultySelection_Click(object sender, EventArgs e) {
-            var items = new ToolStripItem[mnuEditDifficulty.DropDownItems.Count];
-            mnuEditDifficulty.DropDownItems.CopyTo(items, 0);
-            tsbDifficultySelection.DropDownItems.AddRange(items);
-            tsbDifficultySelection.DropDownClosed += DropDownClosed;
-            tsbDifficultySelection.ShowDropDown();
+        private void TsbScoreDifficultySelection_Click(object sender, EventArgs e) {
+            var items = new ToolStripItem[mnuScoreDifficulty.DropDownItems.Count];
+            mnuScoreDifficulty.DropDownItems.CopyTo(items, 0);
+            tsbScoreDifficultySelection.DropDownItems.AddRange(items);
+            tsbScoreDifficultySelection.DropDownClosed += DropDownClosed;
+            tsbScoreDifficultySelection.ShowDropDown();
 
             void DropDownClosed(object s, EventArgs ev)
             {
-                mnuEditDifficulty.DropDownItems.AddRange(items);
-                tsbDifficultySelection.DropDownClosed -= DropDownClosed;
+                mnuScoreDifficulty.DropDownItems.AddRange(items);
+                tsbScoreDifficultySelection.DropDownClosed -= DropDownClosed;
             }
         }
 
@@ -167,14 +176,14 @@ namespace StarlightDirector.App.UI.Forms {
             CursorFixup(this);
 
             mnuEditSelectClearAll.ShortcutKeyDisplayString = "Esc";
-            mnuEditNoteStartPositionAt0.ShortcutKeyDisplayString = "0";
-            mnuEditNoteStartPositionAt1.ShortcutKeyDisplayString = "1";
-            mnuEditNoteStartPositionAt2.ShortcutKeyDisplayString = "2";
-            mnuEditNoteStartPositionAt3.ShortcutKeyDisplayString = "3";
-            mnuEditNoteStartPositionAt4.ShortcutKeyDisplayString = "4";
-            mnuEditNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
+            mnuScoreNoteStartPositionAt0.ShortcutKeyDisplayString = "0";
+            mnuScoreNoteStartPositionAt1.ShortcutKeyDisplayString = "1";
+            mnuScoreNoteStartPositionAt2.ShortcutKeyDisplayString = "2";
+            mnuScoreNoteStartPositionAt3.ShortcutKeyDisplayString = "3";
+            mnuScoreNoteStartPositionAt4.ShortcutKeyDisplayString = "4";
+            mnuScoreNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
 
-            CmdFileNew.Execute(null, null);
+            CmdProjectNew.Execute(null, null);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {
