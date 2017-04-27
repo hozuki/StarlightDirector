@@ -130,6 +130,7 @@ namespace StarlightDirector.App.UI.Forms {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
             saveFileDialog.Filter = "CGSS Single Beatmap (*.csv)|*.csv";
+            saveFileDialog.FileName = string.Empty;
             var r = saveFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
                 return false;
