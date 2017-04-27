@@ -106,5 +106,22 @@ namespace StarlightDirector.Beatmap.Extensions {
             bar.IsSelected = false;
         }
 
+        internal static Note RemoveSpecialNoteForVariantBpmFix(this Bar bar, Note note) {
+            if (note == null) {
+                return null;
+            }
+            bar.Notes.Remove(note);
+            bar.Score.Project.UsedNoteIDs.Remove(note.StarlightID);
+            return note;
+        }
+
+        internal static Note AddNoteDirect(this Bar bar, Note note) {
+            if (note == null) {
+                return null;
+            }
+            bar.Notes.Add(note);
+            return note;
+        }
+
     }
 }

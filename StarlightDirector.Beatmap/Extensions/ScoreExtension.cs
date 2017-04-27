@@ -93,7 +93,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                     bpmNotesInThisBar.Sort((n1, n2) => n1.Basic.IndexInGrid.CompareTo(n2.Basic.IndexInGrid));
                     var bpmNoteIndex = 0;
                     for (var i = 0; i < numGrids; ++i) {
-                        if (bpmNoteIndex <= bpmNotesInThisBar.Count) {
+                        if (bpmNoteIndex < bpmNotesInThisBar.Count) {
                             var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 currentBpm = bpmNote.Params.NewBpm;
@@ -130,7 +130,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                     bpmNotesInThisBar.Sort((n1, n2) => n1.Basic.IndexInGrid.CompareTo(n2.Basic.IndexInGrid));
                     var bpmNoteIndex = 0;
                     for (var i = 0; i < numGrids; ++i) {
-                        if (bpmNoteIndex <= bpmNotesInThisBar.Count) {
+                        if (bpmNoteIndex < bpmNotesInThisBar.Count) {
                             var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 // Yes! We have a visitor: a variant BPM note!

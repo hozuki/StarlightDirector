@@ -166,6 +166,28 @@ namespace StarlightDirector.Beatmap.IO {
                     } else {
                         note.Params.UpdateByDataString(paramsString);
                     }
+
+                    // 2017-04-27: Fix the f**king negative grid line problem.
+                    // But the unfixed version passed every test except the hit testing one, I don't know why. :(
+                    // It occurs in some projects saved by certain old versions. It could be caused by
+                    // incorrectly inserting variant BPM notes. But I don't know the definition of "incorrectly",
+                    // and these problematic projects can't be loaded even by the versions that created them.
+                    // I observed this behavior on v0.7.5, but I think it can also happen on any versions after
+                    // v0.5.0, in which the variant BPM note is introducted.
+                    if (note.Basic.Type == NoteType.VariantBpm) {
+                        var originalBar = bar;
+                        var newBar = originalBar;
+                        while (note.Basic.IndexInGrid < 0) {
+                            bar = score.Bars[barIndex];
+                            note.Basic.IndexInGrid += bar.GetNumberOfGrids();
+                            newBar = bar;
+                            --barIndex;
+                        }
+                        if (newBar != originalBar) {
+                            originalBar.RemoveSpecialNoteForVariantBpmFix(note);
+                            newBar.AddNoteDirect(note);
+                        }
+                    }
                 }
             }
         }
@@ -237,7 +259,7 @@ namespace StarlightDirector.Beatmap.IO {
             }
         }
 
-        private static readonly Difficulty[] Difficulties = {Difficulty.Debut, Difficulty.Regular, Difficulty.Pro, Difficulty.Master, Difficulty.MasterPlus};
+        private static readonly Difficulty[] Difficulties = { Difficulty.Debut, Difficulty.Regular, Difficulty.Pro, Difficulty.Master, Difficulty.MasterPlus };
 
     }
 }
