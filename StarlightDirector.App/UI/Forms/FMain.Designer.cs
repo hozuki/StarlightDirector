@@ -40,8 +40,8 @@
             this.tsbPreviewFromStart = new System.Windows.Forms.ToolStripButton();
             this.tsbPreviewStop = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
-            this.tsbToolBuildBeatmapBundle = new System.Windows.Forms.ToolStripButton();
-            this.tsbToolBuildMusic = new System.Windows.Forms.ToolStripButton();
+            this.tsbToolsBuildBdb = new System.Windows.Forms.ToolStripButton();
+            this.tsbToolsBuildAcb = new System.Windows.Forms.ToolStripButton();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.tlbStandard = new System.Windows.Forms.ToolStrip();
             this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
@@ -50,6 +50,7 @@
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEditUndo = new System.Windows.Forms.ToolStripButton();
             this.tsbEditRedo = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbEditCut = new System.Windows.Forms.ToolStripButton();
             this.tsbEditCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbEditPaste = new System.Windows.Forms.ToolStripButton();
@@ -79,6 +80,8 @@
             this.mnuProjectSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectBeatmap = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectBeatmapSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectBeatmapSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuProjectBeatmapInfo = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectMusic = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditMusicSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectSep2 = new System.Windows.Forms.ToolStripSeparator();
@@ -170,7 +173,9 @@
             this.mnuScoreNoteStartPositionTo3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScoreNoteStartPositionTo4 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScoreNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
@@ -203,11 +208,6 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.mnuProjectBeatmapSep1 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuProjectBeatmapInfo = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuScoreNoteSep2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -335,11 +335,11 @@
             this.tsbPreviewFromStart,
             this.tsbPreviewStop,
             this.toolStripSeparator9,
-            this.tsbToolBuildBeatmapBundle,
-            this.tsbToolBuildMusic});
+            this.tsbToolsBuildBdb,
+            this.tsbToolsBuildAcb});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(101, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(132, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
@@ -368,23 +368,23 @@
             this.toolStripSeparator9.Name = "toolStripSeparator9";
             this.toolStripSeparator9.Size = new System.Drawing.Size(6, 25);
             // 
-            // tsbToolBuildBeatmapBundle
+            // tsbToolsBuildBdb
             // 
-            this.tsbToolBuildBeatmapBundle.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbToolBuildBeatmapBundle.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
-            this.tsbToolBuildBeatmapBundle.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbToolBuildBeatmapBundle.Name = "tsbToolBuildBeatmapBundle";
-            this.tsbToolBuildBeatmapBundle.Size = new System.Drawing.Size(23, 22);
-            this.tsbToolBuildBeatmapBundle.Text = "Build CGSS Beatmap Bundle";
+            this.tsbToolsBuildBdb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsBuildBdb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildScoreBundle;
+            this.tsbToolsBuildBdb.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsBuildBdb.Name = "tsbToolsBuildBdb";
+            this.tsbToolsBuildBdb.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsBuildBdb.Text = "Build CGSS Beatmap Bundle";
             // 
-            // tsbToolBuildMusic
+            // tsbToolsBuildAcb
             // 
-            this.tsbToolBuildMusic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbToolBuildMusic.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
-            this.tsbToolBuildMusic.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbToolBuildMusic.Name = "tsbToolBuildMusic";
-            this.tsbToolBuildMusic.Size = new System.Drawing.Size(23, 22);
-            this.tsbToolBuildMusic.Text = "Build CGSS Live Music";
+            this.tsbToolsBuildAcb.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsBuildAcb.Image = global::StarlightDirector.App.Properties.Resources.IconToolBuildMusic;
+            this.tsbToolsBuildAcb.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsBuildAcb.Name = "tsbToolsBuildAcb";
+            this.tsbToolsBuildAcb.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsBuildAcb.Text = "Build CGSS Live Music";
             // 
             // groupBox3
             // 
@@ -413,7 +413,7 @@
             this.tsbEditPaste});
             this.tlbStandard.Location = new System.Drawing.Point(5, 19);
             this.tlbStandard.Name = "tlbStandard";
-            this.tlbStandard.Size = new System.Drawing.Size(230, 25);
+            this.tlbStandard.Size = new System.Drawing.Size(199, 25);
             this.tlbStandard.TabIndex = 1;
             this.tlbStandard.Text = "Standard";
             // 
@@ -466,6 +466,11 @@
             this.tsbEditRedo.Name = "tsbEditRedo";
             this.tsbEditRedo.Size = new System.Drawing.Size(23, 22);
             this.tsbEditRedo.Text = "Redo";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbEditCut
             // 
@@ -733,34 +738,34 @@
             // 
             this.mnuProjectNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
             this.mnuProjectNew.Name = "mnuProjectNew";
-            this.mnuProjectNew.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectNew.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectNew.Text = "&New";
             // 
             // mnuProjectOpen
             // 
             this.mnuProjectOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
             this.mnuProjectOpen.Name = "mnuProjectOpen";
-            this.mnuProjectOpen.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectOpen.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectOpen.Text = "&Open...";
             // 
             // mnuProjectSave
             // 
             this.mnuProjectSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
             this.mnuProjectSave.Name = "mnuProjectSave";
-            this.mnuProjectSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectSave.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectSave.Text = "&Save";
             // 
             // mnuProjecgtSaveAs
             // 
             this.mnuProjecgtSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
             this.mnuProjecgtSaveAs.Name = "mnuProjecgtSaveAs";
-            this.mnuProjecgtSaveAs.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjecgtSaveAs.Size = new System.Drawing.Size(130, 22);
             this.mnuProjecgtSaveAs.Text = "Save &As...";
             // 
             // mnuProjectSep1
             // 
             this.mnuProjectSep1.Name = "mnuProjectSep1";
-            this.mnuProjectSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuProjectSep1.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuProjectBeatmap
             // 
@@ -769,7 +774,7 @@
             this.mnuProjectBeatmapSep1,
             this.mnuProjectBeatmapInfo});
             this.mnuProjectBeatmap.Name = "mnuProjectBeatmap";
-            this.mnuProjectBeatmap.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectBeatmap.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectBeatmap.Text = "&Beatmap";
             // 
             // mnuProjectBeatmapSettings
@@ -778,12 +783,23 @@
             this.mnuProjectBeatmapSettings.Size = new System.Drawing.Size(187, 22);
             this.mnuProjectBeatmapSettings.Text = "Beatmap &Settings...";
             // 
+            // mnuProjectBeatmapSep1
+            // 
+            this.mnuProjectBeatmapSep1.Name = "mnuProjectBeatmapSep1";
+            this.mnuProjectBeatmapSep1.Size = new System.Drawing.Size(184, 6);
+            // 
+            // mnuProjectBeatmapInfo
+            // 
+            this.mnuProjectBeatmapInfo.Name = "mnuProjectBeatmapInfo";
+            this.mnuProjectBeatmapInfo.Size = new System.Drawing.Size(187, 22);
+            this.mnuProjectBeatmapInfo.Text = "Beatmap &Info";
+            // 
             // mnuProjectMusic
             // 
             this.mnuProjectMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuEditMusicSettings});
             this.mnuProjectMusic.Name = "mnuProjectMusic";
-            this.mnuProjectMusic.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectMusic.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectMusic.Text = "Mus&ic";
             // 
             // mnuEditMusicSettings
@@ -795,13 +811,13 @@
             // mnuProjectSep2
             // 
             this.mnuProjectSep2.Name = "mnuProjectSep2";
-            this.mnuProjectSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuProjectSep2.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuProjectExit
             // 
             this.mnuProjectExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
             this.mnuProjectExit.Name = "mnuProjectExit";
-            this.mnuProjectExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuProjectExit.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectExit.Text = "E&xit";
             // 
             // mnuEdit
@@ -826,40 +842,40 @@
             // 
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(112, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -869,7 +885,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(112, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -893,7 +909,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditMode
             // 
@@ -908,7 +924,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(112, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -973,7 +989,7 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditGoTo
             // 
@@ -981,7 +997,7 @@
             this.measureToolStripMenuItem1,
             this.timeToolStripMenuItem});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // measureToolStripMenuItem1
@@ -1235,7 +1251,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1243,31 +1259,31 @@
             this.mnuScoreDifficultyDebut.Checked = true;
             this.mnuScoreDifficultyDebut.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnuScoreDifficultyDebut.Name = "mnuScoreDifficultyDebut";
-            this.mnuScoreDifficultyDebut.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyDebut.Size = new System.Drawing.Size(126, 22);
             this.mnuScoreDifficultyDebut.Text = "&Debut";
             // 
             // mnuScoreDifficultyRegular
             // 
             this.mnuScoreDifficultyRegular.Name = "mnuScoreDifficultyRegular";
-            this.mnuScoreDifficultyRegular.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyRegular.Size = new System.Drawing.Size(126, 22);
             this.mnuScoreDifficultyRegular.Text = "&Regular";
             // 
             // mnuScoreDifficultyPro
             // 
             this.mnuScoreDifficultyPro.Name = "mnuScoreDifficultyPro";
-            this.mnuScoreDifficultyPro.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyPro.Size = new System.Drawing.Size(126, 22);
             this.mnuScoreDifficultyPro.Text = "&Pro";
             // 
             // mnuScoreDifficultyMaster
             // 
             this.mnuScoreDifficultyMaster.Name = "mnuScoreDifficultyMaster";
-            this.mnuScoreDifficultyMaster.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyMaster.Size = new System.Drawing.Size(126, 22);
             this.mnuScoreDifficultyMaster.Text = "&Master";
             // 
             // mnuScoreDifficultyMasterPlus
             // 
             this.mnuScoreDifficultyMasterPlus.Name = "mnuScoreDifficultyMasterPlus";
-            this.mnuScoreDifficultyMasterPlus.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficultyMasterPlus.Size = new System.Drawing.Size(126, 22);
             this.mnuScoreDifficultyMasterPlus.Text = "Mast&er+";
             // 
             // mnuScoreMeasure
@@ -1277,7 +1293,7 @@
             this.mnuScoreMeasureAppendMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
@@ -1308,7 +1324,7 @@
             this.mnuScoreNoteInsertSpecial,
             this.mnuScoreNoteModifySpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteDelete
@@ -1441,11 +1457,22 @@
             this.mnuScoreNoteStartPositionTo5.Size = new System.Drawing.Size(189, 22);
             this.mnuScoreNoteStartPositionTo5.Text = "Set To Rig&ht";
             // 
+            // mnuScoreNoteSep2
+            // 
+            this.mnuScoreNoteSep2.Name = "mnuScoreNoteSep2";
+            this.mnuScoreNoteSep2.Size = new System.Drawing.Size(168, 6);
+            // 
             // mnuScoreNoteInsertSpecial
             // 
             this.mnuScoreNoteInsertSpecial.Name = "mnuScoreNoteInsertSpecial";
             this.mnuScoreNoteInsertSpecial.Size = new System.Drawing.Size(171, 22);
             this.mnuScoreNoteInsertSpecial.Text = "Insert &Special...";
+            // 
+            // mnuScoreNoteModifySpecial
+            // 
+            this.mnuScoreNoteModifySpecial.Name = "mnuScoreNoteModifySpecial";
+            this.mnuScoreNoteModifySpecial.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteModifySpecial.Text = "Modi&fy Special...";
             // 
             // mnuPreview
             // 
@@ -1672,33 +1699,6 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
-            // mnuProjectBeatmapSep1
-            // 
-            this.mnuProjectBeatmapSep1.Name = "mnuProjectBeatmapSep1";
-            this.mnuProjectBeatmapSep1.Size = new System.Drawing.Size(184, 6);
-            // 
-            // mnuProjectBeatmapInfo
-            // 
-            this.mnuProjectBeatmapInfo.Name = "mnuProjectBeatmapInfo";
-            this.mnuProjectBeatmapInfo.Size = new System.Drawing.Size(187, 22);
-            this.mnuProjectBeatmapInfo.Text = "Beatmap &Info";
-            // 
-            // mnuScoreNoteSep2
-            // 
-            this.mnuScoreNoteSep2.Name = "mnuScoreNoteSep2";
-            this.mnuScoreNoteSep2.Size = new System.Drawing.Size(168, 6);
-            // 
-            // mnuScoreNoteModifySpecial
-            // 
-            this.mnuScoreNoteModifySpecial.Name = "mnuScoreNoteModifySpecial";
-            this.mnuScoreNoteModifySpecial.Size = new System.Drawing.Size(171, 22);
-            this.mnuScoreNoteModifySpecial.Text = "Modi&fy Special...";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // FMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1878,8 +1878,8 @@
         private System.Windows.Forms.ToolStripButton tsbPreviewFromStart;
         private System.Windows.Forms.ToolStripButton tsbPreviewStop;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator9;
-        private System.Windows.Forms.ToolStripButton tsbToolBuildBeatmapBundle;
-        private System.Windows.Forms.ToolStripButton tsbToolBuildMusic;
+        private System.Windows.Forms.ToolStripButton tsbToolsBuildBdb;
+        private System.Windows.Forms.ToolStripButton tsbToolsBuildAcb;
         private System.Windows.Forms.ToolStrip tlbMeasure;
         private System.Windows.Forms.ToolStripMenuItem mnuEditGoTo;
         private System.Windows.Forms.ToolStripMenuItem measureToolStripMenuItem1;

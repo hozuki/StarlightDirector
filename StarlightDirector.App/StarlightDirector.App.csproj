@@ -62,6 +62,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Gaming\LiveMusicRecord.cs" />
+    <Compile Include="Gaming\MusicAttribute.cs" />
     <Compile Include="UI\Forms\FAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -127,6 +129,12 @@
     <Compile Include="UI\Forms\FMain.Private.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FSelectMusicID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSelectMusicID.Designer.cs">
+      <DependentUpon>FSelectMusicID.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -152,6 +160,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Forms\FSelectMusicID.resx">
+      <DependentUpon>FSelectMusicID.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -193,6 +204,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\GameData\master.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Icons\Notes\IconNoteTap.png" />
     <Content Include="Resources\Icons\Notes\IconNoteHold.png" />
     <Content Include="Resources\Icons\Notes\IconNoteFlickLeft.png" />

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
+using System.Linq;
 
 namespace StarlightDirector.Beatmap {
     public sealed class DescribedEnumConverter : EnumConverter {
@@ -19,9 +21,25 @@ namespace StarlightDirector.Beatmap {
             if (value == null) {
                 throw new ArgumentException("Described enum cannot be null.", nameof(value));
             }
-            var fi = _enumType.GetField(Enum.GetName(_enumType, value));
-            var dna = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
-            return dna != null ? dna.Description : value.ToString();
+            var valueName = Enum.GetName(_enumType, value);
+            if (valueName != null) {
+                var fi = _enumType.GetField(valueName);
+                var dna = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
+                return dna != null ? dna.Description : value.ToString();
+            } else {
+                var intValue = (int)value;
+                var allEnumValues = Enum.GetValues(_enumType);
+                var names = new List<string>();
+                foreach (var enumValue in allEnumValues) {
+                    var v = (int)enumValue;
+                    if ((intValue & v) != 0) {
+                        var s = (string)ConvertTo(context, culture, v, destType);
+                        names.Add(s);
+                    }
+                }
+                var finalString = names.Aggregate((f, v) => f == null ? v : f + ", " + v);
+                return finalString;
+            }
         }
 
         public override bool CanConvertFrom(ITypeDescriptorContext context, Type srcType) {

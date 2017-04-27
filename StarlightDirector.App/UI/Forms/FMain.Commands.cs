@@ -115,6 +115,8 @@ namespace StarlightDirector.App.UI.Forms {
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
             mnuToolsExportCsv.Attach(CmdToolsExportCsv);
+            mnuToolsBuildBdb.Attach(CmdToolsBuildBdb);
+            tsbToolsBuildBdb.Attach(CmdToolsBuildBdb);
 
             mnuHelpAbout.Attach(CmdHelpAbout);
 
