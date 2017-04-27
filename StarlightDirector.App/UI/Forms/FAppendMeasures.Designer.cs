@@ -35,13 +35,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(13, 27);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(119, 12);
+            this.label1.Size = new System.Drawing.Size(135, 17);
             this.label1.TabIndex = 1;
             this.label1.Text = "Number of measures:";
             // 
             // txtNumberOfMeasures
             // 
-            this.txtNumberOfMeasures.Location = new System.Drawing.Point(138, 25);
+            this.txtNumberOfMeasures.Location = new System.Drawing.Point(154, 25);
             this.txtNumberOfMeasures.Maximum = new decimal(new int[] {
             50,
             0,
@@ -53,7 +53,7 @@
             0,
             0});
             this.txtNumberOfMeasures.Name = "txtNumberOfMeasures";
-            this.txtNumberOfMeasures.Size = new System.Drawing.Size(105, 21);
+            this.txtNumberOfMeasures.Size = new System.Drawing.Size(69, 23);
             this.txtNumberOfMeasures.TabIndex = 2;
             this.txtNumberOfMeasures.Value = new decimal(new int[] {
             1,
@@ -63,7 +63,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(84, 65);
+            this.btnOK.Location = new System.Drawing.Point(63, 65);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
             this.btnOK.TabIndex = 3;
@@ -73,7 +73,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(180, 65);
+            this.btnCancel.Location = new System.Drawing.Point(159, 65);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 4;
@@ -86,11 +86,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(282, 100);
+            this.ClientSize = new System.Drawing.Size(261, 100);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtNumberOfMeasures);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

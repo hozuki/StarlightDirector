@@ -79,6 +79,38 @@ namespace StarlightDirector.Beatmap.Extensions {
             return score.Bars.SelectMany(bar => bar.Notes).FirstOrDefault(note => note.StarlightID == id);
         }
 
+        public static TimeSpan CalculateDuration(this Score score) {
+            var notes = score.GetAllNotes().ToArray();
+            var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
+            var currentTiming = score.Project.Settings.StartTimeOffset;
+            var currentBpm = score.Project.Settings.BeatPerMinute;
+            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            foreach (var bar in score.Bars) {
+                var currentGridPerSignature = bar.GetGridPerSignature();
+                var numGrids = bar.GetNumberOfGrids();
+                if (allBpmNotes.Any(n => n.Basic.Bar == bar)) {
+                    var bpmNotesInThisBar = allBpmNotes.Where(n => n.Basic.Bar == bar).ToList();
+                    bpmNotesInThisBar.Sort((n1, n2) => n1.Basic.IndexInGrid.CompareTo(n2.Basic.IndexInGrid));
+                    var bpmNoteIndex = 0;
+                    for (var i = 0; i < numGrids; ++i) {
+                        if (bpmNoteIndex <= bpmNotesInThisBar.Count) {
+                            var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
+                            if (i == bpmNote.Basic.IndexInGrid) {
+                                currentBpm = bpmNote.Params.NewBpm;
+                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                ++bpmNoteIndex;
+                            }
+                        }
+                        currentTiming += currentInterval * i / currentGridPerSignature;
+                    }
+                } else {
+                    var currentSignature = bar.GetSignature();
+                    currentTiming += currentInterval * currentSignature;
+                }
+            }
+            return TimeSpan.FromSeconds(currentTiming);
+        }
+
         private static CompiledScore Compile(Score score, TimeSpan? userDefinedEnding) {
             var notes = score.GetAllNotes().ToArray();
 
