@@ -23,7 +23,7 @@ after_build:
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.exe
   - 7z a sd.zip LICENSE.md
   - 7z a sd.zip README.md
-  - copy sd.zip sd-%PLATFORM%-v%APPVEYOR_BUILD_VERSION%-beta.zip
+  - copy sd.zip sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
   - copy sd.zip sd-latest.zip
 artifacts:
   - path: sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
