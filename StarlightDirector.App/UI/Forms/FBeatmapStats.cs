@@ -4,20 +4,20 @@ using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 
 namespace StarlightDirector.App.UI.Forms {
-    public partial class FBeatmapInfo : Form {
+    public partial class FBeatmapStats : Form {
 
         public static void ShowDialog(IWin32Window parent, Project project) {
-            using (var f = new FBeatmapInfo()) {
+            using (var f = new FBeatmapStats()) {
                 f._project = project;
                 f.ShowDialog(parent);
             }
         }
 
-        ~FBeatmapInfo() {
+        ~FBeatmapStats() {
             UnregisterEventHandlers();
         }
 
-        private FBeatmapInfo() {
+        private FBeatmapStats() {
             InitializeComponent();
             RegisterEventHandlers();
         }

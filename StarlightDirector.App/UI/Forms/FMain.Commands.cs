@@ -22,7 +22,7 @@ namespace StarlightDirector.App.UI.Forms {
             sysClose.Attach(CmdProjectExit);
 
             mnuProjectBeatmapSettings.Attach(CmdProjectBeatmapSettings);
-            mnuProjectBeatmapInfo.Attach(CmdProjectBeatmapInfo);
+            mnuProjectBeatmapStats.Attach(CmdProjectBeatmapStats);
 
             mnuScoreDifficultyDebut.SetParameter(Difficulty.Debut);
             mnuScoreDifficultyRegular.SetParameter(Difficulty.Regular);
