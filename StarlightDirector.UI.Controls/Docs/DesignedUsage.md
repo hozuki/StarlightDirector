@@ -1,4 +1,10 @@
-﻿# 编辑帮助
+﻿## 操作帮助
+
+按下 Shift 可以加快滚动速度。
+
+PageUp/PageDown/Home/End 键都有其功能，并可搭配 Shift 使用。
+
+# 编辑帮助
 
 ## note输入
 

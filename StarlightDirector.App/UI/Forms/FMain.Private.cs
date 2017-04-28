@@ -104,31 +104,64 @@ namespace StarlightDirector.App.UI.Forms {
                 case Keys.D0:
                 case Keys.NumPad0:
                     CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    e.Handled = true;
                     break;
                 case Keys.D1:
                 case Keys.NumPad1:
                     CmdScoreNoteStartPositionAt1.Execute(this, NotePosition.Left);
+                    e.Handled = true;
                     break;
                 case Keys.D2:
                 case Keys.NumPad2:
                     CmdScoreNoteStartPositionAt2.Execute(this, NotePosition.CenterLeft);
+                    e.Handled = true;
                     break;
                 case Keys.D3:
                 case Keys.NumPad3:
                     CmdScoreNoteStartPositionAt3.Execute(this, NotePosition.Center);
+                    e.Handled = true;
                     break;
                 case Keys.D4:
                 case Keys.NumPad4:
                     CmdScoreNoteStartPositionAt4.Execute(this, NotePosition.CenterRight);
+                    e.Handled = true;
                     break;
                 case Keys.D5:
                 case Keys.NumPad5:
                     CmdScoreNoteStartPositionAt5.Execute(this, NotePosition.Right);
-                    break;
-                default:
-                    base.OnKeyDown(e);
+                    e.Handled = true;
                     break;
             }
+            switch (e.KeyCode) {
+                case Keys.Home:
+                    visualizer.ScrollToStart();
+                    e.Handled = true;
+                    break;
+                case Keys.End:
+                    visualizer.ScrollToEnd();
+                    e.Handled = true;
+                    break;
+                case Keys.PageUp:
+                case Keys.PageDown:
+                    var isLarge = ModifierKeys == Keys.Shift;
+                    var isUp = e.KeyData == Keys.PageUp;
+                    if (isUp) {
+                        if (isLarge) {
+                            visualizer.ScrollUpLarge();
+                        } else {
+                            visualizer.ScrollUp();
+                        }
+                    } else {
+                        if (isLarge) {
+                            visualizer.ScrollDownLarge();
+                        } else {
+                            visualizer.ScrollDown();
+                        }
+                    }
+                    e.Handled = true;
+                    break;
+            }
+            base.OnKeyDown(e);
         }
 
         protected override void OnKeyUp(KeyEventArgs e) {

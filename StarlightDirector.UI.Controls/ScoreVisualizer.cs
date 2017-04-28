@@ -40,6 +40,30 @@ namespace StarlightDirector.UI.Controls {
             editor.RecalcLayout();
         }
 
+        public void ScrollUp() {
+            ScrollInternal(true, false);
+        }
+
+        public void ScrollDown() {
+            ScrollInternal(false, false);
+        }
+
+        public void ScrollUpLarge() {
+            ScrollInternal(true, true);
+        }
+
+        public void ScrollDownLarge() {
+            ScrollInternal(false, true);
+        }
+
+        public void ScrollToStart() {
+            vScroll.Value = vScroll.Minimum;
+        }
+
+        public void ScrollToEnd() {
+            vScroll.Value = vScroll.Maximum;
+        }
+
         [DebuggerStepThrough]
         internal void InformProjectModified() {
             ProjectModified?.Invoke(this, EventArgs.Empty);
@@ -77,14 +101,18 @@ namespace StarlightDirector.UI.Controls {
                 return;
             }
 
+            ScrollInternal(e.Delta > 0, modifiers == Keys.Shift);
+        }
+
+        private void ScrollInternal(bool isUp, bool isLarge) {
             var newScrollValue = vScroll.Value;
             var deltaScrollValue = 0;
-            if (e.Delta > 0) {
+            if (isUp) {
                 // Up
-                deltaScrollValue = (modifiers & Keys.Shift) != 0 ? -vScroll.LargeChange : -vScroll.SmallChange;
-            } else if (e.Delta < 0) {
+                deltaScrollValue = isLarge ? -vScroll.LargeChange : -vScroll.SmallChange;
+            } else {
                 // Down
-                deltaScrollValue = (modifiers & Keys.Shift) != 0 ? vScroll.LargeChange : vScroll.SmallChange;
+                deltaScrollValue = isLarge ? vScroll.LargeChange : vScroll.SmallChange;
             }
             var invertFactor = InvertedScrolling ? 1 : -1;
             deltaScrollValue *= invertFactor;

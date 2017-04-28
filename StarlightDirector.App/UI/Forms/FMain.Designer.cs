@@ -129,19 +129,6 @@
             this.mnuViewHighlightMode = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewHighlightModeFourBeats = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewHighlightModeThreeBeats = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed2 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed5 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed6 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed7 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed8 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed9 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewScrollSpeed10 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewRelationIndicator = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuViewInvertedScrolling = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScore = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScoreDifficulty = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScoreDifficultyDebut = new System.Windows.Forms.ToolStripMenuItem();
@@ -1015,10 +1002,7 @@
             // 
             this.mnuView.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuViewZoom,
-            this.mnuViewHighlightMode,
-            this.mnuViewScrollSpeed,
-            this.mnuViewRelationIndicator,
-            this.mnuViewInvertedScrolling});
+            this.mnuViewHighlightMode});
             this.mnuView.Name = "mnuView";
             this.mnuView.Size = new System.Drawing.Size(47, 21);
             this.mnuView.Text = "&View";
@@ -1030,7 +1014,7 @@
             this.mnuViewZoomOut,
             this.mnuViewZoomToBeat});
             this.mnuViewZoom.Name = "mnuViewZoom";
-            this.mnuViewZoom.Size = new System.Drawing.Size(179, 22);
+            this.mnuViewZoom.Size = new System.Drawing.Size(167, 22);
             this.mnuViewZoom.Text = "&Zoom";
             // 
             // mnuViewZoomIn
@@ -1122,8 +1106,9 @@
             this.mnuViewHighlightMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuViewHighlightModeFourBeats,
             this.mnuViewHighlightModeThreeBeats});
+            this.mnuViewHighlightMode.Enabled = false;
             this.mnuViewHighlightMode.Name = "mnuViewHighlightMode";
-            this.mnuViewHighlightMode.Size = new System.Drawing.Size(179, 22);
+            this.mnuViewHighlightMode.Size = new System.Drawing.Size(167, 22);
             this.mnuViewHighlightMode.Text = "&Highlight Mode";
             // 
             // mnuViewHighlightModeFourBeats
@@ -1139,97 +1124,6 @@
             this.mnuViewHighlightModeThreeBeats.Name = "mnuViewHighlightModeThreeBeats";
             this.mnuViewHighlightModeThreeBeats.Size = new System.Drawing.Size(180, 22);
             this.mnuViewHighlightModeThreeBeats.Text = "Every &Three Beats";
-            // 
-            // mnuViewScrollSpeed
-            // 
-            this.mnuViewScrollSpeed.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuViewScrollSpeed1,
-            this.mnuViewScrollSpeed2,
-            this.mnuViewScrollSpeed3,
-            this.mnuViewScrollSpeed4,
-            this.mnuViewScrollSpeed5,
-            this.mnuViewScrollSpeed6,
-            this.mnuViewScrollSpeed7,
-            this.mnuViewScrollSpeed8,
-            this.mnuViewScrollSpeed9,
-            this.mnuViewScrollSpeed10});
-            this.mnuViewScrollSpeed.Name = "mnuViewScrollSpeed";
-            this.mnuViewScrollSpeed.Size = new System.Drawing.Size(179, 22);
-            this.mnuViewScrollSpeed.Text = "Scroll &Speed";
-            // 
-            // mnuViewScrollSpeed1
-            // 
-            this.mnuViewScrollSpeed1.Name = "mnuViewScrollSpeed1";
-            this.mnuViewScrollSpeed1.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed1.Text = "1";
-            // 
-            // mnuViewScrollSpeed2
-            // 
-            this.mnuViewScrollSpeed2.Name = "mnuViewScrollSpeed2";
-            this.mnuViewScrollSpeed2.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed2.Text = "2";
-            // 
-            // mnuViewScrollSpeed3
-            // 
-            this.mnuViewScrollSpeed3.Name = "mnuViewScrollSpeed3";
-            this.mnuViewScrollSpeed3.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed3.Text = "3";
-            // 
-            // mnuViewScrollSpeed4
-            // 
-            this.mnuViewScrollSpeed4.Name = "mnuViewScrollSpeed4";
-            this.mnuViewScrollSpeed4.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed4.Text = "4";
-            // 
-            // mnuViewScrollSpeed5
-            // 
-            this.mnuViewScrollSpeed5.Checked = true;
-            this.mnuViewScrollSpeed5.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.mnuViewScrollSpeed5.Name = "mnuViewScrollSpeed5";
-            this.mnuViewScrollSpeed5.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed5.Text = "5";
-            // 
-            // mnuViewScrollSpeed6
-            // 
-            this.mnuViewScrollSpeed6.Name = "mnuViewScrollSpeed6";
-            this.mnuViewScrollSpeed6.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed6.Text = "6";
-            // 
-            // mnuViewScrollSpeed7
-            // 
-            this.mnuViewScrollSpeed7.Name = "mnuViewScrollSpeed7";
-            this.mnuViewScrollSpeed7.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed7.Text = "7";
-            // 
-            // mnuViewScrollSpeed8
-            // 
-            this.mnuViewScrollSpeed8.Name = "mnuViewScrollSpeed8";
-            this.mnuViewScrollSpeed8.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed8.Text = "8";
-            // 
-            // mnuViewScrollSpeed9
-            // 
-            this.mnuViewScrollSpeed9.Name = "mnuViewScrollSpeed9";
-            this.mnuViewScrollSpeed9.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed9.Text = "9";
-            // 
-            // mnuViewScrollSpeed10
-            // 
-            this.mnuViewScrollSpeed10.Name = "mnuViewScrollSpeed10";
-            this.mnuViewScrollSpeed10.Size = new System.Drawing.Size(90, 22);
-            this.mnuViewScrollSpeed10.Text = "10";
-            // 
-            // mnuViewRelationIndicator
-            // 
-            this.mnuViewRelationIndicator.Name = "mnuViewRelationIndicator";
-            this.mnuViewRelationIndicator.Size = new System.Drawing.Size(179, 22);
-            this.mnuViewRelationIndicator.Text = "&Relation Indicator";
-            // 
-            // mnuViewInvertedScrolling
-            // 
-            this.mnuViewInvertedScrolling.Name = "mnuViewInvertedScrolling";
-            this.mnuViewInvertedScrolling.Size = new System.Drawing.Size(179, 22);
-            this.mnuViewInvertedScrolling.Text = "&Inverted Scrolling";
             // 
             // mnuScore
             // 
@@ -1523,7 +1417,7 @@
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExportCsv});
             this.mnuToolsExport.Name = "mnuToolsExport";
-            this.mnuToolsExport.Size = new System.Drawing.Size(152, 22);
+            this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsExport.Text = "&Export";
             // 
             // mnuToolsExportCsv
@@ -1536,13 +1430,13 @@
             // 
             this.mnuToolsImport.Enabled = false;
             this.mnuToolsImport.Name = "mnuToolsImport";
-            this.mnuToolsImport.Size = new System.Drawing.Size(152, 22);
+            this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsImport.Text = "&Import";
             // 
             // mnuToolsSep1
             // 
             this.mnuToolsSep1.Name = "mnuToolsSep1";
-            this.mnuToolsSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
             // 
             // mnuToolsBuild
             // 
@@ -1550,7 +1444,7 @@
             this.mnuToolsBuildBdb,
             this.mnuToolsBuildAcb});
             this.mnuToolsBuild.Name = "mnuToolsBuild";
-            this.mnuToolsBuild.Size = new System.Drawing.Size(152, 22);
+            this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsBuild.Text = "&Build";
             // 
             // mnuToolsBuildBdb
@@ -1570,12 +1464,12 @@
             // mnuToolsSep2
             // 
             this.mnuToolsSep2.Name = "mnuToolsSep2";
-            this.mnuToolsSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
             // 
             // mnuToolsSettings
             // 
             this.mnuToolsSettings.Name = "mnuToolsSettings";
-            this.mnuToolsSettings.Size = new System.Drawing.Size(152, 22);
+            this.mnuToolsSettings.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsSettings.Text = "&Settings...";
             // 
             // mnuHelp
@@ -1692,6 +1586,7 @@
             this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.visualizer.Name = "visualizer";
+            this.visualizer.ScrollingSpeed = 5;
             this.visualizer.Size = new System.Drawing.Size(695, 509);
             this.visualizer.TabIndex = 12;
             // 
@@ -1818,19 +1713,6 @@
         private System.Windows.Forms.ToolStripMenuItem mnuViewHighlightMode;
         private System.Windows.Forms.ToolStripMenuItem mnuViewHighlightModeFourBeats;
         private System.Windows.Forms.ToolStripMenuItem mnuViewHighlightModeThreeBeats;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewRelationIndicator;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewInvertedScrolling;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed1;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed2;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed3;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed4;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed5;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed6;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed7;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed8;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed9;
-        private System.Windows.Forms.ToolStripMenuItem mnuViewScrollSpeed10;
         private System.Windows.Forms.ToolStripMenuItem mnuEditUndo;
         private System.Windows.Forms.ToolStripMenuItem mnuEditRedo;
         private System.Windows.Forms.ToolStripSeparator mnuEditSep1;
