@@ -37,6 +37,11 @@ namespace StarlightDirector.Beatmap.Extensions {
             return note;
         }
 
+        public static Note AddSpecialNote(this Bar bar, NoteType specialNoteType) {
+            var guid = Guid.NewGuid();
+            return AddSpecialNote(bar, guid, specialNoteType);
+        }
+
         public static Note AddSpecialNote(this Bar bar, int id, NoteType specialNoteType) {
             var guid = StarlightID.GetGuidFromInt32(id);
             return AddSpecialNote(bar, guid, specialNoteType);
@@ -44,6 +49,7 @@ namespace StarlightDirector.Beatmap.Extensions {
 
         public static Note AddSpecialNote(this Bar bar, Guid id, NoteType specialNoteType) {
             var note = new Note(bar, id);
+            note.Params = new NoteExtraParams();
             note.SetSpecialType(specialNoteType);
             bar.Notes.Add(note);
             bar.Score.Project.UsedNoteIDs.Add(id);

@@ -1,5 +1,8 @@
-﻿using StarlightDirector.Beatmap;
+﻿using System.Windows.Forms;
+using StarlightDirector.Beatmap;
+using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Commanding;
+using StarlightDirector.UI.Controls;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -116,11 +119,45 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdScoreNoteInsertSpecial_Executed(object sender, ExecutedEventArgs e) {
-            // TODO
+            var hit = (ScoreEditorHitTestResult)e.Parameter;
+            if (hit == null || !hit.HitAnyBar) {
+                return;
+            }
+            var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            var bar = hit.Bar;
+            var note = bar.AddSpecialNote(NoteType.VariantBpm);
+            note.Params.NewBpm = newBpm;
+            note.Basic.IndexInGrid = hit.Row;
+
+            visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreNoteModifySpecial_Executed(object sender, ExecutedEventArgs e) {
-            // TODO
+            var hit = (ScoreEditorHitTestResult)e.Parameter;
+            if (hit == null || !hit.HitAnyNote) {
+                return;
+            }
+            var note = hit.Note;
+            var originalBpm = note.Params.NewBpm;
+            var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this, originalBpm);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            note.Params.NewBpm = newBpm;
+            visualizer.Editor.Invalidate();
+        }
+
+        private void CmdScoreNoteDeleteSpecial_Executed(object sender, ExecutedEventArgs e) {
+            var hit = (ScoreEditorHitTestResult)e.Parameter;
+            if (hit == null || !hit.HitAnyNote) {
+                return;
+            }
+            var note = hit.Note;
+            note.Basic.Bar.RemoveNote(note);
+            visualizer.Editor.Invalidate();
         }
 
         private readonly Command CmdScoreNoteStartPositionSetAt = CommandManager.CreateCommand();
@@ -142,6 +179,7 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdScoreNoteDelete = CommandManager.CreateCommand("Delete");
         private readonly Command CmdScoreNoteInsertSpecial = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteModifySpecial = CommandManager.CreateCommand();
+        private readonly Command CmdScoreNoteDeleteSpecial = CommandManager.CreateCommand();
 
     }
 }

@@ -77,8 +77,10 @@ namespace StarlightDirector.App.UI.Forms {
                     ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteDeleteSpecial.Visible = false;
                     ctxScoreNoteInsertSpecial.DeleteParameter();
                     ctxScoreNoteModifySpecial.DeleteParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.Bar:
                     ctxSep1.Visible = false;
@@ -89,8 +91,10 @@ namespace StarlightDirector.App.UI.Forms {
                     ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteDeleteSpecial.Visible = false;
                     ctxScoreNoteInsertSpecial.DeleteParameter();
                     ctxScoreNoteModifySpecial.DeleteParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteAdd:
                     ctxSep1.Visible = false;
@@ -101,8 +105,10 @@ namespace StarlightDirector.App.UI.Forms {
                     ctxScoreNoteInsertSpecial.Visible = true;
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
+                    ctxScoreNoteDeleteSpecial.Visible = false;
                     ctxScoreNoteInsertSpecial.SetParameter(e.HitTestResult);
                     ctxScoreNoteModifySpecial.DeleteParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteModify:
                     ctxSep1.Visible = false;
@@ -113,8 +119,10 @@ namespace StarlightDirector.App.UI.Forms {
                     ctxScoreNoteInsertSpecial.Visible = false;
                     ctxSep4.Visible = true;
                     ctxScoreNoteModifySpecial.Visible = true;
+                    ctxScoreNoteDeleteSpecial.Visible = true;
                     ctxScoreNoteInsertSpecial.DeleteParameter();
                     ctxScoreNoteModifySpecial.SetParameter(e.HitTestResult);
+                    ctxScoreNoteDeleteSpecial.SetParameter(e.HitTestResult);
                     break;
                 default:
                     break;

@@ -208,6 +208,7 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
+            this.ctxScoreNoteDeleteSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -714,7 +715,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -842,40 +843,40 @@
             // 
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(112, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -885,7 +886,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(112, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -909,7 +910,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditMode
             // 
@@ -924,7 +925,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(112, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -989,7 +990,7 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditGoTo
             // 
@@ -997,7 +998,7 @@
             this.measureToolStripMenuItem1,
             this.timeToolStripMenuItem});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // measureToolStripMenuItem1
@@ -1606,9 +1607,10 @@
             this.ctxSep3,
             this.ctxScoreNoteInsertSpecial,
             this.ctxSep4,
-            this.ctxScoreNoteModifySpecial});
+            this.ctxScoreNoteModifySpecial,
+            this.ctxScoreNoteDeleteSpecial});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(205, 182);
+            this.ctxMain.Size = new System.Drawing.Size(205, 204);
             // 
             // ctxEditCut
             // 
@@ -1698,6 +1700,12 @@
             this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
+            // 
+            // ctxScoreNoteDeleteSpecial
+            // 
+            this.ctxScoreNoteDeleteSpecial.Name = "ctxScoreNoteDeleteSpecial";
+            this.ctxScoreNoteDeleteSpecial.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteDeleteSpecial.Text = "&Delete Special Note";
             // 
             // FMain
             // 
@@ -1936,6 +1944,7 @@
         private System.Windows.Forms.ToolStripSeparator mnuScoreNoteSep2;
         private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteModifySpecial;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteDeleteSpecial;
     }
 }
 

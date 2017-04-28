@@ -135,6 +135,12 @@
     <Compile Include="UI\Forms\FSelectMusicID.Designer.cs">
       <DependentUpon>FSelectMusicID.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.Designer.cs">
+      <DependentUpon>FSpecialNote.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +168,9 @@
     </Compile>
     <EmbeddedResource Include="UI\Forms\FSelectMusicID.resx">
       <DependentUpon>FSelectMusicID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FSpecialNote.resx">
+      <DependentUpon>FSpecialNote.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

@@ -111,7 +111,11 @@ namespace StarlightDirector.UI.Controls {
                 } else if (Math.Abs(relativeGridX - (testX + columnWidth)) < config.NoteRadius) {
                     col = testCol + 1;
                 } else {
-                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
+                    if (hitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
+                        col = 0;
+                    } else {
+                        return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
+                    }
                 }
 
                 // Hit any gaming note?
