@@ -25,6 +25,8 @@ namespace StarlightDirector.Beatmap.IO {
                 db.Open();
                 var project = ReadProject(db);
                 db.Close();
+                project.SaveFileName = fileInfo.FullName;
+                project.IsChanged = false;
                 return project;
             }
         }

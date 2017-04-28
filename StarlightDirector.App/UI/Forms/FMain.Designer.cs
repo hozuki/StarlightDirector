@@ -204,11 +204,11 @@
             this.ctxScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep4 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
+            this.ctxScoreNoteDeleteSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.visualizer = new StarlightDirector.UI.Controls.ScoreVisualizer();
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.ctxScoreNoteDeleteSpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -340,14 +340,13 @@
             this.tsbToolsBuildAcb});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(101, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(132, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
             // tsbPreviewFromStart
             // 
             this.tsbPreviewFromStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPreviewFromStart.Enabled = false;
             this.tsbPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
             this.tsbPreviewFromStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPreviewFromStart.Name = "tsbPreviewFromStart";
@@ -357,7 +356,6 @@
             // tsbPreviewStop
             // 
             this.tsbPreviewStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPreviewStop.Enabled = false;
             this.tsbPreviewStop.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewStop;
             this.tsbPreviewStop.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPreviewStop.Name = "tsbPreviewStop";
@@ -1481,7 +1479,6 @@
             this.mnuPreviewFromThisMeasure,
             this.mnuPreviewFromStart,
             this.mnuPreviewStop});
-            this.mnuPreview.Enabled = false;
             this.mnuPreview.Name = "mnuPreview";
             this.mnuPreview.Size = new System.Drawing.Size(64, 21);
             this.mnuPreview.Text = "Previe&w";
@@ -1526,7 +1523,7 @@
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExportCsv});
             this.mnuToolsExport.Name = "mnuToolsExport";
-            this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsExport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsExport.Text = "&Export";
             // 
             // mnuToolsExportCsv
@@ -1537,14 +1534,15 @@
             // 
             // mnuToolsImport
             // 
+            this.mnuToolsImport.Enabled = false;
             this.mnuToolsImport.Name = "mnuToolsImport";
-            this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsImport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsImport.Text = "&Import";
             // 
             // mnuToolsSep1
             // 
             this.mnuToolsSep1.Name = "mnuToolsSep1";
-            this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsBuild
             // 
@@ -1552,7 +1550,7 @@
             this.mnuToolsBuildBdb,
             this.mnuToolsBuildAcb});
             this.mnuToolsBuild.Name = "mnuToolsBuild";
-            this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsBuild.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsBuild.Text = "&Build";
             // 
             // mnuToolsBuildBdb
@@ -1572,12 +1570,12 @@
             // mnuToolsSep2
             // 
             this.mnuToolsSep2.Name = "mnuToolsSep2";
-            this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsOptions
             // 
             this.mnuToolsOptions.Name = "mnuToolsOptions";
-            this.mnuToolsOptions.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsOptions.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsOptions.Text = "&Options...";
             // 
             // mnuHelp
@@ -1680,6 +1678,12 @@
             this.ctxScoreNoteModifySpecial.Size = new System.Drawing.Size(204, 22);
             this.ctxScoreNoteModifySpecial.Text = "Modify &Special Note...";
             // 
+            // ctxScoreNoteDeleteSpecial
+            // 
+            this.ctxScoreNoteDeleteSpecial.Name = "ctxScoreNoteDeleteSpecial";
+            this.ctxScoreNoteDeleteSpecial.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteDeleteSpecial.Text = "&Delete Special Note";
+            // 
             // visualizer
             // 
             this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -1700,12 +1704,6 @@
             this.picIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
-            // 
-            // ctxScoreNoteDeleteSpecial
-            // 
-            this.ctxScoreNoteDeleteSpecial.Name = "ctxScoreNoteDeleteSpecial";
-            this.ctxScoreNoteDeleteSpecial.Size = new System.Drawing.Size(204, 22);
-            this.ctxScoreNoteDeleteSpecial.Text = "&Delete Special Note";
             // 
             // FMain
             // 

@@ -94,6 +94,9 @@
     <Compile Include="UI\Forms\FMain.Commands.Edit.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.Score.Measures.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -245,6 +248,7 @@
     <Content Include="Resources\Icons\Toolbar\IconEditModeSelect.png" />
     <Content Include="Resources\Icons\Toolbar\IconViewZoomIn.png" />
     <Content Include="Resources\Icons\Toolbar\IconViewZoomOut.png" />
+    <Content Include="Resources\Pictures\Mayu.gif" />
     <EmbeddedResource Include="Resources\WebPages\About.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
