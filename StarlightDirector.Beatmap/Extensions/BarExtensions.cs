@@ -49,7 +49,7 @@ namespace StarlightDirector.Beatmap.Extensions {
 
         public static Note AddSpecialNote(this Bar bar, Guid id, NoteType specialNoteType) {
             var note = new Note(bar, id);
-            note.Params = new NoteExtraParams();
+            note.Params = new NoteExtraParams(note);
             note.SetSpecialType(specialNoteType);
             bar.Notes.Add(note);
             bar.Score.Project.UsedNoteIDs.Add(id);

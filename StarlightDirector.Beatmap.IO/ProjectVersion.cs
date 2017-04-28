@@ -6,8 +6,9 @@
         public const int V0_2 = 200;
         public const int V0_3 = 300;
         public const int V0_3_1 = 301;
+        public const int V0_4 = 400;
 
-        public static readonly int Current = V0_3_1;
+        public static readonly int Current = V0_4;
 
     }
 }

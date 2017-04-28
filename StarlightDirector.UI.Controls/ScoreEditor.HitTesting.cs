@@ -112,7 +112,7 @@ namespace StarlightDirector.UI.Controls {
                     col = testCol + 1;
                 } else {
                     if (hitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
-                        col = 0;
+                        col = -1;
                     } else {
                         return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
                     }

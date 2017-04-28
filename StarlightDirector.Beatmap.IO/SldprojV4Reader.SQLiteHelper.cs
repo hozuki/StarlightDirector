@@ -3,7 +3,7 @@ using System.Data;
 using System.Data.SQLite;
 
 namespace StarlightDirector.Beatmap.IO {
-    partial class SldprojV3Reader {
+    partial class SldprojV4Reader {
 
         private static class SQLiteHelper {
 

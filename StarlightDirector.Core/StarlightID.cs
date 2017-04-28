@@ -7,5 +7,7 @@ namespace StarlightDirector.Core {
             return new Guid(id, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0);
         }
 
+        public static readonly Guid Invalid = Guid.Empty;
+
     }
 }

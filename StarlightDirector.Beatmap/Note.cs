@@ -283,7 +283,9 @@ namespace StarlightDirector.Beatmap {
 
             public Guid HoldTargetID { get; set; }
 
-            public double HitTiming { get; set; }
+            public Guid PrevSlideNoteID { get; set; }
+
+            public Guid NextSlideNoteID { get; set; }
 
         }
 

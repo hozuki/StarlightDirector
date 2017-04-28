@@ -8,7 +8,7 @@ using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap.IO {
-    public sealed partial class SldprojV3Reader : ProjectReader {
+    public sealed partial class SldprojV4Reader : ProjectReader {
 
         public override Project ReadProject(string fileName) {
             var fileInfo = new FileInfo(fileName);
@@ -46,11 +46,7 @@ namespace StarlightDirector.Beatmap.IO {
                 Debug.Print("WARNING: incorrect project version: {0}", projectVersionString);
                 fProjectVersion = ProjectVersion.Current;
             }
-            // Values for v1 and v2 are 0.1 and 0.2.
-            // Values in new format are like 300 (v3) and 301 (v3.1).
-            if (fProjectVersion < 1) {
-                fProjectVersion *= 1000;
-            }
+            // 400 (v0.4)
             var projectVersion = (int)fProjectVersion;
             // Keep project.Version property being the latest project version.
 
@@ -60,7 +56,6 @@ namespace StarlightDirector.Beatmap.IO {
                 ReadScore(db, score, projectVersion);
                 ResolveReferences(score);
                 FixSyncNotes(score);
-                FixSlideNotes(score);
                 project.SetScore(difficulty, score);
             }
 
@@ -101,18 +96,19 @@ namespace StarlightDirector.Beatmap.IO {
                 SQLiteHelper.ReadNotesTable(connection, score.Difficulty, table);
                 // v0.3.1: "note_type"
                 // Only flick existed when there is a flick-alike relation. Now, both flick and slide are possible.
-                var hasNoteTypeColumn = projectVersion == ProjectVersion.V0_3_1;
                 foreach (DataRow row in table.Rows) {
-                    var id = (int)(long)row[Names.Column_ID];
+                    var id = new Guid((byte[])row[Names.Column_ID]);
                     var barIndex = (int)(long)row[Names.Column_BarIndex];
                     var grid = (int)(long)row[Names.Column_IndexInGrid];
                     var start = (NotePosition)(long)row[Names.Column_StartPosition];
                     var finish = (NotePosition)(long)row[Names.Column_FinishPosition];
                     var flick = (NoteFlickType)(long)row[Names.Column_FlickType];
-                    var prevFlick = (int)(long)row[Names.Column_PrevFlickNoteID];
-                    var nextFlick = (int)(long)row[Names.Column_NextFlickNoteID];
-                    var hold = (int)(long)row[Names.Column_HoldTargetID];
-                    var noteType = hasNoteTypeColumn ? (NoteType)(long)row[Names.Column_NoteType] : NoteType.TapOrFlick;
+                    var prevFlick = new Guid((byte[])row[Names.Column_PrevFlickNoteID]);
+                    var nextFlick = new Guid((byte[])row[Names.Column_NextFlickNoteID]);
+                    var prevSlide = new Guid((byte[])row[Names.Column_PrevSlideNoteID]);
+                    var nextSlide = new Guid((byte[])row[Names.Column_NextSlideNoteID]);
+                    var hold = new Guid((byte[])row[Names.Column_HoldTargetID]);
+                    var noteType = (NoteType)(long)row[Names.Column_NoteType];
 
                     EnsureBarIndex(score, barIndex);
                     var bar = score.Bars[barIndex];
@@ -121,9 +117,11 @@ namespace StarlightDirector.Beatmap.IO {
                         note.Basic.StartPosition = start;
                         note.Basic.Type = noteType;
                         note.Basic.FlickType = flick;
-                        note.Temporary.PrevFlickNoteID = StarlightID.GetGuidFromInt32(prevFlick);
-                        note.Temporary.NextFlickNoteID = StarlightID.GetGuidFromInt32(nextFlick);
-                        note.Temporary.HoldTargetID = StarlightID.GetGuidFromInt32(hold);
+                        note.Temporary.PrevFlickNoteID = prevFlick;
+                        note.Temporary.NextFlickNoteID = nextFlick;
+                        note.Temporary.PrevSlideNoteID = prevSlide;
+                        note.Temporary.NextSlideNoteID = nextSlide;
+                        note.Temporary.HoldTargetID = hold;
                     } else {
                         Debug.Print("Note with ID '{0}' already exists.", id);
                     }
@@ -152,7 +150,7 @@ namespace StarlightDirector.Beatmap.IO {
             using (var table = new DataTable()) {
                 SQLiteHelper.ReadSpecialNotesTable(connection, score.Difficulty, table);
                 foreach (DataRow row in table.Rows) {
-                    var id = (int)(long)row[Names.Column_ID];
+                    var id = new Guid((byte[])row[Names.Column_ID]);
                     var barIndex = (int)(long)row[Names.Column_BarIndex];
                     var grid = (int)(long)row[Names.Column_IndexInGrid];
                     var type = (int)(long)row[Names.Column_NoteType];
@@ -169,28 +167,6 @@ namespace StarlightDirector.Beatmap.IO {
                         note.Params = NoteExtraParams.FromDataString(paramsString, note);
                     } else {
                         note.Params.UpdateByDataString(paramsString);
-                    }
-
-                    // 2017-04-27: Fix the f**king negative grid line problem.
-                    // But the unfixed version passed every test except the hit testing one, I don't know why. :(
-                    // It occurs in some projects saved by certain old versions. It could be caused by
-                    // incorrectly inserting variant BPM notes. But I don't know the definition of "incorrectly",
-                    // and these problematic projects can't be loaded even by the versions that created them.
-                    // I observed this behavior on v0.7.5, but I think it can also happen on any versions after
-                    // v0.5.0, in which the variant BPM note is introducted.
-                    if (note.Basic.Type == NoteType.VariantBpm) {
-                        var originalBar = bar;
-                        var newBar = originalBar;
-                        while (note.Basic.IndexInGrid < 0) {
-                            bar = score.Bars[barIndex];
-                            note.Basic.IndexInGrid += bar.GetNumberOfGrids();
-                            newBar = bar;
-                            --barIndex;
-                        }
-                        if (newBar != originalBar) {
-                            originalBar.RemoveSpecialNoteForVariantBpmFix(note);
-                            newBar.AddNoteDirect(note);
-                        }
                     }
                 }
             }
@@ -221,6 +197,12 @@ namespace StarlightDirector.Beatmap.IO {
                 if (note.Temporary.PrevFlickNoteID != Guid.Empty) {
                     note.Editor.PrevFlick = score.FindNoteByID(note.Temporary.PrevFlickNoteID);
                 }
+                if (note.Temporary.NextSlideNoteID != Guid.Empty) {
+                    note.Editor.NextSlide = score.FindNoteByID(note.Temporary.NextSlideNoteID);
+                }
+                if (note.Temporary.PrevSlideNoteID != Guid.Empty) {
+                    note.Editor.PrevSlide = score.FindNoteByID(note.Temporary.PrevSlideNoteID);
+                }
                 if (note.Temporary.HoldTargetID != Guid.Empty) {
                     note.Editor.HoldPair = score.FindNoteByID(note.Temporary.HoldTargetID);
                 }
@@ -247,19 +229,6 @@ namespace StarlightDirector.Beatmap.IO {
                     }
                     NoteUtilities.MakeSync(prev, null);
                 }
-            }
-        }
-
-        // Fix the design mistake in v0.3.1 projects: slide notes use flick note fields (next/prev & flick type).
-        private static void FixSlideNotes(Score score) {
-            foreach (var note in score.GetAllNotes()) {
-                if (!note.Helper.IsSlide) {
-                    continue;
-                }
-                note.Editor.NextSlide = note.Editor.NextFlick;
-                note.Editor.PrevSlide = note.Editor.PrevFlick;
-                note.Editor.NextFlick = note.Editor.PrevFlick = null;
-                note.Basic.FlickType = NoteFlickType.None;
             }
         }
 

@@ -4,7 +4,8 @@ using System.Globalization;
 namespace StarlightDirector.Beatmap {
     public sealed class NoteExtraParams {
 
-        internal NoteExtraParams() {
+        internal NoteExtraParams(Note note) {
+            Note = note;
         }
 
         public double NewBpm { get; set; } = 120;
@@ -19,11 +20,7 @@ namespace StarlightDirector.Beatmap {
         }
 
         public void UpdateByDataString(string s) {
-            UpdateByDataString(s, Note);
-        }
-
-        public void UpdateByDataString(string s, Note note) {
-            Note = note;
+            var note = Note;
             switch (note.Basic.Type) {
                 case NoteType.VariantBpm:
                     NewBpm = double.Parse(s);
@@ -37,9 +34,7 @@ namespace StarlightDirector.Beatmap {
             if (string.IsNullOrEmpty(str)) {
                 return null;
             }
-            var p = new NoteExtraParams {
-                Note = note
-            };
+            var p = new NoteExtraParams(note);
             switch (note.Basic.Type) {
                 case NoteType.VariantBpm:
                     p.NewBpm = double.Parse(str);
@@ -50,7 +45,7 @@ namespace StarlightDirector.Beatmap {
             return p;
         }
 
-        public Note Note { get; internal set; }
+        public Note Note { get; }
 
     }
 }

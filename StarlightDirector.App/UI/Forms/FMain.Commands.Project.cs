@@ -4,6 +4,7 @@ using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.IO;
 using StarlightDirector.Commanding;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -23,11 +24,26 @@ namespace StarlightDirector.App.UI.Forms {
             if (r == DialogResult.Cancel) {
                 return;
             }
-            if (!File.Exists(openFileDialog.FileName)) {
-                return;
-            }
 
-            var reader = new SldprojV3Reader();
+            ProjectReader reader;
+            var projectVersion = KnownScoreFormats.CheckFormatVersion(openFileDialog.FileName);
+            if (projectVersion == 0) {
+                MessageBox.Show(this, "Unable to detect the version of this project. Maybe it is corrupted or it is an older version of project. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            } else {
+                switch (projectVersion) {
+                    case ProjectVersion.V0_3:
+                    case ProjectVersion.V0_3_1:
+                        reader = new SldprojV3Reader();
+                        break;
+                    case ProjectVersion.V0_4:
+                        reader = new SldprojV4Reader();
+                        break;
+                    default:
+                        MessageBox.Show(this, "You should not have seen this message.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                }
+            }
             var project = reader.ReadProject(openFileDialog.FileName);
             visualizer.Editor.Project = project;
             UpdateUIIndications(openFileDialog.SafeFileName);
@@ -42,7 +58,8 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
             if (project.WasSaved) {
-                // TODO: Silent save.
+                var writer = new SldprojV4Writer();
+                writer.WriteProject(project, project.SaveFileName);
             } else {
                 CmdProjectSaveAs.Execute(sender, e.Parameter);
             }
@@ -52,7 +69,16 @@ namespace StarlightDirector.App.UI.Forms {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
             saveFileDialog.Filter = "StarlightDirector Project (*.sldproj)|*.sldproj";
-            saveFileDialog.ShowDialog(this);
+            var r = saveFileDialog.ShowDialog(this);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+
+            var project = visualizer.Editor.Project;
+            var writer = new SldprojV4Writer();
+            writer.WriteProject(project, saveFileDialog.FileName);
+            var fileInfo = new FileInfo(saveFileDialog.FileName);
+            UpdateUIIndications(fileInfo.Name);
         }
 
         private void CmdProjectBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {
