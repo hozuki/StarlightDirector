@@ -1,0 +1,49 @@
+﻿# https://www.appveyor.com/docs/appveyor-yml/
+
+version: 1.0.0.{build}
+branches:
+  only:
+    - master
+skip_tags: true
+image: Visual Studio 2017
+platform:
+  - Any CPU
+configuration:
+  - Release
+build:
+  parallel: true
+  project: StarlightDirector.sln
+environment:
+  EnableNuGetPackageRestore: true
+before_build:
+  nuget restore
+after_build:
+  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.mdb
+  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.dll
+  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.exe
+  - 7z a sd.zip LICENSE.md
+  - 7z a sd.zip README.md
+  - copy sd.zip sd-%PLATFORM%-v%APPVEYOR_BUILD_VERSION%-beta.zip
+  - copy sd.zip sd-latest.zip
+artifacts:
+  - path: sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
+    name: WithVersion
+  - path: sd-latest.zip
+    name: Static
+assembly_info:
+  patch: true
+  file: AssemblyInfo.*
+  assembly_version: "{version}"
+  assembly_file_version: "{version}"
+  assembly_informational_version: "{version}"
+deploy:
+  - provider: GitHub
+    description: 'Starlight Director'
+    auth_token:
+      secure: u+MFjjY665AT4PHJ2bFMINBLnnnwSj1jLnNeFZoWfeYbomTNSPOmdahffmZa+dRH
+    artifact: WithVersion            # upload all NuGet packages to release assets
+    draft: false
+    prerelease: true
+    on:
+      branch: master                 # release from master branch only
+      appveyor_repo_tag: true        # deploy on tag push only
