@@ -145,6 +145,30 @@ namespace StarlightDirector.UI.Controls {
                         hit.Note.Basic.StartPosition = editor.NoteStartPosition;
                         _visualizer.InformProjectModified();
                     }
+
+                    // Alt+Click on end hold to change its flick type.
+                    if (hit.HitAnyNote && hit.Note.Basic.Type == NoteType.TapOrFlick && hit.Note.Helper.IsHoldEnd) {
+                        var modifiers = Control.ModifierKeys;
+                        if (modifiers == Keys.Alt) {
+                            var flickType = hit.Note.Basic.FlickType;
+                            switch (flickType) {
+                                case NoteFlickType.None:
+                                    flickType = NoteFlickType.Left;
+                                    break;
+                                case NoteFlickType.Left:
+                                    flickType = NoteFlickType.Right;
+                                    break;
+                                case NoteFlickType.Right:
+                                    flickType = NoteFlickType.None;
+                                    break;
+                                default:
+                                    throw new ArgumentOutOfRangeException(nameof(flickType), flickType, null);
+                            }
+                            hit.Note.Basic.FlickType = flickType;
+                            _visualizer.InformProjectModified();
+                        }
+                    }
+
                     // Then handle the mode-specific actions.
                     switch (editor.EditMode) {
                         case ScoreEditMode.Select:
