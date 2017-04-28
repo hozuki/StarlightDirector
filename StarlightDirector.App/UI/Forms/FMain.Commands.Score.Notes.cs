@@ -61,6 +61,7 @@ namespace StarlightDirector.App.UI.Forms {
                 var newPos = pos > NotePosition.Left ? pos - 1 : NotePosition.Right;
                 note.Basic.StartPosition = newPos;
             }
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -74,6 +75,7 @@ namespace StarlightDirector.App.UI.Forms {
                 var newPos = pos < NotePosition.Right ? pos + 1 : NotePosition.Left;
                 note.Basic.StartPosition = newPos;
             }
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -86,6 +88,7 @@ namespace StarlightDirector.App.UI.Forms {
             foreach (var note in notes) {
                 note.Basic.StartPosition = startPosition == NotePosition.Default ? note.Basic.FinishPosition : startPosition;
             }
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -115,6 +118,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void CmdScoreNoteDelete_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.RemoveSelectedNotes();
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -132,6 +136,7 @@ namespace StarlightDirector.App.UI.Forms {
             note.Params.NewBpm = newBpm;
             note.Basic.IndexInGrid = hit.Row;
 
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -147,6 +152,7 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
             note.Params.NewBpm = newBpm;
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -157,6 +163,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var note = hit.Note;
             note.Basic.Bar.RemoveNote(note);
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 

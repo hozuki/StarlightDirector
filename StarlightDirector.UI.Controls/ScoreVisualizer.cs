@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using StarlightDirector.Core;
@@ -20,6 +21,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public event EventHandler<ContextMenuRequestedEventArgs> ContextMenuRequested;
+        public event EventHandler<EventArgs> ProjectModified;
 
         [Browsable(false)]
         public ScoreEditor Editor => editor;
@@ -33,6 +35,11 @@ namespace StarlightDirector.UI.Controls {
 
         public void RecalcLayout() {
             editor.RecalcLayout();
+        }
+
+        [DebuggerStepThrough]
+        internal void InformProjectModified() {
+            ProjectModified?.Invoke(this, EventArgs.Empty);
         }
 
         protected override void OnLayout(LayoutEventArgs e) {

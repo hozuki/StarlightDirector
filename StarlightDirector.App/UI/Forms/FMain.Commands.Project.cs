@@ -10,7 +10,8 @@ namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
 
         private void CmdProjectNew_Executed(object sender, ExecutedEventArgs e) {
-            visualizer.Editor.Project = new Project();
+            var project = Project.CreateWithVersion(ProjectVersion.Current);
+            visualizer.Editor.Project = project;
             UpdateUIIndications(DefaultDocumentName);
         }
 
@@ -54,12 +55,13 @@ namespace StarlightDirector.App.UI.Forms {
             if (project == null) {
                 throw new InvalidOperationException();
             }
-            if (!project.IsChanged) {
+            if (!project.IsModified) {
                 return;
             }
             if (project.WasSaved) {
                 var writer = new SldprojV4Writer();
                 writer.WriteProject(project, project.SaveFileName);
+                UpdateUIIndications();
             } else {
                 CmdProjectSaveAs.Execute(sender, e.Parameter);
             }

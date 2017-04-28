@@ -19,6 +19,7 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.ContextMenuRequested -= Visualizer_ContextMenuRequested;
             tsbEditMode.Click -= TsbEditMode_Click;
             tsbScoreNoteStartPosition.Click -= TsbScoreNoteStartPosition_Click;
+            visualizer.ProjectModified -= Visualizer_ProjectModified;
         }
 
         private void RegisterEventHandlers() {
@@ -31,6 +32,11 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.ContextMenuRequested += Visualizer_ContextMenuRequested;
             tsbEditMode.Click += TsbEditMode_Click;
             tsbScoreNoteStartPosition.Click += TsbScoreNoteStartPosition_Click;
+            visualizer.ProjectModified += Visualizer_ProjectModified;
+        }
+
+        private void Visualizer_ProjectModified(object sender, EventArgs e) {
+            InformProjectModified();
         }
 
         private void TsbScoreNoteStartPosition_Click(object sender, EventArgs e) {

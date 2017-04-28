@@ -143,6 +143,7 @@ namespace StarlightDirector.UI.Controls {
                     // and the newly added note's StartPosition is automatically set there.
                     if (hit.HitAnyNote && editor.NoteStartPosition != NotePosition.Default) {
                         hit.Note.Basic.StartPosition = editor.NoteStartPosition;
+                        _visualizer.InformProjectModified();
                     }
                     // Then handle the mode-specific actions.
                     switch (editor.EditMode) {
@@ -200,6 +201,7 @@ namespace StarlightDirector.UI.Controls {
         private Note EditorAddNote(ScoreEditorHitTestResult hit) {
             var editor = _visualizer.Editor;
             var note = editor.AddNoteAt(hit.Bar, hit.Row, hit.Column);
+            _visualizer.InformProjectModified();
             return note;
         }
 

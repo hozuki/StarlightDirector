@@ -13,6 +13,12 @@ namespace StarlightDirector.Beatmap {
             Settings = ProjectSettings.CreateDefault();
         }
 
+        public static Project CreateWithVersion(int version) {
+            var project = new Project();
+            project.Version = version;
+            return project;
+        }
+
         public Score GetScore(Difficulty difficulty) {
             return GetScore(difficulty, false);
         }
@@ -37,7 +43,7 @@ namespace StarlightDirector.Beatmap {
 
         public HashSet<Guid> UsedNoteIDs { get; } = new HashSet<Guid>();
 
-        public bool IsChanged { get; internal set; }
+        public bool IsModified { get; set; }
 
         public bool WasSaved => !string.IsNullOrEmpty(SaveFileName) && File.Exists(SaveFileName);
 

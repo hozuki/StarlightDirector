@@ -19,6 +19,7 @@ namespace StarlightDirector.App.UI.Forms {
                 visualizer.ScrollBar.Value = (int)estY;
             }
 
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
@@ -42,12 +43,14 @@ namespace StarlightDirector.App.UI.Forms {
                 visualizer.ScrollBar.Value = (int)estY;
             }
 
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreMeasureDelete_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.RemoveSelectedBars();
             visualizer.RecalcLayout();
+            InformProjectModified();
             visualizer.Editor.Invalidate();
         }
 

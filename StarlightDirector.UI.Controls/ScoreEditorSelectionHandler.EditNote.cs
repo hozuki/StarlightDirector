@@ -107,6 +107,7 @@ namespace StarlightDirector.UI.Controls {
                         // Make hold.
                         var (first, second) = NoteUtilities.Split(thisNote, lastNote);
                         NoteUtilities.MakeHold(first, second);
+                        _visualizer.InformProjectModified();
                     }
                     thisNote.EditorUnselect();
                     lastNote.EditorUnselect();
@@ -163,6 +164,7 @@ namespace StarlightDirector.UI.Controls {
                         // Make flick.
                         var (first, second) = NoteUtilities.Split(thisNote, lastNote);
                         NoteUtilities.MakeFlick(first, second);
+                        _visualizer.InformProjectModified();
                     }
                     lastNote.EditorUnselect();
                     thisNote.EditorSelect();
@@ -219,6 +221,7 @@ namespace StarlightDirector.UI.Controls {
                         // Make slide.
                         var (first, second) = NoteUtilities.Split(thisNote, lastNote);
                         NoteUtilities.MakeSlide(first, second);
+                        _visualizer.InformProjectModified();
                     }
                     lastNote.EditorUnselect();
                     thisNote.EditorSelect();

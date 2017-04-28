@@ -274,5 +274,14 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
+        private void InformProjectModified() {
+            var project = visualizer.Editor.Project;
+            var val = project.IsModified;
+            if (!val) {
+                project.IsModified = true;
+                UpdateUIIndications();
+            }
+        }
+
     }
 }

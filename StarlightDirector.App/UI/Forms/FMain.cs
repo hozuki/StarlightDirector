@@ -34,6 +34,10 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
+        public void UpdateUIIndications() {
+            UpdateUIIndications(_editingFileName, _cachedTitleDifficulty);
+        }
+
         public void UpdateUIIndications(Difficulty currentDifficulty) {
             UpdateUIIndications(_editingFileName, currentDifficulty);
         }
@@ -48,7 +52,12 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
-            Text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
+            var text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
+            var project = visualizer.Editor.Project;
+            if (project.IsModified) {
+                text = "* " + text;
+            }
+            Text = text;
             tsbScoreDifficultySelection.Text = difficultyDescription;
             _editingFileName = editingFileName;
             _cachedTitleDifficulty = currentDifficulty;
