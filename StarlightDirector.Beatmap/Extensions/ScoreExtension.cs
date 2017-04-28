@@ -80,7 +80,7 @@ namespace StarlightDirector.Beatmap.Extensions {
         }
 
         public static TimeSpan CalculateDuration(this Score score) {
-            var notes = score.GetAllNotes().ToArray();
+            var notes = score.GetAllNotes();
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
@@ -112,7 +112,7 @@ namespace StarlightDirector.Beatmap.Extensions {
         }
 
         private static CompiledScore Compile(Score score, TimeSpan? userDefinedEnding) {
-            var notes = score.GetAllNotes().ToArray();
+            var notes = score.GetAllNotes();
 
             // First, calculate all timing at the grid lines.
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();

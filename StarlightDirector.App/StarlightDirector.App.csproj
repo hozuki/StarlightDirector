@@ -64,6 +64,9 @@
     <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Gaming\LiveMusicRecord.cs" />
     <Compile Include="Gaming\MusicAttribute.cs" />
+    <Compile Include="UI\Controls\ExplorerListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FAbout.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +78,12 @@
     </Compile>
     <Compile Include="UI\Forms\FAppendMeasures.Designer.cs">
       <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapInfo.Designer.cs">
+      <DependentUpon>FBeatmapInfo.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\FBeatmapSettings.cs">
       <SubType>Form</SubType>
@@ -144,11 +153,15 @@
     <Compile Include="UI\Forms\FSpecialNote.Designer.cs">
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UIUtilities.cs" />
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FAppendMeasures.resx">
       <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FBeatmapInfo.resx">
+      <DependentUpon>FBeatmapInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FBeatmapSettings.resx">
       <DependentUpon>FBeatmapSettings.cs</DependentUpon>

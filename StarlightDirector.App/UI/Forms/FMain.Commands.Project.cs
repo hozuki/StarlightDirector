@@ -70,6 +70,11 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
+        private void CmdProjectBeatmapInfo_Executed(object sender, ExecutedEventArgs e) {
+            var project = visualizer.Editor.Project;
+            FBeatmapInfo.ShowDialog(this, project);
+        }
+
         private void CmdProjectExit_Executed(object sender, ExecutedEventArgs e) {
             Close();
         }
@@ -79,6 +84,7 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdProjectSave = CommandManager.CreateCommand("Ctrl+S");
         private readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
         private readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
+        private readonly Command CmdProjectBeatmapInfo = CommandManager.CreateCommand();
         private readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
 
     }

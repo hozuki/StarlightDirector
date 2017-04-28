@@ -26,5 +26,8 @@ namespace StarlightDirector.Core.Interop {
         [DllImport("user32.dll", CallingConvention = CallingConvention.StdCall, PreserveSig = true, SetLastError = true)]
         public static extern IntPtr GetSystemMenu(IntPtr hWnd, [MarshalAs(UnmanagedType.Bool)] bool bRevert);
 
+        [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall, PreserveSig = true, SetLastError = true)]
+        public static extern int SetWindowTheme(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] string pszAppName, [MarshalAs(UnmanagedType.LPWStr)] string pszSubIdList);
+
     }
 }
