@@ -27,6 +27,11 @@ namespace StarlightDirector.Beatmap.IO {
             } catch (SQLiteException ex) {
                 return 0;
             }
+            // Record not found
+            if (versionObject == null) {
+                return 0;
+            }
+
             var versionString = (string)versionObject;
             var fpVersion = double.Parse(versionString);
             int version;

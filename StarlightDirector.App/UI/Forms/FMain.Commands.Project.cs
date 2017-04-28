@@ -29,7 +29,7 @@ namespace StarlightDirector.App.UI.Forms {
             ProjectReader reader;
             var projectVersion = KnownScoreFormats.CheckFormatVersion(openFileDialog.FileName);
             if (projectVersion == 0) {
-                MessageBox.Show(this, "Unable to detect the version of this project. Maybe it is corrupted or it is an older version of project. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, "Unable to open this project. Maybe it is corrupted or it is a project of a no longer supported version. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             } else {
                 switch (projectVersion) {
