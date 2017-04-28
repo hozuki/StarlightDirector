@@ -33,6 +33,9 @@ namespace StarlightDirector.UI.Controls {
         [DefaultValue(true)]
         public bool InvertedScrolling { get; set; } = true;
 
+        [Browsable(false)]
+        public int ScrollingSpeed { get; set; } = 5;
+
         public void RecalcLayout() {
             editor.RecalcLayout();
         }
@@ -85,6 +88,8 @@ namespace StarlightDirector.UI.Controls {
             }
             var invertFactor = InvertedScrolling ? 1 : -1;
             deltaScrollValue *= invertFactor;
+            var speed = ScrollingSpeed;
+            deltaScrollValue = (int)(deltaScrollValue * speed / (10f / 2));
             newScrollValue += deltaScrollValue;
             newScrollValue = newScrollValue.Clamp(vScroll.Minimum, vScroll.Maximum);
             vScroll.Value = newScrollValue;

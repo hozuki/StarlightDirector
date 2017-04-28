@@ -42,6 +42,9 @@
     <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.105.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -61,6 +64,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EditorSettings.cs" />
+    <Compile Include="EditorSettingsManager.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Gaming\LiveMusicRecord.cs" />
     <Compile Include="Gaming\MusicAttribute.cs" />
@@ -96,6 +101,12 @@
     </Compile>
     <Compile Include="UI\Forms\FBuildBeatmap.Designer.cs">
       <DependentUpon>FBuildBeatmap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FEditorSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FEditorSettings.Designer.cs">
+      <DependentUpon>FEditorSettings.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\FMain.Commands.cs">
       <SubType>Form</SubType>
@@ -168,6 +179,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FBuildBeatmap.resx">
       <DependentUpon>FBuildBeatmap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FEditorSettings.resx">
+      <DependentUpon>FEditorSettings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>

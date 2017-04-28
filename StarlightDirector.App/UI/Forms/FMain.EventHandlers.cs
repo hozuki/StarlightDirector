@@ -33,6 +33,11 @@ namespace StarlightDirector.App.UI.Forms {
             tsbEditMode.Click += TsbEditMode_Click;
             tsbScoreNoteStartPosition.Click += TsbScoreNoteStartPosition_Click;
             visualizer.ProjectModified += Visualizer_ProjectModified;
+            Closed += FMain_Closed;
+        }
+
+        private void FMain_Closed(object sender, EventArgs e) {
+            EditorSettingsManager.SaveSettings();
         }
 
         private void Visualizer_ProjectModified(object sender, EventArgs e) {
@@ -198,6 +203,9 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
 
             CmdProjectNew.Execute(null, null);
+
+            EditorSettingsManager.LoadSettings();
+            ApplySettings(EditorSettingsManager.CurrentSettings);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

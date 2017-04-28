@@ -283,5 +283,13 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
+        private void ApplySettings(EditorSettings settings) {
+            var editor = visualizer.Editor;
+            editor.IndicatorsVisible = settings.ShowNoteIndicators;
+            visualizer.InvertedScrolling = settings.InvertedScrolling;
+            visualizer.ScrollingSpeed = settings.ScrollingSpeed;
+            editor.Invalidate();
+        }
+
     }
 }
