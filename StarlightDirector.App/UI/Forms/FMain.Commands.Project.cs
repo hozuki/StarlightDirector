@@ -94,6 +94,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
             project.Settings.BeatPerMinute = bpm;
             project.Settings.StartTimeOffset = offset;
+            InformProjectModified();
             visualizer.RecalcLayout();
             visualizer.Editor.Invalidate();
         }
