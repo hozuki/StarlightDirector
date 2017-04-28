@@ -115,6 +115,12 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewZoomOut.Attach(CmdViewZoomOut);
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
+            mnuPreviewFromThisMeasure.Attach(CmdPreviewFromThisMeasure);
+            mnuPreviewFromStart.Attach(CmdPreviewFromStart);
+            tsbPreviewFromStart.Attach(CmdPreviewFromStart);
+            mnuPreviewStop.Attach(CmdPreviewStop);
+            tsbPreviewStop.Attach(CmdPreviewStop);
+
             mnuToolsExportCsv.Attach(CmdToolsExportCsv);
             mnuToolsBuildBdb.Attach(CmdToolsBuildBdb);
             tsbToolsBuildBdb.Attach(CmdToolsBuildBdb);
