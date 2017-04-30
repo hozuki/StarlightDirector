@@ -109,6 +109,22 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
+        private void CmdEditGoToMeasure_Executed(object sender, ExecutedEventArgs e) {
+            var (r, t) = FGoTo.RequestInput(this, 0, visualizer.Editor);
+        }
+
+        private void CmdEditGoToMeasure_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            e.CanExecute = false;
+        }
+
+        private void CmdEditGoToTime_Executed(object sender, ExecutedEventArgs e) {
+            var (r, t) = FGoTo.RequestInput(this, 1, visualizer.Editor);
+        }
+
+        private void CmdEditGoToTime_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            e.CanExecute = false;
+        }
+
         private readonly Command CmdEditUndo = CommandManager.CreateCommand("Ctrl+Z");
         private readonly Command CmdEditRedo = CommandManager.CreateCommand("Ctrl+Y");
         private readonly Command CmdEditCut = CommandManager.CreateCommand("Ctrl+X");
@@ -125,6 +141,8 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
         private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();
+        private readonly Command CmdEditGoToMeasure = CommandManager.CreateCommand("Ctrl+G");
+        private readonly Command CmdEditGoToTime = CommandManager.CreateCommand("Ctrl+Shift+G");
 
     }
 }

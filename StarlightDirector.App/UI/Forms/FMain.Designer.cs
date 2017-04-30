@@ -110,8 +110,8 @@
             this.mnuEditModeNext = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEditSep3 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuEditGoTo = new System.Windows.Forms.ToolStripMenuItem();
-            this.measureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.timeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditGoToMeasure = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEditGoToTime = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuView = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewZoom = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuViewZoomIn = new System.Windows.Forms.ToolStripMenuItem();
@@ -828,40 +828,40 @@
             // 
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(109, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -871,7 +871,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -895,7 +895,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(109, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditMode
             // 
@@ -910,7 +910,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -975,28 +975,28 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(109, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuEditGoTo
             // 
             this.mnuEditGoTo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.measureToolStripMenuItem1,
-            this.timeToolStripMenuItem});
+            this.mnuEditGoToMeasure,
+            this.mnuEditGoToTime});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(112, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
-            // measureToolStripMenuItem1
+            // mnuEditGoToMeasure
             // 
-            this.measureToolStripMenuItem1.Name = "measureToolStripMenuItem1";
-            this.measureToolStripMenuItem1.Size = new System.Drawing.Size(136, 22);
-            this.measureToolStripMenuItem1.Text = "&Measure...";
+            this.mnuEditGoToMeasure.Name = "mnuEditGoToMeasure";
+            this.mnuEditGoToMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoToMeasure.Text = "&Measure...";
             // 
-            // timeToolStripMenuItem
+            // mnuEditGoToTime
             // 
-            this.timeToolStripMenuItem.Name = "timeToolStripMenuItem";
-            this.timeToolStripMenuItem.Size = new System.Drawing.Size(136, 22);
-            this.timeToolStripMenuItem.Text = "&Time...";
+            this.mnuEditGoToTime.Name = "mnuEditGoToTime";
+            this.mnuEditGoToTime.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoToTime.Text = "&Time...";
             // 
             // mnuView
             // 
@@ -1770,8 +1770,8 @@
         private System.Windows.Forms.ToolStripButton tsbToolsBuildAcb;
         private System.Windows.Forms.ToolStrip tlbMeasure;
         private System.Windows.Forms.ToolStripMenuItem mnuEditGoTo;
-        private System.Windows.Forms.ToolStripMenuItem measureToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem timeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditGoToMeasure;
+        private System.Windows.Forms.ToolStripMenuItem mnuEditGoToTime;
         private System.Windows.Forms.ToolStripButton tsbScoreNoteInsertSpecial;
         private System.Windows.Forms.ToolStripMenuItem mnuViewZoomToBeat1O48;
         private System.Windows.Forms.OpenFileDialog openFileDialog;

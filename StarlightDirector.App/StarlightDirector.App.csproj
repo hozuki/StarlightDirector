@@ -108,6 +108,12 @@
     <Compile Include="UI\Forms\FEditorSettings.Designer.cs">
       <DependentUpon>FEditorSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FGoTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FGoTo.Designer.cs">
+      <DependentUpon>FGoTo.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Commands.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -182,6 +188,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FEditorSettings.resx">
       <DependentUpon>FEditorSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FGoTo.resx">
+      <DependentUpon>FGoTo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FMain.resx">
       <DependentUpon>FMain.cs</DependentUpon>

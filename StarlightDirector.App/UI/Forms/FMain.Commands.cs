@@ -59,6 +59,9 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModePrevious.Attach(CmdEditModePrevious);
             mnuEditModeNext.Attach(CmdEditModeNext);
 
+            mnuEditGoToMeasure.Attach(CmdEditGoToMeasure);
+            mnuEditGoToTime.Attach(CmdEditGoToTime);
+
             // The ShortcutDisplayStrings are set separately in Form_Load.
             mnuScoreNoteStartPositionAt0.SetParameter(NotePosition.Default);
             mnuScoreNoteStartPositionAt1.SetParameter(NotePosition.Left);
