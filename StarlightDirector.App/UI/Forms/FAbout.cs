@@ -58,14 +58,19 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void FAbout_Load(object sender, EventArgs e) {
             lblAbout.BackColor = Color.Transparent;
+
+            string html;
             using (var htmlStream = ApplicationHelper.GetResourceStream("StarlightDirector.App.Resources.WebPages.About.html")) {
                 using (var reader = new StreamReader(htmlStream)) {
-                    var html = reader.ReadToEnd();
-                    var version = ApplicationHelper.GetAssemblyVersionString();
-                    html = html.Replace("$VERSION_NUMBER$", version).Replace("$VERSION_SUFFIX$", VersionSuffix).Replace("$VERSION_CODE$", VersionCode);
-                    lblAbout.Text = html;
+                    html = reader.ReadToEnd();
                 }
             }
+
+            var version = ApplicationHelper.GetAssemblyVersionString();
+            html = html.Replace("$VERSION_NUMBER$", version);
+            html = html.Replace("$VERSION_SUFFIX$", string.IsNullOrEmpty(VersionSuffix) ? VersionSuffix : " " + VersionSuffix);
+            html = html.Replace("$VERSION_CODE$", Resources.VersionCode);
+            lblAbout.Text = html;
 
             picAnimation.Visible = false;
             label1.Visible = false;
@@ -74,8 +79,13 @@ namespace StarlightDirector.App.UI.Forms {
             label1.Left = (clientSize.Width - label1.Width) / 2;
         }
 
-        private static readonly string VersionSuffix = " beta ";
-        private static readonly string VersionCode = "Riina";
+#if PRERELEASE_ALPHA
+        private static readonly string VersionSuffix = "alpha";
+#elif PRERELEASE_BETA
+        private static readonly string VersionSuffix = "beta";
+#else
+        private static readonly string VersionSuffix = string.Empty;
+#endif
 
         private bool _easterEggEnabled;
 
