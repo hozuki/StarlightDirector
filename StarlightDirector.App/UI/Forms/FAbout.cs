@@ -77,6 +77,7 @@ namespace StarlightDirector.App.UI.Forms {
             var clientSize = ClientSize;
             picAnimation.Left = (clientSize.Width - picAnimation.Width) / 2;
             label1.Left = (clientSize.Width - label1.Width) / 2;
+            btnClose.Left = (clientSize.Width - btnClose.Width) / 2;
         }
 
 #if PRERELEASE_ALPHA
