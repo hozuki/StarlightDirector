@@ -14,6 +14,8 @@ namespace StarlightDirector.UI.Controls {
 
             editor.ScrollBar = vScroll;
             _scoreEditorSelectionHandler = new ScoreEditorSelectionHandler(this);
+
+            SetStyle(ControlStyles.Selectable, true);
         }
 
         ~ScoreVisualizer() {

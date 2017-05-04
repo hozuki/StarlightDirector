@@ -10,7 +10,7 @@ namespace StarlightDirector.UI.Controls {
 
         public SingleLineLabel() {
             SetStyle(ControlStyles.AllPaintingInWmPaint | ControlStyles.UserPaint | ControlStyles.DoubleBuffer | ControlStyles.ResizeRedraw, true);
-            SetStyle(ControlStyles.Opaque | ControlStyles.ContainerControl, false);
+            SetStyle(ControlStyles.Opaque | ControlStyles.ContainerControl | ControlStyles.Selectable, false);
         }
 
         [Browsable(true)]

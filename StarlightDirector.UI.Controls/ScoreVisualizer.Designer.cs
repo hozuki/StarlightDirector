@@ -42,7 +42,6 @@ namespace StarlightDirector.UI.Controls {
             // 
             this.editor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.editor.ClearColor = System.Drawing.Color.Black;
             this.editor.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
             this.editor.Location = new System.Drawing.Point(3, 3);
             this.editor.Name = "editor";

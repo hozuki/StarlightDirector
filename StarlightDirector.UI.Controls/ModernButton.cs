@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
@@ -34,7 +35,7 @@ namespace StarlightDirector.UI.Controls {
         public Bitmap PressedImage { get; set; }
 
         public Color HoveringTextColor {
-            get { return _hoveringTextColor; }
+            get => _hoveringTextColor;
             set {
                 var b = value != _hoveringTextColor;
                 if (b) {
@@ -45,7 +46,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public Color PressedTextColor {
-            get { return _pressedTextColor; }
+            get => _pressedTextColor;
             set {
                 var b = value != _pressedTextColor;
                 if (b) {
@@ -56,7 +57,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public Color HoveringBackColor {
-            get { return _hoveringBackColor; }
+            get => _hoveringBackColor;
             set {
                 var b = value != _hoveringBackColor;
                 if (b) {
@@ -67,7 +68,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public Color PressedBackColor {
-            get { return _pressedBackColor; }
+            get => _pressedBackColor;
             set {
                 var b = value != _pressedBackColor;
                 if (b) {
@@ -77,6 +78,7 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
+        [Browsable(false)]
         public ModernButtonState State {
             get { return _state; }
             private set {
@@ -89,8 +91,8 @@ namespace StarlightDirector.UI.Controls {
         }
 
         public bool Pressed {
-            get { return State == ModernButtonState.Pressed; }
-            set { State = value ? ModernButtonState.Pressed : ModernButtonState.Normal; }
+            get => State == ModernButtonState.Pressed;
+            set => State = value ? ModernButtonState.Pressed : ModernButtonState.Normal;
         }
 
         protected override void OnHandleCreated(EventArgs e) {

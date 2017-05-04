@@ -11,14 +11,13 @@ using StarlightDirector.UI.Rendering.Direct2D;
 namespace StarlightDirector.UI.Controls {
     public abstract class Direct2DCanvas : Control {
 
-        public Color ClearColor { get; set; }
+        public Color ClearColor { get; set; } = Color.Black;
 
         protected Direct2DCanvas() {
             const ControlStyles stylesOn = ControlStyles.UserPaint | ControlStyles.AllPaintingInWmPaint | ControlStyles.Selectable | ControlStyles.Opaque | ControlStyles.ResizeRedraw;
             const ControlStyles stylesOff = ControlStyles.DoubleBuffer | ControlStyles.OptimizedDoubleBuffer;
             SetStyle(stylesOn, true);
             SetStyle(stylesOff, false);
-            ClearColor = Color.Black;
         }
 
         protected sealed override void Dispose(bool disposing) {

@@ -700,7 +700,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -828,40 +828,40 @@
             // 
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(112, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -871,7 +871,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(112, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -895,7 +895,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditMode
             // 
@@ -910,7 +910,7 @@
             this.mnuEditModePrevious,
             this.mnuEditModeNext});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(112, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -975,7 +975,7 @@
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditGoTo
             // 
@@ -983,19 +983,19 @@
             this.mnuEditGoToMeasure,
             this.mnuEditGoToTime});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // mnuEditGoToMeasure
             // 
             this.mnuEditGoToMeasure.Name = "mnuEditGoToMeasure";
-            this.mnuEditGoToMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoToMeasure.Size = new System.Drawing.Size(136, 22);
             this.mnuEditGoToMeasure.Text = "&Measure...";
             // 
             // mnuEditGoToTime
             // 
             this.mnuEditGoToTime.Name = "mnuEditGoToTime";
-            this.mnuEditGoToTime.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoToTime.Size = new System.Drawing.Size(136, 22);
             this.mnuEditGoToTime.Text = "&Time...";
             // 
             // mnuView
@@ -1375,7 +1375,7 @@
             this.mnuPreviewStop});
             this.mnuPreview.Name = "mnuPreview";
             this.mnuPreview.Size = new System.Drawing.Size(64, 21);
-            this.mnuPreview.Text = "Previe&w";
+            this.mnuPreview.Text = "P&review";
             // 
             // mnuPreviewFromThisMeasure
             // 

@@ -5,10 +5,19 @@ namespace StarlightDirector.App.Extensions {
 
         public static Control FindFocusedControl(this Control baseControl) {
             var container = baseControl as IContainerControl;
-            while (container != null) {
-                baseControl = container.ActiveControl;
-                container = baseControl as IContainerControl;
+            if (container == null) {
+                return baseControl;
             }
+
+            do {
+                var active = container.ActiveControl;
+                if (active == null) {
+                    break;
+                }
+                baseControl = active;
+                container = active as IContainerControl;
+            } while (container != null);
+
             return baseControl;
         }
 

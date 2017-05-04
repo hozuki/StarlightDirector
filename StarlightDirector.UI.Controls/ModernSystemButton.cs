@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -9,12 +10,13 @@ namespace StarlightDirector.UI.Controls {
             IconColor = Color.Black;
             HoveringIconColor = Color.Navy;
             PressedIconColor = Color.White;
+            SetStyle(ControlStyles.Selectable, false);
         }
 
         public event EventHandler<EventArgs> IconChanged;
 
         public ModernSystemButtonIcon Icon {
-            get { return _icon; }
+            get => _icon;
             set {
                 var b = value != _icon;
                 if (b) {
