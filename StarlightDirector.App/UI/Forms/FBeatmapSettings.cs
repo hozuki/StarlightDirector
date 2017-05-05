@@ -65,9 +65,9 @@ namespace StarlightDirector.App.UI.Forms {
             if (errSet.Count > 0) {
                 return;
             }
-            bpm = bpm.RoundDigits(2);
+            bpm = Math.Round(bpm, 3);
             _bpm = bpm;
-            startOffset = startOffset.RoundDigits(2);
+            startOffset = Math.Round(startOffset, 3);
             _musicOffset = startOffset;
             DialogResult = DialogResult.OK;
         }
@@ -83,8 +83,8 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void InitUI(ProjectSettings scoreSettings) {
-            txtBPM.Text = scoreSettings.BeatPerMinute.ToString("0.00");
-            txtMusicOffset.Text = scoreSettings.StartTimeOffset.ToString("0.00");
+            txtBPM.Text = scoreSettings.BeatPerMinute.ToString("0.000");
+            txtMusicOffset.Text = scoreSettings.StartTimeOffset.ToString("0.000");
         }
 
         private double _bpm;

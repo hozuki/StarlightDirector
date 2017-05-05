@@ -155,8 +155,8 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
                     command.Parameters.Add("hold", DbType.Guid);
                 }
                 command.Parameters["id"].Value = note.Basic.ID;
-                command.Parameters["difficulty"].Value = note.Basic.Bar.Score.Difficulty;
-                command.Parameters["bar"].Value = note.Basic.Bar.Index;
+                command.Parameters["difficulty"].Value = note.Basic.Bar.Basic.Score.Difficulty;
+                command.Parameters["bar"].Value = note.Basic.Bar.Basic.Index;
                 command.Parameters["grid"].Value = note.Basic.IndexInGrid;
                 command.Parameters["note_type"].Value = (int)note.Basic.Type;
                 command.Parameters["start"].Value = (int)note.Basic.StartPosition;
@@ -186,8 +186,8 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
                     command.Parameters.Add("grid", DbType.Int32);
                     command.Parameters.Add("signature", DbType.Int32);
                 }
-                command.Parameters["difficulty"].Value = (int)bar.Score.Difficulty;
-                command.Parameters["index"].Value = bar.Index;
+                command.Parameters["difficulty"].Value = (int)bar.Basic.Score.Difficulty;
+                command.Parameters["index"].Value = bar.Basic.Index;
                 command.Parameters["grid"].Value = bar.Params.UserDefinedGridPerSignature;
                 command.Parameters["signature"].Value = bar.Params.UserDefinedSignature;
                 command.ExecuteNonQuery();
@@ -210,8 +210,8 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
                     command.Parameters.Add("pv", DbType.AnsiString);
                 }
                 command.Parameters["id"].Value = note.Basic.ID;
-                command.Parameters["diff"].Value = (int)note.Basic.Bar.Score.Difficulty;
-                command.Parameters["bar"].Value = note.Basic.Bar.Index;
+                command.Parameters["diff"].Value = (int)note.Basic.Bar.Basic.Score.Difficulty;
+                command.Parameters["bar"].Value = note.Basic.Bar.Basic.Index;
                 command.Parameters["grid"].Value = note.Basic.IndexInGrid;
                 command.Parameters["type"].Value = (int)note.Basic.Type;
                 command.Parameters["pv"].Value = note.Params.GetDataString();

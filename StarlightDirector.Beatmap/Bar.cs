@@ -10,30 +10,81 @@ namespace StarlightDirector.Beatmap {
         }
 
         internal Bar(Score score, int index, Guid id) {
-            StarlightID = id;
-            Index = index;
-            Score = score;
+            Basic = new BarBasicProperties(score) {
+                ID = id,
+                Index = index
+            };
+            Editor = new BarEditorProperties();
+            Helper = new BarHelperProperties(this);
+            Temporary = new BarTemporaryProperties();
         }
 
-        public Score Score { get; }
+        public BarBasicProperties Basic { get; }
 
-        public int Index { get; internal set; }
+        public BarEditorProperties Editor { get; }
+
+        public BarHelperProperties Helper { get; }
+
+        public BarTemporaryProperties Temporary { get; }
 
         public BarParams Params { get; internal set; }
 
-        public bool IsSelected { get; internal set; }
-
         public InternalList<Note> Notes { get; } = new InternalList<Note>();
 
-        public bool HasAnyNote {
+        public Guid StarlightID {
             [DebuggerStepThrough]
-            get { return Notes.Count > 0; }
+            get { return Basic.ID; }
         }
 
-        public Guid StarlightID { get; internal set; }
-
         public override string ToString() {
-            return $"Bar (Index={Index}, ID={StarlightID}, Notes={Notes.Count})";
+            return $"Bar (Index={Basic.Index}, ID={StarlightID}, Notes={Notes.Count}, Start={Temporary.StartTime:mm\\:ss\\.fff})";
+        }
+
+        public sealed class BarBasicProperties {
+
+            internal BarBasicProperties(Score score) {
+                Score = score;
+            }
+
+            public Score Score { get; }
+
+            public int Index { get; internal set; }
+
+            public Guid ID { get; internal set; }
+
+        }
+
+        public sealed class BarEditorProperties {
+
+            internal BarEditorProperties() {
+            }
+
+            public bool IsSelected { get; internal set; }
+
+        }
+
+        public sealed class BarHelperProperties {
+
+            internal BarHelperProperties(Bar bar) {
+                _bar = bar;
+            }
+
+            public bool HasAnyNote {
+                [DebuggerStepThrough]
+                get { return _bar.Notes.Count > 0; }
+            }
+
+            private readonly Bar _bar;
+
+        }
+
+        public sealed class BarTemporaryProperties {
+
+            internal BarTemporaryProperties() {
+            }
+
+            public TimeSpan StartTime { get; internal set; }
+
         }
 
     }

@@ -20,6 +20,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
 
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 
@@ -44,6 +45,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
 
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 
@@ -51,6 +53,7 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.RemoveSelectedBars();
             visualizer.RecalcLayout();
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 

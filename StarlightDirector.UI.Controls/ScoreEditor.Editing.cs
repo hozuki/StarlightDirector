@@ -100,7 +100,7 @@ namespace StarlightDirector.UI.Controls {
             if (score == null) {
                 return Enumerable.Empty<Bar>();
             }
-            return score.Bars.Where(bar => bar.IsSelected);
+            return score.Bars.Where(bar => bar.Editor.IsSelected);
         }
 
         public bool HasSelectedBars {

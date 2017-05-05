@@ -137,6 +137,7 @@ namespace StarlightDirector.App.UI.Forms {
             note.Basic.IndexInGrid = hit.Row;
 
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 
@@ -153,6 +154,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
             note.Params.NewBpm = newBpm;
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 
@@ -164,6 +166,7 @@ namespace StarlightDirector.App.UI.Forms {
             var note = hit.Note;
             note.Basic.Bar.RemoveNote(note);
             InformProjectModified();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 

@@ -1,7 +1,12 @@
 ﻿using System;
+using StarlightDirector.Beatmap.Extensions;
 
 namespace StarlightDirector.UI.Controls {
     partial class ScoreEditor {
+
+        public void UpdateBarStartTimeText() {
+            CurrentScore.UpdateAllStartTimes();
+        }
 
         internal void RecalcLayout() {
             var scrollBar = ScrollBar;

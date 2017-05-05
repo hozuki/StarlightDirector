@@ -96,6 +96,7 @@ namespace StarlightDirector.App.UI.Forms {
             project.Settings.StartTimeOffset = offset;
             InformProjectModified();
             visualizer.RecalcLayout();
+            visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
         }
 

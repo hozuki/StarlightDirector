@@ -5,7 +5,7 @@ using System.Linq;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap.Extensions {
-    public static class ScoreExtension {
+    public static class ScoreExtensions {
 
         [DebuggerStepThrough]
         public static CompiledScore Compile(this Score score) {
@@ -40,10 +40,10 @@ namespace StarlightDirector.Beatmap.Extensions {
             if (!score.Bars.Contains(bar)) {
                 throw new ArgumentException("Assigned bar is not in the score.", nameof(bar));
             }
-            var barIndex = bar.Index;
+            var barIndex = bar.Basic.Index;
             foreach (var b in score.Bars) {
-                if (b.Index > barIndex) {
-                    --b.Index;
+                if (b.Basic.Index > barIndex) {
+                    --b.Basic.Index;
                 }
             }
             foreach (var note in bar.Notes) {
@@ -61,7 +61,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                     throw new ArgumentException("Assigned bar is not in the score.", nameof(bar));
                 }
             }
-            var barIndices = barArr.Select(b => b.Index).ToArray();
+            var barIndices = barArr.Select(b => b.Basic.Index).ToArray();
             foreach (var bar in barArr) {
                 foreach (var note in bar.Notes) {
                     note.ResetAsTap();
@@ -69,8 +69,8 @@ namespace StarlightDirector.Beatmap.Extensions {
                 score.Bars.Remove(bar);
             }
             foreach (var bar in score.Bars) {
-                var greaterNum = barIndices.Count(index => bar.Index > index);
-                bar.Index -= greaterNum;
+                var greaterNum = barIndices.Count(index => bar.Basic.Index > index);
+                bar.Basic.Index -= greaterNum;
             }
         }
 
@@ -109,6 +109,43 @@ namespace StarlightDirector.Beatmap.Extensions {
                 }
             }
             return TimeSpan.FromSeconds(currentTiming);
+        }
+
+        public static void UpdateAllStartTimes(this Score score) {
+            var notes = score.GetAllNotes();
+            var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
+            var currentTiming = score.Project.Settings.StartTimeOffset;
+            var currentBpm = score.Project.Settings.BeatPerMinute;
+            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentBarIndex = 0;
+            foreach (var bar in score.Bars) {
+                bar.Temporary.StartTime = TimeSpan.FromSeconds(currentTiming);
+                if (currentBarIndex == score.Bars.Count - 1) {
+                    break;
+                }
+                var currentGridPerSignature = bar.GetGridPerSignature();
+                var numGrids = bar.GetNumberOfGrids();
+                if (allBpmNotes.Any(n => n.Basic.Bar == bar)) {
+                    var bpmNotesInThisBar = allBpmNotes.Where(n => n.Basic.Bar == bar).ToList();
+                    bpmNotesInThisBar.Sort((n1, n2) => n1.Basic.IndexInGrid.CompareTo(n2.Basic.IndexInGrid));
+                    var bpmNoteIndex = 0;
+                    for (var i = 0; i < numGrids; ++i) {
+                        if (bpmNoteIndex < bpmNotesInThisBar.Count) {
+                            var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
+                            if (i == bpmNote.Basic.IndexInGrid) {
+                                currentBpm = bpmNote.Params.NewBpm;
+                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                ++bpmNoteIndex;
+                            }
+                        }
+                        currentTiming += currentInterval * i / currentGridPerSignature;
+                    }
+                } else {
+                    var currentSignature = bar.GetSignature();
+                    currentTiming += currentInterval * currentSignature;
+                }
+                ++currentBarIndex;
+            }
         }
 
         private static CompiledScore Compile(Score score, TimeSpan? userDefinedEnding) {

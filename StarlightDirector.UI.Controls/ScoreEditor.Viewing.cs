@@ -93,6 +93,7 @@ namespace StarlightDirector.UI.Controls {
             var anythingChanged = newScrollOffset != oldScrollOffset || !newHeight.Equals(oldHeight);
             BarLineSpaceUnit = newUnit;
             RecalcLayout();
+            newScrollOffset = newScrollOffset.Clamp(ScrollBar.Minimum, ScrollBar.Maximum);
             ScrollBar.Value = newScrollOffset;
 
             return anythingChanged;

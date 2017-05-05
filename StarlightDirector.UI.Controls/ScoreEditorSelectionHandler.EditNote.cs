@@ -257,8 +257,8 @@ namespace StarlightDirector.UI.Controls {
 
             var targetBar = targetNote.Basic.Bar;
             var lastBar = lastNote.Basic.Bar;
-            var firstBarIndex = Math.Min(lastBar.Index, targetBar.Index);
-            var secondBarIndex = firstBarIndex == targetBar.Index ? lastBar.Index : targetBar.Index;
+            var firstBarIndex = Math.Min(lastBar.Basic.Index, targetBar.Basic.Index);
+            var secondBarIndex = firstBarIndex == targetBar.Basic.Index ? lastBar.Basic.Index : targetBar.Basic.Index;
 
             // Check: no other notes can be between these two notes.
             bool anyNoteInBetween = false;
@@ -267,16 +267,16 @@ namespace StarlightDirector.UI.Controls {
                 var secondRow = firstRow == lastNote.Basic.IndexInGrid ? targetNote.Basic.IndexInGrid : lastNote.Basic.IndexInGrid;
                 anyNoteInBetween = targetBar.Notes.Any(n => n.Basic.FinishPosition == targetNote.Basic.FinishPosition && firstRow < n.Basic.IndexInGrid && n.Basic.IndexInGrid < secondRow);
             } else {
-                var score = targetBar.Score;
-                var firstBar = targetBar.Index == firstBarIndex ? targetBar : lastBar;
+                var score = targetBar.Basic.Score;
+                var firstBar = targetBar.Basic.Index == firstBarIndex ? targetBar : lastBar;
                 var secondBar = firstBar == targetBar ? lastBar : targetBar;
                 var firstRow = firstBar == targetBar ? targetNote.Basic.IndexInGrid : lastNote.Basic.IndexInGrid;
                 var secondRow = firstBar == targetBar ? lastNote.Basic.IndexInGrid : targetNote.Basic.IndexInGrid;
                 foreach (var bar in score.Bars) {
-                    if (bar.Index < firstBarIndex) {
+                    if (bar.Basic.Index < firstBarIndex) {
                         continue;
                     }
-                    if (bar.Index > secondBarIndex) {
+                    if (bar.Basic.Index > secondBarIndex) {
                         break;
                     }
                     IEnumerable<Note> notes;

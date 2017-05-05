@@ -180,6 +180,9 @@ namespace StarlightDirector.Beatmap {
 
         public sealed class NoteEditorProperties {
 
+            internal NoteEditorProperties() {
+            }
+
             public bool IsSelected { get; internal set; }
 
             public Note NextSync { get; internal set; }
@@ -214,7 +217,7 @@ namespace StarlightDirector.Beatmap {
                 return 0;
             }
             if (x.Basic.Bar.StarlightID != y.Basic.Bar.StarlightID) {
-                return x.Basic.Bar.Index.CompareTo(y.Basic.Bar.Index);
+                return x.Basic.Bar.Basic.Index.CompareTo(y.Basic.Bar.Basic.Index);
             }
             var r = x.Basic.IndexInGrid.CompareTo(y.Basic.IndexInGrid);
             if (r == 0 && x.Basic.Type != y.Basic.Type && (x.Basic.Type == NoteType.VariantBpm || y.Basic.Type == NoteType.VariantBpm)) {

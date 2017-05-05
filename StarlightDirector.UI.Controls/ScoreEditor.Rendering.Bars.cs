@@ -34,7 +34,7 @@ namespace StarlightDirector.UI.Controls {
         }
 
         private void RenderBarOutline(RenderContext context, Bar bar, RectangleF barArea, float barStartY, int numberOfGrids, float unit) {
-            if (!bar.IsSelected) {
+            if (!bar.Editor.IsSelected) {
                 return;
             }
             var barHeight = numberOfGrids * unit;
@@ -49,10 +49,13 @@ namespace StarlightDirector.UI.Controls {
             var y = barStartY - lineHeight;
             var textBrush = _gridNumberBrush;
 
-            // Bar index, at the bottom.
-            context.DrawText($"#{bar.Index + 1}", textBrush, textFont, x, y);
             // Other text
-            //y -= lineHeight;
+            // Bar start time
+            context.DrawText(bar.Temporary.StartTime.ToString(@"mm\:ss\.fff"), textBrush, textFont, x, y);
+            y -= lineHeight;
+            // Bar index, at the bottom.
+            context.DrawText($"#{bar.Basic.Index + 1}", textBrush, textFont, x, y);
+            // y -- lineHeight;
         }
 
         private void RenderBarGrid(RenderContext context, RectangleF gridArea, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
