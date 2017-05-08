@@ -700,7 +700,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -1106,7 +1106,6 @@
             this.mnuViewHighlightMode.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuViewHighlightModeFourBeats,
             this.mnuViewHighlightModeThreeBeats});
-            this.mnuViewHighlightMode.Enabled = false;
             this.mnuViewHighlightMode.Name = "mnuViewHighlightMode";
             this.mnuViewHighlightMode.Size = new System.Drawing.Size(167, 22);
             this.mnuViewHighlightMode.Text = "&Highlight Mode";
@@ -1144,7 +1143,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1186,7 +1185,7 @@
             this.mnuScoreMeasureAppendMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
@@ -1217,7 +1216,7 @@
             this.mnuScoreNoteInsertSpecial,
             this.mnuScoreNoteModifySpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteDelete

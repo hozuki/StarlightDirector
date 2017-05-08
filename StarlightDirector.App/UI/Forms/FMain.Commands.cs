@@ -121,6 +121,11 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewZoomOut.Attach(CmdViewZoomOut);
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
+            mnuViewHighlightModeFourBeats.SetParameter(PrimaryBeatMode.EveryFourBeats);
+            mnuViewHighlightModeThreeBeats.SetParameter(PrimaryBeatMode.EveryThreeBeats);
+            mnuViewHighlightModeFourBeats.Attach(CmdViewHighlightModeSet);
+            mnuViewHighlightModeThreeBeats.Attach(CmdViewHighlightModeSet);
+
             mnuPreviewFromThisMeasure.Attach(CmdPreviewFromThisMeasure);
             mnuPreviewFromStart.Attach(CmdPreviewFromStart);
             tsbPreviewFromStart.Attach(CmdPreviewFromStart);
