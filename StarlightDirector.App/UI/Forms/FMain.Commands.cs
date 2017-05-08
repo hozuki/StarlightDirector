@@ -94,6 +94,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             mnuScoreNoteDelete.Attach(CmdScoreNoteDelete);
             tsbScoreNoteDelete.Attach(CmdScoreNoteDelete);
+            ctxScoreNoteDelete.Attach(CmdScoreNoteDelete);
 
             mnuScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
             tsbScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
@@ -112,6 +113,7 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
             tsbScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
             mnuScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
+            tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
             tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
