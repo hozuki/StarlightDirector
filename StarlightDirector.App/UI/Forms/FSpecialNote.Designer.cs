@@ -28,11 +28,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNewBpm = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cboMeasures = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboRows = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(76, 102);
+            this.btnOK.Location = new System.Drawing.Point(76, 169);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
             this.btnOK.TabIndex = 1;
@@ -42,7 +46,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(172, 102);
+            this.btnCancel.Location = new System.Drawing.Point(172, 169);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 2;
@@ -52,7 +56,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(41, 59);
+            this.label1.Location = new System.Drawing.Point(41, 126);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(68, 17);
             this.label1.TabIndex = 0;
@@ -60,7 +64,7 @@
             // 
             // txtNewBpm
             // 
-            this.txtNewBpm.Location = new System.Drawing.Point(115, 56);
+            this.txtNewBpm.Location = new System.Drawing.Point(115, 123);
             this.txtNewBpm.Name = "txtNewBpm";
             this.txtNewBpm.Size = new System.Drawing.Size(106, 23);
             this.txtNewBpm.TabIndex = 1;
@@ -69,7 +73,7 @@
             // 
             this.radioButton1.AutoSize = true;
             this.radioButton1.Checked = true;
-            this.radioButton1.Location = new System.Drawing.Point(25, 24);
+            this.radioButton1.Location = new System.Drawing.Point(25, 91);
             this.radioButton1.Name = "radioButton1";
             this.radioButton1.Size = new System.Drawing.Size(98, 21);
             this.radioButton1.TabIndex = 3;
@@ -77,13 +81,53 @@
             this.radioButton1.Text = "Variant BPM";
             this.radioButton1.UseVisualStyleBackColor = true;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(41, 23);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(76, 17);
+            this.label2.TabIndex = 4;
+            this.label2.Text = "In measure:";
+            // 
+            // cboMeasures
+            // 
+            this.cboMeasures.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboMeasures.FormattingEnabled = true;
+            this.cboMeasures.Location = new System.Drawing.Point(123, 20);
+            this.cboMeasures.Name = "cboMeasures";
+            this.cboMeasures.Size = new System.Drawing.Size(96, 25);
+            this.cboMeasures.TabIndex = 5;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(41, 54);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(54, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "On row:";
+            // 
+            // cboRows
+            // 
+            this.cboRows.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboRows.FormattingEnabled = true;
+            this.cboRows.Location = new System.Drawing.Point(123, 51);
+            this.cboRows.Name = "cboRows";
+            this.cboRows.Size = new System.Drawing.Size(96, 25);
+            this.cboRows.TabIndex = 7;
+            // 
             // FSpecialNote
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(291, 142);
+            this.ClientSize = new System.Drawing.Size(291, 212);
+            this.Controls.Add(this.cboRows);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.cboMeasures);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.radioButton1);
             this.Controls.Add(this.txtNewBpm);
             this.Controls.Add(this.label1);
@@ -109,5 +153,9 @@
         private System.Windows.Forms.TextBox txtNewBpm;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cboMeasures;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboRows;
     }
 }

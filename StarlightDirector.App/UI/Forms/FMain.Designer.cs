@@ -162,7 +162,6 @@
             this.mnuScoreNoteStartPositionTo5 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuScoreNoteSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuScoreNoteInsertSpecial = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuScoreNoteModifySpecial = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreview = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromThisMeasure = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuPreviewFromStart = new System.Windows.Forms.ToolStripMenuItem();
@@ -1213,8 +1212,7 @@
             this.mnuScoreNoteSep1,
             this.mnuScoreNoteStartPosition,
             this.mnuScoreNoteSep2,
-            this.mnuScoreNoteInsertSpecial,
-            this.mnuScoreNoteModifySpecial});
+            this.mnuScoreNoteInsertSpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
             this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreNote.Text = "&Note";
@@ -1222,13 +1220,13 @@
             // mnuScoreNoteDelete
             // 
             this.mnuScoreNoteDelete.Name = "mnuScoreNoteDelete";
-            this.mnuScoreNoteDelete.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteDelete.Text = "&Delete Selected";
             // 
             // mnuScoreNoteSep1
             // 
             this.mnuScoreNoteSep1.Name = "mnuScoreNoteSep1";
-            this.mnuScoreNoteSep1.Size = new System.Drawing.Size(168, 6);
+            this.mnuScoreNoteSep1.Size = new System.Drawing.Size(163, 6);
             // 
             // mnuScoreNoteStartPosition
             // 
@@ -1250,7 +1248,7 @@
             this.mnuScoreNoteStartPositionTo4,
             this.mnuScoreNoteStartPositionTo5});
             this.mnuScoreNoteStartPosition.Name = "mnuScoreNoteStartPosition";
-            this.mnuScoreNoteStartPosition.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteStartPosition.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteStartPosition.Text = "Start &Position";
             // 
             // mnuScoreNoteStartPositionAt0
@@ -1352,19 +1350,13 @@
             // mnuScoreNoteSep2
             // 
             this.mnuScoreNoteSep2.Name = "mnuScoreNoteSep2";
-            this.mnuScoreNoteSep2.Size = new System.Drawing.Size(168, 6);
+            this.mnuScoreNoteSep2.Size = new System.Drawing.Size(163, 6);
             // 
             // mnuScoreNoteInsertSpecial
             // 
             this.mnuScoreNoteInsertSpecial.Name = "mnuScoreNoteInsertSpecial";
-            this.mnuScoreNoteInsertSpecial.Size = new System.Drawing.Size(171, 22);
+            this.mnuScoreNoteInsertSpecial.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteInsertSpecial.Text = "Insert &Special...";
-            // 
-            // mnuScoreNoteModifySpecial
-            // 
-            this.mnuScoreNoteModifySpecial.Name = "mnuScoreNoteModifySpecial";
-            this.mnuScoreNoteModifySpecial.Size = new System.Drawing.Size(171, 22);
-            this.mnuScoreNoteModifySpecial.Text = "Modi&fy Special...";
             // 
             // mnuPreview
             // 
@@ -1821,7 +1813,6 @@
         private System.Windows.Forms.ToolStripSeparator mnuProjectBeatmapSep1;
         private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmapStats;
         private System.Windows.Forms.ToolStripSeparator mnuScoreNoteSep2;
-        private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteModifySpecial;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteDeleteSpecial;
     }

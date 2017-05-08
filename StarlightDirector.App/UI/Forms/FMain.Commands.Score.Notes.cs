@@ -124,21 +124,43 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void CmdScoreNoteInsertSpecial_Executed(object sender, ExecutedEventArgs e) {
             var hit = (ScoreEditorHitTestResult)e.Parameter;
-            if (hit == null || !hit.HitAnyBar) {
-                return;
+            double newBpm;
+            Bar bar;
+            int newRowIndex;
+            if (hit == null) {
+                var r = FSpecialNote.VariantBpmRequestInput(this, visualizer.Editor.CurrentScore);
+                if (r.DialogResult == DialogResult.Cancel) {
+                    return;
+                }
+                newBpm = r.NewBpm;
+                bar = visualizer.Editor.CurrentScore?.Bars.Find(b => b.Basic.Index == r.BarIndex);
+                if (bar == null) {
+                    return;
+                }
+                newRowIndex = r.RowIndex;
+            } else {
+                if (!hit.HitAnyBar) {
+                    return;
+                }
+                var r = FSpecialNote.VariantBpmRequestInput(this, hit.Bar.Basic.Index, hit.Row);
+                if (r.DialogResult == DialogResult.Cancel) {
+                    return;
+                }
+                newBpm = r.NewBpm;
+                bar = hit.Bar;
+                newRowIndex = hit.Row;
             }
-            var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this);
-            if (r == DialogResult.Cancel) {
-                return;
-            }
-            var bar = hit.Bar;
             var note = bar.AddSpecialNote(NoteType.VariantBpm);
             note.Params.NewBpm = newBpm;
-            note.Basic.IndexInGrid = hit.Row;
+            note.Basic.IndexInGrid = newRowIndex;
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
+
+            ctxScoreNoteInsertSpecial.DeleteParameter();
+            ctxScoreNoteModifySpecial.DeleteParameter();
+            ctxScoreNoteDeleteSpecial.DeleteParameter();
         }
 
         private void CmdScoreNoteModifySpecial_Executed(object sender, ExecutedEventArgs e) {
@@ -148,7 +170,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var note = hit.Note;
             var originalBpm = note.Params.NewBpm;
-            var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this, originalBpm);
+            var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this, hit.Bar.Basic.Index, hit.Row, originalBpm);
             if (r == DialogResult.Cancel) {
                 return;
             }
@@ -156,6 +178,10 @@ namespace StarlightDirector.App.UI.Forms {
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
+
+            ctxScoreNoteInsertSpecial.DeleteParameter();
+            ctxScoreNoteModifySpecial.DeleteParameter();
+            ctxScoreNoteDeleteSpecial.DeleteParameter();
         }
 
         private void CmdScoreNoteDeleteSpecial_Executed(object sender, ExecutedEventArgs e) {
@@ -168,6 +194,10 @@ namespace StarlightDirector.App.UI.Forms {
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
             visualizer.Editor.Invalidate();
+
+            ctxScoreNoteInsertSpecial.DeleteParameter();
+            ctxScoreNoteModifySpecial.DeleteParameter();
+            ctxScoreNoteDeleteSpecial.DeleteParameter();
         }
 
         private readonly Command CmdScoreNoteStartPositionSetAt = CommandManager.CreateCommand();
