@@ -91,6 +91,19 @@ namespace StarlightDirector.UI.Controls {
 
             var textBrush = _gridNumberBrush;
             var textFont = _gridNumberFont;
+            int visibleGridsPerBeat;
+            // For the usage, see below.
+            if (primaryBeatIndex % firstClearDrawnRatio == 0) {
+                visibleGridsPerBeat = primaryBeatIndex / firstClearDrawnRatio;
+            } else {
+                // This patch does not actually 'patch' very well. But it is still better than splitting
+                // the non-separatable 3-beat measures into some weird 5-beat(=32/6) rendering.
+                visibleGridsPerBeat = primaryBeatIndex * numBeats / 4 / firstClearDrawnRatio;
+            }
+            if (visibleGridsPerBeat <= 0) {
+                visibleGridsPerBeat = 1;
+            }
+            var visibleGridCounter = 1;
             // Horizontal
             for (var i = 0; i <= numberOfGrids; ++i) {
                 if (i % firstClearDrawnRatio != 0) {
@@ -115,11 +128,18 @@ namespace StarlightDirector.UI.Controls {
                 context.DrawLine(pen, gridArea.Left, currentY, gridArea.Right, currentY);
 
                 if (i < numberOfGrids) {
-                    var text = (i + 1).ToString();
+                    // Prints like
+                    // 1/4 2/4 3/4 4/4 1/4 2/4 ...
+                    var text = $"{visibleGridCounter}/{visibleGridsPerBeat}";
                     var textSize = context.MeasureText(text, _gridNumberFont);
                     var textLeft = gridArea.Left - textSize.Width - GridNumberMargin;
                     var textTop = currentY - textSize.Height / 2;
                     context.DrawText(text, textBrush, textFont, textLeft, textTop, textSize.Width, textSize.Height);
+                    if (visibleGridCounter >= visibleGridsPerBeat) {
+                        visibleGridCounter = 1;
+                    } else {
+                        ++visibleGridCounter;
+                    }
                 }
             }
         }
