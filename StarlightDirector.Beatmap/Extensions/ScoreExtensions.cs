@@ -235,11 +235,22 @@ namespace StarlightDirector.Beatmap.Extensions {
                     ++currentGroupID;
                 } else if (note.Helper.IsSlide) {
                     var n = note;
+                    var n2 = n;
                     while (n != null) {
                         cn.GroupID = currentGroupID;
+                        n2 = n;
                         n = n.Editor.NextSlide;
                         if (n != null) {
                             cn = noteMap2[n];
+                        }
+                    }
+                    // A slide group, directly followed by a flick group.
+                    if (n2.Helper.HasNextFlick) {
+                        n = n2.Editor.NextFlick;
+                        while (n != null) {
+                            cn = noteMap2[n];
+                            cn.GroupID = currentGroupID;
+                            n = n.Editor.NextFlick;
                         }
                     }
                     ++currentGroupID;
