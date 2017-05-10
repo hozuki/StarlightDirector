@@ -43,12 +43,18 @@ namespace StarlightDirector.UI.Controls {
                             var y = GetNotePositionY(note, unit, noteStartY);
                             var h = note.Helper;
                             if (h.IsSlide) {
-                                DrawSlideNote(context, note, x, y, radius, h.IsSlideMidway);
+                                if (h.HasNextFlick) {
+                                    DrawFlickNote(context, note, x, y, radius, note.Basic.FlickType);
+                                } else {
+                                    DrawSlideNote(context, note, x, y, radius, h.IsSlideMidway);
+                                }
                             } else if (h.IsHoldStart) {
                                 DrawHoldNote(context, note, x, y, radius);
                             } else {
                                 if (note.Basic.FlickType != NoteFlickType.None) {
                                     DrawFlickNote(context, note, x, y, radius, note.Basic.FlickType);
+                                } else if (h.IsHoldEnd) {
+                                    DrawHoldNote(context, note, x, y, radius);
                                 } else {
                                     DrawTapNote(context, note, x, y, radius);
                                 }
