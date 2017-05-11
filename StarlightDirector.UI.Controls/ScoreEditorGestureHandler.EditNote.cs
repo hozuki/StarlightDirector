@@ -8,7 +8,7 @@ using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.UI.Controls {
-    partial class ScoreEditorSelectionHandler {
+    partial class ScoreEditorGestureHandler {
 
         private void EditNoteModeSelect(ScoreEditorHitTestResult hit, MouseEventArgs e) {
             var editor = _visualizer.Editor;

@@ -7,9 +7,9 @@ using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Controls.Extensions;
 
 namespace StarlightDirector.UI.Controls {
-    internal sealed partial class ScoreEditorSelectionHandler {
+    internal sealed partial class ScoreEditorGestureHandler {
 
-        public ScoreEditorSelectionHandler(ScoreVisualizer visualizer) {
+        public ScoreEditorGestureHandler(ScoreVisualizer visualizer) {
             _visualizer = visualizer;
         }
 

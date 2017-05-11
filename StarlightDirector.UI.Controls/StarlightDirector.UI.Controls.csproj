@@ -109,8 +109,8 @@
     <Compile Include="ScoreEditorConfig.cs" />
     <Compile Include="ScoreEditorHitRegion.cs" />
     <Compile Include="ScoreEditorHitTestResult.cs" />
-    <Compile Include="ScoreEditorSelectionHandler.cs" />
-    <Compile Include="ScoreEditorSelectionHandler.EditNote.cs" />
+    <Compile Include="ScoreEditorGestureHandler.cs" />
+    <Compile Include="ScoreEditorGestureHandler.EditNote.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>

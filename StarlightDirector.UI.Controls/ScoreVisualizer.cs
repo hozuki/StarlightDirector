@@ -13,7 +13,7 @@ namespace StarlightDirector.UI.Controls {
             RegisterEventHandlers();
 
             editor.ScrollBar = vScroll;
-            _scoreEditorSelectionHandler = new ScoreEditorSelectionHandler(this);
+            _scoreEditorSelectionHandler = new ScoreEditorGestureHandler(this);
 
             SetStyle(ControlStyles.Selectable, true);
         }
@@ -167,7 +167,7 @@ namespace StarlightDirector.UI.Controls {
 
         private static readonly int ConstMargin = 3;
 
-        private readonly ScoreEditorSelectionHandler _scoreEditorSelectionHandler;
+        private readonly ScoreEditorGestureHandler _scoreEditorSelectionHandler;
 
     }
 }
