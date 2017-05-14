@@ -51,14 +51,29 @@ namespace StarlightDirector.Beatmap.Extensions {
             note.RemoveSync();
 
             // Fix flick notes.
-            Note prevFlick = null, nextFlick = null;
-            if (note.Helper.HasPrevFlick) {
-                prevFlick = note.Editor.PrevFlick;
-                prevFlick.Editor.NextFlick = note.Editor.NextFlick;
+            Note prevFlick = note.Editor.PrevFlick, nextFlick = note.Editor.NextFlick;
+            //var flickGroupStillValid = true;
+            //// Test if we delete this note, the rest still form a valid flick group.
+            //if (prevFlick != null && nextFlick != null) {
+            //    if (prevFlick.Basic.FinishPosition == nextFlick.Basic.FinishPosition) {
+            //        // prevFlick and nextFlick form a straight vertical line. Now it is invalid.
+            //        flickGroupStillValid = false;
+            //    }
+            //}
+            //if (prevFlick != null) {
+            //    // If the rest cannot form one valid flick group, then split them into two.
+            //    prevFlick.Editor.NextFlick = flickGroupStillValid ? note.Editor.NextFlick : null;
+            //}
+            //if (nextFlick != null) {
+            //    nextFlick.Editor.PrevFlick = flickGroupStillValid ? note.Editor.PrevFlick : null;
+            //}
+
+            // New strategy: force split the flick group into two. Reconnect if the user needs to.
+            if (prevFlick != null) {
+                prevFlick.Editor.NextFlick = null;
             }
-            if (note.Helper.HasNextFlick) {
-                nextFlick = note.Editor.NextFlick;
-                nextFlick.Editor.PrevFlick = note.Editor.PrevFlick;
+            if (nextFlick != null) {
+                nextFlick.Editor.PrevFlick = null;
             }
             if (prevFlick != null) {
                 if (!prevFlick.Helper.HasPrevFlick && !prevFlick.Helper.HasNextFlick) {
@@ -70,19 +85,21 @@ namespace StarlightDirector.Beatmap.Extensions {
                     nextFlick.Basic.FlickType = NoteFlickType.None;
                 }
             }
-            if (prevFlick != null || nextFlick != null) {
-                FixFlickDirections(prevFlick ?? nextFlick);
+            // Actually deleting a flick note only influences the flick note before it (prevFlick).
+            if (prevFlick != null) {
+                FixFlickDirections(prevFlick);
+            }
+            if (nextFlick != null) {
+                FixFlickDirections(nextFlick);
             }
 
             // Fix slide notes.
-            Note prevSlide = null, nextSlide = null;
-            if (note.Helper.HasPrevSlide) {
-                prevSlide = note.Editor.PrevSlide;
-                prevSlide.Editor.NextSlide = note.Editor.NextSlide;
+            Note prevSlide = note.Editor.PrevSlide, nextSlide = note.Editor.NextSlide;
+            if (prevSlide != null) {
+                prevSlide.Editor.NextSlide = null;
             }
-            if (note.Helper.HasNextSlide) {
-                nextSlide = note.Editor.NextSlide;
-                nextSlide.Editor.PrevSlide = note.Editor.PrevSlide;
+            if (nextSlide != null) {
+                nextSlide.Editor.PrevSlide = null;
             }
             if (prevSlide != null) {
                 if (!prevSlide.Helper.HasPrevSlide && !prevSlide.Helper.HasNextSlide) {
@@ -93,6 +110,12 @@ namespace StarlightDirector.Beatmap.Extensions {
                 if (!nextSlide.Helper.HasPrevSlide && !nextSlide.Helper.HasNextSlide) {
                     nextSlide.Basic.Type = NoteType.TapOrFlick;
                 }
+            }
+            if (prevSlide != null) {
+                FixFlickDirections(prevSlide);
+            }
+            if (nextSlide != null) {
+                FixFlickDirections(nextSlide);
             }
 
             // Fix hold notes.
