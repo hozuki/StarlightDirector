@@ -83,7 +83,7 @@
             this.mnuProjectBeatmapSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectBeatmapStats = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectMusic = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEditMusicSettings = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuProjectMusicSettings = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuProjectSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuProjectExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEdit = new System.Windows.Forms.ToolStripMenuItem();
@@ -723,34 +723,34 @@
             // 
             this.mnuProjectNew.Image = global::StarlightDirector.App.Properties.Resources.IconFileNew;
             this.mnuProjectNew.Name = "mnuProjectNew";
-            this.mnuProjectNew.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectNew.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectNew.Text = "&New";
             // 
             // mnuProjectOpen
             // 
             this.mnuProjectOpen.Image = global::StarlightDirector.App.Properties.Resources.IconFileOpen;
             this.mnuProjectOpen.Name = "mnuProjectOpen";
-            this.mnuProjectOpen.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectOpen.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectOpen.Text = "&Open...";
             // 
             // mnuProjectSave
             // 
             this.mnuProjectSave.Image = global::StarlightDirector.App.Properties.Resources.IconFileSave;
             this.mnuProjectSave.Name = "mnuProjectSave";
-            this.mnuProjectSave.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectSave.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectSave.Text = "&Save";
             // 
             // mnuProjecgtSaveAs
             // 
             this.mnuProjecgtSaveAs.Image = global::StarlightDirector.App.Properties.Resources.IconFileSaveAs;
             this.mnuProjecgtSaveAs.Name = "mnuProjecgtSaveAs";
-            this.mnuProjecgtSaveAs.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjecgtSaveAs.Size = new System.Drawing.Size(152, 22);
             this.mnuProjecgtSaveAs.Text = "Save &As...";
             // 
             // mnuProjectSep1
             // 
             this.mnuProjectSep1.Name = "mnuProjectSep1";
-            this.mnuProjectSep1.Size = new System.Drawing.Size(127, 6);
+            this.mnuProjectSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuProjectBeatmap
             // 
@@ -759,7 +759,7 @@
             this.mnuProjectBeatmapSep1,
             this.mnuProjectBeatmapStats});
             this.mnuProjectBeatmap.Name = "mnuProjectBeatmap";
-            this.mnuProjectBeatmap.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectBeatmap.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectBeatmap.Text = "&Beatmap";
             // 
             // mnuProjectBeatmapSettings
@@ -782,27 +782,27 @@
             // mnuProjectMusic
             // 
             this.mnuProjectMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuEditMusicSettings});
+            this.mnuProjectMusicSettings});
             this.mnuProjectMusic.Name = "mnuProjectMusic";
-            this.mnuProjectMusic.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectMusic.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectMusic.Text = "Mus&ic";
             // 
-            // mnuEditMusicSettings
+            // mnuProjectMusicSettings
             // 
-            this.mnuEditMusicSettings.Name = "mnuEditMusicSettings";
-            this.mnuEditMusicSettings.Size = new System.Drawing.Size(169, 22);
-            this.mnuEditMusicSettings.Text = "Music &Settings...";
+            this.mnuProjectMusicSettings.Name = "mnuProjectMusicSettings";
+            this.mnuProjectMusicSettings.Size = new System.Drawing.Size(169, 22);
+            this.mnuProjectMusicSettings.Text = "Music &Settings...";
             // 
             // mnuProjectSep2
             // 
             this.mnuProjectSep2.Name = "mnuProjectSep2";
-            this.mnuProjectSep2.Size = new System.Drawing.Size(127, 6);
+            this.mnuProjectSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuProjectExit
             // 
             this.mnuProjectExit.Image = global::StarlightDirector.App.Properties.Resources.IconFileExit;
             this.mnuProjectExit.Name = "mnuProjectExit";
-            this.mnuProjectExit.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectExit.Size = new System.Drawing.Size(152, 22);
             this.mnuProjectExit.Text = "E&xit";
             // 
             // mnuEdit
@@ -1142,7 +1142,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1184,7 +1184,7 @@
             this.mnuScoreMeasureAppendMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
@@ -1214,7 +1214,7 @@
             this.mnuScoreNoteSep2,
             this.mnuScoreNoteInsertSpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteDelete
@@ -1666,7 +1666,7 @@
         private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmap;
         private System.Windows.Forms.ToolStripMenuItem mnuProjectBeatmapSettings;
         private System.Windows.Forms.ToolStripMenuItem mnuProjectMusic;
-        private System.Windows.Forms.ToolStripMenuItem mnuEditMusicSettings;
+        private System.Windows.Forms.ToolStripMenuItem mnuProjectMusicSettings;
         private System.Windows.Forms.ToolStripSeparator mnuEditSep3;
         private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasure;
         private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureAppend;

@@ -105,6 +105,14 @@ namespace StarlightDirector.App.UI.Forms {
             FBeatmapStats.ShowDialog(this, project);
         }
 
+        private void CmdProjectMusicSettings_Executed(object sender, ExecutedEventArgs e) {
+            throw new NotImplementedException();
+        }
+
+        private void CmdProjectMusicSettings_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            e.CanExecute = false;
+        }
+
         private void CmdProjectExit_Executed(object sender, ExecutedEventArgs e) {
             Close();
         }
@@ -115,6 +123,7 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
         private readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
         private readonly Command CmdProjectBeatmapStats = CommandManager.CreateCommand();
+        private readonly Command CmdProjectMusicSettings = CommandManager.CreateCommand();
         private readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
 
     }

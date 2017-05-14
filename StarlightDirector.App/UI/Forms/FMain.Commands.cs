@@ -23,6 +23,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             mnuProjectBeatmapSettings.Attach(CmdProjectBeatmapSettings);
             mnuProjectBeatmapStats.Attach(CmdProjectBeatmapStats);
+            mnuProjectMusicSettings.Attach(CmdProjectMusicSettings);
 
             mnuScoreDifficultyDebut.SetParameter(Difficulty.Debut);
             mnuScoreDifficultyRegular.SetParameter(Difficulty.Regular);
