@@ -158,8 +158,8 @@ namespace StarlightDirector.Beatmap.Extensions {
 
             // Find the first flick note in this group.
             var firstFlick = flickNoteInGroup;
-            while (flickNoteInGroup.Helper.HasPrevFlick) {
-                firstFlick = flickNoteInGroup.Editor.PrevFlick;
+            while (firstFlick.Helper.HasPrevFlick) {
+                firstFlick = firstFlick.Editor.PrevFlick;
             }
 
             // Set the directions.
