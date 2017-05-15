@@ -255,6 +255,7 @@
     <Content Include="Resources\GameData\master.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Resources\Icons\Notes\IconNoteHoldFlick.png" />
     <Content Include="Resources\Icons\Notes\IconNoteTap.png" />
     <Content Include="Resources\Icons\Notes\IconNoteHold.png" />
     <Content Include="Resources\Icons\Notes\IconNoteFlickLeft.png" />

@@ -178,6 +178,9 @@
   <data name="IconNoteHold" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\notes\iconnotehold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="IconNoteHoldFlick" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\icons\notes\iconnoteholdflick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="IconNoteSlide" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\resources\icons\notes\iconnoteslide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
