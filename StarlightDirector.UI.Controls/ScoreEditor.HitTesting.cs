@@ -62,6 +62,7 @@ namespace StarlightDirector.UI.Controls {
             }
 
             var unit = BarLineSpaceUnit;
+            var spaceUnitRatio = SpaceUnitRadiusRatio;
             foreach (var bar in score.Bars) {
                 var numGrids = bar.GetNumberOfGrids();
                 var barHeight = numGrids * unit;
@@ -74,7 +75,7 @@ namespace StarlightDirector.UI.Controls {
                 }
 
                 // Calculate zooming compensation.
-                var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= config.NoteRadius * 2);
+                var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= config.NoteRadius * spaceUnitRatio);
                 if (firstClearDrawnRatio == 0) {
                     firstClearDrawnRatio = numGrids;
                 }
