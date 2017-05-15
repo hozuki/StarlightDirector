@@ -61,6 +61,7 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
             var target = RenderTarget;
             using (var path = new PathGeometry(target.Factory)) {
                 using (var sink = path.Open()) {
+                    sink.SetFillMode((SharpDX.Direct2D1.FillMode)fillMode);
                     sink.BeginFigure(new RawVector2(points[0].X, points[0].Y), FigureBegin.Filled);
                     var len = points.Length;
                     for (var i = 1; i < len; ++i) {
@@ -73,6 +74,12 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
                 var d2dBrush = brush.AsD2DBrush();
                 target.FillGeometry(path, d2dBrush.NativeBrush);
             }
+        }
+
+        public void FillPath(Brush brush, D2DPathData path) {
+            var target = RenderTarget;
+            var d2dBrush = brush.AsD2DBrush();
+            target.FillGeometry(path.NativeGeometry, d2dBrush.NativeBrush);
         }
 
         public override void DrawLine(Pen pen, float x1, float y1, float x2, float y2) {
@@ -161,6 +168,13 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
             }
         }
 
+        public void DrawPath(Pen pen, D2DPathData path) {
+            var target = RenderTarget;
+            var d2dPen = pen.AsD2DPen();
+            var d2dBrush = d2dPen.Brush.AsD2DBrush();
+            target.DrawGeometry(path.NativeGeometry, d2dBrush.NativeBrush, d2dPen.StrokeWidth, d2dPen.StrokeStyle);
+        }
+
         public override void DrawImage(Image image, float destX, float destY, float destWidth, float destHeight) {
             var d2dImage = image.AsD2DImage();
             var destRect = new RawRectangleF(destX, destY, destX + destWidth, destY + destHeight);
@@ -193,6 +207,8 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
                 }
             }
         }
+
+
 
     }
 }

@@ -207,22 +207,36 @@ namespace StarlightDirector.UI.Controls {
         private void DrawFlickNote(D2DRenderContext context, Note note, float x, float y, float r, NoteFlickType flickType) {
             DrawCommonNoteOutline(context, note, x, y, r);
 
+            switch (flickType) {
+                case NoteFlickType.Left:
+                case NoteFlickType.Right:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(flickType), "Unknown flick type for flick note rendering.");
+            }
+
             var r1 = r * ScaleFactor1;
+            using (var fill = GetFillBrush(context, x, y, r1, FlickNoteShapeFillOuterColors)) {
+                context.FillCircle(fill, x, y, r1);
+            }
+            context.DrawCircle(_flickNoteShapeStroke, x, y, r1);
+
+            var r3 = r * ScaleFactor2;
             // Triangle
             var polygon = new PointF[3];
-            if (flickType == NoteFlickType.Left) {
-                polygon[0] = new PointF(x - r1, y);
-                polygon[1] = new PointF(x + r1 / 2, y + r1 / 2 * Sqrt3);
-                polygon[2] = new PointF(x + r1 / 2, y - r1 / 2 * Sqrt3);
-            } else if (flickType == NoteFlickType.Right) {
-                polygon[0] = new PointF(x + r1, y);
-                polygon[1] = new PointF(x - r1 / 2, y - r1 / 2 * Sqrt3);
-                polygon[2] = new PointF(x - r1 / 2, y + r1 / 2 * Sqrt3);
+            switch (flickType) {
+                case NoteFlickType.Left:
+                    polygon[0] = new PointF(x - r3, y);
+                    polygon[1] = new PointF(x + r3 / 2, y + r3 / 2 * Sqrt3);
+                    polygon[2] = new PointF(x + r3 / 2, y - r3 / 2 * Sqrt3);
+                    break;
+                case NoteFlickType.Right:
+                    polygon[0] = new PointF(x + r3, y);
+                    polygon[1] = new PointF(x - r3 / 2, y - r3 / 2 * Sqrt3);
+                    polygon[2] = new PointF(x - r3 / 2, y + r3 / 2 * Sqrt3);
+                    break;
             }
-            using (var fill = GetFillBrush(context, x, y, r, FlickNoteShapeFillOuterColors)) {
-                context.FillPolygon(fill, polygon);
-            }
-            context.DrawPolygon(_flickNoteShapeStroke, polygon);
+            context.FillPolygon(_flickNoteShapeFillInner, polygon);
         }
 
         private void DrawHoldNote(D2DRenderContext context, Note note, float x, float y, float r) {
@@ -326,6 +340,7 @@ namespace StarlightDirector.UI.Controls {
         private static readonly float SpecialNoteHeightFactor = 2 / 3f;
 
         private static readonly float Sqrt3 = (float)Math.Sqrt(3);
+        private static readonly float Sqrt2 = (float)Math.Sqrt(2);
 
     }
 }

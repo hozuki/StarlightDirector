@@ -1,8 +1,8 @@
 ﻿namespace StarlightDirector.UI.Rendering {
     public enum FillMode {
 
-        Alternate,
-        Winding,
+        Alternate = 0,
+        Winding = 1,
 
     }
 }

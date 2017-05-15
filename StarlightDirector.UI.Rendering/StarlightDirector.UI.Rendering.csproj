@@ -54,13 +54,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Brush.cs" />
+    <Compile Include="Direct2D\D2DArcSegment.cs" />
+    <Compile Include="Direct2D\D2DArcSize.cs" />
+    <Compile Include="Direct2D\D2DBezierSegment.cs" />
     <Compile Include="Direct2D\D2DBrush.cs" />
     <Compile Include="Direct2D\D2DFont.cs" />
     <Compile Include="Direct2D\D2DImage.cs" />
     <Compile Include="Direct2D\D2DLinearGradientBrush.cs" />
+    <Compile Include="Direct2D\D2DPathData.cs" />
     <Compile Include="Direct2D\D2DPen.cs" />
+    <Compile Include="Direct2D\D2DQuadraticBezierSegment.cs" />
     <Compile Include="Direct2D\D2DRenderContext.cs" />
     <Compile Include="Direct2D\D2DSolidBrush.cs" />
+    <Compile Include="Direct2D\D2DSweepDirection.cs" />
+    <Compile Include="Extensions\D2DRenderContextExtensions.cs" />
     <Compile Include="Extensions\Direct2DExtensions.cs" />
     <Compile Include="Extensions\DrawingComponentExtensions.cs" />
     <Compile Include="Extensions\PointExtensions.cs" />
@@ -68,6 +75,8 @@
     <Compile Include="Extensions\RectangleExtensions.cs" />
     <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\RenderContextExtensions.cs" />
+    <Compile Include="Extensions\SizeExtensions.cs" />
+    <Compile Include="Extensions\SizeFExtensions.cs" />
     <Compile Include="FillMode.cs" />
     <Compile Include="Font.cs" />
     <Compile Include="FontStyle.cs" />

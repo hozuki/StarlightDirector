@@ -4,7 +4,7 @@ using SharpDX.Mathematics.Interop;
 namespace StarlightDirector.UI.Rendering.Extensions {
     public static class PointFExtensions {
 
-        public static RawVector2 ToD2DVector2(this PointF point) {
+        public static RawVector2 ToD2DVector(this PointF point) {
             return new RawVector2(point.X, point.Y);
         }
 
