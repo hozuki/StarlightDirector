@@ -54,7 +54,7 @@ namespace StarlightDirector.UI.Controls {
             }
 
             var gridArea = GetGridArea();
-            var columnWidth = gridArea.Width / (5 - 1);
+            var columnWidth = gridArea.Width / (config.NumberOfColumns - 1);
 
             var barStartY = (float)ScrollOffsetY;
             if (y > barStartY + config.NoteRadius) {

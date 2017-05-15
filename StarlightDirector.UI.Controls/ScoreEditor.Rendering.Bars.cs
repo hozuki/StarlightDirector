@@ -63,8 +63,9 @@ namespace StarlightDirector.UI.Controls {
             var verticalY1 = barStartY;
             var verticalY2 = barStartY - numberOfGrids * unit;
             var verticalPen = _barNormalGridPen;
-            for (var i = 0; i < 5; ++i) {
-                var x = gridArea.Left + gridArea.Width * i / (5 - 1);
+            var numColumns = Config.NumberOfColumns;
+            for (var i = 0; i < numColumns; ++i) {
+                var x = gridArea.Left + gridArea.Width * i / (numColumns - 1);
                 context.DrawLine(verticalPen, x, verticalY1, x, verticalY2);
             }
 

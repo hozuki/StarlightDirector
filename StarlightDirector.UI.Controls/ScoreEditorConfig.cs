@@ -13,5 +13,7 @@
 
         public float SpecialNotesAreaWidth { get; set; } = 120;
 
+        public int NumberOfColumns { get; set; } = 5;
+
     }
 }

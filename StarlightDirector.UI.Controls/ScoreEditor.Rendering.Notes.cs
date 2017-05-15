@@ -30,6 +30,7 @@ namespace StarlightDirector.UI.Controls {
             var unit = BarLineSpaceUnit;
             var startPositionFont = _noteStartPositionFont;
             var shouldDrawIndicators = IndicatorsVisible;
+            var numColumns = Config.NumberOfColumns;
             foreach (var bar in score.Bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.Helper.HasAnyNote) {
@@ -39,7 +40,7 @@ namespace StarlightDirector.UI.Controls {
                         }
 
                         if (note.Helper.IsGaming) {
-                            var x = GetNotePositionX(note, gridArea);
+                            var x = GetNotePositionX(note, gridArea, numColumns);
                             var y = GetNotePositionY(note, unit, noteStartY);
                             var h = note.Helper;
                             if (h.IsSlide) {
@@ -118,16 +119,17 @@ namespace StarlightDirector.UI.Controls {
 
             var unit = BarLineSpaceUnit;
             var scrollOffsetY = ScrollOffsetY;
+            var numColumns = Config.NumberOfColumns;
             foreach (var bar in score.Bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.Helper.HasAnyNote) {
                     foreach (var note in bar.Notes) {
                         var thisStatus = GetNoteOnStageStatus(note, gridArea, noteStartY, unit, radius);
-                        var x1 = GetNotePositionX(note, gridArea);
+                        var x1 = GetNotePositionX(note, gridArea, numColumns);
                         var y1 = GetNotePositionY(note, unit, noteStartY);
                         if (note.Helper.HasNextSync && thisStatus == OnStageStatus.Visible) {
                             var n2 = note.Editor.NextSync;
-                            var x2 = GetNotePositionX(n2, gridArea);
+                            var x2 = GetNotePositionX(n2, gridArea, numColumns);
                             // Draw sync line
                             context.DrawLine(_syncLineStroke, x1, y1, x2, y1);
                         }
@@ -142,7 +144,7 @@ namespace StarlightDirector.UI.Controls {
                             }
                             var thatStatus = GetNoteOnStageStatus(n2, gridArea, s2, unit, radius);
                             if ((int)thisStatus * (int)thatStatus <= 0) {
-                                var x2 = GetNotePositionX(n2, gridArea);
+                                var x2 = GetNotePositionX(n2, gridArea, numColumns);
                                 var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Basic.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                                 // Draw hold line
                                 context.DrawLine(_holdLineStroke, x1, y1, x2, y2);
@@ -158,7 +160,7 @@ namespace StarlightDirector.UI.Controls {
                             }
                             var thatStatus = GetNoteOnStageStatus(n2, gridArea, s2, unit, radius);
                             if ((int)thisStatus * (int)thatStatus <= 0) {
-                                var x2 = GetNotePositionX(n2, gridArea);
+                                var x2 = GetNotePositionX(n2, gridArea, numColumns);
                                 var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Basic.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                                 // Draw flick line
                                 context.DrawLine(_flickLineStroke, x1, y1, x2, y2);
@@ -174,7 +176,7 @@ namespace StarlightDirector.UI.Controls {
                             }
                             var thatStatus = GetNoteOnStageStatus(n2, gridArea, s2, unit, radius);
                             if ((int)thisStatus * (int)thatStatus <= 0) {
-                                var x2 = GetNotePositionX(n2, gridArea);
+                                var x2 = GetNotePositionX(n2, gridArea, numColumns);
                                 var y2 = GetNotePositionY(score.Bars, n2.Basic.Bar.Basic.Index, n2.Basic.IndexInGrid, unit, scrollOffsetY);
                                 // Draw slide line
                                 context.DrawLine(_slideLineStroke, x1, y1, x2, y2);
@@ -190,7 +192,7 @@ namespace StarlightDirector.UI.Controls {
             context.FillCircle(_noteCommonFill, x, y, r);
             context.DrawCircle(_noteCommonStroke, x, y, r);
             if (note.Editor.IsSelected) {
-                context.DrawCircle(_noteSelectedStroke, x, y, r * 1.15f);
+                context.DrawCircle(_noteSelectedStroke, x, y, r * ScaleFactor0);
             }
         }
 
@@ -293,8 +295,8 @@ namespace StarlightDirector.UI.Controls {
 
         [
             DebuggerStepThrough]
-        private static float GetNotePositionX(Note note, RectangleF gridArea) {
-            return ((int)note.Basic.FinishPosition - 1) * gridArea.Width / (5 - 1) + gridArea.Left;
+        private static float GetNotePositionX(Note note, RectangleF gridArea, int numColumns) {
+            return ((int)note.Basic.FinishPosition - 1) * gridArea.Width / (numColumns - 1) + gridArea.Left;
         }
 
         [
@@ -329,6 +331,7 @@ namespace StarlightDirector.UI.Controls {
 
         private static readonly float NoteShapeStrokeWidth = 1;
 
+        private static readonly float ScaleFactor0 = 1.15f;
         private static readonly float ScaleFactor1 = 0.8f;
         private static readonly float ScaleFactor2 = 0.5f;
         private static readonly float ScaleFactor3 = 1 / 3f;
