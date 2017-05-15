@@ -39,5 +39,52 @@
 
         public const uint TPM_LEFTBUTTON = 0;
 
+        /// <summary>
+        /// Passed to <see cref="NativeMethods.GetTokenInformation"/> to specify what
+        /// information about the token to return.
+        /// </summary>
+        public enum TokenInformationClass {
+            None,
+            TokenUser,
+            TokenGroups,
+            TokenPrivileges,
+            TokenOwner,
+            TokenPrimaryGroup,
+            TokenDefaultDacl,
+            TokenSource,
+            TokenType,
+            TokenImpersonationLevel,
+            TokenStatistics,
+            TokenRestrictedSids,
+            TokenSessionId,
+            TokenGroupsAndPrivileges,
+            TokenSessionReference,
+            TokenSandBoxInert,
+            TokenAuditPolicy,
+            TokenOrigin,
+            TokenElevationType,
+            TokenLinkedToken,
+            TokenElevation,
+            TokenHasRestrictions,
+            TokenAccessInformation,
+            TokenVirtualizationAllowed,
+            TokenVirtualizationEnabled,
+            TokenIntegrityLevel,
+            TokenUiAccess,
+            TokenMandatoryPolicy,
+            TokenLogonSid,
+            MaxTokenInfoClass
+        }
+
+        /// <summary>
+        /// The elevation type for a user token.
+        /// </summary>
+        public enum TokenElevationType {
+            None,
+            TokenElevationTypeDefault,
+            TokenElevationTypeFull,
+            TokenElevationTypeLimited
+        }
+
     }
 }

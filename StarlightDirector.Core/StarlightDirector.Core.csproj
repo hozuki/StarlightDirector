@@ -54,6 +54,7 @@
     <Compile Include="PerformanceCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StarlightID.cs" />
+    <Compile Include="SystemHelper.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

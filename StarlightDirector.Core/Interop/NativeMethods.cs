@@ -29,5 +29,9 @@ namespace StarlightDirector.Core.Interop {
         [DllImport("uxtheme.dll", CharSet = CharSet.Unicode, CallingConvention = CallingConvention.StdCall, PreserveSig = true, SetLastError = true)]
         public static extern int SetWindowTheme(IntPtr hWnd, [MarshalAs(UnmanagedType.LPWStr)] string pszAppName, [MarshalAs(UnmanagedType.LPWStr)] string pszSubIdList);
 
+        [DllImport("advapi32.dll", SetLastError = true)]
+        public static extern bool GetTokenInformation(IntPtr tokenHandle, NativeConstants.TokenInformationClass tokenInformationClass, IntPtr tokenInformation, int tokenInformationLength, out int returnLength);
+
+
     }
 }
