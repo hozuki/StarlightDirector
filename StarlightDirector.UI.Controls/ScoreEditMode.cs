@@ -4,8 +4,7 @@
         Select,
 
         Tap,
-        Hold,
-        Flick,
+        HoldFlick,
         Slide,
 
         Min = Select,

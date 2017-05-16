@@ -15,12 +15,16 @@ build:
   project: StarlightDirector.sln
 environment:
   EnableNuGetPackageRestore: true
+install:
+  - npm install -g marked
 before_build:
-  nuget restore
+  - nuget restore
+  - marked ./StarlightDirector.App/Resources/Docs/Help.md -o ./StarlightDirector.App/Resources/Docs/Help.html
 after_build:
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.mdb
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.dll
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.exe
+  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/Resources/Docs
   - 7z a sd.zip LICENSE.md
   - 7z a sd.zip README.md
   - copy sd.zip sd-v%APPVEYOR_BUILD_VERSION%-beta.zip

@@ -132,6 +132,7 @@ namespace StarlightDirector.App.UI.Forms {
                     e.Handled = true;
                     break;
             }
+            var modifiers = ModifierKeys;
             switch (e.KeyCode) {
                 case Keys.Home:
                     visualizer.ScrollToStart();
@@ -143,7 +144,7 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case Keys.PageUp:
                 case Keys.PageDown:
-                    var isLarge = ModifierKeys == Keys.Shift;
+                    var isLarge = modifiers == Keys.Shift;
                     var isUp = e.KeyData == Keys.PageUp;
                     if (isUp) {
                         if (isLarge) {
@@ -159,6 +160,16 @@ namespace StarlightDirector.App.UI.Forms {
                         }
                     }
                     e.Handled = true;
+                    break;
+                case Keys.A:
+                    if (modifiers == Keys.None) {
+                        CmdEditModePrevious.Execute(this, null);
+                    }
+                    break;
+                case Keys.D:
+                    if (modifiers == Keys.None) {
+                        CmdEditModeNext.Execute(this, null);
+                    }
                     break;
             }
             base.OnKeyDown(e);

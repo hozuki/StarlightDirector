@@ -148,13 +148,5 @@
       <DependentUpon>ScoreVisualizer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Docs\DesignedUsage.md" />
-    <Content Include="Docs\Images\IconNoteFlickRight.png" />
-    <Content Include="Docs\Images\IconNoteHold.png" />
-    <Content Include="Docs\Images\IconNoteHoldFlick.png" />
-    <Content Include="Docs\Images\IconNoteSlide.png" />
-    <Content Include="Docs\Images\IconNoteTap.png" />
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

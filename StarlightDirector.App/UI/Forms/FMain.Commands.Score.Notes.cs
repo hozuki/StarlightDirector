@@ -207,8 +207,8 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdScoreNoteStartPositionAt3 = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionAt4 = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionAt5 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionMoveLeft = CommandManager.CreateCommand("Alt+Q");
-        private readonly Command CmdScoreNoteStartPositionMoveRight = CommandManager.CreateCommand("Alt+E");
+        private readonly Command CmdScoreNoteStartPositionMoveLeft = CommandManager.CreateCommand("Alt+A");
+        private readonly Command CmdScoreNoteStartPositionMoveRight = CommandManager.CreateCommand("Alt+D");
         private readonly Command CmdScoreNoteStartPositionSetTo = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionTo0 = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionTo1 = CommandManager.CreateCommand();

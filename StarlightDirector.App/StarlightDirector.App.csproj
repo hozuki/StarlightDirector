@@ -221,6 +221,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Content Include="Resources\Docs\Help.md" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -252,6 +253,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Docs\Images\IconNoteFlickRight.png" />
+    <Content Include="Resources\Docs\Images\IconNoteHold.png" />
+    <Content Include="Resources\Docs\Images\IconNoteHoldFlick.png" />
+    <Content Include="Resources\Docs\Images\IconNoteSlide.png" />
+    <Content Include="Resources\Docs\Images\IconNoteTap.png" />
     <Content Include="Resources\GameData\master.mdb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

@@ -202,6 +202,9 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreNoteStartPositionAt4.ShortcutKeyDisplayString = "4";
             mnuScoreNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
 
+            mnuEditModePrevious.ShortcutKeyDisplayString = "A";
+            mnuEditModeNext.ShortcutKeyDisplayString = "D";
+
             CmdProjectNew.Execute(null, null);
 
             EditorSettingsManager.LoadSettings();

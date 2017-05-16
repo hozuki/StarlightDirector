@@ -49,13 +49,11 @@ namespace StarlightDirector.App.UI.Forms {
 
             mnuEditModeSelect.SetParameter(ScoreEditMode.Select);
             mnuEditModeTap.SetParameter(ScoreEditMode.Tap);
-            mnuEditModeHold.SetParameter(ScoreEditMode.Hold);
-            mnuEditModeFlick.SetParameter(ScoreEditMode.Flick);
+            mnuEditModeHoldFlick.SetParameter(ScoreEditMode.HoldFlick);
             mnuEditModeSlide.SetParameter(ScoreEditMode.Slide);
             mnuEditModeSelect.Attach(CmdEditModeSelect);
             mnuEditModeTap.Attach(CmdEditModeTap);
-            mnuEditModeHold.Attach(CmdEditModeHold);
-            mnuEditModeFlick.Attach(CmdEditModeFlick);
+            mnuEditModeHoldFlick.Attach(CmdEditModeHoldFlick);
             mnuEditModeSlide.Attach(CmdEditModeSlide);
             mnuEditModePrevious.Attach(CmdEditModePrevious);
             mnuEditModeNext.Attach(CmdEditModeNext);

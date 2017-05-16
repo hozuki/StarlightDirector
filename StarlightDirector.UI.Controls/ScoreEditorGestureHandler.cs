@@ -177,11 +177,8 @@ namespace StarlightDirector.UI.Controls {
                         case ScoreEditMode.Tap:
                             EditNoteModeTap(hit, e);
                             break;
-                        case ScoreEditMode.Hold:
-                            EditNoteModeHold(hit, e);
-                            break;
-                        case ScoreEditMode.Flick:
-                            EditNoteModeFlick(hit, e);
+                        case ScoreEditMode.HoldFlick:
+                            EditNoteModeHoldFlick(hit, e);
                             break;
                         case ScoreEditMode.Slide:
                             EditNoteModeSlide(hit, e);

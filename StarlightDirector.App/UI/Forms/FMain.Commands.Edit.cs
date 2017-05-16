@@ -51,7 +51,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdEditModeSet_Executed(object sender, ExecutedEventArgs e) {
-            var modeMenuItems = new[] { mnuEditModeSelect, mnuEditModeTap, mnuEditModeHold, mnuEditModeFlick, mnuEditModeSlide };
+            var modeMenuItems = new[] { mnuEditModeSelect, mnuEditModeTap, mnuEditModeHoldFlick, mnuEditModeSlide };
             var mode = (ScoreEditMode)e.Parameter;
             var pressedItem = modeMenuItems.First(m => (ScoreEditMode)m.GetParameter() == mode);
             foreach (var item in modeMenuItems) {
@@ -69,11 +69,7 @@ namespace StarlightDirector.App.UI.Forms {
             CmdEditModeSet.Execute(sender, e.Parameter);
         }
 
-        private void CmdEditModeHold_Executed(object sender, ExecutedEventArgs e) {
-            CmdEditModeSet.Execute(sender, e.Parameter);
-        }
-
-        private void CmdEditModeFlick_Executed(object sender, ExecutedEventArgs e) {
+        private void CmdEditModeHoldFlick_Executed(object sender, ExecutedEventArgs e) {
             CmdEditModeSet.Execute(sender, e.Parameter);
         }
 
@@ -133,11 +129,10 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdEditModeSet = CommandManager.CreateCommand();
         private readonly Command CmdEditModeSelect = CommandManager.CreateCommand();
         private readonly Command CmdEditModeTap = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeHold = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeFlick = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeHoldFlick = CommandManager.CreateCommand();
         private readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
-        private readonly Command CmdEditModePrevious = CommandManager.CreateCommand("Alt+A");
-        private readonly Command CmdEditModeNext = CommandManager.CreateCommand("Alt+D");
+        private readonly Command CmdEditModePrevious = CommandManager.CreateCommand();
+        private readonly Command CmdEditModeNext = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
         private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();
