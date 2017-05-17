@@ -1,14 +1,14 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.Drawing;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Rendering;
 using StarlightDirector.UI.Rendering.Direct2D;
 using StarlightDirector.UI.Rendering.Extensions;
-using System.Collections.Generic;
-using System.Diagnostics;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         private void RenderNotes(D2DRenderContext context, Score score) {
@@ -287,20 +287,17 @@ namespace StarlightDirector.UI.Controls {
             }
         }
 
-        [
-            DebuggerStepThrough]
+        [DebuggerStepThrough]
         private static D2DLinearGradientBrush GetFillBrush(D2DRenderContext context, float x, float y, float r, Color[] colors) {
             return new D2DLinearGradientBrush(context, new PointF(x, y - r), new PointF(x, y + r), colors);
         }
 
-        [
-            DebuggerStepThrough]
+        [DebuggerStepThrough]
         private static float GetNotePositionX(Note note, RectangleF gridArea, int numColumns) {
             return ((int)note.Basic.FinishPosition - 1) * gridArea.Width / (numColumns - 1) + gridArea.Left;
         }
 
-        [
-            DebuggerStepThrough]
+        [DebuggerStepThrough]
         private static float GetNotePositionY(Note note, float unit, float noteStartY) {
             return noteStartY - unit * note.Basic.IndexInGrid;
         }

@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
-using StarlightDirector.UI.Controls;
+using StarlightDirector.UI.Controls.Editing;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FGoTo : Form {

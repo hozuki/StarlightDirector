@@ -5,9 +5,8 @@ using System.Linq;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
-using StarlightDirector.Core;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditorGestureHandler {
 
         private void EditNoteModeSelect(ScoreEditorHitTestResult hit, MouseEventArgs e) {

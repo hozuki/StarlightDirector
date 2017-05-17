@@ -7,7 +7,7 @@ using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Rendering;
 using Pen = StarlightDirector.UI.Rendering.Pen;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         private void RenderBars(RenderContext context, Score score) {

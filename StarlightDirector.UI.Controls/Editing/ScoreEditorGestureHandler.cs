@@ -4,7 +4,7 @@ using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     internal sealed partial class ScoreEditorGestureHandler {
 
         public ScoreEditorGestureHandler(ScoreVisualizer visualizer) {

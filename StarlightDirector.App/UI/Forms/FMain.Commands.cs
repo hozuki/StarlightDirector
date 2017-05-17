@@ -5,7 +5,7 @@ using System.Reflection;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
-using StarlightDirector.UI.Controls;
+using StarlightDirector.UI.Controls.Editing;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {

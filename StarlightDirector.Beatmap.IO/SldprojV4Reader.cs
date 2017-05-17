@@ -5,7 +5,6 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using StarlightDirector.Beatmap.Extensions;
-using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap.IO {
     public sealed partial class SldprojV4Reader : ProjectReader {

@@ -2,7 +2,7 @@
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.UI.Controls.Extensions;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         internal Rectangle SelectionRectangle { get; set; }

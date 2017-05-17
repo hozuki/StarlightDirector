@@ -8,7 +8,7 @@ using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using StarlightDirector.UI.Rendering.Direct2D;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Direct2D {
     public abstract class Direct2DCanvas : Control {
 
         public Color ClearColor { get; set; } = Color.Black;

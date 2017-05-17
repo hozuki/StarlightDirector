@@ -2,7 +2,7 @@
 using System.Drawing;
 using StarlightDirector.Beatmap;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     public sealed class ScoreEditorHitTestResult {
 
         [DebuggerStepThrough]

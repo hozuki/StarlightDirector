@@ -3,7 +3,7 @@ using System.Linq;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         public void ZoomIn() {

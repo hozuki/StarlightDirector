@@ -2,7 +2,7 @@
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Commanding;
-using StarlightDirector.UI.Controls;
+using StarlightDirector.UI.Controls.Editing;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {

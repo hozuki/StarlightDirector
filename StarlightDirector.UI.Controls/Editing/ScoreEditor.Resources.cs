@@ -2,7 +2,7 @@
 using StarlightDirector.UI.Rendering.Direct2D;
 using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         protected override void OnCreateResources(D2DRenderContext context) {

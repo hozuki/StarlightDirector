@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
-using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FBeatmapSettings : Form {

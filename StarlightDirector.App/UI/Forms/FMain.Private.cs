@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Text;
 using System.Windows.Forms;
-using StarlightDirector.App.Extensions;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.UI.Controls;
+using StarlightDirector.UI.Controls.Editing;
 using StarlightDirector.UI.Controls.Extensions;
 
 namespace StarlightDirector.App.UI.Forms {

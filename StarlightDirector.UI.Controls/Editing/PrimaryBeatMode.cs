@@ -1,4 +1,4 @@
-﻿namespace StarlightDirector.UI.Controls {
+﻿namespace StarlightDirector.UI.Controls.Editing {
     public enum PrimaryBeatMode {
 
         EveryFourBeats,

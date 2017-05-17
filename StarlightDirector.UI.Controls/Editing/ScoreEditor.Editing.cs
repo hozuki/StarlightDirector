@@ -5,7 +5,7 @@ using System.Linq;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         [DebuggerStepThrough]

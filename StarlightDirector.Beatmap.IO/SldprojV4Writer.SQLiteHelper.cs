@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Specialized;
 using System.Data;
 using System.Data.SQLite;
 using StarlightDirector.Core;

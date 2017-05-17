@@ -1,6 +1,4 @@
-﻿using System.Drawing;
-
-namespace StarlightDirector.UI.Controls {
+﻿namespace StarlightDirector.UI.Controls {
     partial class ScoreVisualizer {
         /// <summary> 
         /// 必需的设计器变量。
@@ -26,7 +24,7 @@ namespace StarlightDirector.UI.Controls {
         /// </summary>
         private void InitializeComponent() {
             this.vScroll = new System.Windows.Forms.VScrollBar();
-            this.editor = new StarlightDirector.UI.Controls.ScoreEditor();
+            this.editor = new StarlightDirector.UI.Controls.Editing.ScoreEditor();
             this.SuspendLayout();
             // 
             // vScroll
@@ -45,7 +43,7 @@ namespace StarlightDirector.UI.Controls {
             this.editor.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
             this.editor.Location = new System.Drawing.Point(3, 3);
             this.editor.Name = "editor";
-            this.editor.PrimaryBeatMode = StarlightDirector.UI.Controls.PrimaryBeatMode.EveryFourBeats;
+            this.editor.PrimaryBeatMode = StarlightDirector.UI.Controls.Editing.PrimaryBeatMode.EveryFourBeats;
             this.editor.Project = null;
             this.editor.ScrollOffsetX = 0;
             this.editor.ScrollOffsetY = 0;
@@ -68,6 +66,6 @@ namespace StarlightDirector.UI.Controls {
         #endregion
 
         private System.Windows.Forms.VScrollBar vScroll;
-        private ScoreEditor editor;
+        private StarlightDirector.UI.Controls.Editing.ScoreEditor editor;
     }
 }

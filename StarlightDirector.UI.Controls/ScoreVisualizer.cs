@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
 using StarlightDirector.Core;
+using StarlightDirector.UI.Controls.Editing;
 
 namespace StarlightDirector.UI.Controls {
     public partial class ScoreVisualizer : UserControl {

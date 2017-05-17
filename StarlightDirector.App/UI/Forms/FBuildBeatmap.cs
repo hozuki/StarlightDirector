@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using StarlightDirector.App.Gaming;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;

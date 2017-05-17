@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Diagnostics;
 using StarlightDirector.Beatmap.Extensions;
 
 namespace StarlightDirector.Beatmap {

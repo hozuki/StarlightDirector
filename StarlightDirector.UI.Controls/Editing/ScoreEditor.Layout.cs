@@ -1,7 +1,7 @@
 ﻿using System;
 using StarlightDirector.Beatmap.Extensions;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         public void UpdateBarStartTimeText() {

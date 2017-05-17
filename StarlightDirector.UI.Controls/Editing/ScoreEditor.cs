@@ -3,13 +3,14 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
-using StarlightDirector.UI.Rendering.Direct2D;
-using JetBrains.Annotations;
 using StarlightDirector.Core;
+using StarlightDirector.UI.Controls.Direct2D;
+using StarlightDirector.UI.Rendering.Direct2D;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     public sealed partial class ScoreEditor : Direct2DCanvas {
 
         [Browsable(false)]

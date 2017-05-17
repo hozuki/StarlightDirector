@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace StarlightDirector.UI.Controls {
+namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
         public event EventHandler<EventArgs> EditModeChanged;

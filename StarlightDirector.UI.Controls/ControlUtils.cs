@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
-using StarlightDirector.Core;
 using StarlightDirector.Core.Interop;
 
 namespace StarlightDirector.UI.Controls {
