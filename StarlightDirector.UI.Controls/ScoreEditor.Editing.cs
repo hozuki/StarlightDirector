@@ -91,7 +91,13 @@ namespace StarlightDirector.UI.Controls {
 
         public bool HasOneSelectedNote {
             [DebuggerStepThrough]
-            get { return GetSelectedNotes().SingleOrDefault() != null; }
+            get {
+                try {
+                    return GetSelectedNotes().SingleOrDefault() != null;
+                } catch (InvalidOperationException) {
+                    return false;
+                }
+            }
         }
 
         [DebuggerStepThrough]
@@ -120,7 +126,13 @@ namespace StarlightDirector.UI.Controls {
 
         public bool HasOneSelectedBar {
             [DebuggerStepThrough]
-            get { return GetSelectedBars().SingleOrDefault() != null; }
+            get {
+                try {
+                    return GetSelectedBars().SingleOrDefault() != null;
+                } catch (InvalidOperationException) {
+                    return false;
+                }
+            }
         }
 
         [DebuggerStepThrough]
