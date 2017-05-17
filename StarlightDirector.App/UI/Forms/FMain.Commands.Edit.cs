@@ -77,18 +77,6 @@ namespace StarlightDirector.App.UI.Forms {
             CmdEditModeSet.Execute(sender, e.Parameter);
         }
 
-        private void CmdEditModePrevious_Executed(object sender, ExecutedEventArgs e) {
-            var currentEditMode = visualizer.Editor.EditMode;
-            var newEditMode = currentEditMode > ScoreEditMode.Min ? currentEditMode - 1 : ScoreEditMode.Max;
-            CmdEditModeSet.Execute(sender, newEditMode);
-        }
-
-        private void CmdEditModeNext_Executed(object sender, ExecutedEventArgs e) {
-            var currentEditMode = visualizer.Editor.EditMode;
-            var newEditMode = currentEditMode < ScoreEditMode.Max ? currentEditMode + 1 : ScoreEditMode.Min;
-            CmdEditModeSet.Execute(sender, newEditMode);
-        }
-
         private void CmdEditSelectAllMeasures_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.SelectAllBars();
             visualizer.Editor.Invalidate();
@@ -131,8 +119,6 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdEditModeTap = CommandManager.CreateCommand();
         private readonly Command CmdEditModeHoldFlick = CommandManager.CreateCommand();
         private readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
-        private readonly Command CmdEditModePrevious = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeNext = CommandManager.CreateCommand();
         private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
         private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
         private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();

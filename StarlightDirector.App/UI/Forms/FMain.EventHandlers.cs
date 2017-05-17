@@ -201,9 +201,17 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreNoteStartPositionAt3.ShortcutKeyDisplayString = "3";
             mnuScoreNoteStartPositionAt4.ShortcutKeyDisplayString = "4";
             mnuScoreNoteStartPositionAt5.ShortcutKeyDisplayString = "5";
+            mnuScoreNoteStartPositionTo0.ShortcutKeyDisplayString = "P";
+            mnuScoreNoteStartPositionTo1.ShortcutKeyDisplayString = "Q";
+            mnuScoreNoteStartPositionTo2.ShortcutKeyDisplayString = "W";
+            mnuScoreNoteStartPositionTo3.ShortcutKeyDisplayString = "E";
+            mnuScoreNoteStartPositionTo4.ShortcutKeyDisplayString = "R";
+            mnuScoreNoteStartPositionTo5.ShortcutKeyDisplayString = "T";
 
-            mnuEditModePrevious.ShortcutKeyDisplayString = "A";
-            mnuEditModeNext.ShortcutKeyDisplayString = "D";
+            mnuEditModeSelect.ShortcutKeyDisplayString = "F";
+            mnuEditModeTap.ShortcutKeyDisplayString = "A";
+            mnuEditModeHoldFlick.ShortcutKeyDisplayString = "S";
+            mnuEditModeSlide.ShortcutKeyDisplayString = "D";
 
             CmdProjectNew.Execute(null, null);
 

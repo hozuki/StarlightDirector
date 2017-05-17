@@ -55,8 +55,6 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModeTap.Attach(CmdEditModeTap);
             mnuEditModeHoldFlick.Attach(CmdEditModeHoldFlick);
             mnuEditModeSlide.Attach(CmdEditModeSlide);
-            mnuEditModePrevious.Attach(CmdEditModePrevious);
-            mnuEditModeNext.Attach(CmdEditModeNext);
 
             mnuEditGoToMeasure.Attach(CmdEditGoToMeasure);
             mnuEditGoToTime.Attach(CmdEditGoToTime);

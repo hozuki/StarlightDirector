@@ -163,12 +163,52 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case Keys.A:
                     if (modifiers == Keys.None) {
-                        CmdEditModePrevious.Execute(this, null);
+                        CmdEditModeTap.Execute(this, ScoreEditMode.Tap);
+                    }
+                    break;
+                case Keys.S:
+                    if (modifiers == Keys.None) {
+                        CmdEditModeSlide.Execute(this, ScoreEditMode.HoldFlick);
                     }
                     break;
                 case Keys.D:
                     if (modifiers == Keys.None) {
-                        CmdEditModeNext.Execute(this, null);
+                        CmdEditModeSlide.Execute(this, ScoreEditMode.Slide);
+                    }
+                    break;
+                case Keys.F:
+                    if (modifiers == Keys.None) {
+                        CmdEditModeSlide.Execute(this, ScoreEditMode.Select);
+                    }
+                    break;
+                case Keys.Q:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Left);
+                    }
+                    break;
+                case Keys.W:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.CenterLeft);
+                    }
+                    break;
+                case Keys.E:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Center);
+                    }
+                    break;
+                case Keys.R:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.CenterRight);
+                    }
+                    break;
+                case Keys.T:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Right);
+                    }
+                    break;
+                case Keys.P:
+                    if (modifiers == Keys.None) {
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Default);
                     }
                     break;
             }
