@@ -68,7 +68,7 @@
     </Compile>
     <Compile Include="Extensions\ColorExtensions.cs" />
     <Compile Include="Extensions\GraphicsExtensions.cs" />
-    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Extensions\RectangleFExtensions.cs" />
     <Compile Include="Extensions\ToolStripItemExtensions.cs" />
     <Compile Include="ModernSystemButton.cs">
       <SubType>Component</SubType>
@@ -81,6 +81,7 @@
     <Compile Include="MouseButtonAction.cs" />
     <Compile Include="PrimaryBeatMode.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegionSelectionMode.cs" />
     <Compile Include="ScoreEditMode.cs" />
     <Compile Include="ScoreEditor.Editing.cs">
       <SubType>Component</SubType>
@@ -100,7 +101,13 @@
     <Compile Include="ScoreEditor.Rendering.Notes.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="ScoreEditor.Rendering.Selection.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ScoreEditor.Resources.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ScoreEditor.Selection.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreEditor.Viewing.cs">

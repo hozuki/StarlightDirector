@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
-using StarlightDirector.UI.Controls.Extensions;
 
 namespace StarlightDirector.UI.Controls {
     internal sealed partial class ScoreEditorGestureHandler {
@@ -19,7 +17,6 @@ namespace StarlightDirector.UI.Controls {
             _mouseDownHitResult = hit;
             // If the mousedown note and mouseup note are not the same, we did not perform a successful 'click' on a note.
             _lastMouseDownNote = hit.Note;
-            _selectionRectangle.Location = e.Location;
             switch (hit.HitRegion) {
                 case ScoreEditorHitRegion.None:
                     break;
@@ -38,42 +35,72 @@ namespace StarlightDirector.UI.Controls {
                 default:
                     throw new ArgumentOutOfRangeException(nameof(hit.HitRegion), hit.HitRegion, null);
             }
+            editor.Invalidate();
         }
 
         public void OnMouseUp(MouseEventArgs e) {
+            var editor = _visualizer.Editor;
             if (_mouseDownHitResult != null) {
-                var editor = _visualizer.Editor;
                 var hit = editor.HitTest(e.Location);
-                switch (hit.HitRegion) {
-                    case ScoreEditorHitRegion.None:
-                        ClearNoteAndBarSelection();
-                        break;
-                    case ScoreEditorHitRegion.InfoArea:
-                        InfoAreaOnMouseUp(hit, e);
-                        break;
-                    case ScoreEditorHitRegion.GridNumberArea:
-                        GridNumberAreaOnMouseUp(hit, e);
-                        break;
-                    case ScoreEditorHitRegion.GridArea:
-                        GridAreaOnMouseUp(hit, e);
-                        break;
-                    case ScoreEditorHitRegion.SpecialNoteArea:
-                        SpecialNoteAreaOnMouseUp(hit, e);
-                        break;
-                    default:
-                        throw new ArgumentOutOfRangeException(nameof(hit.HitRegion), hit.HitRegion, null);
+                if (hit.HitRegion == _mouseDownHitResult.HitRegion) {
+                    switch (hit.HitRegion) {
+                        case ScoreEditorHitRegion.None:
+                            ClearNoteAndBarSelection();
+                            break;
+                        case ScoreEditorHitRegion.InfoArea:
+                            InfoAreaOnMouseUp(hit, e);
+                            break;
+                        case ScoreEditorHitRegion.GridNumberArea:
+                            GridNumberAreaOnMouseUp(hit, e);
+                            break;
+                        case ScoreEditorHitRegion.GridArea:
+                            GridAreaOnMouseUp(hit, e);
+                            break;
+                        case ScoreEditorHitRegion.SpecialNoteArea:
+                            SpecialNoteAreaOnMouseUp(hit, e);
+                            break;
+                        default:
+                            throw new ArgumentOutOfRangeException(nameof(hit.HitRegion), hit.HitRegion, null);
+                    }
                 }
                 _mouseDownHitResult = null;
             }
-            _selectionRectangle.Clear();
+            _selectionRectangle = Rectangle.Empty;
+            editor.SelectionRectangle = Rectangle.Empty;
             _lastMouseDownNote = null;
+            editor.Invalidate();
         }
 
         public void OnMouseMove(MouseEventArgs e) {
             var button = e.Button;
             if (button == MouseButtons.Left) {
-                var rect = _selectionRectangle;
-                _selectionRectangle.Size = new Size(e.X - rect.X, e.Y - rect.Y);
+                var modifiers = Control.ModifierKeys;
+                var editor = _visualizer.Editor;
+                var mouseDownHitResult = _mouseDownHitResult;
+                if (mouseDownHitResult != null) {
+                    if (_selectionRectangle.IsEmpty && Math.Abs(e.X - mouseDownHitResult.Location.X) >= SelectionThresholdX && Math.Abs(e.Y - mouseDownHitResult.Location.Y) >= SelectionThresholdY) {
+                        _selectionRectangle.Location = mouseDownHitResult.Location;
+                    }
+                }
+                if (!_selectionRectangle.IsEmpty) {
+                    var rect = _selectionRectangle;
+                    _selectionRectangle.Size = new Size(e.X - rect.X, e.Y - rect.Y);
+                    editor.SelectionRectangle = _selectionRectangle;
+                    RegionSelectionMode selectionMode;
+                    switch (modifiers) {
+                        case Keys.Control:
+                            selectionMode = RegionSelectionMode.Addition;
+                            break;
+                        case Keys.Alt:
+                            selectionMode = RegionSelectionMode.Subtraction;
+                            break;
+                        default:
+                            selectionMode = RegionSelectionMode.Normal;
+                            break;
+                    }
+                    editor.UpdateNoteSelection(selectionMode);
+                    editor.Invalidate();
+                }
             }
         }
 
@@ -138,6 +165,11 @@ namespace StarlightDirector.UI.Controls {
             var editor = _visualizer.Editor;
             switch (e.Button) {
                 case MouseButtons.Left:
+                    if (!_selectionRectangle.IsEmpty) {
+                        // We are handling selection here.
+                        break;
+                    }
+
                     // Whatever note you hit, change its start up position.
                     // If no note is hit and we are hitting a grid crossing, the EditorAddNote method is invoked
                     // and the newly added note's StartPosition is automatically set there.
@@ -265,6 +297,9 @@ namespace StarlightDirector.UI.Controls {
         private Note _lastMouseDownNote;
 
         private Rectangle _selectionRectangle;
+
+        private static readonly int SelectionThresholdX = 5;
+        private static readonly int SelectionThresholdY = 5;
 
         private readonly ScoreVisualizer _visualizer;
 

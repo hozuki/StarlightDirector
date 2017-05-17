@@ -47,6 +47,8 @@ namespace StarlightDirector.UI.Controls {
             _specialNoteFill = new D2DSolidBrush(context, Color.FromArgb(0x7F, 0xAA, 0xAA, 0xAA));
             _specialNoteTextBrush = new D2DSolidBrush(context, Color.White);
             _specialNoteDescriptionFont = new D2DFont(context.DirectWriteFactory, Font.Name, Font.SizeInPoints, FontStyle.Regular, 10);
+
+            _selectionRectStroke = new D2DPen(context, Color.White, 5);
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
@@ -91,6 +93,8 @@ namespace StarlightDirector.UI.Controls {
             _specialNoteFill?.Dispose();
             _specialNoteTextBrush?.Dispose();
             _specialNoteDescriptionFont?.Dispose();
+
+            _selectionRectStroke?.Dispose();
         }
 
         // Bar resources
@@ -138,6 +142,8 @@ namespace StarlightDirector.UI.Controls {
         private D2DBrush _specialNoteFill;
         private D2DBrush _specialNoteTextBrush;
         private D2DFont _specialNoteDescriptionFont;
+
+        private D2DPen _selectionRectStroke;
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };

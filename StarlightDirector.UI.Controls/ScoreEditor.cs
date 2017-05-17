@@ -137,6 +137,7 @@ namespace StarlightDirector.UI.Controls {
             if (hasAnyNote) {
                 RenderNotes(context, score);
             }
+            RenderSelectionRectangle(context);
         }
 
         // This is used for scaling. It can be different with signature*gps.

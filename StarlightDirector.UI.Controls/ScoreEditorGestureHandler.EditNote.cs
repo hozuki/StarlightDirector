@@ -69,13 +69,13 @@ namespace StarlightDirector.UI.Controls {
             Note lastNote = null;
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
-            } else if (editor.HasSelectedNotes) {
+            } else if (hit.HitAnyNote && editor.HasSelectedNotes) {
                 Debug.Print("You can only select one note to create a hold pair.");
                 return;
             }
 
             Note thisNote = null;
-            bool isNoteAdded = false;
+            var isNoteAdded = false;
             if (hit.HitAnyNote) {
                 // The clicked note is always selected.
                 thisNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
@@ -94,7 +94,7 @@ namespace StarlightDirector.UI.Controls {
 
             // If the user clicked on the same note, just perform the standard note selection.
             if (lastNote == null || lastNote == thisNote) {
-                thisNote.EditorSelect();
+                thisNote.EditorToggleSelected();
                 editor.Invalidate();
                 return;
             }
@@ -165,13 +165,13 @@ namespace StarlightDirector.UI.Controls {
             Note lastNote = null;
             if (editor.HasOneSelectedNote) {
                 lastNote = editor.GetSelectedNote();
-            } else if (editor.HasSelectedNotes) {
+            } else if (hit.HitAnyNote && editor.HasSelectedNotes) {
                 Debug.Print("You can only select one note to create a slide group.");
                 return;
             }
 
             Note thisNote = null;
-            bool isNoteAdded = false;
+            var isNoteAdded = false;
             if (hit.HitAnyNote) {
                 // The clicked note is always selected.
                 thisNote = hit.Note == _lastMouseDownNote ? hit.Note : null;
@@ -190,7 +190,7 @@ namespace StarlightDirector.UI.Controls {
 
             // If the user clicked on the same note, just perform the standard note selection.
             if (lastNote == null || lastNote == thisNote) {
-                thisNote.EditorSelect();
+                thisNote.EditorToggleSelected();
                 editor.Invalidate();
                 return;
             }
