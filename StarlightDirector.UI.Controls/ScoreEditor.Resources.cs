@@ -149,7 +149,7 @@ namespace StarlightDirector.UI.Controls {
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };
         private static readonly Color[] FlickNoteShapeFillOuterColors = { Color.FromArgb(0x88, 0xBB, 0xFF), Color.FromArgb(0x22, 0x55, 0xBB) };
         private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xE1, 0xA8, 0xFB), Color.FromArgb(0xA5, 0x46, 0xDA) };
-        private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xA5, 0x46, 0xDA), Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB) };
+        private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB), Color.FromArgb(0x80, 0xA5, 0x46, 0xDA) };
 
     }
 }
