@@ -290,6 +290,8 @@ namespace StarlightDirector.Beatmap {
 
             public Guid NextSlideNoteID { get; set; }
 
+            public TimeSpan HitTiming { get; set; }
+
         }
 
         internal TemporaryProperties Temporary { get; } = new TemporaryProperties();

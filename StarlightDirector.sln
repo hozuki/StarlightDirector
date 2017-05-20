@@ -26,6 +26,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Beatmap.I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Commanding", "StarlightDirector.Commanding\StarlightDirector.Commanding.csproj", "{0C1FA43E-89EB-45BD-B4DD-268B8FBC6305}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Previewing.Audio", "StarlightDirector.Previewing.Audio\StarlightDirector.Previewing.Audio.csproj", "{F025414B-54AB-4E52-AA58-28637F6150F7}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -60,6 +62,10 @@ Global
 		{0C1FA43E-89EB-45BD-B4DD-268B8FBC6305}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C1FA43E-89EB-45BD-B4DD-268B8FBC6305}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C1FA43E-89EB-45BD-B4DD-268B8FBC6305}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F025414B-54AB-4E52-AA58-28637F6150F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F025414B-54AB-4E52-AA58-28637F6150F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F025414B-54AB-4E52-AA58-28637F6150F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F025414B-54AB-4E52-AA58-28637F6150F7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

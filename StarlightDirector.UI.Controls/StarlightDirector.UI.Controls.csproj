@@ -48,8 +48,8 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    <Reference Include="System.ValueTuple, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -107,6 +107,15 @@
     <Compile Include="Editing\ScoreEditorGestureHandler.EditNote.cs" />
     <Compile Include="Editing\ScoreEditorHitRegion.cs" />
     <Compile Include="Editing\ScoreEditorHitTestResult.cs" />
+    <Compile Include="Previewing\ScorePreviewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Previewing\ScorePreviewer.Rendering.Avatars.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Previewing\ScorePreviewer.Rendering.Notes.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -152,9 +161,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Previewing\ScorePreviewer.Resources.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <EmbeddedResource Include="ScoreVisualizer.resx">
       <DependentUpon>ScoreVisualizer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
