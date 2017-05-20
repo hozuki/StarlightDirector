@@ -66,10 +66,10 @@ namespace StarlightDirector.App.UI.Forms {
                 }
             }
 
-            var version = ApplicationHelper.GetAssemblyVersionString();
-            html = html.Replace("$VERSION_NUMBER$", version);
+            var version = ApplicationHelper.GetAssemblyVersion();
+            html = html.Replace("$VERSION_NUMBER$", version.ToString());
             html = html.Replace("$VERSION_SUFFIX$", string.IsNullOrEmpty(VersionSuffix) ? VersionSuffix : " " + VersionSuffix);
-            html = html.Replace("$VERSION_CODE$", Resources.VersionCode);
+            html = html.Replace("$VERSION_CODE$", CodeName.GetCodeName(version));
             lblAbout.Text = html;
 
             picAnimation.Visible = false;

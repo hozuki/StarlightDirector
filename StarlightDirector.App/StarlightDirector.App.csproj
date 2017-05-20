@@ -64,6 +64,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeName.cs" />
     <Compile Include="EditorSettings.cs" />
     <Compile Include="EditorSettingsManager.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />

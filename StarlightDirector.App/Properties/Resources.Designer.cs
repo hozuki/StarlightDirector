@@ -369,14 +369,5 @@ namespace StarlightDirector.App.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
-        
-        /// <summary>
-        ///   查找类似 Riina 的本地化字符串。
-        /// </summary>
-        internal static string VersionCode {
-            get {
-                return ResourceManager.GetString("VersionCode", resourceCulture);
-            }
-        }
     }
 }

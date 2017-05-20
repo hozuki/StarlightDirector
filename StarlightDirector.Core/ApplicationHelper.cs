@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.IO;
 using System.Reflection;
 
@@ -27,10 +28,10 @@ namespace StarlightDirector.Core {
             return stream;
         }
 
-        public static string GetAssemblyVersionString() {
+        public static Version GetAssemblyVersion() {
             var assembly = GetAppAssembly();
             var version = assembly.GetName().Version;
-            return version.ToString();
+            return version;
         }
 
         private static string _title;
