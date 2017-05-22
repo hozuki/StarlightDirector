@@ -6,9 +6,9 @@ using StarlightDirector.Core;
 using AudioOut = NAudio.Wave.WasapiOut;
 
 namespace StarlightDirector.Previewing.Audio {
-    public sealed class SfxPlayer : DisposableBase {
+    public sealed class LiveMusicPlayer : DisposableBase {
 
-        public SfxPlayer() {
+        public LiveMusicPlayer() {
             _syncObject = new object();
             _waveStream = new WaveMixerStream32();
             _soundPlayer = new AudioOut(AudioClientShareMode.Shared, 60);
@@ -58,7 +58,7 @@ namespace StarlightDirector.Previewing.Audio {
         }
 
         public TimeSpan CurrentTime {
-            get { return _waveStream.CurrentTime; }
+            get => _waveStream.CurrentTime;
             set {
                 lock (_syncObject) {
                     var waveStream = _waveStream;

@@ -157,7 +157,7 @@ namespace StarlightDirector.Previewing.Audio {
             }
         }
 
-        public SfxManager(SfxPlayer sfxPlayer) {
+        public SfxManager(LiveMusicPlayer sfxPlayer) {
             _soundStreams = new List<MemoryStream>();
             _fileNames = new List<string>();
             _waveStreams = new List<WaveStream>();
@@ -170,7 +170,7 @@ namespace StarlightDirector.Previewing.Audio {
             _timer.Start();
         }
 
-        private readonly SfxPlayer _sfxPlayer;
+        private readonly LiveMusicPlayer _sfxPlayer;
         private readonly List<MemoryStream> _soundStreams;
         private readonly List<WaveStream> _waveStreams;
         private readonly List<string> _fileNames;

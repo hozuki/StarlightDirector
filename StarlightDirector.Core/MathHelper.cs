@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 
 namespace StarlightDirector.Core {
-    public static class MathUtils {
+    public static class MathHelper {
 
         [DebuggerStepThrough]
         public static float Clamp(this float v, float min, float max) {

@@ -119,7 +119,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             foreach (var b in score.Bars) {
                 if (b == bar) {
                     break;
@@ -135,7 +135,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                             var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 currentBpm = bpmNote.Params.NewBpm;
-                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                currentInterval = MathHelper.BpmToInterval(currentBpm);
                                 ++bpmNoteIndex;
                             }
                         }
@@ -169,7 +169,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
 
             var hasAnyBpmNote = notes.Count != 0 && notes.Any(n => n.Basic.Type == NoteType.VariantBpm);
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             double seconds;
             if (hasAnyBpmNote) {
                 var bpmNotesInThisBar = bar.Notes.Where(n => n.Basic.Bar == bar).ToList();
@@ -182,14 +182,14 @@ namespace StarlightDirector.Beatmap.Extensions {
                     if (bpmNoteIndex < bpmNotesInThisBar.Count) {
                         var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                         if (i == bpmNote.Basic.IndexInGrid) {
-                            currentInterval = MathUtils.BpmToInterval(currentBpm);
+                            currentInterval = MathHelper.BpmToInterval(currentBpm);
                             ++bpmNoteIndex;
                         }
                     }
                     seconds += currentInterval * i / currentGridPerSignature;
                 }
             } else {
-                seconds = MathUtils.BpmToInterval(currentBpm) * bar.GetSignature();
+                seconds = MathHelper.BpmToInterval(currentBpm) * bar.GetSignature();
             }
 
             return TimeSpan.FromSeconds(seconds);

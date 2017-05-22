@@ -211,5 +211,27 @@ namespace StarlightDirector.UI.Controls.Editing {
             }
         }
 
+        public Bar GetFirstVisibleBar() {
+            var score = CurrentScore;
+            if (score == null) {
+                return null;
+            }
+            var clientSize = ClientSize;
+            var bars = score.Bars;
+            var barArea = GetBarArea(clientSize);
+            var barStartY = (float)ScrollOffsetY;
+
+            var unit = BarLineSpaceUnit;
+            foreach (var bar in bars) {
+                var numberOfGrids = bar.GetNumberOfGrids();
+                var visible = IsBarVisible(barArea, barStartY, numberOfGrids, unit);
+                if (visible) {
+                    return bar;
+                }
+                barStartY -= numberOfGrids * unit;
+            }
+            return null;
+        }
+
     }
 }

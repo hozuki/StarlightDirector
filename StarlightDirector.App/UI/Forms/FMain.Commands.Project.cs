@@ -106,11 +106,13 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdProjectMusicSettings_Executed(object sender, ExecutedEventArgs e) {
-            throw new NotImplementedException();
-        }
-
-        private void CmdProjectMusicSettings_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
-            e.CanExecute = false;
+            var project = visualizer.Editor.Project;
+            var (r, fileName) = FMusicSettings.RequestInput(this, project.MusicFileName);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+            project.MusicFileName = fileName;
+            InformProjectModified();
         }
 
         private void CmdProjectExit_Executed(object sender, ExecutedEventArgs e) {

@@ -42,6 +42,10 @@
     <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
     </Reference>
+    <Reference Include="NAudio, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\NAudio.1.8.0\lib\net35\NAudio.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -159,6 +163,12 @@
     <Compile Include="UI\Forms\FMain.Private.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FMusicSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMusicSettings.Designer.cs">
+      <DependentUpon>FMusicSettings.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Forms\FSelectMusicID.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +216,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\Forms\FMusicSettings.resx">
+      <DependentUpon>FMusicSettings.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FSelectMusicID.resx">
       <DependentUpon>FSelectMusicID.cs</DependentUpon>
     </EmbeddedResource>

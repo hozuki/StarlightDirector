@@ -84,7 +84,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             foreach (var bar in score.Bars) {
                 var currentGridPerSignature = bar.GetGridPerSignature();
                 var numGrids = bar.GetNumberOfGrids();
@@ -97,7 +97,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                             var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 currentBpm = bpmNote.Params.NewBpm;
-                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                currentInterval = MathHelper.BpmToInterval(currentBpm);
                                 ++bpmNoteIndex;
                             }
                         }
@@ -116,7 +116,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             var currentBarIndex = 0;
             foreach (var bar in score.Bars) {
                 bar.Temporary.StartTime = TimeSpan.FromSeconds(currentTiming);
@@ -134,7 +134,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                             var bpmNote = bpmNotesInThisBar[bpmNoteIndex];
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 currentBpm = bpmNote.Params.NewBpm;
-                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                currentInterval = MathHelper.BpmToInterval(currentBpm);
                                 ++bpmNoteIndex;
                             }
                         }
@@ -156,7 +156,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var timings = new Dictionary<Bar, double[]>();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             foreach (var bar in score.Bars) {
                 var currentGridPerSignature = bar.GetGridPerSignature();
                 var numGrids = bar.GetNumberOfGrids();
@@ -172,7 +172,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 // Yes! We have a visitor: a variant BPM note!
                                 currentBpm = bpmNote.Params.NewBpm;
-                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                currentInterval = MathHelper.BpmToInterval(currentBpm);
                                 ++bpmNoteIndex;
                             }
                         }
@@ -207,7 +207,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var timings = new Dictionary<Bar, double[]>();
             var currentTiming = score.Project.Settings.StartTimeOffset;
             var currentBpm = score.Project.Settings.BeatPerMinute;
-            var currentInterval = MathUtils.BpmToInterval(currentBpm);
+            var currentInterval = MathHelper.BpmToInterval(currentBpm);
             foreach (var bar in score.Bars) {
                 var currentGridPerSignature = bar.GetGridPerSignature();
                 var numGrids = bar.GetNumberOfGrids();
@@ -223,7 +223,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                             if (i == bpmNote.Basic.IndexInGrid) {
                                 // Yes! We have a visitor: a variant BPM note!
                                 currentBpm = bpmNote.Params.NewBpm;
-                                currentInterval = MathUtils.BpmToInterval(currentBpm);
+                                currentInterval = MathHelper.BpmToInterval(currentBpm);
                                 ++bpmNoteIndex;
                             }
                         }

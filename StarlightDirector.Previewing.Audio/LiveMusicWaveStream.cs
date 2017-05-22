@@ -4,7 +4,7 @@ using NAudio.Wave;
 
 namespace StarlightDirector.Previewing.Audio {
     public sealed class LiveMusicWaveStream : WaveStream {
-        
+
         public static LiveMusicWaveStream FromWaveStream(Stream stream) {
             return new LiveMusicWaveStream(stream);
         }

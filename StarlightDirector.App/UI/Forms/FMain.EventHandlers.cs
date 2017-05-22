@@ -37,6 +37,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void FMain_Closed(object sender, EventArgs e) {
+            CmdPreviewStop.Execute(this, null);
             EditorSettingsManager.SaveSettings();
         }
 
