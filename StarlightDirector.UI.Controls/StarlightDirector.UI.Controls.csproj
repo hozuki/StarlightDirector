@@ -36,6 +36,9 @@
     <Reference Include="SharpDX, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.3.1.1\lib\net45\SharpDX.dll</HintPath>
     </Reference>
+    <Reference Include="SharpDX.Desktop, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Desktop.3.1.1\lib\net45\SharpDX.Desktop.dll</HintPath>
+    </Reference>
     <Reference Include="SharpDX.Direct2D1, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
       <HintPath>..\packages\SharpDX.Direct2D1.3.1.1\lib\net45\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
@@ -66,6 +69,12 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ContextMenuRequestedEventArgs.cs" />
+    <Compile Include="Direct2D\Direct2DControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Direct2D\Direct2DScene.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Editing\PrimaryBeatMode.cs" />
     <Compile Include="Editing\RegionSelectionMode.cs" />
     <Compile Include="Editing\ScoreEditMode.cs" />
@@ -107,6 +116,11 @@
     <Compile Include="Editing\ScoreEditorGestureHandler.EditNote.cs" />
     <Compile Include="Editing\ScoreEditorHitRegion.cs" />
     <Compile Include="Editing\ScoreEditorHitTestResult.cs" />
+    <Compile Include="Previewing\ConnectionType.cs" />
+    <Compile Include="Previewing\Definitions.cs" />
+    <Compile Include="Previewing\NoteLayerUtils.cs" />
+    <Compile Include="Previewing\OnStageStatus.cs" />
+    <Compile Include="Previewing\RibbonMesh.cs" />
     <Compile Include="Previewing\ScorePreviewer.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -114,6 +128,9 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Previewing\ScorePreviewer.Rendering.Notes.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Previewing\ScorePreviewer.Rendering.Ribbons.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ScoreVisualizer.cs">
@@ -141,6 +158,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="StarlightToolStripRenderer.cs" />
+    <Compile Include="VisualizerDisplay.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\StarlightDirector.Beatmap\StarlightDirector.Beatmap.csproj">

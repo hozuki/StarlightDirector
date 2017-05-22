@@ -244,6 +244,10 @@
       <Project>{0c0198b0-3e7a-47b1-a876-0ead931c9eca}</Project>
       <Name>StarlightDirector.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\StarlightDirector.Previewing.Audio\StarlightDirector.Previewing.Audio.csproj">
+      <Project>{f025414b-54ab-4e52-aa58-28637f6150f7}</Project>
+      <Name>StarlightDirector.Previewing.Audio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StarlightDirector.UI.Controls\StarlightDirector.UI.Controls.csproj">
       <Project>{de218c3b-9404-4d3c-8dc0-47c07d9ad8d8}</Project>
       <Name>StarlightDirector.UI.Controls</Name>

@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Windows.Forms;
 using StarlightDirector.Core;
 using StarlightDirector.UI.Controls.Editing;
+using StarlightDirector.UI.Controls.Previewing;
 
 namespace StarlightDirector.UI.Controls {
     public partial class ScoreVisualizer : UserControl {
@@ -25,6 +26,7 @@ namespace StarlightDirector.UI.Controls {
 
         public event EventHandler<ContextMenuRequestedEventArgs> ContextMenuRequested;
         public event EventHandler<EventArgs> ProjectModified;
+        public event EventHandler<EventArgs> DisplayChanged;
 
         [Browsable(false)]
         public ScoreEditor Editor => editor;
@@ -33,11 +35,25 @@ namespace StarlightDirector.UI.Controls {
         public VScrollBar ScrollBar => vScroll;
 
         [Browsable(false)]
+        public ScorePreviewer Previewer => previewer;
+
+        [Browsable(false)]
         [DefaultValue(true)]
         public bool InvertedScrolling { get; set; } = true;
 
         [Browsable(false)]
         public int ScrollingSpeed { get; set; } = 5;
+
+        public VisualizerDisplay Display {
+            get => _display;
+            set {
+                var b = value != _display;
+                if (b) {
+                    _display = value;
+                    OnDisplayChanged(EventArgs.Empty);
+                }
+            }
+        }
 
         public void RecalcLayout() {
             editor.RecalcLayout();
@@ -72,23 +88,36 @@ namespace StarlightDirector.UI.Controls {
             ProjectModified?.Invoke(this, EventArgs.Empty);
         }
 
+        protected override void OnHandleCreated(EventArgs e) {
+            base.OnHandleCreated(e);
+            OnDisplayChanged(EventArgs.Empty);
+        }
+
         protected override void OnLayout(LayoutEventArgs e) {
             // Anchor doesn't seem to work.
             base.OnLayout(e);
 
             var clientSize = ClientSize;
+
             var scrollBarLeft = clientSize.Width - vScroll.Width - ConstMargin * 2;
             var scrollBarTop = ConstMargin;
             var scrollBarHeight = clientSize.Height - ConstMargin * 2;
             vScroll.Location = new Point(scrollBarLeft, scrollBarTop);
             vScroll.Height = scrollBarHeight;
 
-            var rendererLeft = ConstMargin;
-            var rendererTop = ConstMargin;
-            var rendererWidth = scrollBarLeft - ConstMargin;
-            var rendererHeight = clientSize.Height - ConstMargin * 2;
-            editor.Location = new Point(rendererLeft, rendererTop);
-            editor.Size = new Size(rendererWidth, rendererHeight);
+            var editorLeft = ConstMargin;
+            var editorTop = ConstMargin;
+            var editorWidth = scrollBarLeft - ConstMargin;
+            var editorHeight = clientSize.Height - ConstMargin * 2;
+            editor.Location = new Point(editorLeft, editorTop);
+            editor.Size = new Size(editorWidth, editorHeight);
+
+            var previewerLeft = ConstMargin;
+            var previewerTop = ConstMargin;
+            var previewerWidth = clientSize.Width - ConstMargin * 2;
+            var previewerHeight = clientSize.Height - ConstMargin * 2;
+            previewer.Location = new Point(previewerLeft, previewerTop);
+            previewer.Size = new Size(previewerWidth, previewerHeight);
         }
 
         protected override void OnMouseWheel(MouseEventArgs e) {
@@ -105,6 +134,25 @@ namespace StarlightDirector.UI.Controls {
             }
 
             ScrollInternal(e.Delta > 0, modifiers == Keys.Shift);
+        }
+
+        protected virtual void OnDisplayChanged(EventArgs e) {
+            var d = Display;
+            switch (d) {
+                case VisualizerDisplay.Editor:
+                    editor.Visible = true;
+                    vScroll.Visible = true;
+                    previewer.Visible = false;
+                    break;
+                case VisualizerDisplay.Previewer:
+                    editor.Visible = false;
+                    vScroll.Visible = false;
+                    previewer.Visible = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            DisplayChanged?.Invoke(this, e);
         }
 
         private void ScrollInternal(bool isUp, bool isLarge) {
@@ -169,6 +217,7 @@ namespace StarlightDirector.UI.Controls {
         private static readonly int ConstMargin = 3;
 
         private readonly ScoreEditorGestureHandler _scoreEditorSelectionHandler;
+        private VisualizerDisplay _display = VisualizerDisplay.Editor;
 
     }
 }

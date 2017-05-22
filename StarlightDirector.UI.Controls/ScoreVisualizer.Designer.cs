@@ -25,6 +25,7 @@
         private void InitializeComponent() {
             this.vScroll = new System.Windows.Forms.VScrollBar();
             this.editor = new StarlightDirector.UI.Controls.Editing.ScoreEditor();
+            this.previewer = new StarlightDirector.UI.Controls.Previewing.ScorePreviewer();
             this.SuspendLayout();
             // 
             // vScroll
@@ -40,21 +41,36 @@
             // 
             this.editor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
             | System.Windows.Forms.AnchorStyles.Left)));
+            this.editor.BarLineSpaceUnit = 7F;
+            this.editor.ClearColor = System.Drawing.Color.Black;
             this.editor.Difficulty = StarlightDirector.Beatmap.Difficulty.Debut;
+            this.editor.EditMode = StarlightDirector.UI.Controls.Editing.ScoreEditMode.Select;
+            this.editor.IndicatorsVisible = true;
             this.editor.Location = new System.Drawing.Point(3, 3);
             this.editor.Name = "editor";
+            this.editor.NoteStartPosition = StarlightDirector.Beatmap.NotePosition.Default;
             this.editor.PrimaryBeatMode = StarlightDirector.UI.Controls.Editing.PrimaryBeatMode.EveryFourBeats;
             this.editor.Project = null;
             this.editor.ScrollOffsetX = 0;
-            this.editor.ScrollOffsetY = 0;
             this.editor.Size = new System.Drawing.Size(433, 504);
             this.editor.TabIndex = 2;
             this.editor.Text = "Score Editor";
+            // 
+            // previewer
+            // 
+            this.previewer.ClearColor = System.Drawing.Color.Black;
+            this.previewer.Location = new System.Drawing.Point(3, 18);
+            this.previewer.Name = "previewer";
+            this.previewer.Score = null;
+            this.previewer.Size = new System.Drawing.Size(456, 489);
+            this.previewer.TabIndex = 3;
+            this.previewer.Text = "Score Previewer";
             // 
             // ScoreVisualizer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.previewer);
             this.Controls.Add(this.editor);
             this.Controls.Add(this.vScroll);
             this.Name = "ScoreVisualizer";
@@ -67,5 +83,6 @@
 
         private System.Windows.Forms.VScrollBar vScroll;
         private StarlightDirector.UI.Controls.Editing.ScoreEditor editor;
+        private Previewing.ScorePreviewer previewer;
     }
 }

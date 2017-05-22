@@ -82,6 +82,11 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
             target.FillGeometry(path.NativeGeometry, d2dBrush.NativeBrush);
         }
 
+        public void FillMesh(Brush brush, D2DMesh mesh) {
+            var d2dBrush = brush.AsD2DBrush();
+            RenderTarget.FillMesh(mesh.Native, d2dBrush.NativeBrush);
+        }
+
         public override void DrawLine(Pen pen, float x1, float y1, float x2, float y2) {
             var pt1 = new RawVector2(x1, y1);
             var pt2 = new RawVector2(x2, y2);
@@ -207,8 +212,6 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
                 }
             }
         }
-
-
 
     }
 }

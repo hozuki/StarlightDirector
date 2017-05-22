@@ -6,11 +6,11 @@ namespace StarlightDirector.UI.Controls.Previewing {
     partial class ScorePreviewer {
 
         protected override void OnCreateResources(D2DRenderContext context) {
-            _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), NoteShapeStrokeWidth);
-            _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), NoteShapeStrokeWidth * 3);
-            _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), NoteShapeStrokeWidth);
-            _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), NoteShapeStrokeWidth);
-            _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), NoteShapeStrokeWidth);
+            _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), Definitions.NoteShapeStrokeWidth);
+            _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), Definitions.NoteShapeStrokeWidth * 3);
+            _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), Definitions.NoteShapeStrokeWidth);
+            _holdNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0xBB, 0x22), Definitions.NoteShapeStrokeWidth);
+            _flickNoteShapeStroke = new D2DPen(context, Color.FromArgb(0x22, 0x55, 0xBB), Definitions.NoteShapeStrokeWidth);
 
             _noteCommonFill = new D2DSolidBrush(context, Color.White);
             _holdNoteShapeFillInner = new D2DSolidBrush(context, Color.White);
@@ -29,6 +29,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
 
             _avatarFill = new D2DSolidBrush(context, Color.Black);
             _avatarBorderStroke = new D2DPen(context, Color.White, 4);
+
+            _ribbonBrush = new D2DLinearGradientBrush(context, new PointF(context.ClientSize.Height, 0), new PointF(0, context.ClientSize.Height), RibbonColors);
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
@@ -55,6 +57,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
 
             _avatarFill?.Dispose();
             _avatarBorderStroke?.Dispose();
+
+            _ribbonBrush?.Dispose();
         }
 
         // Note resources
@@ -83,12 +87,27 @@ namespace StarlightDirector.UI.Controls.Previewing {
         private D2DBrush _avatarFill;
         private D2DPen _avatarBorderStroke;
 
+        private D2DLinearGradientBrush _ribbonBrush;
+
+        private static readonly Color[] RibbonColors = {
+            Color.FromArgb(RibbonAlpha, 255, 0, 0),
+            Color.FromArgb(RibbonAlpha, 255, 165, 0),
+            Color.FromArgb(RibbonAlpha, 255, 255, 0),
+            Color.FromArgb(RibbonAlpha, 0, 255, 0),
+            Color.FromArgb(RibbonAlpha, 0, 255, 255),
+            Color.FromArgb(RibbonAlpha, 0, 0, 255),
+            Color.FromArgb(RibbonAlpha, 43, 0, 255),
+            Color.FromArgb(RibbonAlpha, 87, 0, 255),
+            Color.FromArgb(RibbonAlpha, 255, 0, 0),
+        };
+
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };
         private static readonly Color[] FlickNoteShapeFillOuterColors = { Color.FromArgb(0x88, 0xBB, 0xFF), Color.FromArgb(0x22, 0x55, 0xBB) };
         private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xE1, 0xA8, 0xFB), Color.FromArgb(0xA5, 0x46, 0xDA) };
         private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB), Color.FromArgb(0x80, 0xA5, 0x46, 0xDA) };
 
+        private const int RibbonAlpha = 63;
 
     }
 }

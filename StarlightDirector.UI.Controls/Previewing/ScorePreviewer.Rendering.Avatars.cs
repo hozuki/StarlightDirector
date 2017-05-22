@@ -6,18 +6,19 @@ namespace StarlightDirector.UI.Controls.Previewing {
 
         private void RenderAvatars(D2DRenderContext context) {
             var clientSize = context.ClientSize;
-            var yCenter = clientSize.Height * BaseLineYPosition;
-            var radius = AvatarCircleRadius;
+            var yCenter = clientSize.Height * Definitions.BaseLineYPosition;
+            var diameter = Definitions.AvatarCircleDiameter;
+            var radius = Definitions.AvatarCircleRadius;
             var fill = _avatarFill;
             var stroke = _avatarBorderStroke;
 
-            var xStart = clientSize.Width * AvatarCenterXEndPositions[0] - radius;
-            var xEnd = clientSize.Width * AvatarCenterXEndPositions[AvatarCenterXEndPositions.Length - 1] - radius;
+            var xStart = clientSize.Width * Definitions.AvatarCenterXEndPositions[0] - diameter;
+            var xEnd = clientSize.Width * Definitions.AvatarCenterXEndPositions[Definitions.AvatarCenterXEndPositions.Length - 1] + diameter;
             context.DrawLine(stroke, xStart, yCenter, xEnd, yCenter);
 
-            foreach (var position in AvatarCenterXEndPositions) {
+            foreach (var position in Definitions.AvatarCenterXEndPositions) {
                 var xCenter = clientSize.Width * position;
-                context.FillCircle(fill, xCenter - radius, yCenter - radius, radius);
+                context.FillCircle(fill, xCenter, yCenter, radius);
                 context.DrawCircle(stroke, xCenter, yCenter, radius);
             }
         }
