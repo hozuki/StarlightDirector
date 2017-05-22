@@ -39,7 +39,9 @@ namespace StarlightDirector.UI.Controls.Direct2D {
             _renderDisposeEvent.Reset();
             _willDispose = true;
             StopAnimation();
-            _renderDisposeEvent.WaitOne();
+            if (_hasRendered) {
+                _renderDisposeEvent.WaitOne();
+            }
             _renderDisposeEvent.Dispose();
             base.Dispose(disposing);
         }
@@ -47,10 +49,11 @@ namespace StarlightDirector.UI.Controls.Direct2D {
         private void RenderWrapper() {
             if (IsAnimationEnabled) {
                 Render();
+                _hasRendered = true;
             } else {
                 WaitForNextVBlank();
             }
-            if (_willDispose) {
+            if (_willDispose && _hasRendered) {
                 if (!_disposeConfirmed) {
                     _renderDisposeEvent.Set();
                     _disposeConfirmed = true;
@@ -62,6 +65,7 @@ namespace StarlightDirector.UI.Controls.Direct2D {
         private readonly object _animationEnabledLock = new object();
         private bool _willDispose;
         private bool _disposeConfirmed;
+        private bool _hasRendered;
         private readonly AutoResetEvent _renderDisposeEvent;
 
     }
