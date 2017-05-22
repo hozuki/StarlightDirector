@@ -1,4 +1,5 @@
-﻿using StarlightDirector.UI.Rendering.Direct2D;
+﻿using StarlightDirector.Beatmap;
+using StarlightDirector.UI.Rendering.Direct2D;
 using StarlightDirector.UI.Rendering.Extensions;
 
 namespace StarlightDirector.UI.Controls.Previewing {
@@ -12,8 +13,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
             var fill = _avatarFill;
             var stroke = _avatarBorderStroke;
 
-            var xStart = clientSize.Width * Definitions.AvatarCenterXEndPositions[0] - diameter;
-            var xEnd = clientSize.Width * Definitions.AvatarCenterXEndPositions[Definitions.AvatarCenterXEndPositions.Length - 1] + diameter;
+            var xStart = NotesLayerUtils.GetAvatarXPosition(clientSize, NotePosition.Min) - diameter;
+            var xEnd = NotesLayerUtils.GetAvatarXPosition(clientSize, NotePosition.Max) + diameter;
             context.DrawLine(stroke, xStart, yCenter, xEnd, yCenter);
 
             foreach (var position in Definitions.AvatarCenterXEndPositions) {

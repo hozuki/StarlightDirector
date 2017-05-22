@@ -5,6 +5,7 @@ namespace StarlightDirector.Beatmap {
 
         [Description("Default")]
         Default = 0,
+        Min = 1,
         [Description("Left")]
         Left = 1,
         [Description("Center Left")]

@@ -176,7 +176,10 @@ namespace StarlightDirector.UI.Controls.Previewing {
             }
 
             float x, y, r;
-            if (note.Helper.IsSlideEnd || NotesLayerUtils.IsNoteOnStage(note, now)) {
+            if (NotesLayerUtils.IsNoteOnStage(note, now)) {
+                if (note.Helper.IsSlideEnd && NotesLayerUtils.IsNotePassed(note, now)) {
+                    return;
+                }
                 x = NotesLayerUtils.GetNoteXPosition(context, now, note);
                 y = NotesLayerUtils.GetNoteYPosition(context, now, note);
                 r = NotesLayerUtils.GetNoteRadius(now, note);

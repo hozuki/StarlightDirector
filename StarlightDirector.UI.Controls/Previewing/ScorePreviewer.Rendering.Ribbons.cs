@@ -20,35 +20,9 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 DrawFlickRibbon(context, now, startNote, endNote);
                 return;
             }
-            if (startNote.Helper.IsSlideEnd || NotesLayerUtils.IsNoteOnStage(startNote, now)) {
-                DrawHoldRibbon(context, now, startNote, endNote);
-                return;
-            }
-            if (NotesLayerUtils.IsNotePassed(startNote, now)) {
-                var nextSlideNote = startNote.Editor.NextSlide;
-                if (nextSlideNote == null) {
-                    // Actually, here is an example of invalid format. :)
-                    DrawHoldRibbon(context, now, startNote, endNote);
-                    return;
-                }
-                if (NotesLayerUtils.IsNotePassed(nextSlideNote, now)) {
-                    return;
-                }
-                var startX = NotesLayerUtils.GetEndXByNotePosition(context.ClientSize, startNote.Basic.FinishPosition);
-                var endX = NotesLayerUtils.GetEndXByNotePosition(context.ClientSize, nextSlideNote.Basic.FinishPosition);
-                var y1 = NotesLayerUtils.GetAvatarYPosition(context.ClientSize);
-                var x1 = (float)((now - startNote.Temporary.HitTiming.TotalSeconds) / (nextSlideNote.Temporary.HitTiming.TotalSeconds - startNote.Temporary.HitTiming.TotalSeconds)) * (endX - startX) + startX;
-                float t1 = NotesLayerUtils.GetNoteTransformedTime(now, startNote, clampComing: true, clampPassed: true);
-                float t2 = NotesLayerUtils.GetNoteTransformedTime(now, endNote, clampComing: true, clampPassed: true);
-                float tmid = (t1 + t2) * 0.5f;
-                float x2 = NotesLayerUtils.GetNoteXPosition(context, endNote.Basic.FinishPosition, t2);
-                float xmid = NotesLayerUtils.GetNoteXPosition(context, endNote.Basic.FinishPosition, tmid);
-                float y2 = NotesLayerUtils.GetNoteYPosition(context, t2);
-                float ymid = NotesLayerUtils.GetNoteYPosition(context, tmid);
-                NotesLayerUtils.GetBezierFromQuadratic(x1, xmid, x2, out float xcontrol1, out float xcontrol2);
-                NotesLayerUtils.GetBezierFromQuadratic(y1, ymid, y2, out float ycontrol1, out float ycontrol2);
-                // TODO:
-                //context.DrawBezier(ConnectionPen, x1, y1, xcontrol1, ycontrol1, xcontrol2, ycontrol2, x2, y2);
+            if (!NotesLayerUtils.IsNoteComing(startNote, now) && !NotesLayerUtils.IsNotePassed(endNote, now)) {
+                var mesh = new RibbonMesh(context, startNote, endNote, now, ConnectionType.Slide);
+                mesh.Fill(_ribbonBrush);
             }
         }
 

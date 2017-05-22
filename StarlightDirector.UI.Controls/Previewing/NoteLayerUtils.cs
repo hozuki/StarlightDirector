@@ -119,6 +119,10 @@ namespace StarlightDirector.UI.Controls.Previewing {
             }
         }
 
+        public static float GetAvatarXPosition(SizeF clientSize, NotePosition avatarPosition) {
+            return clientSize.Width * Definitions.AvatarCenterXEndPositions[(int)avatarPosition - 1];
+        }
+
         public static float GetAvatarYPosition(SizeF clientSize) {
             return clientSize.Height * Definitions.BaseLineYPosition;
         }
