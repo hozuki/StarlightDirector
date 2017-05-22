@@ -27,12 +27,16 @@
         }
 
         #app-title {
-            font-weight: bold;
             font-size: 18pt;
+        }
+
+        #title-version-space {
+            width: 5pt;
         }
 
         #version-string {
             font-style: italic;
+            vertical-align: middle;
         }
 
         #app-description {
@@ -50,10 +54,22 @@
     <title>About</title>
 </head>
 <body>
-    <div id="app-title" class="dark-text">Starlight Director</div>
-    <div id="version-string">version $VERSION_NUMBER$$VERSION_SUFFIX$ &quot;$VERSION_CODE$&quot;</div>
-    <div id="app-description">Score and music authorizing tool for <a href="http://cinderella.idolmaster.jp/sl-stage">Idolmaster Cinderella Girls: Starlight Stage</a>.</div>
-    <div id="app-description-2">Developed by <a href="https://github.com/hozuki">hozuki</a>, hosted on <a href="https://github.com/hozuki/StarlightDirector">GitHub</a>.</div>
+    <table>
+        <tbody>
+            <tr>
+                <td id="app-title" class="dark-text bold">Starlight Director</td>
+                <td id="title-version-space" />
+                <td id="version-string">version $VERSION_NUMBER$$VERSION_SUFFIX$ &quot;$VERSION_CODE$&quot;</td>
+            </tr>
+        </tbody>
+    </table>
+    <div id="app-description" class="bold">
+        Score and music authorizing tool for <a href="http://cinderella.idolmaster.jp/sl-stage">Idolmaster Cinderella Girls: Starlight Stage</a>
+    </div>
+    <div id="app-description-2">
+        Developed by <a href="https://github.com/hozuki">hozuki</a>, hosted on <a href="https://github.com/hozuki/StarlightDirector">GitHub</a>.
+        <a href="https://github.com/logchan">logchan</a> and <a href="https://github.com/statementreply">statementreply</a> also contributed part of the source code.
+    </div>
     <br />
     <div class="bold dark-text">Powered by open source projects:</div>
     <div>
@@ -72,9 +88,14 @@
         <div>
             <a href="http://www.newtonsoft.com/json">Json.NET</a>
         </div>
+        <div>
+            <a href="https://github.com/naudio/NAudio">NAudio</a>
+        </div>
     </div>
     <br />
-    <div><span class="bold dark-text">Special thanks to</span> (in alphabetical order):</div>
+    <div>
+        <span class="bold dark-text">Special thanks to</span> (in alphabetical order):
+    </div>
     <div>
         2GM2A,
         <a href="https://github.com/CaiMiao">CaiMiao</a>,
@@ -85,8 +106,6 @@
         <a href="https://github.com/laurencedu">chieri</a>,
         dante,
         <a href="https://github.com/hyspace">hyspace</a>,
-        <a href="https://github.com/logchan">logchan</a>,
-        <a href="https://github.com/statementreply">statementreply</a>,
         <a href="https://twitter.com/DICE__game">だいずp</a>,
         <a href="https://twitter.com/blueapple25130">のんのん</a>,
         <a href="https://twitter.com/ymsgu">山杉</a>,
@@ -94,7 +113,9 @@
         several others, and you.
     </div>
     <br />
-    <div>Feedback and issue report: <a href="https://github.com/hozuki/StarlightDirector/issues">click here</a>.</div>
+    <div>
+        Feedback and issue report: <a href="https://github.com/hozuki/StarlightDirector/issues">click here</a>.
+    </div>
     <br />
     <div id="footnote">
         The copyright of CGSS and its related contents are held by <a href="https://bandainamcoent.co.jp">Bandai Namco Entertainment, Inc.</a>

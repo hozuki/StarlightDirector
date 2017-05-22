@@ -24,7 +24,7 @@
         /// </summary>
         private void InitializeComponent() {
             this.btnClose = new System.Windows.Forms.Button();
-            this.lblAbout = new TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel();
+            this.lblAbout = new TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel();
             this.picAnimation = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picAnimation)).BeginInit();
@@ -96,7 +96,7 @@
         #endregion
 
         private System.Windows.Forms.Button btnClose;
-        private TheArtOfDev.HtmlRenderer.WinForms.HtmlLabel lblAbout;
+        private TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel lblAbout;
         private System.Windows.Forms.PictureBox picAnimation;
         private System.Windows.Forms.Label label1;
     }
