@@ -81,6 +81,13 @@ namespace StarlightDirector.Beatmap {
             }
         }
 
+        public static void MakeSlideToFlick(Note note1, Note note2) {
+            note1.Editor.NextFlick = note2;
+            note2.Editor.PrevSlide = note1;
+            note1.Basic.FlickType = note2.Basic.FinishPosition > note1.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
+            // Flick type of note2 doesn't need to be changed, since it is already in a flick group.
+        }
+
         public static bool AreNotesInHoldChain(Note note1, Note note2) {
             return note1.Editor.HoldPair == note2 && note2.Editor.HoldPair == note1;
         }

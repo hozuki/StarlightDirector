@@ -147,6 +147,16 @@ namespace StarlightDirector.UI.Controls.Editing {
                 } while (false);
             }
 
+            // Now handle a special case: link flick after a slide.
+            if (!relationCreated) {
+                var (first, second) = NoteUtilities.Split(thisNote, lastNote);
+                if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
+                    NoteUtilities.MakeSlideToFlick(first, second);
+                    _visualizer.InformProjectModified();
+                    relationCreated = true;
+                }
+            }
+
             if (relationCreated) {
                 thisNote.EditorUnselect();
                 lastNote.EditorUnselect();
@@ -217,6 +227,16 @@ namespace StarlightDirector.UI.Controls.Editing {
                     relationCreated = true;
                 }
             } while (false);
+
+            // Now handle a special case: link flick after a slide.
+            if (!relationCreated) {
+                var (first, second) = NoteUtilities.Split(thisNote, lastNote);
+                if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
+                    NoteUtilities.MakeSlideToFlick(first, second);
+                    _visualizer.InformProjectModified();
+                    relationCreated = true;
+                }
+            }
 
             if (relationCreated) {
                 thisNote.EditorUnselect();
@@ -352,8 +372,8 @@ namespace StarlightDirector.UI.Controls.Editing {
                 return ("The second note must not be a hold start note.");
             }
             // Check: the first note must not be a note in the middle of a flick group or start of a flick group.
-            if (firstNote.Helper.IsFlickMidway || firstNote.Helper.IsFlickStart) {
-                return ("The first note must not be the start or middle of a flick group.");
+            if (firstNote.Helper.IsFlick) {
+                return ("The first note must not be a flick note.");
             }
             // Check: the second note must not be a note in the middle of a flick group or end of a flick group.
             if (secondNote.Helper.IsFlickMidway || secondNote.Helper.IsFlickEnd) {

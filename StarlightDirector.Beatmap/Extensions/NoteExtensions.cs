@@ -74,6 +74,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
             if (nextFlick != null) {
                 nextFlick.Editor.PrevFlick = null;
+                nextFlick.Editor.PrevSlide = null;
             }
             if (prevFlick != null) {
                 if (!prevFlick.Helper.HasPrevFlick && !prevFlick.Helper.HasNextFlick) {

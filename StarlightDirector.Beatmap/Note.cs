@@ -96,7 +96,7 @@ namespace StarlightDirector.Beatmap {
 
             public bool IsFlick {
                 [DebuggerStepThrough]
-                get { return _note.Basic.FlickType != NoteFlickType.None; }
+                get { return _note.Basic.FlickType != NoteFlickType.None && _note.Basic.Type == NoteType.TapOrFlick; }
             }
 
             public bool IsFlickStart {
