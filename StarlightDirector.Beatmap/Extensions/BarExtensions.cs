@@ -139,7 +139,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                                 ++bpmNoteIndex;
                             }
                         }
-                        currentTiming += currentInterval * i / currentGridPerSignature;
+                        currentTiming += currentInterval / currentGridPerSignature;
                     }
                 } else {
                     var currentSignature = b.GetSignature();
@@ -201,14 +201,6 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
             bar.Notes.Remove(note);
             bar.Basic.Score.Project.UsedNoteIDs.Remove(note.StarlightID);
-            return note;
-        }
-
-        internal static Note AddNoteDirect(this Bar bar, Note note) {
-            if (note == null) {
-                return null;
-            }
-            bar.Notes.Add(note);
             return note;
         }
 

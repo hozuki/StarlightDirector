@@ -189,7 +189,9 @@ namespace StarlightDirector.Beatmap.IO {
                         }
                         if (newBar != originalBar) {
                             originalBar.RemoveSpecialNoteForVariantBpmFix(note);
-                            newBar.AddNoteDirect(note);
+                            var newNote = newBar.AddSpecialNote(id, (NoteType)type);
+                            newNote.Basic.IndexInGrid = note.Basic.IndexInGrid;
+                            newNote.Params = note.Params;
                         }
                     }
                 }

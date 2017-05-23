@@ -101,7 +101,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                                 ++bpmNoteIndex;
                             }
                         }
-                        currentTiming += currentInterval * i / currentGridPerSignature;
+                        currentTiming += currentInterval / currentGridPerSignature;
                     }
                 } else {
                     var currentSignature = bar.GetSignature();
@@ -138,7 +138,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                                 ++bpmNoteIndex;
                             }
                         }
-                        currentTiming += currentInterval * i / currentGridPerSignature;
+                        currentTiming += currentInterval / currentGridPerSignature;
                     }
                 } else {
                     var currentSignature = bar.GetSignature();
@@ -177,12 +177,12 @@ namespace StarlightDirector.Beatmap.Extensions {
                             }
                         }
                         t[i] = currentTiming;
-                        currentTiming += currentInterval * i / currentGridPerSignature;
+                        currentTiming += currentInterval / currentGridPerSignature;
                     }
                 } else {
                     // If there are no variant BPM notes, things get a lot easier.
                     for (var i = 0; i < numGrids; ++i) {
-                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
+                        t[i] = currentTiming + currentInterval / currentGridPerSignature;
                     }
                     var currentSignature = bar.GetSignature();
                     currentTiming += currentInterval * currentSignature;
@@ -228,12 +228,12 @@ namespace StarlightDirector.Beatmap.Extensions {
                             }
                         }
                         t[i] = currentTiming;
-                        currentTiming += currentInterval * i / currentGridPerSignature;
+                        currentTiming += currentInterval / currentGridPerSignature;
                     }
                 } else {
                     // If there are no variant BPM notes, things get a lot easier.
                     for (var i = 0; i < numGrids; ++i) {
-                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
+                        t[i] = currentTiming + currentInterval / currentGridPerSignature;
                     }
                     var currentSignature = bar.GetSignature();
                     currentTiming += currentInterval * currentSignature;
