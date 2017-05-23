@@ -128,5 +128,23 @@ namespace StarlightDirector.Beatmap {
             return false;
         }
 
+        public static NoteFlickType GetFlickTypeForSlidePair(Note note1, Note note2) {
+            if (!note1.Helper.IsSlide) {
+                throw new ArgumentException("note1 must be a slide note.", nameof(note1));
+            }
+            if (!note2.Helper.IsSlide) {
+                throw new ArgumentException("note2 must be a slide note.", nameof(note2));
+            }
+            var b1 = note1.Basic;
+            var b2 = note2.Basic;
+            if (b2.FinishPosition > b1.FinishPosition) {
+                return NoteFlickType.Right;
+            } else if (b2.FinishPosition < b1.FinishPosition) {
+                return NoteFlickType.Left;
+            } else {
+                return NoteFlickType.None;
+            }
+        }
+
     }
 }

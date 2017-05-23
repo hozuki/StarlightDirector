@@ -117,6 +117,11 @@ namespace StarlightDirector.Beatmap.Extensions {
                 if (!nextSlide.Helper.HasPrevSlide && !nextSlide.Helper.HasNextSlide) {
                     nextSlide.Basic.Type = NoteType.TapOrFlick;
                 }
+                if (nextSlide.Helper.HasNextSlide) {
+                    nextSlide.Basic.FlickType = NoteUtilities.GetFlickTypeForSlidePair(nextSlide, nextSlide.Editor.NextSlide);
+                } else {
+                    nextSlide.Basic.FlickType = NoteFlickType.None;
+                }
             }
             if (prevSlide != null) {
                 FixFlickDirections(prevSlide);
