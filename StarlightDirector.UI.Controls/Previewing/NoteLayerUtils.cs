@@ -64,21 +64,20 @@ namespace StarlightDirector.UI.Controls.Previewing {
             return NoteTimeTransform(timeRemainingInWindow);
         }
 
-        public static float GetNoteXPosition(RenderContext context, double now, double hitTiming, NotePosition finishPosition, bool clampComing = false, bool clampPassed = false) {
+        public static float GetNoteXPosition(RenderContext context, double now, double hitTiming, NotePosition startPosition, NotePosition finishPosition, bool clampComing = false, bool clampPassed = false) {
             var timeTransformed = GetNoteTransformedTime(now, hitTiming, clampComing, clampPassed);
-            return GetNoteXPosition(context, finishPosition, timeTransformed);
+            return GetNoteXPosition(context, startPosition, finishPosition, timeTransformed);
         }
 
         public static float GetNoteXPosition(RenderContext context, double now, Note note, bool clampComing = false, bool clampPassed = false) {
             var timeTransformed = GetNoteTransformedTime(now, note, clampComing, clampPassed);
-            return GetNoteXPosition(context, note.Basic.FinishPosition, timeTransformed);
+            return GetNoteXPosition(context, note.Basic.StartPosition, note.Basic.FinishPosition, timeTransformed);
         }
 
-        public static float GetNoteXPosition(RenderContext context, NotePosition finishPosition, float timeTransformed) {
+        public static float GetNoteXPosition(RenderContext context, NotePosition startPosition, NotePosition finishPosition, float timeTransformed) {
             var clientSize = context.ClientSize;
             var endPos = Definitions.AvatarCenterXEndPositions[(int)finishPosition - 1] * clientSize.Width;
-            var displayStartPosition = finishPosition;
-            var startPos = Definitions.AvatarCenterXStartPositions[(int)displayStartPosition - 1] * clientSize.Width;
+            var startPos = Definitions.AvatarCenterXStartPositions[(int)startPosition - 1] * clientSize.Width;
             return endPos - (endPos - startPos) * NoteXTransform(timeTransformed);
         }
 

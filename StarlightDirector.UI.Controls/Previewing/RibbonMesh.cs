@@ -61,7 +61,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 case ConnectionType.Hold:
                     for (var i = 0; i < JointCount; ++i) {
                         var timing = (endTiming - startTiming) / (JointCount - 1) * i + startTiming;
-                        xs[i] = NotesLayerUtils.GetNoteXPosition(context, now, timing, finishPosition, true, true);
+                        var startPosition = EndNote.Basic.StartPosition;
+                        xs[i] = NotesLayerUtils.GetNoteXPosition(context, now, timing, startPosition, finishPosition, true, true);
                         ys[i] = NotesLayerUtils.GetNoteYPosition(context, now, timing, true, true);
                         rs[i] = NotesLayerUtils.GetNoteRadius(now, timing);
                     }
