@@ -182,7 +182,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                 } else {
                     // If there are no variant BPM notes, things get a lot easier.
                     for (var i = 0; i < numGrids; ++i) {
-                        t[i] = currentTiming + currentInterval / currentGridPerSignature;
+                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
                     }
                     var currentSignature = bar.GetSignature();
                     currentTiming += currentInterval * currentSignature;
@@ -233,7 +233,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                 } else {
                     // If there are no variant BPM notes, things get a lot easier.
                     for (var i = 0; i < numGrids; ++i) {
-                        t[i] = currentTiming + currentInterval / currentGridPerSignature;
+                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
                     }
                     var currentSignature = bar.GetSignature();
                     currentTiming += currentInterval * currentSignature;
