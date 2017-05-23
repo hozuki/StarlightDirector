@@ -188,13 +188,15 @@ namespace StarlightDirector.Beatmap.Extensions {
             // Set the directions.
             var currentFlick = firstFlick;
             var nextFlick = currentFlick.Editor.NextFlick;
-            do {
-                currentFlick.Basic.FlickType = nextFlick.Basic.FinishPosition > currentFlick.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
-                // Trick. So we don't need to track the previous flick to decide the flick direction of the last note of the group.
-                nextFlick.Basic.FlickType = currentFlick.Basic.FlickType;
-                currentFlick = nextFlick;
-                nextFlick = currentFlick.Editor.NextFlick;
-            } while (nextFlick != null);
+            if (nextFlick != null) {
+                do {
+                    currentFlick.Basic.FlickType = nextFlick.Basic.FinishPosition > currentFlick.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
+                    // Trick. So we don't need to track the previous flick to decide the flick direction of the last note of the group.
+                    nextFlick.Basic.FlickType = currentFlick.Basic.FlickType;
+                    currentFlick = nextFlick;
+                    nextFlick = currentFlick.Editor.NextFlick;
+                } while (nextFlick != null);
+            }
         }
 
     }

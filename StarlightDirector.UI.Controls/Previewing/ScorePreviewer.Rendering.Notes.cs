@@ -82,7 +82,11 @@ namespace StarlightDirector.UI.Controls.Previewing {
                         DrawHoldNote(context, now, note);
                         break;
                     case NoteType.Slide:
-                        DrawSlideNote(context, now, note);
+                        if (note.Helper.HasNextFlick) {
+                            DrawFlickNote(context, now, note);
+                        } else {
+                            DrawSlideNote(context, now, note);
+                        }
                         break;
                 }
             }
