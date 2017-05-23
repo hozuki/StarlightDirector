@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Drawing;
+using System.Timers;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 using StarlightDirector.Core.Interop;
+using StarlightDirector.Previewing.Audio;
 using StarlightDirector.UI.Controls;
+using StarlightDirector.UI.Controls.Previewing;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -20,6 +24,8 @@ namespace StarlightDirector.App.UI.Forms {
             tsbEditMode.Click -= TsbEditMode_Click;
             tsbScoreNoteStartPosition.Click -= TsbScoreNoteStartPosition_Click;
             visualizer.ProjectModified -= Visualizer_ProjectModified;
+            Closed -= FMain_Closed;
+            visualizer.Previewer.FrameRendered -= Previewer_FrameRendered;
         }
 
         private void RegisterEventHandlers() {
@@ -34,10 +40,46 @@ namespace StarlightDirector.App.UI.Forms {
             tsbScoreNoteStartPosition.Click += TsbScoreNoteStartPosition_Click;
             visualizer.ProjectModified += Visualizer_ProjectModified;
             Closed += FMain_Closed;
+            visualizer.Previewer.FrameRendered += Previewer_FrameRendered;
+        }
+
+        private void Previewer_FrameRendered(object sender, EventArgs e) {
+            var score = visualizer.Previewer.Score;
+            if (score == null) {
+                return;
+            }
+            var rawMusicTime = _liveMusicPlayer?.CurrentTime ?? _totalLiveTime;
+            lock (_sfxSyncObject) {
+                if (_liveSfxManager == null) {
+                    return;
+                }
+                var now = (rawMusicTime + _liveSfxManager.BufferOffset).TotalSeconds;
+                if (now <= _sfxBufferTime) {
+                    return;
+                }
+                var prev = _sfxBufferTime;
+                foreach (var note in score.GetAllNotes()) {
+                    if (note.Temporary.HitTiming.TotalSeconds < prev || now <= note.Temporary.HitTiming.TotalSeconds) {
+                        continue;
+                    }
+                    string sfxFileName;
+                    if (note.Helper.IsSlide) {
+                        sfxFileName = note.Helper.HasNextFlick ? FlickAudioFilePath : SlideAudioFilePath;
+                    } else {
+                        sfxFileName = note.Helper.IsFlick ? FlickAudioFilePath : TapAudioFilePath;
+                    }
+                    _liveSfxManager.PlayWave(sfxFileName, note.Temporary.HitTiming, PreviewingSettings.SfxVolume);
+                }
+                _sfxBufferTime = now;
+            }
         }
 
         private void FMain_Closed(object sender, EventArgs e) {
             CmdPreviewStop.Execute(this, null);
+            _liveMusicPlayer?.Stop();
+            _liveSfxManager?.Dispose();
+            _liveMusicPlayer?.Dispose();
+            _liveTimer?.Dispose();
             EditorSettingsManager.SaveSettings();
         }
 
@@ -218,10 +260,28 @@ namespace StarlightDirector.App.UI.Forms {
 
             EditorSettingsManager.LoadSettings();
             ApplySettings(EditorSettingsManager.CurrentSettings);
+
+            _liveMusicPlayer = new LiveMusicPlayer();
+            _liveSfxManager = new SfxManager(_liveMusicPlayer);
+            _liveSfxManager.PreloadWave(TapAudioFilePath);
+            _liveSfxManager.PreloadWave(FlickAudioFilePath);
+            _liveSfxManager.PreloadWave(SlideAudioFilePath);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {
             MaximumSize = Screen.PrimaryScreen.WorkingArea.Size;
+        }
+
+        private void LiveTimer_Elapsed(object sender, ElapsedEventArgs e) {
+            if (_liveWaveStream == null) {
+                var signal = e.SignalTime;
+                var elapsed = signal - _lastSignalTime;
+                _totalLiveTime += elapsed;
+                visualizer.Previewer.Now = _totalLiveTime;
+                _lastSignalTime = signal;
+            } else {
+                visualizer.Previewer.Now = _liveMusicPlayer.CurrentTime;
+            }
         }
 
     }

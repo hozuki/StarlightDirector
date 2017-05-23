@@ -25,26 +25,26 @@ namespace StarlightDirector.App.UI.Forms {
             }
 
             visualizer.Display = VisualizerDisplay.Previewer;
-            if (_timer == null) {
-                _timer = new Timer(1);
-                _timer.Elapsed += _timer_Elapsed;
+            if (_liveTimer == null) {
+                _liveTimer = new Timer(1);
+                _liveTimer.Elapsed += LiveTimer_Elapsed;
             }
             var project = visualizer.Editor.Project;
             if (project.HasMusic && File.Exists(project.MusicFileName)) {
-                _liveMusicPlayer = new LiveMusicPlayer();
                 _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
                 _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                _liveMusicPlayer.AddInputStream(_liveWaveStream);
+                _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+            } else {
+                _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
             _lastSignalTime = DateTime.Now;
-            _totalTime = TimeSpan.FromSeconds(startTime);
-            if (_liveMusicPlayer != null) {
-                _liveMusicPlayer.CurrentTime = _totalTime;
-            }
-            _timer.Start();
-            _liveMusicPlayer?.Play();
+            _totalLiveTime = TimeSpan.FromSeconds(startTime);
+            _liveMusicPlayer.CurrentTime = _totalLiveTime;
+            _sfxBufferTime = 0;
+            _liveTimer.Start();
+            _liveMusicPlayer.Play();
             visualizer.Previewer.StartAnimation();
         }
 
@@ -53,23 +53,26 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
             visualizer.Display = VisualizerDisplay.Previewer;
-            if (_timer == null) {
-                _timer = new Timer(1);
-                _timer.Elapsed += _timer_Elapsed;
+            if (_liveTimer == null) {
+                _liveTimer = new Timer(1);
+                _liveTimer.Elapsed += LiveTimer_Elapsed;
             }
             var project = visualizer.Editor.Project;
             if (project.HasMusic && File.Exists(project.MusicFileName)) {
-                _liveMusicPlayer = new LiveMusicPlayer();
                 _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
                 _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                _liveMusicPlayer.AddInputStream(_liveWaveStream);
+                _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+            } else {
+                _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
             _lastSignalTime = DateTime.Now;
-            _totalTime = TimeSpan.Zero;
-            _timer.Start();
-            _liveMusicPlayer?.Play();
+            _totalLiveTime = TimeSpan.Zero;
+            _liveMusicPlayer.CurrentTime = TimeSpan.Zero;
+            _sfxBufferTime = 0;
+            _liveTimer.Start();
+            _liveMusicPlayer.Play();
             visualizer.Previewer.StartAnimation();
         }
 
@@ -77,29 +80,19 @@ namespace StarlightDirector.App.UI.Forms {
             if (!visualizer.Previewer.IsAnimationEnabled) {
                 return;
             }
-            if (_liveMusicPlayer != null) {
-                _liveMusicPlayer.Stop();
-                _liveWaveStream?.Dispose();
-                _liveFileStream?.Dispose();
+            _liveTimer.Stop();
+            _liveMusicPlayer.Stop();
+            if (_liveWaveStream != null) {
+                _liveMusicPlayer.RemoveMusicInputStream();
+                _liveWaveStream.Dispose();
+                _liveFileStream.Dispose();
                 _liveWaveStream = null;
-                _liveMusicPlayer.Dispose();
-                _liveMusicPlayer = null;
+                _liveFileStream = null;
+            } else if (_liveMusicPlayer.HasMusicInputStream) {
+                _liveMusicPlayer.RemoveMusicInputStream();
             }
-            _timer.Stop();
             visualizer.Previewer.StopAnimation();
             visualizer.Display = VisualizerDisplay.Editor;
-        }
-
-        private void _timer_Elapsed(object sender, ElapsedEventArgs e) {
-            if (_liveMusicPlayer == null) {
-                var signal = e.SignalTime;
-                var elapsed = signal - _lastSignalTime;
-                _totalTime += elapsed;
-                visualizer.Previewer.Now = _totalTime;
-                _lastSignalTime = signal;
-            } else {
-                visualizer.Previewer.Now = _liveMusicPlayer.CurrentTime;
-            }
         }
 
         private readonly Command CmdPreviewFromThisMeasure = CommandManager.CreateCommand("F5");
@@ -107,13 +100,15 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdPreviewStop = CommandManager.CreateCommand("F6");
 
         private DateTime _lastSignalTime;
-        private TimeSpan _totalTime;
+        private TimeSpan _totalLiveTime;
 
         private LiveMusicPlayer _liveMusicPlayer;
         private LiveMusicWaveStream _liveWaveStream;
         private Stream _liveFileStream;
 
-        private Timer _timer;
+        private SfxManager _liveSfxManager;
+
+        private Timer _liveTimer;
 
     }
 }

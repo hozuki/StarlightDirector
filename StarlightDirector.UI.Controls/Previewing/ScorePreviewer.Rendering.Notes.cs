@@ -56,6 +56,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                     case NoteType.Slide:
                         if (note.Helper.HasNextSlide) {
                             DrawSlideRibbon(context, now, note, note.Editor.NextSlide);
+                        } else if (note.Helper.HasNextFlick) {
+                            DrawSlideRibbon(context, now, note, note.Editor.NextFlick);
                         }
                         if (note.Helper.HasPrevSlide) {
                             if (!NotesLayerUtils.IsNoteOnStage(note.Editor.PrevSlide, now)) {

@@ -182,6 +182,15 @@
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UIUtilities.cs" />
+    <Content Include="Resources\SFX\Director\se_live_flic_perfect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SFX\Director\se_live_slide_node.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SFX\Director\se_live_tap_perfect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>

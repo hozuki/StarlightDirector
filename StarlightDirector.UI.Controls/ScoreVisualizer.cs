@@ -145,9 +145,10 @@ namespace StarlightDirector.UI.Controls {
                     previewer.Visible = false;
                     break;
                 case VisualizerDisplay.Previewer:
+                    previewer.Render();
+                    previewer.Visible = true;
                     editor.Visible = false;
                     vScroll.Visible = false;
-                    previewer.Visible = true;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();

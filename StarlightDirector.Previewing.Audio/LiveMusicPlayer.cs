@@ -14,7 +14,7 @@ namespace StarlightDirector.Previewing.Audio {
             _soundPlayer = new AudioOut(AudioClientShareMode.Shared, 60);
             _soundPlayer.Init(_waveStream);
             _channels = new Dictionary<WaveStream, WaveChannel32>();
-            PlayerSettings.MusicVolumeChanged += OnMusicVolumeChanged;
+            PreviewingSettings.MusicVolumeChanged += OnMusicVolumeChanged;
         }
 
         public event EventHandler<StoppedEventArgs> PlaybackStopped {
@@ -105,27 +105,49 @@ namespace StarlightDirector.Previewing.Audio {
             }
         }
 
-        public WaveChannel32 AddInputStream(WaveStream waveStream, float volume = 1f) {
+        public bool HasMusicInputStream => _musicChannel != null;
+
+        public WaveChannel32 AddMusicInputStream(WaveStream waveStream, float volume = 1f) {
+            if (_musicChannel != null) {
+                RemoveMusicInputStream();
+            }
             lock (_syncObject) {
                 var rateConvertedStream = waveStream;
                 if (NeedSampleRateConversion(waveStream.WaveFormat)) {
                     rateConvertedStream = new ResamplerDmoStream(waveStream, _waveStream.WaveFormat);
                 }
                 var addedStream = new WaveChannel32(rateConvertedStream, volume, 0f);
-                if (_channels.Count == 0 && _musicChannel == null) {
-                    // The first stream is always the music stream.
-                    _musicChannel = addedStream;
-                } else {
-                    if (!_channels.ContainsKey(waveStream)) {
-                        _channels.Add(waveStream, addedStream);
-                    }
+                _musicChannel = addedStream;
+                _originalMusicWaveStream = waveStream;
+                _waveStream.AddInputStream(addedStream);
+                return addedStream;
+            }
+        }
+
+        public WaveChannel32 AddSfxInputStream(WaveStream waveStream, float volume = 1f) {
+            lock (_syncObject) {
+                var rateConvertedStream = waveStream;
+                if (NeedSampleRateConversion(waveStream.WaveFormat)) {
+                    rateConvertedStream = new ResamplerDmoStream(waveStream, _waveStream.WaveFormat);
+                }
+                var addedStream = new WaveChannel32(rateConvertedStream, volume, 0f);
+                if (!_channels.ContainsKey(waveStream)) {
+                    _channels.Add(waveStream, addedStream);
                 }
                 _waveStream.AddInputStream(addedStream);
                 return addedStream;
             }
         }
 
-        public void RemoveInputStream(WaveStream waveStream) {
+        public void RemoveMusicInputStream() {
+            lock (_syncObject) {
+                _waveStream.RemoveInputStream(_musicChannel);
+                _musicChannel.Dispose();
+                _musicChannel = null;
+            }
+        }
+
+        public void RemoveSfxInputStream(WaveStream waveStream) {
             lock (_syncObject) {
                 if (_channels.ContainsKey(waveStream)) {
                     _channels.Remove(waveStream);
@@ -135,7 +157,7 @@ namespace StarlightDirector.Previewing.Audio {
         }
 
         protected override void Dispose(bool disposing) {
-            PlayerSettings.MusicVolumeChanged -= OnMusicVolumeChanged;
+            PreviewingSettings.MusicVolumeChanged -= OnMusicVolumeChanged;
             _soundPlayer?.Stop();
             _soundPlayer?.Dispose();
             _waveStream?.Dispose();
@@ -152,7 +174,7 @@ namespace StarlightDirector.Previewing.Audio {
         }
 
         private void OnMusicVolumeChanged(object sender, EventArgs e) {
-            _musicChannel.Volume = PlayerSettings.MusicVolume;
+            _musicChannel.Volume = PreviewingSettings.MusicVolume;
         }
 
         private WaveMixerStream32 _waveStream;
@@ -161,6 +183,7 @@ namespace StarlightDirector.Previewing.Audio {
         private bool _isPaused;
         private readonly object _syncObject;
         private readonly Dictionary<WaveStream, WaveChannel32> _channels;
+        private WaveStream _originalMusicWaveStream;
         private WaveChannel32 _musicChannel;
 
     }

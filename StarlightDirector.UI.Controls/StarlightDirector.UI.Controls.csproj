@@ -133,6 +133,7 @@
     <Compile Include="Previewing\ScorePreviewer.Rendering.Ribbons.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Previewing\StageBoundary.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>

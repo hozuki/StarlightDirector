@@ -322,7 +322,7 @@
             this.tsbToolsBuildAcb});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(101, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(132, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
@@ -333,7 +333,7 @@
             this.tsbPreviewFromStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPreviewFromStart.Name = "tsbPreviewFromStart";
             this.tsbPreviewFromStart.Size = new System.Drawing.Size(23, 22);
-            this.tsbPreviewFromStart.Text = "Preview from This Measure";
+            this.tsbPreviewFromStart.Text = "Preview from Start";
             // 
             // tsbPreviewStop
             // 
@@ -695,7 +695,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -823,40 +823,40 @@
             // 
             this.mnuEditUndo.Image = global::StarlightDirector.App.Properties.Resources.IconEditUndo;
             this.mnuEditUndo.Name = "mnuEditUndo";
-            this.mnuEditUndo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditUndo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditUndo.Text = "&Undo";
             // 
             // mnuEditRedo
             // 
             this.mnuEditRedo.Image = global::StarlightDirector.App.Properties.Resources.IconEditRedo;
             this.mnuEditRedo.Name = "mnuEditRedo";
-            this.mnuEditRedo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditRedo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditRedo.Text = "&Redo";
             // 
             // mnuEditSep1
             // 
             this.mnuEditSep1.Name = "mnuEditSep1";
-            this.mnuEditSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep1.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditCut
             // 
             this.mnuEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.mnuEditCut.Name = "mnuEditCut";
-            this.mnuEditCut.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCut.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCut.Text = "Cu&t";
             // 
             // mnuEditCopy
             // 
             this.mnuEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.mnuEditCopy.Name = "mnuEditCopy";
-            this.mnuEditCopy.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditCopy.Size = new System.Drawing.Size(112, 22);
             this.mnuEditCopy.Text = "&Copy";
             // 
             // mnuEditPaste
             // 
             this.mnuEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.mnuEditPaste.Name = "mnuEditPaste";
-            this.mnuEditPaste.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditPaste.Size = new System.Drawing.Size(112, 22);
             this.mnuEditPaste.Text = "&Paste";
             // 
             // mnuEditSelect
@@ -866,7 +866,7 @@
             this.mnuEditSelectAllMeasures,
             this.mnuEditSelectClearAll});
             this.mnuEditSelect.Name = "mnuEditSelect";
-            this.mnuEditSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditSelect.Size = new System.Drawing.Size(112, 22);
             this.mnuEditSelect.Text = "&Select";
             // 
             // mnuEditSelectAllNotes
@@ -890,7 +890,7 @@
             // mnuEditSep2
             // 
             this.mnuEditSep2.Name = "mnuEditSep2";
-            this.mnuEditSep2.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep2.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditMode
             // 
@@ -901,7 +901,7 @@
             this.mnuEditModeHoldFlick,
             this.mnuEditModeSlide});
             this.mnuEditMode.Name = "mnuEditMode";
-            this.mnuEditMode.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditMode.Size = new System.Drawing.Size(112, 22);
             this.mnuEditMode.Text = "Mo&de";
             // 
             // mnuEditModeSelect
@@ -910,39 +910,39 @@
             this.mnuEditModeSelect.CheckState = System.Windows.Forms.CheckState.Checked;
             this.mnuEditModeSelect.Image = global::StarlightDirector.App.Properties.Resources.IconEditModeSelect;
             this.mnuEditModeSelect.Name = "mnuEditModeSelect";
-            this.mnuEditModeSelect.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditModeSelect.Size = new System.Drawing.Size(134, 22);
             this.mnuEditModeSelect.Text = "Se&lect";
             // 
             // mnuEditModeSep1
             // 
             this.mnuEditModeSep1.Name = "mnuEditModeSep1";
-            this.mnuEditModeSep1.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditModeSep1.Size = new System.Drawing.Size(131, 6);
             // 
             // mnuEditModeTap
             // 
             this.mnuEditModeTap.Image = global::StarlightDirector.App.Properties.Resources.IconNoteTap;
             this.mnuEditModeTap.Name = "mnuEditModeTap";
-            this.mnuEditModeTap.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditModeTap.Size = new System.Drawing.Size(134, 22);
             this.mnuEditModeTap.Text = "&Tap";
             // 
             // mnuEditModeHoldFlick
             // 
             this.mnuEditModeHoldFlick.Image = global::StarlightDirector.App.Properties.Resources.IconNoteHoldFlick;
             this.mnuEditModeHoldFlick.Name = "mnuEditModeHoldFlick";
-            this.mnuEditModeHoldFlick.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditModeHoldFlick.Size = new System.Drawing.Size(134, 22);
             this.mnuEditModeHoldFlick.Text = "&Hold/Flick";
             // 
             // mnuEditModeSlide
             // 
             this.mnuEditModeSlide.Image = global::StarlightDirector.App.Properties.Resources.IconNoteSlide;
             this.mnuEditModeSlide.Name = "mnuEditModeSlide";
-            this.mnuEditModeSlide.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditModeSlide.Size = new System.Drawing.Size(134, 22);
             this.mnuEditModeSlide.Text = "&Slide";
             // 
             // mnuEditSep3
             // 
             this.mnuEditSep3.Name = "mnuEditSep3";
-            this.mnuEditSep3.Size = new System.Drawing.Size(149, 6);
+            this.mnuEditSep3.Size = new System.Drawing.Size(109, 6);
             // 
             // mnuEditGoTo
             // 
@@ -950,7 +950,7 @@
             this.mnuEditGoToMeasure,
             this.mnuEditGoToTime});
             this.mnuEditGoTo.Name = "mnuEditGoTo";
-            this.mnuEditGoTo.Size = new System.Drawing.Size(152, 22);
+            this.mnuEditGoTo.Size = new System.Drawing.Size(112, 22);
             this.mnuEditGoTo.Text = "&Go To";
             // 
             // mnuEditGoToMeasure
@@ -1542,6 +1542,7 @@
             this.visualizer.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.visualizer.Display = StarlightDirector.UI.Controls.VisualizerDisplay.Editor;
             this.visualizer.Location = new System.Drawing.Point(9, 75);
             this.visualizer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.visualizer.Name = "visualizer";

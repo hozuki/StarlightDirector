@@ -2,7 +2,7 @@
 using StarlightDirector.Core;
 
 namespace StarlightDirector.Previewing.Audio {
-    internal static class PlayerSettings {
+    public static class PreviewingSettings {
 
         public static float MusicVolume {
             get => _musicVolume;

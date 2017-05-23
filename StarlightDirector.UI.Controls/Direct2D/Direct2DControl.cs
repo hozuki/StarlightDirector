@@ -14,10 +14,6 @@ namespace StarlightDirector.UI.Controls.Direct2D {
 
         public Color ClearColor { get; set; } = Color.Black;
 
-        public void Clear() {
-            _renderContext.Clear(ClearColor);
-        }
-
         public void WaitForNextVBlank() {
             SharpDX.DXGI.Output output;
             try {

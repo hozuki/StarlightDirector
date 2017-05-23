@@ -8,6 +8,19 @@ using Timer = System.Timers.Timer;
 namespace StarlightDirector.Previewing.Audio {
     public sealed class SfxManager : DisposableBase {
 
+        public SfxManager(LiveMusicPlayer sfxPlayer) {
+            _soundStreams = new List<MemoryStream>();
+            _fileNames = new List<string>();
+            _waveStreams = new List<WaveStream>();
+            _waveOffsetStreams = new List<WaveOffsetStream>();
+            _mixerInputWaveStreams = new List<WaveStream>();
+            _playingList = new List<bool>();
+            _timer = new Timer(15);
+            _sfxPlayer = sfxPlayer;
+            _timer.Elapsed += Timer_Tick;
+            _timer.Start();
+        }
+
         public WaveOffsetStream PreloadWave(string fileName) {
             return PreloadWave(null, fileName);
         }
@@ -23,18 +36,18 @@ namespace StarlightDirector.Previewing.Audio {
         }
 
         public void PlayWave(Stream dataStream, string fileName, TimeSpan startTime, float volume) {
-            var correctedStartTime = startTime + PlayerSettings.SfxOffset;
+            var correctedStartTime = startTime + PreviewingSettings.SfxOffset;
             var @out = GetFreeStream(fileName, correctedStartTime, out var index)
                        ?? (dataStream != null ? CreateStream(dataStream, fileName, correctedStartTime, out index) : CreateStreamForceUsingCache(fileName, correctedStartTime, out index));
             @out.Seek(0, SeekOrigin.Begin);
             _playingList[index] = true;
-            _mixerInputWaveStreams[index] = _sfxPlayer?.AddInputStream(@out, volume);
+            _mixerInputWaveStreams[index] = _sfxPlayer?.AddSfxInputStream(@out, volume);
         }
 
         public void StopAll() {
             for (var i = 0; i < _waveOffsetStreams.Count; ++i) {
                 if (_playingList[i]) {
-                    _sfxPlayer.RemoveInputStream(_mixerInputWaveStreams[i]);
+                    _sfxPlayer.RemoveSfxInputStream(_mixerInputWaveStreams[i]);
                     _mixerInputWaveStreams[i] = null;
                     _playingList[i] = false;
                 }
@@ -53,7 +66,7 @@ namespace StarlightDirector.Previewing.Audio {
 
         public TimeSpan BufferSize { get; set; } = new TimeSpan(0, 0, 0, 0, 80);
         
-        public TimeSpan BufferOffset => BufferSize - PlayerSettings.SfxOffset;
+        public TimeSpan BufferOffset => BufferSize - PreviewingSettings.SfxOffset;
 
         protected override void Dispose(bool disposing) {
             if (disposing) {
@@ -149,25 +162,12 @@ namespace StarlightDirector.Previewing.Audio {
             lock (_syncObject) {
                 for (var i = 0; i < _waveOffsetStreams.Count; i++) {
                     if (_playingList[i] && _waveOffsetStreams[i].Position >= _waveOffsetStreams[i].Length) {
-                        _sfxPlayer.RemoveInputStream(_mixerInputWaveStreams[i]);
+                        _sfxPlayer.RemoveSfxInputStream(_mixerInputWaveStreams[i]);
                         _mixerInputWaveStreams[i] = null;
                         _playingList[i] = false;
                     }
                 }
             }
-        }
-
-        public SfxManager(LiveMusicPlayer sfxPlayer) {
-            _soundStreams = new List<MemoryStream>();
-            _fileNames = new List<string>();
-            _waveStreams = new List<WaveStream>();
-            _waveOffsetStreams = new List<WaveOffsetStream>();
-            _mixerInputWaveStreams = new List<WaveStream>();
-            _playingList = new List<bool>();
-            _timer = new Timer(15);
-            _sfxPlayer = sfxPlayer;
-            _timer.Elapsed += Timer_Tick;
-            _timer.Start();
         }
 
         private readonly LiveMusicPlayer _sfxPlayer;

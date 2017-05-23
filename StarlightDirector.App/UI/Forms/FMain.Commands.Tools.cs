@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 
@@ -13,6 +14,14 @@ namespace StarlightDirector.App.UI.Forms {
             FBuildBeatmap.ShowDialog(this, visualizer.Editor.Project, Difficulty.Invalid);
         }
 
+        private void CmdToolsBuildAcb_Executed(object sender, ExecutedEventArgs e) {
+            throw new NotImplementedException();
+        }
+
+        private void CmdToolsBuildAcb_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            e.CanExecute = false;
+        }
+
         private void CmdToolsSettings_Executed(object sender, ExecutedEventArgs e) {
             var settings = EditorSettingsManager.CurrentSettings;
             var r = FEditorSettings.ChangeSettings(this, settings);
@@ -25,6 +34,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private readonly Command CmdToolsExportCsv = CommandManager.CreateCommand();
         private readonly Command CmdToolsBuildBdb = CommandManager.CreateCommand();
+        private readonly Command CmdToolsBuildAcb = CommandManager.CreateCommand();
         private readonly Command CmdToolsSettings = CommandManager.CreateCommand();
 
     }

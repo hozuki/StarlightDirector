@@ -24,6 +24,7 @@ after_build:
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.mdb
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.dll
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.exe
+  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/bin/%CONFIGURATION%/*.wav
   - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/StarlightDirector.App/Resources/Docs
   - 7z a sd.zip LICENSE.md
   - 7z a sd.zip README.md

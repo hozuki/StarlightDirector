@@ -278,23 +278,25 @@ namespace StarlightDirector.Beatmap {
             return $"Note (ID={StarlightID}, Type={Basic.Type}, Flick={Basic.FlickType}, Row={Basic.IndexInGrid}, Col={Basic.FinishPosition})";
         }
 
-        internal sealed class TemporaryProperties {
+        public sealed class TemporaryProperties {
 
-            public Guid PrevFlickNoteID { get; set; }
+            internal Guid PrevFlickNoteID { get; set; }
 
-            public Guid NextFlickNoteID { get; set; }
+            internal Guid NextFlickNoteID { get; set; }
 
-            public Guid HoldTargetID { get; set; }
+            internal Guid HoldTargetID { get; set; }
 
-            public Guid PrevSlideNoteID { get; set; }
+            internal Guid PrevSlideNoteID { get; set; }
 
-            public Guid NextSlideNoteID { get; set; }
+            internal Guid NextSlideNoteID { get; set; }
 
-            public TimeSpan HitTiming { get; set; }
+            public TimeSpan HitTiming { get; internal set; }
+
+            internal bool EditorVisible { get; set; }
 
         }
 
-        internal TemporaryProperties Temporary { get; } = new TemporaryProperties();
+        public TemporaryProperties Temporary { get; } = new TemporaryProperties();
 
     }
 }

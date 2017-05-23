@@ -7,6 +7,8 @@ using StarlightDirector.UI.Rendering.Direct2D;
 namespace StarlightDirector.UI.Controls.Previewing {
     public sealed partial class ScorePreviewer : Direct2DScene {
 
+        public event EventHandler<EventArgs> FrameRendered;
+
         public TimeSpan Now { private get; set; }
 
         public Score Score {
@@ -23,6 +25,9 @@ namespace StarlightDirector.UI.Controls.Previewing {
         public void Prepare() {
             var score = Score;
             score?.UpdateNoteHitTimings();
+            foreach (var note in score.GetAllNotes()) {
+                note.Temporary.EditorVisible = false;
+            }
         }
 
         protected override void OnRender(D2DRenderContext context) {
@@ -31,8 +36,11 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 return;
             }
 
+            var now = Now.TotalSeconds;
             RenderAvatars(context);
-            DrawNotes(context, Now.TotalSeconds, score.GetAllNotes());
+            DrawNotes(context, now, score.GetAllNotes());
+
+            FrameRendered?.Invoke(this, EventArgs.Empty);
         }
 
         private Score _score;

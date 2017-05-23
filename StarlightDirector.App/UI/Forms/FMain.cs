@@ -112,6 +112,13 @@ namespace StarlightDirector.App.UI.Forms {
         private string _editingFileName = string.Empty;
         private Difficulty _cachedTitleDifficulty = Difficulty.Debut;
 
+        private static readonly string TapAudioFilePath = "Resources/SFX/Director/se_live_tap_perfect.wav";
+        private static readonly string FlickAudioFilePath = "Resources/SFX/Director/se_live_flic_perfect.wav";
+        private static readonly string SlideAudioFilePath = "Resources/SFX/Director/se_live_slide_node.wav";
+
+        private readonly object _sfxSyncObject = new object();
+        private double _sfxBufferTime;
+
         private string _statusText = string.Empty;
 
     }

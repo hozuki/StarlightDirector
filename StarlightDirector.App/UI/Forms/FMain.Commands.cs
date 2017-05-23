@@ -131,6 +131,8 @@ namespace StarlightDirector.App.UI.Forms {
             mnuToolsExportCsv.Attach(CmdToolsExportCsv);
             mnuToolsBuildBdb.Attach(CmdToolsBuildBdb);
             tsbToolsBuildBdb.Attach(CmdToolsBuildBdb);
+            mnuToolsBuildAcb.Attach(CmdToolsBuildAcb);
+            tsbToolsBuildAcb.Attach(CmdToolsBuildAcb);
             mnuToolsSettings.Attach(CmdToolsSettings);
 
             mnuHelpAbout.Attach(CmdHelpAbout);
