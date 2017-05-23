@@ -176,11 +176,6 @@ namespace StarlightDirector.UI.Controls.Previewing {
         }
 
         private void DrawSlideNote(D2DRenderContext context, double now, Note note) {
-            if (note.Basic.FlickType != NoteFlickType.None) {
-                DrawFlickNote(context, now, note);
-                return;
-            }
-
             float x, y, r;
             if (NotesLayerUtils.IsNoteOnStage(note, now)) {
                 if (note.Helper.IsSlideEnd && NotesLayerUtils.IsNotePassed(note, now)) {
