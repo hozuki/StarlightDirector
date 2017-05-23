@@ -39,6 +39,7 @@ namespace StarlightDirector.Beatmap {
 
         public static void MakeHold(Note startNote, Note endNote) {
             startNote.Basic.Type = NoteType.Hold;
+            startNote.Basic.FlickType = NoteFlickType.None;
             startNote.Editor.HoldPair = endNote;
             endNote.Editor.HoldPair = startNote;
         }
@@ -59,6 +60,25 @@ namespace StarlightDirector.Beatmap {
             endNote.Basic.Type = NoteType.Slide;
             startNote.Editor.NextSlide = endNote;
             endNote.Editor.PrevSlide = startNote;
+            if (endNote.Basic.FinishPosition > startNote.Basic.FinishPosition) {
+                startNote.Basic.FlickType = NoteFlickType.Right;
+            } else if (endNote.Basic.FinishPosition < startNote.Basic.FinishPosition) {
+                startNote.Basic.FlickType = NoteFlickType.Left;
+            } else {
+                startNote.Basic.FlickType = NoteFlickType.None;
+            }
+            if (endNote.Helper.HasNextFlick || endNote.Helper.HasNextSlide) {
+                var next = endNote.Editor.NextSlide ?? endNote.Editor.NextFlick;
+                if (next.Basic.FinishPosition > endNote.Basic.FinishPosition) {
+                    endNote.Basic.FlickType = NoteFlickType.Right;
+                } else if (next.Basic.FinishPosition < endNote.Basic.FinishPosition) {
+                    endNote.Basic.FlickType = NoteFlickType.Left;
+                } else {
+                    endNote.Basic.FlickType = NoteFlickType.None;
+                }
+            } else {
+                endNote.Basic.FlickType = startNote.Basic.FlickType;
+            }
         }
 
         public static bool AreNotesInHoldChain(Note note1, Note note2) {

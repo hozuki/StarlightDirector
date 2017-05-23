@@ -97,6 +97,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             Note prevSlide = note.Editor.PrevSlide, nextSlide = note.Editor.NextSlide;
             if (prevSlide != null) {
                 prevSlide.Editor.NextSlide = null;
+                prevSlide.Editor.NextFlick = null;
             }
             if (nextSlide != null) {
                 nextSlide.Editor.PrevSlide = null;

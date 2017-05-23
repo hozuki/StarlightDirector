@@ -253,13 +253,19 @@ namespace StarlightDirector.Beatmap.IO {
         // Fix the design mistake in v0.3.1 projects: slide notes use flick note fields (next/prev & flick type).
         private static void FixSlideNotes(Score score) {
             foreach (var note in score.GetAllNotes()) {
-                if (!note.Helper.IsSlide) {
-                    continue;
+                if (note.Helper.IsSlide) {
+                    note.Editor.NextSlide = note.Editor.NextFlick;
+                    note.Editor.PrevSlide = note.Editor.PrevFlick;
+                    note.Editor.NextFlick = note.Editor.PrevFlick = null;
+                } else if (note.Helper.IsFlick) {
+                    if (note.Helper.HasPrevFlick && note.Editor.PrevFlick.Helper.IsSlide) {
+                        var prevFlick = note.Editor.PrevFlick;
+                        prevFlick.Editor.NextFlick = note;
+                        prevFlick.Editor.NextSlide = null;
+                        note.Editor.PrevSlide = prevFlick;
+                        note.Editor.PrevFlick = null;
+                    }
                 }
-                note.Editor.NextSlide = note.Editor.NextFlick;
-                note.Editor.PrevSlide = note.Editor.PrevFlick;
-                note.Editor.NextFlick = note.Editor.PrevFlick = null;
-                note.Basic.FlickType = NoteFlickType.None;
             }
         }
 

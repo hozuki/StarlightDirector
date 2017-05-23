@@ -214,7 +214,12 @@ namespace StarlightDirector.UI.Controls.Editing {
                 case NoteFlickType.Right:
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(flickType), "Unknown flick type for flick note rendering.");
+                    if (note.Helper.IsSlide && note.Helper.HasNextFlick) {
+                        flickType = note.Editor.NextFlick.Basic.FinishPosition > note.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
+                    } else {
+                        throw new ArgumentOutOfRangeException(nameof(flickType), "Unknown flick type for flick note rendering.");
+                    }
+                    break;
             }
 
             var r1 = r * ScaleFactor1;
