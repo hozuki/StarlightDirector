@@ -1,4 +1,5 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Commanding;
@@ -84,9 +85,17 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
             var startPosition = (NotePosition)e.Parameter;
-            var notes = visualizer.Editor.GetSelectedNotes();
+            var notes = visualizer.Editor.GetSelectedNotes().ToList();
+            // By sorting, we ensure to visit hold end after hold start.
+            notes.Sort(Note.TimingThenPositionComparison);
             foreach (var note in notes) {
-                note.Basic.StartPosition = startPosition == NotePosition.Default ? note.Basic.FinishPosition : startPosition;
+                if (!note.Helper.IsHoldEnd) {
+                    note.Basic.StartPosition = startPosition == NotePosition.Default ? note.Basic.FinishPosition : startPosition;
+                    if (note.Helper.IsHoldStart) {
+                        // Start position of hold end must be the same as hold start.
+                        note.Editor.HoldPair.Basic.StartPosition = note.Basic.StartPosition;
+                    }
+                }
             }
             InformProjectModified();
             visualizer.Editor.Invalidate();

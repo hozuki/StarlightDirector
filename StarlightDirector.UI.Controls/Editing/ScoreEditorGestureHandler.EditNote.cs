@@ -165,6 +165,16 @@ namespace StarlightDirector.UI.Controls.Editing {
                 thisNote.EditorSelect();
             }
 
+            // Did we created a hold pair?
+            // If so, ensure the pair's start position being the same.
+            if (relationCreated) {
+                if (thisNote.Helper.IsHoldStart) {
+                    thisNote.Editor.HoldPair.Basic.StartPosition = thisNote.Basic.StartPosition;
+                } else if (thisNote.Helper.IsHoldEnd) {
+                    thisNote.Basic.StartPosition = thisNote.Editor.HoldPair.Basic.StartPosition;
+                }
+            }
+
             editor.Invalidate();
         }
 
