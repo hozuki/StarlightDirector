@@ -91,6 +91,7 @@ namespace StarlightDirector.App.UI.Forms {
             } else if (_liveMusicPlayer.HasMusicInputStream) {
                 _liveMusicPlayer.RemoveMusicInputStream();
             }
+            _liveSfxManager?.StopAll();
             visualizer.Previewer.StopAnimation();
             visualizer.Display = VisualizerDisplay.Editor;
         }
