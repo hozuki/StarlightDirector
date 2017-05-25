@@ -151,6 +151,11 @@ namespace StarlightDirector.UI.Controls.Editing {
             return visible;
         }
 
+        private bool IsBarHeadVisible(RectangleF barArea, float barStartY) {
+            var visible = 0 <= barStartY && barStartY <= barArea.Bottom;
+            return visible;
+        }
+
         [DebuggerStepThrough]
         private RectangleF GetGridArea() {
             return GetGridArea(ClientSize);

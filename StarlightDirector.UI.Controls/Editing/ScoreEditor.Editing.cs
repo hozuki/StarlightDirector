@@ -44,6 +44,36 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         [DebuggerStepThrough]
+        public IReadOnlyList<Bar> AppendBars(int count) {
+            var score = CurrentScore;
+            return score?.AppendBars(count);
+        }
+
+        [DebuggerStepThrough]
+        public Bar InsertBar(Bar beforeBar) {
+            var score = CurrentScore;
+            return score?.InsertBar(beforeBar);
+        }
+
+        [DebuggerStepThrough]
+        public Bar InsertBar(int beforeIndex) {
+            var score = CurrentScore;
+            return score?.InsertBar(beforeIndex);
+        }
+
+        [DebuggerStepThrough]
+        public IReadOnlyList<Bar> InsertBars(Bar beforeBar, int count) {
+            var score = CurrentScore;
+            return score?.InsertBars(beforeBar, count);
+        }
+
+        [DebuggerStepThrough]
+        public IReadOnlyList<Bar> InsertBars(int beforeIndex, int count) {
+            var score = CurrentScore;
+            return score?.InsertBars(beforeIndex, count);
+        }
+
+        [DebuggerStepThrough]
         public IReadOnlyList<Note> RemoveSelectedNotes() {
             var selectedNotes = GetSelectedNotes().ToArray();
             foreach (var selectedNote in selectedNotes) {
@@ -225,6 +255,28 @@ namespace StarlightDirector.UI.Controls.Editing {
             foreach (var bar in bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 var visible = IsBarVisible(barArea, barStartY, numberOfGrids, unit);
+                if (visible) {
+                    return bar;
+                }
+                barStartY -= numberOfGrids * unit;
+            }
+            return null;
+        }
+
+        public Bar GetFirstVisibleBarWithVisibleHead() {
+            var score = CurrentScore;
+            if (score == null) {
+                return null;
+            }
+            var clientSize = ClientSize;
+            var bars = score.Bars;
+            var barArea = GetBarArea(clientSize);
+            var barStartY = (float)ScrollOffsetY;
+
+            var unit = BarLineSpaceUnit;
+            foreach (var bar in bars) {
+                var numberOfGrids = bar.GetNumberOfGrids();
+                var visible = IsBarHeadVisible(barArea, barStartY);
                 if (visible) {
                     return bar;
                 }

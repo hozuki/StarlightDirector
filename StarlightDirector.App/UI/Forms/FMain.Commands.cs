@@ -104,13 +104,18 @@ namespace StarlightDirector.App.UI.Forms {
 
             mnuEditSelectAllMeasures.Attach(CmdEditSelectAllMeasures);
             mnuEditSelectAllNotes.Attach(CmdEditSelectAllNotes);
-            // For its key handling, see FMain.OnProcessCmdKey: http://stackoverflow.com/questions/18930318/previewkeydown-not-firing.
+            // For its key handling, see FMain.OnProcessCmdKey:
+            // http://stackoverflow.com/questions/18930318/previewkeydown-not-firing.
             mnuEditSelectClearAll.Attach(CmdEditSelectClearAll);
 
-            mnuScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
-            tsbScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
             mnuScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
             tsbScoreMeasureAppend.Attach(CmdScoreMeasureAppend);
+            mnuScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
+            tsbScoreMeasureAppendMultiple.Attach(CmdScoreMeasureAppendMultiple);
+            mnuScoreMeasureInsert.Attach(CmdScoreMeasureInsert);
+            tsbScoreMeasureInsert.Attach(CmdScoreMeasureInsert);
+            mnuScoreMeasureInsertMultiple.Attach(CmdScoreMeasureInsertMultiple);
+            tsbScoreMeasureInsertMultiple.Attach(CmdScoreMeasureInsertMultiple);
             mnuScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
             tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
             tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
@@ -145,6 +150,7 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewHighlightModeThreeBeats.Attach(CmdViewHighlightModeSet);
 
             mnuPreviewFromThisMeasure.Attach(CmdPreviewFromThisMeasure);
+            tsbPreviewFromThisMeasure.Attach(CmdPreviewFromThisMeasure);
             mnuPreviewFromStart.Attach(CmdPreviewFromStart);
             tsbPreviewFromStart.Attach(CmdPreviewFromStart);
             mnuPreviewStop.Attach(CmdPreviewStop);

@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using StarlightDirector.UI.Controls.Extensions;
 
@@ -188,21 +189,24 @@ namespace StarlightDirector.UI.Controls {
             var g = e.Graphics;
             var item = (ToolStripSplitButton)e.Item;
             var itemBounds = item.Bounds;
-            var buttonRect = new Rectangle(itemBounds.Left, itemBounds.Top, item.Width - item.DropDownButtonWidth, itemBounds.Height);
+            var itemButtonBounds = item.ButtonBounds;
+            var buttonRect = new Rectangle(itemButtonBounds.Left, itemBounds.Top, item.Width - item.DropDownButtonWidth, itemBounds.Height);
             var arrowRect = new Rectangle(item.Width - item.DropDownButtonWidth, itemBounds.Top, item.DropDownButtonWidth, itemBounds.Height);
 
             if (item.Enabled) {
                 // Standard background.
+                Color standardButtonBackground;
                 if (item.ButtonPressed) {
                     item.ForeColor = scheme.ToolbarItemPressedText;
-                    g.FillRectangle(scheme.ToolbarItemPressedBackground, buttonRect);
+                    standardButtonBackground = scheme.ToolbarItemPressedBackground;
                 } else if (item.ButtonSelected) {
                     item.ForeColor = scheme.ToolbarItemHoveringText;
-                    g.FillRectangle(scheme.ToolbarItemHoveringBackground, buttonRect);
+                    standardButtonBackground = scheme.ToolbarItemHoveringBackground;
                 } else {
                     item.ForeColor = scheme.ToolbarItemText;
-                    g.FillRectangle(scheme.ToolbarItemBackground, buttonRect);
+                    standardButtonBackground = scheme.ToolbarItemBackground;
                 }
+                g.FillRectangle(standardButtonBackground, buttonRect);
 
                 // Draw drop down button background.
                 Color dropDownButtonBackground;

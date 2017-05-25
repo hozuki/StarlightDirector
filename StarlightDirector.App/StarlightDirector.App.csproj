@@ -88,11 +88,11 @@
     <Compile Include="UI\Forms\FAbout.Designer.cs">
       <DependentUpon>FAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\Forms\FAppendMeasures.cs">
+    <Compile Include="UI\Forms\FNewMeasures.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\Forms\FAppendMeasures.Designer.cs">
-      <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    <Compile Include="UI\Forms\FNewMeasures.Designer.cs">
+      <DependentUpon>FNewMeasures.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\Forms\FBeatmapStats.cs">
       <SubType>Form</SubType>
@@ -187,6 +187,7 @@
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UIUtilities.cs" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
     <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
     <Content Include="Resources\SFX\Director\se_live_flic_perfect.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -200,8 +201,8 @@
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\Forms\FAppendMeasures.resx">
-      <DependentUpon>FAppendMeasures.cs</DependentUpon>
+    <EmbeddedResource Include="UI\Forms\FNewMeasures.resx">
+      <DependentUpon>FNewMeasures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Forms\FBeatmapStats.resx">
       <DependentUpon>FBeatmapStats.cs</DependentUpon>
@@ -297,7 +298,7 @@
     <Content Include="Resources\Icons\Notes\IconNoteSlide.png" />
     <Content Include="Resources\Icons\SD-Icon.ico" />
     <Content Include="Resources\Icons\Toolbar\IconScoreNoteDelete.png" />
-    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureAdd.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureAppend.png" />
     <Content Include="Resources\Icons\Toolbar\IconScoreMeasureDelete.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewFromCurrent.png" />

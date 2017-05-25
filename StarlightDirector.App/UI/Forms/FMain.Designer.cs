@@ -67,6 +67,7 @@
             this.tlbMeasure = new System.Windows.Forms.ToolStrip();
             this.tsbScoreMeasureAppend = new System.Windows.Forms.ToolStripSplitButton();
             this.tsbScoreMeasureAppendMultiple = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbScoreMeasureInsert = new System.Windows.Forms.ToolStripSplitButton();
             this.tsbScoreMeasureDelete = new System.Windows.Forms.ToolStripButton();
             this.lblCaption = new StarlightDirector.UI.Controls.SingleLineLabel();
             this.sysMinimize = new StarlightDirector.UI.Controls.ModernSystemButton();
@@ -181,6 +182,7 @@
             this.ctxEditCopy = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxEditPaste = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ctxScoreNoteResetToTap = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxScoreNoteDelete = new System.Windows.Forms.ToolStripMenuItem();
             this.ctxSep2 = new System.Windows.Forms.ToolStripSeparator();
             this.ctxScoreMeasureDelete = new System.Windows.Forms.ToolStripMenuItem();
@@ -193,7 +195,10 @@
             this.openFileDialog = new System.Windows.Forms.OpenFileDialog();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
             this.picIcon = new System.Windows.Forms.PictureBox();
-            this.ctxScoreNoteResetToTap = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbScoreMeasureInsertMultiple = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasureInsert = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuScoreMeasureInsertMultiple = new System.Windows.Forms.ToolStripMenuItem();
+            this.tsbPreviewFromThisMeasure = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -318,6 +323,7 @@
             this.tlbPostprocessing.Dock = System.Windows.Forms.DockStyle.None;
             this.tlbPostprocessing.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbPostprocessing.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbPreviewFromThisMeasure,
             this.tsbPreviewFromStart,
             this.tsbPreviewStop,
             this.toolStripSeparator9,
@@ -325,14 +331,14 @@
             this.tsbToolsBuildAcb});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(101, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(124, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
             // tsbPreviewFromStart
             // 
             this.tsbPreviewFromStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
+            this.tsbPreviewFromStart.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromStart;
             this.tsbPreviewFromStart.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbPreviewFromStart.Name = "tsbPreviewFromStart";
             this.tsbPreviewFromStart.Size = new System.Drawing.Size(23, 22);
@@ -578,10 +584,11 @@
             this.tlbMeasure.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.tlbMeasure.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbScoreMeasureAppend,
+            this.tsbScoreMeasureInsert,
             this.tsbScoreMeasureDelete});
             this.tlbMeasure.Location = new System.Drawing.Point(3, 19);
             this.tlbMeasure.Name = "tlbMeasure";
-            this.tlbMeasure.Size = new System.Drawing.Size(58, 25);
+            this.tlbMeasure.Size = new System.Drawing.Size(90, 25);
             this.tlbMeasure.TabIndex = 1;
             this.tlbMeasure.Text = "Measure";
             // 
@@ -590,7 +597,7 @@
             this.tsbScoreMeasureAppend.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbScoreMeasureAppend.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbScoreMeasureAppendMultiple});
-            this.tsbScoreMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureAdd;
+            this.tsbScoreMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureAppend;
             this.tsbScoreMeasureAppend.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbScoreMeasureAppend.Name = "tsbScoreMeasureAppend";
             this.tsbScoreMeasureAppend.Size = new System.Drawing.Size(32, 22);
@@ -601,6 +608,17 @@
             this.tsbScoreMeasureAppendMultiple.Name = "tsbScoreMeasureAppendMultiple";
             this.tsbScoreMeasureAppendMultiple.Size = new System.Drawing.Size(192, 22);
             this.tsbScoreMeasureAppendMultiple.Text = "Append &Measures...";
+            // 
+            // tsbScoreMeasureInsert
+            // 
+            this.tsbScoreMeasureInsert.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbScoreMeasureInsert.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbScoreMeasureInsertMultiple});
+            this.tsbScoreMeasureInsert.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureInsert;
+            this.tsbScoreMeasureInsert.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbScoreMeasureInsert.Name = "tsbScoreMeasureInsert";
+            this.tsbScoreMeasureInsert.Size = new System.Drawing.Size(32, 22);
+            this.tsbScoreMeasureInsert.Text = "Insert Measure";
             // 
             // tsbScoreMeasureDelete
             // 
@@ -999,6 +1017,7 @@
             // 
             // mnuViewZoomIn
             // 
+            this.mnuViewZoomIn.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomIn;
             this.mnuViewZoomIn.Name = "mnuViewZoomIn";
             this.mnuViewZoomIn.ShortcutKeyDisplayString = "";
             this.mnuViewZoomIn.Size = new System.Drawing.Size(156, 22);
@@ -1006,6 +1025,7 @@
             // 
             // mnuViewZoomOut
             // 
+            this.mnuViewZoomOut.Image = global::StarlightDirector.App.Properties.Resources.IconViewZoomOut;
             this.mnuViewZoomOut.Name = "mnuViewZoomOut";
             this.mnuViewZoomOut.ShortcutKeyDisplayString = "";
             this.mnuViewZoomOut.Size = new System.Drawing.Size(156, 22);
@@ -1123,7 +1143,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1163,13 +1183,16 @@
             this.mnuScoreMeasure.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuScoreMeasureAppend,
             this.mnuScoreMeasureAppendMultiple,
+            this.mnuScoreMeasureInsert,
+            this.mnuScoreMeasureInsertMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
             // 
+            this.mnuScoreMeasureAppend.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureAppend;
             this.mnuScoreMeasureAppend.Name = "mnuScoreMeasureAppend";
             this.mnuScoreMeasureAppend.Size = new System.Drawing.Size(192, 22);
             this.mnuScoreMeasureAppend.Text = "&Append Measure";
@@ -1182,6 +1205,7 @@
             // 
             // mnuScoreMeasureDelete
             // 
+            this.mnuScoreMeasureDelete.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureDelete;
             this.mnuScoreMeasureDelete.Name = "mnuScoreMeasureDelete";
             this.mnuScoreMeasureDelete.Size = new System.Drawing.Size(192, 22);
             this.mnuScoreMeasureDelete.Text = "&Delete Selected";
@@ -1196,17 +1220,19 @@
             this.mnuScoreNoteSep2,
             this.mnuScoreNoteInsertSpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteResetToTap
             // 
+            this.mnuScoreNoteResetToTap.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteResetToTap;
             this.mnuScoreNoteResetToTap.Name = "mnuScoreNoteResetToTap";
             this.mnuScoreNoteResetToTap.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteResetToTap.Text = "Reset to &Tap";
             // 
             // mnuScoreNoteDelete
             // 
+            this.mnuScoreNoteDelete.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteDelete;
             this.mnuScoreNoteDelete.Name = "mnuScoreNoteDelete";
             this.mnuScoreNoteDelete.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteDelete.Text = "&Delete Selected";
@@ -1342,6 +1368,7 @@
             // 
             // mnuScoreNoteInsertSpecial
             // 
+            this.mnuScoreNoteInsertSpecial.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteAddSpecial;
             this.mnuScoreNoteInsertSpecial.Name = "mnuScoreNoteInsertSpecial";
             this.mnuScoreNoteInsertSpecial.Size = new System.Drawing.Size(166, 22);
             this.mnuScoreNoteInsertSpecial.Text = "Insert &Special...";
@@ -1396,7 +1423,7 @@
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExportCsv});
             this.mnuToolsExport.Name = "mnuToolsExport";
-            this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsExport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsExport.Text = "&Export";
             // 
             // mnuToolsExportCsv
@@ -1409,13 +1436,13 @@
             // 
             this.mnuToolsImport.Enabled = false;
             this.mnuToolsImport.Name = "mnuToolsImport";
-            this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsImport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsImport.Text = "&Import";
             // 
             // mnuToolsSep1
             // 
             this.mnuToolsSep1.Name = "mnuToolsSep1";
-            this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsBuild
             // 
@@ -1423,7 +1450,7 @@
             this.mnuToolsBuildBdb,
             this.mnuToolsBuildAcb});
             this.mnuToolsBuild.Name = "mnuToolsBuild";
-            this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsBuild.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsBuild.Text = "&Build";
             // 
             // mnuToolsBuildBdb
@@ -1443,12 +1470,12 @@
             // mnuToolsSep2
             // 
             this.mnuToolsSep2.Name = "mnuToolsSep2";
-            this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsSettings
             // 
             this.mnuToolsSettings.Name = "mnuToolsSettings";
-            this.mnuToolsSettings.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsSettings.Text = "&Settings...";
             // 
             // mnuHelp
@@ -1482,7 +1509,7 @@
             this.ctxScoreNoteModifySpecial,
             this.ctxScoreNoteDeleteSpecial});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(205, 248);
+            this.ctxMain.Size = new System.Drawing.Size(205, 226);
             // 
             // ctxEditCut
             // 
@@ -1512,6 +1539,13 @@
             // 
             this.ctxSep1.Name = "ctxSep1";
             this.ctxSep1.Size = new System.Drawing.Size(201, 6);
+            // 
+            // ctxScoreNoteResetToTap
+            // 
+            this.ctxScoreNoteResetToTap.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteResetToTap;
+            this.ctxScoreNoteResetToTap.Name = "ctxScoreNoteResetToTap";
+            this.ctxScoreNoteResetToTap.Size = new System.Drawing.Size(204, 22);
+            this.ctxScoreNoteResetToTap.Text = "Reset to &Tap";
             // 
             // ctxScoreNoteDelete
             // 
@@ -1584,12 +1618,33 @@
             this.picIcon.TabIndex = 4;
             this.picIcon.TabStop = false;
             // 
-            // ctxScoreNoteResetToTap
+            // tsbScoreMeasureInsertMultiple
             // 
-            this.ctxScoreNoteResetToTap.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteResetToTap;
-            this.ctxScoreNoteResetToTap.Name = "ctxScoreNoteResetToTap";
-            this.ctxScoreNoteResetToTap.Size = new System.Drawing.Size(204, 22);
-            this.ctxScoreNoteResetToTap.Text = "Reset to &Tap";
+            this.tsbScoreMeasureInsertMultiple.Name = "tsbScoreMeasureInsertMultiple";
+            this.tsbScoreMeasureInsertMultiple.Size = new System.Drawing.Size(179, 22);
+            this.tsbScoreMeasureInsertMultiple.Text = "Insert &Measures...";
+            // 
+            // mnuScoreMeasureInsert
+            // 
+            this.mnuScoreMeasureInsert.Image = global::StarlightDirector.App.Properties.Resources.IconScoreMeasureInsert;
+            this.mnuScoreMeasureInsert.Name = "mnuScoreMeasureInsert";
+            this.mnuScoreMeasureInsert.Size = new System.Drawing.Size(192, 22);
+            this.mnuScoreMeasureInsert.Text = "Insert Measure";
+            // 
+            // mnuScoreMeasureInsertMultiple
+            // 
+            this.mnuScoreMeasureInsertMultiple.Name = "mnuScoreMeasureInsertMultiple";
+            this.mnuScoreMeasureInsertMultiple.Size = new System.Drawing.Size(192, 22);
+            this.mnuScoreMeasureInsertMultiple.Text = "Insert Mea&sures...";
+            // 
+            // tsbPreviewFromThisMeasure
+            // 
+            this.tsbPreviewFromThisMeasure.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbPreviewFromThisMeasure.Image = global::StarlightDirector.App.Properties.Resources.IconPreviewFromCurrent;
+            this.tsbPreviewFromThisMeasure.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbPreviewFromThisMeasure.Name = "tsbPreviewFromThisMeasure";
+            this.tsbPreviewFromThisMeasure.Size = new System.Drawing.Size(23, 22);
+            this.tsbPreviewFromThisMeasure.Text = "Preview from This Measure";
             // 
             // FMain
             // 
@@ -1814,6 +1869,11 @@
         private System.Windows.Forms.ToolStripMenuItem mnuScoreNoteResetToTap;
         private System.Windows.Forms.ToolStripButton tsbScoreNoteResetToTap;
         private System.Windows.Forms.ToolStripMenuItem ctxScoreNoteResetToTap;
+        private System.Windows.Forms.ToolStripSplitButton tsbScoreMeasureInsert;
+        private System.Windows.Forms.ToolStripMenuItem tsbScoreMeasureInsertMultiple;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureInsert;
+        private System.Windows.Forms.ToolStripMenuItem mnuScoreMeasureInsertMultiple;
+        private System.Windows.Forms.ToolStripButton tsbPreviewFromThisMeasure;
     }
 }
 

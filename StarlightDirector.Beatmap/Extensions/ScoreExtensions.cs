@@ -35,6 +35,98 @@ namespace StarlightDirector.Beatmap.Extensions {
             return AppendBar(score, guid);
         }
 
+        public static IReadOnlyList<Bar> AppendBars(this Score score, int count) {
+            if (count < 0) {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "Number of bars must be no less than 0.");
+            }
+            if (count == 0) {
+                return new Bar[0];
+            }
+            var bars = new Bar[count];
+            var firstIndex = score.Bars.Count;
+            for (var i = 0; i < bars.Length; ++i) {
+                bars[i] = new Bar(score, firstIndex + i);
+            }
+            score.Bars.AddRange(bars);
+            return bars;
+        }
+
+        public static Bar InsertBar(this Score score, int beforeIndex) {
+            CheckBarIndex(score, beforeIndex);
+            var bar = score.Bars[beforeIndex];
+            return InsertBar(score, bar);
+        }
+
+        public static Bar InsertBar(this Score score, int beforeIndex, int id) {
+            CheckBarIndex(score, beforeIndex);
+            var bar = score.Bars[beforeIndex];
+            return InsertBar(score, bar, id);
+        }
+
+        public static Bar InsertBar(this Score score, int beforeIndex, Guid id) {
+            CheckBarIndex(score, beforeIndex);
+            var bar = score.Bars[beforeIndex];
+            return InsertBar(score, bar, id);
+        }
+
+        public static Bar InsertBar(this Score score, Bar beforeBar) {
+            var id = Guid.NewGuid();
+            return InsertBar(score, beforeBar, id);
+        }
+
+        public static Bar InsertBar(this Score score, Bar beforeBar, int id) {
+            var guid = StarlightID.GetGuidFromInt32(id);
+            return InsertBar(score, beforeBar, guid);
+        }
+
+        public static Bar InsertBar(this Score score, Bar beforeBar, Guid id) {
+            if (beforeBar == null) {
+                throw new ArgumentNullException(nameof(beforeBar));
+            }
+            var newIndex = beforeBar.Basic.Index;
+            foreach (var b in score.Bars) {
+                if (b.Basic.Index >= newIndex) {
+                    ++b.Basic.Index;
+                }
+            }
+            var bar = new Bar(score, newIndex, id);
+            score.Bars.Insert(newIndex, bar);
+            return bar;
+        }
+
+        public static IReadOnlyList<Bar> InsertBars(this Score score, int beforeIndex, int count) {
+            CheckBarIndex(score, beforeIndex);
+            var bar = score.Bars[beforeIndex];
+            return InsertBars(score, bar, count);
+        }
+
+        public static IReadOnlyList<Bar> InsertBars(this Score score, Bar beforeBar, int count) {
+            if (beforeBar == null) {
+                throw new ArgumentNullException(nameof(beforeBar));
+            }
+            if (count < 0) {
+                throw new ArgumentOutOfRangeException(nameof(count), count, "Number of bars must be no less than 0.");
+            }
+            if (count == 0) {
+                return new Bar[0];
+            }
+
+            var bars = new Bar[count];
+            var newIndex = beforeBar.Basic.Index;
+            for (var i = 0; i < bars.Length; ++i) {
+                bars[i] = new Bar(score, newIndex + i);
+            }
+
+            foreach (var b in score.Bars) {
+                if (b.Basic.Index >= newIndex) {
+                    b.Basic.Index += count;
+                }
+            }
+
+            score.Bars.InsertRange(newIndex, bars);
+            return bars;
+        }
+
         [DebuggerStepThrough]
         public static Bar RemoveBar(this Score score, Bar bar) {
             if (!score.Bars.Contains(bar)) {
@@ -337,6 +429,19 @@ namespace StarlightDirector.Beatmap.Extensions {
             // We did it! Oh yeah!
             var compiledScore = new CompiledScore(compiledNotes);
             return compiledScore;
+        }
+
+        private static void CheckBarIndex(Score score, int index) {
+            var upper = score.Bars.Count - 1;
+            if (index < 0 || upper < index) {
+                string errorMessage;
+                if (upper < 0) {
+                    errorMessage = $"The bar with index {index} does not exist. No bar exists.";
+                } else {
+                    errorMessage = $"The bar with index {index} does not exist. Range is [0, {upper}].";
+                }
+                throw new ArgumentOutOfRangeException(nameof(index), index, errorMessage);
+            }
         }
 
     }

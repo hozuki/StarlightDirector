@@ -283,9 +283,9 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconScoreMeasureAdd {
+        internal static System.Drawing.Bitmap IconScoreMeasureAppend {
             get {
-                object obj = ResourceManager.GetObject("IconScoreMeasureAdd", resourceCulture);
+                object obj = ResourceManager.GetObject("IconScoreMeasureAppend", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -296,6 +296,16 @@ namespace StarlightDirector.App.Properties {
         internal static System.Drawing.Bitmap IconScoreMeasureDelete {
             get {
                 object obj = ResourceManager.GetObject("IconScoreMeasureDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreMeasureInsert {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreMeasureInsert", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

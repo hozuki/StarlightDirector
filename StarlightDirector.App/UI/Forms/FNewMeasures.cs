@@ -2,19 +2,19 @@
 using System.Windows.Forms;
 
 namespace StarlightDirector.App.UI.Forms {
-    public sealed partial class FAppendMeasures : Form {
+    public sealed partial class FNewMeasures : Form {
 
-        public FAppendMeasures() {
+        public FNewMeasures() {
             InitializeComponent();
             RegisterEventHandlers();
         }
 
-        ~FAppendMeasures() {
+        ~FNewMeasures() {
             UnregisterEventHandlers();
         }
 
         public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput(IWin32Window parentWindow) {
-            using (var f = new FAppendMeasures()) {
+            using (var f = new FNewMeasures()) {
                 var r = f.ShowDialog(parentWindow);
                 var n = f._numberOfMeasures;
                 return (r, n);

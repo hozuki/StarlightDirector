@@ -1,5 +1,5 @@
 ﻿namespace StarlightDirector.App.UI.Forms {
-    partial class FAppendMeasures {
+    partial class FNewMeasures {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -80,7 +80,7 @@
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // FAppendMeasures
+            // FNewMeasures
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -95,10 +95,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FAppendMeasures";
+            this.Name = "FNewMeasures";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Append Measures";
+            this.Text = "New Measures";
             ((System.ComponentModel.ISupportInitialize)(this.txtNumberOfMeasures)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
