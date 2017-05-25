@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using StarlightDirector.Commanding;
 using StarlightDirector.UI.Controls.Editing;
 
@@ -17,6 +18,14 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.Editor.ZoomOut(clientCenter);
         }
 
+        private void CmdViewZoomToBeat_Executed(object sender, ExecutedEventArgs e) {
+            throw new NotImplementedException();
+        }
+
+        private void CmdViewZoomToBeat_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
+            e.CanExecute = false;
+        }
+
         private void CmdViewHighlightModeSet_Executed(object sender, ExecutedEventArgs e) {
             var primaryBeatMode = (PrimaryBeatMode)e.Parameter;
 
@@ -31,6 +40,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private readonly Command CmdViewZoomIn = CommandManager.CreateCommand("Ctrl+=");
         private readonly Command CmdViewZoomOut = CommandManager.CreateCommand("Ctrl+-");
+        private readonly Command CmdViewZoomToBeat = CommandManager.CreateCommand();
         private readonly Command CmdViewHighlightModeSet = CommandManager.CreateCommand();
 
     }

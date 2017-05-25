@@ -117,6 +117,25 @@ namespace StarlightDirector.App.UI.Forms {
             mnuViewZoomOut.Attach(CmdViewZoomOut);
             tsbViewZoomOut.Attach(CmdViewZoomOut);
 
+            mnuViewZoomToBeat1O4.SetParameter(4);
+            mnuViewZoomToBeat1O6.SetParameter(6);
+            mnuViewZoomToBeat1O8.SetParameter(8);
+            mnuViewZoomToBeat1O12.SetParameter(12);
+            mnuViewZoomToBeat1O16.SetParameter(16);
+            mnuViewZoomToBeat1O24.SetParameter(24);
+            mnuViewZoomToBeat1O32.SetParameter(32);
+            mnuViewZoomToBeat1O48.SetParameter(48);
+            mnuViewZoomToBeat1O96.SetParameter(96);
+            mnuViewZoomToBeat1O4.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O6.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O8.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O12.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O16.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O24.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O32.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O48.Attach(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O96.Attach(CmdViewZoomToBeat);
+
             mnuViewHighlightModeFourBeats.SetParameter(PrimaryBeatMode.EveryFourBeats);
             mnuViewHighlightModeThreeBeats.SetParameter(PrimaryBeatMode.EveryThreeBeats);
             mnuViewHighlightModeFourBeats.Attach(CmdViewHighlightModeSet);
