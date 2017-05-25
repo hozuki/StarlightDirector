@@ -103,49 +103,9 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconEditMeasureAdd {
-            get {
-                object obj = ResourceManager.GetObject("IconEditMeasureAdd", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditMeasureDelete {
-            get {
-                object obj = ResourceManager.GetObject("IconEditMeasureDelete", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
         internal static System.Drawing.Bitmap IconEditModeSelect {
             get {
                 object obj = ResourceManager.GetObject("IconEditModeSelect", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNoteAddSpecial {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNoteAddSpecial", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconEditNoteDelete {
-            get {
-                object obj = ResourceManager.GetObject("IconEditNoteDelete", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -176,56 +136,6 @@ namespace StarlightDirector.App.Properties {
         internal static System.Drawing.Bitmap IconEditUndo {
             get {
                 object obj = ResourceManager.GetObject("IconEditUndo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconFileExit {
-            get {
-                object obj = ResourceManager.GetObject("IconFileExit", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconFileNew {
-            get {
-                object obj = ResourceManager.GetObject("IconFileNew", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconFileOpen {
-            get {
-                object obj = ResourceManager.GetObject("IconFileOpen", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconFileSave {
-            get {
-                object obj = ResourceManager.GetObject("IconFileSave", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
-        /// </summary>
-        internal static System.Drawing.Bitmap IconFileSaveAs {
-            get {
-                object obj = ResourceManager.GetObject("IconFileSaveAs", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -323,9 +233,9 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconToolBuildMusic {
+        internal static System.Drawing.Bitmap IconProjectExit {
             get {
-                object obj = ResourceManager.GetObject("IconToolBuildMusic", resourceCulture);
+                object obj = ResourceManager.GetObject("IconProjectExit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -333,9 +243,109 @@ namespace StarlightDirector.App.Properties {
         /// <summary>
         ///   查找 System.Drawing.Bitmap 类型的本地化资源。
         /// </summary>
-        internal static System.Drawing.Bitmap IconToolBuildScoreBundle {
+        internal static System.Drawing.Bitmap IconProjectNew {
             get {
-                object obj = ResourceManager.GetObject("IconToolBuildScoreBundle", resourceCulture);
+                object obj = ResourceManager.GetObject("IconProjectNew", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconProjectOpen {
+            get {
+                object obj = ResourceManager.GetObject("IconProjectOpen", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconProjectSave {
+            get {
+                object obj = ResourceManager.GetObject("IconProjectSave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconProjectSaveAs {
+            get {
+                object obj = ResourceManager.GetObject("IconProjectSaveAs", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreMeasureAdd {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreMeasureAdd", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreMeasureDelete {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreMeasureDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreNoteAddSpecial {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreNoteAddSpecial", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreNoteDelete {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreNoteDelete", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconScoreNoteResetToTap {
+            get {
+                object obj = ResourceManager.GetObject("IconScoreNoteResetToTap", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconToolsBuildMusic {
+            get {
+                object obj = ResourceManager.GetObject("IconToolsBuildMusic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   查找 System.Drawing.Bitmap 类型的本地化资源。
+        /// </summary>
+        internal static System.Drawing.Bitmap IconToolsBuildScoreBundle {
+            get {
+                object obj = ResourceManager.GetObject("IconToolsBuildScoreBundle", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

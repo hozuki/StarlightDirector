@@ -46,28 +46,18 @@ namespace StarlightDirector.Beatmap.Extensions {
             NoteUtilities.MakeSync(@this, next);
         }
 
-        public static void ResetAsTap(this Note note) {
-            // Fix sync notes.
-            note.RemoveSync();
+        public static void ResetToTap(this Note note) {
+            ResetToTap(note, false);
+        }
+
+        public static void ResetToTap(this Note note, bool keepSync) {
+            if (!keepSync) {
+                // Fix sync notes.
+                note.RemoveSync();
+            }
 
             // Fix flick notes.
             Note prevFlick = note.Editor.PrevFlick, nextFlick = note.Editor.NextFlick;
-            //var flickGroupStillValid = true;
-            //// Test if we delete this note, the rest still form a valid flick group.
-            //if (prevFlick != null && nextFlick != null) {
-            //    if (prevFlick.Basic.FinishPosition == nextFlick.Basic.FinishPosition) {
-            //        // prevFlick and nextFlick form a straight vertical line. Now it is invalid.
-            //        flickGroupStillValid = false;
-            //    }
-            //}
-            //if (prevFlick != null) {
-            //    // If the rest cannot form one valid flick group, then split them into two.
-            //    prevFlick.Editor.NextFlick = flickGroupStillValid ? note.Editor.NextFlick : null;
-            //}
-            //if (nextFlick != null) {
-            //    nextFlick.Editor.PrevFlick = flickGroupStillValid ? note.Editor.PrevFlick : null;
-            //}
-
             // New strategy: force split the flick group into two. Reconnect if the user needs to.
             if (prevFlick != null) {
                 prevFlick.Editor.NextFlick = null;
@@ -140,7 +130,10 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
 
             var e = note.Editor;
-            e.PrevSync = e.NextSync = e.HoldPair = e.NextFlick = e.PrevFlick = e.NextSlide = e.PrevSlide = null;
+            if (!keepSync) {
+                e.PrevSync = e.NextSync = null;
+            }
+            e.HoldPair = e.NextFlick = e.PrevFlick = e.NextSlide = e.PrevSlide = null;
             var b = note.Basic;
             b.Type = NoteType.TapOrFlick;
             b.FlickType = NoteFlickType.None;

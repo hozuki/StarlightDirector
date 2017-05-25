@@ -70,7 +70,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
 
             // Relations
-            note.ResetAsTap();
+            note.ResetToTap();
 
             bar.Notes.Remove(note);
             bar.Basic.Score.Project.UsedNoteIDs.Remove(note.StarlightID);

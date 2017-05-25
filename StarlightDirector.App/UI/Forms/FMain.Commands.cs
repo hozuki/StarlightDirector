@@ -92,6 +92,9 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreNoteDelete.Attach(CmdScoreNoteDelete);
             tsbScoreNoteDelete.Attach(CmdScoreNoteDelete);
             ctxScoreNoteDelete.Attach(CmdScoreNoteDelete);
+            mnuScoreNoteResetToTap.Attach(CmdScoreNoteResetToTap);
+            tsbScoreNoteResetToTap.Attach(CmdScoreNoteResetToTap);
+            ctxScoreNoteResetToTap.Attach(CmdScoreNoteResetToTap);
 
             mnuScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);
             tsbScoreNoteInsertSpecial.Attach(CmdScoreNoteInsertSpecial);

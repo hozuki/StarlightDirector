@@ -125,6 +125,17 @@ namespace StarlightDirector.App.UI.Forms {
             CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
         }
 
+        private void CmdScoreNoteResetToTap_Executed(object sender, ExecutedEventArgs e) {
+            if (!visualizer.Editor.HasSelectedNotes) {
+                return;
+            }
+            foreach (var note in visualizer.Editor.GetSelectedNotes()) {
+                note.ResetToTap(true);
+            }
+            InformProjectModified();
+            visualizer.Editor.Invalidate();
+        }
+
         private void CmdScoreNoteDelete_Executed(object sender, ExecutedEventArgs e) {
             visualizer.Editor.RemoveSelectedNotes();
             InformProjectModified();
@@ -225,6 +236,7 @@ namespace StarlightDirector.App.UI.Forms {
         private readonly Command CmdScoreNoteStartPositionTo3 = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionTo4 = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteStartPositionTo5 = CommandManager.CreateCommand();
+        private readonly Command CmdScoreNoteResetToTap = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteDelete = CommandManager.CreateCommand("Delete");
         private readonly Command CmdScoreNoteInsertSpecial = CommandManager.CreateCommand();
         private readonly Command CmdScoreNoteModifySpecial = CommandManager.CreateCommand();

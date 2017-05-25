@@ -47,7 +47,7 @@ namespace StarlightDirector.Beatmap.Extensions {
                 }
             }
             foreach (var note in bar.Notes) {
-                note.ResetAsTap();
+                note.ResetToTap();
             }
             score.Bars.Remove(bar);
             return bar;
@@ -64,7 +64,7 @@ namespace StarlightDirector.Beatmap.Extensions {
             var barIndices = barArr.Select(b => b.Basic.Index).ToArray();
             foreach (var bar in barArr) {
                 foreach (var note in bar.Notes) {
-                    note.ResetAsTap();
+                    note.ResetToTap();
                 }
                 score.Bars.Remove(bar);
             }

@@ -124,6 +124,7 @@ namespace StarlightDirector.App.UI.Forms {
             switch (e.MenuType) {
                 case VisualizerContextMenu.Note:
                     ctxSep1.Visible = hasSelectedNotes;
+                    ctxScoreNoteResetToTap.Visible = hasSelectedNotes;
                     ctxScoreNoteDelete.Visible = hasSelectedNotes;
                     ctxSep2.Visible = false;
                     ctxScoreMeasureDelete.Visible = false;
@@ -138,6 +139,7 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case VisualizerContextMenu.Bar:
                     ctxSep1.Visible = false;
+                    ctxScoreNoteResetToTap.Visible = false;
                     ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = hasSelectedBars;
                     ctxScoreMeasureDelete.Visible = hasSelectedBars;
@@ -152,6 +154,7 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case VisualizerContextMenu.SpecialNoteAdd:
                     ctxSep1.Visible = false;
+                    ctxScoreNoteResetToTap.Visible = false;
                     ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = false;
                     ctxScoreMeasureDelete.Visible = false;
@@ -166,6 +169,7 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case VisualizerContextMenu.SpecialNoteModify:
                     ctxSep1.Visible = false;
+                    ctxScoreNoteResetToTap.Visible = false;
                     ctxScoreNoteDelete.Visible = false;
                     ctxSep2.Visible = false;
                     ctxScoreMeasureDelete.Visible = false;

@@ -74,6 +74,11 @@
     <Compile Include="Extensions\ControlExtensions.cs" />
     <Compile Include="Gaming\LiveMusicRecord.cs" />
     <Compile Include="Gaming\MusicAttribute.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="UI\Controls\ExplorerListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -182,6 +187,7 @@
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UIUtilities.cs" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
     <Content Include="Resources\SFX\Director\se_live_flic_perfect.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -217,14 +223,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="UI\Forms\FMusicSettings.resx">
       <DependentUpon>FMusicSettings.cs</DependentUpon>
     </EmbeddedResource>
@@ -295,26 +296,26 @@
     <Content Include="Resources\Icons\Notes\IconNoteFlickRight.png" />
     <Content Include="Resources\Icons\Notes\IconNoteSlide.png" />
     <Content Include="Resources\Icons\SD-Icon.ico" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNoteDelete.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditMeasureAdd.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditMeasureDelete.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteDelete.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureAdd.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureDelete.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewFromCurrent.png" />
-    <Content Include="Resources\Icons\Toolbar\IconFileOpen.png" />
-    <Content Include="Resources\Icons\Toolbar\IconToolBuildScoreBundle.png" />
-    <Content Include="Resources\Icons\Toolbar\IconToolBuildMusic.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectOpen.png" />
+    <Content Include="Resources\Icons\Toolbar\IconToolsBuildScoreBundle.png" />
+    <Content Include="Resources\Icons\Toolbar\IconToolsBuildMusic.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditCopy.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditCut.png" />
-    <Content Include="Resources\Icons\Toolbar\IconFileNew.png" />
-    <Content Include="Resources\Icons\Toolbar\IconFileSave.png" />
-    <Content Include="Resources\Icons\Toolbar\IconFileSaveAs.png" />
-    <Content Include="Resources\Icons\Toolbar\IconFileExit.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectNew.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectSave.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectSaveAs.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectExit.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditRedo.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditUndo.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditPaste.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewFromStart.png" />
     <Content Include="Resources\Icons\Toolbar\IconPreviewStop.png" />
-    <Content Include="Resources\Icons\Toolbar\IconEditNoteAddSpecial.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteAddSpecial.png" />
     <Content Include="Resources\Icons\Toolbar\IconEditModeSelect.png" />
     <Content Include="Resources\Icons\Toolbar\IconViewZoomIn.png" />
     <Content Include="Resources\Icons\Toolbar\IconViewZoomOut.png" />
