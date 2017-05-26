@@ -19,6 +19,10 @@ namespace StarlightDirector.UI.Controls.Editing {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 if (bar.Helper.HasAnyNote) {
                     foreach (var note in bar.Notes) {
+                        if (!note.Helper.IsGaming) {
+                            continue;
+                        }
+
                         var x = GetNotePositionX(note, gridArea, numColumns);
                         var y = GetNotePositionY(note, unit, noteStartY);
                         var selectionHit = rect.ContainsAdjusted(x, y);
