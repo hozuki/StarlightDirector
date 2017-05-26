@@ -10,3 +10,5 @@
 - [ ] Beatmap graph generation
 - [ ] In-editor preview
 - [ ] Customizable track number (for MLTD)
+- [ ] BPM analysis
+- [ ] Adjusting BPM by multiple measures
