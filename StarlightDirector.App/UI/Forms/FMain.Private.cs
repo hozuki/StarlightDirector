@@ -107,27 +107,27 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case Keys.D1:
                 case Keys.NumPad1:
-                    CmdScoreNoteStartPositionAt1.Execute(this, NotePosition.Left);
+                    CmdScoreNoteStartPositionAt1.Execute(this, NotePosition.P1);
                     e.Handled = true;
                     break;
                 case Keys.D2:
                 case Keys.NumPad2:
-                    CmdScoreNoteStartPositionAt2.Execute(this, NotePosition.CenterLeft);
+                    CmdScoreNoteStartPositionAt2.Execute(this, NotePosition.P2);
                     e.Handled = true;
                     break;
                 case Keys.D3:
                 case Keys.NumPad3:
-                    CmdScoreNoteStartPositionAt3.Execute(this, NotePosition.Center);
+                    CmdScoreNoteStartPositionAt3.Execute(this, NotePosition.P3);
                     e.Handled = true;
                     break;
                 case Keys.D4:
                 case Keys.NumPad4:
-                    CmdScoreNoteStartPositionAt4.Execute(this, NotePosition.CenterRight);
+                    CmdScoreNoteStartPositionAt4.Execute(this, NotePosition.P4);
                     e.Handled = true;
                     break;
                 case Keys.D5:
                 case Keys.NumPad5:
-                    CmdScoreNoteStartPositionAt5.Execute(this, NotePosition.Right);
+                    CmdScoreNoteStartPositionAt5.Execute(this, NotePosition.P5);
                     e.Handled = true;
                     break;
             }
@@ -182,27 +182,27 @@ namespace StarlightDirector.App.UI.Forms {
                     break;
                 case Keys.Q:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Left);
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P1);
                     }
                     break;
                 case Keys.W:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.CenterLeft);
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P2);
                     }
                     break;
                 case Keys.E:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Center);
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P3);
                     }
                     break;
                 case Keys.R:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.CenterRight);
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P4);
                     }
                     break;
                 case Keys.T:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Right);
+                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P5);
                     }
                     break;
                 case Keys.P:
@@ -367,6 +367,8 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void ApplySettings(EditorSettings settings) {
+            EditorSettingsManager.ApplyLanguageSettings();
+
             var editor = visualizer.Editor;
             editor.IndicatorsVisible = settings.ShowNoteIndicators;
             visualizer.InvertedScrolling = settings.InvertedScrolling;

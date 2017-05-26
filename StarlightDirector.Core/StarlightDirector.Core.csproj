@@ -45,11 +45,13 @@
     <Compile Include="DisposableBase.cs" />
     <Compile Include="GameTime.cs" />
     <Compile Include="ICloneable.cs" />
+    <Compile Include="ILocalizable.cs" />
     <Compile Include="InternalList.cs" />
     <Compile Include="Interop\NativeConstants.cs" />
     <Compile Include="Interop\NativeMethods.cs" />
     <Compile Include="Interop\NativeStructures.cs" />
     <Compile Include="IStarlightObject.cs" />
+    <Compile Include="LanguageManager.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="PerformanceCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

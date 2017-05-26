@@ -17,7 +17,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbProjectOpen.Attach(CmdProjectOpen);
             mnuProjectSave.Attach(CmdProjectSave);
             tsbProjectSave.Attach(CmdProjectSave);
-            mnuProjecgtSaveAs.Attach(CmdProjectSaveAs);
+            mnuProjectSaveAs.Attach(CmdProjectSaveAs);
             mnuProjectExit.Attach(CmdProjectExit);
             sysClose.Attach(CmdProjectExit);
 
@@ -61,11 +61,11 @@ namespace StarlightDirector.App.UI.Forms {
 
             // The ShortcutDisplayStrings are set separately in Form_Load.
             mnuScoreNoteStartPositionAt0.SetParameter(NotePosition.Default);
-            mnuScoreNoteStartPositionAt1.SetParameter(NotePosition.Left);
-            mnuScoreNoteStartPositionAt2.SetParameter(NotePosition.CenterLeft);
-            mnuScoreNoteStartPositionAt3.SetParameter(NotePosition.Center);
-            mnuScoreNoteStartPositionAt4.SetParameter(NotePosition.CenterRight);
-            mnuScoreNoteStartPositionAt5.SetParameter(NotePosition.Right);
+            mnuScoreNoteStartPositionAt1.SetParameter(NotePosition.P1);
+            mnuScoreNoteStartPositionAt2.SetParameter(NotePosition.P2);
+            mnuScoreNoteStartPositionAt3.SetParameter(NotePosition.P3);
+            mnuScoreNoteStartPositionAt4.SetParameter(NotePosition.P4);
+            mnuScoreNoteStartPositionAt5.SetParameter(NotePosition.P5);
             mnuScoreNoteStartPositionAt0.Attach(CmdScoreNoteStartPositionAt0);
             mnuScoreNoteStartPositionAt1.Attach(CmdScoreNoteStartPositionAt1);
             mnuScoreNoteStartPositionAt2.Attach(CmdScoreNoteStartPositionAt2);
@@ -77,11 +77,11 @@ namespace StarlightDirector.App.UI.Forms {
             mnuScoreNoteStartPositionMoveRight.Attach(CmdScoreNoteStartPositionMoveRight);
 
             mnuScoreNoteStartPositionTo0.SetParameter(NotePosition.Default);
-            mnuScoreNoteStartPositionTo1.SetParameter(NotePosition.Left);
-            mnuScoreNoteStartPositionTo2.SetParameter(NotePosition.CenterLeft);
-            mnuScoreNoteStartPositionTo3.SetParameter(NotePosition.Center);
-            mnuScoreNoteStartPositionTo4.SetParameter(NotePosition.CenterRight);
-            mnuScoreNoteStartPositionTo5.SetParameter(NotePosition.Right);
+            mnuScoreNoteStartPositionTo1.SetParameter(NotePosition.P1);
+            mnuScoreNoteStartPositionTo2.SetParameter(NotePosition.P2);
+            mnuScoreNoteStartPositionTo3.SetParameter(NotePosition.P3);
+            mnuScoreNoteStartPositionTo4.SetParameter(NotePosition.P4);
+            mnuScoreNoteStartPositionTo5.SetParameter(NotePosition.P5);
             mnuScoreNoteStartPositionTo0.Attach(CmdScoreNoteStartPositionTo0);
             mnuScoreNoteStartPositionTo1.Attach(CmdScoreNoteStartPositionTo1);
             mnuScoreNoteStartPositionTo2.Attach(CmdScoreNoteStartPositionTo2);

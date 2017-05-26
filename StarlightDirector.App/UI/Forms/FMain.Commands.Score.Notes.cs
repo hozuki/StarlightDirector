@@ -59,7 +59,7 @@ namespace StarlightDirector.App.UI.Forms {
             var notes = visualizer.Editor.GetSelectedNotes();
             foreach (var note in notes) {
                 var pos = note.Basic.StartPosition;
-                var newPos = pos > NotePosition.Left ? pos - 1 : NotePosition.Right;
+                var newPos = pos > NotePosition.P1 ? pos - 1 : NotePosition.P5;
                 note.Basic.StartPosition = newPos;
             }
             InformProjectModified();
@@ -73,7 +73,7 @@ namespace StarlightDirector.App.UI.Forms {
             var notes = visualizer.Editor.GetSelectedNotes();
             foreach (var note in notes) {
                 var pos = note.Basic.StartPosition;
-                var newPos = pos < NotePosition.Right ? pos + 1 : NotePosition.Left;
+                var newPos = pos < NotePosition.P5 ? pos + 1 : NotePosition.P1;
                 note.Basic.StartPosition = newPos;
             }
             InformProjectModified();

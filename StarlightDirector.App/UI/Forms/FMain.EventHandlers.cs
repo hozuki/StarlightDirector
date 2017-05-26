@@ -3,12 +3,11 @@ using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
+using StarlightDirector.Core;
 using StarlightDirector.Core.Interop;
 using StarlightDirector.Previewing.Audio;
 using StarlightDirector.UI.Controls;
-using StarlightDirector.UI.Controls.Previewing;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -260,8 +259,6 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModeHoldFlick.ShortcutKeyDisplayString = "S";
             mnuEditModeSlide.ShortcutKeyDisplayString = "D";
 
-            CmdProjectNew.Execute(null, null);
-
             EditorSettingsManager.LoadSettings();
             ApplySettings(EditorSettingsManager.CurrentSettings);
 
@@ -270,6 +267,13 @@ namespace StarlightDirector.App.UI.Forms {
             _liveSfxManager.PreloadWave(TapAudioFilePath);
             _liveSfxManager.PreloadWave(FlickAudioFilePath);
             _liveSfxManager.PreloadWave(SlideAudioFilePath);
+
+            // Localize before setting command shortcut display strings.
+            Localize(LanguageManager.Current);
+
+            RegisterCommands();
+
+            CmdProjectNew.Execute(null, null);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

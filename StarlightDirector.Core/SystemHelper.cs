@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Security.Principal;
@@ -87,6 +88,10 @@ namespace StarlightDirector.Core {
                 relativePath = relativePath.Replace(Path.AltDirectorySeparatorChar, Path.DirectorySeparatorChar);
             }
             return relativePath;
+        }
+
+        public static string GetUserLanguageName() {
+            return CultureInfo.CurrentUICulture.Name;
         }
 
     }

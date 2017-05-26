@@ -22,10 +22,16 @@ namespace StarlightDirector.App {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public int ScrollingSpeed { get; internal set; } = 5;
 
+        // version 2
+
+        [DefaultValue(null)]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        public string Language { get; internal set; }
+
         internal EditorSettings() {
         }
 
-        private const int CurrentVersion = 1;
+        private const int CurrentVersion = 2;
 
     }
 }

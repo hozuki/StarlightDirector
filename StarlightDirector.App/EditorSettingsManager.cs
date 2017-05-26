@@ -47,9 +47,46 @@ namespace StarlightDirector.App {
 
         public static EditorSettings CurrentSettings => _editorSettings;
 
+        internal static void ApplyLanguageSettings() {
+            var s = _editorSettings;
+            if (s.Language == null) {
+                s.Language = SystemHelper.GetUserLanguageName();
+            }
+            var path = Path.Combine(LanguagesPath, s.Language) + LanguageFileExtension;
+            if (!File.Exists(path)) {
+                return;
+            }
+            var manager = LanguageManager.Create(s.Language);
+            using (var fileStream = File.Open(path, FileMode.Open, FileAccess.Read)) {
+                using (var reader = new StreamReader(fileStream)) {
+                    // The first line is name of the language.
+                    reader.ReadLine();
+                    while (!reader.EndOfStream) {
+                        var line = reader.ReadLine();
+                        if (string.IsNullOrEmpty(line)) {
+                            continue;
+                        }
+                        if (line[0] == '#') {
+                            continue;
+                        }
+                        var eqPos = line.IndexOf('=');
+                        if (eqPos <= 0) {
+                            continue;
+                        }
+                        var key = line.Substring(0, eqPos);
+                        var value = line.Substring(eqPos + 1);
+                        manager[key] = value;
+                    }
+                }
+            }
+            LanguageManager.Current = manager;
+        }
+
         private static EditorSettings _editorSettings = new EditorSettings();
 
         private static readonly string SettingsFileName = "StarlightDirector.config.json";
+        private static readonly string LanguagesPath = "Resources/Languages";
+        private static readonly string LanguageFileExtension = ".txt";
 
     }
 }

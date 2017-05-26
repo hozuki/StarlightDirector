@@ -12,7 +12,6 @@ namespace StarlightDirector.App.UI.Forms {
             SetStyle(ControlStyles.SupportsTransparentBackColor, false);
             InitializeComponent();
             RegisterEventHandlers();
-            RegisterCommands();
         }
 
         ~FMain() {

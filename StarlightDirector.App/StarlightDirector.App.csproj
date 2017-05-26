@@ -72,6 +72,7 @@
     <Compile Include="EditorSettings.cs" />
     <Compile Include="EditorSettingsManager.cs" />
     <Compile Include="Extensions\ControlExtensions.cs" />
+    <Compile Include="Extensions\LanguageManagerExtensions.cs" />
     <Compile Include="Gaming\LiveMusicRecord.cs" />
     <Compile Include="Gaming\MusicAttribute.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -87,6 +88,9 @@
     </Compile>
     <Compile Include="UI\Forms\FAbout.Designer.cs">
       <DependentUpon>FAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Localization.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\Forms\FNewMeasures.cs">
       <SubType>Form</SubType>
@@ -189,6 +193,9 @@
     <Compile Include="UI\UIUtilities.cs" />
     <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
     <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
+    <Content Include="Resources\Languages\zh-CN.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\SFX\Director\se_live_flic_perfect.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

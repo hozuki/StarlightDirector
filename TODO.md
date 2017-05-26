@@ -2,7 +2,7 @@
 
 ## User Interface
 
-- [ ] I18n
+- [ ] Localization
 - [ ] Customizable color scheme
 
 ## Beatmap
