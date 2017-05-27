@@ -19,6 +19,16 @@ namespace StarlightDirector.App.UI.Forms {
             UnregisterEventHandlers();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
+            switch (keyData) {
+                case Keys.Escape:
+                    Close();
+                    return true;
+                default:
+                    return base.ProcessCmdKey(ref msg, keyData);
+            }
+        }
+
         private FBeatmapStats() {
             InitializeComponent();
             RegisterEventHandlers();
