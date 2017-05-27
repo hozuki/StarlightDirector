@@ -42,7 +42,7 @@
             // 
             // lblAbout
             // 
-            this.lblAbout.AutoSize = false;
+            this.lblAbout.AutoScroll = true;
             this.lblAbout.BackColor = System.Drawing.SystemColors.Window;
             this.lblAbout.BaseStylesheet = null;
             this.lblAbout.IsContextMenuEnabled = false;
@@ -51,6 +51,8 @@
             this.lblAbout.Size = new System.Drawing.Size(507, 329);
             this.lblAbout.TabIndex = 1;
             this.lblAbout.Text = null;
+            this.lblAbout.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
+            this.lblAbout.UseGdiPlusTextRendering = true;
             // 
             // picAnimation
             // 

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using System.Reflection;
 using System.Windows.Forms;
 using StarlightDirector.App.Properties;
 using StarlightDirector.Core;
@@ -11,6 +13,7 @@ namespace StarlightDirector.App.UI.Forms {
         public static void ShowDialog(IWin32Window parent, bool easterEggEnabled) {
             using (var f = new FAbout()) {
                 f._easterEggEnabled = easterEggEnabled;
+                f.Localize(LanguageManager.Current);
                 f.ShowDialog(parent);
             }
         }
@@ -60,10 +63,21 @@ namespace StarlightDirector.App.UI.Forms {
             lblAbout.BackColor = Color.Transparent;
 
             string html;
-            using (var htmlStream = ApplicationHelper.GetResourceStream("StarlightDirector.App.Resources.WebPages.About.html")) {
+            string streamName;
+            if (LanguageManager.Current?.CodeName == null) {
+                streamName = DefaultAboutPageStreamName;
+            } else {
+                streamName = $"StarlightDirector.App.Resources.WebPages.About.{LanguageManager.Current.CodeName}.html";
+            }
+            Stream htmlStream = null;
+            var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            try {
+                htmlStream = ApplicationHelper.GetResourceStream(streamName) ?? ApplicationHelper.GetResourceStream(DefaultAboutPageStreamName);
                 using (var reader = new StreamReader(htmlStream)) {
                     html = reader.ReadToEnd();
                 }
+            } finally {
+                htmlStream?.Dispose();
             }
 
             var version = ApplicationHelper.GetAssemblyVersion();
@@ -89,6 +103,8 @@ namespace StarlightDirector.App.UI.Forms {
 #endif
 
         private bool _easterEggEnabled;
+
+        private static readonly string DefaultAboutPageStreamName = "StarlightDirector.App.Resources.WebPages.About.html";
 
     }
 }

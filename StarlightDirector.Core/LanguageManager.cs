@@ -50,6 +50,10 @@ namespace StarlightDirector.Core {
 
         public string Language { get; }
 
+        public string Name { get; set; }
+
+        public string CodeName { get; set; }
+
         public static LanguageManager Current { get; set; }
 
         private LanguageManager(string language) {

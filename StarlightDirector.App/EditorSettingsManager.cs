@@ -48,19 +48,14 @@ namespace StarlightDirector.App {
         public static EditorSettings CurrentSettings => _editorSettings;
 
         internal static void ApplyLanguageSettings() {
-            var s = _editorSettings;
-            if (s.Language == null) {
-                s.Language = SystemHelper.GetUserLanguageName();
-            }
-            var path = Path.Combine(LanguagesPath, s.Language) + LanguageFileExtension;
+            var language = _editorSettings.Language ?? SystemHelper.GetUserLanguageName().Replace('-', '_');
+            var path = Path.Combine(LanguagesPath, language) + LanguageFileExtension;
             if (!File.Exists(path)) {
                 return;
             }
-            var manager = LanguageManager.Create(s.Language);
+            var manager = LanguageManager.Create(language);
             using (var fileStream = File.Open(path, FileMode.Open, FileAccess.Read)) {
                 using (var reader = new StreamReader(fileStream)) {
-                    // The first line is name of the language.
-                    reader.ReadLine();
                     while (!reader.EndOfStream) {
                         var line = reader.ReadLine();
                         if (string.IsNullOrEmpty(line)) {
@@ -79,6 +74,8 @@ namespace StarlightDirector.App {
                     }
                 }
             }
+            manager.Name = manager.GetString("lang.name", null) ?? "Neutral";
+            manager.CodeName = manager.GetString("lang.code_name") ?? "neutral";
             LanguageManager.Current = manager;
         }
 

@@ -1,6 +1,8 @@
-﻿简体中文
+﻿# 第一个非空的行是语言名称，第二个是语言代码。
 # 在一行的开始处使用“#”注释这一行
 # 用“\n”换行
+lang.name=简体中文
+lang.code_name=zh_CN
 
 # === 主窗口 ===
 
@@ -239,6 +241,11 @@ ui.fbuildbeatmap.radio.build_type.bdb.text=谱面包(BDB)
 ui.fbuildbeatmap.button.select_live_id.text=选择(&S)...
 ui.fbuildbeatmap.button.build.text=生成(&B)...
 ui.fbuildbeatmap.button.close.text=关闭
+
+# === 关于 ===
+
+ui.fabout.text=关于
+ui.fabout.button.close.text=关闭
 
 # --- 其他 ---
 
