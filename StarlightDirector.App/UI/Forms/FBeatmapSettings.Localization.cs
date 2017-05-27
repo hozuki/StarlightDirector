@@ -9,11 +9,11 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
 
-            manager.ApplyText(this, "fbeatmapsettings.text");
-            manager.ApplyText(label1, "fbeatmapsettings.label.bpm.text");
-            manager.ApplyText(label2, "fbeatmapsettings.label.score_offset.text");
-            manager.ApplyText(btnOK, "fbeatmapsettings.button.ok.text");
-            manager.ApplyText(btnCancel, "fbeatmapsettings.button.cancel.text");
+            manager.ApplyText(this, "ui.fbeatmapsettings.text");
+            manager.ApplyText(label1, "ui.fbeatmapsettings.label.bpm.text");
+            manager.ApplyText(label2, "ui.fbeatmapsettings.label.score_offset.text");
+            manager.ApplyText(btnOK, "ui.fbeatmapsettings.button.ok.text");
+            manager.ApplyText(btnCancel, "ui.fbeatmapsettings.button.cancel.text");
         }
 
     }

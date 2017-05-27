@@ -9,13 +9,13 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             }
 
-            manager.ApplyText(this, "fspecialnote.text");
-            manager.ApplyText(label2, "fspecialnote.label.in_measure.text");
-            manager.ApplyText(label3, "fspecialnote.label.on_row.text");
-            manager.ApplyText(label1, "fspecialnote.label.new_bpm.text");
-            manager.ApplyText(radioButton1, "fspecialnote.radio.variant_bpm.text");
-            manager.ApplyText(btnOK, "fspecialnote.button.ok.text");
-            manager.ApplyText(btnCancel, "fspecialnote.button.cancel.text");
+            manager.ApplyText(this, "ui.fspecialnote.text");
+            manager.ApplyText(label2, "ui.fspecialnote.label.in_measure.text");
+            manager.ApplyText(label3, "ui.fspecialnote.label.on_row.text");
+            manager.ApplyText(label1, "ui.fspecialnote.label.new_bpm.text");
+            manager.ApplyText(radioButton1, "ui.fspecialnote.radio.variant_bpm.text");
+            manager.ApplyText(btnOK, "ui.fspecialnote.button.ok.text");
+            manager.ApplyText(btnCancel, "ui.fspecialnote.button.cancel.text");
         }
 
     }

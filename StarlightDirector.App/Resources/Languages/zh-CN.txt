@@ -5,182 +5,182 @@
 # === 主窗口 ===
 
 # {0}:文件名 {1}: 难度 {2}:程序标题（Starlight Director）
-fmain.text_template={0} [{1}] - {2}
+ui.fmain.text_template={0} [{1}] - {2}
 
 # ---
 
-fmain.menu.project.text=工程(&P)
-fmain.menu.project.new.text=新建(&N)
-fmain.menu.project.open.text=打开(&O)...
-fmain.menu.project.save.text=保存(&S)
-fmain.menu.project.saveas.text=另存为(&A)...
-fmain.menu.project.beatmap.text=谱面(&B)
-fmain.menu.project.beatmap.stats.text=谱面统计(&S)
-fmain.menu.project.beatmap.settings.text=谱面设置(&T)...
-fmain.menu.project.music.text=音乐(&I)
-fmain.menu.project.music.settings.text=音乐设置(&S)...
-fmain.menu.project.exit.text=退出(&X)
+ui.fmain.menu.project.text=工程(&P)
+ui.fmain.menu.project.new.text=新建(&N)
+ui.fmain.menu.project.open.text=打开(&O)...
+ui.fmain.menu.project.save.text=保存(&S)
+ui.fmain.menu.project.saveas.text=另存为(&A)...
+ui.fmain.menu.project.beatmap.text=谱面(&B)
+ui.fmain.menu.project.beatmap.stats.text=谱面统计(&S)
+ui.fmain.menu.project.beatmap.settings.text=谱面设置(&T)...
+ui.fmain.menu.project.music.text=音乐(&I)
+ui.fmain.menu.project.music.settings.text=音乐设置(&S)...
+ui.fmain.menu.project.exit.text=退出(&X)
 
-fmain.menu.edit.text=编辑(&E)
-fmain.menu.edit.undo.text=撤销(&U)
-fmain.menu.edit.redo.text=重做(&R)
-fmain.menu.edit.cut.text=剪切(&T)
-fmain.menu.edit.copy.text=复制(&C)
-fmain.menu.edit.paste.text=粘贴(&P)
-fmain.menu.edit.select.text=选择(&S)
-fmain.menu.edit.select.all_notes.text=所有音符(&N)
-fmain.menu.edit.select.all_measures.text=所有小节(&M)
-fmain.menu.edit.select.clear_all.text=清除选择(&C)
-fmain.menu.edit.mode.text=模式(&M)
-fmain.menu.edit.mode.select.text=选择(&L)
-fmain.menu.edit.mode.tap.text=单点(&T)
-fmain.menu.edit.mode.hold_flick.text=长押/滑条(&H)
-fmain.menu.edit.mode.slide.text=滑键（滑按）(&S)
-fmain.menu.edit.goto.text=转到(&G)
-fmain.menu.edit.goto.measure.text=小节(&M)...
-fmain.menu.edit.goto.time.text=时间点(&T)...
+ui.fmain.menu.edit.text=编辑(&E)
+ui.fmain.menu.edit.undo.text=撤销(&U)
+ui.fmain.menu.edit.redo.text=重做(&R)
+ui.fmain.menu.edit.cut.text=剪切(&T)
+ui.fmain.menu.edit.copy.text=复制(&C)
+ui.fmain.menu.edit.paste.text=粘贴(&P)
+ui.fmain.menu.edit.select.text=选择(&S)
+ui.fmain.menu.edit.select.all_notes.text=所有音符(&N)
+ui.fmain.menu.edit.select.all_measures.text=所有小节(&M)
+ui.fmain.menu.edit.select.clear_all.text=清除选择(&C)
+ui.fmain.menu.edit.mode.text=模式(&M)
+ui.fmain.menu.edit.mode.select.text=选择(&L)
+ui.fmain.menu.edit.mode.tap.text=单点(&T)
+ui.fmain.menu.edit.mode.hold_flick.text=长押/滑条(&H)
+ui.fmain.menu.edit.mode.slide.text=滑键（滑按）(&S)
+ui.fmain.menu.edit.goto.text=转到(&G)
+ui.fmain.menu.edit.goto.measure.text=小节(&M)...
+ui.fmain.menu.edit.goto.time.text=时间点(&T)...
 
-fmain.menu.view.text=视图(&V)
-fmain.menu.view.zoom.text=缩放(&Z)
-fmain.menu.view.zoom.in.text=放大(&I)
-fmain.menu.view.zoom.out.text=缩小(&O)
-fmain.menu.view.zoom.to_beat.text=缩放到拍(&B)
-fmain.menu.view.highlight_mode.text=高亮模式(&H)
-fmain.menu.view.highlight_mode.four_beats.text=四拍子(&F)
-fmain.menu.view.highlight_mode.three_beats.text=三拍子(&T)
+ui.fmain.menu.view.text=视图(&V)
+ui.fmain.menu.view.zoom.text=缩放(&Z)
+ui.fmain.menu.view.zoom.in.text=放大(&I)
+ui.fmain.menu.view.zoom.out.text=缩小(&O)
+ui.fmain.menu.view.zoom.to_beat.text=缩放到拍(&B)
+ui.fmain.menu.view.highlight_mode.text=高亮模式(&H)
+ui.fmain.menu.view.highlight_mode.four_beats.text=四拍子(&F)
+ui.fmain.menu.view.highlight_mode.three_beats.text=三拍子(&T)
 
-fmain.menu.score.text=谱面(&S)
-fmain.menu.score.difficulty.text=难度(&D)
-fmain.menu.score.difficulty.debut.text=Debut(&D)
-fmain.menu.score.difficulty.regular.text=Regular(&R)
-fmain.menu.score.difficulty.pro.text=Pro(&P)
-fmain.menu.score.difficulty.master.text=Master(&M)
-fmain.menu.score.difficulty.master_plus.text=Master+(&E)
-fmain.menu.score.measure.text=小节(&M)
-fmain.menu.score.measure.append.text=添加小节(&A)
-fmain.menu.score.measure.append_multiple.text=添加多个小节(&M)...
-fmain.menu.score.measure.insert.text=插入小节(&I)
-fmain.menu.score.measure.insert_multiple.text=插入多个小节(&S)...
-fmain.menu.score.measure.delete.text=删除所选小节(&D)
-fmain.menu.score.note.text=音符(&N)
-fmain.menu.score.note.reset_to_tap.text=重置为单点(&T)
-fmain.menu.score.note.delete.text=删除所选音符(&D)
-fmain.menu.score.note.start_position.text=起始位置(&P)
-fmain.menu.score.note.start_position.at.default.text=默认(&D)
-fmain.menu.score.note.start_position.at.1.text=1位(&L)
-fmain.menu.score.note.start_position.at.2.text=2位(&T)
-fmain.menu.score.note.start_position.at.3.text=3位(&C)
-fmain.menu.score.note.start_position.at.4.text=4位(&I)
-fmain.menu.score.note.start_position.at.5.text=5位(&R)
-fmain.menu.score.note.start_position.move.left.text=向左平移(&E)
-fmain.menu.score.note.start_position.move.right.text=向右平移(&V)
-fmain.menu.score.note.start_position.to.default.text=设为默认(&S)
-fmain.menu.score.note.start_position.to.1.text=设为1位(&O)
-fmain.menu.score.note.start_position.to.2.text=设为2位(&F)
-fmain.menu.score.note.start_position.to.3.text=设为3位(&R)
-fmain.menu.score.note.start_position.to.4.text=设为4位(&G)
-fmain.menu.score.note.start_position.to.5.text=设为5位(&H)
-fmain.menu.score.note.insert_special.text=插入特殊音符(&S)...
+ui.fmain.menu.score.text=谱面(&S)
+ui.fmain.menu.score.difficulty.text=难度(&D)
+ui.fmain.menu.score.difficulty.debut.text=Debut(&D)
+ui.fmain.menu.score.difficulty.regular.text=Regular(&R)
+ui.fmain.menu.score.difficulty.pro.text=Pro(&P)
+ui.fmain.menu.score.difficulty.master.text=Master(&M)
+ui.fmain.menu.score.difficulty.master_plus.text=Master+(&E)
+ui.fmain.menu.score.measure.text=小节(&M)
+ui.fmain.menu.score.measure.append.text=添加小节(&A)
+ui.fmain.menu.score.measure.append_multiple.text=添加多个小节(&M)...
+ui.fmain.menu.score.measure.insert.text=插入小节(&I)
+ui.fmain.menu.score.measure.insert_multiple.text=插入多个小节(&S)...
+ui.fmain.menu.score.measure.delete.text=删除所选小节(&D)
+ui.fmain.menu.score.note.text=音符(&N)
+ui.fmain.menu.score.note.reset_to_tap.text=重置为单点(&T)
+ui.fmain.menu.score.note.delete.text=删除所选音符(&D)
+ui.fmain.menu.score.note.start_position.text=起始位置(&P)
+ui.fmain.menu.score.note.start_position.at.default.text=默认(&D)
+ui.fmain.menu.score.note.start_position.at.1.text=1位(&L)
+ui.fmain.menu.score.note.start_position.at.2.text=2位(&T)
+ui.fmain.menu.score.note.start_position.at.3.text=3位(&C)
+ui.fmain.menu.score.note.start_position.at.4.text=4位(&I)
+ui.fmain.menu.score.note.start_position.at.5.text=5位(&R)
+ui.fmain.menu.score.note.start_position.move.left.text=向左平移(&E)
+ui.fmain.menu.score.note.start_position.move.right.text=向右平移(&V)
+ui.fmain.menu.score.note.start_position.to.default.text=设为默认(&S)
+ui.fmain.menu.score.note.start_position.to.1.text=设为1位(&O)
+ui.fmain.menu.score.note.start_position.to.2.text=设为2位(&F)
+ui.fmain.menu.score.note.start_position.to.3.text=设为3位(&R)
+ui.fmain.menu.score.note.start_position.to.4.text=设为4位(&G)
+ui.fmain.menu.score.note.start_position.to.5.text=设为5位(&H)
+ui.fmain.menu.score.note.insert_special.text=插入特殊音符(&S)...
 
-fmain.menu.preview.text=预览(&R)
-fmain.menu.preview.from_this_measure.text=从当前小节开始(&M)
-fmain.menu.preview.from_start.text=从头开始(&S)
-fmain.menu.preview.stop.text=停止(&T)
+ui.fmain.menu.preview.text=预览(&R)
+ui.fmain.menu.preview.from_this_measure.text=从当前小节开始(&M)
+ui.fmain.menu.preview.from_start.text=从头开始(&S)
+ui.fmain.menu.preview.stop.text=停止(&T)
 
-fmain.menu.tools.text=工具(&T)
-fmain.menu.tools.export.text=导出(&E)
-fmain.menu.tools.export.csv.text=CGSS 单个谱面(CSV)(&C)...
-fmain.menu.tools.import.text=导入(&I)
-fmain.menu.tools.build.text=生成(&B)
-fmain.menu.tools.build.bdb.text=CGSS 谱面包(BDB)(&B)...
-fmain.menu.tools.build.acb.text=CGSS 曲目音乐(ACB)(&M)...
-fmain.menu.tools.settings.text=设置(&S)...
+ui.fmain.menu.tools.text=工具(&T)
+ui.fmain.menu.tools.export.text=导出(&E)
+ui.fmain.menu.tools.export.csv.text=CGSS 单个谱面(CSV)(&C)...
+ui.fmain.menu.tools.import.text=导入(&I)
+ui.fmain.menu.tools.build.text=生成(&B)
+ui.fmain.menu.tools.build.bdb.text=CGSS 谱面包(BDB)(&B)...
+ui.fmain.menu.tools.build.acb.text=CGSS 曲目音乐(ACB)(&M)...
+ui.fmain.menu.tools.settings.text=设置(&S)...
 
-fmain.menu.help.text=帮助(&H)
-fmain.menu.help.about.text=关于(&A)
-
-# ---
-
-fmain.frame.standard.text=标准
-fmain.frame.edit_view.text=编辑与视图
-fmain.frame.note.text=音符
-fmain.frame.measure.text=小节
-fmain.frame.postprocessing.text=后期处理
-
-fmain.toolbar.standard.new.text=新建
-fmain.toolbar.standard.open.text=打开...
-fmain.toolbar.standard.save.text=保存
-fmain.toolbar.standard.undo.text=撤销
-fmain.toolbar.standard.redo.text=重做
-fmain.toolbar.standard.cut.text=剪切
-fmain.toolbar.standard.copy.text=复制
-fmain.toolbar.standard.paste.text=粘贴
-
-fmain.toolbar.edit_view.mode.text=编辑模式
-fmain.toolbar.edit_view.difficulty_label.text=难度:
-fmain.toolbar.edit_view.zoom_in.text=放大
-fmain.toolbar.edit_view.zoom_out.text=缩小
-
-fmain.toolbar.note.reset_to_tap.text=重置为单点
-fmain.toolbar.note.delete.text=删除所选音符
-fmain.toolbar.note.start_position_label.text=起始位置:
-fmain.toolbar.note.insert_special.text=插入特殊音符...
-
-fmain.toolbar.measure.append.text=添加小节
-fmain.toolbar.measure.append_multiple.text=添加多个小节(&M)...
-fmain.toolbar.measure.insert.text=插入小节
-fmain.toolbar.measure.insert_multiple.text=插入多个小节(&M)...
-fmain.toolbar.measure.delete.text=删除所选小节
-
-fmain.toolbar.postprocessing.preview.from_this_measure.text=从当前小节开始预览
-fmain.toolbar.postprocessing.preview.from_start.text=从头开始预览
-fmain.toolbar.postprocessing.preview.stop.text=停止预览
-fmain.toolbar.postprocessing.build.bdb.text=生成 CGSS 谱面包
-fmain.toolbar.postprocessing.build.acb.text=生成 CGSS 曲目音乐
+ui.fmain.menu.help.text=帮助(&H)
+ui.fmain.menu.help.about.text=关于(&A)
 
 # ---
 
-fmain.context.edit.cut=剪切(&T)
-fmain.context.edit.copy=复制(&C)
-fmain.context.edit.paste=粘贴(&P)
-fmain.context.note.reset_to_tap=重置为单点(&T)
-fmain.context.note.delete=删除所选音符(&D)
-fmain.context.measure.delete=删除所选小节(&D)
-fmain.context.note.insert_special=插入特殊音符(&S)...
-fmain.context.note.modify_special=编辑特殊音符(&S)...
-fmain.context.note.delete_special=删除特殊音符(&D)
+ui.fmain.frame.standard.text=标准
+ui.fmain.frame.edit_view.text=编辑与视图
+ui.fmain.frame.note.text=音符
+ui.fmain.frame.measure.text=小节
+ui.fmain.frame.postprocessing.text=后期处理
+
+ui.fmain.toolbar.standard.new.text=新建
+ui.fmain.toolbar.standard.open.text=打开...
+ui.fmain.toolbar.standard.save.text=保存
+ui.fmain.toolbar.standard.undo.text=撤销
+ui.fmain.toolbar.standard.redo.text=重做
+ui.fmain.toolbar.standard.cut.text=剪切
+ui.fmain.toolbar.standard.copy.text=复制
+ui.fmain.toolbar.standard.paste.text=粘贴
+
+ui.fmain.toolbar.edit_view.mode.text=编辑模式
+ui.fmain.toolbar.edit_view.difficulty_label.text=难度:
+ui.fmain.toolbar.edit_view.zoom_in.text=放大
+ui.fmain.toolbar.edit_view.zoom_out.text=缩小
+
+ui.fmain.toolbar.note.reset_to_tap.text=重置为单点
+ui.fmain.toolbar.note.delete.text=删除所选音符
+ui.fmain.toolbar.note.start_position_label.text=起始位置:
+ui.fmain.toolbar.note.insert_special.text=插入特殊音符...
+
+ui.fmain.toolbar.measure.append.text=添加小节
+ui.fmain.toolbar.measure.append_multiple.text=添加多个小节(&M)...
+ui.fmain.toolbar.measure.insert.text=插入小节
+ui.fmain.toolbar.measure.insert_multiple.text=插入多个小节(&M)...
+ui.fmain.toolbar.measure.delete.text=删除所选小节
+
+ui.fmain.toolbar.postprocessing.preview.from_this_measure.text=从当前小节开始预览
+ui.fmain.toolbar.postprocessing.preview.from_start.text=从头开始预览
+ui.fmain.toolbar.postprocessing.preview.stop.text=停止预览
+ui.fmain.toolbar.postprocessing.build.bdb.text=生成 CGSS 谱面包
+ui.fmain.toolbar.postprocessing.build.acb.text=生成 CGSS 曲目音乐
+
+# ---
+
+ui.fmain.context.edit.cut=剪切(&T)
+ui.fmain.context.edit.copy=复制(&C)
+ui.fmain.context.edit.paste=粘贴(&P)
+ui.fmain.context.note.reset_to_tap=重置为单点(&T)
+ui.fmain.context.note.delete=删除所选音符(&D)
+ui.fmain.context.measure.delete=删除所选小节(&D)
+ui.fmain.context.note.insert_special=插入特殊音符(&S)...
+ui.fmain.context.note.modify_special=编辑特殊音符(&S)...
+ui.fmain.context.note.delete_special=删除特殊音符(&D)
 
 # === 谱面设置 ===
 
-fbeatmapsettings.text=谱面设置
-fbeatmapsettings.label.bpm.text=BPM:
-fbeatmapsettings.label.score_offset.text=谱面偏移(秒):
-fbeatmapsettings.button.ok.text=确定
-fbeatmapsettings.button.cancel.text=取消
+ui.fbeatmapsettings.text=谱面设置
+ui.fbeatmapsettings.label.bpm.text=BPM:
+ui.fbeatmapsettings.label.score_offset.text=谱面偏移(秒):
+ui.fbeatmapsettings.button.ok.text=确定
+ui.fbeatmapsettings.button.cancel.text=取消
 
 # === 谱面统计 ===
 
-fbeatmapstats.text=谱面统计
-fbeatmapstats.listview.column.name.text=名称
-fbeatmapstats.listview.column.value.text=值
-fbeatmapstats.listview.item.project_file_name.text=工程文件
-fbeatmapstats.listview.item.music_file_name.text=音乐文件
-fbeatmapstats.listview.header.general.text=常规
+ui.fbeatmapstats.text=谱面统计
+ui.fbeatmapstats.listview.column.name.text=名称
+ui.fbeatmapstats.listview.column.value.text=值
+ui.fbeatmapstats.listview.item.project_file_name.text=工程文件
+ui.fbeatmapstats.listview.item.music_file_name.text=音乐文件
+ui.fbeatmapstats.listview.header.general.text=常规
 # {0}: 难度
-fbeatmapstats.listview.header.items.text_template=难度: {0}
-fbeatmapstats.listview.item.measures.text=小节数
-fbeatmapstats.listview.item.notes.text=音符数
-fbeatmapstats.listview.item.duration.text=总长度
+ui.fbeatmapstats.listview.header.items.text_template=难度: {0}
+ui.fbeatmapstats.listview.item.measures.text=小节数
+ui.fbeatmapstats.listview.item.notes.text=音符数
+ui.fbeatmapstats.listview.item.duration.text=总长度
 
 # === 特殊音符 ===
 
-fspecialnote.text=特殊音符
-fspecialnote.label.in_measure.text=位于小节:
-fspecialnote.label.on_row.text=位于行:
-fspecialnote.label.new_bpm.text=新 BPM:
-fspecialnote.radio.variant_bpm.text=改变 BPM
-fspecialnote.button.ok.text=确定
-fspecialnote.button.cancel.text=取消
+ui.fspecialnote.text=特殊音符
+ui.fspecialnote.label.in_measure.text=位于小节:
+ui.fspecialnote.label.on_row.text=位于行:
+ui.fspecialnote.label.new_bpm.text=新 BPM:
+ui.fspecialnote.radio.variant_bpm.text=改变 BPM
+ui.fspecialnote.button.ok.text=确定
+ui.fspecialnote.button.cancel.text=取消
 
 # --- 其他 ---
 

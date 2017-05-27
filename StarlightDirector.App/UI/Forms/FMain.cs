@@ -55,7 +55,7 @@ namespace StarlightDirector.App.UI.Forms {
             if (string.IsNullOrEmpty(editingFileName)) {
                 text = applicationTitle;
             } else {
-                var titleTemplate = LanguageManager.TryGetString("fmain.text_template") ?? DefaultTitleTemplate;
+                var titleTemplate = LanguageManager.TryGetString("ui.fmain.text_template") ?? DefaultTitleTemplate;
                 text = string.Format(titleTemplate, editingFileName, difficultyDescription, applicationTitle);
             }
             var project = visualizer.Editor.Project;

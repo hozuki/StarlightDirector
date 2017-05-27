@@ -8,7 +8,7 @@ namespace StarlightDirector.App.UI.Forms {
             if (manager == null) {
                 return;
             }
-            manager.ApplyText(this, "fbeatmapstats.text");
+            manager.ApplyText(this, "ui.fbeatmapstats.text");
         }
 
     }
