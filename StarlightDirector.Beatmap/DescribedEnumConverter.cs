@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Globalization;
 using System.Linq;
+using System.Reflection;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.Beatmap {
     public sealed class DescribedEnumConverter : EnumConverter {
@@ -10,6 +12,12 @@ namespace StarlightDirector.Beatmap {
         public DescribedEnumConverter(Type type)
             : base(type) {
             _enumType = type;
+        }
+
+        public DescribedEnumConverter(Type type, LanguageManager languageManager)
+            : base(type) {
+            _enumType = type;
+            _languageManager = languageManager;
         }
 
         public override bool CanConvertTo(ITypeDescriptorContext context, Type destType) {
@@ -24,8 +32,16 @@ namespace StarlightDirector.Beatmap {
             var valueName = Enum.GetName(_enumType, value);
             if (valueName != null) {
                 var fi = _enumType.GetField(valueName);
-                var dna = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
-                return dna != null ? dna.Description : value.ToString();
+                var localizationKeyAttribute = fi.GetCustomAttribute<LocalizationKeyAttribute>();
+                if (localizationKeyAttribute?.Key != null) {
+                    var languageManager = _languageManager ?? LanguageManager.Current;
+                    var localizationValue = languageManager?.GetString(localizationKeyAttribute.Key, null);
+                    if (localizationValue != null) {
+                        return localizationValue;
+                    }
+                }
+                var descriptionAttribute = fi.GetCustomAttribute<DescriptionAttribute>();
+                return descriptionAttribute?.Description ?? value.ToString();
             } else {
                 var intValue = (int)value;
                 var allEnumValues = Enum.GetValues(_enumType);
@@ -50,7 +66,7 @@ namespace StarlightDirector.Beatmap {
             // Get value.
             var stringValue = (string)value;
             foreach (var fi in _enumType.GetFields()) {
-                var dna = (DescriptionAttribute)Attribute.GetCustomAttribute(fi, typeof(DescriptionAttribute));
+                var dna = fi.GetCustomAttribute<DescriptionAttribute>();
                 if (dna != null && stringValue == dna.Description) {
                     return Enum.Parse(_enumType, fi.Name);
                 }
@@ -59,15 +75,25 @@ namespace StarlightDirector.Beatmap {
         }
 
         public static string GetEnumDescription(Enum value) {
-            return GetEnumDescription(value, value.GetType());
+            return GetEnumDescription(value, value.GetType(), null);
         }
 
         public static string GetEnumDescription(Enum value, Type enumType) {
-            var converter = new DescribedEnumConverter(enumType);
+            var converter = new DescribedEnumConverter(enumType, null);
+            return converter.ConvertToInvariantString(value);
+        }
+
+        public static string GetEnumDescription(Enum value, LanguageManager manager) {
+            return GetEnumDescription(value, value.GetType(), manager);
+        }
+
+        public static string GetEnumDescription(Enum value, Type enumType, LanguageManager manager) {
+            var converter = new DescribedEnumConverter(enumType, manager);
             return converter.ConvertToInvariantString(value);
         }
 
         private readonly Type _enumType;
+        private readonly LanguageManager _languageManager;
 
     }
 }

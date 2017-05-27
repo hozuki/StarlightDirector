@@ -15,6 +15,7 @@ namespace StarlightDirector.App.UI.Forms {
             using (var f = new FSelectMusicID()) {
                 f._musicID = initialMusicID;
                 f._liveID = initialLiveID;
+                f.Localize(LanguageManager.Current);
                 var r = f.ShowDialog(parent);
                 return (r, f._musicID, f._liveID);
             }
@@ -57,7 +58,9 @@ namespace StarlightDirector.App.UI.Forms {
             cboDatabaseItems.Items.Clear();
             if (!File.Exists(MasterDatabasePath)) {
                 var fileInfo = new FileInfo(MasterDatabasePath);
-                MessageBox.Show(this, $"The database file '{fileInfo.FullName}' is missing. Using the default music ID.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var errorMessageTemplate = LanguageManager.TryGetString("messages.fselectmusicid.master_database_file_missing") ?? "The database file '{0}' is missing. Using the default music ID.";
+                var errorMessage = string.Format(errorMessageTemplate, fileInfo.FullName);
+                MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 _musicID = 1001;
                 _liveID = 1;
                 Close();
@@ -105,9 +108,10 @@ namespace StarlightDirector.App.UI.Forms {
                     }
 
                     _musicList = musicList;
+                    var itemTextTemplate = LanguageManager.TryGetString("ui.fselectmusicid.combobox.item.text_template") ?? "{0} [{1}]";
                     foreach (var record in musicList) {
                         var attributeDescription = DescribedEnumConverter.GetEnumDescription(record.Attribute);
-                        var str = $"{record.MusicName} [{attributeDescription}]";
+                        var str = string.Format(itemTextTemplate, record.MusicName, attributeDescription);
                         cboDatabaseItems.Items.Add(str);
                     }
 

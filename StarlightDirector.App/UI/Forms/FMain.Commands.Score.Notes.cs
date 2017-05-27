@@ -26,7 +26,7 @@ namespace StarlightDirector.App.UI.Forms {
                 it.Checked = pos == startPosition;
             }
 
-            tsbScoreNoteStartPosition.Text = SpecialTranslations.NotePosition(LanguageManager.Current, startPosition);
+            tsbScoreNoteStartPosition.Text = DescribedEnumConverter.GetEnumDescription(startPosition);
         }
 
         private void CmdScoreNoteStartPositionAt0_Executed(object sender, ExecutedEventArgs e) {

@@ -74,7 +74,7 @@ namespace StarlightDirector.App.UI.Forms {
                 var numberOfNotes = score.GetAllNotes().Count;
                 var numberOfBars = score.Bars.Count;
                 var duration = score.CalculateDuration();
-                var difficultyDescription = SpecialTranslations.Difficulty(LanguageManager.Current, difficulty);
+                var difficultyDescription = DescribedEnumConverter.GetEnumDescription(difficulty);
                 var headerTextFormat = LanguageManager.TryGetString("ui.fbeatmapstats.listview.header.items.text_template") ?? "Difficulty: {0}";
                 var text = string.Format(headerTextFormat, difficultyDescription);
                 var group = listView.Groups.Add(text, text);

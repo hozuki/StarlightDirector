@@ -182,6 +182,14 @@ ui.fspecialnote.radio.variant_bpm.text=改变 BPM
 ui.fspecialnote.button.ok.text=确定
 ui.fspecialnote.button.cancel.text=取消
 
+## === 选择音乐ID ===
+
+ui.fselectmusicid.text=选择音乐 ID
+ui.fselectmusicid.button.ok.text=确定
+ui.fselectmusicid.button.cancel.text=取消
+# {0}: 歌曲名称 {1}: 歌曲属性
+ui.fselectmusicid.combobox.item.text_template={0} [{1}]
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
@@ -200,6 +208,13 @@ misc.note_position.p3=3位
 misc.note_position.p4=4位
 misc.note_position.p5=5位
 
+misc.music_attribute.cute=Cu
+misc.music_attribute.cool=Co
+misc.music_attribute.passion=Pa
+misc.music_attribute.multicolor=彩
+misc.music_attribute.event=活动
+misc.music_attribute.solo_ver=Solo
+
 errors.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
 
 messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
@@ -207,3 +222,6 @@ messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。
 messages.fbeatmapsettings.score_offset_is_not_numeric=请输入一个数字。
 messages.fspecialnote.measures_not_exist=未找到可用的小节。
 messages.fspecialnote.bpm_invalid=请输入一个正确的 BPM 值。
+
+# {0}: 预期的文件路径
+messages.fselectmusicid.master_database_file_missing=找不到数据库文件"{0}"，将使用默认音乐 ID。
