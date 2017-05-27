@@ -51,7 +51,13 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = SpecialTranslations.Difficulty(LanguageManager.Current, currentDifficulty);
-            var text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
+            string text;
+            if (string.IsNullOrEmpty(editingFileName)) {
+                text = applicationTitle;
+            } else {
+                var titleTemplate = LanguageManager.TryGetString("fmain.text_template") ?? DefaultTitleTemplate;
+                text = string.Format(titleTemplate, editingFileName, difficultyDescription, applicationTitle);
+            }
             var project = visualizer.Editor.Project;
             if (project.IsModified) {
                 text = "* " + text;
@@ -107,6 +113,7 @@ namespace StarlightDirector.App.UI.Forms {
         private static readonly int CaptionMargin = 65;
         private static readonly int ToolbarMargin = 250;
         private static readonly string DefaultDocumentName = "Untitled";
+        private static readonly string DefaultTitleTemplate = "{0} [{1}] - {2}";
 
         private string _editingFileName = string.Empty;
         private Difficulty _cachedTitleDifficulty = Difficulty.Debut;

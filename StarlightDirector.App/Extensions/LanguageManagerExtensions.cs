@@ -4,6 +4,46 @@ using StarlightDirector.Core;
 namespace StarlightDirector.App.Extensions {
     public static class LanguageManagerExtensions {
 
+        public static void ApplyText(this LanguageManager manager, Form form, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            form.Text = value;
+        }
+
+        public static void ApplyText(this LanguageManager manager, Button button, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            button.Text = value;
+        }
+
+        public static void ApplyText(this LanguageManager manager, Label label, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            label.Text = value;
+        }
+
+        public static void ApplyText(this LanguageManager manager, CheckBox checkBox, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            checkBox.Text = value;
+        }
+
+        public static void ApplyText(this LanguageManager manager, RadioButton radioButton, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            radioButton.Text = value;
+        }
+
         public static void ApplyText(this LanguageManager manager, ToolStripMenuItem menuItem, string key) {
             var value = manager.GetString(key, null);
             if (value == null) {

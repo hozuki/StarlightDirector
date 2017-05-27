@@ -2,6 +2,13 @@
 # 在一行的开始处使用“#”注释这一行
 # 用“\n”换行
 
+# === 主窗口 ===
+
+# {0}:文件名 {1}: 难度 {2}:程序标题（Starlight Director）
+fmain.text_template={0} [{1}] - {2}
+
+# ---
+
 fmain.menu.project.text=工程(&P)
 fmain.menu.project.new.text=新建(&N)
 fmain.menu.project.open.text=打开(&O)...
@@ -143,6 +150,28 @@ fmain.context.note.insert_special=插入特殊音符(&S)...
 fmain.context.note.modify_special=编辑特殊音符(&S)...
 fmain.context.note.delete_special=删除特殊音符(&D)
 
+# === 谱面设置 ===
+
+fbeatmapsettings.text=谱面设置
+fbeatmapsettings.label.bpm.text=BPM:
+fbeatmapsettings.label.score_offset.text=谱面偏移(秒):
+fbeatmapsettings.button.ok.text=确定
+fbeatmapsettings.button.cancel.text=取消
+
+# === 谱面统计 ===
+
+fbeatmapstats.text=谱面统计
+fbeatmapstats.listview.column.name.text=名称
+fbeatmapstats.listview.column.value.text=值
+fbeatmapstats.listview.item.project_file_name.text=工程文件
+fbeatmapstats.listview.item.music_file_name.text=音乐文件
+fbeatmapstats.listview.header.general.text=常规
+# {0}: 难度
+fbeatmapstats.listview.header.items.text_template=难度: {0}
+fbeatmapstats.listview.item.measures.text=小节数
+fbeatmapstats.listview.item.notes.text=音符数
+fbeatmapstats.listview.item.duration.text=总长度
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
@@ -162,3 +191,7 @@ misc.note_position.p4=4位
 misc.note_position.p5=5位
 
 errors.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
+
+messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
+messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。
+messages.fbeatmapsettings.score_offset_is_not_numeric=请输入一个数字。

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FBeatmapSettings : Form {
@@ -17,6 +19,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         public static (DialogResult DialogResult, double BPM, double MusicOffset) RequestInput(IWin32Window parentWindow, ProjectSettings scoreSettings) {
             using (var f = new FBeatmapSettings()) {
+                f.Localize(LanguageManager.Current);
                 f.InitUI(scoreSettings);
                 var r = f.ShowDialog(parentWindow);
                 var bpm = f._bpm;
@@ -47,18 +50,21 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void BtnOK_Click(object sender, EventArgs e) {
             var errSet = new HashSet<Control>();
-            if (!double.TryParse(txtBPM.Text, out var bpm)) {
-                errProvider.SetError(txtBPM, "Please input a number.");
+            if (!double.TryParse(txtBPM.Text, NumberStyles.Number, CultureInfo.CurrentUICulture, out var bpm)) {
+                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.bpm_is_not_numeric") ?? "Please input a number.";
+                errProvider.SetError(txtBPM, errorMessage);
                 errSet.Add(txtBPM);
             }
             if (bpm <= 0) {
                 if (!errSet.Contains(txtBPM)) {
-                    errProvider.SetError(txtBPM, "BPM should be greater than zero.");
+                    var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.bpm_value_invalid") ?? "BPM should be greater than zero.";
+                    errProvider.SetError(txtBPM, errorMessage);
                     errSet.Add(txtBPM);
                 }
             }
             if (!double.TryParse(txtMusicOffset.Text, out var startOffset)) {
-                errProvider.SetError(txtMusicOffset, "Please input a number.");
+                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.score_offset_is_not_numeric") ?? "Please input a number.";
+                errProvider.SetError(txtMusicOffset, errorMessage);
                 errSet.Add(txtMusicOffset);
             }
             if (errSet.Count > 0) {

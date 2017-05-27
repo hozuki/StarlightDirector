@@ -12,7 +12,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void CmdProjectNew_Executed(object sender, ExecutedEventArgs e) {
             var project = Project.CreateWithVersion(ProjectVersion.Current);
             visualizer.Editor.Project = project;
-            var docName = LanguageManager.Current?.GetString("misc.default_doc_name", null) ?? DefaultDocumentName;
+            var docName = LanguageManager.TryGetString("misc.default_doc_name") ?? DefaultDocumentName;
             UpdateUIIndications(docName);
         }
 
@@ -21,7 +21,7 @@ namespace StarlightDirector.App.UI.Forms {
             openFileDialog.ReadOnlyChecked = false;
             openFileDialog.ShowReadOnly = false;
             openFileDialog.ValidateNames = true;
-            var filter = LanguageManager.Current?.GetString("misc.sldproj_filter", null) ?? "Starlight Director Project (*.sldproj)|*.sldproj";
+            var filter = LanguageManager.TryGetString("misc.sldproj_filter") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
             openFileDialog.Filter = filter;
             var r = openFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
@@ -31,7 +31,7 @@ namespace StarlightDirector.App.UI.Forms {
             ProjectReader reader;
             var projectVersion = KnownScoreFormats.CheckFormatVersion(openFileDialog.FileName);
             if (projectVersion == 0) {
-                var projectVersionErrorMessage = LanguageManager.Current?.GetString("errors.unknown_project_version", null) ?? "Unable to open this project. Maybe it is corrupted or it is a project of a no longer supported version. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.";
+                var projectVersionErrorMessage = LanguageManager.TryGetString("errors.unknown_project_version") ?? "Unable to open this project. Maybe it is corrupted or it is a project of a no longer supported version. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.";
                 MessageBox.Show(this, projectVersionErrorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             } else {
@@ -73,7 +73,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void CmdProjectSaveAs_Executed(object sender, ExecutedEventArgs e) {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
-            var filter = LanguageManager.Current?.GetString("misc.sldproj_filter", null) ?? "Starlight Director Project (*.sldproj)|*.sldproj";
+            var filter = LanguageManager.TryGetString("misc.sldproj_filter") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
             saveFileDialog.Filter = filter;
             var r = saveFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {

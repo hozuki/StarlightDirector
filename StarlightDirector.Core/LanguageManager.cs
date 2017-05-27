@@ -15,6 +15,10 @@ namespace StarlightDirector.Core {
             _translations[key] = value;
         }
 
+        public static string TryGetString(string key) {
+            return Current?.GetString(key, null);
+        }
+
         public string GetString(string key) {
             return GetString(key, string.Empty);
         }

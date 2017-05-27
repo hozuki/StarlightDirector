@@ -89,6 +89,12 @@
     <Compile Include="UI\Forms\FAbout.Designer.cs">
       <DependentUpon>FAbout.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapStats.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FMain.Localization.cs">
       <SubType>Form</SubType>
     </Compile>
