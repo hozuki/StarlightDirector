@@ -206,6 +206,18 @@ ui.fmusicsettings.button.clear_file.text=清除
 ui.fmusicsettings.button.ok.text=确定
 ui.fmusicsettings.button.cancel.text=取消
 
+# === 转到 ===
+
+ui.fgoto.text=转到
+ui.fgoto.radio.measure.text=小节:
+ui.fgoto.radio.time.text=时间(秒):
+ui.fgoto.button.ok.text=确定
+ui.fgoto.button.cancel.text=取消
+# {0}: 小节数
+ui.fgoto.label.measure_count.text_template=/{0}
+# {0}: 时间段开始 {1}: 时间段结束
+ui.fgoto.label.time_range.text_template={0:0.###} - {1:0.###}
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
@@ -232,7 +244,7 @@ misc.music_attribute.multicolor=彩
 misc.music_attribute.event=活动
 misc.music_attribute.solo_ver=Solo
 
-errors.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
+messages.fmain.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
 
 messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
 messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。
@@ -242,3 +254,5 @@ messages.fspecialnote.bpm_invalid=请输入一个正确的 BPM 值。
 
 # {0}: 预期的文件路径
 messages.fselectmusicid.master_database_file_missing=找不到数据库文件"{0}"，将使用默认音乐 ID。
+
+messages.fgoto.time_invalid=请输入一个位于谱面开始和结束之间的时间。

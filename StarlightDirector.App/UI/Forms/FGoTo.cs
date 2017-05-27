@@ -11,6 +11,7 @@ namespace StarlightDirector.App.UI.Forms {
             using (var f = new FGoTo()) {
                 f._editor = editor;
                 f._enabledItemIndex = enabledItemIndex;
+                f.Localize(LanguageManager.Current);
                 var r = f.ShowDialog(parent);
                 var target = f._target;
                 return (r, target);
@@ -56,7 +57,8 @@ namespace StarlightDirector.App.UI.Forms {
                     ts = TimeSpan.FromSeconds(time);
                 }
                 if (!b || !(_scoreStart <= ts && ts <= _scoreEnd)) {
-                    MessageBox.Show(this, "Please enter a time within beatmap start and end.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    var errorMessage = LanguageManager.TryGetString("messages.fgoto.time_invalid") ?? "Please enter a time within beatmap start and end.";
+                    MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
                 _target = ts;
@@ -82,7 +84,8 @@ namespace StarlightDirector.App.UI.Forms {
             var editor = _editor;
             var score = editor.CurrentScore;
             var measures = score.Bars.Count;
-            lblTotalMeasures.Text = $"/{measures}";
+            var measureCountTemplate = LanguageManager.TryGetString("ui.fgoto.label.measure_count.text_template") ?? "/{0}";
+            lblTotalMeasures.Text = string.Format(measureCountTemplate, measures);
             if (measures == 0) {
                 radGoToMeasure.Enabled = false;
                 radGoToTime.Checked = true;
@@ -95,7 +98,8 @@ namespace StarlightDirector.App.UI.Forms {
             _scoreStart = scoreStart;
             var scoreEnd = score.CalculateDuration();
             _scoreEnd = scoreEnd;
-            lblTotalSeconds.Text = $"{scoreStart.TotalSeconds:0.###} - {scoreEnd.TotalSeconds:0.###}";
+            var timeRangeTemplate = LanguageManager.TryGetString("ui.fgoto.label.time_range.text_template") ?? "{0:0.###} - {1:0.###}";
+            lblTotalSeconds.Text = string.Format(timeRangeTemplate, scoreStart.TotalSeconds, scoreEnd.TotalSeconds);
             txtTargetTime.Text = 0.ToString();
         }
 
