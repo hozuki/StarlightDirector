@@ -197,10 +197,20 @@ ui.fnewmeasures.label.number_of_measures.text=小节数:
 ui.fnewmeasures.button.ok.text=确定
 ui.fnewmeasures.button.cancel.text=取消
 
+# === 音乐设置 ===
+
+ui.fmusicsettings.text=音乐设置
+ui.fmusicsettings.label.file_location.text=文件:
+ui.fmusicsettings.button.browse_file.text=...
+ui.fmusicsettings.button.clear_file.text=清除
+ui.fmusicsettings.button.ok.text=确定
+ui.fmusicsettings.button.cancel.text=取消
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
-misc.sldproj_filter=Starlight Director 工程 (*.sldproj)|*.sldproj
+misc.filter.sldproj=Starlight Director 工程 (*.sldproj)|*.sldproj
+misc.filter.wave=波形声音 (*.wav)|*.wav
 
 misc.difficulty.debut=Debut
 misc.difficulty.regular=Regular

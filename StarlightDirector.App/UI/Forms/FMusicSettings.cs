@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FMusicSettings : Form {
@@ -7,6 +8,7 @@ namespace StarlightDirector.App.UI.Forms {
         public static (DialogResult DialogResult, string MusicFileName) RequestInput(IWin32Window parent, string originalFileName) {
             using (var f = new FMusicSettings()) {
                 f._musicFileName = originalFileName;
+                f.Localize(LanguageManager.Current);
                 var r = f.ShowDialog(parent);
                 var musicFileName = f._musicFileName;
                 return (r, musicFileName);
@@ -47,7 +49,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void BtnBrowseFile_Click(object sender, EventArgs e) {
-            openFileDialog.Filter = "Wave Audio (*.wav)|*.wav";
+            openFileDialog.Filter = LanguageManager.TryGetString("misc.filter.wave") ?? "Wave Audio (*.wav)|*.wav";
             openFileDialog.CheckFileExists = true;
             openFileDialog.DereferenceLinks = true;
             openFileDialog.Multiselect = false;

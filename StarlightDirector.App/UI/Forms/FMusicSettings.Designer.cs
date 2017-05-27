@@ -43,10 +43,10 @@
             // 
             // txtMusicFilePath
             // 
-            this.txtMusicFilePath.Location = new System.Drawing.Point(57, 25);
+            this.txtMusicFilePath.Location = new System.Drawing.Point(74, 25);
             this.txtMusicFilePath.Name = "txtMusicFilePath";
             this.txtMusicFilePath.ReadOnly = true;
-            this.txtMusicFilePath.Size = new System.Drawing.Size(185, 23);
+            this.txtMusicFilePath.Size = new System.Drawing.Size(168, 23);
             this.txtMusicFilePath.TabIndex = 1;
             // 
             // btnBrowseFile

@@ -21,7 +21,7 @@ namespace StarlightDirector.App.UI.Forms {
             openFileDialog.ReadOnlyChecked = false;
             openFileDialog.ShowReadOnly = false;
             openFileDialog.ValidateNames = true;
-            var filter = LanguageManager.TryGetString("misc.sldproj_filter") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
+            var filter = LanguageManager.TryGetString("misc.filter.sldproj") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
             openFileDialog.Filter = filter;
             var r = openFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
@@ -73,7 +73,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void CmdProjectSaveAs_Executed(object sender, ExecutedEventArgs e) {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
-            var filter = LanguageManager.TryGetString("misc.sldproj_filter") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
+            var filter = LanguageManager.TryGetString("misc.filter.sldproj") ?? "Starlight Director Project (*.sldproj)|*.sldproj";
             saveFileDialog.Filter = filter;
             var r = saveFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
