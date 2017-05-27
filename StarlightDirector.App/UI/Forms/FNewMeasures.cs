@@ -1,24 +1,26 @@
 ﻿using System;
 using System.Windows.Forms;
+using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
     public sealed partial class FNewMeasures : Form {
 
-        public FNewMeasures() {
+        public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput(IWin32Window parentWindow) {
+            using (var f = new FNewMeasures()) {
+                f.Localize(LanguageManager.Current);
+                var r = f.ShowDialog(parentWindow);
+                var n = f._numberOfMeasures;
+                return (r, n);
+            }
+        }
+
+        private FNewMeasures() {
             InitializeComponent();
             RegisterEventHandlers();
         }
 
         ~FNewMeasures() {
             UnregisterEventHandlers();
-        }
-
-        public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput(IWin32Window parentWindow) {
-            using (var f = new FNewMeasures()) {
-                var r = f.ShowDialog(parentWindow);
-                var n = f._numberOfMeasures;
-                return (r, n);
-            }
         }
 
         private void UnregisterEventHandlers() {

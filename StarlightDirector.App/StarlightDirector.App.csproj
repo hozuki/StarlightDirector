@@ -184,6 +184,9 @@
     <Compile Include="UI\Forms\FMusicSettings.Designer.cs">
       <DependentUpon>FMusicSettings.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FNewMeasures.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FSelectMusicID.cs">
       <SubType>Form</SubType>
     </Compile>

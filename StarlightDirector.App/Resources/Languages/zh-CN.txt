@@ -182,13 +182,20 @@ ui.fspecialnote.radio.variant_bpm.text=改变 BPM
 ui.fspecialnote.button.ok.text=确定
 ui.fspecialnote.button.cancel.text=取消
 
-## === 选择音乐ID ===
+# === 选择音乐ID ===
 
 ui.fselectmusicid.text=选择音乐 ID
 ui.fselectmusicid.button.ok.text=确定
 ui.fselectmusicid.button.cancel.text=取消
 # {0}: 歌曲名称 {1}: 歌曲属性
 ui.fselectmusicid.combobox.item.text_template={0} [{1}]
+
+# === 添加/插入小节 ===
+
+ui.fnewmeasures.text=新建小节
+ui.fnewmeasures.label.number_of_measures.text=小节数:
+ui.fnewmeasures.button.ok.text=确定
+ui.fnewmeasures.button.cancel.text=取消
 
 # --- 其他 ---
 
