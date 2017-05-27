@@ -60,24 +60,18 @@ namespace StarlightDirector.Beatmap {
             endNote.Basic.Type = NoteType.Slide;
             startNote.Editor.NextSlide = endNote;
             endNote.Editor.PrevSlide = startNote;
-            if (endNote.Basic.FinishPosition > startNote.Basic.FinishPosition) {
-                startNote.Basic.FlickType = NoteFlickType.Right;
-            } else if (endNote.Basic.FinishPosition < startNote.Basic.FinishPosition) {
-                startNote.Basic.FlickType = NoteFlickType.Left;
-            } else {
-                startNote.Basic.FlickType = NoteFlickType.None;
-            }
-            if (endNote.Helper.HasNextFlick || endNote.Helper.HasNextSlide) {
-                var next = endNote.Editor.NextSlide ?? endNote.Editor.NextFlick;
+            startNote.Basic.FlickType = NoteFlickType.None;
+            if (endNote.Helper.HasNextFlick) {
+                var next = endNote.Editor.NextFlick;
                 if (next.Basic.FinishPosition > endNote.Basic.FinishPosition) {
                     endNote.Basic.FlickType = NoteFlickType.Right;
                 } else if (next.Basic.FinishPosition < endNote.Basic.FinishPosition) {
                     endNote.Basic.FlickType = NoteFlickType.Left;
                 } else {
-                    endNote.Basic.FlickType = NoteFlickType.None;
+                    throw new ArgumentOutOfRangeException(nameof(endNote), "endNote's next note should be a flick note, not in the same column of endNote.");
                 }
             } else {
-                endNote.Basic.FlickType = startNote.Basic.FlickType;
+                endNote.Basic.FlickType = NoteFlickType.None;
             }
         }
 
@@ -126,24 +120,6 @@ namespace StarlightDirector.Beatmap {
                 prev = prev.Editor.PrevSlide;
             }
             return false;
-        }
-
-        public static NoteFlickType GetFlickTypeForSlidePair(Note note1, Note note2) {
-            if (!note1.Helper.IsSlide) {
-                throw new ArgumentException("note1 must be a slide note.", nameof(note1));
-            }
-            if (!note2.Helper.IsSlide) {
-                throw new ArgumentException("note2 must be a slide note.", nameof(note2));
-            }
-            var b1 = note1.Basic;
-            var b2 = note2.Basic;
-            if (b2.FinishPosition > b1.FinishPosition) {
-                return NoteFlickType.Right;
-            } else if (b2.FinishPosition < b1.FinishPosition) {
-                return NoteFlickType.Left;
-            } else {
-                return NoteFlickType.None;
-            }
         }
 
     }

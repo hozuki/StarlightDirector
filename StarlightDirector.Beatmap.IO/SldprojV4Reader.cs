@@ -55,6 +55,7 @@ namespace StarlightDirector.Beatmap.IO {
                 ReadScore(db, score, projectVersion);
                 ResolveReferences(score);
                 FixSyncNotes(score);
+                FixSlideNoteFlickTypes(score);
                 project.SetScore(difficulty, score);
             }
 
@@ -227,6 +228,22 @@ namespace StarlightDirector.Beatmap.IO {
                         prev = note;
                     }
                     NoteUtilities.MakeSync(prev, null);
+                }
+            }
+        }
+
+        // This problem appears in 1.1.0-1.1.4
+        // The problem treats all slide notes as flick notes, and incorrectly set their flick types.
+        private static void FixSlideNoteFlickTypes(Score score) {
+            var notes = score.GetAllNotes();
+            foreach (var note in notes) {
+                if (!note.Helper.IsSlide) {
+                    continue;
+                }
+                if (note.Helper.HasNextFlick) {
+                    note.Basic.FlickType = note.Editor.NextFlick.Basic.FinishPosition > note.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
+                } else {
+                    note.Basic.FlickType = NoteFlickType.None;
                 }
             }
         }
