@@ -741,7 +741,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -1158,7 +1158,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1202,7 +1202,7 @@
             this.mnuScoreMeasureInsertMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
@@ -1248,7 +1248,7 @@
             this.mnuScoreNoteSep2,
             this.mnuScoreNoteInsertSpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteResetToTap
@@ -1451,7 +1451,7 @@
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuToolsExportCsv});
             this.mnuToolsExport.Name = "mnuToolsExport";
-            this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsExport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsExport.Text = "&Export";
             // 
             // mnuToolsExportCsv
@@ -1464,13 +1464,13 @@
             // 
             this.mnuToolsImport.Enabled = false;
             this.mnuToolsImport.Name = "mnuToolsImport";
-            this.mnuToolsImport.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsImport.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsImport.Text = "&Import";
             // 
             // mnuToolsSep1
             // 
             this.mnuToolsSep1.Name = "mnuToolsSep1";
-            this.mnuToolsSep1.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep1.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsBuild
             // 
@@ -1478,7 +1478,7 @@
             this.mnuToolsBuildBdb,
             this.mnuToolsBuildAcb});
             this.mnuToolsBuild.Name = "mnuToolsBuild";
-            this.mnuToolsBuild.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsBuild.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsBuild.Text = "&Build";
             // 
             // mnuToolsBuildBdb
@@ -1498,12 +1498,12 @@
             // mnuToolsSep2
             // 
             this.mnuToolsSep2.Name = "mnuToolsSep2";
-            this.mnuToolsSep2.Size = new System.Drawing.Size(128, 6);
+            this.mnuToolsSep2.Size = new System.Drawing.Size(149, 6);
             // 
             // mnuToolsSettings
             // 
             this.mnuToolsSettings.Name = "mnuToolsSettings";
-            this.mnuToolsSettings.Size = new System.Drawing.Size(131, 22);
+            this.mnuToolsSettings.Size = new System.Drawing.Size(152, 22);
             this.mnuToolsSettings.Text = "&Settings...";
             // 
             // mnuHelp
@@ -1537,11 +1537,12 @@
             this.ctxScoreNoteModifySpecial,
             this.ctxScoreNoteDeleteSpecial});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(205, 226);
+            this.ctxMain.Size = new System.Drawing.Size(205, 248);
             // 
             // ctxEditCut
             // 
             this.ctxEditCut.Enabled = false;
+            this.ctxEditCut.Image = global::StarlightDirector.App.Properties.Resources.IconEditCut;
             this.ctxEditCut.Name = "ctxEditCut";
             this.ctxEditCut.ShortcutKeyDisplayString = "Ctrl+X";
             this.ctxEditCut.Size = new System.Drawing.Size(204, 22);
@@ -1550,6 +1551,7 @@
             // ctxEditCopy
             // 
             this.ctxEditCopy.Enabled = false;
+            this.ctxEditCopy.Image = global::StarlightDirector.App.Properties.Resources.IconEditCopy;
             this.ctxEditCopy.Name = "ctxEditCopy";
             this.ctxEditCopy.ShortcutKeyDisplayString = "Ctrl+C";
             this.ctxEditCopy.Size = new System.Drawing.Size(204, 22);
@@ -1558,6 +1560,7 @@
             // ctxEditPaste
             // 
             this.ctxEditPaste.Enabled = false;
+            this.ctxEditPaste.Image = global::StarlightDirector.App.Properties.Resources.IconEditPaste;
             this.ctxEditPaste.Name = "ctxEditPaste";
             this.ctxEditPaste.ShortcutKeyDisplayString = "Ctrl+V";
             this.ctxEditPaste.Size = new System.Drawing.Size(204, 22);
@@ -1604,7 +1607,7 @@
             this.ctxScoreNoteInsertSpecial.Image = global::StarlightDirector.App.Properties.Resources.IconScoreNoteAddSpecial;
             this.ctxScoreNoteInsertSpecial.Name = "ctxScoreNoteInsertSpecial";
             this.ctxScoreNoteInsertSpecial.Size = new System.Drawing.Size(204, 22);
-            this.ctxScoreNoteInsertSpecial.Text = "Add &Special Note...";
+            this.ctxScoreNoteInsertSpecial.Text = "Insert &Special Note...";
             // 
             // ctxSep4
             // 

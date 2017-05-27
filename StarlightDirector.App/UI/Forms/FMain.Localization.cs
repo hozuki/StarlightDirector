@@ -135,6 +135,16 @@ namespace StarlightDirector.App.UI.Forms {
             manager.ApplyText(tsbPreviewStop, "fmain.toolbar.postprocessing.preview.stop.text");
             manager.ApplyText(tsbToolsBuildBdb, "fmain.toolbar.postprocessing.build.bdb.text");
             manager.ApplyText(tsbToolsBuildAcb, "fmain.toolbar.postprocessing.build.acb.text");
+
+            manager.ApplyText(ctxEditCut, "fmain.context.edit.cut");
+            manager.ApplyText(ctxEditCopy, "fmain.context.edit.copy");
+            manager.ApplyText(ctxEditPaste, "fmain.context.edit.paste");
+            manager.ApplyText(ctxScoreNoteResetToTap, "fmain.context.note.reset_to_tap");
+            manager.ApplyText(ctxScoreNoteDelete, "fmain.context.note.delete");
+            manager.ApplyText(ctxScoreMeasureDelete, "fmain.context.measure.delete");
+            manager.ApplyText(ctxScoreNoteInsertSpecial, "fmain.context.note.insert_special");
+            manager.ApplyText(ctxScoreNoteModifySpecial, "fmain.context.note.modify_special");
+            manager.ApplyText(ctxScoreNoteDeleteSpecial, "fmain.context.note.delete_special");
         }
 
     }

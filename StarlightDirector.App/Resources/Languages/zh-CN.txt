@@ -131,9 +131,34 @@ fmain.toolbar.postprocessing.preview.stop.text=停止预览
 fmain.toolbar.postprocessing.build.bdb.text=生成 CGSS 谱面包
 fmain.toolbar.postprocessing.build.acb.text=生成 CGSS 曲目音乐
 
+# ---
+
+fmain.context.edit.cut=剪切(&T)
+fmain.context.edit.copy=复制(&C)
+fmain.context.edit.paste=粘贴(&P)
+fmain.context.note.reset_to_tap=重置为单点(&T)
+fmain.context.note.delete=删除所选音符(&D)
+fmain.context.measure.delete=删除所选小节(&D)
+fmain.context.note.insert_special=插入特殊音符(&S)...
+fmain.context.note.modify_special=编辑特殊音符(&S)...
+fmain.context.note.delete_special=删除特殊音符(&D)
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
 misc.sldproj_filter=Starlight Director 工程 (*.sldproj)|*.sldproj
+
+misc.difficulty.debut=Debut
+misc.difficulty.regular=Regular
+misc.difficulty.pro=Pro
+misc.difficulty.master=Master
+misc.difficulty.master_plus=Master+
+
+misc.note_position.default=默认
+misc.note_position.p1=1位
+misc.note_position.p2=2位
+misc.note_position.p3=3位
+misc.note_position.p4=4位
+misc.note_position.p5=5位
 
 errors.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。

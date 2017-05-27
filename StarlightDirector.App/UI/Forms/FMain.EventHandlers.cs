@@ -3,6 +3,7 @@ using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 using StarlightDirector.Core;
 using StarlightDirector.Core.Interop;
@@ -274,6 +275,7 @@ namespace StarlightDirector.App.UI.Forms {
             RegisterCommands();
 
             CmdProjectNew.Execute(null, null);
+            CmdScoreNoteStartPositionAt0.Execute(null, NotePosition.Default);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

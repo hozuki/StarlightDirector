@@ -3,6 +3,7 @@ using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Commanding;
+using StarlightDirector.Core;
 using StarlightDirector.UI.Controls.Editing;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -25,7 +26,7 @@ namespace StarlightDirector.App.UI.Forms {
                 it.Checked = pos == startPosition;
             }
 
-            tsbScoreNoteStartPosition.Text = DescribedEnumConverter.GetEnumDescription(startPosition);
+            tsbScoreNoteStartPosition.Text = SpecialTranslations.NotePosition(LanguageManager.Current, startPosition);
         }
 
         private void CmdScoreNoteStartPositionAt0_Executed(object sender, ExecutedEventArgs e) {

@@ -190,6 +190,7 @@
     <Compile Include="UI\Forms\FSpecialNote.Designer.cs">
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\SpecialTranslations.cs" />
     <Compile Include="UI\UIUtilities.cs" />
     <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
     <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />

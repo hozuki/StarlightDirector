@@ -50,7 +50,7 @@ namespace StarlightDirector.App.UI.Forms {
                 editingFileName = string.Empty;
             }
             var applicationTitle = ApplicationHelper.GetTitle();
-            var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
+            var difficultyDescription = SpecialTranslations.Difficulty(LanguageManager.Current, currentDifficulty);
             var text = string.IsNullOrEmpty(editingFileName) ? applicationTitle : $"{editingFileName} [{difficultyDescription}] - {applicationTitle}";
             var project = visualizer.Editor.Project;
             if (project.IsModified) {
