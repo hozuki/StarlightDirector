@@ -172,6 +172,16 @@ fbeatmapstats.listview.item.measures.text=小节数
 fbeatmapstats.listview.item.notes.text=音符数
 fbeatmapstats.listview.item.duration.text=总长度
 
+# === 特殊音符 ===
+
+fspecialnote.text=特殊音符
+fspecialnote.label.in_measure.text=位于小节:
+fspecialnote.label.on_row.text=位于行:
+fspecialnote.label.new_bpm.text=新 BPM:
+fspecialnote.radio.variant_bpm.text=改变 BPM
+fspecialnote.button.ok.text=确定
+fspecialnote.button.cancel.text=取消
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
@@ -195,3 +205,5 @@ errors.unknown_project_version=无法打开这个工程，也许这个文件已�
 messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
 messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。
 messages.fbeatmapsettings.score_offset_is_not_numeric=请输入一个数字。
+messages.fspecialnote.measures_not_exist=未找到可用的小节。
+messages.fspecialnote.bpm_invalid=请输入一个正确的 BPM 值。

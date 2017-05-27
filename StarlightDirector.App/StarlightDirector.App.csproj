@@ -196,6 +196,9 @@
     <Compile Include="UI\Forms\FSpecialNote.Designer.cs">
       <DependentUpon>FSpecialNote.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\SpecialTranslations.cs" />
     <Compile Include="UI\UIUtilities.cs" />
     <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />

@@ -16,6 +16,7 @@ namespace StarlightDirector.App.UI.Forms {
                 f.cboMeasures.SelectedIndex = 0;
                 f.cboRows.Items.Add((rowIndex + 1).ToString());
                 f.cboRows.SelectedIndex = 0;
+                f.Localize(LanguageManager.Current);
                 var r = f.ShowDialog(parent);
                 var bpm = f._bpm;
                 return (r, bpm);
@@ -28,6 +29,7 @@ namespace StarlightDirector.App.UI.Forms {
                 f._score = score;
                 f.FillMeasureComboBox();
                 f.CboMeasures_SelectedIndexChanged(f, EventArgs.Empty);
+                f.Localize(LanguageManager.Current);
                 var r = f.ShowDialog(parent);
                 var bpm = f._bpm;
                 var barIndex = f._barIndex;
@@ -65,7 +67,8 @@ namespace StarlightDirector.App.UI.Forms {
             var selectedIndex = cboMeasures.SelectedIndex;
             var bar = score.Bars.Find(b => b.Basic.Index == selectedIndex);
             if (bar == null) {
-                MessageBox.Show("There are no available measures yet.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(LanguageManager.TryGetString("messages.fspecialnote.measures_not_exist") ?? "There are no available measures yet.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                SetManualSelection(false);
                 btnOK.Enabled = false;
                 return;
             }
@@ -78,7 +81,7 @@ namespace StarlightDirector.App.UI.Forms {
 
         private void BtnOK_Click(object sender, EventArgs e) {
             if (!double.TryParse(txtNewBpm.Text, out var bpm) || bpm <= 0) {
-                MessageBox.Show(this, "Please enter a valid BPM value.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show(this, LanguageManager.TryGetString("messages.fspecialnote.bpm_invalid") ?? "Please enter a valid BPM value.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
