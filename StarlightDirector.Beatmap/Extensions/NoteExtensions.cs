@@ -98,18 +98,14 @@ namespace StarlightDirector.Beatmap.Extensions {
                     prevSlide.Basic.Type = NoteType.TapOrFlick;
                 }
                 if (prevSlide.Helper.HasPrevSlide) {
-                    prevSlide.Basic.FlickType = prevSlide.Editor.PrevSlide.Basic.FlickType;
-                } else {
+                    // This case only happens when we delete the flick note of a slide-flick relation.
+                    // Therefore, prevSlide's flick type is definitely None.
                     prevSlide.Basic.FlickType = NoteFlickType.None;
                 }
             }
             if (nextSlide != null) {
                 if (!nextSlide.Helper.HasPrevSlide && !nextSlide.Helper.HasNextSlide) {
                     nextSlide.Basic.Type = NoteType.TapOrFlick;
-                }
-                if (nextSlide.Helper.HasNextSlide) {
-                    nextSlide.Basic.FlickType = NoteUtilities.GetFlickTypeForSlidePair(nextSlide, nextSlide.Editor.NextSlide);
-                } else {
                     nextSlide.Basic.FlickType = NoteFlickType.None;
                 }
             }

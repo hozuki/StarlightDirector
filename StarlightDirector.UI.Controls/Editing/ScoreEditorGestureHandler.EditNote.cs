@@ -150,10 +150,12 @@ namespace StarlightDirector.UI.Controls.Editing {
             // Now handle a special case: link flick after a slide.
             if (!relationCreated) {
                 var (first, second) = NoteUtilities.Split(thisNote, lastNote);
-                if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
-                    NoteUtilities.MakeSlideToFlick(first, second);
-                    _visualizer.InformProjectModified();
-                    relationCreated = true;
+                if (first.Basic.FinishPosition != second.Basic.FinishPosition) {
+                    if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
+                        NoteUtilities.MakeSlideToFlick(first, second);
+                        _visualizer.InformProjectModified();
+                        relationCreated = true;
+                    }
                 }
             }
 
@@ -241,10 +243,12 @@ namespace StarlightDirector.UI.Controls.Editing {
             // Now handle a special case: link flick after a slide.
             if (!relationCreated) {
                 var (first, second) = NoteUtilities.Split(thisNote, lastNote);
-                if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
-                    NoteUtilities.MakeSlideToFlick(first, second);
-                    _visualizer.InformProjectModified();
-                    relationCreated = true;
+                if (first.Basic.FinishPosition != second.Basic.FinishPosition) {
+                    if (first.Helper.IsSlideEnd && second.Helper.IsFlickStart) {
+                        NoteUtilities.MakeSlideToFlick(first, second);
+                        _visualizer.InformProjectModified();
+                        relationCreated = true;
+                    }
                 }
             }
 
