@@ -218,11 +218,35 @@ ui.fgoto.label.measure_count.text_template=/{0}
 # {0}: 时间段开始 {1}: 时间段结束
 ui.fgoto.label.time_range.text_template={0:0.###} - {1:0.###}
 
+# === 生成谱面 ===
+
+ui.fbuildbeatmap.text=生成谱面
+ui.fbuildbeatmap.label.end_time.text=结束时间(秒):
+ui.fbuildbeatmap.label.end_time.estimated.text=估计值:
+ui.fbuildbeatmap.label.build_type.text=生成类型:
+ui.fbuildbeatmap.label.csv.difficulty.text=难度:
+ui.fbuildbeatmap.label.bdb.live_id.text=Live ID:
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.text=难度映射:
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.debut.text=Debut
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.regular.text=Regular
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.pro.text=Pro
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master.text=Master
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master_plus.text=Master+
+ui.fbuildbeatmap.radio.end_time.auto.text=自动(&A)
+ui.fbuildbeatmap.radio.end_time.custom.text=自定义(&C)
+ui.fbuildbeatmap.radio.build_type.csv.text=单个谱面(CSV)
+ui.fbuildbeatmap.radio.build_type.bdb.text=谱面包(BDB)
+ui.fbuildbeatmap.button.select_live_id.text=选择(&S)...
+ui.fbuildbeatmap.button.build.text=生成(&B)...
+ui.fbuildbeatmap.button.close.text=关闭
+
 # --- 其他 ---
 
 misc.default_doc_name=无标题
 misc.filter.sldproj=Starlight Director 工程 (*.sldproj)|*.sldproj
 misc.filter.wave=波形声音 (*.wav)|*.wav
+misc.filter.csv=CGSS 单个谱面(*.csv)|*.csv
+misc.filter.bdb=CGSS 谱面包(*.bdb)|*.bdb
 
 misc.difficulty.debut=Debut
 misc.difficulty.regular=Regular
@@ -256,3 +280,9 @@ messages.fspecialnote.bpm_invalid=请输入一个正确的 BPM 值。
 messages.fselectmusicid.master_database_file_missing=找不到数据库文件"{0}"，将使用默认音乐 ID。
 
 messages.fgoto.time_invalid=请输入一个位于谱面开始和结束之间的时间。
+
+messages.fbuildbeatmap.custom_end_time_invalid=请输入正确的时间（秒）。
+# {0}: 文件位置
+messages.fbuildbeatmap.csv_score_exported=谱面已经导出到 {0}。
+# {0}: 文件位置
+messages.fbuildbeatmap.bdb_scores_exported=所有谱面已经导出到 {0}。

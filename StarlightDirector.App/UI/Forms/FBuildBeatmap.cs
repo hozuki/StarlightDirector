@@ -20,6 +20,7 @@ namespace StarlightDirector.App.UI.Forms {
             using (var f = new FBuildBeatmap()) {
                 f._project = project;
                 f._difficulty = difficulty;
+                f.Localize(LanguageManager.Current);
                 f.ShowDialog(parent);
             }
         }
@@ -68,7 +69,8 @@ namespace StarlightDirector.App.UI.Forms {
             var isCustom = radEndTimeCustom.Checked;
             if (isCustom) {
                 if (!double.TryParse(txtCustomEndTime.Text, out var customTime) || customTime <= 0) {
-                    MessageBox.Show(this, "Please enter a correct number of seconds.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    var errorMessage = LanguageManager.TryGetString("messages.fbuildbeatmap.custom_end_time_invalid") ?? "Please enter a correct number of seconds.";
+                    MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -103,6 +105,15 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void FBuildBeatmap_Load(object sender, EventArgs e) {
+            // Initialize difficulty texts.
+            var difficultyComboBoxes = new[] { cboDurationDifficulty, cboCsvDifficulty, cboDiffculty1, cboDiffculty2, cboDiffculty3, cboDiffculty4, cboDiffculty5 };
+            foreach (var comboBox in difficultyComboBoxes) {
+                comboBox.Items.Clear();
+                for (var d = Difficulty.Debut; d <= Difficulty.MasterPlus; ++d) {
+                    comboBox.Items.Add(DescribedEnumConverter.GetEnumDescription(d));
+                }
+            }
+
             cboDiffculty1.SelectedIndex = 0;
             cboDiffculty2.SelectedIndex = 1;
             cboDiffculty3.SelectedIndex = 2;
@@ -127,7 +138,7 @@ namespace StarlightDirector.App.UI.Forms {
         private bool ExportCsv() {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
-            saveFileDialog.Filter = "CGSS Single Beatmap (*.csv)|*.csv";
+            saveFileDialog.Filter = LanguageManager.TryGetString("misc.filter.csv") ?? "CGSS Single Beatmap (*.csv)|*.csv";
             saveFileDialog.FileName = string.Empty;
             var r = saveFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
@@ -151,14 +162,16 @@ namespace StarlightDirector.App.UI.Forms {
                     writer.Write(csv);
                 }
             }
-            MessageBox.Show(this, $"The score is exported to '{saveFileDialog.FileName}'.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var reportMessageTemplate = LanguageManager.TryGetString("messages.fbuildbeatmap.csv_score_exported") ?? "The score is exported to '{0}'.";
+            var reportMessage = string.Format(reportMessageTemplate, saveFileDialog.FileName);
+            MessageBox.Show(this, reportMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
             return true;
         }
 
         private bool ExportBdb() {
             saveFileDialog.OverwritePrompt = true;
             saveFileDialog.ValidateNames = true;
-            saveFileDialog.Filter = "CGSS Beatmap Bundle (*.bdb)|*.bdb";
+            saveFileDialog.Filter = LanguageManager.TryGetString("misc.filter.bdb") ?? "CGSS Beatmap Bundle (*.bdb)|*.bdb";
             saveFileDialog.FileName = $"musicscores_m{_liveID:000}.bdb";
             var r = saveFileDialog.ShowDialog(this);
             if (r == DialogResult.Cancel) {
@@ -234,7 +247,9 @@ namespace StarlightDirector.App.UI.Forms {
                 connection.Close();
             }
 
-            MessageBox.Show(this, $"The scores are exported to '{saveFileDialog.FileName}'.", ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
+            var reportMessageTemplate = LanguageManager.TryGetString("messages.fbuildbeatmap.bdb_scores_exported") ?? "The scores are exported to '{0}'.";
+            var reportMessage = string.Format(reportMessageTemplate, saveFileDialog.FileName);
+            MessageBox.Show(this, reportMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Information);
 
             return true;
 

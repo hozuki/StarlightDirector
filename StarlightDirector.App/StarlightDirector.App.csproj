@@ -95,6 +95,9 @@
     <Compile Include="UI\Forms\FBeatmapStats.Localization.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\Forms\FBuildBeatmap.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\Forms\FGoTo.Localization.cs">
       <SubType>Form</SubType>
     </Compile>
