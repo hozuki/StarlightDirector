@@ -32,6 +32,8 @@
             this.btnCancel = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.txtScrollingSpeed = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cboLanguage = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScrollingSpeed)).BeginInit();
             this.SuspendLayout();
@@ -89,7 +91,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(112, 146);
+            this.btnOK.Location = new System.Drawing.Point(112, 189);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
             this.btnOK.TabIndex = 2;
@@ -99,7 +101,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(208, 146);
+            this.btnCancel.Location = new System.Drawing.Point(208, 189);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 3;
@@ -137,13 +139,33 @@
             0,
             0});
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(25, 141);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 17);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Language:";
+            // 
+            // cboLanguage
+            // 
+            this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboLanguage.FormattingEnabled = true;
+            this.cboLanguage.Location = new System.Drawing.Point(132, 138);
+            this.cboLanguage.Name = "cboLanguage";
+            this.cboLanguage.Size = new System.Drawing.Size(148, 25);
+            this.cboLanguage.TabIndex = 7;
+            // 
             // FEditorSettings
             // 
             this.AcceptButton = this.btnOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(310, 183);
+            this.ClientSize = new System.Drawing.Size(310, 224);
+            this.Controls.Add(this.cboLanguage);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.txtScrollingSpeed);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnCancel);
@@ -178,5 +200,7 @@
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.NumericUpDown txtScrollingSpeed;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox cboLanguage;
     }
 }

@@ -1,7 +1,8 @@
 ﻿# 第一个非空的行是语言名称，第二个是语言代码。
+# 语言文件名必须为语言代码。
 # 在一行的开始处使用“#”注释这一行
 # 用“\n”换行
-lang.name=简体中文
+lang.display_name=简体中文
 lang.code_name=zh_CN
 
 # === 主窗口 ===
@@ -242,6 +243,18 @@ ui.fbuildbeatmap.button.select_live_id.text=选择(&S)...
 ui.fbuildbeatmap.button.build.text=生成(&B)...
 ui.fbuildbeatmap.button.close.text=关闭
 
+# === 编辑器设置 ===
+
+ui.feditorsettings.text=设置
+ui.feditorsettings.label.scrolling_style.text=滚动方式:
+ui.feditorsettings.label.scrolling_speed.text=滚动速度:
+ui.feditorsettings.label.language.text=语言:
+ui.feditorsettings.radio.scrolling_style.normal.text=类似 Windows / Linux
+ui.feditorsettings.radio.scrolling_style.inverted.text=类似 macOS
+ui.feditorsettings.check.show_note_indicators.text=显示音符指示器
+ui.feditorsettings.button.ok.text=确定
+ui.feditorsettings.button.cancel.text=取消
+
 # === 关于 ===
 
 ui.fabout.text=关于
@@ -274,6 +287,8 @@ misc.music_attribute.passion=Pa
 misc.music_attribute.multicolor=彩
 misc.music_attribute.event=活动
 misc.music_attribute.solo_ver=Solo
+
+lang.use_auto.text=自动
 
 messages.fmain.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
 

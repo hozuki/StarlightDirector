@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace StarlightDirector.Core {
     public sealed class LanguageManager {
@@ -50,14 +51,85 @@ namespace StarlightDirector.Core {
 
         public string Language { get; }
 
-        public string Name { get; set; }
+        public string DisplayName { get; set; }
 
         public string CodeName { get; set; }
 
         public static LanguageManager Current { get; set; }
 
+        public static LanguageManager Load(string fileName, string language) {
+            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read)) {
+                return Load(fileStream, language);
+            }
+        }
+
+        public static LanguageManager Load(FileStream fileStream, string language) {
+            using (var reader = new StreamReader(fileStream)) {
+                return Load(reader, language);
+            }
+        }
+
+        public static LanguageManager Load(StreamReader reader, string language) {
+            if (string.IsNullOrEmpty(language)) {
+                throw new ArgumentException("language must not be null.", nameof(language));
+            }
+            var manager = CreateNewNotRecorded(language);
+            FillDictionary(reader, manager);
+            return manager;
+        }
+
+        public static LanguageManager FromFile(string fileName, string language) {
+            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read)) {
+                return FromFile(fileStream, language);
+            }
+        }
+
+        public static LanguageManager FromFile(FileStream fileStream, string language) {
+            using (var reader = new StreamReader(fileStream)) {
+                return FromFile(reader, language);
+            }
+        }
+
+        public static LanguageManager FromFile(StreamReader reader, string language) {
+            if (string.IsNullOrEmpty(language)) {
+                throw new ArgumentException("language must not be null.", nameof(language));
+            }
+            var manager = Create(language);
+            FillDictionary(reader, manager);
+            return manager;
+        }
+
         private LanguageManager(string language) {
             Language = language;
+        }
+
+        private static LanguageManager CreateNewNotRecorded(string language) {
+            if (language == null) {
+                return null;
+            }
+            var manager = new LanguageManager(language);
+            return manager;
+        }
+
+        private static void FillDictionary(StreamReader reader, LanguageManager manager) {
+            while (!reader.EndOfStream) {
+                var line = reader.ReadLine();
+                if (string.IsNullOrEmpty(line)) {
+                    continue;
+                }
+                if (line[0] == '#') {
+                    continue;
+                }
+                var eqPos = line.IndexOf('=');
+                if (eqPos <= 0) {
+                    continue;
+                }
+                var key = line.Substring(0, eqPos);
+                var value = line.Substring(eqPos + 1);
+                manager[key] = value;
+            }
+            manager.DisplayName = manager.GetString("lang.display_name", null) ?? "Neutral";
+            manager.CodeName = manager.GetString("lang.code_name") ?? "neutral";
         }
 
         private readonly Dictionary<string, string> _translations = new Dictionary<string, string>();
