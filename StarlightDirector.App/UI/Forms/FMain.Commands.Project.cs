@@ -12,8 +12,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void CmdProjectNew_Executed(object sender, ExecutedEventArgs e) {
             var project = Project.CreateWithVersion(ProjectVersion.Current);
             visualizer.Editor.Project = project;
-            var docName = LanguageManager.TryGetString("misc.default_doc_name") ?? DefaultDocumentName;
-            UpdateUIIndications(docName);
+            UpdateUIIndications();
         }
 
         private void CmdProjectOpen_Executed(object sender, ExecutedEventArgs e) {
@@ -50,7 +49,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var project = reader.ReadProject(openFileDialog.FileName);
             visualizer.Editor.Project = project;
-            UpdateUIIndications(openFileDialog.SafeFileName);
+            UpdateUIIndications();
         }
 
         private void CmdProjectSave_Executed(object sender, ExecutedEventArgs e) {
@@ -83,8 +82,7 @@ namespace StarlightDirector.App.UI.Forms {
             var project = visualizer.Editor.Project;
             var writer = new SldprojV4Writer();
             writer.WriteProject(project, saveFileDialog.FileName);
-            var fileInfo = new FileInfo(saveFileDialog.FileName);
-            UpdateUIIndications(fileInfo.Name);
+            UpdateUIIndications();
         }
 
         private void CmdProjectBeatmapSettings_Executed(object sender, ExecutedEventArgs e) {

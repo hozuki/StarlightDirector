@@ -52,6 +52,7 @@
     <Compile Include="Interop\NativeStructures.cs" />
     <Compile Include="IStarlightObject.cs" />
     <Compile Include="LanguageManager.cs" />
+    <Compile Include="LocalizationHelper.cs" />
     <Compile Include="MathHelper.cs" />
     <Compile Include="PerformanceCounter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

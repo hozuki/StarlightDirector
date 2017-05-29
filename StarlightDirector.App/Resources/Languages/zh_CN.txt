@@ -1,8 +1,7 @@
-﻿# 第一个非空的行是语言名称，第二个是语言代码。
-# 语言文件名必须为语言代码。
+﻿# 语言文件名必须为语言代码。
 # 在一行的开始处使用“#”注释这一行
 # 用“\n”换行
-lang.display_name=简体中文
+lang.display_name=中文（中国）
 lang.code_name=zh_CN
 
 # === 主窗口 ===
@@ -74,7 +73,7 @@ ui.fmain.menu.score.note.start_position.at.1.text=1位(&L)
 ui.fmain.menu.score.note.start_position.at.2.text=2位(&T)
 ui.fmain.menu.score.note.start_position.at.3.text=3位(&C)
 ui.fmain.menu.score.note.start_position.at.4.text=4位(&I)
-ui.fmain.menu.score.note.start_position.at.5.text=5位(&R)
+ui.fmain.menu.score.note.start_position.at.5.text=5位(&A)
 ui.fmain.menu.score.note.start_position.move.left.text=向左平移(&E)
 ui.fmain.menu.score.note.start_position.move.right.text=向右平移(&V)
 ui.fmain.menu.score.note.start_position.to.default.text=设为默认(&S)
@@ -96,7 +95,7 @@ ui.fmain.menu.tools.export.csv.text=CGSS 单个谱面(CSV)(&C)...
 ui.fmain.menu.tools.import.text=导入(&I)
 ui.fmain.menu.tools.build.text=生成(&B)
 ui.fmain.menu.tools.build.bdb.text=CGSS 谱面包(BDB)(&B)...
-ui.fmain.menu.tools.build.acb.text=CGSS 曲目音乐(ACB)(&M)...
+ui.fmain.menu.tools.build.acb.text=CGSS 曲目音乐(ACB)(&A)...
 ui.fmain.menu.tools.settings.text=设置(&S)...
 
 ui.fmain.menu.help.text=帮助(&H)
@@ -265,8 +264,8 @@ ui.fabout.button.close.text=关闭
 misc.default_doc_name=无标题
 misc.filter.sldproj=Starlight Director 工程 (*.sldproj)|*.sldproj
 misc.filter.wave=波形声音 (*.wav)|*.wav
-misc.filter.csv=CGSS 单个谱面(*.csv)|*.csv
-misc.filter.bdb=CGSS 谱面包(*.bdb)|*.bdb
+misc.filter.csv=CGSS 单个谱面 (*.csv)|*.csv
+misc.filter.bdb=CGSS 谱面包 (*.bdb)|*.bdb
 
 misc.difficulty.debut=Debut
 misc.difficulty.regular=Regular

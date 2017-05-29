@@ -16,7 +16,9 @@ namespace StarlightDirector.App.UI.Forms {
                 f._musicID = initialMusicID;
                 f._liveID = initialLiveID;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
                 return (r, f._musicID, f._liveID);
             }
         }

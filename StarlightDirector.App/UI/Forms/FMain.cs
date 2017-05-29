@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Core;
@@ -34,20 +35,17 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         public void UpdateUIIndications() {
-            UpdateUIIndications(_editingFileName, _cachedTitleDifficulty);
+            UpdateUIIndications(_cachedTitleDifficulty);
         }
 
         public void UpdateUIIndications(Difficulty currentDifficulty) {
-            UpdateUIIndications(_editingFileName, currentDifficulty);
-        }
-
-        public void UpdateUIIndications(string editingFileName) {
-            UpdateUIIndications(editingFileName, _cachedTitleDifficulty);
-        }
-
-        public void UpdateUIIndications(string editingFileName, Difficulty currentDifficulty) {
-            if (editingFileName == null) {
-                editingFileName = string.Empty;
+            var project = visualizer.Editor.Project;
+            string editingFileName;
+            if (project == null || !project.WasSaved) {
+                editingFileName = LanguageManager.TryGetString("misc.default_doc_name") ?? DefaultDocumentName;
+            } else {
+                var fileInfo = new FileInfo(project.SaveFileName);
+                editingFileName = fileInfo.Name;
             }
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
@@ -58,13 +56,13 @@ namespace StarlightDirector.App.UI.Forms {
                 var titleTemplate = LanguageManager.TryGetString("ui.fmain.text_template") ?? DefaultTitleTemplate;
                 text = string.Format(titleTemplate, editingFileName, difficultyDescription, applicationTitle);
             }
-            var project = visualizer.Editor.Project;
-            if (project.IsModified) {
-                text = "* " + text;
+            if (project != null) {
+                if (project.IsModified) {
+                    text = "* " + text;
+                }
             }
             Text = text;
             tsbScoreDifficultySelection.Text = difficultyDescription;
-            _editingFileName = editingFileName;
             _cachedTitleDifficulty = currentDifficulty;
         }
 
@@ -115,7 +113,6 @@ namespace StarlightDirector.App.UI.Forms {
         private static readonly string DefaultDocumentName = "Untitled";
         private static readonly string DefaultTitleTemplate = "{0} [{1}] - {2}";
 
-        private string _editingFileName = string.Empty;
         private Difficulty _cachedTitleDifficulty = Difficulty.Debut;
 
         private static readonly string TapAudioFilePath = "Resources/SFX/Director/se_live_tap_perfect.wav";

@@ -8,7 +8,9 @@ namespace StarlightDirector.App.UI.Forms {
         public static (DialogResult DialogResult, int NumberOfMeasures) RequestInput(IWin32Window parentWindow) {
             using (var f = new FNewMeasures()) {
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parentWindow);
+                f.UnmonitorLocalizationChange();
                 var n = f._numberOfMeasures;
                 return (r, n);
             }

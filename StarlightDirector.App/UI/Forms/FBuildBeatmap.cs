@@ -21,7 +21,9 @@ namespace StarlightDirector.App.UI.Forms {
                 f._project = project;
                 f._difficulty = difficulty;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
             }
         }
 

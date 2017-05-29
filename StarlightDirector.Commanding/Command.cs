@@ -40,6 +40,29 @@ namespace StarlightDirector.Commanding {
 
         public string Description { get; set; } = string.Empty;
 
+        public void UpdateItemText() {
+            var shortcut = ShortcutKeys;
+            if (shortcut == Keys.None) {
+                return;
+            }
+            foreach (var control in _subscribedControls) {
+                if (!_setShortcuts.ContainsKey(control)) {
+                    continue;
+                }
+                switch (control) {
+                    case ToolStripButton button:
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                        break;
+                    case ToolStripSplitButton button:
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                        break;
+                    case ToolStripOverflowButton button:
+                        button.ToolTipText = $"{button.Text} ({ShortcutMapper.GetDescription(ShortcutKeys)})";
+                        break;
+                }
+            }
+        }
+
         internal void SubscribeControl(Component control, bool setShortcut) {
             if (control == null) {
                 return;

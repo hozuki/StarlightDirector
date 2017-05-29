@@ -75,6 +75,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void FMain_Closed(object sender, EventArgs e) {
+            this.UnmonitorLocalizationChange();
             CmdPreviewStop.Execute(this, null);
             _liveMusicPlayer?.Stop();
             _liveSfxManager?.Dispose();
@@ -271,6 +272,7 @@ namespace StarlightDirector.App.UI.Forms {
 
             // Localize before setting command shortcut display strings.
             Localize(LanguageManager.Current);
+            this.MonitorLocalizationChange();
 
             RegisterCommands();
 

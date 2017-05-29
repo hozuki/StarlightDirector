@@ -223,6 +223,9 @@
     <Compile Include="UI\UIUtilities.cs" />
     <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
     <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
+    <Content Include="Resources\Languages\en_US.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Resources\Languages\zh_CN.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -235,6 +238,7 @@
     <Content Include="Resources\SFX\Director\se_live_tap_perfect.wav">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Resources\WebPages\About.en_US.html" />
     <EmbeddedResource Include="Resources\WebPages\About.zh_CN.html" />
     <EmbeddedResource Include="UI\Forms\FAbout.resx">
       <DependentUpon>FAbout.cs</DependentUpon>

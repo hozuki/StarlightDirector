@@ -11,8 +11,11 @@ namespace StarlightDirector.App.UI.Forms {
         public static DialogResult ChangeSettings(IWin32Window parent, EditorSettings settings) {
             using (var f = new FEditorSettings()) {
                 f._editorSettings = settings;
+                f.MonitorLocalizationChange();
                 f.Localize(LanguageManager.Current);
-                return f.ShowDialog(parent);
+                var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
+                return r;
             }
         }
 
@@ -47,6 +50,11 @@ namespace StarlightDirector.App.UI.Forms {
                 s.Language = _languages[cboLanguage.SelectedIndex - 1].CodeName;
             }
 
+            if (s.Language != _originalLanguage) {
+                EditorSettingsManager.ApplyLanguageSettings();
+                LocalizationHelper.Relocalize(LanguageManager.Current);
+            }
+
             DialogResult = DialogResult.OK;
         }
 
@@ -68,6 +76,7 @@ namespace StarlightDirector.App.UI.Forms {
             var s = _editorSettings;
 
             int langIndex;
+            _originalLanguage = s.Language;
             if (s.Language == null) {
                 langIndex = 0;
             } else {
@@ -91,6 +100,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private EditorSettings _editorSettings;
+        private string _originalLanguage;
         private readonly List<(string DisplayName, string CodeName)> _languages = new List<(string, string)>();
 
     }

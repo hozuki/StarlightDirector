@@ -12,7 +12,9 @@ namespace StarlightDirector.App.UI.Forms {
                 f._editor = editor;
                 f._enabledItemIndex = enabledItemIndex;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
                 var target = f._target;
                 return (r, target);
             }

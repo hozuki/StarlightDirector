@@ -13,8 +13,10 @@ namespace StarlightDirector.App.UI.Forms {
         public static void ShowDialog(IWin32Window parent, bool easterEggEnabled) {
             using (var f = new FAbout()) {
                 f._easterEggEnabled = easterEggEnabled;
+                f.MonitorLocalizationChange();
                 f.Localize(LanguageManager.Current);
                 f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
             }
         }
 

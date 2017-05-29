@@ -1,4 +1,8 @@
-﻿using StarlightDirector.App.Extensions;
+﻿using System.Linq;
+using System.Reflection;
+using StarlightDirector.App.Extensions;
+using StarlightDirector.Beatmap;
+using StarlightDirector.Commanding;
 using StarlightDirector.Core;
 
 namespace StarlightDirector.App.UI.Forms {
@@ -145,6 +149,20 @@ namespace StarlightDirector.App.UI.Forms {
             manager.ApplyText(ctxScoreNoteInsertSpecial, "ui.fmain.context.note.insert_special");
             manager.ApplyText(ctxScoreNoteModifySpecial, "ui.fmain.context.note.modify_special");
             manager.ApplyText(ctxScoreNoteDeleteSpecial, "ui.fmain.context.note.delete_special");
+
+            // FMain as a special form, needs an extra title setting.
+            UpdateUIIndications();
+            var formType = GetType();
+            var commandType = typeof(Command);
+            const BindingFlags privateInstance = BindingFlags.Instance | BindingFlags.NonPublic;
+            var commandFields = formType.GetFields(privateInstance)
+                .Where(field => field.FieldType == commandType || field.FieldType.IsSubclassOf(commandType));
+            foreach (var field in commandFields) {
+                var commandObject = field.GetValue(this) as Command;
+                commandObject?.UpdateItemText();
+            }
+            // Right now the key is definitely released, just set the start position.
+            CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
         }
 
     }

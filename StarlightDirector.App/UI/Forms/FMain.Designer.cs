@@ -741,7 +741,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(465, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -1158,7 +1158,7 @@
             this.mnuScoreDifficultyMaster,
             this.mnuScoreDifficultyMasterPlus});
             this.mnuScoreDifficulty.Name = "mnuScoreDifficulty";
-            this.mnuScoreDifficulty.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreDifficulty.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreDifficulty.Text = "&Difficulty";
             // 
             // mnuScoreDifficultyDebut
@@ -1202,7 +1202,7 @@
             this.mnuScoreMeasureInsertMultiple,
             this.mnuScoreMeasureDelete});
             this.mnuScoreMeasure.Name = "mnuScoreMeasure";
-            this.mnuScoreMeasure.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreMeasure.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreMeasure.Text = "&Measure";
             // 
             // mnuScoreMeasureAppend
@@ -1248,7 +1248,7 @@
             this.mnuScoreNoteSep2,
             this.mnuScoreNoteInsertSpecial});
             this.mnuScoreNote.Name = "mnuScoreNote";
-            this.mnuScoreNote.Size = new System.Drawing.Size(152, 22);
+            this.mnuScoreNote.Size = new System.Drawing.Size(127, 22);
             this.mnuScoreNote.Text = "&Note";
             // 
             // mnuScoreNoteResetToTap
@@ -1329,7 +1329,7 @@
             // 
             this.mnuScoreNoteStartPositionAt5.Name = "mnuScoreNoteStartPositionAt5";
             this.mnuScoreNoteStartPositionAt5.Size = new System.Drawing.Size(186, 22);
-            this.mnuScoreNoteStartPositionAt5.Text = "At &Right";
+            this.mnuScoreNoteStartPositionAt5.Text = "&At Right";
             // 
             // mnuScoreNoteStartPositionSep1
             // 
@@ -1458,7 +1458,7 @@
             // 
             this.mnuToolsExportCsv.Name = "mnuToolsExportCsv";
             this.mnuToolsExportCsv.Size = new System.Drawing.Size(246, 22);
-            this.mnuToolsExportCsv.Text = "&CGSS Single Beatmap (CSV)...";
+            this.mnuToolsExportCsv.Text = "CGSS Single Beatmap (&CSV)...";
             // 
             // mnuToolsImport
             // 
@@ -1486,14 +1486,14 @@
             this.mnuToolsBuildBdb.Image = global::StarlightDirector.App.Properties.Resources.IconToolsBuildScoreBundle;
             this.mnuToolsBuildBdb.Name = "mnuToolsBuildBdb";
             this.mnuToolsBuildBdb.Size = new System.Drawing.Size(253, 22);
-            this.mnuToolsBuildBdb.Text = "CGSS Beatmap &Bundle (BDB)...";
+            this.mnuToolsBuildBdb.Text = "CGSS Beatmap Bundle (&BDB)...";
             // 
             // mnuToolsBuildAcb
             // 
             this.mnuToolsBuildAcb.Image = global::StarlightDirector.App.Properties.Resources.IconToolsBuildMusic;
             this.mnuToolsBuildAcb.Name = "mnuToolsBuildAcb";
             this.mnuToolsBuildAcb.Size = new System.Drawing.Size(253, 22);
-            this.mnuToolsBuildAcb.Text = "CGSS Live &Music (ACB)...";
+            this.mnuToolsBuildAcb.Text = "CGSS Live Music (&ACB)...";
             // 
             // mnuToolsSep2
             // 
@@ -1537,7 +1537,7 @@
             this.ctxScoreNoteModifySpecial,
             this.ctxScoreNoteDeleteSpecial});
             this.ctxMain.Name = "contextMenuStrip1";
-            this.ctxMain.Size = new System.Drawing.Size(205, 248);
+            this.ctxMain.Size = new System.Drawing.Size(205, 226);
             // 
             // ctxEditCut
             // 

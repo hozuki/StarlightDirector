@@ -11,7 +11,9 @@ namespace StarlightDirector.App.UI.Forms {
             using (var f = new FBeatmapStats()) {
                 f._project = project;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
             }
         }
 

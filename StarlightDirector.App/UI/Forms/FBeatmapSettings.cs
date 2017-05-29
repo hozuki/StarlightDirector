@@ -8,24 +8,26 @@ using StarlightDirector.Core;
 namespace StarlightDirector.App.UI.Forms {
     public partial class FBeatmapSettings : Form {
 
-        public FBeatmapSettings() {
+        public static (DialogResult DialogResult, double BPM, double MusicOffset) RequestInput(IWin32Window parentWindow, ProjectSettings scoreSettings) {
+            using (var f = new FBeatmapSettings()) {
+                f.Localize(LanguageManager.Current);
+                f.InitUI(scoreSettings);
+                f.MonitorLocalizationChange();
+                var r = f.ShowDialog(parentWindow);
+                f.UnmonitorLocalizationChange();
+                var bpm = f._bpm;
+                var offset = f._musicOffset;
+                return (r, bpm, offset);
+            }
+        }
+
+        private FBeatmapSettings() {
             InitializeComponent();
             RegisterEventHandlers();
         }
 
         ~FBeatmapSettings() {
             UnregisterEventHandlers();
-        }
-
-        public static (DialogResult DialogResult, double BPM, double MusicOffset) RequestInput(IWin32Window parentWindow, ProjectSettings scoreSettings) {
-            using (var f = new FBeatmapSettings()) {
-                f.Localize(LanguageManager.Current);
-                f.InitUI(scoreSettings);
-                var r = f.ShowDialog(parentWindow);
-                var bpm = f._bpm;
-                var offset = f._musicOffset;
-                return (r, bpm, offset);
-            }
         }
 
         private void UnregisterEventHandlers() {
@@ -51,7 +53,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void BtnOK_Click(object sender, EventArgs e) {
             var errSet = new HashSet<Control>();
             if (!double.TryParse(txtBPM.Text, NumberStyles.Number, CultureInfo.CurrentUICulture, out var bpm)) {
-                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.bpm_is_not_numeric") ?? "Please input a number.";
+                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.bpm_is_not_numeric") ?? "Please enter a number.";
                 errProvider.SetError(txtBPM, errorMessage);
                 errSet.Add(txtBPM);
             }
@@ -63,7 +65,7 @@ namespace StarlightDirector.App.UI.Forms {
                 }
             }
             if (!double.TryParse(txtMusicOffset.Text, out var startOffset)) {
-                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.score_offset_is_not_numeric") ?? "Please input a number.";
+                var errorMessage = LanguageManager.TryGetString("messages.fbeatmapsettings.score_offset_is_not_numeric") ?? "Please enter a number.";
                 errProvider.SetError(txtMusicOffset, errorMessage);
                 errSet.Add(txtMusicOffset);
             }

@@ -9,7 +9,9 @@ namespace StarlightDirector.App.UI.Forms {
             using (var f = new FMusicSettings()) {
                 f._musicFileName = originalFileName;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
                 var musicFileName = f._musicFileName;
                 return (r, musicFileName);
             }

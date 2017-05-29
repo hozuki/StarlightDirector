@@ -17,7 +17,9 @@ namespace StarlightDirector.App.UI.Forms {
                 f.cboRows.Items.Add((rowIndex + 1).ToString());
                 f.cboRows.SelectedIndex = 0;
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
                 var bpm = f._bpm;
                 return (r, bpm);
             }
@@ -30,7 +32,9 @@ namespace StarlightDirector.App.UI.Forms {
                 f.FillMeasureComboBox();
                 f.CboMeasures_SelectedIndexChanged(f, EventArgs.Empty);
                 f.Localize(LanguageManager.Current);
+                f.MonitorLocalizationChange();
                 var r = f.ShowDialog(parent);
+                f.UnmonitorLocalizationChange();
                 var bpm = f._bpm;
                 var barIndex = f._barIndex;
                 var row = f._rowIndex;
