@@ -64,7 +64,7 @@ namespace StarlightDirector.App.UI.Forms {
                     }
                     string sfxFileName;
                     if (note.Helper.IsSlide) {
-                        sfxFileName = note.Helper.HasNextFlick ? FlickAudioFilePath : SlideAudioFilePath;
+                        sfxFileName = note.Helper.HasNextFlick || note.Helper.IsSlideStart || note.Helper.IsSlideEnd ? FlickAudioFilePath : SlideAudioFilePath;
                     } else {
                         sfxFileName = note.Helper.IsFlick ? FlickAudioFilePath : TapAudioFilePath;
                     }
