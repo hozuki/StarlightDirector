@@ -290,6 +290,10 @@ misc.music_attribute.solo_ver=Solo
 lang.use_auto.text=自动
 
 messages.fmain.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
+# {0}: 音乐文件路径
+messages.fmain.live_music_open_error_template=无法打开文件"{0}"。背景音乐已关闭。
+# {0}: 音乐文件路径
+messages.fmain.live_music_not_found_template=找不到文件"{0}"。背景音乐已关闭。
 
 messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
 messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。

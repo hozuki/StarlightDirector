@@ -285,7 +285,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void LiveTimer_Elapsed(object sender, ElapsedEventArgs e) {
-            if (_liveWaveStream == null) {
+            if (_liveWaveStream == null || !_liveMusicPlayer.IsPlaying) {
                 var signal = e.SignalTime;
                 var elapsed = signal - _lastSignalTime;
                 _totalLiveTime += elapsed;

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.IO;
-using System.Timers;
+using System.Windows.Forms;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Commanding;
+using StarlightDirector.Core;
 using StarlightDirector.Previewing.Audio;
 using StarlightDirector.UI.Controls;
+using Timer = System.Timers.Timer;
 
 namespace StarlightDirector.App.UI.Forms {
     partial class FMain {
@@ -30,10 +32,24 @@ namespace StarlightDirector.App.UI.Forms {
                 _liveTimer.Elapsed += LiveTimer_Elapsed;
             }
             var project = visualizer.Editor.Project;
-            if (project.HasMusic && File.Exists(project.MusicFileName)) {
-                _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
-                _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+            if (project.HasMusic) {
+                string errorMessageTemplate = null;
+                if (File.Exists(project.MusicFileName)) {
+                    try {
+                        _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
+                        _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
+                        _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+                    } catch (IOException) {
+                        errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_open_error_template") ?? "Cannot open '{0}'. Live music disabled.";
+                    }
+                } else {
+                    errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_not_found_template") ?? "File '{0}' does not exist. Live music disabled.";
+                }
+                if (errorMessageTemplate != null) {
+                    var errorMessage = string.Format(errorMessageTemplate, project.MusicFileName);
+                    MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
+                }
             } else {
                 _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
@@ -58,10 +74,24 @@ namespace StarlightDirector.App.UI.Forms {
                 _liveTimer.Elapsed += LiveTimer_Elapsed;
             }
             var project = visualizer.Editor.Project;
-            if (project.HasMusic && File.Exists(project.MusicFileName)) {
-                _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
-                _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+            if (project.HasMusic) {
+                string errorMessageTemplate = null;
+                if (File.Exists(project.MusicFileName)) {
+                    try {
+                        _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
+                        _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
+                        _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+                    } catch (IOException) {
+                        errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_open_error_template") ?? "Cannot open '{0}'. Live music disabled.";
+                    }
+                } else {
+                    errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_not_found_template") ?? "File '{0}' does not exist. Live music disabled.";
+                }
+                if (errorMessageTemplate != null) {
+                    var errorMessage = string.Format(errorMessageTemplate, project.MusicFileName);
+                    MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
+                }
             } else {
                 _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
