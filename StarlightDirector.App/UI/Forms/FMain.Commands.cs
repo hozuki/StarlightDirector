@@ -118,7 +118,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbScoreMeasureInsertMultiple.Attach(CmdScoreMeasureInsertMultiple);
             mnuScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
             tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
-            tsbScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
+            ctxScoreMeasureDelete.Attach(CmdScoreMeasureDelete);
 
             mnuViewZoomIn.Attach(CmdViewZoomIn);
             tsbViewZoomIn.Attach(CmdViewZoomIn);
