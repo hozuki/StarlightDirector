@@ -120,8 +120,12 @@ namespace StarlightDirector.Beatmap.Extensions {
             if (note.Helper.HasHoldPair) {
                 var holdPair = note.Editor.HoldPair;
                 holdPair.Editor.HoldPair = null;
-                if (holdPair.Basic.Type == NoteType.Hold) {
+                if (holdPair.Helper.IsHoldStart) {
                     holdPair.Basic.Type = NoteType.TapOrFlick;
+                } else {
+                    if (!holdPair.Helper.HasNextFlick) {
+                        holdPair.Basic.FlickType = NoteFlickType.None;
+                    }
                 }
             }
 
