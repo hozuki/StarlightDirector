@@ -54,7 +54,7 @@ namespace StarlightDirector.UI.Controls {
         private readonly StringFormat _stringFormat = new StringFormat {
             Alignment = StringAlignment.Center,
             LineAlignment = StringAlignment.Center,
-            HotkeyPrefix = HotkeyPrefix.Show,
+            HotkeyPrefix = HotkeyPrefix.None,
             Trimming = StringTrimming.EllipsisCharacter,
         };
 
