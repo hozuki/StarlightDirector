@@ -53,6 +53,9 @@ namespace StarlightDirector.UI.Controls.Editing {
             if (score == null) {
                 return false;
             }
+            if (!score.HasAnyBar) {
+                return false;
+            }
 
             var oldScrollOffset = ScrollOffsetY;
             var totalNumberOfGrids = score.Bars.Sum(bar => bar.GetNumberOfGrids());
