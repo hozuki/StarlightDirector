@@ -14,7 +14,7 @@
 
 ## Project
 
-- [ ] Loading projects from older versions
+- [x] <del>Loading projects from older versions</del> (reads v0.2; v0.1 is no longer supported)
 - [ ] Importing Deleste TXT format 1
 
 ## Previewing

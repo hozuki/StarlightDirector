@@ -38,9 +38,9 @@ namespace StarlightDirector.Beatmap.IO {
             SQLiteCommand getValues = null;
 
             // Main
-            var mainValues = SQLiteHelper.GetValues(db, Names.Table_Main, ref getValues);
-            project.MusicFileName = mainValues[Names.Field_MusicFileName];
-            var projectVersionString = mainValues[Names.Field_Version];
+            var mainValues = SQLiteHelper.GetValues(db, SldprojDbNames.Table_Main, ref getValues);
+            project.MusicFileName = mainValues[SldprojDbNames.Field_MusicFileName];
+            var projectVersionString = mainValues[SldprojDbNames.Field_Version];
             float.TryParse(projectVersionString, out var fProjectVersion);
             if (fProjectVersion <= 0) {
                 Debug.Print("WARNING: incorrect project version: {0}", projectVersionString);
@@ -65,15 +65,15 @@ namespace StarlightDirector.Beatmap.IO {
             }
 
             // Score settings
-            var scoreSettingsValues = SQLiteHelper.GetValues(db, Names.Table_ScoreSettings, ref getValues);
+            var scoreSettingsValues = SQLiteHelper.GetValues(db, SldprojDbNames.Table_ScoreSettings, ref getValues);
             var settings = project.Settings;
-            settings.BeatPerMinute = double.Parse(scoreSettingsValues[Names.Field_GlobalBpm]);
-            settings.StartTimeOffset = double.Parse(scoreSettingsValues[Names.Field_StartTimeOffset]);
-            settings.GridPerSignature = int.Parse(scoreSettingsValues[Names.Field_GlobalGridPerSignature]);
-            settings.Signature = int.Parse(scoreSettingsValues[Names.Field_GlobalSignature]);
+            settings.BeatPerMinute = double.Parse(scoreSettingsValues[SldprojDbNames.Field_GlobalBpm]);
+            settings.StartTimeOffset = double.Parse(scoreSettingsValues[SldprojDbNames.Field_StartTimeOffset]);
+            settings.GridPerSignature = int.Parse(scoreSettingsValues[SldprojDbNames.Field_GlobalGridPerSignature]);
+            settings.Signature = int.Parse(scoreSettingsValues[SldprojDbNames.Field_GlobalSignature]);
 
             // Bar params
-            if (SQLiteHelper.DoesTableExist(db, Names.Table_BarParams)) {
+            if (SQLiteHelper.DoesTableExist(db, SldprojDbNames.Table_BarParams)) {
                 foreach (var difficulty in Difficulties) {
                     var score = project.GetScore(difficulty);
                     ReadBarParams(db, score);
@@ -81,7 +81,7 @@ namespace StarlightDirector.Beatmap.IO {
             }
 
             // Special notes
-            if (SQLiteHelper.DoesTableExist(db, Names.Table_SpecialNotes)) {
+            if (SQLiteHelper.DoesTableExist(db, SldprojDbNames.Table_SpecialNotes)) {
                 foreach (var difficulty in Difficulties) {
                     var score = project.GetScore(difficulty);
                     ReadSpecialNotes(db, score);
@@ -103,16 +103,16 @@ namespace StarlightDirector.Beatmap.IO {
                 // Only flick existed when there is a flick-alike relation. Now, both flick and slide are possible.
                 var hasNoteTypeColumn = projectVersion == ProjectVersion.V0_3_1;
                 foreach (DataRow row in table.Rows) {
-                    var id = (int)(long)row[Names.Column_ID];
-                    var barIndex = (int)(long)row[Names.Column_BarIndex];
-                    var grid = (int)(long)row[Names.Column_IndexInGrid];
-                    var start = (NotePosition)(long)row[Names.Column_StartPosition];
-                    var finish = (NotePosition)(long)row[Names.Column_FinishPosition];
-                    var flick = (NoteFlickType)(long)row[Names.Column_FlickType];
-                    var prevFlick = (int)(long)row[Names.Column_PrevFlickNoteID];
-                    var nextFlick = (int)(long)row[Names.Column_NextFlickNoteID];
-                    var hold = (int)(long)row[Names.Column_HoldTargetID];
-                    var noteType = hasNoteTypeColumn ? (NoteType)(long)row[Names.Column_NoteType] : NoteType.TapOrFlick;
+                    var id = (int)(long)row[SldprojDbNames.Column_ID];
+                    var barIndex = (int)(long)row[SldprojDbNames.Column_BarIndex];
+                    var grid = (int)(long)row[SldprojDbNames.Column_IndexInGrid];
+                    var start = (NotePosition)(long)row[SldprojDbNames.Column_StartPosition];
+                    var finish = (NotePosition)(long)row[SldprojDbNames.Column_FinishPosition];
+                    var flick = (NoteFlickType)(long)row[SldprojDbNames.Column_FlickType];
+                    var prevFlick = (int)(long)row[SldprojDbNames.Column_PrevFlickNoteID];
+                    var nextFlick = (int)(long)row[SldprojDbNames.Column_NextFlickNoteID];
+                    var hold = (int)(long)row[SldprojDbNames.Column_HoldTargetID];
+                    var noteType = hasNoteTypeColumn ? (NoteType)(long)row[SldprojDbNames.Column_NoteType] : NoteType.TapOrFlick;
 
                     EnsureBarIndex(score, barIndex);
                     var bar = score.Bars[barIndex];
@@ -135,9 +135,9 @@ namespace StarlightDirector.Beatmap.IO {
             using (var table = new DataTable()) {
                 SQLiteHelper.ReadBarParamsTable(connection, score.Difficulty, table);
                 foreach (DataRow row in table.Rows) {
-                    var index = (int)(long)row[Names.Column_BarIndex];
-                    var grid = (int?)(long?)row[Names.Column_GridPerSignature];
-                    var signature = (int?)(long?)row[Names.Column_Signature];
+                    var index = (int)(long)row[SldprojDbNames.Column_BarIndex];
+                    var grid = (int?)(long?)row[SldprojDbNames.Column_GridPerSignature];
+                    var signature = (int?)(long?)row[SldprojDbNames.Column_Signature];
                     if (index < score.Bars.Count) {
                         score.Bars[index].Params = new BarParams {
                             UserDefinedGridPerSignature = grid,
@@ -152,11 +152,11 @@ namespace StarlightDirector.Beatmap.IO {
             using (var table = new DataTable()) {
                 SQLiteHelper.ReadSpecialNotesTable(connection, score.Difficulty, table);
                 foreach (DataRow row in table.Rows) {
-                    var id = (int)(long)row[Names.Column_ID];
-                    var barIndex = (int)(long)row[Names.Column_BarIndex];
-                    var grid = (int)(long)row[Names.Column_IndexInGrid];
-                    var type = (int)(long)row[Names.Column_NoteType];
-                    var paramsString = (string)row[Names.Column_ParamValues];
+                    var id = (int)(long)row[SldprojDbNames.Column_ID];
+                    var barIndex = (int)(long)row[SldprojDbNames.Column_BarIndex];
+                    var grid = (int)(long)row[SldprojDbNames.Column_IndexInGrid];
+                    var type = (int)(long)row[SldprojDbNames.Column_NoteType];
+                    var paramsString = (string)row[SldprojDbNames.Column_ParamValues];
                     if (barIndex >= score.Bars.Count) {
                         continue;
                     }

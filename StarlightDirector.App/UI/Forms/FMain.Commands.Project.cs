@@ -35,6 +35,9 @@ namespace StarlightDirector.App.UI.Forms {
                 return;
             } else {
                 switch (projectVersion) {
+                    case ProjectVersion.V0_2:
+                        reader = new SldprojV2Reader();
+                        break;
                     case ProjectVersion.V0_3:
                     case ProjectVersion.V0_3_1:
                         reader = new SldprojV3Reader();

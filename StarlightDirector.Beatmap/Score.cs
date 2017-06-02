@@ -10,7 +10,7 @@ namespace StarlightDirector.Beatmap {
             Difficulty = difficulty;
         }
 
-        public Difficulty Difficulty { get; }
+        public Difficulty Difficulty { get; internal set; }
 
         public Project Project { get; }
 

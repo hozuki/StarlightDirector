@@ -33,7 +33,7 @@ namespace StarlightDirector.Beatmap.IO {
 
             public static void ReadNotesTable(SQLiteConnection connection, Difficulty difficulty, DataTable table) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $"SELECT * FROM {Names.Table_Notes} WHERE {Names.Column_Difficulty} = @difficulty;";
+                    command.CommandText = $"SELECT * FROM {SldprojDbNames.Table_Notes} WHERE {SldprojDbNames.Column_Difficulty} = @difficulty;";
                     command.Parameters.Add("difficulty", DbType.Int32).Value = (int)difficulty;
                     using (var adapter = new SQLiteDataAdapter(command)) {
                         adapter.Fill(table);
@@ -43,7 +43,7 @@ namespace StarlightDirector.Beatmap.IO {
 
             public static void ReadBarParamsTable(SQLiteConnection connection, Difficulty difficulty, DataTable dataTable) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $"SELECT * FROM {Names.Table_BarParams} WHERE {Names.Column_Difficulty} = @difficulty;";
+                    command.CommandText = $"SELECT * FROM {SldprojDbNames.Table_BarParams} WHERE {SldprojDbNames.Column_Difficulty} = @difficulty;";
                     command.Parameters.Add("difficulty", DbType.Int32).Value = (int)difficulty;
                     using (var adapter = new SQLiteDataAdapter(command)) {
                         adapter.Fill(dataTable);
@@ -53,7 +53,7 @@ namespace StarlightDirector.Beatmap.IO {
 
             public static void ReadSpecialNotesTable(SQLiteConnection connection, Difficulty difficulty, DataTable dataTable) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $"SELECT * FROM {Names.Table_SpecialNotes} WHERE {Names.Column_Difficulty} = @difficulty;";
+                    command.CommandText = $"SELECT * FROM {SldprojDbNames.Table_SpecialNotes} WHERE {SldprojDbNames.Column_Difficulty} = @difficulty;";
                     command.Parameters.Add("difficulty", DbType.Int32).Value = (int)difficulty;
                     using (var adapter = new SQLiteDataAdapter(command)) {
                         adapter.Fill(dataTable);

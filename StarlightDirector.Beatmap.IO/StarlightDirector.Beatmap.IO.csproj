@@ -32,6 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite, Version=1.0.105.1, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
@@ -47,16 +50,20 @@
   <ItemGroup>
     <Compile Include="KnownScoreFormats.cs" />
     <Compile Include="ProjectVersion.cs" />
+    <Compile Include="SldprojDbNames.cs" />
+    <Compile Include="SldprojV2Reader.BarV2.cs" />
+    <Compile Include="SldprojV2Reader.BarParamsV2.cs" />
+    <Compile Include="SldprojV2Reader.NoteV2.cs" />
+    <Compile Include="SldprojV2Reader.ScoreV2.cs" />
+    <Compile Include="SldprojV2Reader.cs" />
+    <Compile Include="SldprojV2Reader.SQLiteHelper.cs" />
     <Compile Include="SldprojV4Reader.SQLiteHelper.cs" />
-    <Compile Include="SldprojV4Reader.Names.cs" />
     <Compile Include="SldprojV3Reader.SQLiteHelper.cs" />
     <Compile Include="ProjectReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProjectWriter.cs" />
     <Compile Include="SldprojV3Reader.cs" />
-    <Compile Include="SldprojV3Reader.Names.cs" />
     <Compile Include="SldprojV4Reader.cs" />
-    <Compile Include="SldprojV4Writer.Names.cs" />
     <Compile Include="SldprojV4Writer.SQLiteHelper.cs" />
     <Compile Include="SldprojV4Writer.cs" />
   </ItemGroup>

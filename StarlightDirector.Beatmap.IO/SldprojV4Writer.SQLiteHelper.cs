@@ -74,9 +74,9 @@ namespace StarlightDirector.Beatmap.IO {
 
             public static void CreateBarParamsTable(SQLiteConnection connection) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $@"CREATE TABLE {Names.Table_BarParams} (
-{Names.Column_Difficulty} INTEGER NOT NULL, {Names.Column_BarIndex} INTEGER NOT NULL, {Names.Column_GridPerSignature} INTEGER, {Names.Column_Signature} INTEGER,
-PRIMARY KEY ({Names.Column_Difficulty}, {Names.Column_BarIndex}));";
+                    command.CommandText = $@"CREATE TABLE {SldprojDbNames.Table_BarParams} (
+{SldprojDbNames.Column_Difficulty} INTEGER NOT NULL, {SldprojDbNames.Column_BarIndex} INTEGER NOT NULL, {SldprojDbNames.Column_GridPerSignature} INTEGER, {SldprojDbNames.Column_Signature} INTEGER,
+PRIMARY KEY ({SldprojDbNames.Column_Difficulty}, {SldprojDbNames.Column_BarIndex}));";
                     command.ExecuteNonQuery();
                 }
             }
@@ -87,10 +87,10 @@ PRIMARY KEY ({Names.Column_Difficulty}, {Names.Column_BarIndex}));";
 
             public static void CreateSpecialNotesTable(SQLiteConnection connection) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $@"CREATE TABLE {Names.Table_SpecialNotes} (
-{Names.Column_ID} BLOB NOT NULL PRIMARY KEY, {Names.Column_Difficulty} INTEGER NOT NULL, {Names.Column_BarIndex} INTEGER NOT NULL, {Names.Column_IndexInGrid} INTEGER NOT NULL,
-{Names.Column_NoteType} INTEGER NOT NULL, {Names.Column_ParamValues} TEXT NOT NULL,
-FOREIGN KEY ({Names.Column_ID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}));";
+                    command.CommandText = $@"CREATE TABLE {SldprojDbNames.Table_SpecialNotes} (
+{SldprojDbNames.Column_ID} BLOB NOT NULL PRIMARY KEY, {SldprojDbNames.Column_Difficulty} INTEGER NOT NULL, {SldprojDbNames.Column_BarIndex} INTEGER NOT NULL, {SldprojDbNames.Column_IndexInGrid} INTEGER NOT NULL,
+{SldprojDbNames.Column_NoteType} INTEGER NOT NULL, {SldprojDbNames.Column_ParamValues} TEXT NOT NULL,
+FOREIGN KEY ({SldprojDbNames.Column_ID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}));";
                     command.ExecuteNonQuery();
                 }
             }
@@ -101,15 +101,15 @@ FOREIGN KEY ({Names.Column_ID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_I
 
             public static void CreateScoresTable(SQLiteConnection connection) {
                 using (var command = connection.CreateCommand()) {
-                    command.CommandText = $"CREATE TABLE {Names.Table_NoteIDs} ({Names.Column_ID} BLOB NOT NULL PRIMARY KEY);";
+                    command.CommandText = $"CREATE TABLE {SldprojDbNames.Table_NoteIDs} ({SldprojDbNames.Column_ID} BLOB NOT NULL PRIMARY KEY);";
                     command.ExecuteNonQuery();
-                    command.CommandText = $@"CREATE TABLE {Names.Table_Notes} (
-{Names.Column_ID} BLOB PRIMARY KEY NOT NULL, {Names.Column_Difficulty} INTEGER NOT NULL, {Names.Column_BarIndex} INTEGER NOT NULL, {Names.Column_IndexInGrid} INTEGER NOT NULL,
-{Names.Column_NoteType} INTEGER NOT NULL, {Names.Column_StartPosition} INTEGER NOT NULL, {Names.Column_FinishPosition} INTEGER NOT NULL, {Names.Column_FlickType} INTEGER NOT NULL,
-{Names.Column_PrevFlickNoteID} BLOB NOT NULL, {Names.Column_NextFlickNoteID} BLOB NOT NULL, {Names.Column_PrevSlideNoteID} BLOB NOT NULL, {Names.Column_NextSlideNoteID} BLOB NOT NULL, {Names.Column_HoldTargetID} BLOB NOT NULL,
-FOREIGN KEY ({Names.Column_ID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}), FOREIGN KEY ({Names.Column_PrevFlickNoteID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}),
-FOREIGN KEY ({Names.Column_NextFlickNoteID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}), FOREIGN KEY ({Names.Column_PrevSlideNoteID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}), FOREIGN KEY ({Names.Column_NextSlideNoteID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID})
-FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Names.Column_ID}));";
+                    command.CommandText = $@"CREATE TABLE {SldprojDbNames.Table_Notes} (
+{SldprojDbNames.Column_ID} BLOB PRIMARY KEY NOT NULL, {SldprojDbNames.Column_Difficulty} INTEGER NOT NULL, {SldprojDbNames.Column_BarIndex} INTEGER NOT NULL, {SldprojDbNames.Column_IndexInGrid} INTEGER NOT NULL,
+{SldprojDbNames.Column_NoteType} INTEGER NOT NULL, {SldprojDbNames.Column_StartPosition} INTEGER NOT NULL, {SldprojDbNames.Column_FinishPosition} INTEGER NOT NULL, {SldprojDbNames.Column_FlickType} INTEGER NOT NULL,
+{SldprojDbNames.Column_PrevFlickNoteID} BLOB NOT NULL, {SldprojDbNames.Column_NextFlickNoteID} BLOB NOT NULL, {SldprojDbNames.Column_PrevSlideNoteID} BLOB NOT NULL, {SldprojDbNames.Column_NextSlideNoteID} BLOB NOT NULL, {SldprojDbNames.Column_HoldTargetID} BLOB NOT NULL,
+FOREIGN KEY ({SldprojDbNames.Column_ID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}), FOREIGN KEY ({SldprojDbNames.Column_PrevFlickNoteID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}),
+FOREIGN KEY ({SldprojDbNames.Column_NextFlickNoteID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}), FOREIGN KEY ({SldprojDbNames.Column_PrevSlideNoteID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}), FOREIGN KEY ({SldprojDbNames.Column_NextSlideNoteID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID})
+FOREIGN KEY ({SldprojDbNames.Column_HoldTargetID}) REFERENCES {SldprojDbNames.Table_NoteIDs}({SldprojDbNames.Column_ID}));";
                     command.ExecuteNonQuery();
                 }
             }
@@ -121,7 +121,7 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
             public static void InsertNoteID(SQLiteConnection connection, Guid id, ref SQLiteCommand command) {
                 if (command == null) {
                     command = connection.CreateCommand();
-                    command.CommandText = $"INSERT INTO {Names.Table_NoteIDs} ({Names.Column_ID}) VALUES (@id);";
+                    command.CommandText = $"INSERT INTO {SldprojDbNames.Table_NoteIDs} ({SldprojDbNames.Column_ID}) VALUES (@id);";
                     command.Parameters.Add("id", DbType.Guid);
                 }
                 command.Parameters["id"].Value = id;
@@ -135,9 +135,9 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
             public static void InsertNote(SQLiteConnection connection, Note note, ref SQLiteCommand command) {
                 if (command == null) {
                     command = connection.CreateCommand();
-                    command.CommandText = $@"INSERT INTO {Names.Table_Notes} (
-{Names.Column_ID}, {Names.Column_Difficulty}, {Names.Column_BarIndex}, {Names.Column_IndexInGrid}, {Names.Column_NoteType}, {Names.Column_StartPosition}, {Names.Column_FinishPosition},
-{Names.Column_FlickType}, {Names.Column_PrevFlickNoteID}, {Names.Column_NextFlickNoteID}, {Names.Column_PrevSlideNoteID}, {Names.Column_NextSlideNoteID}, {Names.Column_HoldTargetID}
+                    command.CommandText = $@"INSERT INTO {SldprojDbNames.Table_Notes} (
+{SldprojDbNames.Column_ID}, {SldprojDbNames.Column_Difficulty}, {SldprojDbNames.Column_BarIndex}, {SldprojDbNames.Column_IndexInGrid}, {SldprojDbNames.Column_NoteType}, {SldprojDbNames.Column_StartPosition}, {SldprojDbNames.Column_FinishPosition},
+{SldprojDbNames.Column_FlickType}, {SldprojDbNames.Column_PrevFlickNoteID}, {SldprojDbNames.Column_NextFlickNoteID}, {SldprojDbNames.Column_PrevSlideNoteID}, {SldprojDbNames.Column_NextSlideNoteID}, {SldprojDbNames.Column_HoldTargetID}
 ) VALUES (@id, @difficulty, @bar, @grid, @note_type, @start, @finish, @flick, @prev_flick, @next_flick, @prev_slide, @next_slide, @hold);";
                     command.Parameters.Add("id", DbType.Guid);
                     command.Parameters.Add("difficulty", DbType.Int32);
@@ -179,7 +179,7 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
                 }
                 if (command == null) {
                     command = connection.CreateCommand();
-                    command.CommandText = $"INSERT INTO {Names.Table_BarParams} ({Names.Column_Difficulty}, {Names.Column_BarIndex}, {Names.Column_GridPerSignature}, {Names.Column_Signature}) VALUES (@difficulty, @index, @grid, @signature);";
+                    command.CommandText = $"INSERT INTO {SldprojDbNames.Table_BarParams} ({SldprojDbNames.Column_Difficulty}, {SldprojDbNames.Column_BarIndex}, {SldprojDbNames.Column_GridPerSignature}, {SldprojDbNames.Column_Signature}) VALUES (@difficulty, @index, @grid, @signature);";
                     command.Parameters.Add("difficulty", DbType.Int32);
                     command.Parameters.Add("index", DbType.Int32);
                     command.Parameters.Add("grid", DbType.Int32);
@@ -199,7 +199,7 @@ FOREIGN KEY ({Names.Column_HoldTargetID}) REFERENCES {Names.Table_NoteIDs}({Name
             public static void InsertSpecialNote(SQLiteConnection connection, Note note, ref SQLiteCommand command) {
                 if (command == null) {
                     command = connection.CreateCommand();
-                    command.CommandText = $"INSERT INTO {Names.Table_SpecialNotes} ({Names.Column_ID}, {Names.Column_Difficulty}, {Names.Column_BarIndex}, {Names.Column_IndexInGrid}, {Names.Column_NoteType}, {Names.Column_ParamValues}) VALUES (@id, @diff, @bar, @grid, @type, @pv);";
+                    command.CommandText = $"INSERT INTO {SldprojDbNames.Table_SpecialNotes} ({SldprojDbNames.Column_ID}, {SldprojDbNames.Column_Difficulty}, {SldprojDbNames.Column_BarIndex}, {SldprojDbNames.Column_IndexInGrid}, {SldprojDbNames.Column_NoteType}, {SldprojDbNames.Column_ParamValues}) VALUES (@id, @diff, @bar, @grid, @type, @pv);";
                     command.Parameters.Add("id", DbType.Guid);
                     command.Parameters.Add("diff", DbType.Int32);
                     command.Parameters.Add("bar", DbType.Int32);

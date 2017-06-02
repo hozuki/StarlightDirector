@@ -27,16 +27,16 @@ namespace StarlightDirector.Beatmap.IO {
             SQLiteCommand setValue = null, insertNote = null, insertNoteID = null, insertBarParams = null, insertSpecialNote = null;
             using (var transaction = db.BeginTransaction()) {
                 // Table structure
-                SQLiteHelper.CreateKeyValueTable(transaction, Names.Table_Main);
+                SQLiteHelper.CreateKeyValueTable(transaction, SldprojDbNames.Table_Main);
                 SQLiteHelper.CreateScoresTable(transaction);
-                SQLiteHelper.CreateKeyValueTable(transaction, Names.Table_ScoreSettings);
-                SQLiteHelper.CreateKeyValueTable(transaction, Names.Table_Metadata);
+                SQLiteHelper.CreateKeyValueTable(transaction, SldprojDbNames.Table_ScoreSettings);
+                SQLiteHelper.CreateKeyValueTable(transaction, SldprojDbNames.Table_Metadata);
                 SQLiteHelper.CreateBarParamsTable(transaction);
                 SQLiteHelper.CreateSpecialNotesTable(transaction);
 
                 // Main
-                SQLiteHelper.InsertValue(transaction, Names.Table_Main, Names.Field_MusicFileName, project.MusicFileName ?? string.Empty, ref setValue);
-                SQLiteHelper.InsertValue(transaction, Names.Table_Main, Names.Field_Version, project.Version.ToString(), ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_Main, SldprojDbNames.Field_MusicFileName, project.MusicFileName ?? string.Empty, ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_Main, SldprojDbNames.Field_Version, project.Version.ToString(), ref setValue);
 
                 // Notes
                 SQLiteHelper.InsertNoteID(transaction, StarlightID.Invalid, ref insertNoteID);
@@ -59,10 +59,10 @@ namespace StarlightDirector.Beatmap.IO {
 
                 // Score settings
                 var settings = project.Settings;
-                SQLiteHelper.InsertValue(transaction, Names.Table_ScoreSettings, Names.Field_GlobalBpm, settings.BeatPerMinute.ToString(CultureInfo.InvariantCulture), ref setValue);
-                SQLiteHelper.InsertValue(transaction, Names.Table_ScoreSettings, Names.Field_StartTimeOffset, settings.StartTimeOffset.ToString(CultureInfo.InvariantCulture), ref setValue);
-                SQLiteHelper.InsertValue(transaction, Names.Table_ScoreSettings, Names.Field_GlobalGridPerSignature, settings.GridPerSignature.ToString(), ref setValue);
-                SQLiteHelper.InsertValue(transaction, Names.Table_ScoreSettings, Names.Field_GlobalSignature, settings.Signature.ToString(), ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_ScoreSettings, SldprojDbNames.Field_GlobalBpm, settings.BeatPerMinute.ToString(CultureInfo.InvariantCulture), ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_ScoreSettings, SldprojDbNames.Field_StartTimeOffset, settings.StartTimeOffset.ToString(CultureInfo.InvariantCulture), ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_ScoreSettings, SldprojDbNames.Field_GlobalGridPerSignature, settings.GridPerSignature.ToString(), ref setValue);
+                SQLiteHelper.InsertValue(transaction, SldprojDbNames.Table_ScoreSettings, SldprojDbNames.Field_GlobalSignature, settings.Signature.ToString(), ref setValue);
 
                 // Bar params && Special notes
                 foreach (var difficulty in Difficulties) {

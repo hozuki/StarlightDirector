@@ -1,4 +1,6 @@
-﻿using System.Data.SQLite;
+﻿using System;
+using System.Data;
+using System.Data.SQLite;
 using System.IO;
 
 namespace StarlightDirector.Beatmap.IO {
@@ -19,8 +21,15 @@ namespace StarlightDirector.Beatmap.IO {
             try {
                 using (var db = new SQLiteConnection(csb.ToString())) {
                     db.Open();
-                    using (var queryVersion = new SQLiteCommand("SELECT value FROM main WHERE key = 'version';", db)) {
+                    using (var queryVersion = new SQLiteCommand("SELECT value FROM main WHERE key = @key;", db)) {
+                        queryVersion.Parameters.Add("key", DbType.AnsiString).Value = SldprojDbNames.Field_Version;
                         versionObject = queryVersion.ExecuteScalar();
+
+                        if (versionObject == DBNull.Value || versionObject == null) {
+                            // v0.2, 'vesion'
+                            queryVersion.Parameters["key"].Value = SldprojDbNames.Field_Vesion;
+                            versionObject = queryVersion.ExecuteScalar();
+                        }
                     }
                     db.Close();
                 }
@@ -32,15 +41,19 @@ namespace StarlightDirector.Beatmap.IO {
                 return 0;
             }
 
-            var versionString = (string)versionObject;
+            var versionString = versionObject != DBNull.Value ? (string)versionObject : null;
+            if (versionString == null) {
+                return 0;
+            }
             var fpVersion = double.Parse(versionString);
             int version;
             if (fpVersion < 1) {
-                version = (int)(fpVersion * 100);
+                version = (int)(fpVersion * 1000);
             } else {
                 version = (int)fpVersion;
             }
             switch (version) {
+                case ProjectVersion.V0_2:
                 case ProjectVersion.V0_3:
                 case ProjectVersion.V0_3_1:
                 case ProjectVersion.V0_4:
