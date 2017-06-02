@@ -29,6 +29,9 @@ namespace StarlightDirector.Beatmap.IO {
                             // v0.2, 'vesion'
                             queryVersion.Parameters["key"].Value = SldprojDbNames.Field_Vesion;
                             versionObject = queryVersion.ExecuteScalar();
+                            if (versionObject == DBNull.Value) {
+                                versionObject = "0.2";
+                            }
                         }
                     }
                     db.Close();
