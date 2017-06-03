@@ -12,6 +12,11 @@
 - [Nightly Build](https://ci.appveyor.com/api/projects/hozuki/starlightdirector/artifacts/sd-latest.zip)
 - [Releases](https://github.com/hozuki/StarlightDirector/releases)
 
+For those who want to view or play the beatmaps:
+
+- viewing: use [bmconv](https://github.com/OpenCGSS/bmconv/releases) to convert the beatmap to [Deleste](https://twitter.com/blueapple25130/status/859560616368812032) TXT format, then view in Deleste.
+- playing: build the beatmap (BDB) and music (ACB, via [DereTore](https://github.com/OpenCGSS/DereTore)), then use IdolProxy to play it in real game.
+
 ## What is this?
 
 The next generation of Starlight Director from [DereTore](https://github.com/OpenCGSS/DereTore). Starlight Director is the unofficial beatmap
@@ -41,7 +46,7 @@ Experience with rhythm games is suggested.
 
 ## Screenshot
 
-![Screenshot 23 May 2017](res/images/early_preview.png)
+![Screenshot 2017-06-03](res/images/screenshot.png)
 
 ## License
 
