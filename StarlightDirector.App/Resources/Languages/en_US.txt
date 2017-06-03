@@ -104,7 +104,7 @@ ui.fmain.menu.help.about.text=&About
 # ---
 
 ui.fmain.frame.standard.text=Standard
-ui.fmain.frame.edit_view.text=Edit & View
+ui.fmain.frame.edit_view.text=Edit && View
 ui.fmain.frame.note.text=Note
 ui.fmain.frame.measure.text=Measure
 ui.fmain.frame.postprocessing.text=Postprocessing
