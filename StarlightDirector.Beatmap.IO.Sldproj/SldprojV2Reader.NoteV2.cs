@@ -2,7 +2,7 @@
 using Newtonsoft.Json;
 using StarlightDirector.Core;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
     partial class SldprojV2Reader {
 
         private sealed class NoteV2 {

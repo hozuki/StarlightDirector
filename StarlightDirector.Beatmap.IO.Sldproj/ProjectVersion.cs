@@ -1,4 +1,4 @@
-﻿namespace StarlightDirector.Beatmap.IO {
+﻿namespace StarlightDirector.Beatmap.IO.Sldproj {
     public static class ProjectVersion {
 
         public const int Unknown = 0;

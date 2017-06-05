@@ -6,10 +6,10 @@ using System.Text;
 using Newtonsoft.Json;
 using StarlightDirector.Beatmap.Extensions;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
     public sealed partial class SldprojV2Reader : ProjectReader {
 
-        public override Project ReadProject(string fileName) {
+        public override Project ReadProject(string fileName, object state) {
             var fileInfo = new FileInfo(fileName);
             if (!fileInfo.Exists) {
                 throw new IOException($"File '{fileName}' does not exist.");

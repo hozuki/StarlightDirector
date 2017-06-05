@@ -2,8 +2,8 @@
 using System.Data;
 using System.Data.SQLite;
 
-namespace StarlightDirector.Beatmap.IO {
-    partial class SldprojV4Reader {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
+    partial class SldprojV3Reader {
 
         private static class SQLiteHelper {
 

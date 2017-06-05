@@ -1,4 +1,4 @@
-﻿namespace StarlightDirector.Beatmap.IO {
+﻿namespace StarlightDirector.Beatmap.IO.Sldproj {
     internal static class SldprojDbNames {
 
         public static readonly string Table_Main = "main";

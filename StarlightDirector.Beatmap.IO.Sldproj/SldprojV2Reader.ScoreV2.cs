@@ -3,7 +3,7 @@ using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
     partial class SldprojV2Reader {
 
         [JsonObject(NamingStrategyType = typeof(CamelCaseNamingStrategy), MemberSerialization = MemberSerialization.OptIn)]

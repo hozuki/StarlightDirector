@@ -1,7 +1,7 @@
 ﻿using System.Collections.Specialized;
 using System.Data.SQLite;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
     partial class SldprojV2Reader {
 
         private static class SQLiteHelper {

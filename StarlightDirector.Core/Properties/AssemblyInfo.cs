@@ -37,3 +37,4 @@ using System.Runtime.InteropServices;
 
 [assembly: InternalsVisibleTo("StarlightDirector.Beatmap")]
 [assembly: InternalsVisibleTo("StarlightDirector.Beatmap.IO")]
+[assembly: InternalsVisibleTo("StarlightDirector.Beatmap.IO.Sldproj")]

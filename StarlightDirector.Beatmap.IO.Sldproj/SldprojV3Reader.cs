@@ -5,11 +5,12 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using StarlightDirector.Beatmap.Extensions;
+using StarlightDirector.Core;
 
-namespace StarlightDirector.Beatmap.IO {
-    public sealed partial class SldprojV4Reader : ProjectReader {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
+    public sealed partial class SldprojV3Reader : ProjectReader {
 
-        public override Project ReadProject(string fileName) {
+        public override Project ReadProject(string fileName, object state) {
             var fileInfo = new FileInfo(fileName);
             if (!fileInfo.Exists) {
                 throw new IOException($"File '{fileName}' does not exist.");
@@ -45,7 +46,11 @@ namespace StarlightDirector.Beatmap.IO {
                 Debug.Print("WARNING: incorrect project version: {0}", projectVersionString);
                 fProjectVersion = ProjectVersion.Current;
             }
-            // 400 (v0.4)
+            // Values for v1 and v2 are 0.1 and 0.2.
+            // Values in new format are like 300 (v3) and 301 (v3.1).
+            if (fProjectVersion < 1) {
+                fProjectVersion *= 1000;
+            }
             var projectVersion = (int)fProjectVersion;
             // Keep project.Version property being the latest project version.
 
@@ -55,7 +60,7 @@ namespace StarlightDirector.Beatmap.IO {
                 ReadScore(db, score, projectVersion);
                 ResolveReferences(score);
                 FixSyncNotes(score);
-                FixSlideNoteFlickTypes(score);
+                FixSlideNotes(score);
                 project.SetScore(difficulty, score);
             }
 
@@ -96,19 +101,18 @@ namespace StarlightDirector.Beatmap.IO {
                 SQLiteHelper.ReadNotesTable(connection, score.Difficulty, table);
                 // v0.3.1: "note_type"
                 // Only flick existed when there is a flick-alike relation. Now, both flick and slide are possible.
+                var hasNoteTypeColumn = projectVersion == ProjectVersion.V0_3_1;
                 foreach (DataRow row in table.Rows) {
-                    var id = new Guid((byte[])row[SldprojDbNames.Column_ID]);
+                    var id = (int)(long)row[SldprojDbNames.Column_ID];
                     var barIndex = (int)(long)row[SldprojDbNames.Column_BarIndex];
                     var grid = (int)(long)row[SldprojDbNames.Column_IndexInGrid];
                     var start = (NotePosition)(long)row[SldprojDbNames.Column_StartPosition];
                     var finish = (NotePosition)(long)row[SldprojDbNames.Column_FinishPosition];
                     var flick = (NoteFlickType)(long)row[SldprojDbNames.Column_FlickType];
-                    var prevFlick = new Guid((byte[])row[SldprojDbNames.Column_PrevFlickNoteID]);
-                    var nextFlick = new Guid((byte[])row[SldprojDbNames.Column_NextFlickNoteID]);
-                    var prevSlide = new Guid((byte[])row[SldprojDbNames.Column_PrevSlideNoteID]);
-                    var nextSlide = new Guid((byte[])row[SldprojDbNames.Column_NextSlideNoteID]);
-                    var hold = new Guid((byte[])row[SldprojDbNames.Column_HoldTargetID]);
-                    var noteType = (NoteType)(long)row[SldprojDbNames.Column_NoteType];
+                    var prevFlick = (int)(long)row[SldprojDbNames.Column_PrevFlickNoteID];
+                    var nextFlick = (int)(long)row[SldprojDbNames.Column_NextFlickNoteID];
+                    var hold = (int)(long)row[SldprojDbNames.Column_HoldTargetID];
+                    var noteType = hasNoteTypeColumn ? (NoteType)(long)row[SldprojDbNames.Column_NoteType] : NoteType.TapOrFlick;
 
                     EnsureBarIndex(score, barIndex);
                     var bar = score.Bars[barIndex];
@@ -117,11 +121,9 @@ namespace StarlightDirector.Beatmap.IO {
                         note.Basic.StartPosition = start;
                         note.Basic.Type = noteType;
                         note.Basic.FlickType = flick;
-                        note.Temporary.PrevFlickNoteID = prevFlick;
-                        note.Temporary.NextFlickNoteID = nextFlick;
-                        note.Temporary.PrevSlideNoteID = prevSlide;
-                        note.Temporary.NextSlideNoteID = nextSlide;
-                        note.Temporary.HoldTargetID = hold;
+                        note.Temporary.PrevFlickNoteID = StarlightID.GetGuidFromInt32(prevFlick);
+                        note.Temporary.NextFlickNoteID = StarlightID.GetGuidFromInt32(nextFlick);
+                        note.Temporary.HoldTargetID = StarlightID.GetGuidFromInt32(hold);
                     } else {
                         Debug.Print("Note with ID '{0}' already exists.", id);
                     }
@@ -150,7 +152,7 @@ namespace StarlightDirector.Beatmap.IO {
             using (var table = new DataTable()) {
                 SQLiteHelper.ReadSpecialNotesTable(connection, score.Difficulty, table);
                 foreach (DataRow row in table.Rows) {
-                    var id = new Guid((byte[])row[SldprojDbNames.Column_ID]);
+                    var id = (int)(long)row[SldprojDbNames.Column_ID];
                     var barIndex = (int)(long)row[SldprojDbNames.Column_BarIndex];
                     var grid = (int)(long)row[SldprojDbNames.Column_IndexInGrid];
                     var type = (int)(long)row[SldprojDbNames.Column_NoteType];
@@ -167,6 +169,30 @@ namespace StarlightDirector.Beatmap.IO {
                         note.Params = NoteExtraParams.FromDataString(paramsString, note);
                     } else {
                         note.Params.UpdateByDataString(paramsString);
+                    }
+
+                    // 2017-04-27: Fix the f**king negative grid line problem.
+                    // But the unfixed version passed every test except the hit testing one, I don't know why. :(
+                    // It occurs in some projects saved by certain old versions. It could be caused by
+                    // incorrectly inserting variant BPM notes. But I don't know the definition of "incorrectly",
+                    // and these problematic projects can't be loaded even by the versions that created them.
+                    // I observed this behavior on v0.7.5, but I think it can also happen on any versions after
+                    // v0.5.0, in which the variant BPM note is introducted.
+                    if (note.Basic.Type == NoteType.VariantBpm) {
+                        var originalBar = bar;
+                        var newBar = originalBar;
+                        while (note.Basic.IndexInGrid < 0) {
+                            bar = score.Bars[barIndex];
+                            note.Basic.IndexInGrid += bar.GetNumberOfGrids();
+                            newBar = bar;
+                            --barIndex;
+                        }
+                        if (newBar != originalBar) {
+                            originalBar.RemoveSpecialNoteForVariantBpmFix(note);
+                            var newNote = newBar.AddSpecialNote(id, (NoteType)type);
+                            newNote.Basic.IndexInGrid = note.Basic.IndexInGrid;
+                            newNote.Params = note.Params;
+                        }
                     }
                 }
             }
@@ -197,12 +223,6 @@ namespace StarlightDirector.Beatmap.IO {
                 if (note.Temporary.PrevFlickNoteID != Guid.Empty) {
                     note.Editor.PrevFlick = score.FindNoteByID(note.Temporary.PrevFlickNoteID);
                 }
-                if (note.Temporary.NextSlideNoteID != Guid.Empty) {
-                    note.Editor.NextSlide = score.FindNoteByID(note.Temporary.NextSlideNoteID);
-                }
-                if (note.Temporary.PrevSlideNoteID != Guid.Empty) {
-                    note.Editor.PrevSlide = score.FindNoteByID(note.Temporary.PrevSlideNoteID);
-                }
                 if (note.Temporary.HoldTargetID != Guid.Empty) {
                     note.Editor.HoldPair = score.FindNoteByID(note.Temporary.HoldTargetID);
                 }
@@ -232,18 +252,21 @@ namespace StarlightDirector.Beatmap.IO {
             }
         }
 
-        // This problem appears in 1.1.0-1.1.4
-        // The problem treats all slide notes as flick notes, and incorrectly set their flick types.
-        private static void FixSlideNoteFlickTypes(Score score) {
-            var notes = score.GetAllNotes();
-            foreach (var note in notes) {
-                if (!note.Helper.IsSlide) {
-                    continue;
-                }
-                if (note.Helper.HasNextFlick) {
-                    note.Basic.FlickType = note.Editor.NextFlick.Basic.FinishPosition > note.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
-                } else {
-                    note.Basic.FlickType = NoteFlickType.None;
+        // Fix the design mistake in v0.3.1 projects: slide notes use flick note fields (next/prev & flick type).
+        private static void FixSlideNotes(Score score) {
+            foreach (var note in score.GetAllNotes()) {
+                if (note.Helper.IsSlide) {
+                    note.Editor.NextSlide = note.Editor.NextFlick;
+                    note.Editor.PrevSlide = note.Editor.PrevFlick;
+                    note.Editor.NextFlick = note.Editor.PrevFlick = null;
+                } else if (note.Helper.IsFlick) {
+                    if (note.Helper.HasPrevFlick && note.Editor.PrevFlick.Helper.IsSlide) {
+                        var prevFlick = note.Editor.PrevFlick;
+                        prevFlick.Editor.NextFlick = note;
+                        prevFlick.Editor.NextSlide = null;
+                        note.Editor.PrevSlide = prevFlick;
+                        note.Editor.PrevFlick = null;
+                    }
                 }
             }
         }

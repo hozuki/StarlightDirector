@@ -4,7 +4,7 @@ using System.IO;
 using System.Linq;
 using StarlightDirector.Core;
 
-namespace StarlightDirector.Beatmap.IO {
+namespace StarlightDirector.Beatmap.IO.Sldproj {
     public sealed partial class SldprojV4Writer : ProjectWriter {
 
         public override void WriteProject(Project project, string fileName) {

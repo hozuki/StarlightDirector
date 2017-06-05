@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的一般信息由以下
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("StarlightDirector.Beatmap")]
+[assembly: AssemblyTitle("StarlightDirector.Beatmap.IO.Sldproj")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("StarlightDirector.Beatmap")]
+[assembly: AssemblyProduct("StarlightDirector.Beatmap.IO.Sldproj")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("0120afcb-bcc7-408e-85d5-730ed81f0dd5")]
+[assembly: Guid("28397cdb-6417-44e3-9f27-06f8530b7192")]
 
 // 程序集的版本信息由下列四个值组成: 
 //
@@ -34,7 +34,3 @@ using System.Runtime.InteropServices;
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.0.0.0")]
 [assembly: AssemblyFileVersion("1.0.0.0")]
-
-[assembly: InternalsVisibleTo("StarlightDirector.Beatmap.IO")]
-[assembly: InternalsVisibleTo("StarlightDirector.Beatmap.IO.Sldproj")]
-[assembly: InternalsVisibleTo("StarlightDirector.UI.Controls")]

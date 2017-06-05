@@ -294,6 +294,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\StarlightDirector.Beatmap.IO.Sldproj\StarlightDirector.Beatmap.IO.Sldproj.csproj">
+      <Project>{28397cdb-6417-44e3-9f27-06f8530b7192}</Project>
+      <Name>StarlightDirector.Beatmap.IO.Sldproj</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StarlightDirector.Beatmap.IO\StarlightDirector.Beatmap.IO.csproj">
       <Project>{1118B117-D3C3-410A-A8F9-99E415CDE10A}</Project>
       <Name>StarlightDirector.Beatmap.IO</Name>

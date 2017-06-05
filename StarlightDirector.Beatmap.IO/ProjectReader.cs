@@ -1,7 +1,7 @@
 ﻿namespace StarlightDirector.Beatmap.IO {
     public abstract class ProjectReader {
 
-        public abstract Project ReadProject(string fileName);
+        public abstract Project ReadProject(string fileName, object state);
 
     }
 }

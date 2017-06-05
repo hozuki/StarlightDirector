@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.6
+VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.App", "StarlightDirector.App\StarlightDirector.App.csproj", "{4EEFE73A-5D37-471F-A26E-7E47B5B7D34D}"
 EndProject
@@ -28,6 +28,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Commanding", "StarlightDirector.Commanding\StarlightDirector.Commanding.csproj", "{0C1FA43E-89EB-45BD-B4DD-268B8FBC6305}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Previewing.Audio", "StarlightDirector.Previewing.Audio\StarlightDirector.Previewing.Audio.csproj", "{F025414B-54AB-4E52-AA58-28637F6150F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Beatmap.IO.Sldproj", "StarlightDirector.Beatmap.IO.Sldproj\StarlightDirector.Beatmap.IO.Sldproj.csproj", "{28397CDB-6417-44E3-9F27-06F8530B7192}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +69,10 @@ Global
 		{F025414B-54AB-4E52-AA58-28637F6150F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F025414B-54AB-4E52-AA58-28637F6150F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F025414B-54AB-4E52-AA58-28637F6150F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28397CDB-6417-44E3-9F27-06F8530B7192}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28397CDB-6417-44E3-9F27-06F8530B7192}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28397CDB-6417-44E3-9F27-06F8530B7192}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28397CDB-6417-44E3-9F27-06F8530B7192}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

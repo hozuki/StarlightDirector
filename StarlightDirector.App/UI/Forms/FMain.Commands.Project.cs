@@ -3,6 +3,7 @@ using System.IO;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.IO;
+using StarlightDirector.Beatmap.IO.Sldproj;
 using StarlightDirector.Commanding;
 using StarlightDirector.Core;
 
@@ -50,7 +51,7 @@ namespace StarlightDirector.App.UI.Forms {
                         return;
                 }
             }
-            var project = reader.ReadProject(openFileDialog.FileName);
+            var project = reader.ReadProject(openFileDialog.FileName, null);
             visualizer.Editor.Project = project;
             UpdateUIIndications();
         }
