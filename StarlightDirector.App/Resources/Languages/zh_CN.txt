@@ -157,6 +157,8 @@ ui.fmain.context.note.delete_special=删除特殊音符(&D)
 ui.fbeatmapsettings.text=谱面设置
 ui.fbeatmapsettings.label.bpm.text=BPM:
 ui.fbeatmapsettings.label.score_offset.text=谱面偏移(秒):
+ui.fbeatmapsettings.button.one_measure_more.text=+
+ui.fbeatmapsettings.button.one_measure_less.text=-
 ui.fbeatmapsettings.button.ok.text=确定
 ui.fbeatmapsettings.button.cancel.text=取消
 

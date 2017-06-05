@@ -23,21 +23,20 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.txtBPM = new System.Windows.Forms.TextBox();
             this.txtMusicOffset = new System.Windows.Forms.TextBox();
             this.btnOK = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.errProvider = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).BeginInit();
+            this.btnOneMeasureMore = new System.Windows.Forms.Button();
+            this.btnOneMeasureLess = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(26, 30);
+            this.label1.Location = new System.Drawing.Point(23, 29);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(110, 17);
             this.label1.TabIndex = 0;
@@ -46,7 +45,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(26, 62);
+            this.label2.Location = new System.Drawing.Point(23, 61);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 17);
             this.label2.TabIndex = 1;
@@ -54,21 +53,21 @@
             // 
             // txtBPM
             // 
-            this.txtBPM.Location = new System.Drawing.Point(157, 27);
+            this.txtBPM.Location = new System.Drawing.Point(154, 26);
             this.txtBPM.Name = "txtBPM";
-            this.txtBPM.Size = new System.Drawing.Size(131, 23);
+            this.txtBPM.Size = new System.Drawing.Size(91, 23);
             this.txtBPM.TabIndex = 2;
             // 
             // txtMusicOffset
             // 
-            this.txtMusicOffset.Location = new System.Drawing.Point(157, 59);
+            this.txtMusicOffset.Location = new System.Drawing.Point(154, 58);
             this.txtMusicOffset.Name = "txtMusicOffset";
-            this.txtMusicOffset.Size = new System.Drawing.Size(131, 23);
+            this.txtMusicOffset.Size = new System.Drawing.Size(91, 23);
             this.txtMusicOffset.TabIndex = 3;
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(102, 104);
+            this.btnOK.Location = new System.Drawing.Point(99, 103);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
             this.btnOK.TabIndex = 4;
@@ -78,16 +77,30 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(198, 104);
+            this.btnCancel.Location = new System.Drawing.Point(195, 103);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 5;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = true;
             // 
-            // errProvider
+            // btnOneMeasureMore
             // 
-            this.errProvider.ContainerControl = this;
+            this.btnOneMeasureMore.Location = new System.Drawing.Point(251, 58);
+            this.btnOneMeasureMore.Name = "btnOneMeasureMore";
+            this.btnOneMeasureMore.Size = new System.Drawing.Size(23, 23);
+            this.btnOneMeasureMore.TabIndex = 6;
+            this.btnOneMeasureMore.Text = "+";
+            this.btnOneMeasureMore.UseVisualStyleBackColor = true;
+            // 
+            // btnOneMeasureLess
+            // 
+            this.btnOneMeasureLess.Location = new System.Drawing.Point(280, 58);
+            this.btnOneMeasureLess.Name = "btnOneMeasureLess";
+            this.btnOneMeasureLess.Size = new System.Drawing.Size(23, 23);
+            this.btnOneMeasureLess.TabIndex = 7;
+            this.btnOneMeasureLess.Text = "-";
+            this.btnOneMeasureLess.UseVisualStyleBackColor = true;
             // 
             // FBeatmapSettings
             // 
@@ -95,7 +108,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(324, 139);
+            this.ClientSize = new System.Drawing.Size(323, 139);
+            this.Controls.Add(this.btnOneMeasureLess);
+            this.Controls.Add(this.btnOneMeasureMore);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.txtMusicOffset);
@@ -110,7 +125,6 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Beatmap Settings";
-            ((System.ComponentModel.ISupportInitialize)(this.errProvider)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -124,6 +138,7 @@
         private System.Windows.Forms.TextBox txtMusicOffset;
         private System.Windows.Forms.Button btnOK;
         private System.Windows.Forms.Button btnCancel;
-        private System.Windows.Forms.ErrorProvider errProvider;
+        private System.Windows.Forms.Button btnOneMeasureLess;
+        private System.Windows.Forms.Button btnOneMeasureMore;
     }
 }

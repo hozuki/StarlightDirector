@@ -10,7 +10,7 @@
 - [ ] Beatmap graph generation
 - [ ] Customizable track number (for MLTD)
 - [ ] BPM analysis
-- [ ] Adjusting BPM by multiple measures
+- [x] Adjusting BPM by multiple measures
 
 ## Project
 

@@ -94,7 +94,7 @@ namespace StarlightDirector.App.UI.Forms {
             if (project == null) {
                 return;
             }
-            var (r, bpm, offset) = FBeatmapSettings.RequestInput(this, project.Settings);
+            var (r, bpm, offset) = FBeatmapSettings.RequestInput(this, project.Settings, visualizer.Editor.PrimaryBeatMode);
             if (r == DialogResult.Cancel) {
                 return;
             }

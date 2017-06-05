@@ -157,6 +157,8 @@ ui.fmain.context.note.delete_special=&Delete Special Note...
 ui.fbeatmapsettings.text=Beatmap Settings
 ui.fbeatmapsettings.label.bpm.text=Beat per minute:
 ui.fbeatmapsettings.label.score_offset.text=Score offset (sec):
+ui.fbeatmapsettings.button.one_measure_more.text=+
+ui.fbeatmapsettings.button.one_measure_less.text=-
 ui.fbeatmapsettings.button.ok.text=OK
 ui.fbeatmapsettings.button.cancel.text=Cancel
 

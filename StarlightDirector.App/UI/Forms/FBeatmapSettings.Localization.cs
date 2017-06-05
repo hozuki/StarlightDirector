@@ -12,6 +12,8 @@ namespace StarlightDirector.App.UI.Forms {
             manager.ApplyText(this, "ui.fbeatmapsettings.text");
             manager.ApplyText(label1, "ui.fbeatmapsettings.label.bpm.text");
             manager.ApplyText(label2, "ui.fbeatmapsettings.label.score_offset.text");
+            manager.ApplyText(btnOneMeasureMore, "ui.fbeatmapsettings.button.one_measure_more.text");
+            manager.ApplyText(btnOneMeasureLess, "ui.fbeatmapsettings.button.one_measure_less.text");
             manager.ApplyText(btnOK, "ui.fbeatmapsettings.button.ok.text");
             manager.ApplyText(btnCancel, "ui.fbeatmapsettings.button.cancel.text");
         }
