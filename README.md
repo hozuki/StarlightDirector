@@ -44,6 +44,10 @@ Experience with rhythm games is suggested.
 3. Open `StarlightDirector.sln` in Visual Studio (Visual Studio 2017 or later is required for supporting C# 7 syntax);
 4. Build the solution.
 
+## Translation
+
+You can find language files under `Resources/Languages` from the application's directory. Feel free to translate Starlight
+Director into your language. :D
 ## Screenshot
 
 ![Screenshot 2017-06-03](res/images/screenshot.png)
