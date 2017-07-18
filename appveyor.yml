@@ -6,6 +6,8 @@ branches:
     - master
 skip_tags: true
 image: Visual Studio 2017
+hosts:
+  api.nuget.org: 93.184.221.200
 platform:
   - Any CPU
 configuration:

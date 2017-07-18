@@ -46,8 +46,9 @@ Experience with rhythm games is suggested.
 
 ## Translation
 
-You can find language files under `Resources/Languages` from the application's directory. Feel free to translate Starlight
-Director into your language. :D
+You can find language files under [`Resources/Languages`](StarlightDirector.App/Resources/Languages) from the application's
+directory. Feel free to translate Starlight Director into your language. :D
+
 ## Screenshot
 
 ![Screenshot 2017-06-03](res/images/screenshot.png)
