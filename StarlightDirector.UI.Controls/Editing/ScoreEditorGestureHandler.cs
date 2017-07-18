@@ -184,26 +184,28 @@ namespace StarlightDirector.UI.Controls.Editing {
                         _visualizer.InformProjectModified();
                     }
 
-                    // Alt+Click on end hold to change its flick type.
-                    if (hit.HitAnyNote && hit.Note.Basic.Type == NoteType.TapOrFlick && hit.Note.Helper.IsHoldEnd) {
-                        var modifiers = Control.ModifierKeys;
-                        if (modifiers == Keys.Alt) {
-                            var flickType = hit.Note.Basic.FlickType;
-                            switch (flickType) {
-                                case NoteFlickType.None:
-                                    flickType = NoteFlickType.Left;
-                                    break;
-                                case NoteFlickType.Left:
-                                    flickType = NoteFlickType.Right;
-                                    break;
-                                case NoteFlickType.Right:
-                                    flickType = NoteFlickType.None;
-                                    break;
-                                default:
-                                    throw new ArgumentOutOfRangeException(nameof(flickType), flickType, null);
+                    // Alt+Click on end hold or end slide to change its flick type.
+                    if (hit.HitAnyNote) {
+                        if (hit.Note.Helper.IsHoldEnd || hit.Note.Helper.IsSlideEnd) {
+                            var modifiers = Control.ModifierKeys;
+                            if (modifiers == Keys.Alt) {
+                                var flickType = hit.Note.Basic.FlickType;
+                                switch (flickType) {
+                                    case NoteFlickType.None:
+                                        flickType = NoteFlickType.Left;
+                                        break;
+                                    case NoteFlickType.Left:
+                                        flickType = NoteFlickType.Right;
+                                        break;
+                                    case NoteFlickType.Right:
+                                        flickType = NoteFlickType.None;
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException(nameof(flickType), flickType, null);
+                                }
+                                hit.Note.Basic.FlickType = flickType;
+                                _visualizer.InformProjectModified();
                             }
-                            hit.Note.Basic.FlickType = flickType;
-                            _visualizer.InformProjectModified();
                         }
                     }
 

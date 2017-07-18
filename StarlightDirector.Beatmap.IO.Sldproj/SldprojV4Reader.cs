@@ -240,6 +240,12 @@ namespace StarlightDirector.Beatmap.IO.Sldproj {
                 if (!note.Helper.IsSlide) {
                     continue;
                 }
+
+                // 1.2.2: end slide can have a flick direction. (Nation Blue M+)
+                if (note.Helper.IsSlideEnd) {
+                    continue;
+                }
+
                 if (note.Helper.HasNextFlick) {
                     note.Basic.FlickType = note.Editor.NextFlick.Basic.FinishPosition > note.Basic.FinishPosition ? NoteFlickType.Right : NoteFlickType.Left;
                 } else {

@@ -259,6 +259,11 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         private void DrawSlideNote(D2DRenderContext context, Note note, float x, float y, float r, bool isMidway) {
+            if (note.Basic.FlickType != NoteFlickType.None) {
+                DrawFlickNote(context, note, x, y, r, note.Basic.FlickType);
+                return;
+            }
+
             DrawCommonNoteOutline(context, note, x, y, r);
 
             var fillColors = isMidway ? SlideNoteShapeFillOuterTranslucentColors : SlideNoteShapeFillOuterColors;
