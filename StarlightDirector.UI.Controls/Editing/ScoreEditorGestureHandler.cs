@@ -184,11 +184,11 @@ namespace StarlightDirector.UI.Controls.Editing {
                         _visualizer.InformProjectModified();
                     }
 
-                    // Alt+Click on end hold or end slide to change its flick type.
                     if (hit.HitAnyNote) {
-                        if (hit.Note.Helper.IsHoldEnd || hit.Note.Helper.IsSlideEnd) {
-                            var modifiers = Control.ModifierKeys;
-                            if (modifiers == Keys.Alt) {
+                        var modifiers = Control.ModifierKeys;
+                        if (modifiers == Keys.Alt) {
+                            if (hit.Note.Helper.IsHoldEnd || hit.Note.Helper.IsSlideEnd) {
+                                // Alt+Click on end hold or end slide to change its flick type.
                                 var flickType = hit.Note.Basic.FlickType;
                                 switch (flickType) {
                                     case NoteFlickType.None:
@@ -199,6 +199,22 @@ namespace StarlightDirector.UI.Controls.Editing {
                                         break;
                                     case NoteFlickType.Right:
                                         flickType = NoteFlickType.None;
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException(nameof(flickType), flickType, null);
+                                }
+                                hit.Note.Basic.FlickType = flickType;
+                                _visualizer.InformProjectModified();
+                            } else if (hit.Note.Helper.IsFlickEnd) {
+                                // Alt+Click on end flick to change its flick type. Left / right only.
+                                // This can be used to make reversed flick. (Star!!, Master+)
+                                var flickType = hit.Note.Basic.FlickType;
+                                switch (flickType) {
+                                    case NoteFlickType.Left:
+                                        flickType = NoteFlickType.Right;
+                                        break;
+                                    case NoteFlickType.Right:
+                                        flickType = NoteFlickType.Left;
                                         break;
                                     default:
                                         throw new ArgumentOutOfRangeException(nameof(flickType), flickType, null);
