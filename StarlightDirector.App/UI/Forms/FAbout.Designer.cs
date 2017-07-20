@@ -25,8 +25,8 @@
         private void InitializeComponent() {
             this.btnClose = new System.Windows.Forms.Button();
             this.lblAbout = new TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel();
+            this.label1 = new System.Windows.Forms.LinkLabel();
             this.picAnimation = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picAnimation)).BeginInit();
             this.SuspendLayout();
             // 
@@ -48,35 +48,38 @@
             this.lblAbout.IsContextMenuEnabled = false;
             this.lblAbout.Location = new System.Drawing.Point(10, 10);
             this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(507, 329);
+            this.lblAbout.Size = new System.Drawing.Size(553, 329);
             this.lblAbout.TabIndex = 1;
             this.lblAbout.Text = null;
             this.lblAbout.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
             this.lblAbout.UseGdiPlusTextRendering = true;
             // 
-            // picAnimation
-            // 
-            this.picAnimation.Location = new System.Drawing.Point(153, 74);
-            this.picAnimation.Name = "picAnimation";
-            this.picAnimation.Size = new System.Drawing.Size(204, 204);
-            this.picAnimation.TabIndex = 2;
-            this.picAnimation.TabStop = false;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(150, 281);
+            this.label1.LinkArea = new System.Windows.Forms.LinkArea(9, 58);
+            this.label1.Location = new System.Drawing.Point(130, 286);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(364, 17);
-            this.label1.TabIndex = 3;
+            this.label1.Size = new System.Drawing.Size(368, 21);
+            this.label1.TabIndex = 7;
+            this.label1.TabStop = true;
             this.label1.Text = "GIF from http://deremas.doorblog.jp/archives/33091887.html";
+            this.label1.UseCompatibleTextRendering = true;
+            // 
+            // picAnimation
+            // 
+            this.picAnimation.Location = new System.Drawing.Point(188, 53);
+            this.picAnimation.Name = "picAnimation";
+            this.picAnimation.Size = new System.Drawing.Size(204, 204);
+            this.picAnimation.TabIndex = 6;
+            this.picAnimation.TabStop = false;
             // 
             // FAbout
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnClose;
-            this.ClientSize = new System.Drawing.Size(529, 380);
+            this.ClientSize = new System.Drawing.Size(575, 380);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.picAnimation);
             this.Controls.Add(this.btnClose);
@@ -99,7 +102,7 @@
 
         private System.Windows.Forms.Button btnClose;
         private TheArtOfDev.HtmlRenderer.WinForms.HtmlPanel lblAbout;
+        private System.Windows.Forms.LinkLabel label1;
         private System.Windows.Forms.PictureBox picAnimation;
-        private System.Windows.Forms.Label label1;
     }
 }

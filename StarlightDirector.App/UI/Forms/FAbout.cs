@@ -33,12 +33,31 @@ namespace StarlightDirector.App.UI.Forms {
             Load -= FAbout_Load;
             lblAbout.DoubleClick -= LblAbout_DoubleClick;
             picAnimation.DoubleClick -= PicAnimation_DoubleClick;
+            label1.LinkClicked -= Label1_LinkClicked;
         }
 
         private void RegisterEventHandlers() {
             Load += FAbout_Load;
             lblAbout.DoubleClick += LblAbout_DoubleClick;
             picAnimation.DoubleClick += PicAnimation_DoubleClick;
+            label1.LinkClicked += Label1_LinkClicked;
+        }
+
+        private void Label1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e) {
+            var linkStart = e.Link.Start;
+            var linkLength = e.Link.Length;
+            if (linkLength > label1.Text.Length - linkStart) {
+                linkLength = label1.Text.Length - linkStart;
+            }
+            var url = label1.Text.Substring(linkStart, linkLength);
+            var psi = new ProcessStartInfo(url) {
+                UseShellExecute = true
+            };
+            try {
+                Process.Start(psi);
+            } catch {
+                Debug.Print("Unable to open link.");
+            }
         }
 
         private void PicAnimation_DoubleClick(object sender, EventArgs e) {
@@ -72,7 +91,7 @@ namespace StarlightDirector.App.UI.Forms {
                 streamName = $"StarlightDirector.App.Resources.WebPages.About.{LanguageManager.Current.CodeName}.html";
             }
             Stream htmlStream = null;
-            var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
+            //var names = Assembly.GetExecutingAssembly().GetManifestResourceNames();
             try {
                 htmlStream = ApplicationHelper.GetResourceStream(streamName) ?? ApplicationHelper.GetResourceStream(DefaultAboutPageStreamName);
                 using (var reader = new StreamReader(htmlStream)) {
