@@ -33,7 +33,7 @@ for maintaing the old version.
 
 ##  Usage
 
-Experience with rhythm games is suggested.
+Experience with rhythm games is strongly recommended, so you can know whether players are able to play your beatmap or not.
 
 [使用说明（部分完成）](StarlightDirector.App/Resources/Docs/Help.md)
 
