@@ -112,6 +112,19 @@ namespace StarlightDirector.Beatmap.Extensions {
             bar.Editor.IsSelected = false;
         }
 
+        [DebuggerStepThrough]
+        public static Bar GetNextBar(this Bar bar) {
+            var index = bar.Basic.Index;
+            var score = bar.Basic.Score;
+            return index == score.Bars.Count - 1 ? null : score.Bars[index + 1];
+        }
+
+        [DebuggerStepThrough]
+        public static Bar GetPreviousBar(this Bar bar) {
+            var index = bar.Basic.Index;
+            return index == 0 ? null : bar.Basic.Score.Bars[index - 1];
+        }
+
         // TODO: refactor with ScoreExtensions.CalculateDuration().
         public static void UpdateStartTime(this Bar bar) {
             var score = bar.Basic.Score;

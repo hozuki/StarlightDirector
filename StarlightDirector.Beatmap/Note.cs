@@ -206,6 +206,9 @@ namespace StarlightDirector.Beatmap {
             return r == 0 ? TrackPositionComparison(x, y) : r;
         };
 
+        /// <summary>
+        /// Sort by timing. Notes appeared first are placed first.
+        /// </summary>
         public static readonly Comparison<Note> TimingComparison = (x, y) => {
             if (x == null) {
                 throw new ArgumentNullException(nameof(x));

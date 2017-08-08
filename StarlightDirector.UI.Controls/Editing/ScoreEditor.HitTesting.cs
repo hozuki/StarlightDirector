@@ -80,23 +80,6 @@ namespace StarlightDirector.UI.Controls.Editing {
                 }
                 var newUnit = unit * firstClearDrawnRatio;
 
-                // Locate the row.
-                var relativeY = -(y - barStartY);
-                var testRow = (int)((relativeY + config.NoteRadius) / newUnit);
-                if (testRow < 0) {
-                    break;
-                }
-                var testY = testRow * newUnit;
-                int row;
-                if (Math.Abs(relativeY - testY) < config.NoteRadius) {
-                    row = testRow;
-                } else if (Math.Abs(relativeY - (testY + newUnit)) < config.NoteRadius) {
-                    row = testRow + 1;
-                } else {
-                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
-                }
-                row *= firstClearDrawnRatio;
-
                 // Locate the column.
                 // Remember, gridArea is already adjusted.
                 var relativeGridX = x - gridArea.Left;
@@ -118,20 +101,113 @@ namespace StarlightDirector.UI.Controls.Editing {
                     }
                 }
 
-                // Hit any gaming note?
-                var note = bar.Notes.FirstOrDefault(n => n.Basic.IndexInGrid == row && (int)n.Basic.FinishPosition == col + 1);
+                // Y position of the hit, relative to start of this bar.
+                var relativeY = -(y - barStartY);
 
-                // Hit any special note?
-                if (note == null && hitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
-                    note = bar.Notes.FirstOrDefault(n => n.Helper.IsSpecial && n.Basic.IndexInGrid == row);
+                // List the gaming note in current column.
+                var possibleNotesInColumn = bar.Notes.Where(n => (int)n.Basic.FinishPosition == col + 1).ToList();
+
+                // Variables for row locating.
+                int testRow, row;
+                float testY;
+
+                // If no note is hit, follow the traditional algorithm to find if there is any hit on special notes.
+                if (possibleNotesInColumn.Count == 0) {
+                    // Locate the row.
+                    testRow = (int)((relativeY + config.NoteRadius) / newUnit);
+                    if (testRow < 0) {
+                        break;
+                    }
+                    testY = testRow * newUnit;
+                    if (Math.Abs(relativeY - testY) < config.NoteRadius) {
+                        row = testRow;
+                    } else if (Math.Abs(relativeY - (testY + newUnit)) < config.NoteRadius) {
+                        row = testRow + 1;
+                    } else {
+                        return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
+                    }
+                    row *= firstClearDrawnRatio;
+
+                    // Hit any gaming note?
+                    var note = bar.Notes.FirstOrDefault(n => n.Basic.IndexInGrid == row && (int)n.Basic.FinishPosition == col + 1);
+
+                    // Hit any special note?
+                    if (note == null && hitRegion == ScoreEditorHitRegion.SpecialNoteArea) {
+                        note = bar.Notes.FirstOrDefault(n => n.Helper.IsSpecial && n.Basic.IndexInGrid == row);
+                    }
+
+                    var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, note, row, col + 1);
+                    return result;
                 }
 
-                var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, note, row, col + 1);
-                return result;
+                // Otherwise, use the new algorithm to find a possible note in current column.
+                possibleNotesInColumn.Sort(Note.TimingComparison);
+
+                var noteRadius = config.NoteRadius;
+                for (var i = 0; i < possibleNotesInColumn.Count; ++i) {
+                    var currentNote = possibleNotesInColumn[i];
+                    var currentY = unit * currentNote.Basic.IndexInGrid;
+                    // Is the Y coordinate inside current note's region?
+                    if (currentY - noteRadius <= relativeY && relativeY <= currentY + noteRadius) {
+                        // We got a possible match!
+                        Note nextNote;
+                        float nextY;
+
+                        if (i < possibleNotesInColumn.Count - 1) {
+                            // The next note is in the same bar.
+                            nextNote = possibleNotesInColumn[i + 1];
+                            nextY = unit * nextNote.Basic.IndexInGrid;
+                        } else {
+                            // The next note is in the next bar, or...
+                            var nextBar = bar.GetNextBar();
+
+                            // it is too far away (then ignore it, we found a match).
+                            if (nextBar == null || nextBar.Notes.Count == 0) {
+                                var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, currentNote, currentNote.Basic.IndexInGrid, col + 1);
+                                return result;
+                            }
+
+                            var notesOnSameColumnInNextBar = nextBar.Notes.Where(n => (int)n.Basic.FinishPosition == col + 1).ToList();
+                            notesOnSameColumnInNextBar.Sort(Note.TimingComparison);
+                            nextNote = notesOnSameColumnInNextBar.FirstOrDefault();
+                            if (nextNote == null) {
+                                // Also too far away. We've found a match.
+                                var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, currentNote, currentNote.Basic.IndexInGrid, col + 1);
+                                return result;
+                            }
+
+                            nextY = barHeight + unit * nextNote.Basic.IndexInGrid;
+                        }
+
+                        // Is the Y coordinate not overlapped by the next note (because the notes are drawn from bottom to top)?
+                        if (relativeY < nextY - noteRadius) {
+                            var result = new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, currentNote, currentNote.Basic.IndexInGrid, col + 1);
+                            return result;
+                        }
+                    }
+                }
+
+                // Locate the row. Again.
+                testRow = (int)((relativeY + config.NoteRadius) / newUnit);
+                if (testRow < 0) {
+                    break;
+                }
+                testY = testRow * newUnit;
+                if (Math.Abs(relativeY - testY) < config.NoteRadius) {
+                    row = testRow;
+                } else if (Math.Abs(relativeY - (testY + newUnit)) < config.NoteRadius) {
+                    row = testRow + 1;
+                } else {
+                    return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, -1, NotePosition.Default);
+                }
+                row *= firstClearDrawnRatio;
+
+                // Sorry, no can do. Maybe you hit the empty area.
+                return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, bar, null, row, col + 1);
             }
 
             return new ScoreEditorHitTestResult(new Point(x, y), hitRegion, null, null, -1, NotePosition.Default);
         }
-    }
 
+    }
 }
