@@ -121,7 +121,7 @@
             // 
             this.txtScrollingSpeed.Location = new System.Drawing.Point(132, 81);
             this.txtScrollingSpeed.Maximum = new decimal(new int[] {
-            10,
+            30,
             0,
             0,
             0});
