@@ -90,15 +90,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
         private D2DLinearGradientBrush _ribbonBrush;
 
         private static readonly Color[] RibbonColors = {
-            Color.FromArgb(RibbonAlpha, 255, 0, 0),
-            Color.FromArgb(RibbonAlpha, 255, 165, 0),
-            Color.FromArgb(RibbonAlpha, 255, 255, 0),
-            Color.FromArgb(RibbonAlpha, 0, 255, 0),
-            Color.FromArgb(RibbonAlpha, 0, 255, 255),
-            Color.FromArgb(RibbonAlpha, 0, 0, 255),
-            Color.FromArgb(RibbonAlpha, 43, 0, 255),
-            Color.FromArgb(RibbonAlpha, 87, 0, 255),
-            Color.FromArgb(RibbonAlpha, 255, 0, 0),
+            Color.FromArgb(0x7fffffff),
+            Color.FromArgb(unchecked((int)0xffffffff))
         };
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };

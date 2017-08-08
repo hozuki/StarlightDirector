@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using StarlightDirector.Beatmap;
+﻿using StarlightDirector.Beatmap;
 using StarlightDirector.UI.Rendering.Direct2D;
 
 namespace StarlightDirector.UI.Controls.Previewing {
