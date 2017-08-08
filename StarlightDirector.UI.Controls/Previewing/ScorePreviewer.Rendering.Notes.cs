@@ -84,6 +84,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                     case NoteType.Slide:
                         if (note.Helper.HasNextFlick || (note.Helper.IsSlideEnd && note.Basic.FlickType != NoteFlickType.None)) {
                             DrawFlickNote(context, now, note);
+                        } else if (note.Basic.FlickType != NoteFlickType.None) {
+                            DrawFlickNote(context, now, note);
                         } else {
                             DrawSlideNote(context, now, note);
                         }
@@ -233,7 +235,7 @@ namespace StarlightDirector.UI.Controls.Previewing {
             float x1 = NotesLayerUtils.GetNoteXPosition(context, now, note1),
                 y = NotesLayerUtils.GetNoteYPosition(context, now, note2),
                 x2 = NotesLayerUtils.GetNoteXPosition(context, now, note2);
-            float r = NotesLayerUtils.GetNoteRadius(now, note2);
+            var r = NotesLayerUtils.GetNoteRadius(now, note2);
             float xLeft = Math.Min(x1, x2), xRight = Math.Max(x1, x2);
             context.DrawLine(_syncLineStroke, xLeft + r, y, xRight - r, y);
         }
