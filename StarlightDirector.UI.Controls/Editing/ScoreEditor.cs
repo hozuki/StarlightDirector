@@ -26,7 +26,6 @@ namespace StarlightDirector.UI.Controls.Editing {
                     _project = value;
                     RecalcLayout();
                     UpdateBarStartTimeText();
-                    Invalidate();
                 }
             }
         }
@@ -41,7 +40,6 @@ namespace StarlightDirector.UI.Controls.Editing {
                     _difficulty = value;
                     RecalcLayout();
                     UpdateBarStartTimeText();
-                    Invalidate();
                 }
             }
         }

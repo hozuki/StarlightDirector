@@ -6,8 +6,13 @@ using StarlightDirector.Beatmap.Extensions;
 namespace StarlightDirector.UI.Controls.Editing {
     partial class ScoreEditor {
 
-        public void UpdateBarStartTimeText() {
+        public void UpdateBarStartTimes() {
             CurrentScore.UpdateAllStartTimes();
+        }
+
+        public void UpdateBarStartTimeText() {
+            UpdateBarStartTimes();
+            Invalidate();
         }
 
         public void ScrollToBar(int index) {

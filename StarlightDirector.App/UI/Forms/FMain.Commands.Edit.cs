@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using System.Windows.Forms;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Commanding;
 using StarlightDirector.UI.Controls.Editing;
 
@@ -94,19 +97,51 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdEditGoToMeasure_Executed(object sender, ExecutedEventArgs e) {
-            var (r, t) = FGoTo.RequestInput(this, 0, visualizer.Editor);
-        }
+            var score = visualizer.Editor.CurrentScore;
+            if (!score.HasAnyBar) {
+                return;
+            }
 
-        private void CmdEditGoToMeasure_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
-            e.CanExecute = false;
+            var (r, t) = FGoTo.RequestInput(this, 0, visualizer.Editor);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+
+            ExecuteCmdEditGoToMenuItems(score, (r, t));
         }
 
         private void CmdEditGoToTime_Executed(object sender, ExecutedEventArgs e) {
+            var score = visualizer.Editor.CurrentScore;
+            if (!score.HasAnyBar) {
+                return;
+            }
+
             var (r, t) = FGoTo.RequestInput(this, 1, visualizer.Editor);
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+
+            ExecuteCmdEditGoToMenuItems(score, (r, t));
         }
 
-        private void CmdEditGoToTime_QueryCanExecute(object sender, QueryCanExecuteEventArgs e) {
-            e.CanExecute = false;
+        private void ExecuteCmdEditGoToMenuItems(Score score, (DialogResult, object) value) {
+            var (_, t) = value;
+
+            if (t is int measureIndex) {
+                measureIndex -= 1;
+                visualizer.Editor.ScrollToBar(measureIndex);
+            } else if (t is TimeSpan time) {
+                var bar = score.Bars[0];
+                visualizer.Editor.UpdateBarStartTimes();
+                foreach (var b in score.Bars.Skip(1)) {
+                    if (b.Temporary.StartTime > time) {
+                        break;
+                    }
+                    bar = b;
+                }
+
+                visualizer.Editor.ScrollToBar(bar);
+            }
         }
 
         private readonly Command CmdEditUndo = CommandManager.CreateCommand("Ctrl+Z");

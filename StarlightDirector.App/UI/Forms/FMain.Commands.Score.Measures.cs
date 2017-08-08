@@ -14,7 +14,6 @@ namespace StarlightDirector.App.UI.Forms {
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreMeasureAppendMultiple_Executed(object sender, ExecutedEventArgs e) {
@@ -33,7 +32,6 @@ namespace StarlightDirector.App.UI.Forms {
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreMeasureInsert_Executed(object sender, ExecutedEventArgs e) {
@@ -66,7 +64,6 @@ namespace StarlightDirector.App.UI.Forms {
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreMeasureInsertMultiple_Executed(object sender, ExecutedEventArgs e) {
@@ -107,7 +104,6 @@ namespace StarlightDirector.App.UI.Forms {
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private void CmdScoreMeasureDelete_Executed(object sender, ExecutedEventArgs e) {
@@ -115,7 +111,6 @@ namespace StarlightDirector.App.UI.Forms {
             visualizer.RecalcLayout();
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private readonly Command CmdScoreMeasureAppend = CommandManager.CreateCommand();

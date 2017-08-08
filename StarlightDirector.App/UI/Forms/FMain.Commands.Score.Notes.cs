@@ -177,7 +177,6 @@ namespace StarlightDirector.App.UI.Forms {
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
 
             ctxScoreNoteInsertSpecial.DeleteParameter();
             ctxScoreNoteModifySpecial.DeleteParameter();
@@ -198,7 +197,6 @@ namespace StarlightDirector.App.UI.Forms {
             note.Params.NewBpm = newBpm;
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
 
             ctxScoreNoteInsertSpecial.DeleteParameter();
             ctxScoreNoteModifySpecial.DeleteParameter();
@@ -214,7 +212,6 @@ namespace StarlightDirector.App.UI.Forms {
             note.Basic.Bar.RemoveNote(note);
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
 
             ctxScoreNoteInsertSpecial.DeleteParameter();
             ctxScoreNoteModifySpecial.DeleteParameter();

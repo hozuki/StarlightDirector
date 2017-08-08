@@ -103,7 +103,6 @@ namespace StarlightDirector.App.UI.Forms {
             InformProjectModified();
             visualizer.RecalcLayout();
             visualizer.Editor.UpdateBarStartTimeText();
-            visualizer.Editor.Invalidate();
         }
 
         private void CmdProjectBeatmapStats_Executed(object sender, ExecutedEventArgs e) {
