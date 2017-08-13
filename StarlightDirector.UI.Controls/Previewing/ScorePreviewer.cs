@@ -48,7 +48,7 @@ namespace StarlightDirector.UI.Controls.Previewing {
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
-            _previewerRenderer.DisposeResources(context);
+            _previewerRenderer.DisposeResources();
         }
 
         private Score _score;

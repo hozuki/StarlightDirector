@@ -5,7 +5,7 @@ using StarlightDirector.UI.Rendering.Direct2D;
 namespace StarlightDirector.UI.Controls.Rendering {
     partial class ScorePreviewerRenderer {
 
-        internal void CreateResources(D2DRenderContext context) {
+        public void CreateResources(D2DRenderContext context) {
             _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), Definitions.NoteShapeStrokeWidth);
             _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), Definitions.NoteShapeStrokeWidth * 3);
             _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), Definitions.NoteShapeStrokeWidth);
@@ -33,7 +33,7 @@ namespace StarlightDirector.UI.Controls.Rendering {
             _ribbonBrush = new D2DLinearGradientBrush(context, new PointF(context.ClientSize.Height, 0), new PointF(0, context.ClientSize.Height), RibbonColors);
         }
 
-        internal void DisposeResources(D2DRenderContext context) {
+        public void DisposeResources() {
             _noteCommonStroke?.Dispose();
             _noteSelectedStroke?.Dispose();
             _tapNoteShapeStroke?.Dispose();

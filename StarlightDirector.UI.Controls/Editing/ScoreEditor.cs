@@ -16,6 +16,11 @@ namespace StarlightDirector.UI.Controls.Editing {
 
         public ScoreEditor() {
             _editorRenderer = new ScoreEditorRenderer();
+            Look.BarLineSpaceUnitChanged += Look_BarLineSpaceUnitChanged;
+        }
+
+        ~ScoreEditor() {
+            Look.BarLineSpaceUnitChanged -= Look_BarLineSpaceUnitChanged;
         }
 
         public event EventHandler<EventArgs> EditModeChanged;
@@ -121,7 +126,12 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         protected override void OnDisposeResources(D2DRenderContext context) {
-            _editorRenderer.DisposeResources(context);
+            _editorRenderer.DisposeResources();
+        }
+
+        private void Look_BarLineSpaceUnitChanged(object sender, EventArgs eventArgs) {
+            RecalcLayout();
+            Invalidate();
         }
 
         private void OnEditModeChanged(EventArgs e) {

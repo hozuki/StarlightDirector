@@ -7,7 +7,7 @@ using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
 namespace StarlightDirector.UI.Controls.Rendering {
     partial class ScoreEditorRenderer {
 
-        internal void CreateResources(D2DRenderContext context, Font controlFont) {
+        public void CreateResources(D2DRenderContext context, Font controlFont) {
             _barSelectedOutlinePen = new D2DPen(context, Color.White, 2);
             _barGridOutlinePen = new D2DPen(context, Color.Gray, 1);
             _barNormalGridPen = new D2DPen(context, Color.Gray, 1);
@@ -53,7 +53,7 @@ namespace StarlightDirector.UI.Controls.Rendering {
             _selectionRectStroke = new D2DPen(context, Color.White, 5);
         }
 
-        internal void DisposeResources(D2DRenderContext context) {
+        public void DisposeResources() {
             _barSelectedOutlinePen?.Dispose();
             _barNormalGridPen?.Dispose();
             _barPrimaryBeatPen?.Dispose();
