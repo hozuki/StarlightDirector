@@ -34,7 +34,7 @@ namespace StarlightDirector.UI.Controls.Editing {
                 return ScoreEditorHitTestResult.GetInvalidResult(x, y);
             }
 
-            var barArea = GetBarArea();
+            var barArea = ScoreEditorLayout.GetBarArea(Config, ClientSize);
             if (!barArea.Contains(x, y)) {
                 return ScoreEditorHitTestResult.GetInvalidResult(x, y);
             }
@@ -52,7 +52,7 @@ namespace StarlightDirector.UI.Controls.Editing {
                 hitRegion = ScoreEditorHitRegion.SpecialNoteArea;
             }
 
-            var gridArea = GetGridArea();
+            var gridArea = ScoreEditorLayout.GetGridArea(config, ClientSize);
             var columnWidth = gridArea.Width / (config.NumberOfColumns - 1);
 
             var barStartY = (float)ScrollOffsetY;
@@ -60,8 +60,8 @@ namespace StarlightDirector.UI.Controls.Editing {
                 return ScoreEditorHitTestResult.GetInvalidResult(x, y);
             }
 
-            var unit = BarLineSpaceUnit;
-            var spaceUnitRatio = SpaceUnitRadiusRatio;
+            var unit = Look.BarLineSpaceUnit;
+            var spaceUnitRatio = ScoreEditorLayout.SpaceUnitRadiusRatio;
             foreach (var bar in score.Bars) {
                 var numGrids = bar.GetNumberOfGrids();
                 var barHeight = numGrids * unit;
@@ -74,7 +74,7 @@ namespace StarlightDirector.UI.Controls.Editing {
                 }
 
                 // Calculate zooming compensation.
-                var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= config.NoteRadius * spaceUnitRatio);
+                var firstClearDrawnRatio = ScoreEditorLayout.BarZoomRatio.FirstOrDefault(i => unit * i >= config.NoteRadius * spaceUnitRatio);
                 if (firstClearDrawnRatio == 0) {
                     firstClearDrawnRatio = numGrids;
                 }

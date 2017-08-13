@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
+using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 
@@ -26,27 +27,70 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         public void ZoomIn(Point mouseLocation) {
-            var max = SpaceUnitRadiusRatio * Config.NoteRadius;
+            var max = ScoreEditorLayout.SpaceUnitRadiusRatio * Config.NoteRadius;
             var min = max / MaxNumberOfGrids;
-            var oldUnit = BarLineSpaceUnit;
+            var oldUnit = Look.BarLineSpaceUnit;
             var newUnit = oldUnit * ZoomScale;
             newUnit = newUnit.Clamp(min, max);
             Zoom(mouseLocation, oldUnit, newUnit);
         }
 
         public void ZoomOut(Point mouseLocation) {
-            var max = SpaceUnitRadiusRatio * Config.NoteRadius;
+            var max = ScoreEditorLayout.SpaceUnitRadiusRatio * Config.NoteRadius;
             var min = max / MaxNumberOfGrids;
-            var oldUnit = BarLineSpaceUnit;
+            var oldUnit = Look.BarLineSpaceUnit;
             var newUnit = oldUnit / ZoomScale;
             newUnit = newUnit.Clamp(min, max);
             Zoom(mouseLocation, oldUnit, newUnit);
         }
 
         public void ResetZoom(Point mouseLocation) {
-            var oldUnit = BarLineSpaceUnit;
-            var newUnit = DefaultBarLineSpaceUnit;
+            var oldUnit = Look.BarLineSpaceUnit;
+            var newUnit = ScoreEditorLook.DefaultBarLineSpaceUnit;
             Zoom(mouseLocation, oldUnit, newUnit);
+        }
+
+        public void UpdateBarStartTimes() {
+            CurrentScore.UpdateAllStartTimes();
+        }
+
+        public void UpdateBarStartTimeText() {
+            UpdateBarStartTimes();
+            Invalidate();
+        }
+
+        public void ScrollToBar(int index) {
+            var score = CurrentScore;
+            if (score == null) {
+                return;
+            }
+            if (index < 0 || score.Bars.Count - 1 < index) {
+                return;
+            }
+            var bar = score.Bars[index];
+            ScrollToBar(bar);
+        }
+
+        public void ScrollToBar(Bar bar) {
+            var score = CurrentScore;
+            if (score == null || !score.Bars.Contains(bar)) {
+                return;
+            }
+
+            var estY = (float)score.Bars.Take(bar.Basic.Index).Sum(b => b.GetNumberOfGrids());
+            estY = estY * Look.BarLineSpaceUnit;
+            estY += ScrollBar.Minimum;
+            ScrollBar.Value = (int)estY;
+        }
+
+        internal void RecalcLayout() {
+            var scrollBar = ScrollBar;
+            if (scrollBar != null) {
+                var clientSize = ClientSize;
+                var expectedHeight = GetFullHeight();
+                scrollBar.Minimum = clientSize.Height / 2;
+                scrollBar.Maximum = clientSize.Height / 2 + (int)Math.Round(expectedHeight);
+            }
         }
 
         private bool Zoom(Point mouseLocation, float oldUnit, float newUnit) {
@@ -95,7 +139,7 @@ namespace StarlightDirector.UI.Controls.Editing {
             var newScrollOffset = (int)(prevBarHeight + (mouseLocation.Y - clientSize.Height / 2) + (float)clientSize.Height / 2);
 
             var anythingChanged = newScrollOffset != oldScrollOffset || !newHeight.Equals(oldHeight);
-            BarLineSpaceUnit = newUnit;
+            Look.BarLineSpaceUnit = newUnit;
             RecalcLayout();
             newScrollOffset = newScrollOffset.Clamp(ScrollBar.Minimum, ScrollBar.Maximum);
             ScrollBar.Value = newScrollOffset;

@@ -30,29 +30,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="JetBrains.Annotations, Version=10.4.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
-      <HintPath>..\packages\JetBrains.Annotations.10.4.0\lib\net\JetBrains.Annotations.dll</HintPath>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.3.1.1\lib\net45\SharpDX.dll</HintPath>
+    <Reference Include="SharpDX, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.4.0.1\lib\net45\SharpDX.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Desktop, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.Desktop.3.1.1\lib\net45\SharpDX.Desktop.dll</HintPath>
+    <Reference Include="SharpDX.Desktop, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Desktop.4.0.1\lib\net45\SharpDX.Desktop.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Direct2D1, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.Direct2D1.3.1.1\lib\net45\SharpDX.Direct2D1.dll</HintPath>
+    <Reference Include="SharpDX.Direct2D1, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct2D1.4.0.1\lib\net45\SharpDX.Direct2D1.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.Direct3D11, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.Direct3D11.3.1.1\lib\net45\SharpDX.Direct3D11.dll</HintPath>
+    <Reference Include="SharpDX.Direct3D11, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.Direct3D11.4.0.1\lib\net45\SharpDX.Direct3D11.dll</HintPath>
     </Reference>
-    <Reference Include="SharpDX.DXGI, Version=3.1.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
-      <HintPath>..\packages\SharpDX.DXGI.3.1.1\lib\net45\SharpDX.DXGI.dll</HintPath>
+    <Reference Include="SharpDX.DXGI, Version=4.0.1.0, Culture=neutral, PublicKeyToken=b4dcf0f35e5521f1, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpDX.DXGI.4.0.1\lib\net45\SharpDX.DXGI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.ValueTuple, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
@@ -75,6 +75,7 @@
     <Compile Include="Direct2D\Direct2DScene.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Editing\Definitions.cs" />
     <Compile Include="Editing\PrimaryBeatMode.cs" />
     <Compile Include="Editing\RegionSelectionMode.cs" />
     <Compile Include="Editing\ScoreEditMode.cs" />
@@ -84,25 +85,7 @@
     <Compile Include="Editing\ScoreEditor.Editing.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Editing\ScoreEditor.EditMode.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Editing\ScoreEditor.HitTesting.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Editing\ScoreEditor.Layout.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Editing\ScoreEditor.Rendering.Bars.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Editing\ScoreEditor.Rendering.Notes.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Editing\ScoreEditor.Rendering.Selection.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Editing\ScoreEditor.Resources.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Editing\ScoreEditor.Selection.cs">
@@ -114,26 +97,31 @@
     <Compile Include="Editing\ScoreEditorConfig.cs" />
     <Compile Include="Editing\ScoreEditorGestureHandler.cs" />
     <Compile Include="Editing\ScoreEditorGestureHandler.EditNote.cs" />
+    <Compile Include="Editing\ScoreEditorLayout.cs" />
     <Compile Include="Editing\ScoreEditorHitRegion.cs" />
     <Compile Include="Editing\ScoreEditorHitTestResult.cs" />
-    <Compile Include="Previewing\ConnectionType.cs" />
+    <Compile Include="Editing\ScoreEditorLook.cs" />
     <Compile Include="Previewing\Definitions.cs" />
     <Compile Include="Previewing\NoteLayerUtils.cs" />
-    <Compile Include="Previewing\OnStageStatus.cs" />
-    <Compile Include="Previewing\RibbonMesh.cs" />
+    <Compile Include="OnStageStatus.cs" />
+    <Compile Include="Rendering\FlickRibbonMesh.cs" />
+    <Compile Include="Rendering\HoldRibbonMesh.cs" />
+    <Compile Include="Rendering\RibbonMesh.cs" />
     <Compile Include="Previewing\ScorePreviewer.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Previewing\ScorePreviewer.Rendering.Avatars.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Previewing\ScorePreviewer.Rendering.Notes.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Previewing\ScorePreviewer.Rendering.Ribbons.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="Previewing\StageBoundary.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Bars.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Notes.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Resources.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Selection.cs" />
+    <Compile Include="Rendering\ScorePreviewerRenderer.Avatars.cs" />
+    <Compile Include="Rendering\ScorePreviewerRenderer.cs" />
+    <Compile Include="Rendering\ScorePreviewerRenderer.Notes.cs" />
+    <Compile Include="Rendering\ScorePreviewerRenderer.Resources.cs" />
+    <Compile Include="Rendering\ScorePreviewerRenderer.Ribbons.cs" />
+    <Compile Include="Rendering\SlideRibbonMesh.cs" />
     <Compile Include="ScoreVisualizer.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -180,9 +168,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Previewing\ScorePreviewer.Resources.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <EmbeddedResource Include="ScoreVisualizer.resx">
       <DependentUpon>ScoreVisualizer.cs</DependentUpon>
     </EmbeddedResource>

@@ -9,10 +9,10 @@ namespace StarlightDirector.UI.Controls.Editing {
 
         internal void UpdateNoteSelection(RegionSelectionMode selectionMode) {
             var rect = (RectangleF)SelectionRectangle;
-            var gridArea = GetGridArea();
             var config = Config;
+            var gridArea = ScoreEditorLayout.GetGridArea(config, ClientSize);
             var numColumns = config.NumberOfColumns;
-            var unit = BarLineSpaceUnit;
+            var unit = Look.BarLineSpaceUnit;
             var score = CurrentScore;
             var noteStartY = (float)ScrollOffsetY;
             foreach (var bar in score.Bars) {
@@ -23,8 +23,8 @@ namespace StarlightDirector.UI.Controls.Editing {
                             continue;
                         }
 
-                        var x = GetNotePositionX(note, gridArea, numColumns);
-                        var y = GetNotePositionY(note, unit, noteStartY);
+                        var x = ScoreEditorLayout.GetNotePositionX(note, gridArea, numColumns);
+                        var y = ScoreEditorLayout.GetNotePositionY(note, unit, noteStartY);
                         var selectionHit = rect.ContainsAdjusted(x, y);
 
                         if (selectionHit) {

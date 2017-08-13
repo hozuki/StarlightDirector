@@ -1,32 +1,30 @@
 ﻿using System;
-using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
+using StarlightDirector.UI.Controls.Editing;
 using StarlightDirector.UI.Rendering;
 using Pen = StarlightDirector.UI.Rendering.Pen;
 
-namespace StarlightDirector.UI.Controls.Editing {
-    partial class ScoreEditor {
+namespace StarlightDirector.UI.Controls.Rendering {
+    partial class ScoreEditorRenderer {
 
-        private void RenderBars(RenderContext context, Score score) {
-            var config = Config;
+        private void RenderBars(RenderContext context, Score score, ScoreEditorConfig config, ScoreEditorLook look, float barStartY) {
             var bars = score.Bars;
-            var primaryBeatMode = PrimaryBeatMode;
-            var gridArea = GetGridArea(context.ClientSize);
-            var barArea = GetBarArea(context.ClientSize);
-            var infoArea = GetInfoArea(context.ClientSize);
-            var barStartY = (float)ScrollOffsetY;
+            var primaryBeatMode = look.PrimaryBeatMode;
+            var gridArea = ScoreEditorLayout.GetGridArea(config, context.ClientSize);
+            var barArea = ScoreEditorLayout.GetBarArea(config, context.ClientSize);
+            var infoArea = ScoreEditorLayout.GetInfoArea(config, context.ClientSize);
 
-            var unit = BarLineSpaceUnit;
+            var unit = look.BarLineSpaceUnit;
             var noteRadius = config.NoteRadius;
             foreach (var bar in bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
-                var visible = IsBarVisible(barArea, barStartY, numberOfGrids, unit);
+                var visible = ScoreEditorLayout.IsBarVisible(barArea, barStartY, numberOfGrids, unit);
                 if (visible) {
                     RenderBarInfo(context, bar, infoArea, barStartY);
-                    RenderBarGrid(context, gridArea, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
+                    RenderBarGrid(context, gridArea, config, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
                     RenderBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
                 }
                 barStartY -= numberOfGrids * unit;
@@ -58,19 +56,19 @@ namespace StarlightDirector.UI.Controls.Editing {
             // y -- lineHeight;
         }
 
-        private void RenderBarGrid(RenderContext context, RectangleF gridArea, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
+        private void RenderBarGrid(RenderContext context, RectangleF gridArea, ScoreEditorConfig config, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
             // Vertical
             var verticalY1 = barStartY;
             var verticalY2 = barStartY - numberOfGrids * unit;
             var verticalPen = _barNormalGridPen;
-            var numColumns = Config.NumberOfColumns;
+            var numColumns = config.NumberOfColumns;
             for (var i = 0; i < numColumns; ++i) {
                 var x = gridArea.Left + gridArea.Width * i / (numColumns - 1);
                 context.DrawLine(verticalPen, x, verticalY1, x, verticalY2);
             }
 
             // Calculate zooming compensation.
-            var firstClearDrawnRatio = BarZoomRatio.FirstOrDefault(i => unit * i >= noteRadius * SpaceUnitRadiusRatio);
+            var firstClearDrawnRatio = ScoreEditorLayout.BarZoomRatio.FirstOrDefault(i => unit * i >= noteRadius * ScoreEditorLayout.SpaceUnitRadiusRatio);
             if (firstClearDrawnRatio == 0) {
                 firstClearDrawnRatio = numberOfGrids;
             }
@@ -133,7 +131,7 @@ namespace StarlightDirector.UI.Controls.Editing {
                     // 1/4 2/4 3/4 4/4 1/4 2/4 ...
                     var text = $"{visibleGridCounter}/{visibleGridsPerBeat}";
                     var textSize = context.MeasureText(text, _gridNumberFont);
-                    var textLeft = gridArea.Left - textSize.Width - GridNumberMargin;
+                    var textLeft = gridArea.Left - textSize.Width - ScoreEditorLayout.GridNumberMargin;
                     var textTop = currentY - textSize.Height / 2;
                     context.DrawText(text, textBrush, textFont, textLeft, textTop, textSize.Width, textSize.Height);
                     if (visibleGridCounter >= visibleGridsPerBeat) {
@@ -144,77 +142,6 @@ namespace StarlightDirector.UI.Controls.Editing {
                 }
             }
         }
-
-        private bool IsBarVisible(RectangleF barArea, float barStartY, float numberOfGrids, float unit) {
-            var barHeight = numberOfGrids * unit;
-            var visible = 0 <= barStartY && barStartY - barHeight <= barArea.Bottom;
-            return visible;
-        }
-
-        private bool IsBarHeadVisible(RectangleF barArea, float barStartY) {
-            var visible = 0 <= barStartY && barStartY <= barArea.Bottom;
-            return visible;
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetGridArea() {
-            return GetGridArea(ClientSize);
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetGridArea(SizeF clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth), 0, config.GridAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetInfoArea() {
-            return GetInfoArea(ClientSize);
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetInfoArea(SizeF clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.InfoAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetBarArea() {
-            return GetBarArea(ClientSize);
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetBarArea(SizeF clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.BarAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetBarArea(Size clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2, 0, config.BarAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetSpecialNoteArea() {
-            return GetSpecialNoteArea(ClientSize);
-        }
-
-        [DebuggerStepThrough]
-        private RectangleF GetSpecialNoteArea(SizeF clientSize) {
-            var config = Config;
-            var area = new RectangleF((clientSize.Width - config.BarAreaWidth) / 2 + (config.InfoAreaWidth + config.GridNumberAreaWidth + config.GridAreaWidth), 0, config.SpecialNotesAreaWidth, clientSize.Height);
-            return area;
-        }
-
-        private static readonly int[] BarZoomRatio = { 1, 2, 3, 4, 6, 8, 12, 16, 24, 32, 48, 96 };
-
-        private static readonly float GridNumberMargin = 22;
-        private static readonly float SpaceUnitRadiusRatio = 2.2f;
 
     }
 }

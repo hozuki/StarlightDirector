@@ -34,7 +34,7 @@ namespace StarlightDirector.App.UI.Forms {
                 item.Checked = bm == primaryBeatMode;
             }
 
-            visualizer.Editor.PrimaryBeatMode = primaryBeatMode;
+            visualizer.Editor.Look.PrimaryBeatMode = primaryBeatMode;
             visualizer.Editor.Invalidate();
         }
 

@@ -1,8 +1,9 @@
 ﻿using StarlightDirector.Beatmap;
+using StarlightDirector.UI.Controls.Previewing;
 using StarlightDirector.UI.Rendering.Direct2D;
 
-namespace StarlightDirector.UI.Controls.Previewing {
-    partial class ScorePreviewer {
+namespace StarlightDirector.UI.Controls.Rendering {
+    partial class ScorePreviewerRenderer {
 
         private void DrawHoldRibbon(D2DRenderContext context, double now, Note startNote, Note endNote) {
             OnStageStatus s1 = NotesLayerUtils.GetNoteOnStageStatus(startNote, now), s2 = NotesLayerUtils.GetNoteOnStageStatus(endNote, now);
@@ -10,7 +11,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 return;
             }
 
-            var mesh = new RibbonMesh(context, startNote, endNote, now, ConnectionType.Hold);
+            var mesh = new HoldRibbonMesh(context, startNote, endNote, now);
+            mesh.Initialize();
             mesh.Fill(_ribbonBrush);
         }
 
@@ -20,7 +22,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 return;
             }
             if (!NotesLayerUtils.IsNoteComing(startNote, now) && !NotesLayerUtils.IsNotePassed(endNote, now)) {
-                var mesh = new RibbonMesh(context, startNote, endNote, now, ConnectionType.Slide);
+                var mesh = new SlideRibbonMesh(context, startNote, endNote, now);
+                mesh.Initialize();
                 mesh.Fill(_ribbonBrush);
             }
         }
@@ -31,7 +34,8 @@ namespace StarlightDirector.UI.Controls.Previewing {
                 return;
             }
 
-            var mesh = new RibbonMesh(context, startNote, endNote, now, ConnectionType.Flick);
+            var mesh = new FlickRibbonMesh(context, startNote, endNote, now);
+            mesh.Initialize();
             mesh.Fill(_ribbonBrush);
         }
 

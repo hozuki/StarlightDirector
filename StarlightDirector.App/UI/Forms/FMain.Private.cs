@@ -370,7 +370,7 @@ namespace StarlightDirector.App.UI.Forms {
             EditorSettingsManager.ApplyLanguageSettings();
 
             var editor = visualizer.Editor;
-            editor.IndicatorsVisible = settings.ShowNoteIndicators;
+            editor.Look.IndicatorsVisible = settings.ShowNoteIndicators;
             visualizer.InvertedScrolling = settings.InvertedScrolling;
             visualizer.ScrollingSpeed = settings.ScrollingSpeed;
             editor.Invalidate();

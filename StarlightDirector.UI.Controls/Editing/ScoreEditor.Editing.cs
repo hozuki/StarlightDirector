@@ -248,13 +248,13 @@ namespace StarlightDirector.UI.Controls.Editing {
             }
             var clientSize = ClientSize;
             var bars = score.Bars;
-            var barArea = GetBarArea(clientSize);
+            var barArea = ScoreEditorLayout.GetBarArea(Config, clientSize);
             var barStartY = (float)ScrollOffsetY;
 
-            var unit = BarLineSpaceUnit;
+            var unit = Look.BarLineSpaceUnit;
             foreach (var bar in bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
-                var visible = IsBarVisible(barArea, barStartY, numberOfGrids, unit);
+                var visible = ScoreEditorLayout.IsBarVisible(barArea, barStartY, numberOfGrids, unit);
                 if (visible) {
                     return bar;
                 }
@@ -270,13 +270,13 @@ namespace StarlightDirector.UI.Controls.Editing {
             }
             var clientSize = ClientSize;
             var bars = score.Bars;
-            var barArea = GetBarArea(clientSize);
+            var barArea = ScoreEditorLayout.GetBarArea(Config, clientSize);
             var barStartY = (float)ScrollOffsetY;
 
-            var unit = BarLineSpaceUnit;
+            var unit = Look.BarLineSpaceUnit;
             foreach (var bar in bars) {
                 var numberOfGrids = bar.GetNumberOfGrids();
-                var visible = IsBarHeadVisible(barArea, barStartY);
+                var visible = ScoreEditorLayout.IsBarHeadVisible(barArea, barStartY);
                 if (visible) {
                     return bar;
                 }

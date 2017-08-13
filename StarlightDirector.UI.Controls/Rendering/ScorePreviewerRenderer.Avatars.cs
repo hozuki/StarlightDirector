@@ -1,9 +1,10 @@
 ﻿using StarlightDirector.Beatmap;
+using StarlightDirector.UI.Controls.Previewing;
 using StarlightDirector.UI.Rendering.Direct2D;
 using StarlightDirector.UI.Rendering.Extensions;
 
-namespace StarlightDirector.UI.Controls.Previewing {
-    partial class ScorePreviewer {
+namespace StarlightDirector.UI.Controls.Rendering {
+    partial class ScorePreviewerRenderer {
 
         private void RenderAvatars(D2DRenderContext context) {
             var clientSize = context.ClientSize;

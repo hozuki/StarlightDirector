@@ -8,13 +8,38 @@ using StarlightDirector.Beatmap;
 using StarlightDirector.Beatmap.Extensions;
 using StarlightDirector.Core;
 using StarlightDirector.UI.Controls.Direct2D;
+using StarlightDirector.UI.Controls.Rendering;
 using StarlightDirector.UI.Rendering.Direct2D;
 
 namespace StarlightDirector.UI.Controls.Editing {
     public sealed partial class ScoreEditor : Direct2DCanvas {
 
+        public ScoreEditor() {
+            _editorRenderer = new ScoreEditorRenderer();
+        }
+
+        public event EventHandler<EventArgs> EditModeChanged;
+
         [Browsable(false)]
         public ScrollBar ScrollBar { get; internal set; }
+
+        public int ScrollOffsetX { get; set; }
+
+        public int ScrollOffsetY {
+            [DebuggerStepThrough]
+            get => _scrollOffsetY;
+            internal set {
+                var scrollBar = ScrollBar;
+                if (scrollBar != null) {
+                    value = value.Clamp(scrollBar.Minimum, scrollBar.Maximum);
+                }
+                var b = value != _scrollOffsetY;
+                if (b) {
+                    _scrollOffsetY = value;
+                    Invalidate();
+                }
+            }
+        }
 
         [Browsable(false)]
         public Project Project {
@@ -52,40 +77,6 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         [Browsable(false)]
-        public int ScrollOffsetX { get; set; }
-
-        [Browsable(false)]
-        public int ScrollOffsetY {
-            [DebuggerStepThrough]
-            get => _scrollOffsetY;
-            internal set {
-                var scrollBar = ScrollBar;
-                if (scrollBar != null) {
-                    value = value.Clamp(scrollBar.Minimum, scrollBar.Maximum);
-                }
-                var b = value != _scrollOffsetY;
-                if (b) {
-                    _scrollOffsetY = value;
-                    Invalidate();
-                }
-            }
-        }
-
-        [Browsable(false)]
-        public float BarLineSpaceUnit {
-            [DebuggerStepThrough]
-            get => _barLineSpaceUnit;
-            set {
-                var b = !value.Equals(_barLineSpaceUnit);
-                if (b) {
-                    _barLineSpaceUnit = value;
-                    RecalcLayout();
-                    Invalidate();
-                }
-            }
-        }
-
-        [Browsable(false)]
         public ScoreEditMode EditMode {
             get => _editMode;
             set {
@@ -101,24 +92,19 @@ namespace StarlightDirector.UI.Controls.Editing {
         public NotePosition NoteStartPosition { get; set; }
 
         [Browsable(false)]
-        public bool IndicatorsVisible { get; set; } = true;
-
-        [Browsable(false)]
-        public PrimaryBeatMode PrimaryBeatMode { get; set; } = PrimaryBeatMode.EveryFourBeats;
-
-        [Browsable(false)]
         public ScoreEditorConfig Config { get; } = new ScoreEditorConfig();
+
+        [Browsable(false)]
+        public ScoreEditorLook Look { get; } = new ScoreEditorLook();
 
         public float GetFullHeight() {
             var score = CurrentScore;
             if (score == null) {
                 return 0;
             }
-            var height = score.Bars.Sum(bar => BarLineSpaceUnit * bar.GetNumberOfGrids());
+            var look = Look;
+            var height = score.Bars.Sum(bar => look.BarLineSpaceUnit * bar.GetNumberOfGrids());
             return height;
-        }
-
-        internal ScoreEditor() {
         }
 
         protected override void OnClientSizeChanged(EventArgs e) {
@@ -127,27 +113,30 @@ namespace StarlightDirector.UI.Controls.Editing {
         }
 
         protected override void OnRender(D2DRenderContext context) {
-            var score = CurrentScore;
-            var hasAnyBar = score?.HasAnyBar ?? false;
-            if (hasAnyBar) {
-                RenderBars(context, score);
-            }
-            var hasAnyNote = score?.HasAnyNote ?? false;
-            if (hasAnyNote) {
-                RenderNotes(context, score);
-            }
-            RenderSelectionRectangle(context);
+            _editorRenderer.Render(context, CurrentScore, Config, Look, ScrollOffsetY, SelectionRectangle);
+        }
+
+        protected override void OnCreateResources(D2DRenderContext context) {
+            _editorRenderer.CreateResources(context, Font);
+        }
+
+        protected override void OnDisposeResources(D2DRenderContext context) {
+            _editorRenderer.DisposeResources(context);
+        }
+
+        private void OnEditModeChanged(EventArgs e) {
+            EditModeChanged?.Invoke(this, e);
         }
 
         // This is used for scaling. It can be different with signature*gps.
         private static readonly int MaxNumberOfGrids = 96;
 
-        private int _scrollOffsetY;
+
         private Project _project;
         private Difficulty _difficulty = Difficulty.Debut;
         private ScoreEditMode _editMode;
-        private static readonly float DefaultBarLineSpaceUnit = 7;
-        private float _barLineSpaceUnit = DefaultBarLineSpaceUnit;
+        private int _scrollOffsetY;
+        private readonly ScoreEditorRenderer _editorRenderer;
 
     }
 }

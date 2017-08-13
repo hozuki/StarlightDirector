@@ -1,11 +1,27 @@
-﻿using System.Drawing;
+﻿using System.Diagnostics;
+using System.Drawing;
+using StarlightDirector.UI.Controls.Editing;
 using StarlightDirector.UI.Rendering.Direct2D;
 using FontStyle = StarlightDirector.UI.Rendering.FontStyle;
 
-namespace StarlightDirector.UI.Controls.Previewing {
-    partial class ScorePreviewer {
+namespace StarlightDirector.UI.Controls.Rendering {
+    partial class ScoreEditorRenderer {
 
-        protected override void OnCreateResources(D2DRenderContext context) {
+        internal void CreateResources(D2DRenderContext context, Font controlFont) {
+            _barSelectedOutlinePen = new D2DPen(context, Color.White, 2);
+            _barGridOutlinePen = new D2DPen(context, Color.Gray, 1);
+            _barNormalGridPen = new D2DPen(context, Color.Gray, 1);
+            _barGridStartBeatPen = new D2DPen(context, Color.Red, 1);
+            _barPrimaryBeatPen = new D2DPen(context, Color.Yellow, 1);
+            _barSecondaryBeatPen = new D2DPen(context, Color.Violet, 1);
+
+            _gridNumberBrush = new D2DSolidBrush(context, Color.White);
+
+            _gridNumberFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, controlFont.SizeInPoints, FontStyle.Regular, 10);
+            _gridNumberBoldFont = new D2DFont(context.DirectWriteFactory, _gridNumberFont.FamilyName, _gridNumberFont.Size, FontStyle.Bold, _gridNumberFont.Weight);
+            _barInfoFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, controlFont.SizeInPoints * 1.5f, FontStyle.Regular, 10);
+            _barInfoBoldFont = new D2DFont(context.DirectWriteFactory, _barInfoFont.FamilyName, _barInfoFont.Size, FontStyle.Bold, _barInfoFont.Weight);
+
             _noteCommonStroke = new D2DPen(context, Color.FromArgb(0x22, 0x22, 0x22), Definitions.NoteShapeStrokeWidth);
             _noteSelectedStroke = new D2DPen(context, Color.FromArgb(0x7F, 0xFF, 0x7F), Definitions.NoteShapeStrokeWidth * 3);
             _tapNoteShapeStroke = new D2DPen(context, Color.FromArgb(0xFF, 0x33, 0x66), Definitions.NoteShapeStrokeWidth);
@@ -27,13 +43,31 @@ namespace StarlightDirector.UI.Controls.Previewing {
             _flickIndicatorBrush = new D2DSolidBrush(context, Color.FromArgb(0x88, 0xBB, 0xFF));
             _slideIndicatorBrush = new D2DSolidBrush(context, Color.FromArgb(0xE1, 0xA8, 0xFB));
 
-            _avatarFill = new D2DSolidBrush(context, Color.Black);
-            _avatarBorderStroke = new D2DPen(context, Color.White, 4);
+            _noteStartPositionFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, Definitions.StartPositionFontSize, FontStyle.Regular, 10);
 
-            _ribbonBrush = new D2DLinearGradientBrush(context, new PointF(context.ClientSize.Height, 0), new PointF(0, context.ClientSize.Height), RibbonColors);
+            _specialNoteStroke = new D2DPen(context, Color.FromArgb(0xAA, 0xAA, 0xAA), 2);
+            _specialNoteFill = new D2DSolidBrush(context, Color.FromArgb(0x7F, 0xAA, 0xAA, 0xAA));
+            _specialNoteTextBrush = new D2DSolidBrush(context, Color.White);
+            _specialNoteDescriptionFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, controlFont.SizeInPoints, FontStyle.Regular, 10);
+
+            _selectionRectStroke = new D2DPen(context, Color.White, 5);
         }
 
-        protected override void OnDisposeResources(D2DRenderContext context) {
+        internal void DisposeResources(D2DRenderContext context) {
+            _barSelectedOutlinePen?.Dispose();
+            _barNormalGridPen?.Dispose();
+            _barPrimaryBeatPen?.Dispose();
+            _barSecondaryBeatPen?.Dispose();
+            _barGridStartBeatPen?.Dispose();
+            _barGridOutlinePen?.Dispose();
+
+            _gridNumberBrush?.Dispose();
+
+            _gridNumberFont?.Dispose();
+            _gridNumberBoldFont?.Dispose();
+            _barInfoFont?.Dispose();
+            _barInfoBoldFont?.Dispose();
+
             _noteCommonStroke?.Dispose();
             _noteSelectedStroke?.Dispose();
             _tapNoteShapeStroke?.Dispose();
@@ -55,11 +89,36 @@ namespace StarlightDirector.UI.Controls.Previewing {
             _flickIndicatorBrush?.Dispose();
             _slideIndicatorBrush?.Dispose();
 
-            _avatarFill?.Dispose();
-            _avatarBorderStroke?.Dispose();
+            _noteStartPositionFont?.Dispose();
 
-            _ribbonBrush?.Dispose();
+            _specialNoteStroke?.Dispose();
+            _specialNoteFill?.Dispose();
+            _specialNoteTextBrush?.Dispose();
+            _specialNoteDescriptionFont?.Dispose();
+
+            _selectionRectStroke?.Dispose();
         }
+
+        [DebuggerStepThrough]
+        private static D2DLinearGradientBrush GetFillBrush(D2DRenderContext context, float x, float y, float r, Color[] colors) {
+            return new D2DLinearGradientBrush(context, new PointF(x, y - r), new PointF(x, y + r), colors);
+        }
+
+        // Bar resources
+
+        private D2DPen _barSelectedOutlinePen;
+        private D2DPen _barGridOutlinePen;
+        private D2DPen _barGridStartBeatPen;
+        private D2DPen _barPrimaryBeatPen;
+        private D2DPen _barSecondaryBeatPen;
+        private D2DPen _barNormalGridPen;
+
+        private D2DBrush _gridNumberBrush;
+
+        private D2DFont _gridNumberFont;
+        private D2DFont _gridNumberBoldFont;
+        private D2DFont _barInfoFont;
+        private D2DFont _barInfoBoldFont;
 
         // Note resources
 
@@ -84,23 +143,20 @@ namespace StarlightDirector.UI.Controls.Previewing {
         private D2DBrush _flickIndicatorBrush;
         private D2DBrush _slideIndicatorBrush;
 
-        private D2DBrush _avatarFill;
-        private D2DPen _avatarBorderStroke;
+        private D2DFont _noteStartPositionFont;
 
-        private D2DLinearGradientBrush _ribbonBrush;
+        private D2DPen _specialNoteStroke;
+        private D2DBrush _specialNoteFill;
+        private D2DBrush _specialNoteTextBrush;
+        private D2DFont _specialNoteDescriptionFont;
 
-        private static readonly Color[] RibbonColors = {
-            Color.FromArgb(0x7fffffff),
-            Color.FromArgb(unchecked((int)0xffffffff))
-        };
+        private D2DPen _selectionRectStroke;
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };
         private static readonly Color[] FlickNoteShapeFillOuterColors = { Color.FromArgb(0x88, 0xBB, 0xFF), Color.FromArgb(0x22, 0x55, 0xBB) };
         private static readonly Color[] SlideNoteShapeFillOuterColors = { Color.FromArgb(0xE1, 0xA8, 0xFB), Color.FromArgb(0xA5, 0x46, 0xDA) };
         private static readonly Color[] SlideNoteShapeFillOuterTranslucentColors = { Color.FromArgb(0x80, 0xE1, 0xA8, 0xFB), Color.FromArgb(0x80, 0xA5, 0x46, 0xDA) };
-
-        private const int RibbonAlpha = 63;
 
     }
 }
