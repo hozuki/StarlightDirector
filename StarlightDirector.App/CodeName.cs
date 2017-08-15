@@ -21,6 +21,46 @@ namespace StarlightDirector.App {
                             return "Mio";
                         case 7:
                             return "Miku";
+                        default:
+                            break;
+                    }
+                    break;
+                case 1:
+                    var v1List = new[] {
+                        "Riina",
+                        "Rika",
+                        "Chieri",
+                        // OMG they are all gone!
+                        "Mayu"
+                    };
+                    if (minor < v1List.Length) {
+                        return v1List[minor];
+                    }
+                    break;
+                default:
+                    break;
+            }
+            return "Mayu";
+        }
+
+        private static string GetCodeName_Obsolete(Version directorVersion) {
+            var major = directorVersion.Major;
+            var minor = directorVersion.Minor;
+            switch (major) {
+                case 0:
+                    switch (minor) {
+                        case 0:
+                        case 1:
+                        case 2:
+                        case 3:
+                        case 4:
+                            return "Uzuki";
+                        case 5:
+                            return "Rin";
+                        case 6:
+                            return "Mio";
+                        case 7:
+                            return "Miku";
                     }
                     break;
                 case 1:
