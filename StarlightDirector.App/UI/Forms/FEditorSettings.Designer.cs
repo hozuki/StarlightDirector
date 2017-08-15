@@ -37,15 +37,15 @@
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cboPreviewRenderMode = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtPreviewSpeed = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.txtPreviewSpeed = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cboPreviewRenderMode = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScrollingSpeed)).BeginInit();
             this.tabPages.SuspendLayout();
@@ -193,7 +193,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(312, 136);
+            this.tabPage1.Size = new System.Drawing.Size(331, 136);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Editor";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -216,26 +216,63 @@
             this.tabPage2.Text = "Preview";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // tabPage3
+            // button4
             // 
-            this.tabPage3.Controls.Add(this.cboLanguage);
-            this.tabPage3.Controls.Add(this.label3);
-            this.tabPage3.Location = new System.Drawing.Point(4, 26);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(312, 136);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Misc";
-            this.tabPage3.UseVisualStyleBackColor = true;
+            this.button4.Enabled = false;
+            this.button4.Location = new System.Drawing.Point(277, 45);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(32, 25);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "+1";
+            this.button4.UseVisualStyleBackColor = true;
             // 
-            // label4
+            // button3
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(92, 17);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Render Mode:";
+            this.button3.Enabled = false;
+            this.button3.Location = new System.Drawing.Point(126, 44);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(32, 25);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "-1";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(164, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 25);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Enabled = false;
+            this.button1.Location = new System.Drawing.Point(246, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 25);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // txtPreviewSpeed
+            // 
+            this.txtPreviewSpeed.Enabled = false;
+            this.txtPreviewSpeed.Location = new System.Drawing.Point(195, 46);
+            this.txtPreviewSpeed.Name = "txtPreviewSpeed";
+            this.txtPreviewSpeed.Size = new System.Drawing.Size(45, 23);
+            this.txtPreviewSpeed.TabIndex = 3;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Enabled = false;
+            this.label5.Location = new System.Drawing.Point(18, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Speed:";
             // 
             // cboPreviewRenderMode
             // 
@@ -246,57 +283,26 @@
             this.cboPreviewRenderMode.Size = new System.Drawing.Size(126, 25);
             this.cboPreviewRenderMode.TabIndex = 1;
             // 
-            // label5
+            // label4
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 49);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(48, 17);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "Speed:";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Render Mode:";
             // 
-            // txtPreviewSpeed
+            // tabPage3
             // 
-            this.txtPreviewSpeed.Location = new System.Drawing.Point(195, 46);
-            this.txtPreviewSpeed.Name = "txtPreviewSpeed";
-            this.txtPreviewSpeed.Size = new System.Drawing.Size(45, 23);
-            this.txtPreviewSpeed.TabIndex = 3;
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(246, 44);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(25, 25);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "+";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(164, 44);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(25, 25);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "-";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(126, 44);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(32, 25);
-            this.button3.TabIndex = 6;
-            this.button3.Text = "-1";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(277, 45);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(32, 25);
-            this.button4.TabIndex = 7;
-            this.button4.Text = "+1";
-            this.button4.UseVisualStyleBackColor = true;
+            this.tabPage3.Controls.Add(this.cboLanguage);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(331, 136);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Misc";
+            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // FEditorSettings
             // 
