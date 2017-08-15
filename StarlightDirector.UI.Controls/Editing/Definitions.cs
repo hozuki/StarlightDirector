@@ -12,6 +12,7 @@ namespace StarlightDirector.UI.Controls.Editing {
         public static readonly float SlideNoteStrikeHeightFactor = (float)4 / 30;
 
         public static readonly float StartPositionFontSize = 10;
+        public static readonly float TimeInfoFontSize = 12;
         public static readonly float IndicatorRadius = 4;
 
         public static readonly float SpecialNoteHeightFactor = 2 / 3f;

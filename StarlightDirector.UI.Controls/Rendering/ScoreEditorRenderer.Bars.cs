@@ -23,15 +23,17 @@ namespace StarlightDirector.UI.Controls.Rendering {
                 var numberOfGrids = bar.GetNumberOfGrids();
                 var visible = ScoreEditorLayout.IsBarVisible(barArea, barStartY, numberOfGrids, unit);
                 if (visible) {
-                    RenderBarInfo(context, bar, infoArea, barStartY);
-                    RenderBarGrid(context, gridArea, config, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
-                    RenderBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
+                    if (look.BarInfoTextVisible) {
+                        DrawBarInfoText(context, bar, infoArea, barStartY);
+                    }
+                    DrawBarGrid(context, gridArea, config, barStartY, numberOfGrids, unit, noteRadius, primaryBeatMode);
+                    DrawBarOutline(context, bar, barArea, barStartY, numberOfGrids, unit);
                 }
                 barStartY -= numberOfGrids * unit;
             }
         }
 
-        private void RenderBarOutline(RenderContext context, Bar bar, RectangleF barArea, float barStartY, int numberOfGrids, float unit) {
+        private void DrawBarOutline(RenderContext context, Bar bar, RectangleF barArea, float barStartY, int numberOfGrids, float unit) {
             if (!bar.Editor.IsSelected) {
                 return;
             }
@@ -40,7 +42,7 @@ namespace StarlightDirector.UI.Controls.Rendering {
             context.DrawRectangle(_barSelectedOutlinePen, rect);
         }
 
-        private void RenderBarInfo(RenderContext context, Bar bar, RectangleF infoArea, float barStartY) {
+        private void DrawBarInfoText(RenderContext context, Bar bar, RectangleF infoArea, float barStartY) {
             var textFont = _barInfoFont;
             var lineHeight = textFont.Size * 1.2f;
             var x = infoArea.Left + 2;
@@ -56,7 +58,7 @@ namespace StarlightDirector.UI.Controls.Rendering {
             // y -- lineHeight;
         }
 
-        private void RenderBarGrid(RenderContext context, RectangleF gridArea, ScoreEditorConfig config, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
+        private void DrawBarGrid(RenderContext context, RectangleF gridArea, ScoreEditorConfig config, float barStartY, int numberOfGrids, float unit, float noteRadius, PrimaryBeatMode primaryBeatMode) {
             // Vertical
             var verticalY1 = barStartY;
             var verticalY2 = barStartY - numberOfGrids * unit;
@@ -141,6 +143,16 @@ namespace StarlightDirector.UI.Controls.Rendering {
                     }
                 }
             }
+        }
+
+        private void DrawBarTimePreviewInfo(RenderContext context, RectangleF controlArea, TimeSpan now) {
+            var middle = controlArea.Height / 2;
+            context.DrawLine(_timeLineStroke, controlArea.Left, middle, controlArea.Right, middle);
+
+            var timeText = now.ToString("g");
+            var textSize = context.MeasureText(timeText, _timeInfoFont);
+            var timeTop = middle - textSize.Height;
+            context.DrawText(timeText, _timeInfoBrush, _timeInfoFont, controlArea.Left, timeTop);
         }
 
     }

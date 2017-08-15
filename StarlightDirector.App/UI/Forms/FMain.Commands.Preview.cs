@@ -55,6 +55,8 @@ namespace StarlightDirector.App.UI.Forms {
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
+            visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
+            visualizer.Previewer.SimulateEditor(visualizer.Editor);
             _lastSignalTime = DateTime.Now;
             _totalLiveTime = TimeSpan.FromSeconds(startTime);
             _liveMusicPlayer.CurrentTime = _totalLiveTime;
@@ -97,6 +99,8 @@ namespace StarlightDirector.App.UI.Forms {
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
+            visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
+            visualizer.Previewer.SimulateEditor(visualizer.Editor);
             _lastSignalTime = DateTime.Now;
             _totalLiveTime = TimeSpan.Zero;
             _liveMusicPlayer.CurrentTime = TimeSpan.Zero;

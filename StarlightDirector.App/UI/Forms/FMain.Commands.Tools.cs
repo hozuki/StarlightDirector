@@ -23,7 +23,7 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void CmdToolsSettings_Executed(object sender, ExecutedEventArgs e) {
-            var settings = EditorSettingsManager.CurrentSettings;
+            var settings = DirectorSettingsManager.CurrentSettings;
             var r = FEditorSettings.ChangeSettings(this, settings);
             if (r == DialogResult.Cancel) {
                 return;

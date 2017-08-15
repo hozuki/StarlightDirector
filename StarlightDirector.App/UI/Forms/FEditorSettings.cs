@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using StarlightDirector.Core;
+using StarlightDirector.UI.Controls.Previewing;
 
 namespace StarlightDirector.App.UI.Forms {
     public partial class FEditorSettings : Form {
 
-        public static DialogResult ChangeSettings(IWin32Window parent, EditorSettings settings) {
+        public static DialogResult ChangeSettings(IWin32Window parent, DirectorSettings settings) {
             using (var f = new FEditorSettings()) {
                 f._editorSettings = settings;
                 f.MonitorLocalizationChange();
@@ -43,6 +45,8 @@ namespace StarlightDirector.App.UI.Forms {
             s.InvertedScrolling = radInvertedScrollingOn.Checked;
             s.ShowNoteIndicators = chkShowNoteIndicators.Checked;
             s.ScrollingSpeed = (int)txtScrollingSpeed.Value;
+            s.PreviewRenderMode = (PreviewerRenderMode)cboPreviewRenderMode.SelectedIndex;
+            s.PreviewSpeed = Convert.ToSingle(txtPreviewSpeed.Text);
 
             if (cboLanguage.SelectedIndex == 0) {
                 s.Language = null;
@@ -51,7 +55,7 @@ namespace StarlightDirector.App.UI.Forms {
             }
 
             if (s.Language != _originalLanguage) {
-                EditorSettingsManager.ApplyLanguageSettings();
+                DirectorSettingsManager.ApplyLanguageSettings();
                 LocalizationHelper.Relocalize(LanguageManager.Current);
             }
 
@@ -59,14 +63,23 @@ namespace StarlightDirector.App.UI.Forms {
         }
 
         private void FEditorSettings_Load(object sender, EventArgs e) {
-            var directory = new DirectoryInfo(EditorSettingsManager.LanguagesPath);
+            var directory = new DirectoryInfo(DirectorSettingsManager.LanguagesPath);
             if (directory.Exists) {
-                var fileNames = Directory.EnumerateFiles(directory.FullName, "*" + EditorSettingsManager.LanguageFileExtension, SearchOption.TopDirectoryOnly);
+                var fileNames = Directory.EnumerateFiles(directory.FullName, "*" + DirectorSettingsManager.LanguageFileExtension, SearchOption.TopDirectoryOnly);
                 foreach (var fileName in fileNames) {
                     // The language name is not important here.
                     var manager = LanguageManager.Load(fileName, fileName);
                     _languages.Add((manager.DisplayName, manager.CodeName));
                 }
+            }
+
+            cboPreviewRenderMode.Items.Clear();
+            for (var i = (int)PreviewerRenderMode.Standard; i <= (int)PreviewerRenderMode.EditorLike; ++i) {
+                var textKey = $"ui.feditorsettings.dropdown.{i}";
+                cboPreviewRenderMode.Items.Add(LanguageManager.Current.GetString(textKey));
+            }
+            if (cboPreviewRenderMode.Items.Count > 0) {
+                cboPreviewRenderMode.SelectedIndex = 0;
             }
 
             cboLanguage.Items.Clear();
@@ -97,9 +110,13 @@ namespace StarlightDirector.App.UI.Forms {
             radInvertedScrollingOff.Checked = !s.InvertedScrolling;
             chkShowNoteIndicators.Checked = s.ShowNoteIndicators;
             txtScrollingSpeed.Value = s.ScrollingSpeed;
+            if (cboPreviewRenderMode.Items.Count > 0) {
+                cboPreviewRenderMode.SelectedIndex = (int)s.PreviewRenderMode;
+            }
+            txtPreviewSpeed.Text = s.PreviewSpeed.ToString(CultureInfo.InvariantCulture);
         }
 
-        private EditorSettings _editorSettings;
+        private DirectorSettings _editorSettings;
         private string _originalLanguage;
         private readonly List<(string DisplayName, string CodeName)> _languages = new List<(string, string)>();
 

@@ -92,5 +92,13 @@ namespace StarlightDirector.App.Extensions {
             groupBox.Text = value;
         }
 
+        public static void ApplyText(this LanguageManager manager, TabPage tab, string key) {
+            var value = manager.GetString(key, null);
+            if (value == null) {
+                return;
+            }
+            tab.Text = value;
+        }
+
     }
 }

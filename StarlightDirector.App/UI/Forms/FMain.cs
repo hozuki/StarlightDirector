@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap;
@@ -49,12 +50,25 @@ namespace StarlightDirector.App.UI.Forms {
             }
             var applicationTitle = ApplicationHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
+
+            string stateDescription;
+            switch (visualizer.Display) {
+                case VisualizerDisplay.Editor:
+                    stateDescription = LanguageManager.Current.GetString("misc.state.editing");
+                    break;
+                case VisualizerDisplay.Previewer:
+                    stateDescription = LanguageManager.Current.GetString("misc.state.previewing");
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
             string text;
             if (string.IsNullOrEmpty(editingFileName)) {
                 text = applicationTitle;
             } else {
                 var titleTemplate = LanguageManager.TryGetString("ui.fmain.text_template") ?? DefaultTitleTemplate;
-                text = string.Format(titleTemplate, editingFileName, difficultyDescription, applicationTitle);
+                text = string.Format(titleTemplate, editingFileName, difficultyDescription, applicationTitle, stateDescription);
             }
             if (project != null) {
                 if (project.IsModified) {

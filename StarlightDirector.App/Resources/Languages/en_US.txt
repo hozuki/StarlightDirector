@@ -6,8 +6,8 @@ lang.code_name=en_US
 
 # === Main Window ===
 
-# {0}: file name {1}: difficulty {2}: application title （Starlight Director）
-ui.fmain.text_template={0} [{1}] - {2}
+# {0}: file name {1}: difficulty {2}: application title （Starlight Director） {3}: state
+ui.fmain.text_template={0} [{1}] - {2} {3}
 
 # ---
 
@@ -247,12 +247,19 @@ ui.fbuildbeatmap.button.close.text=Close
 # === Editor Settings ===
 
 ui.feditorsettings.text=Settings
+ui.feditorsettings.tab.editor.text=Editor
+ui.feditorsettings.tab.preview.text=Preview
+ui.feditorsettings.tab.misc.text=Misc
 ui.feditorsettings.label.scrolling_style.text=Scrolling style:
 ui.feditorsettings.label.scrolling_speed.text=Scrolling speed:
 ui.feditorsettings.label.language.text=Language:
+ui.feditorsettings.label.preview_render_mode.text=Render Mode:
+ui.feditorsettings.label.preview_speed.text=Speed:
 ui.feditorsettings.radio.scrolling_style.normal.text=Like Windows / Linux
 ui.feditorsettings.radio.scrolling_style.inverted.text=Like macOS
 ui.feditorsettings.check.show_note_indicators.text=Show note indicators
+ui.feditorsettings.dropdown.0=Standard
+ui.feditorsettings.dropdown.1=Editor-like
 ui.feditorsettings.button.ok.text=OK
 ui.feditorsettings.button.cancel.text=Cancel
 
@@ -290,6 +297,9 @@ misc.music_attribute.event=Event
 misc.music_attribute.solo_ver=Solo
 
 lang.use_auto.text=Auto
+
+misc.state.editing=(Editing)
+misc.state.previewing=(Previewing)
 
 messages.fmain.unknown_project_version=Unable to open this project. Maybe it is corrupted or it is a project of a no longer supported version. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.
 # {0}: music file path

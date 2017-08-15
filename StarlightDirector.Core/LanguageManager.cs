@@ -16,10 +16,20 @@ namespace StarlightDirector.Core {
             _translations[key] = value;
         }
 
+        /// <summary>
+        /// Attempt to retrieve a localized string. If <see cref="key"/> is not found, return <see langword="null"/>.
+        /// </summary>
+        /// <param name="key">The key of local string.</param>
+        /// <returns>Retrieved locale string, or <see langword="null"/>.</returns>
         public static string TryGetString(string key) {
             return Current?.GetString(key, null);
         }
 
+        /// <summary>
+        /// Attempt to retrieve a localized string. If <see cref="key"/> is not found, return <see cref="string.Empty"/>.
+        /// </summary>
+        /// <param name="key">The key of local string.</param>
+        /// <returns>Retrieved locale string, or <see cref="string.Empty"/>.</returns>
         public string GetString(string key) {
             return GetString(key, string.Empty);
         }

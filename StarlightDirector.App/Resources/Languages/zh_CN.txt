@@ -6,8 +6,8 @@ lang.code_name=zh_CN
 
 # === 主窗口 ===
 
-# {0}:文件名 {1}: 难度 {2}:程序标题（Starlight Director）
-ui.fmain.text_template={0} [{1}] - {2}
+# {0}:文件名 {1}: 难度 {2}:程序标题（Starlight Director） {3}: state
+ui.fmain.text_template={0} [{1}] - {2} {3}
 
 # ---
 
@@ -247,12 +247,19 @@ ui.fbuildbeatmap.button.close.text=关闭
 # === 编辑器设置 ===
 
 ui.feditorsettings.text=设置
+ui.feditorsettings.tab.editor.text=编辑器
+ui.feditorsettings.tab.preview.text=预览
+ui.feditorsettings.tab.misc.text=杂项
 ui.feditorsettings.label.scrolling_style.text=滚动方式:
 ui.feditorsettings.label.scrolling_speed.text=滚动速度:
 ui.feditorsettings.label.language.text=语言:
+ui.feditorsettings.label.preview_render_mode.text=渲染模式:
+ui.feditorsettings.label.preview_speed.text=速度:
 ui.feditorsettings.radio.scrolling_style.normal.text=类似 Windows / Linux
 ui.feditorsettings.radio.scrolling_style.inverted.text=类似 macOS
 ui.feditorsettings.check.show_note_indicators.text=显示音符指示器
+ui.feditorsettings.dropdown.0=标准
+ui.feditorsettings.dropdown.1=仿编辑器
 ui.feditorsettings.button.ok.text=确定
 ui.feditorsettings.button.cancel.text=取消
 
@@ -290,6 +297,9 @@ misc.music_attribute.event=活动
 misc.music_attribute.solo_ver=Solo
 
 lang.use_auto.text=自动
+
+misc.state.editing=(编辑)
+misc.state.previewing=(预览)
 
 messages.fmain.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
 # {0}: 音乐文件路径

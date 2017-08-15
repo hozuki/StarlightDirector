@@ -101,9 +101,11 @@
     <Compile Include="Editing\ScoreEditorHitRegion.cs" />
     <Compile Include="Editing\ScoreEditorHitTestResult.cs" />
     <Compile Include="Editing\ScoreEditorLook.cs" />
+    <Compile Include="Previewing\BarPositionHelper.cs" />
     <Compile Include="Previewing\Definitions.cs" />
     <Compile Include="Previewing\NoteLayerUtils.cs" />
     <Compile Include="OnStageStatus.cs" />
+    <Compile Include="Previewing\PreviewerRenderMode.cs" />
     <Compile Include="Rendering\FlickRibbonMesh.cs" />
     <Compile Include="Rendering\HoldRibbonMesh.cs" />
     <Compile Include="Rendering\RibbonMesh.cs" />

@@ -34,8 +34,24 @@
             this.txtScrollingSpeed = new System.Windows.Forms.NumericUpDown();
             this.label3 = new System.Windows.Forms.Label();
             this.cboLanguage = new System.Windows.Forms.ComboBox();
+            this.tabPages = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cboPreviewRenderMode = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtPreviewSpeed = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScrollingSpeed)).BeginInit();
+            this.tabPages.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -43,7 +59,7 @@
             this.panel1.Controls.Add(this.radInvertedScrollingOn);
             this.panel1.Controls.Add(this.radInvertedScrollingOff);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 12);
+            this.panel1.Location = new System.Drawing.Point(6, 6);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(286, 63);
             this.panel1.TabIndex = 0;
@@ -82,7 +98,7 @@
             // chkShowNoteIndicators
             // 
             this.chkShowNoteIndicators.AutoSize = true;
-            this.chkShowNoteIndicators.Location = new System.Drawing.Point(132, 110);
+            this.chkShowNoteIndicators.Location = new System.Drawing.Point(126, 104);
             this.chkShowNoteIndicators.Name = "chkShowNoteIndicators";
             this.chkShowNoteIndicators.Size = new System.Drawing.Size(149, 21);
             this.chkShowNoteIndicators.TabIndex = 1;
@@ -91,7 +107,7 @@
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(112, 189);
+            this.btnOK.Location = new System.Drawing.Point(165, 184);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(90, 23);
             this.btnOK.TabIndex = 2;
@@ -101,7 +117,7 @@
             // btnCancel
             // 
             this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(208, 189);
+            this.btnCancel.Location = new System.Drawing.Point(261, 184);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(90, 23);
             this.btnCancel.TabIndex = 3;
@@ -111,7 +127,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(25, 83);
+            this.label2.Location = new System.Drawing.Point(19, 77);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 17);
             this.label2.TabIndex = 4;
@@ -119,7 +135,7 @@
             // 
             // txtScrollingSpeed
             // 
-            this.txtScrollingSpeed.Location = new System.Drawing.Point(132, 81);
+            this.txtScrollingSpeed.Location = new System.Drawing.Point(126, 75);
             this.txtScrollingSpeed.Maximum = new decimal(new int[] {
             30,
             0,
@@ -142,7 +158,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(25, 141);
+            this.label3.Location = new System.Drawing.Point(19, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(68, 17);
             this.label3.TabIndex = 6;
@@ -152,10 +168,135 @@
             // 
             this.cboLanguage.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLanguage.FormattingEnabled = true;
-            this.cboLanguage.Location = new System.Drawing.Point(132, 138);
+            this.cboLanguage.Location = new System.Drawing.Point(126, 13);
             this.cboLanguage.Name = "cboLanguage";
             this.cboLanguage.Size = new System.Drawing.Size(148, 25);
             this.cboLanguage.TabIndex = 7;
+            // 
+            // tabPages
+            // 
+            this.tabPages.Controls.Add(this.tabPage1);
+            this.tabPages.Controls.Add(this.tabPage2);
+            this.tabPages.Controls.Add(this.tabPage3);
+            this.tabPages.Location = new System.Drawing.Point(12, 12);
+            this.tabPages.Name = "tabPages";
+            this.tabPages.SelectedIndex = 0;
+            this.tabPages.Size = new System.Drawing.Size(339, 166);
+            this.tabPages.TabIndex = 8;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.panel1);
+            this.tabPage1.Controls.Add(this.chkShowNoteIndicators);
+            this.tabPage1.Controls.Add(this.label2);
+            this.tabPage1.Controls.Add(this.txtScrollingSpeed);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(312, 136);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Editor";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.button4);
+            this.tabPage2.Controls.Add(this.button3);
+            this.tabPage2.Controls.Add(this.button2);
+            this.tabPage2.Controls.Add(this.button1);
+            this.tabPage2.Controls.Add(this.txtPreviewSpeed);
+            this.tabPage2.Controls.Add(this.label5);
+            this.tabPage2.Controls.Add(this.cboPreviewRenderMode);
+            this.tabPage2.Controls.Add(this.label4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(331, 136);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Preview";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.cboLanguage);
+            this.tabPage3.Controls.Add(this.label3);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(312, 136);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Misc";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(18, 16);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(92, 17);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Render Mode:";
+            // 
+            // cboPreviewRenderMode
+            // 
+            this.cboPreviewRenderMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPreviewRenderMode.FormattingEnabled = true;
+            this.cboPreviewRenderMode.Location = new System.Drawing.Point(126, 13);
+            this.cboPreviewRenderMode.Name = "cboPreviewRenderMode";
+            this.cboPreviewRenderMode.Size = new System.Drawing.Size(126, 25);
+            this.cboPreviewRenderMode.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(18, 49);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(48, 17);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "Speed:";
+            // 
+            // txtPreviewSpeed
+            // 
+            this.txtPreviewSpeed.Location = new System.Drawing.Point(195, 46);
+            this.txtPreviewSpeed.Name = "txtPreviewSpeed";
+            this.txtPreviewSpeed.Size = new System.Drawing.Size(45, 23);
+            this.txtPreviewSpeed.TabIndex = 3;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(246, 44);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(25, 25);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "+";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(164, 44);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(25, 25);
+            this.button2.TabIndex = 5;
+            this.button2.Text = "-";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(126, 44);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(32, 25);
+            this.button3.TabIndex = 6;
+            this.button3.Text = "-1";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(277, 45);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(32, 25);
+            this.button4.TabIndex = 7;
+            this.button4.Text = "+1";
+            this.button4.UseVisualStyleBackColor = true;
             // 
             // FEditorSettings
             // 
@@ -163,15 +304,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.CancelButton = this.btnCancel;
-            this.ClientSize = new System.Drawing.Size(310, 224);
-            this.Controls.Add(this.cboLanguage);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtScrollingSpeed);
-            this.Controls.Add(this.label2);
+            this.ClientSize = new System.Drawing.Size(370, 224);
+            this.Controls.Add(this.tabPages);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnOK);
-            this.Controls.Add(this.chkShowNoteIndicators);
-            this.Controls.Add(this.panel1);
             this.Font = new System.Drawing.Font("微软雅黑", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -184,8 +320,14 @@
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScrollingSpeed)).EndInit();
+            this.tabPages.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -202,5 +344,17 @@
         private System.Windows.Forms.NumericUpDown txtScrollingSpeed;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cboLanguage;
+        private System.Windows.Forms.TabControl tabPages;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cboPreviewRenderMode;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox txtPreviewSpeed;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button4;
     }
 }

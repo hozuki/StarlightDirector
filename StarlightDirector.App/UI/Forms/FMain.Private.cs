@@ -366,8 +366,8 @@ namespace StarlightDirector.App.UI.Forms {
             }
         }
 
-        private void ApplySettings(EditorSettings settings) {
-            EditorSettingsManager.ApplyLanguageSettings();
+        private void ApplySettings(DirectorSettings settings) {
+            DirectorSettingsManager.ApplyLanguageSettings();
 
             var editor = visualizer.Editor;
             editor.Look.IndicatorsVisible = settings.ShowNoteIndicators;

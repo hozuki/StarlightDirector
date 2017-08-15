@@ -240,19 +240,25 @@ namespace StarlightDirector.Beatmap.Extensions {
             }
         }
 
-        internal static void UpdateNoteHitTimings(this Score score) {
+        /// <summary>
+        /// Calculate timing information of each note, store the information in <see cref="Note.TemporaryProperties.HitTiming"/>,
+        /// and return a detailed timing list for each grid line.
+        /// </summary>
+        /// <param name="score">The <see cref="Score"/> whose timing information is to be calculated.</param>
+        /// <returns>A timing list. The outer index is bar index, and the inner index is grid index.</returns>
+        internal static IReadOnlyList<IReadOnlyList<TimeSpan>> UpdateNoteHitTimings(this Score score) {
             var notes = score.GetAllNotes();
 
             // First, calculate all timing at the grid lines.
             var allBpmNotes = notes.Where(n => n.Basic.Type == NoteType.VariantBpm).ToArray();
-            var timings = new Dictionary<Bar, double[]>();
-            var currentTiming = score.Project.Settings.StartTimeOffset;
+            var timings = new List<TimeSpan[]>();
+            var currentTiming = TimeSpan.FromSeconds(score.Project.Settings.StartTimeOffset);
             var currentBpm = score.Project.Settings.BeatPerMinute;
             var currentInterval = MathHelper.BpmToInterval(currentBpm);
             foreach (var bar in score.Bars) {
                 var currentGridPerSignature = bar.GetGridPerSignature();
                 var numGrids = bar.GetNumberOfGrids();
-                var t = new double[numGrids];
+                var t = new TimeSpan[numGrids];
                 if (allBpmNotes.Any(n => n.Basic.Bar == bar)) {
                     // If there are variant BPM notes, we have to do some math...
                     var bpmNotesInThisBar = allBpmNotes.Where(n => n.Basic.Bar == bar).ToList();
@@ -269,17 +275,18 @@ namespace StarlightDirector.Beatmap.Extensions {
                             }
                         }
                         t[i] = currentTiming;
-                        currentTiming += currentInterval / currentGridPerSignature;
+                        currentTiming += TimeSpan.FromSeconds(currentInterval / currentGridPerSignature);
                     }
                 } else {
                     // If there are no variant BPM notes, things get a lot easier.
                     for (var i = 0; i < numGrids; ++i) {
-                        t[i] = currentTiming + currentInterval * i / currentGridPerSignature;
+                        t[i] = currentTiming + TimeSpan.FromSeconds(currentInterval * i / currentGridPerSignature);
                     }
                     var currentSignature = bar.GetSignature();
-                    currentTiming += currentInterval * currentSignature;
+                    currentTiming += TimeSpan.FromSeconds(currentInterval * currentSignature);
                 }
-                timings[bar] = t;
+                // The timing index should equal corresponding bar index.
+                timings.Add(t);
             }
 
             // Update the HitTiming property of each gaming note.
@@ -287,8 +294,10 @@ namespace StarlightDirector.Beatmap.Extensions {
                 if (!note.Helper.IsGaming) {
                     continue;
                 }
-                note.Temporary.HitTiming = TimeSpan.FromSeconds(timings[note.Basic.Bar][note.Basic.IndexInGrid]);
+                note.Temporary.HitTiming = timings[note.Basic.Bar.Basic.Index][note.Basic.IndexInGrid];
             }
+
+            return timings;
         }
 
         private static CompiledScore Compile(Score score, TimeSpan? userDefinedEnding) {

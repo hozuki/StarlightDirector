@@ -81,7 +81,7 @@ namespace StarlightDirector.App.UI.Forms {
             _liveSfxManager?.Dispose();
             _liveMusicPlayer?.Dispose();
             _liveTimer?.Dispose();
-            EditorSettingsManager.SaveSettings();
+            DirectorSettingsManager.SaveSettings();
         }
 
         private void Visualizer_ProjectModified(object sender, EventArgs e) {
@@ -261,8 +261,8 @@ namespace StarlightDirector.App.UI.Forms {
             mnuEditModeHoldFlick.ShortcutKeyDisplayString = "S";
             mnuEditModeSlide.ShortcutKeyDisplayString = "D";
 
-            EditorSettingsManager.LoadSettings();
-            ApplySettings(EditorSettingsManager.CurrentSettings);
+            DirectorSettingsManager.LoadSettings();
+            ApplySettings(DirectorSettingsManager.CurrentSettings);
 
             _liveMusicPlayer = new LiveMusicPlayer();
             _liveSfxManager = new SfxManager(_liveMusicPlayer);

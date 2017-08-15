@@ -51,6 +51,10 @@ namespace StarlightDirector.UI.Controls.Rendering {
             _specialNoteDescriptionFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, controlFont.SizeInPoints, FontStyle.Regular, 10);
 
             _selectionRectStroke = new D2DPen(context, Color.White, 5);
+
+            _timeLineStroke = new D2DPen(context, Color.LightCyan, 4);
+            _timeInfoBrush = new D2DSolidBrush(context, Color.White);
+            _timeInfoFont = new D2DFont(context.DirectWriteFactory, controlFont.Name, Definitions.TimeInfoFontSize, FontStyle.Regular, 10);
         }
 
         public void DisposeResources() {
@@ -97,6 +101,10 @@ namespace StarlightDirector.UI.Controls.Rendering {
             _specialNoteDescriptionFont?.Dispose();
 
             _selectionRectStroke?.Dispose();
+
+            _timeLineStroke?.Dispose();
+            _timeInfoBrush?.Dispose();
+            _timeInfoFont?.Dispose();
         }
 
         [DebuggerStepThrough]
@@ -150,7 +158,15 @@ namespace StarlightDirector.UI.Controls.Rendering {
         private D2DBrush _specialNoteTextBrush;
         private D2DFont _specialNoteDescriptionFont;
 
+        // Selection
+
         private D2DPen _selectionRectStroke;
+
+        // Previewing
+
+        private D2DPen _timeLineStroke;
+        private D2DBrush _timeInfoBrush;
+        private D2DFont _timeInfoFont;
 
         private static readonly Color[] TapNoteShapeFillColors = { Color.FromArgb(0xFF, 0x99, 0xBB), Color.FromArgb(0xFF, 0x33, 0x66) };
         private static readonly Color[] HoldNoteShapeFillOuterColors = { Color.FromArgb(0xFF, 0xDD, 0x66), Color.FromArgb(0xFF, 0xBB, 0x22) };

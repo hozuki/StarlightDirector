@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Windows.Forms;
 using SharpDX;
 using SharpDX.Direct2D1;
@@ -7,7 +8,6 @@ using SharpDX.Direct3D;
 using SharpDX.Direct3D11;
 using SharpDX.DXGI;
 using StarlightDirector.UI.Rendering.Direct2D;
-using Color = System.Drawing.Color;
 
 namespace StarlightDirector.UI.Controls.Direct2D {
     public abstract class Direct2DControl : Control {

@@ -1,5 +1,5 @@
 ﻿namespace StarlightDirector.Core {
-    public interface ICloneable<T> {
+    public interface ICloneable<out T> {
 
         T Clone();
 

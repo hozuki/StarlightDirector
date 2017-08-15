@@ -10,9 +10,9 @@ namespace StarlightDirector.Beatmap {
         }
 
         internal Note(Bar bar, Guid id) {
-            Basic = new NoteBasicProperties(bar);
-            Helper = new NoteHelperProperties(this);
-            Editor = new NoteEditorProperties();
+            Basic = new BasicProperties(bar);
+            Helper = new HelperProperties(this);
+            Editor = new EditorProperties();
             StarlightID = id;
         }
 
@@ -23,17 +23,17 @@ namespace StarlightDirector.Beatmap {
             internal set { Basic.ID = value; }
         }
 
-        public NoteBasicProperties Basic { get; }
+        public BasicProperties Basic { get; }
 
-        public NoteHelperProperties Helper { get; }
+        public HelperProperties Helper { get; }
 
-        public NoteEditorProperties Editor { get; }
+        public EditorProperties Editor { get; }
 
         public NoteExtraParams Params { get; internal set; }
 
-        public sealed class NoteBasicProperties {
+        public sealed class BasicProperties {
 
-            internal NoteBasicProperties(Bar bar) {
+            internal BasicProperties(Bar bar) {
                 Bar = bar;
             }
 
@@ -53,9 +53,9 @@ namespace StarlightDirector.Beatmap {
 
         }
 
-        public sealed class NoteHelperProperties {
+        public sealed class HelperProperties {
 
-            internal NoteHelperProperties(Note note) {
+            internal HelperProperties(Note note) {
                 _note = note;
             }
 
@@ -178,9 +178,9 @@ namespace StarlightDirector.Beatmap {
 
         }
 
-        public sealed class NoteEditorProperties {
+        public sealed class EditorProperties {
 
-            internal NoteEditorProperties() {
+            internal EditorProperties() {
             }
 
             public bool IsSelected { get; internal set; }
