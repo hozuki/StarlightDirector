@@ -132,6 +132,7 @@ namespace StarlightDirector.UI.Rendering.Direct2D {
 
         protected override void Dispose(bool disposing) {
             if (disposing) {
+                _brush.Dispose();
                 _collection.Dispose();
             }
             base.Dispose(disposing);
