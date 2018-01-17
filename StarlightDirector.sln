@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.12
+VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.App", "StarlightDirector.App\StarlightDirector.App.csproj", "{4EEFE73A-5D37-471F-A26E-7E47B5B7D34D}"
 EndProject
@@ -15,6 +15,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		.gitmodules = .gitmodules
 		appveyor.yml = appveyor.yml
 		LICENSE.md = LICENSE.md
 		README.md = README.md
@@ -30,6 +31,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Previewing.Audio", "StarlightDirector.Previewing.Audio\StarlightDirector.Previewing.Audio.csproj", "{F025414B-54AB-4E52-AA58-28637F6150F7}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Beatmap.IO.Sldproj", "StarlightDirector.Beatmap.IO.Sldproj\StarlightDirector.Beatmap.IO.Sldproj.csproj", "{28397CDB-6417-44E3-9F27-06F8530B7192}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAL", "external\SharpAL\SharpAL\SharpAL.csproj", "{458F61B7-43F9-4473-92F8-8B59695D5500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,8 +78,18 @@ Global
 		{28397CDB-6417-44E3-9F27-06F8530B7192}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28397CDB-6417-44E3-9F27-06F8530B7192}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28397CDB-6417-44E3-9F27-06F8530B7192}.Release|Any CPU.Build.0 = Release|Any CPU
+		{458F61B7-43F9-4473-92F8-8B59695D5500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{458F61B7-43F9-4473-92F8-8B59695D5500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{458F61B7-43F9-4473-92F8-8B59695D5500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{458F61B7-43F9-4473-92F8-8B59695D5500}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{458F61B7-43F9-4473-92F8-8B59695D5500} = {5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D72F8FC-3485-4580-9E6A-22A16AE8626E}
 	EndGlobalSection
 EndGlobal

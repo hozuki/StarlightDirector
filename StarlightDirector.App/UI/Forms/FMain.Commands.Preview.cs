@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.IO;
 using System.Windows.Forms;
 using StarlightDirector.Beatmap.Extensions;
@@ -38,7 +38,7 @@ namespace StarlightDirector.App.UI.Forms {
                     try {
                         _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
                         _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                        _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+                        _liveMusicPlayer.LoadStream(_liveWaveStream);
                     } catch (IOException) {
                         errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_open_error_template") ?? "Cannot open '{0}'. Live music disabled.";
                     }
@@ -48,10 +48,7 @@ namespace StarlightDirector.App.UI.Forms {
                 if (errorMessageTemplate != null) {
                     var errorMessage = string.Format(errorMessageTemplate, project.MusicFileName);
                     MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
                 }
-            } else {
-                _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
@@ -82,7 +79,7 @@ namespace StarlightDirector.App.UI.Forms {
                     try {
                         _liveFileStream = File.Open(project.MusicFileName, FileMode.Open, FileAccess.Read);
                         _liveWaveStream = LiveMusicWaveStream.FromWaveStream(_liveFileStream);
-                        _liveMusicPlayer.AddMusicInputStream(_liveWaveStream);
+                        _liveMusicPlayer.LoadStream(_liveWaveStream);
                     } catch (IOException) {
                         errorMessageTemplate = LanguageManager.TryGetString("messages.fmain.live_music_open_error_template") ?? "Cannot open '{0}'. Live music disabled.";
                     }
@@ -92,10 +89,7 @@ namespace StarlightDirector.App.UI.Forms {
                 if (errorMessageTemplate != null) {
                     var errorMessage = string.Format(errorMessageTemplate, project.MusicFileName);
                     MessageBox.Show(this, errorMessage, ApplicationHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
                 }
-            } else {
-                _liveMusicPlayer.AddMusicInputStream(NullWaveStream.Instance);
             }
             visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
             visualizer.Previewer.Prepare();
@@ -117,13 +111,11 @@ namespace StarlightDirector.App.UI.Forms {
             _liveTimer.Stop();
             _liveMusicPlayer.Stop();
             if (_liveWaveStream != null) {
-                _liveMusicPlayer.RemoveMusicInputStream();
+                _liveMusicPlayer.Stop();
                 _liveWaveStream.Dispose();
                 _liveFileStream.Dispose();
                 _liveWaveStream = null;
                 _liveFileStream = null;
-            } else if (_liveMusicPlayer.HasMusicInputStream) {
-                _liveMusicPlayer.RemoveMusicInputStream();
             }
             _liveSfxManager?.StopAll();
             visualizer.Previewer.StopAnimation();
@@ -136,6 +128,8 @@ namespace StarlightDirector.App.UI.Forms {
 
         private DateTime _lastSignalTime;
         private TimeSpan _totalLiveTime;
+
+        private AudioManager _audioManager;
 
         private LiveMusicPlayer _liveMusicPlayer;
         private LiveMusicWaveStream _liveWaveStream;

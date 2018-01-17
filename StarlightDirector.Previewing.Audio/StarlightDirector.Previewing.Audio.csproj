@@ -43,14 +43,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AudioManager.cs" />
+    <Compile Include="Extensions\StreamExtensions.cs" />
     <Compile Include="LiveMusicWaveStream.cs" />
-    <Compile Include="NullWaveStream.cs" />
     <Compile Include="PreviewingSettings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SfxManager.cs" />
     <Compile Include="LiveMusicPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\external\SharpAL\SharpAL\SharpAL.csproj">
+      <Project>{458f61b7-43f9-4473-92f8-8b59695d5500}</Project>
+      <Name>SharpAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StarlightDirector.Core\StarlightDirector.Core.csproj">
       <Project>{0C0198B0-3E7A-47B1-A876-0EAD931C9ECA}</Project>
       <Name>StarlightDirector.Core</Name>

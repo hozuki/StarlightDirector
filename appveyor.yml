@@ -1,13 +1,7 @@
-﻿# https://www.appveyor.com/docs/appveyor-yml/
+# https://www.appveyor.com/docs/appveyor-yml/
 
-version: 1.3.0.{build}
-branches:
-  only:
-    - master
-skip_tags: true
+version: 1.3.1.{build}
 image: Visual Studio 2017
-hosts:
-  api.nuget.org: 93.184.221.200
 platform:
   - Any CPU
 configuration:
@@ -20,6 +14,8 @@ environment:
 install:
   - npm install -g marked
 before_build:
+  - git submodule update --init --recursive
+  - nuget update -self
   - nuget restore
   - marked ./StarlightDirector.App/Resources/Docs/Help.md -o ./StarlightDirector.App/Resources/Docs/Help.html
 after_build:
@@ -53,5 +49,4 @@ deploy:
     draft: false
     prerelease: true
     on:
-      branch: master                 # release from master branch only
       appveyor_repo_tag: true        # deploy on tag push only

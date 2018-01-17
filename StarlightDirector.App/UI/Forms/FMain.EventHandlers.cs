@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Drawing;
 using System.Timers;
 using System.Windows.Forms;
@@ -68,7 +68,7 @@ namespace StarlightDirector.App.UI.Forms {
                     } else {
                         sfxFileName = note.Helper.IsFlick ? FlickAudioFilePath : TapAudioFilePath;
                     }
-                    _liveSfxManager.PlayWave(sfxFileName, note.Temporary.HitTiming, PreviewingSettings.SfxVolume);
+                    _liveSfxManager.PlayWave(sfxFileName, PreviewingSettings.SfxVolume);
                 }
                 _sfxBufferTime = now;
             }
@@ -77,6 +77,7 @@ namespace StarlightDirector.App.UI.Forms {
         private void FMain_Closed(object sender, EventArgs e) {
             this.UnmonitorLocalizationChange();
             CmdPreviewStop.Execute(this, null);
+            _audioManager.Dispose();
             _liveMusicPlayer?.Stop();
             _liveSfxManager?.Dispose();
             _liveMusicPlayer?.Dispose();
@@ -95,8 +96,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbScoreNoteStartPosition.DropDownClosed += DropDownClosed;
             tsbScoreNoteStartPosition.ShowDropDown();
 
-            void DropDownClosed(object s, EventArgs ev)
-            {
+            void DropDownClosed(object s, EventArgs ev) {
                 mnuScoreNoteStartPosition.DropDownItems.AddRange(items);
                 tsbScoreNoteStartPosition.DropDownClosed -= DropDownClosed;
             }
@@ -109,8 +109,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbEditMode.DropDownClosed += DropDownClosed;
             tsbEditMode.ShowDropDown();
 
-            void DropDownClosed(object s, EventArgs ev)
-            {
+            void DropDownClosed(object s, EventArgs ev) {
                 mnuEditMode.DropDownItems.AddRange(items);
                 tsbEditMode.DropDownClosed -= DropDownClosed;
             }
@@ -197,8 +196,7 @@ namespace StarlightDirector.App.UI.Forms {
             tsbScoreDifficultySelection.DropDownClosed += DropDownClosed;
             tsbScoreDifficultySelection.ShowDropDown();
 
-            void DropDownClosed(object s, EventArgs ev)
-            {
+            void DropDownClosed(object s, EventArgs ev) {
                 mnuScoreDifficulty.DropDownItems.AddRange(items);
                 tsbScoreDifficultySelection.DropDownClosed -= DropDownClosed;
             }
@@ -264,8 +262,9 @@ namespace StarlightDirector.App.UI.Forms {
             DirectorSettingsManager.LoadSettings();
             ApplySettings(DirectorSettingsManager.CurrentSettings);
 
-            _liveMusicPlayer = new LiveMusicPlayer();
-            _liveSfxManager = new SfxManager(_liveMusicPlayer);
+            _audioManager = new AudioManager();
+            _liveMusicPlayer = new LiveMusicPlayer(_audioManager);
+            _liveSfxManager = new SfxManager(_audioManager);
             _liveSfxManager.PreloadWave(TapAudioFilePath);
             _liveSfxManager.PreloadWave(FlickAudioFilePath);
             _liveSfxManager.PreloadWave(SlideAudioFilePath);
