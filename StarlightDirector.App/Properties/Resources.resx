@@ -119,7 +119,7 @@
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="HiddenMayu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\pictures\mayu.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Pictures\Mayu.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconEditCopy" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconEditCopy.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -128,10 +128,10 @@
     <value>..\Resources\Icons\Toolbar\IconEditCut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconEditGoToMeasure" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditgotomeasure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconEditGoToMeasure.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconEditModeSelect" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconeditmodeselect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconEditModeSelect.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconEditPaste" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconEditPaste.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -143,28 +143,28 @@
     <value>..\Resources\Icons\Toolbar\IconEditUndo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteFlickLeft" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnoteflickleft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteFlickLeft.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteFlickRight" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnoteflickright.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteFlickRight.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteHold" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnotehold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteHold.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteHoldFlick" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnoteholdflick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteHoldFlick.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteSlide" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnoteslide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteSlide.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconNoteTap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\notes\iconnotetap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Notes\IconNoteTap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconPreviewFromCurrent" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconPreviewFromCurrent.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconPreviewFromStart" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconpreviewfromstart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconPreviewFromStart.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconPreviewStop" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconPreviewStop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -176,7 +176,7 @@
     <value>..\Resources\Icons\Toolbar\IconProjectNew.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconProjectOpen" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconprojectopen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconProjectOpen.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconProjectSave" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconProjectSave.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -185,22 +185,22 @@
     <value>..\Resources\Icons\Toolbar\IconProjectSaveAs.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreMeasureAppend" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscoremeasureappend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreMeasureAppend.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreMeasureDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscoremeasuredelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreMeasureDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreMeasureInsert" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscoremeasureinsert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreMeasureInsert.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreNoteAddSpecial" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscorenoteaddspecial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreNoteAddSpecial.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreNoteDelete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscorenotedelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreNoteDelete.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconScoreNoteResetToTap" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconscorenoteresettotap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconScoreNoteResetToTap.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconToolsBuildMusic" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\Toolbar\IconToolsBuildMusic.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -209,10 +209,10 @@
     <value>..\Resources\Icons\Toolbar\IconToolsBuildScoreBundle.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconViewZoomIn" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconviewzoomin.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconViewZoomIn.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="IconViewZoomOut" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\icons\toolbar\iconviewzoomout.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Icons\Toolbar\IconViewZoomOut.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="SD_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Icons\SD-Icon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
