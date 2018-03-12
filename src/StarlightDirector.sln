@@ -32,9 +32,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Previewin
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "StarlightDirector.Beatmap.IO.Sldproj", "StarlightDirector.Beatmap.IO.Sldproj\StarlightDirector.Beatmap.IO.Sldproj.csproj", "{28397CDB-6417-44E3-9F27-06F8530B7192}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "external", "external", "{5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", "{5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAL", "external\SharpAL\SharpAL\SharpAL.csproj", "{458F61B7-43F9-4473-92F8-8B59695D5500}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharpAL", "..\thirdparty\SharpAL\SharpAL\SharpAL.csproj", "{458F61B7-43F9-4473-92F8-8B59695D5500}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
