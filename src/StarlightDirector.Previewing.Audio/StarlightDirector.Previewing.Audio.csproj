@@ -52,7 +52,7 @@
     <Compile Include="LiveMusicPlayer.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\external\SharpAL\SharpAL\SharpAL.csproj">
+    <ProjectReference Include="..\..\thirdparty\SharpAL\SharpAL\SharpAL.csproj">
       <Project>{458f61b7-43f9-4473-92f8-8b59695d5500}</Project>
       <Name>SharpAL</Name>
     </ProjectReference>

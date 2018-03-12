@@ -29,6 +29,7 @@ for maintaing the old version.
 
 - Windows 7 or later
 - [.NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=42642)
+- [OpenAL](https://www.openal.org/downloads/) (You can either use [OpenAL-Soft](http://kcat.strangesoft.net/openal.html), which is newer, but remember to rename the DLL name to `openal32.dll`.)
 - Direct3D 11 and Direct2D
 
 ##  Usage
