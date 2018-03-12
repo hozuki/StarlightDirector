@@ -14,7 +14,7 @@
 
 For those who want to view or play the beatmaps:
 
-- viewing: use [bmconv](https://github.com/OpenCGSS/bmconv/releases) to convert the beatmap to [Deleste](https://twitter.com/blueapple25130/status/859560616368812032) TXT format, then view in Deleste.
+- viewing: use [bmconv](https://github.com/OpenCGSS/bmconv/releases) to convert the beatmap to [Deleste](https://twitter.com/blueapple25130/status/859560616368812032) TXT format, then view in Deleste. `bmconv` is a commandline program, so please use Command Prompt to run it.
 - playing: build the beatmap (BDB) and music (ACB, via [DereTore](https://github.com/OpenCGSS/DereTore)), then use IdolProxy to play it in real game.
 
 ## What is this?
@@ -22,8 +22,7 @@ For those who want to view or play the beatmaps:
 The next generation of Starlight Director from [DereTore](https://github.com/OpenCGSS/DereTore). Starlight Director is the unofficial beatmap
 editor for [Idolmaster Cinderella Girls Starlight Stage](http://cinderella.idolmaster.jp/sl-stage/). (Will it support Million Live Theater Days? TBD)
 
-It is now in its beta phase. But still, thank you [@statmentreply](https://github.com/statementreply) and [@logchan](https://github.com/logchan)
-for maintaing the old version.
+It is now in its beta phase. The old version is now removed.
 
 ## Requirements
 
@@ -36,7 +35,7 @@ for maintaing the old version.
 
 Experience with rhythm games is strongly recommended, so you can know whether players are able to play your beatmap or not.
 
-[使用说明（部分完成）](StarlightDirector.App/Resources/Docs/Help.md)
+[使用说明（部分完成）](src/StarlightDirector.App/Resources/Docs/Help.md)
 
 ## Building
 
@@ -47,7 +46,7 @@ Experience with rhythm games is strongly recommended, so you can know whether pl
 
 ## Translation
 
-You can find language files under [`Resources/Languages`](StarlightDirector.App/Resources/Languages) from the application's
+You can find language files under [`Resources/Languages`](src/StarlightDirector.App/Resources/Languages) from the application's
 directory. Feel free to translate Starlight Director into your language. :D
 
 ## Screenshot
