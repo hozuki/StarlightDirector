@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FA1E6962-FD4C-4249-91D5-3DF8E5818778}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCGSS.Director.Common</RootNamespace>
+    <AssemblyName>OpenCGSS.Director.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f" />
+    <Reference Include="Gemini, Version=1.0.6122.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeminiWpf.1.0.6122\lib\net45\Gemini.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2013, Version=2.9.0.1, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\GeminiWpf.1.0.6122\lib\net45\Xceed.Wpf.AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ApplicationHelper.cs" />
+    <Compile Include="CommandHelper.cs" />
+    <Compile Include="Commands\ViewZoomOutCommandDefinition.cs" />
+    <Compile Include="Commands\ViewZoomInCommandDefinition.cs" />
+    <Compile Include="Commands\ViewZoomOutCommandHandler.cs" />
+    <Compile Include="Commands\ViewZoomInCommandHandler.cs" />
+    <Compile Include="Commands\EditViewPropertiesCommandDefinition.cs" />
+    <Compile Include="Commands\EditPasteCommandDefinition.cs" />
+    <Compile Include="Commands\EditViewPropertiesCommandHandler.cs" />
+    <Compile Include="Commands\EditSelectAllCommandDefinition.cs" />
+    <Compile Include="Commands\EditCutCommandDefinition.cs" />
+    <Compile Include="Commands\EditCopyCommandDefinition.cs" />
+    <Compile Include="Commands\EditPasteCommandHandler.cs" />
+    <Compile Include="Commands\EditSelectAllCommandHandler.cs" />
+    <Compile Include="Commands\EditCutCommandHandler.cs" />
+    <Compile Include="Commands\EditCopyCommandHandler.cs" />
+    <Compile Include="Effects\GrayscaleEffect.cs" />
+    <Compile Include="MenuDefinitions.cs" />
+    <Compile Include="NotifyPropertyChangedBase.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Submodules\IStatusBarText.cs" />
+    <Compile Include="Submodules\StatusBarText.cs" />
+    <Compile Include="ViewModels\IBeatmapDocument.cs" />
+    <Compile Include="Extensions\WeakEventExtensions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <Resource Include="Resources\Effects\Grayscale.fxo" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Resources\Effects\Grayscale.fx" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,267 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6747CD8D-FB9F-474E-BA79-4732CBF0CAD4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCGSS.Director.Modules.SldProject</RootNamespace>
+    <AssemblyName>OpenCGSS.Director.Modules.SldProject</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Caliburn.Micro, Version=2.0.2.0, Culture=neutral, PublicKeyToken=8e5891231f2ed21f" />
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.16.3.0\lib\net45\CsvHelper.dll</HintPath>
+    </Reference>
+    <Reference Include="Gemini, Version=1.0.6122.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\GeminiWpf.1.0.6122\lib\net45\Gemini.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Extended.Graphics, Version=1.0.617.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Extended.Graphics.1.0.617\lib\portable-net45+win8+wpa81\MonoGame.Extended.Graphics.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2013">
+      <HintPath>..\packages\GeminiWpf.1.0.6122\lib\net45\Xceed.Wpf.AvalonDock.Themes.VS2013.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.2.9\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Commands\ViewCgssBeatmapToolsCommandDefinition.cs" />
+    <Compile Include="Commands\AboutSldProjPluginCommandDefinition.cs" />
+    <Compile Include="Commands\AboutSldProjPluginCommandHandler.cs" />
+    <Compile Include="Commands\ViewCgssBeatmapToolsCommandHandler.cs" />
+    <Compile Include="Converters\EditModeToBooleanConverter.cs" />
+    <Compile Include="Converters\EquityConverter.cs" />
+    <Compile Include="Converters\MathOp\MathConverterBase.cs" />
+    <Compile Include="Converters\MathOp\NegateConverter.cs" />
+    <Compile Include="Converters\MathOp\UnaryOpConverterBase.cs" />
+    <Compile Include="Core\SldMathHelper.cs" />
+    <Compile Include="Extensions\RectangleExtensions.cs" />
+    <Compile Include="Models\RegionSelectionMode.cs" />
+    <Compile Include="Models\ScoreEditMode.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Selection.cs" />
+    <Compile Include="ViewModels\ICgssBeatmapTools.cs" />
+    <Compile Include="Models\Beatmap\Bar.cs" />
+    <Compile Include="Models\Beatmap\BarParams.cs" />
+    <Compile Include="Models\Beatmap\CompiledNote.cs" />
+    <Compile Include="Models\Beatmap\CompiledScore.cs" />
+    <Compile Include="Core\DescribedEnumConverter.cs" />
+    <Compile Include="Models\Beatmap\Difficulty.cs" />
+    <Compile Include="Models\Beatmap\Extensions\BarExtensions.cs" />
+    <Compile Include="Models\Beatmap\Extensions\CompiledScoreExtensions.cs" />
+    <Compile Include="Models\Beatmap\Extensions\NoteExtensions.cs" />
+    <Compile Include="Models\Beatmap\Extensions\ScoreExtensions.cs" />
+    <Compile Include="Models\Beatmap\Note.cs" />
+    <Compile Include="Models\Beatmap\NoteExtraParams.cs" />
+    <Compile Include="Models\Beatmap\NoteFlickType.cs" />
+    <Compile Include="Models\Beatmap\NotePosition.cs" />
+    <Compile Include="Models\Beatmap\NoteType.cs" />
+    <Compile Include="Models\Beatmap\NoteUtilities.cs" />
+    <Compile Include="Models\Beatmap\Project.cs" />
+    <Compile Include="Models\Beatmap\ProjectSettings.cs" />
+    <Compile Include="Models\Beatmap\Score.cs" />
+    <Compile Include="Models\Beatmap\Serialization\ScoreCsvMap.cs" />
+    <Compile Include="Core\ICloneable.cs" />
+    <Compile Include="Core\InternalList.cs" />
+    <Compile Include="Core\IStarlightObject.cs" />
+    <Compile Include="Core\StarlightID.cs" />
+    <Compile Include="IO\ProjectReader.cs" />
+    <Compile Include="IO\ProjectVersion.cs" />
+    <Compile Include="IO\ProjectWriter.cs" />
+    <Compile Include="IO\SldprojDbNames.cs" />
+    <Compile Include="IO\SldprojV2Reader.BarParamsV2.cs" />
+    <Compile Include="IO\SldprojV2Reader.BarV2.cs" />
+    <Compile Include="IO\SldprojV2Reader.cs" />
+    <Compile Include="IO\SldprojV2Reader.NoteV2.cs" />
+    <Compile Include="IO\SldprojV2Reader.ScoreV2.cs" />
+    <Compile Include="IO\SldprojV2Reader.SQLiteHelper.cs" />
+    <Compile Include="IO\SldprojV3Reader.cs" />
+    <Compile Include="IO\SldprojV3Reader.SQLiteHelper.cs" />
+    <Compile Include="IO\SldprojV4Reader.cs" />
+    <Compile Include="IO\SldprojV4Reader.SQLiteHelper.cs" />
+    <Compile Include="IO\SldprojV4Writer.cs" />
+    <Compile Include="IO\SldprojV4Writer.SQLiteHelper.cs" />
+    <Compile Include="MenuDefinitions.cs" />
+    <Compile Include="Models\Definitions.cs" />
+    <Compile Include="Models\OnStageStatus.cs" />
+    <Compile Include="Models\PrimaryBeatMode.cs" />
+    <Compile Include="Models\ScoreEditorConfig.cs" />
+    <Compile Include="Models\ScoreEditorLook.cs" />
+    <Compile Include="Models\ScoreEditorHitRegion.cs" />
+    <Compile Include="Models\ScoreEditorHitTestResult.cs" />
+    <Compile Include="Rendering\Extensions\GraphicsExtensions.cs" />
+    <Compile Include="Rendering\ScoreEditorLayout.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Bars.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Notes.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.cs" />
+    <Compile Include="Rendering\ScoreEditorRenderer.Resources.cs" />
+    <Compile Include="Services\RectangleHelper.cs" />
+    <Compile Include="Services\SldProjEditorProvider.cs" />
+    <Compile Include="ViewModels\CgssBeatmapToolsViewModel.cs" />
+    <Compile Include="ViewModels\SldProjViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\AboutSldProjPluginView.xaml.cs">
+      <DependentUpon>AboutSldProjPluginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CgssBeatmapToolsView.Commands.cs" />
+    <Compile Include="Views\CgssBeatmapToolsView.xaml.cs">
+      <DependentUpon>CgssBeatmapToolsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\InvalidateSldProjViewActions.cs" />
+    <Compile Include="Views\SldProjView.EventHandlers.cs" />
+    <Compile Include="Views\SldProjView.HitTesting.cs" />
+    <Compile Include="Views\SldProjView.Selection.cs" />
+    <Compile Include="Views\SldProjView.View.cs" />
+    <Compile Include="Views\SldProjView.xaml.cs">
+      <DependentUpon>SldProjView.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\Notes\IconNoteFlickLeft.png" />
+    <Resource Include="Resources\Icons\Notes\IconNoteFlickRight.png" />
+    <Resource Include="Resources\Icons\Notes\IconNoteHold.png" />
+    <Resource Include="Resources\Icons\Notes\IconNoteHoldFlick.png" />
+    <Resource Include="Resources\Icons\Notes\IconNoteSlide.png" />
+    <Resource Include="Resources\Icons\Notes\IconNoteTap.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditCopy.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditCut.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditModeSelect.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditPaste.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditRedo.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconEditUndo.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconPreviewFromCurrent.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconPreviewFromStart.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconPreviewStop.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconProjectExit.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconProjectNew.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconProjectOpen.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconProjectSave.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconProjectSaveAs.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreMeasureAppend.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreMeasureDelete.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreNoteAddSpecial.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreNoteDelete.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconToolsBuildMusic.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconToolsBuildScoreBundle.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconViewZoomIn.png" />
+    <Resource Include="Resources\Icons\Toolbar\IconViewZoomOut.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended.Overlay\MonoGame.Extended.Overlay.csproj">
+      <Project>{8a716d2a-de8d-4886-bf8f-76b6b1a7bb8f}</Project>
+      <Name>MonoGame.Extended.Overlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended2\MonoGame.Extended2.csproj">
+      <Project>{c7c3d9de-41a4-4c21-98fb-336ed38a99d5}</Project>
+      <Name>MonoGame.Extended2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.Director.Common\OpenCGSS.Director.Common.csproj">
+      <Project>{fa1e6962-fd4c-4249-91d5-3df8e5818778}</Project>
+      <Name>OpenCGSS.Director.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.Director.Modules.MonoGame\OpenCGSS.Director.Modules.MonoGame.csproj">
+      <Project>{6fd8f982-b813-4c19-8207-5b50bed0d8f7}</Project>
+      <Name>OpenCGSS.Director.Modules.MonoGame</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Resources\Common.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\StandardToolBarStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AboutSldProjPluginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CgssBeatmapToolsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SldProjView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>

@@ -1,0 +1,206 @@
+<UserControl x:Class="OpenCGSS.Director.Modules.SldProject.Views.CgssBeatmapToolsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OpenCGSS.Director.Modules.SldProject.Views"
+             xmlns:geminiEffects="clr-namespace:Gemini.Framework.ShaderEffects;assembly=Gemini"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:models="clr-namespace:OpenCGSS.Director.Modules.SldProject.Models"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="300">
+    <StackPanel Orientation="Vertical">
+        <GroupBox Header="Edit" Style="{DynamicResource GroupBoxStyle}">
+            <ToolBar Style="{DynamicResource ToolBarStyle}">
+                <xctk:DropDownButton x:Name="BtnEditMode">
+                    <xctk:DropDownButton.Content>
+                        <Image x:Name="SelectedEditModeImage" Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconEditModeSelect.png"
+                               Style="{DynamicResource SmallToolbarImage}"/>
+                    </xctk:DropDownButton.Content>
+                    <xctk:DropDownButton.DropDownContent>
+                        <StackPanel>
+                            <MenuItem x:Name="BtnEditModeSelect" Command="{x:Static local:CgssBeatmapToolsView.CmdChangeEditModeSelect}"
+                                      Header="Se_lect">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconEditModeSelect.png"
+                                        Style="{DynamicResource SmallToolbarImage}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="BtnEditModeTap" Command="{x:Static local:CgssBeatmapToolsView.CmdChangeEditModeTap}"
+                                      Header="_Tap">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Notes/IconNoteTap.png"
+                                        Style="{DynamicResource SmallToolbarImage}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="BtnEditModeHoldFlick" Command="{x:Static local:CgssBeatmapToolsView.CmdChangeEditModeHoldFlick}"
+                                      Header="_Hold/Flick">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Notes/IconNoteHoldFlick.png"
+                                        Style="{DynamicResource SmallToolbarImage}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                            <MenuItem x:Name="BtnEditModeSlide" Command="{x:Static local:CgssBeatmapToolsView.CmdChangeEditModeSlide}"
+                                      Header="_Slide">
+                                <MenuItem.Icon>
+                                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Notes/IconNoteSlide.png"
+                                        Style="{DynamicResource SmallToolbarImage}"/>
+                                </MenuItem.Icon>
+                            </MenuItem>
+                        </StackPanel>
+                    </xctk:DropDownButton.DropDownContent>
+                </xctk:DropDownButton>
+                <Separator/>
+                <StackPanel Orientation="Horizontal">
+                    <Label>Difficulty:</Label>
+                    <ComboBox x:Name="DifficultyComboBox" SelectedIndex="0" Width="80" IsEditable="False" Style="{DynamicResource ComboBoxFlatStyle}"
+                              SelectionChanged="DifficultyComboBox_OnSelectionChanged">
+                        <ComboBoxItem>Debut</ComboBoxItem>
+                        <ComboBoxItem>Regular</ComboBoxItem>
+                        <ComboBoxItem>Pro</ComboBoxItem>
+                        <ComboBoxItem>Master</ComboBoxItem>
+                        <ComboBoxItem>Master+</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </ToolBar>
+        </GroupBox>
+        <GroupBox Header="Note" Style="{DynamicResource GroupBoxStyle}">
+            <ToolBar Style="{DynamicResource ToolBarStyle}">
+                <Button Style="{DynamicResource SmallToolbarButton}">1</Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">2</Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">3</Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">4</Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">5</Button>
+                <Separator/>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreNoteResetToTap.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreNoteDelete.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Separator/>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreNoteAddSpecial.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+            </ToolBar>
+        </GroupBox>
+        <GroupBox Header="Measure" Style="{DynamicResource GroupBoxStyle}">
+            <ToolBar Style="{DynamicResource ToolBarStyle}">
+                <xctk:SplitButton>
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreMeasureAppend.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                    <xctk:SplitButton.DropDownContent>
+                        <StackPanel Orientation="Horizontal">
+                            <Label VerticalContentAlignment="Center">Append _Many:</Label>
+                            <TextBox Width="50" Margin="4 4" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" MaxLength="3" MaxLines="1">10</TextBox>
+                            <Button VerticalAlignment="Center" Margin="4 4" Padding="10 2">_Apply</Button>
+                        </StackPanel>
+                    </xctk:SplitButton.DropDownContent>
+                </xctk:SplitButton>
+                <xctk:SplitButton>
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreMeasureInsert.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                    <xctk:SplitButton.DropDownContent>
+                        <StackPanel Orientation="Horizontal">
+                            <Label VerticalContentAlignment="Center">Insert _Many:</Label>
+                            <TextBox Width="50" Margin="4 4" VerticalContentAlignment="Center" HorizontalContentAlignment="Right" MaxLength="3" MaxLines="1">10</TextBox>
+                            <Button VerticalAlignment="Center" Margin="4 4" Padding="10 2">_Apply</Button>
+                        </StackPanel>
+                    </xctk:SplitButton.DropDownContent>
+                </xctk:SplitButton>
+                <Separator/>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconScoreMeasureDelete.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+            </ToolBar>
+        </GroupBox>
+        <GroupBox Header="Postprocessing" Style="{DynamicResource GroupBoxStyle}">
+            <ToolBar Style="{DynamicResource ToolBarStyle}">
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconPreviewFromCurrent.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconPreviewFromStart.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconPreviewStop.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Separator/>
+                <Button Style="{DynamicResource SmallToolbarButton}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconToolsBuildScoreBundle.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+                <Button Style="{DynamicResource SmallToolbarButton}" IsEnabled="False" Effect="{DynamicResource GrayscaleEffect}">
+                    <Image Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Icons/Toolbar/IconToolsBuildMusic.png"
+                           Style="{DynamicResource SmallToolbarImage}"/>
+                </Button>
+            </ToolBar>
+        </GroupBox>
+        <GroupBox Header="Beatmap Properties" Style="{DynamicResource GroupBoxStyle}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="Auto"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">BPM:</Label>
+                <TextBox Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center" MinHeight="20" MinWidth="50">123</TextBox>
+                <Label Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">Music Offset:</Label>
+                <TextBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" VerticalContentAlignment="Center" MinHeight="20" MinWidth="50">123</TextBox>
+                <StackPanel Grid.Row="1" Grid.Column="2" Grid.ColumnSpan="3" Orientation="Horizontal">
+                    <TextBlock VerticalAlignment="Center" Margin="8 0 0 0">seconds</TextBlock>
+                    <Button Width="30" Margin="8 4 4 4">+</Button>
+                    <Button Width="30" Margin="4">-</Button>
+                </StackPanel>
+                <Label Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">Music File:</Label>
+                <TextBox Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2" VerticalAlignment="Center" VerticalContentAlignment="Center" MinHeight="20"
+                         IsReadOnly="True" Background="{x:Static SystemColors.ControlBrush}"/>
+                <Button Grid.Row="2" Grid.Column="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Padding="10 2" Margin="8 4 4 4">...</Button>
+                <Button Grid.Row="2" Grid.Column="4" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Padding="10 2" Margin="4 4">Clear</Button>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="5" HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Padding="10 4" Margin="0 5" MinWidth="80">_Apply</Button>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Visual" Style="{DynamicResource GroupBoxStyle}">
+            <CheckBox x:Name="ChkShowIndicators" Margin="4" Checked="ChkShowIndicators_OnChecked" Unchecked="ChkShowIndicators_OnUnchecked">_Indicators</CheckBox>
+        </GroupBox>
+    </StackPanel>
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/Common.xaml"/>
+                <ResourceDictionary Source="pack://application:,,,/OpenCGSS.Director.Modules.SldProject;component/Resources/StandardToolBarStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+    <UserControl.Style>
+        <Style TargetType="UserControl">
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Effect">
+                        <Setter.Value>
+                            <geminiEffects:GrayscaleEffect />
+                        </Setter.Value>
+                    </Setter>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Style>
+</UserControl>

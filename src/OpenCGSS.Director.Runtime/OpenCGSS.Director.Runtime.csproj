@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C3A9ED2B-45BE-4BED-B064-FFC55CB3477F}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenCGSS.Director</RootNamespace>
+    <AssemblyName>OpenCGSS.Director.Runtime</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.Portable.3.6.0.1625\lib\portable-net45+win8+wpa81\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Core\ApplicationHelper.cs" />
+    <Compile Include="Core\DisposableBase.cs" />
+    <Compile Include="Core\Guard.cs" />
+    <Compile Include="Core\ICloneable.cs" />
+    <Compile Include="Globalization\ILocalizable.cs" />
+    <Compile Include="Core\InternalList.cs" />
+    <Compile Include="Core\Interop\NativeConstants.cs" />
+    <Compile Include="Core\Interop\NativeMethods.cs" />
+    <Compile Include="Core\Interop\NativeStructures.cs" />
+    <Compile Include="Core\IStarlightObject.cs" />
+    <Compile Include="Globalization\LanguageManager.cs" />
+    <Compile Include="Globalization\LocalizationHelper.cs" />
+    <Compile Include="Core\MathHelperEx.cs" />
+    <Compile Include="Core\PerformanceCounter.cs" />
+    <Compile Include="Core\StarlightID.cs" />
+    <Compile Include="Core\SystemHelper.cs" />
+    <Compile Include="Input\Command.cs" />
+    <Compile Include="Input\CommandExtensions.cs" />
+    <Compile Include="Input\CommandManager.cs" />
+    <Compile Include="Input\ExecutedEventArgs.cs" />
+    <Compile Include="Input\ICommand.cs" />
+    <Compile Include="Input\QueryCanExecuteEventArgs.cs" />
+    <Compile Include="Input\QueryCanRevertEventArgs.cs" />
+    <Compile Include="Input\QueryRecordToHistoryEventArgs.cs" />
+    <Compile Include="Input\RevertedEventArgs.cs" />
+    <Compile Include="Input\ShortcutMapper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\ColorScheme.cs" />
+    <Compile Include="UI\Controls\Extensions\ColorExtensions.cs" />
+    <Compile Include="UI\Controls\Extensions\GraphicsExtensions.cs" />
+    <Compile Include="UI\Controls\Extensions\RectangleFExtensions.cs" />
+    <Compile Include="UI\Controls\Extensions\ToolStripItemExtensions.cs" />
+    <Compile Include="UI\Controls\ModernButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ModernButtonState.cs" />
+    <Compile Include="UI\Controls\ModernSystemButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ModernSystemButtonIcon.cs" />
+    <Compile Include="UI\Controls\SingleLineLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\StarlightToolStripRenderer.cs" />
+    <Compile Include="UI\Forms\EditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\EditorForm.Designer.cs">
+      <DependentUpon>EditorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MouseButtonAction.cs" />
+    <Compile Include="UI\ControlHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Audio\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,20 @@
+<Window x:Class="OpenCGSS.Director.Modules.SldProject.Views.AboutSldProjPluginView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:OpenCGSS.Director.Modules.SldProject.Views"
+             mc:Ignorable="d"
+             d:DesignHeight="300" d:DesignWidth="300"
+             Title="About CGSS Beatmap Plugin" Width="400" Height="250"
+             ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+    <TextBlock Margin="10" FontSize="15">
+        <Bold>CGSS Beatmap Plugin for Starlight Director</Bold>
+        <LineBreak/>
+        <Run>Version 1.0.0.0</Run>
+        <LineBreak/><LineBreak/>
+        Included in <Hyperlink>Starlight Director</Hyperlink> project.
+        <LineBreak/>
+        Author: hozuki
+    </TextBlock>
+</Window>
