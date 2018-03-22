@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6C15FF56-6B4B-432B-822D-56C123329827}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>OpenCGSS.StarlightDirector</RootNamespace>
+    <AssemblyName>StarlightDirector</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
+    </Reference>
+    <Reference Include="HtmlRenderer.WinForms, Version=1.5.0.6, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlRenderer.WinForms.1.5.0.6\lib\net45\HtmlRenderer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="JetBrains.Annotations, Version=11.1.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
+      <HintPath>..\packages\JetBrains.Annotations.11.1.0\lib\net20\JetBrains.Annotations.dll</HintPath>
+    </Reference>
+    <Reference Include="MonoGame.Framework, Version=3.6.0.1625, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MonoGame.Framework.WindowsDX.3.6.0.1625\lib\net40\MonoGame.Framework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NAudio, Version=1.8.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\NAudio.1.8.4\lib\net35\NAudio.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.SQLite, Version=1.0.108.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Data.SQLite.Core.1.0.108.0\lib\net45\System.Data.SQLite.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.2.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.4.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DirectorApplication\CodeName.cs" />
+    <Compile Include="DirectorApplication\DirectorSettings.cs" />
+    <Compile Include="DirectorApplication\DirectorSettingsManager.cs" />
+    <Compile Include="DirectorApplication\Program.cs" />
+    <Compile Include="Interop\DEVMODE.cs" />
+    <Compile Include="Interop\NativeConstants.cs" />
+    <Compile Include="Interop\NativeMethods.cs" />
+    <Compile Include="Interop\POINTL.cs" />
+    <Compile Include="Interop\RECT.cs" />
+    <Compile Include="Models\Gaming\LiveMusicRecord.cs" />
+    <Compile Include="Models\Gaming\MusicColor.cs" />
+    <Compile Include="Models\OnStageStatus.cs" />
+    <Compile Include="Models\PreviewTimingSynchronizationMode.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\Controls\ContextMenuRequestedEventArgs.cs" />
+    <Compile Include="UI\Controls\Editing\Definitions.cs" />
+    <Compile Include="UI\Controls\ExplorerListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Extensions\GdiGeometryExtensions.cs" />
+    <Compile Include="UI\Controls\Extensions\GraphicsExtensions.cs" />
+    <Compile Include="UI\Controls\Extensions\XnaGeometryExtensions.cs" />
+    <Compile Include="UI\Controls\GraphicsBatch.cs" />
+    <Compile Include="UI\Controls\Previewing\BarPositionHelper.cs" />
+    <Compile Include="UI\Controls\Previewing\Definitions.cs" />
+    <Compile Include="UI\Controls\Previewing\NoteLayerUtils.cs" />
+    <Compile Include="UI\Controls\Previewing\PreviewerRenderMode.cs" />
+    <Compile Include="UI\Controls\Previewing\ScorePreviewer.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Previewing\StageBoundary.cs" />
+    <Compile Include="UI\Controls\Editing\PrimaryBeatMode.cs" />
+    <Compile Include="UI\Controls\Editing\RegionSelectionMode.cs" />
+    <Compile Include="UI\Controls\Rendering\FlickRibbonMesh.cs" />
+    <Compile Include="UI\Controls\Rendering\HoldRibbonMesh.cs" />
+    <Compile Include="UI\Controls\Rendering\RibbonMesh.cs" />
+    <Compile Include="UI\Controls\Rendering\ScoreEditorRenderer.Bars.cs" />
+    <Compile Include="UI\Controls\Rendering\ScoreEditorRenderer.cs" />
+    <Compile Include="UI\Controls\Rendering\ScoreEditorRenderer.Notes.cs" />
+    <Compile Include="UI\Controls\Rendering\ScoreEditorRenderer.Resources.cs" />
+    <Compile Include="UI\Controls\Rendering\ScoreEditorRenderer.Selection.cs" />
+    <Compile Include="UI\Controls\Rendering\ScorePreviewerRenderer.Avatars.cs" />
+    <Compile Include="UI\Controls\Rendering\ScorePreviewerRenderer.cs" />
+    <Compile Include="UI\Controls\Rendering\ScorePreviewerRenderer.Notes.cs" />
+    <Compile Include="UI\Controls\Rendering\ScorePreviewerRenderer.Resources.cs" />
+    <Compile Include="UI\Controls\Rendering\ScorePreviewerRenderer.Ribbons.cs" />
+    <Compile Include="UI\Controls\Rendering\SlideRibbonMesh.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditMode.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Editing\ScoreEditor.Editing.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Editing\ScoreEditor.HitTesting.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Editing\ScoreEditor.Selection.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Editing\ScoreEditor.Viewing.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\Editing\ScoreEditorConfig.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorGestureHandler.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorGestureHandler.EditNote.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorHitRegion.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorHitTestResult.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorLayout.cs" />
+    <Compile Include="UI\Controls\Editing\ScoreEditorLook.cs" />
+    <Compile Include="UI\Controls\ScoreVisualizer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\ScoreVisualizer.Designer.cs">
+      <DependentUpon>ScoreVisualizer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Controls\SingleLineLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="UI\Controls\SystemStyleHelper.cs" />
+    <Compile Include="UI\Controls\VisualizerContextMenu.cs" />
+    <Compile Include="UI\Controls\VisualizerDisplay.cs" />
+    <Compile Include="UI\Extensions\LanguageManagerExtensions.cs" />
+    <Compile Include="UI\Extensions\BorderlessFormExtensions.cs" />
+    <Compile Include="UI\Forms\FAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FAbout.Designer.cs">
+      <DependentUpon>FAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FAbout.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.Designer.cs">
+      <DependentUpon>FBeatmapSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapSettings.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapStats.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapStats.Designer.cs">
+      <DependentUpon>FBeatmapStats.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FBeatmapStats.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBuildBeatmap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FBuildBeatmap.Designer.cs">
+      <DependentUpon>FBuildBeatmap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FBuildBeatmap.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FEditorSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FEditorSettings.Designer.cs">
+      <DependentUpon>FEditorSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FEditorSettings.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FGoTo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FGoTo.Designer.cs">
+      <DependentUpon>FGoTo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FGoTo.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Edit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Project.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Score.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Score.Measures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Score.Notes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.Tools.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Commands.View.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Designer.cs">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.EventHandlers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.LiveControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMain.Private.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMusicSettings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FMusicSettings.Designer.cs">
+      <DependentUpon>FMusicSettings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FMusicSettings.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FNewMeasures.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FNewMeasures.Designer.cs">
+      <DependentUpon>FNewMeasures.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FNewMeasures.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSelectMusicID.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSelectMusicID.Designer.cs">
+      <DependentUpon>FSelectMusicID.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FSelectMusicID.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.Designer.cs">
+      <DependentUpon>FSpecialNote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Forms\FSpecialNote.Localization.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RectangleHelper.cs" />
+    <Compile Include="UI\ScreenHelper.cs" />
+    <Content Include="Resources\Docs\Images\IconNoteFlickRight.png" />
+    <Content Include="Resources\Docs\Images\IconNoteHold.png" />
+    <Content Include="Resources\Docs\Images\IconNoteHoldFlick.png" />
+    <Content Include="Resources\Docs\Images\IconNoteSlide.png" />
+    <Content Include="Resources\Docs\Images\IconNoteTap.png" />
+    <Content Include="Resources\GameData\master.mdb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Icons\Notes\IconNoteFlickLeft.png" />
+    <Content Include="Resources\Icons\Notes\IconNoteFlickRight.png" />
+    <Content Include="Resources\Icons\Notes\IconNoteHold.png" />
+    <Content Include="Resources\Icons\Notes\IconNoteHoldFlick.png" />
+    <Content Include="Resources\Icons\Notes\IconNoteSlide.png" />
+    <Content Include="Resources\Icons\Notes\IconNoteTap.png" />
+    <Content Include="Resources\Icons\SD-Icon.ico" />
+    <Content Include="Resources\Icons\Toolbar\IconEditCopy.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditCut.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditGoToMeasure.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditModeSelect.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditPaste.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditRedo.png" />
+    <Content Include="Resources\Icons\Toolbar\IconEditUndo.png" />
+    <Content Include="Resources\Icons\Toolbar\IconPreviewFromCurrent.png" />
+    <Content Include="Resources\Icons\Toolbar\IconPreviewFromStart.png" />
+    <Content Include="Resources\Icons\Toolbar\IconPreviewStop.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectExit.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectNew.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectOpen.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectSave.png" />
+    <Content Include="Resources\Icons\Toolbar\IconProjectSaveAs.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureAppend.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureDelete.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreMeasureInsert.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteAddSpecial.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteDelete.png" />
+    <Content Include="Resources\Icons\Toolbar\IconScoreNoteResetToTap.png" />
+    <Content Include="Resources\Icons\Toolbar\IconToolsBuildMusic.png" />
+    <Content Include="Resources\Icons\Toolbar\IconToolsBuildScoreBundle.png" />
+    <Content Include="Resources\Icons\Toolbar\IconViewZoomIn.png" />
+    <Content Include="Resources\Icons\Toolbar\IconViewZoomOut.png" />
+    <Content Include="Resources\Languages\en_US.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Languages\zh_CN.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\Pictures\Mayu.gif" />
+    <Content Include="Resources\SFX\Director\se_live_flic_perfect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SFX\Director\se_live_slide_node.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Resources\SFX\Director\se_live_tap_perfect.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Resources\WebPages\About.zh_CN.html" />
+    <EmbeddedResource Include="Resources\WebPages\About.html" />
+    <EmbeddedResource Include="Resources\WebPages\About.en_US.html" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <EmbeddedResource Include="UI\Controls\ScoreVisualizer.resx">
+      <DependentUpon>ScoreVisualizer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FAbout.resx">
+      <DependentUpon>FAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FBeatmapSettings.resx">
+      <DependentUpon>FBeatmapSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FBeatmapStats.resx">
+      <DependentUpon>FBeatmapStats.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FBuildBeatmap.resx">
+      <DependentUpon>FBuildBeatmap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FEditorSettings.resx">
+      <DependentUpon>FEditorSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FGoTo.resx">
+      <DependentUpon>FGoTo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FMain.resx">
+      <DependentUpon>FMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FMusicSettings.resx">
+      <DependentUpon>FMusicSettings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FNewMeasures.resx">
+      <DependentUpon>FNewMeasures.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FSelectMusicID.resx">
+      <DependentUpon>FSelectMusicID.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Forms\FSpecialNote.resx">
+      <DependentUpon>FSpecialNote.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <Content Include="Resources\Docs\Help.md" />
+    <None Include="UI\Controls\packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended.Overlay\MonoGame.Extended.Overlay.csproj">
+      <Project>{8a716d2a-de8d-4886-bf8f-76b6b1a7bb8f}</Project>
+      <Name>MonoGame.Extended.Overlay</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended.WinForms.WindowsDX\MonoGame.Extended.WinForms.WindowsDX.csproj">
+      <Project>{d8f21338-24ae-4cd9-a6da-504e798d4cb9}</Project>
+      <Name>MonoGame.Extended.WinForms.WindowsDX</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended.WinForms\MonoGame.Extended.WinForms.csproj">
+      <Project>{75c5ca58-8c8e-4c44-80e9-e1697339b46e}</Project>
+      <Name>MonoGame.Extended.WinForms</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended2\MonoGame.Extended2.csproj">
+      <Project>{c7c3d9de-41a4-4c21-98fb-336ed38a99d5}</Project>
+      <Name>MonoGame.Extended2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.StarlightDirector.Core\OpenCGSS.StarlightDirector.Core.csproj">
+      <Project>{58F1DFD3-82CA-40FA-A76D-A3B24520DC3C}</Project>
+      <Name>OpenCGSS.StarlightDirector.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.StarlightDirector.Input\OpenCGSS.StarlightDirector.Input.csproj">
+      <Project>{06A15C16-FE33-453C-93B9-7951D97F458B}</Project>
+      <Name>OpenCGSS.StarlightDirector.Input</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.StarlightDirector.Models\OpenCGSS.StarlightDirector.Models.csproj">
+      <Project>{3A253BFD-40AE-4A83-98F9-6022260AE236}</Project>
+      <Name>OpenCGSS.StarlightDirector.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.StarlightDirector.Previewing.Audio\OpenCGSS.StarlightDirector.Previewing.Audio.csproj">
+      <Project>{DA0705EC-AE7F-4B57-9A1F-4FE02AC6B8FE}</Project>
+      <Name>OpenCGSS.StarlightDirector.Previewing.Audio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenCGSS.StarlightDirector.UI\OpenCGSS.StarlightDirector.UI.csproj">
+      <Project>{ec5c6290-97e3-46d2-90dc-2890401257ba}</Project>
+      <Name>OpenCGSS.StarlightDirector.UI</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>这台计算机上缺少此项目引用的 NuGet 程序包。使用“NuGet 程序包还原”可下载这些程序包。有关更多信息，请参见 http://go.microsoft.com/fwlink/?LinkID=322105。缺少的文件是 {0}。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\System.Data.SQLite.Core.1.0.108.0\build\net45\System.Data.SQLite.Core.targets'))" />
+  </Target>
+</Project>

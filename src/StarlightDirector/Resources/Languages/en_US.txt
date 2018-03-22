@@ -1,0 +1,325 @@
+﻿# Name of the language file must be the same with language code name.
+# Put a hash tag ("#") at the beginning of a line to comment it out.
+# Use "\n" to start a new line.
+lang.display_name=English (United States)
+lang.code_name=en_US
+
+# === Main Window ===
+
+# {0}: file name {1}: difficulty {2}: application title （Starlight Director） {3}: state
+ui.fmain.text_template={0} [{1}] - {2} {3}
+
+# ---
+
+ui.fmain.menu.project.text=&Project
+ui.fmain.menu.project.new.text=&New
+ui.fmain.menu.project.open.text=&Open...
+ui.fmain.menu.project.save.text=&Save
+ui.fmain.menu.project.saveas.text=Save &As...
+ui.fmain.menu.project.beatmap.text=&Beatmap
+ui.fmain.menu.project.beatmap.stats.text=Beatmap &Statistics
+ui.fmain.menu.project.beatmap.settings.text=Beatmap Se&ttings...
+ui.fmain.menu.project.music.text=Mus&ic
+ui.fmain.menu.project.music.settings.text=Music &Settings...
+ui.fmain.menu.project.exit.text=E&xit
+
+ui.fmain.menu.edit.text=&Edit
+ui.fmain.menu.edit.undo.text=&Undo
+ui.fmain.menu.edit.redo.text=&Redo
+ui.fmain.menu.edit.cut.text=Cu&t
+ui.fmain.menu.edit.copy.text=&Copy
+ui.fmain.menu.edit.paste.text=&Paste
+ui.fmain.menu.edit.select.text=&Select
+ui.fmain.menu.edit.select.all_notes.text=All &Notes
+ui.fmain.menu.edit.select.all_measures.text=All &Measures
+ui.fmain.menu.edit.select.clear_all.text=&Clear Selection
+ui.fmain.menu.edit.mode.text=&Mode
+ui.fmain.menu.edit.mode.select.text=Se&lect
+ui.fmain.menu.edit.mode.tap.text=Tap
+ui.fmain.menu.edit.mode.hold_flick.text=&Hold/Flick
+ui.fmain.menu.edit.mode.slide.text=&Slide
+ui.fmain.menu.edit.goto.text=&Go To
+ui.fmain.menu.edit.goto.measure.text=&Measure...
+ui.fmain.menu.edit.goto.time.text=&Time...
+
+ui.fmain.menu.view.text=&View
+ui.fmain.menu.view.zoom.text=&Zoom
+ui.fmain.menu.view.zoom.in.text=Zoom &In
+ui.fmain.menu.view.zoom.out.text=Zoom &Out
+ui.fmain.menu.view.zoom.to_beat.text=Zoom to &Beat
+ui.fmain.menu.view.highlight_mode.text=&Highlight Mode
+ui.fmain.menu.view.highlight_mode.four_beats.text=Every &Four Beats
+ui.fmain.menu.view.highlight_mode.three_beats.text=Every &Three Beats
+
+ui.fmain.menu.score.text=&Score
+ui.fmain.menu.score.difficulty.text=&Difficulty
+ui.fmain.menu.score.difficulty.debut.text=&Debut
+ui.fmain.menu.score.difficulty.regular.text=&Regular
+ui.fmain.menu.score.difficulty.pro.text=&Pro
+ui.fmain.menu.score.difficulty.master.text=&Master
+ui.fmain.menu.score.difficulty.master_plus.text=Mast&er+
+ui.fmain.menu.score.measure.text=&Measure
+ui.fmain.menu.score.measure.append.text=&Append Measure
+ui.fmain.menu.score.measure.append_multiple.text=Append &Measures...
+ui.fmain.menu.score.measure.insert.text=&Insert Measure
+ui.fmain.menu.score.measure.insert_multiple.text=In&sert Measures...
+ui.fmain.menu.score.measure.delete.text=&Delete Selected
+ui.fmain.menu.score.note.text=&Note
+ui.fmain.menu.score.note.reset_to_tap.text=Reset to &Tap
+ui.fmain.menu.score.note.delete.text=&Delete Selected
+ui.fmain.menu.score.note.start_position.text=Start &Position
+ui.fmain.menu.score.note.start_position.at.default.text=At &Default
+ui.fmain.menu.score.note.start_position.at.1.text=At &Left
+ui.fmain.menu.score.note.start_position.at.2.text=At Cen&ter Left
+ui.fmain.menu.score.note.start_position.at.3.text=At Center
+ui.fmain.menu.score.note.start_position.at.4.text=At Center R&ight
+ui.fmain.menu.score.note.start_position.at.5.text=&At Right
+ui.fmain.menu.score.note.start_position.move.left.text=Move L&eft
+ui.fmain.menu.score.note.start_position.move.right.text=Mo&ve Right
+ui.fmain.menu.score.note.start_position.to.default.text=&Set to Default
+ui.fmain.menu.score.note.start_position.to.1.text=Set t&o Left
+ui.fmain.menu.score.note.start_position.to.2.text=Set to Center Le&ft
+ui.fmain.menu.score.note.start_position.to.3.text=Set to Center &Right
+ui.fmain.menu.score.note.start_position.to.4.text=Set to Center Ri&ght
+ui.fmain.menu.score.note.start_position.to.5.text=Set to Center Rig&ht
+ui.fmain.menu.score.note.insert_special.text=Insert &Special Note...
+
+ui.fmain.menu.preview.text=P&review
+ui.fmain.menu.preview.from_this_measure.text=From This &Measure
+ui.fmain.menu.preview.from_start.text=From &Start
+ui.fmain.menu.preview.stop.text=S&top
+
+ui.fmain.menu.tools.text=&Tools
+ui.fmain.menu.tools.export.text=&Export
+ui.fmain.menu.tools.export.csv.text=CGSS Single Beatmap (&CSV)...
+ui.fmain.menu.tools.import.text=&Import
+ui.fmain.menu.tools.build.text=&Build
+ui.fmain.menu.tools.build.bdb.text=CGSS Beatmap Bundle (&BDB)...
+ui.fmain.menu.tools.build.acb.text=CGSS Live Music (&ACB)...
+ui.fmain.menu.tools.settings.text=&Settings...
+
+ui.fmain.menu.help.text=&Help
+ui.fmain.menu.help.about.text=&About
+
+# ---
+
+ui.fmain.frame.standard.text=Standard
+ui.fmain.frame.edit_view.text=Edit && View
+ui.fmain.frame.note.text=Note
+ui.fmain.frame.measure.text=Measure
+ui.fmain.frame.postprocessing.text=Postprocessing
+
+ui.fmain.toolbar.standard.new.text=New
+ui.fmain.toolbar.standard.open.text=Open...
+ui.fmain.toolbar.standard.save.text=Save
+ui.fmain.toolbar.standard.undo.text=Undo
+ui.fmain.toolbar.standard.redo.text=Redo
+ui.fmain.toolbar.standard.cut.text=Cut
+ui.fmain.toolbar.standard.copy.text=Copy
+ui.fmain.toolbar.standard.paste.text=Paste
+
+ui.fmain.toolbar.edit_view.mode.text=Edit Mode
+ui.fmain.toolbar.edit_view.difficulty_label.text=Difficulty:
+ui.fmain.toolbar.edit_view.zoom_in.text=Zoom In
+ui.fmain.toolbar.edit_view.zoom_out.text=Zoom Out
+
+ui.fmain.toolbar.note.reset_to_tap.text=Reset to Tap
+ui.fmain.toolbar.note.delete.text=Delete Selected Note(s)
+ui.fmain.toolbar.note.start_position_label.text=Start:
+ui.fmain.toolbar.note.insert_special.text=Insert Special Note...
+
+ui.fmain.toolbar.measure.append.text=Append Measure
+ui.fmain.toolbar.measure.append_multiple.text=Append &Measures...
+ui.fmain.toolbar.measure.insert.text=Insert Measure
+ui.fmain.toolbar.measure.insert_multiple.text=Insert &Measures...
+ui.fmain.toolbar.measure.delete.text=Delete Selected Measure(s)
+
+ui.fmain.toolbar.postprocessing.preview.from_this_measure.text=Preview from This Measure
+ui.fmain.toolbar.postprocessing.preview.from_start.text=Preview from Start
+ui.fmain.toolbar.postprocessing.preview.stop.text=Stop Previewing
+ui.fmain.toolbar.postprocessing.build.bdb.text=Build CGSS Beatmap Bundle
+ui.fmain.toolbar.postprocessing.build.acb.text=Build CGSS Live Music
+
+# ---
+
+ui.fmain.context.edit.cut=Cu&t
+ui.fmain.context.edit.copy=&Copy
+ui.fmain.context.edit.paste=&Paste
+ui.fmain.context.note.reset_to_tap=Reset to &Tap
+ui.fmain.context.note.delete=&Delete Note(s)
+ui.fmain.context.measure.delete=&Delete Measure(s)
+ui.fmain.context.note.insert_special=Insert &Special Note...
+ui.fmain.context.note.modify_special=Modify &Special Note...
+ui.fmain.context.note.delete_special=&Delete Special Note...
+
+# === Beatmap Settings ===
+
+ui.fbeatmapsettings.text=Beatmap Settings
+ui.fbeatmapsettings.label.bpm.text=Beat per minute:
+ui.fbeatmapsettings.label.score_offset.text=Score offset (sec):
+ui.fbeatmapsettings.button.one_measure_more.text=+
+ui.fbeatmapsettings.button.one_measure_less.text=-
+ui.fbeatmapsettings.button.ok.text=OK
+ui.fbeatmapsettings.button.cancel.text=Cancel
+
+# === Beatmap Statistics ===
+
+ui.fbeatmapstats.text=Beatmap Statistics
+ui.fbeatmapstats.listview.column.name.text=Name
+ui.fbeatmapstats.listview.column.value.text=Value
+ui.fbeatmapstats.listview.item.project_file_name.text=Project File Name
+ui.fbeatmapstats.listview.item.music_file_name.text=Music File Name
+ui.fbeatmapstats.listview.header.general.text=General
+# {0}: difficulty
+ui.fbeatmapstats.listview.header.items.text_template=Difficulty: {0}
+ui.fbeatmapstats.listview.item.measures.text=Measures
+ui.fbeatmapstats.listview.item.notes.text=Notes
+ui.fbeatmapstats.listview.item.duration.text=Duration
+
+# === Special Note ===
+
+ui.fspecialnote.text=Special Note
+ui.fspecialnote.label.in_measure.text=In measure:
+ui.fspecialnote.label.on_row.text=On row:
+ui.fspecialnote.label.new_bpm.text=New BPM:
+ui.fspecialnote.radio.variant_bpm.text=Variant BPM
+ui.fspecialnote.button.ok.text=OK
+ui.fspecialnote.button.cancel.text=Cancel
+
+# === Select Music ID ===
+
+ui.fselectmusicid.text=Select Music ID
+ui.fselectmusicid.button.ok.text=OK
+ui.fselectmusicid.button.cancel.text=Cancel
+# {0}: song name {1}: song attribute(s)
+ui.fselectmusicid.combobox.item.text_template={0} [{1}]
+
+# === Measure Appending/Insertion ===
+
+ui.fnewmeasures.text=New Measures
+ui.fnewmeasures.label.number_of_measures.text=Number of measures:
+ui.fnewmeasures.button.ok.text=OK
+ui.fnewmeasures.button.cancel.text=Cancel
+
+# === Music Settings ===
+
+ui.fmusicsettings.text=Music Settings
+ui.fmusicsettings.label.file_location.text=File:
+ui.fmusicsettings.button.browse_file.text=...
+ui.fmusicsettings.button.clear_file.text=Clear
+ui.fmusicsettings.button.ok.text=OK
+ui.fmusicsettings.button.cancel.text=Cancel
+
+# === Go To ===
+
+ui.fgoto.text=Go To
+ui.fgoto.radio.measure.text=Measure:
+ui.fgoto.radio.time.text=Time (sec):
+ui.fgoto.button.ok.text=OK
+ui.fgoto.button.cancel.text=Cancel
+# {0}: number of measures
+ui.fgoto.label.measure_count.text_template=/{0}
+# {0}: time range starts {1}: time range ends
+ui.fgoto.label.time_range.text_template={0:0.###} - {1:0.###}
+
+# === Build Beatmap ===
+
+ui.fbuildbeatmap.text=Build Beatmap
+ui.fbuildbeatmap.label.end_time.text=End time (sec):
+ui.fbuildbeatmap.label.end_time.estimated.text=Estimated:
+ui.fbuildbeatmap.label.build_type.text=Build type:
+ui.fbuildbeatmap.label.csv.difficulty.text=Difficulty:
+ui.fbuildbeatmap.label.bdb.live_id.text=Live ID:
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.text=Difficulty Mapping
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.debut.text=Debut
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.regular.text=Regular
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.pro.text=Pro
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master.text=Master
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master_plus.text=Master+
+ui.fbuildbeatmap.radio.end_time.auto.text=&Auto
+ui.fbuildbeatmap.radio.end_time.custom.text=&Custom
+ui.fbuildbeatmap.radio.build_type.csv.text=Single beatmap (CSV)
+ui.fbuildbeatmap.radio.build_type.bdb.text=Beatmap bundle (BDB)
+ui.fbuildbeatmap.button.select_live_id.text=&Select...
+ui.fbuildbeatmap.button.build.text=&Build...
+ui.fbuildbeatmap.button.close.text=Close
+
+# === Editor Settings ===
+
+ui.feditorsettings.text=Settings
+ui.feditorsettings.tab.editor.text=Editor
+ui.feditorsettings.tab.preview.text=Preview
+ui.feditorsettings.tab.misc.text=Misc
+ui.feditorsettings.label.scrolling_style.text=Scrolling style:
+ui.feditorsettings.label.scrolling_speed.text=Scrolling speed:
+ui.feditorsettings.label.language.text=Language:
+ui.feditorsettings.label.preview_render_mode.text=Render Mode:
+ui.feditorsettings.label.preview_speed.text=Speed:
+ui.feditorsettings.radio.scrolling_style.normal.text=Like Windows / Linux
+ui.feditorsettings.radio.scrolling_style.inverted.text=Like macOS
+ui.feditorsettings.check.show_note_indicators.text=Show note indicators
+ui.feditorsettings.dropdown.0=Standard
+ui.feditorsettings.dropdown.1=Editor-like
+ui.feditorsettings.button.ok.text=OK
+ui.feditorsettings.button.cancel.text=Cancel
+
+# === About ===
+
+ui.fabout.text=About
+ui.fabout.button.close.text=Close
+
+# --- Misc ---
+
+misc.default_doc_name=Untitled
+misc.filter.sldproj=Starlight Director Project (*.sldproj)|*.sldproj
+misc.filter.wave=Wave Audio (*.wav)|*.wav
+misc.filter.csv=CGSS Single Beatmap (*.csv)|*.csv
+misc.filter.bdb=CGSS Beatmap Bundle(*.bdb)|*.bdb
+
+misc.difficulty.debut=Debut
+misc.difficulty.regular=Regular
+misc.difficulty.pro=Pro
+misc.difficulty.master=Master
+misc.difficulty.master_plus=Master+
+
+misc.note_position.default=Default
+misc.note_position.p1=Left
+misc.note_position.p2=Center Left
+misc.note_position.p3=Center
+misc.note_position.p4=Center Right
+misc.note_position.p5=Right
+
+misc.music_attribute.cute=Cute
+misc.music_attribute.cool=Cool
+misc.music_attribute.passion=Passion
+misc.music_attribute.multicolor=Multicolor
+misc.music_attribute.event=Event
+misc.music_attribute.solo_ver=Solo
+
+lang.use_auto.text=Auto
+
+misc.state.editing=(Editing)
+misc.state.previewing=(Previewing)
+
+messages.fmain.unknown_project_version=Unable to open this project. Maybe it is corrupted or it is a project of a no longer supported version. If you created this project file using a previous version of Starlight Director, you can try to open it in v0.7.5 and save it again.
+# {0}: music file path
+messages.fmain.live_music_open_error_template=Cannot open '{0}'. Live music disabled.
+# {0}: music file path
+messages.fmain.live_music_not_found_template=File '{0}' does not exist. Live music disabled.
+
+messages.fbeatmapsettings.bpm_is_not_numeric=Please enter a number.
+messages.fbeatmapsettings.bpm_value_invalid=BPM should be greater than zero.
+messages.fbeatmapsettings.score_offset_is_not_numeric=Please enter a number.
+messages.fspecialnote.measures_not_exist=There are no available measures yet.
+messages.fspecialnote.bpm_invalid=Please enter a valid BPM value.
+
+# {0}: expected file path
+messages.fselectmusicid.master_database_file_missing=The database file '{0}' is missing. Using the default music ID.
+
+messages.fgoto.time_invalid=Please enter a time within beatmap start and end.
+
+messages.fbuildbeatmap.custom_end_time_invalid=Please enter a correct number of seconds.。
+# {0}: file path
+messages.fbuildbeatmap.csv_score_exported=The score is exported to '{0}'.
+# {0}: file path
+messages.fbuildbeatmap.bdb_scores_exported=The scores are exported to '{0}'.

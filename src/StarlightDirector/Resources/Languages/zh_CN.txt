@@ -1,0 +1,325 @@
+﻿# 语言文件名必须为语言代码。
+# 在一行的开始处使用“#”注释这一行
+# 用“\n”换行
+lang.display_name=中文（中国）
+lang.code_name=zh_CN
+
+# === 主窗口 ===
+
+# {0}:文件名 {1}: 难度 {2}:程序标题（Starlight Director） {3}: state
+ui.fmain.text_template={0} [{1}] - {2} {3}
+
+# ---
+
+ui.fmain.menu.project.text=工程(&P)
+ui.fmain.menu.project.new.text=新建(&N)
+ui.fmain.menu.project.open.text=打开(&O)...
+ui.fmain.menu.project.save.text=保存(&S)
+ui.fmain.menu.project.saveas.text=另存为(&A)...
+ui.fmain.menu.project.beatmap.text=谱面(&B)
+ui.fmain.menu.project.beatmap.stats.text=谱面统计(&S)
+ui.fmain.menu.project.beatmap.settings.text=谱面设置(&T)...
+ui.fmain.menu.project.music.text=音乐(&I)
+ui.fmain.menu.project.music.settings.text=音乐设置(&S)...
+ui.fmain.menu.project.exit.text=退出(&X)
+
+ui.fmain.menu.edit.text=编辑(&E)
+ui.fmain.menu.edit.undo.text=撤销(&U)
+ui.fmain.menu.edit.redo.text=重做(&R)
+ui.fmain.menu.edit.cut.text=剪切(&T)
+ui.fmain.menu.edit.copy.text=复制(&C)
+ui.fmain.menu.edit.paste.text=粘贴(&P)
+ui.fmain.menu.edit.select.text=选择(&S)
+ui.fmain.menu.edit.select.all_notes.text=所有音符(&N)
+ui.fmain.menu.edit.select.all_measures.text=所有小节(&M)
+ui.fmain.menu.edit.select.clear_all.text=清除选择(&C)
+ui.fmain.menu.edit.mode.text=模式(&M)
+ui.fmain.menu.edit.mode.select.text=选择(&L)
+ui.fmain.menu.edit.mode.tap.text=单点(&T)
+ui.fmain.menu.edit.mode.hold_flick.text=长押/滑条(&H)
+ui.fmain.menu.edit.mode.slide.text=滑键（滑按）(&S)
+ui.fmain.menu.edit.goto.text=转到(&G)
+ui.fmain.menu.edit.goto.measure.text=小节(&M)...
+ui.fmain.menu.edit.goto.time.text=时间点(&T)...
+
+ui.fmain.menu.view.text=视图(&V)
+ui.fmain.menu.view.zoom.text=缩放(&Z)
+ui.fmain.menu.view.zoom.in.text=放大(&I)
+ui.fmain.menu.view.zoom.out.text=缩小(&O)
+ui.fmain.menu.view.zoom.to_beat.text=缩放到拍(&B)
+ui.fmain.menu.view.highlight_mode.text=高亮模式(&H)
+ui.fmain.menu.view.highlight_mode.four_beats.text=四拍子(&F)
+ui.fmain.menu.view.highlight_mode.three_beats.text=三拍子(&T)
+
+ui.fmain.menu.score.text=谱面(&S)
+ui.fmain.menu.score.difficulty.text=难度(&D)
+ui.fmain.menu.score.difficulty.debut.text=Debut(&D)
+ui.fmain.menu.score.difficulty.regular.text=Regular(&R)
+ui.fmain.menu.score.difficulty.pro.text=Pro(&P)
+ui.fmain.menu.score.difficulty.master.text=Master(&M)
+ui.fmain.menu.score.difficulty.master_plus.text=Master+(&E)
+ui.fmain.menu.score.measure.text=小节(&M)
+ui.fmain.menu.score.measure.append.text=添加小节(&A)
+ui.fmain.menu.score.measure.append_multiple.text=添加多个小节(&M)...
+ui.fmain.menu.score.measure.insert.text=插入小节(&I)
+ui.fmain.menu.score.measure.insert_multiple.text=插入多个小节(&S)...
+ui.fmain.menu.score.measure.delete.text=删除所选小节(&D)
+ui.fmain.menu.score.note.text=音符(&N)
+ui.fmain.menu.score.note.reset_to_tap.text=重置为单点(&T)
+ui.fmain.menu.score.note.delete.text=删除所选音符(&D)
+ui.fmain.menu.score.note.start_position.text=起始位置(&P)
+ui.fmain.menu.score.note.start_position.at.default.text=默认(&D)
+ui.fmain.menu.score.note.start_position.at.1.text=1位(&L)
+ui.fmain.menu.score.note.start_position.at.2.text=2位(&T)
+ui.fmain.menu.score.note.start_position.at.3.text=3位(&C)
+ui.fmain.menu.score.note.start_position.at.4.text=4位(&I)
+ui.fmain.menu.score.note.start_position.at.5.text=5位(&A)
+ui.fmain.menu.score.note.start_position.move.left.text=向左平移(&E)
+ui.fmain.menu.score.note.start_position.move.right.text=向右平移(&V)
+ui.fmain.menu.score.note.start_position.to.default.text=设为默认(&S)
+ui.fmain.menu.score.note.start_position.to.1.text=设为1位(&O)
+ui.fmain.menu.score.note.start_position.to.2.text=设为2位(&F)
+ui.fmain.menu.score.note.start_position.to.3.text=设为3位(&R)
+ui.fmain.menu.score.note.start_position.to.4.text=设为4位(&G)
+ui.fmain.menu.score.note.start_position.to.5.text=设为5位(&H)
+ui.fmain.menu.score.note.insert_special.text=插入特殊音符(&S)...
+
+ui.fmain.menu.preview.text=预览(&R)
+ui.fmain.menu.preview.from_this_measure.text=从当前小节开始(&M)
+ui.fmain.menu.preview.from_start.text=从头开始(&S)
+ui.fmain.menu.preview.stop.text=停止(&T)
+
+ui.fmain.menu.tools.text=工具(&T)
+ui.fmain.menu.tools.export.text=导出(&E)
+ui.fmain.menu.tools.export.csv.text=CGSS 单个谱面(CSV)(&C)...
+ui.fmain.menu.tools.import.text=导入(&I)
+ui.fmain.menu.tools.build.text=生成(&B)
+ui.fmain.menu.tools.build.bdb.text=CGSS 谱面包(BDB)(&B)...
+ui.fmain.menu.tools.build.acb.text=CGSS 曲目音乐(ACB)(&A)...
+ui.fmain.menu.tools.settings.text=设置(&S)...
+
+ui.fmain.menu.help.text=帮助(&H)
+ui.fmain.menu.help.about.text=关于(&A)
+
+# ---
+
+ui.fmain.frame.standard.text=标准
+ui.fmain.frame.edit_view.text=编辑与视图
+ui.fmain.frame.note.text=音符
+ui.fmain.frame.measure.text=小节
+ui.fmain.frame.postprocessing.text=后期处理
+
+ui.fmain.toolbar.standard.new.text=新建
+ui.fmain.toolbar.standard.open.text=打开...
+ui.fmain.toolbar.standard.save.text=保存
+ui.fmain.toolbar.standard.undo.text=撤销
+ui.fmain.toolbar.standard.redo.text=重做
+ui.fmain.toolbar.standard.cut.text=剪切
+ui.fmain.toolbar.standard.copy.text=复制
+ui.fmain.toolbar.standard.paste.text=粘贴
+
+ui.fmain.toolbar.edit_view.mode.text=编辑模式
+ui.fmain.toolbar.edit_view.difficulty_label.text=难度:
+ui.fmain.toolbar.edit_view.zoom_in.text=放大
+ui.fmain.toolbar.edit_view.zoom_out.text=缩小
+
+ui.fmain.toolbar.note.reset_to_tap.text=重置为单点
+ui.fmain.toolbar.note.delete.text=删除所选音符
+ui.fmain.toolbar.note.start_position_label.text=起始位置:
+ui.fmain.toolbar.note.insert_special.text=插入特殊音符...
+
+ui.fmain.toolbar.measure.append.text=添加小节
+ui.fmain.toolbar.measure.append_multiple.text=添加多个小节(&M)...
+ui.fmain.toolbar.measure.insert.text=插入小节
+ui.fmain.toolbar.measure.insert_multiple.text=插入多个小节(&M)...
+ui.fmain.toolbar.measure.delete.text=删除所选小节
+
+ui.fmain.toolbar.postprocessing.preview.from_this_measure.text=从当前小节开始预览
+ui.fmain.toolbar.postprocessing.preview.from_start.text=从头开始预览
+ui.fmain.toolbar.postprocessing.preview.stop.text=停止预览
+ui.fmain.toolbar.postprocessing.build.bdb.text=生成 CGSS 谱面包
+ui.fmain.toolbar.postprocessing.build.acb.text=生成 CGSS 曲目音乐
+
+# ---
+
+ui.fmain.context.edit.cut=剪切(&T)
+ui.fmain.context.edit.copy=复制(&C)
+ui.fmain.context.edit.paste=粘贴(&P)
+ui.fmain.context.note.reset_to_tap=重置为单点(&T)
+ui.fmain.context.note.delete=删除所选音符(&D)
+ui.fmain.context.measure.delete=删除所选小节(&D)
+ui.fmain.context.note.insert_special=插入特殊音符(&S)...
+ui.fmain.context.note.modify_special=编辑特殊音符(&S)...
+ui.fmain.context.note.delete_special=删除特殊音符(&D)
+
+# === 谱面设置 ===
+
+ui.fbeatmapsettings.text=谱面设置
+ui.fbeatmapsettings.label.bpm.text=BPM:
+ui.fbeatmapsettings.label.score_offset.text=谱面偏移(秒):
+ui.fbeatmapsettings.button.one_measure_more.text=+
+ui.fbeatmapsettings.button.one_measure_less.text=-
+ui.fbeatmapsettings.button.ok.text=确定
+ui.fbeatmapsettings.button.cancel.text=取消
+
+# === 谱面统计 ===
+
+ui.fbeatmapstats.text=谱面统计
+ui.fbeatmapstats.listview.column.name.text=名称
+ui.fbeatmapstats.listview.column.value.text=值
+ui.fbeatmapstats.listview.item.project_file_name.text=工程文件
+ui.fbeatmapstats.listview.item.music_file_name.text=音乐文件
+ui.fbeatmapstats.listview.header.general.text=常规
+# {0}: 难度
+ui.fbeatmapstats.listview.header.items.text_template=难度: {0}
+ui.fbeatmapstats.listview.item.measures.text=小节数
+ui.fbeatmapstats.listview.item.notes.text=音符数
+ui.fbeatmapstats.listview.item.duration.text=总长度
+
+# === 特殊音符 ===
+
+ui.fspecialnote.text=特殊音符
+ui.fspecialnote.label.in_measure.text=位于小节:
+ui.fspecialnote.label.on_row.text=位于行:
+ui.fspecialnote.label.new_bpm.text=新 BPM:
+ui.fspecialnote.radio.variant_bpm.text=改变 BPM
+ui.fspecialnote.button.ok.text=确定
+ui.fspecialnote.button.cancel.text=取消
+
+# === 选择音乐ID ===
+
+ui.fselectmusicid.text=选择音乐 ID
+ui.fselectmusicid.button.ok.text=确定
+ui.fselectmusicid.button.cancel.text=取消
+# {0}: 歌曲名称 {1}: 歌曲属性
+ui.fselectmusicid.combobox.item.text_template={0} [{1}]
+
+# === 添加/插入小节 ===
+
+ui.fnewmeasures.text=新建小节
+ui.fnewmeasures.label.number_of_measures.text=小节数:
+ui.fnewmeasures.button.ok.text=确定
+ui.fnewmeasures.button.cancel.text=取消
+
+# === 音乐设置 ===
+
+ui.fmusicsettings.text=音乐设置
+ui.fmusicsettings.label.file_location.text=文件:
+ui.fmusicsettings.button.browse_file.text=...
+ui.fmusicsettings.button.clear_file.text=清除
+ui.fmusicsettings.button.ok.text=确定
+ui.fmusicsettings.button.cancel.text=取消
+
+# === 转到 ===
+
+ui.fgoto.text=转到
+ui.fgoto.radio.measure.text=小节:
+ui.fgoto.radio.time.text=时间(秒):
+ui.fgoto.button.ok.text=确定
+ui.fgoto.button.cancel.text=取消
+# {0}: 小节数
+ui.fgoto.label.measure_count.text_template=/{0}
+# {0}: 时间段开始 {1}: 时间段结束
+ui.fgoto.label.time_range.text_template={0:0.###} - {1:0.###}
+
+# === 生成谱面 ===
+
+ui.fbuildbeatmap.text=生成谱面
+ui.fbuildbeatmap.label.end_time.text=结束时间(秒):
+ui.fbuildbeatmap.label.end_time.estimated.text=估计值:
+ui.fbuildbeatmap.label.build_type.text=生成类型:
+ui.fbuildbeatmap.label.csv.difficulty.text=难度:
+ui.fbuildbeatmap.label.bdb.live_id.text=Live ID:
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.text=难度映射:
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.debut.text=Debut
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.regular.text=Regular
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.pro.text=Pro
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master.text=Master
+ui.fbuildbeatmap.label.bdb.difficulty_mapping.master_plus.text=Master+
+ui.fbuildbeatmap.radio.end_time.auto.text=自动(&A)
+ui.fbuildbeatmap.radio.end_time.custom.text=自定义(&C)
+ui.fbuildbeatmap.radio.build_type.csv.text=单个谱面(CSV)
+ui.fbuildbeatmap.radio.build_type.bdb.text=谱面包(BDB)
+ui.fbuildbeatmap.button.select_live_id.text=选择(&S)...
+ui.fbuildbeatmap.button.build.text=生成(&B)...
+ui.fbuildbeatmap.button.close.text=关闭
+
+# === 编辑器设置 ===
+
+ui.feditorsettings.text=设置
+ui.feditorsettings.tab.editor.text=编辑器
+ui.feditorsettings.tab.preview.text=预览
+ui.feditorsettings.tab.misc.text=杂项
+ui.feditorsettings.label.scrolling_style.text=滚动方式:
+ui.feditorsettings.label.scrolling_speed.text=滚动速度:
+ui.feditorsettings.label.language.text=语言:
+ui.feditorsettings.label.preview_render_mode.text=渲染模式:
+ui.feditorsettings.label.preview_speed.text=速度:
+ui.feditorsettings.radio.scrolling_style.normal.text=类似 Windows / Linux
+ui.feditorsettings.radio.scrolling_style.inverted.text=类似 macOS
+ui.feditorsettings.check.show_note_indicators.text=显示音符指示器
+ui.feditorsettings.dropdown.0=标准
+ui.feditorsettings.dropdown.1=仿编辑器
+ui.feditorsettings.button.ok.text=确定
+ui.feditorsettings.button.cancel.text=取消
+
+# === 关于 ===
+
+ui.fabout.text=关于
+ui.fabout.button.close.text=关闭
+
+# --- 其他 ---
+
+misc.default_doc_name=无标题
+misc.filter.sldproj=Starlight Director 工程 (*.sldproj)|*.sldproj
+misc.filter.wave=波形声音 (*.wav)|*.wav
+misc.filter.csv=CGSS 单个谱面 (*.csv)|*.csv
+misc.filter.bdb=CGSS 谱面包 (*.bdb)|*.bdb
+
+misc.difficulty.debut=Debut
+misc.difficulty.regular=Regular
+misc.difficulty.pro=Pro
+misc.difficulty.master=Master
+misc.difficulty.master_plus=Master+
+
+misc.note_position.default=默认
+misc.note_position.p1=1位
+misc.note_position.p2=2位
+misc.note_position.p3=3位
+misc.note_position.p4=4位
+misc.note_position.p5=5位
+
+misc.music_attribute.cute=Cu
+misc.music_attribute.cool=Co
+misc.music_attribute.passion=Pa
+misc.music_attribute.multicolor=彩
+misc.music_attribute.event=活动
+misc.music_attribute.solo_ver=Solo
+
+lang.use_auto.text=自动
+
+misc.state.editing=(编辑)
+misc.state.previewing=(预览)
+
+messages.fmain.unknown_project_version=无法打开这个工程，也许这个文件已经损坏或是一个不再支持的工程版本。如果您确定它是用之前版本的 Starlight Director 创建的，可以尝试使用 0.7.5 版打开并保存后，再由当前版本打开。
+# {0}: 音乐文件路径
+messages.fmain.live_music_open_error_template=无法打开文件"{0}"。背景音乐已关闭。
+# {0}: 音乐文件路径
+messages.fmain.live_music_not_found_template=找不到文件"{0}"。背景音乐已关闭。
+
+messages.fbeatmapsettings.bpm_is_not_numeric=请输入一个数字。
+messages.fbeatmapsettings.bpm_value_invalid=BPM 必须大于0。
+messages.fbeatmapsettings.score_offset_is_not_numeric=请输入一个数字。
+messages.fspecialnote.measures_not_exist=未找到可用的小节。
+messages.fspecialnote.bpm_invalid=请输入一个正确的 BPM 值。
+
+# {0}: 预期的文件路径
+messages.fselectmusicid.master_database_file_missing=找不到数据库文件"{0}"，将使用默认音乐 ID。
+
+messages.fgoto.time_invalid=请输入一个位于谱面开始和结束之间的时间。
+
+messages.fbuildbeatmap.custom_end_time_invalid=请输入正确的时间（秒）。
+# {0}: 文件位置
+messages.fbuildbeatmap.csv_score_exported=谱面已经导出到 {0}。
+# {0}: 文件位置
+messages.fbuildbeatmap.bdb_scores_exported=所有谱面已经导出到 {0}。
