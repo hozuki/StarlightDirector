@@ -16,7 +16,7 @@ after_build:
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.pdb
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.xml
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\libSkiaSharp.*
-  - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\x64\*
+  - cmd: rmdir /s /q %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\x64
   - cmd: move %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\x86\libSkiaSharp.dll %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\libSkiaSharp.dll
   - cmd: 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%
   - cmd: 7z a sd.zip LICENSE.md
