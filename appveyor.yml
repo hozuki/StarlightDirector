@@ -13,12 +13,12 @@ before_build:
   - cmd: nuget update -self
   - ps: .\scripts\nuget_restore.ps1
 after_build:
-  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.pdb
-  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.xml
-  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/libSkiaSharp.*
-  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/x64/*
-  - cmd: move %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/x86/libSkiaSharp.dll %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/libSkiaSharp.dll
-  - cmd: 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%
+  - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.pdb
+  - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.xml
+  - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\libSkiaSharp.*
+  - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\x64\*
+  - cmd: move %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\x86\libSkiaSharp.dll %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\libSkiaSharp.dll
+  - cmd: 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%
   - cmd: 7z a sd.zip LICENSE.md
   - cmd: 7z a sd.zip README.md
   - cmd: copy sd.zip sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
