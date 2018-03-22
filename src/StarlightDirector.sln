@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\.gitmodules = ..\.gitmodules
 		..\appveyor.yml = ..\appveyor.yml
 		..\LICENSE.md = ..\LICENSE.md
+		..\scripts\nuget_restore.ps1 = ..\scripts\nuget_restore.ps1
 		..\README.md = ..\README.md
 		..\TODO.md = ..\TODO.md
 	EndProjectSection
@@ -39,6 +40,11 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGame.Extended.Overlay", "..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended.Overlay\MonoGame.Extended.Overlay.csproj", "{8A716D2A-DE8D-4886-BF8F-76B6B1A7BB8F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenCGSS.StarlightDirector.Previewing.Audio", "OpenCGSS.StarlightDirector.Previewing.Audio\OpenCGSS.StarlightDirector.Previewing.Audio.csproj", "{DA0705EC-AE7F-4B57-9A1F-4FE02AC6B8FE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{A4BB7C9F-360A-4B58-A43A-BEF07114DBA0}"
+	ProjectSection(SolutionItems) = preProject
+		..\scripts\nuget_restore.ps1 = ..\scripts\nuget_restore.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -106,6 +112,7 @@ Global
 		{D8F21338-24AE-4CD9-A6DA-504E798D4CB9} = {5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}
 		{8A716D2A-DE8D-4886-BF8F-76B6B1A7BB8F} = {5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}
 		{DA0705EC-AE7F-4B57-9A1F-4FE02AC6B8FE} = {CC2E8DA0-B46D-4872-A86C-982A8F38F255}
+		{A4BB7C9F-360A-4B58-A43A-BEF07114DBA0} = {CE6974CD-0914-48A8-B7F9-CD1BB774188D}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3D72F8FC-3485-4580-9E6A-22A16AE8626E}

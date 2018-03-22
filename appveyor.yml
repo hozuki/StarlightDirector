@@ -9,9 +9,9 @@ configuration:
 build:
   project: src\StarlightDirector.sln
 before_build:
-  - git submodule update --init --recursive
-  - nuget update -self
-  - nuget restore src\StarlightDirector.sln
+  - cmd: git submodule update --init --recursive
+  - cmd: nuget update -self
+  - ps: .\scripts\nuget_restore.ps1
 after_build:
   - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.pdb
   - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.xml
