@@ -5,13 +5,13 @@ VisualStudioVersion = 15.0.27130.2024
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE6974CD-0914-48A8-B7F9-CD1BB774188D}"
 	ProjectSection(SolutionItems) = preProject
-		.editorconfig = .editorconfig
-		.gitignore = .gitignore
-		.gitmodules = .gitmodules
-		appveyor.yml = appveyor.yml
-		LICENSE.md = LICENSE.md
-		README.md = README.md
-		TODO.md = TODO.md
+		..\.editorconfig = ..\.editorconfig
+		..\.gitignore = ..\.gitignore
+		..\.gitmodules = ..\.gitmodules
+		..\appveyor.yml = ..\appveyor.yml
+		..\LICENSE.md = ..\LICENSE.md
+		..\README.md = ..\README.md
+		..\TODO.md = ..\TODO.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "thirdparty", "thirdparty", "{5DB535DF-7A1E-4F2E-87AD-B4AAB8422C21}"

@@ -1,6 +1,6 @@
 # https://www.appveyor.com/docs/appveyor-yml/
 
-version: 1.3.1.{build}
+version: 1.3.2.{build}
 image: Visual Studio 2017
 platform:
   - Any CPU
@@ -8,24 +8,21 @@ configuration:
   - Release
 build:
   project: src\StarlightDirector.sln
-install:
-  - npm install -g marked
 before_build:
   - git submodule update --init --recursive
   - nuget update -self
   - nuget restore src\StarlightDirector.sln
-  - marked src/StarlightDirector.App/Resources/Docs/Help.md -o src/StarlightDirector.App/Resources/Docs/Help.html
 after_build:
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/bin/%CONFIGURATION%/*.mdb
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/bin/%CONFIGURATION%/*.dll
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/bin/%CONFIGURATION%/*.exe
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/bin/%CONFIGURATION%/*.wav
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/bin/%CONFIGURATION%/*.txt
-  - 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector.App/Resources/Docs
-  - 7z a sd.zip LICENSE.md
-  - 7z a sd.zip README.md
-  - copy sd.zip sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
-  - copy sd.zip sd-latest.zip
+  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.pdb
+  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/*.xml
+  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/libSkiaSharp.*
+  - cmd: del %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/x64/*
+  - cmd: move %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/x86/libSkiaSharp.dll %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%/libSkiaSharp.dll
+  - cmd: 7z a sd.zip -r %APPVEYOR_BUILD_FOLDER%/src/StarlightDirector/bin/%CONFIGURATION%
+  - cmd: 7z a sd.zip LICENSE.md
+  - cmd: 7z a sd.zip README.md
+  - cmd: copy sd.zip sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
+  - cmd: copy sd.zip sd-latest.zip
 artifacts:
   - path: sd-v%APPVEYOR_BUILD_VERSION%-beta.zip
     name: WithVersion
