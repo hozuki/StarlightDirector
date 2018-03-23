@@ -4,3 +4,6 @@
 [submodule "thirdparty/MonoGame.Extended2"]
 	path = thirdparty/MonoGame.Extended2
 	url = https://github.com/hozuki/MonoGame.Extended2.git
+[submodule "thirdparty/piyopiyo"]
+	path = thirdparty/piyopiyo
+	url = https://github.com/hozuki/piyopiyo.git
