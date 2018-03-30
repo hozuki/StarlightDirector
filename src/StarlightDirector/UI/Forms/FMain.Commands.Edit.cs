@@ -144,21 +144,21 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             }
         }
 
-        private readonly Command CmdEditUndo = CommandManager.CreateCommand("Ctrl+Z");
-        private readonly Command CmdEditRedo = CommandManager.CreateCommand("Ctrl+Y");
-        private readonly Command CmdEditCut = CommandManager.CreateCommand("Ctrl+X");
-        private readonly Command CmdEditCopy = CommandManager.CreateCommand("Ctrl+C");
-        private readonly Command CmdEditPaste = CommandManager.CreateCommand("Ctrl+V");
-        private readonly Command CmdEditModeSet = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeSelect = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeTap = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeHoldFlick = CommandManager.CreateCommand();
-        private readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
-        private readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
-        private readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
-        private readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();
-        private readonly Command CmdEditGoToMeasure = CommandManager.CreateCommand("Ctrl+G");
-        private readonly Command CmdEditGoToTime = CommandManager.CreateCommand("Ctrl+Shift+G");
+        internal readonly Command CmdEditUndo = CommandManager.CreateCommand("Ctrl+Z");
+        internal readonly Command CmdEditRedo = CommandManager.CreateCommand("Ctrl+Y");
+        internal readonly Command CmdEditCut = CommandManager.CreateCommand("Ctrl+X");
+        internal readonly Command CmdEditCopy = CommandManager.CreateCommand("Ctrl+C");
+        internal readonly Command CmdEditPaste = CommandManager.CreateCommand("Ctrl+V");
+        internal readonly Command CmdEditModeSet = CommandManager.CreateCommand();
+        internal readonly Command CmdEditModeSelect = CommandManager.CreateCommand();
+        internal readonly Command CmdEditModeTap = CommandManager.CreateCommand();
+        internal readonly Command CmdEditModeHoldFlick = CommandManager.CreateCommand();
+        internal readonly Command CmdEditModeSlide = CommandManager.CreateCommand();
+        internal readonly Command CmdEditSelectAllMeasures = CommandManager.CreateCommand("Ctrl+Shift+A");
+        internal readonly Command CmdEditSelectAllNotes = CommandManager.CreateCommand("Ctrl+A");
+        internal readonly Command CmdEditSelectClearAll = CommandManager.CreateCommand();
+        internal readonly Command CmdEditGoToMeasure = CommandManager.CreateCommand("Ctrl+G");
+        internal readonly Command CmdEditGoToTime = CommandManager.CreateCommand("Ctrl+Shift+G");
 
     }
 }

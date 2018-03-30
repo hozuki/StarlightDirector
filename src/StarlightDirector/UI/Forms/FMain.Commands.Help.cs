@@ -11,7 +11,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             FAbout.ShowDialog(this, easterEggEnabled);
         }
 
-        private readonly Command CmdHelpAbout = CommandManager.CreateCommand();
+        internal readonly Command CmdHelpAbout = CommandManager.CreateCommand();
 
     }
 }

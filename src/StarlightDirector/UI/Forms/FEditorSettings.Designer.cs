@@ -37,6 +37,10 @@
             this.tabPages = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btnSelectExternalPreviewerFile = new System.Windows.Forms.Button();
+            this.txtExternalPreviewerArgs = new System.Windows.Forms.TextBox();
+            this.txtExternalPreviewerFile = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
@@ -46,6 +50,7 @@
             this.cboPreviewRenderMode = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ofd = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtScrollingSpeed)).BeginInit();
             this.tabPages.SuspendLayout();
@@ -200,6 +205,10 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.btnSelectExternalPreviewerFile);
+            this.tabPage2.Controls.Add(this.txtExternalPreviewerArgs);
+            this.tabPage2.Controls.Add(this.txtExternalPreviewerFile);
+            this.tabPage2.Controls.Add(this.label6);
             this.tabPage2.Controls.Add(this.button4);
             this.tabPage2.Controls.Add(this.button3);
             this.tabPage2.Controls.Add(this.button2);
@@ -215,6 +224,40 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Preview";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btnSelectExternalPreviewerFile
+            // 
+            this.btnSelectExternalPreviewerFile.Location = new System.Drawing.Point(195, 102);
+            this.btnSelectExternalPreviewerFile.Name = "btnSelectExternalPreviewerFile";
+            this.btnSelectExternalPreviewerFile.Size = new System.Drawing.Size(32, 25);
+            this.btnSelectExternalPreviewerFile.TabIndex = 11;
+            this.btnSelectExternalPreviewerFile.Text = "...";
+            this.btnSelectExternalPreviewerFile.UseVisualStyleBackColor = true;
+            // 
+            // txtExternalPreviewerArgs
+            // 
+            this.txtExternalPreviewerArgs.Location = new System.Drawing.Point(233, 103);
+            this.txtExternalPreviewerArgs.Name = "txtExternalPreviewerArgs";
+            this.txtExternalPreviewerArgs.Size = new System.Drawing.Size(76, 23);
+            this.txtExternalPreviewerArgs.TabIndex = 10;
+            this.txtExternalPreviewerArgs.Text = "--editor_port %port%";
+            // 
+            // txtExternalPreviewerFile
+            // 
+            this.txtExternalPreviewerFile.Location = new System.Drawing.Point(21, 103);
+            this.txtExternalPreviewerFile.Name = "txtExternalPreviewerFile";
+            this.txtExternalPreviewerFile.ReadOnly = true;
+            this.txtExternalPreviewerFile.Size = new System.Drawing.Size(168, 23);
+            this.txtExternalPreviewerFile.TabIndex = 9;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(18, 83);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(117, 17);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "External Previewer:";
             // 
             // button4
             // 
@@ -362,5 +405,10 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.TextBox txtExternalPreviewerFile;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnSelectExternalPreviewerFile;
+        private System.Windows.Forms.TextBox txtExternalPreviewerArgs;
+        private System.Windows.Forms.OpenFileDialog ofd;
     }
 }

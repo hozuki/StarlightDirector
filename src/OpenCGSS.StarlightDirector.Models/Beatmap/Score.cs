@@ -1,21 +1,25 @@
 using System.Collections.Generic;
 using System.Linq;
+using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.Models.Editor;
 
 namespace OpenCGSS.StarlightDirector.Models.Beatmap {
     public sealed class Score {
 
-        public Score(Project project, Difficulty difficulty) {
+        public Score([NotNull] Project project, Difficulty difficulty) {
             Project = project;
             Difficulty = difficulty;
         }
 
         public Difficulty Difficulty { get; internal set; }
 
+        [NotNull]
         public Project Project { get; }
 
+        [NotNull, ItemNotNull]
         public List<Bar> Bars { get; } = new List<Bar>();
 
+        [NotNull, ItemNotNull]
         public IReadOnlyList<Note> GetAllNotes() {
             return Bars.SelectMany(measure => measure.Notes).ToArray();
         }

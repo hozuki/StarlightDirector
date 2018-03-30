@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows.Forms;
 using OpenCGSS.StarlightDirector.Globalization;
 using OpenCGSS.StarlightDirector.Input;
@@ -67,6 +68,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             }
             if (project.WasSaved()) {
                 var writer = new SldprojV4Writer();
+
+                Debug.Assert(project.SaveFilePath != null, "project.SaveFilePath != null");
+
                 writer.WriteProject(project.Project, project.SaveFilePath);
                 UpdateUIIndications();
             } else {
@@ -125,14 +129,14 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             Close();
         }
 
-        private readonly Command CmdProjectNew = CommandManager.CreateCommand("Ctrl+N");
-        private readonly Command CmdProjectOpen = CommandManager.CreateCommand("Ctrl+O");
-        private readonly Command CmdProjectSave = CommandManager.CreateCommand("Ctrl+S");
-        private readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
-        private readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
-        private readonly Command CmdProjectBeatmapStats = CommandManager.CreateCommand();
-        private readonly Command CmdProjectMusicSettings = CommandManager.CreateCommand();
-        private readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
+        internal readonly Command CmdProjectNew = CommandManager.CreateCommand("Ctrl+N");
+        internal readonly Command CmdProjectOpen = CommandManager.CreateCommand("Ctrl+O");
+        internal readonly Command CmdProjectSave = CommandManager.CreateCommand("Ctrl+S");
+        internal readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
+        internal readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
+        internal readonly Command CmdProjectBeatmapStats = CommandManager.CreateCommand();
+        internal readonly Command CmdProjectMusicSettings = CommandManager.CreateCommand();
+        internal readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
 
     }
 }

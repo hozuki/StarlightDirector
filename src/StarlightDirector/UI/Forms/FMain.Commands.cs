@@ -165,6 +165,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             mnuHelpAbout.Bind(CmdHelpAbout);
 
+            tsbToolsTestReload.Bind(CmdToolsTestReload);
+            tsbToolsTestLaunch.Bind(CmdToolsTestLaunch);
+
             CommandManager.HookForm(this);
             RegisterCommandEvents(this);
         }
@@ -193,8 +196,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(EventHandler<QueryRecordToHistoryEventArgs>));
             }
 
-            void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType, bool warnIfNotFound = false)
-            {
+            void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType, bool warnIfNotFound = false) {
                 var handlerName = commandName + "_" + eventName;
                 MethodInfo handlerMethod;
                 try {

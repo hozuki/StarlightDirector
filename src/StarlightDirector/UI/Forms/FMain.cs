@@ -2,6 +2,8 @@ using System;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using JetBrains.Annotations;
+using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
 using OpenCGSS.StarlightDirector.Globalization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Editor.Extensions;
@@ -135,6 +137,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private static readonly string SlideAudioFilePath = "Resources/SFX/Director/se_live_slide_node.wav";
 
         private string _statusText = string.Empty;
+
+        [CanBeNull]
+        private SDCommunication _communication;
 
     }
 }

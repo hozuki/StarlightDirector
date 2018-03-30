@@ -20,7 +20,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         }
 
 
-        private readonly Command CmdScoreDifficultySelect = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreDifficultySelect = CommandManager.CreateCommand();
 
     }
 }

@@ -34,7 +34,13 @@
     <WarningLevel>4</WarningLevel>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\SD-Icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
+    </Reference>
     <Reference Include="HtmlRenderer, Version=1.5.0.5, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlRenderer.Core.1.5.0.5\lib\net45\HtmlRenderer.dll</HintPath>
     </Reference>
@@ -53,6 +59,9 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="NHttp, Version=0.1.9.0, Culture=neutral, PublicKeyToken=156364e4f7b202d9, processorArchitecture=MSIL">
+      <HintPath>..\packages\NHttp.0.1.9.0\lib\net20\NHttp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -74,6 +83,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\EditReloadRequestParams.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\GeneralSimLaunchedNotificationParams.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\GeneralSimInitializeRequestParams.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\GeneralSimInitializeResponseResult.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\LifeCycleStage.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\Proposals\SelectedFormatDescriptor.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\Models\Proposals\SupportedFormatDescriptor.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\SDCommunication.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\SDEditorClient.cs" />
+    <Compile Include="DirectorApplication\Subsystems\Bvs\SDEditorServer.cs" />
     <Compile Include="DirectorApplication\CodeName.cs" />
     <Compile Include="DirectorApplication\DirectorSettings.cs" />
     <Compile Include="DirectorApplication\DirectorSettingsManager.cs" />
@@ -435,6 +454,10 @@
     <ProjectReference Include="..\..\thirdparty\MonoGame.Extended2\Sources\MonoGame.Extended2\MonoGame.Extended2.csproj">
       <Project>{c7c3d9de-41a4-4c21-98fb-336ed38a99d5}</Project>
       <Name>MonoGame.Extended2</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\thirdparty\piyopiyo\src\OpenMLTD.Piyopiyo\OpenMLTD.Piyopiyo.csproj">
+      <Project>{84a82e83-d04f-49b4-ad55-c6f4cc800f05}</Project>
+      <Name>OpenMLTD.Piyopiyo</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenCGSS.StarlightDirector.Core\OpenCGSS.StarlightDirector.Core.csproj">
       <Project>{58F1DFD3-82CA-40FA-A76D-A3B24520DC3C}</Project>

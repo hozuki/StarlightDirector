@@ -1,4 +1,5 @@
 using System.ComponentModel;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using OpenCGSS.StarlightDirector.Models;
@@ -49,7 +50,18 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication {
         [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
         public PreviewTimingSynchronizationMode PreviewTimingSynchronizationMode { get; private set; } = PreviewTimingSynchronizationMode.Naive;
 
-        private const int CurrentVersion = 3;
+        // Version 4
+        [DefaultValue("")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        [NotNull]
+        public string ExternalPreviewerFile { get; set; } = string.Empty;
+
+        [DefaultValue("")]
+        [JsonProperty(DefaultValueHandling = DefaultValueHandling.Populate)]
+        [NotNull]
+        public string ExternalPreviwerArgs { get; set; } = string.Empty;
+
+        private const int CurrentVersion = 4;
 
     }
 }

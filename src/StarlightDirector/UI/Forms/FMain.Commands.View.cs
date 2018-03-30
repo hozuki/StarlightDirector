@@ -38,10 +38,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        private readonly Command CmdViewZoomIn = CommandManager.CreateCommand("Ctrl+=");
-        private readonly Command CmdViewZoomOut = CommandManager.CreateCommand("Ctrl+-");
-        private readonly Command CmdViewZoomToBeat = CommandManager.CreateCommand();
-        private readonly Command CmdViewHighlightModeSet = CommandManager.CreateCommand();
+        internal readonly Command CmdViewZoomIn = CommandManager.CreateCommand("Ctrl+=");
+        internal readonly Command CmdViewZoomOut = CommandManager.CreateCommand("Ctrl+-");
+        internal readonly Command CmdViewZoomToBeat = CommandManager.CreateCommand();
+        internal readonly Command CmdViewHighlightModeSet = CommandManager.CreateCommand();
 
     }
 }

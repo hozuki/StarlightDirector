@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using Microsoft.Win32;
 using MonoGame.Extended.WinForms;
 using OpenCGSS.StarlightDirector.DirectorApplication;
+using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
 using OpenCGSS.StarlightDirector.Globalization;
 using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Interop;
@@ -83,6 +84,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             CmdPreviewStop.Execute(this, null);
             _liveControl.Dispose();
             DirectorSettingsManager.SaveSettings();
+
+            _communication?.Client.SendEdExitedNotification().Wait(TimeSpan.FromSeconds(2));
+
+            _communication?.Dispose();
         }
 
         private void Visualizer_ProjectModified(object sender, EventArgs e) {
@@ -275,6 +280,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             CmdProjectNew.Execute(null, null);
             CmdScoreNoteStartPositionAt0.Execute(null, NotePosition.Default);
+
+            _communication = new SDCommunication(this);
+            _communication.Server.Start(0);
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

@@ -8,82 +8,86 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FMain {
 
         private void CmdPreviewFromThisMeasure_Executed(object sender, ExecutedEventArgs e) {
-            if (visualizer.Display == VisualizerDisplay.Previewer) {
-                return;
-            }
+            //if (visualizer.Display == VisualizerDisplay.Previewer) {
+            //    return;
+            //}
 
-            double startTime = 0;
-            var bar = visualizer.Editor.GetFirstVisibleBar();
-            if (bar != null) {
-                bar.UpdateStartTime();
-                startTime = bar.Temporary.StartTime.TotalSeconds - 1;
-                if (startTime < 0) {
-                    startTime = 0;
-                }
-            }
+            //double startTime = 0;
+            //var bar = visualizer.Editor.GetFirstVisibleBar();
+            //if (bar != null) {
+            //    bar.UpdateStartTime();
+            //    startTime = bar.Temporary.StartTime.TotalSeconds - 1;
+            //    if (startTime < 0) {
+            //        startTime = 0;
+            //    }
+            //}
 
-            visualizer.Display = VisualizerDisplay.Previewer;
+            //visualizer.Display = VisualizerDisplay.Previewer;
 
-            var project = visualizer.Editor.Project;
-            if (project.Project.HasMusic) {
-                _liveControl.Load(project.Project.MusicFileName, out var errorMessageTemplate);
+            //var project = visualizer.Editor.Project;
+            //if (project.Project.HasMusic) {
+            //    _liveControl.Load(project.Project.MusicFileName, out var errorMessageTemplate);
 
-                if (errorMessageTemplate != null) {
-                    var errorMessage = string.Format(errorMessageTemplate, project.Project.MusicFileName);
-                    MessageBox.Show(this, errorMessage, AssemblyHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
-            visualizer.Previewer.Prepare();
-            visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
-            visualizer.Previewer.SimulateEditor(visualizer.Editor);
+            //    if (errorMessageTemplate != null) {
+            //        var errorMessage = string.Format(errorMessageTemplate, project.Project.MusicFileName);
+            //        MessageBox.Show(this, errorMessage, AssemblyHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
+            //visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
+            //visualizer.Previewer.Prepare();
+            //visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
+            //visualizer.Previewer.SimulateEditor(visualizer.Editor);
 
-            _liveControl.Tick += LiveControl_Tick;
+            //_liveControl.Tick += LiveControl_Tick;
 
-            _liveControl.StartFromTime(startTime);
+            //_liveControl.StartFromTime(startTime);
         }
 
         private void CmdPreviewFromStart_Executed(object sender, ExecutedEventArgs e) {
-            if (visualizer.Display == VisualizerDisplay.Previewer) {
-                return;
-            }
+            //if (visualizer.Display == VisualizerDisplay.Previewer) {
+            //    return;
+            //}
 
-            visualizer.Display = VisualizerDisplay.Previewer;
+            //visualizer.Display = VisualizerDisplay.Previewer;
 
-            var project = visualizer.Editor.Project;
+            //var project = visualizer.Editor.Project;
 
-            if (project.Project.HasMusic) {
-                _liveControl.Load(project.Project.MusicFileName, out var errorMessageTemplate);
+            //if (project.Project.HasMusic) {
+            //    _liveControl.Load(project.Project.MusicFileName, out var errorMessageTemplate);
 
-                if (errorMessageTemplate != null) {
-                    var errorMessage = string.Format(errorMessageTemplate, project.Project.MusicFileName);
-                    MessageBox.Show(this, errorMessage, AssemblyHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
+            //    if (errorMessageTemplate != null) {
+            //        var errorMessage = string.Format(errorMessageTemplate, project.Project.MusicFileName);
+            //        MessageBox.Show(this, errorMessage, AssemblyHelper.GetTitle(), MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            //    }
+            //}
 
-            visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
-            visualizer.Previewer.Prepare();
-            visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
-            visualizer.Previewer.SimulateEditor(visualizer.Editor);
+            //visualizer.Previewer.Score = visualizer.Editor.CurrentScore;
+            //visualizer.Previewer.Prepare();
+            //visualizer.Previewer.RenderMode = DirectorSettingsManager.CurrentSettings.PreviewRenderMode;
+            //visualizer.Previewer.SimulateEditor(visualizer.Editor);
 
-            _liveControl.Tick += LiveControl_Tick;
+            //_liveControl.Tick += LiveControl_Tick;
 
-            _liveControl.Start();
+            //_liveControl.Start();
+
+            _communication?.Client.SendPlayRequest();
         }
 
         private void CmdPreviewStop_Executed(object sender, ExecutedEventArgs e) {
-            if (visualizer.Display == VisualizerDisplay.Editor) {
-                return;
-            }
+            //if (visualizer.Display == VisualizerDisplay.Editor) {
+            //    return;
+            //}
 
-            _liveControl.Stop();
+            //_liveControl.Stop();
 
-            visualizer.Display = VisualizerDisplay.Editor;
+            //visualizer.Display = VisualizerDisplay.Editor;
+
+            _communication?.Client.SendStopRequest();
         }
 
-        private readonly Command CmdPreviewFromThisMeasure = CommandManager.CreateCommand("F5");
-        private readonly Command CmdPreviewFromStart = CommandManager.CreateCommand("Ctrl+F5");
-        private readonly Command CmdPreviewStop = CommandManager.CreateCommand("F6");
+        internal readonly Command CmdPreviewFromThisMeasure = CommandManager.CreateCommand("F5");
+        internal readonly Command CmdPreviewFromStart = CommandManager.CreateCommand("Ctrl+F5");
+        internal readonly Command CmdPreviewStop = CommandManager.CreateCommand("F6");
 
         private LiveControl _liveControl = new LiveControl();
 

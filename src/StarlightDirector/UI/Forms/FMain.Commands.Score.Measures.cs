@@ -113,11 +113,11 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.Editor.UpdateBarStartTimeText();
         }
 
-        private readonly Command CmdScoreMeasureAppend = CommandManager.CreateCommand();
-        private readonly Command CmdScoreMeasureAppendMultiple = CommandManager.CreateCommand();
-        private readonly Command CmdScoreMeasureInsert = CommandManager.CreateCommand();
-        private readonly Command CmdScoreMeasureInsertMultiple = CommandManager.CreateCommand();
-        private readonly Command CmdScoreMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
+        internal readonly Command CmdScoreMeasureAppend = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreMeasureAppendMultiple = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreMeasureInsert = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreMeasureInsertMultiple = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
 
     }
 }

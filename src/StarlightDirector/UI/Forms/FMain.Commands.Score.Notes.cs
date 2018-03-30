@@ -218,27 +218,27 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             ctxScoreNoteDeleteSpecial.DeleteParameter();
         }
 
-        private readonly Command CmdScoreNoteStartPositionSetAt = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt0 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt1 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt2 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt3 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt4 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionAt5 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionMoveLeft = CommandManager.CreateCommand("Alt+A");
-        private readonly Command CmdScoreNoteStartPositionMoveRight = CommandManager.CreateCommand("Alt+D");
-        private readonly Command CmdScoreNoteStartPositionSetTo = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo0 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo1 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo2 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo3 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo4 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteStartPositionTo5 = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteResetToTap = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteDelete = CommandManager.CreateCommand("Delete");
-        private readonly Command CmdScoreNoteInsertSpecial = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteModifySpecial = CommandManager.CreateCommand();
-        private readonly Command CmdScoreNoteDeleteSpecial = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionSetAt = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt0 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt1 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt2 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt3 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt4 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionAt5 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionMoveLeft = CommandManager.CreateCommand("Alt+A");
+        internal readonly Command CmdScoreNoteStartPositionMoveRight = CommandManager.CreateCommand("Alt+D");
+        internal readonly Command CmdScoreNoteStartPositionSetTo = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo0 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo1 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo2 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo3 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo4 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteStartPositionTo5 = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteResetToTap = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteDelete = CommandManager.CreateCommand("Delete");
+        internal readonly Command CmdScoreNoteInsertSpecial = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteModifySpecial = CommandManager.CreateCommand();
+        internal readonly Command CmdScoreNoteDeleteSpecial = CommandManager.CreateCommand();
 
     }
 }

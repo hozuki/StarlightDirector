@@ -34,11 +34,30 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private void UnregisterEventHandlers() {
             Load -= FEditorSettings_Load;
             btnOK.Click -= BtnOK_Click;
+            btnSelectExternalPreviewerFile.Click -= BtnSelectExternalPreviewerFile_Click;
         }
 
         private void RegisterEventHandlers() {
             Load += FEditorSettings_Load;
             btnOK.Click += BtnOK_Click;
+            btnSelectExternalPreviewerFile.Click += BtnSelectExternalPreviewerFile_Click;
+        }
+
+        private void BtnSelectExternalPreviewerFile_Click(object sender, EventArgs e) {
+            ofd.CheckFileExists = true;
+            ofd.ValidateNames = true;
+            ofd.ShowReadOnly = false;
+            ofd.ReadOnlyChecked = false;
+            ofd.Multiselect = false;
+            ofd.Filter = "Executable File (*.exe)|*.exe|All Files (*.*)|*.*";
+
+            var r = ofd.ShowDialog(this);
+
+            if (r == DialogResult.Cancel) {
+                return;
+            }
+
+            txtExternalPreviewerFile.Text = ofd.FileName;
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
@@ -48,6 +67,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             s.ScrollingSpeed = (int)txtScrollingSpeed.Value;
             s.PreviewRenderMode = (PreviewerRenderMode)cboPreviewRenderMode.SelectedIndex;
             s.PreviewSpeed = Convert.ToSingle(txtPreviewSpeed.Text);
+            s.ExternalPreviewerFile = txtExternalPreviewerFile.Text;
+            s.ExternalPreviwerArgs = txtExternalPreviewerArgs.Text;
 
             if (cboLanguage.SelectedIndex == 0) {
                 s.Language = null;
@@ -115,6 +136,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 cboPreviewRenderMode.SelectedIndex = (int)s.PreviewRenderMode;
             }
             txtPreviewSpeed.Text = s.PreviewSpeed.ToString(CultureInfo.InvariantCulture);
+
+            txtExternalPreviewerFile.Text = s.ExternalPreviewerFile;
+            txtExternalPreviewerArgs.Text = s.ExternalPreviwerArgs;
         }
 
         private DirectorSettings _editorSettings;
