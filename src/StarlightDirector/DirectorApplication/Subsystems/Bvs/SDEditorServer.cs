@@ -2,7 +2,6 @@ using System;
 using System.Diagnostics;
 using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs.Models;
-using OpenMLTD.Piyopiyo;
 using OpenMLTD.Piyopiyo.Extensions;
 using OpenMLTD.Piyopiyo.Net.Contributed;
 using OpenMLTD.Piyopiyo.Net.JsonRpc;
@@ -17,9 +16,13 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
         protected override void OnGeneralSimLaunched(object sender, JsonRpcMethodEventArgs e) {
             if (JsonRpcHelper.IsRequestValid(e.ParsedRequestObject, out string errorMessage)) {
                 var requestObject = JsonRpcHelper.TranslateAsRequest(e.ParsedRequestObject);
-                var @params = BvspHelper.ParamArrayToObject<GeneralSimLaunchedNotificationParams>(requestObject.Params);
+                var param0 = requestObject.Params[0];
 
-                var simulatorServerUri = new Uri(@params.SimulatorServerUri);
+                Debug.Assert(param0 != null, nameof(param0) + " != null");
+
+                var param0Object = param0.ToObject<GeneralSimLaunchedNotificationParams>();
+
+                var simulatorServerUri = new Uri(param0Object.SimulatorServerUri);
 
                 _communication.SimulatorLifeCycleStage = LifeCycleStage.Launched;
                 _communication.SimulatorServerUri = simulatorServerUri;

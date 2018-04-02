@@ -1,9 +1,9 @@
-using System;
+using CsvHelper;
 using CsvHelper.Configuration;
 using CsvHelper.TypeConversion;
 
 namespace OpenCGSS.StarlightDirector.Models.Beatmap.Serialization {
-    public sealed class ScoreCsvMap : CsvClassMap<CompiledNote> {
+    public sealed class ScoreCsvMap : ClassMap<CompiledNote> {
 
         public ScoreCsvMap() {
             Map(m => m.ID).Name("id");
@@ -19,72 +19,48 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap.Serialization {
 
         private sealed class IntToBoolConverter : ITypeConverter {
 
-            public string ConvertToString(TypeConverterOptions options, object value) {
+            public string ConvertToString(object value, IWriterRow row, MemberMapData memberMapData) {
                 return (bool)value ? "1" : "0";
             }
 
-            public object ConvertFromString(TypeConverterOptions options, string text) {
+            public object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData) {
                 if (string.IsNullOrEmpty(text)) {
                     return false;
                 }
                 var value = int.Parse(text);
                 return value != 0;
             }
-
-            public bool CanConvertFrom(Type type) {
-                return true;
-            }
-
-            public bool CanConvertTo(Type type) {
-                return true;
-            }
-
         }
 
         private sealed class RestrictedDoubleToStringConverter : ITypeConverter {
 
-            public string ConvertToString(TypeConverterOptions options, object value) {
+            public string ConvertToString(object value, IWriterRow row, MemberMapData memberMapData) {
                 return ((double)value).ToString("0.######");
             }
 
-            public object ConvertFromString(TypeConverterOptions options, string text) {
+            public object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData) {
                 if (string.IsNullOrEmpty(text)) {
                     return 0d;
                 }
-                return options.NumberStyle != null ? double.Parse(text, options.NumberStyle.Value) : double.Parse(text);
-            }
 
-            public bool CanConvertFrom(Type type) {
-                return true;
-            }
-
-            public bool CanConvertTo(Type type) {
-                return true;
+                return double.Parse(text);
             }
 
         }
 
         private sealed class StringToIntConverter : ITypeConverter {
 
-            public string ConvertToString(TypeConverterOptions options, object value) {
+            public string ConvertToString(object value, IWriterRow row, MemberMapData memberMapData) {
                 // The conversion is for enums.
                 return ((int)value).ToString();
             }
 
-            public object ConvertFromString(TypeConverterOptions options, string text) {
+            public object ConvertFromString(string text, IReaderRow row, MemberMapData memberMapData) {
                 if (string.IsNullOrEmpty(text)) {
                     return 0;
                 }
                 var value = int.Parse(text);
                 return value;
-            }
-
-            public bool CanConvertFrom(Type type) {
-                return true;
-            }
-
-            public bool CanConvertTo(Type type) {
-                return true;
             }
 
         }

@@ -1,3 +1,4 @@
+using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
@@ -21,13 +22,15 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
                 return;
             }
 
-            var @params = new GeneralSimInitializeRequestParams {
-                Data = new GeneralSimInitializeRequestParams.GeneralSimInitializeRequestParamsData {
-                    SupportedFormats = _supportedScoreFileFormats
-                }
+            var param0 = new GeneralSimInitializeRequestParams {
+                SupportedFormats = _supportedScoreFileFormats
             };
 
-            var rpcResult = await CallAsync(serverUri, CommonProtocolMethodNames.General_SimInitialize, @params);
+            var @params = new object[] {
+                param0
+            };
+
+            var rpcResult = await SendRequestAsync(serverUri, CommonProtocolMethodNames.General_SimInitialize, @params, null);
 
             if (!rpcResult.StatusCode.IsSuccessful()) {
                 // TODO: Handle HTTP protocol errors.
@@ -62,14 +65,18 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
             }
         }
 
-        internal async void SendReloadRequest([NotNull] EditReloadRequestParams @params) {
+        internal async void SendReloadRequest([NotNull] EditReloadRequestParams param0) {
             var serverUri = _communication.SimulatorServerUri;
 
             if (serverUri == null) {
                 return;
             }
 
-            var result = await CallAsync(serverUri, CommonProtocolMethodNames.Edit_Reload, @params);
+            var @params = new object[] {
+                param0
+            };
+
+            var result = await SendRequestAsync(serverUri, CommonProtocolMethodNames.Edit_Reload, @params, null);
 
             if (!result.StatusCode.IsSuccessful()) {
                 // TODO: Handle HTTP protocol errors.
@@ -95,15 +102,35 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
         }
 
         internal Task SendPlayRequest() {
-            return SendNotificationWithEmptyBody(CommonProtocolMethodNames.Preview_Play);
+            return SendRequestWithEmptyBody(CommonProtocolMethodNames.Preview_Play, null);
         }
 
         internal Task SendPauseRequest() {
-            return SendNotificationWithEmptyBody(CommonProtocolMethodNames.Preview_Pause);
+            return SendRequestWithEmptyBody(CommonProtocolMethodNames.Preview_Pause, null);
         }
 
         internal Task SendStopRequest() {
-            return SendNotificationWithEmptyBody(CommonProtocolMethodNames.Preview_Stop);
+            return SendRequestWithEmptyBody(CommonProtocolMethodNames.Preview_Stop, null);
+        }
+
+        private Task SendRequestWithEmptyBody([NotNull] string methodName, [CanBeNull] string id) {
+            var serverUri = _communication.SimulatorServerUri;
+
+            if (serverUri == null) {
+                return Task.FromResult(0);
+            }
+
+            return SendRequestAsync(serverUri, methodName, null, id);
+        }
+
+        private Task SendRequestWithEmptyBody([NotNull] string methodName, int id) {
+            var serverUri = _communication.SimulatorServerUri;
+
+            if (serverUri == null) {
+                return Task.FromResult(0);
+            }
+
+            return SendRequestAsync(serverUri, methodName, null, id);
         }
 
         private Task SendNotificationWithEmptyBody([NotNull] string methodName) {
@@ -113,7 +140,7 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
                 return Task.FromResult(0);
             }
 
-            return CallAsync(serverUri, methodName);
+            return SendNotificationAsync(serverUri, methodName);
         }
 
         private readonly SupportedFormatDescriptor[] _supportedScoreFileFormats = {

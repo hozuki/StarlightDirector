@@ -75,9 +75,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             var settings = DirectorSettingsManager.CurrentSettings;
 
+            var endPoint = _communication.Server.EndPoint;
             var program = settings.ExternalPreviewerFile;
             var argsTemplate = settings.ExternalPreviwerArgs;
-            var args = argsTemplate.Replace("%port%", _communication.Server.EndPoint.Port.ToString());
+            var args = argsTemplate
+                .Replace("%port%", endPoint.Port.ToString())
+                .Replace("%server_uri%", $"http://{endPoint}/");
 
             var programFileInfo = new FileInfo(program);
 

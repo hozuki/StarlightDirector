@@ -14,11 +14,11 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap.Extensions {
             var sb = new StringBuilder();
 
             using (var writer = new StringWriter(sb)) {
-                var config = new CsvConfiguration();
+                var config = new Configuration();
 
                 config.RegisterClassMap<ScoreCsvMap>();
                 config.HasHeaderRecord = true;
-                config.TrimFields = false;
+                config.TrimOptions = TrimOptions.None;
 
                 using (var csv = new CsvWriter(writer, config)) {
                     var newList = new List<CompiledNote>(score.Notes);
