@@ -43,6 +43,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbToolsBuildBdb = new System.Windows.Forms.ToolStripButton();
             this.tsbToolsBuildAcb = new System.Windows.Forms.ToolStripButton();
+            this.tsbToolsTestLaunch = new System.Windows.Forms.ToolStripButton();
+            this.tsbToolsTestReload = new System.Windows.Forms.ToolStripButton();
             this.gbStandard = new System.Windows.Forms.GroupBox();
             this.tlbStandard = new System.Windows.Forms.ToolStrip();
             this.tsbProjectNew = new System.Windows.Forms.ToolStripButton();
@@ -199,8 +201,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.sysMinimize = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
             this.lblCaption = new OpenCGSS.StarlightDirector.UI.Controls.SingleLineLabel();
             this.visualizer = new OpenCGSS.StarlightDirector.UI.Controls.ScoreVisualizer();
-            this.tsbToolsTestLaunch = new System.Windows.Forms.ToolStripButton();
-            this.tsbToolsTestReload = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2.SuspendLayout();
             this.gbEditView.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -331,11 +332,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.toolStripSeparator9,
             this.tsbToolsBuildBdb,
             this.tsbToolsBuildAcb,
+            this.toolStripSeparator5,
             this.tsbToolsTestLaunch,
             this.tsbToolsTestReload});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(201, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(207, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
@@ -388,6 +390,26 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.tsbToolsBuildAcb.Name = "tsbToolsBuildAcb";
             this.tsbToolsBuildAcb.Size = new System.Drawing.Size(23, 22);
             this.tsbToolsBuildAcb.Text = "Build CGSS Live Music";
+            // 
+            // tsbToolsTestLaunch
+            // 
+            this.tsbToolsTestLaunch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsTestLaunch.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestLaunch.Image")));
+            this.tsbToolsTestLaunch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsTestLaunch.Name = "tsbToolsTestLaunch";
+            this.tsbToolsTestLaunch.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsTestLaunch.Text = "toolStripButton1";
+            this.tsbToolsTestLaunch.Visible = false;
+            // 
+            // tsbToolsTestReload
+            // 
+            this.tsbToolsTestReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsTestReload.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestReload.Image")));
+            this.tsbToolsTestReload.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsTestReload.Name = "tsbToolsTestReload";
+            this.tsbToolsTestReload.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsTestReload.Text = "toolStripButton1";
+            this.tsbToolsTestReload.Visible = false;
             // 
             // gbStandard
             // 
@@ -1653,23 +1675,11 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.visualizer.Size = new System.Drawing.Size(695, 509);
             this.visualizer.TabIndex = 12;
             // 
-            // tsbToolsTestLaunch
+            // toolStripSeparator5
             // 
-            this.tsbToolsTestLaunch.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbToolsTestLaunch.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestLaunch.Image")));
-            this.tsbToolsTestLaunch.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbToolsTestLaunch.Name = "tsbToolsTestLaunch";
-            this.tsbToolsTestLaunch.Size = new System.Drawing.Size(23, 22);
-            this.tsbToolsTestLaunch.Text = "toolStripButton1";
-            // 
-            // tsbToolsTestReload
-            // 
-            this.tsbToolsTestReload.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbToolsTestReload.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestReload.Image")));
-            this.tsbToolsTestReload.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbToolsTestReload.Name = "tsbToolsTestReload";
-            this.tsbToolsTestReload.Size = new System.Drawing.Size(23, 22);
-            this.tsbToolsTestReload.Text = "toolStripButton1";
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator5.Visible = false;
             // 
             // FMain
             // 
@@ -1901,6 +1911,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private System.Windows.Forms.ToolStripButton tsbPreviewFromThisMeasure;
         private System.Windows.Forms.ToolStripButton tsbToolsTestLaunch;
         private System.Windows.Forms.ToolStripButton tsbToolsTestReload;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
     }
 }
 
