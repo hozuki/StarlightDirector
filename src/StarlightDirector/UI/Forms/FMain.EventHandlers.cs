@@ -81,7 +81,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
         private void FMain_Closed(object sender, EventArgs e) {
             this.UnmonitorLocalizationChange();
-            CmdPreviewStop.Execute(this, null);
+            //CmdPreviewStop.Execute(this, null);
             _liveControl.Dispose();
             DirectorSettingsManager.SaveSettings();
 
@@ -281,8 +281,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             CmdProjectNew.Execute(null, null);
             CmdScoreNoteStartPositionAt0.Execute(null, NotePosition.Default);
 
-            _communication = new SDCommunication(this);
-            _communication.Server.Start(0);
+            if (Program.StartupOptions.BvspCommunicationEnabled) {
+                _communication = new SDCommunication(this);
+                _communication.Server.Start(0);
+            }
         }
 
         private void SystemEvents_DisplaySettingsChanged(object sender, EventArgs eventArgs) {

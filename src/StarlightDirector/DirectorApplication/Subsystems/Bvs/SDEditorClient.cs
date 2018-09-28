@@ -41,6 +41,7 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
 
             if (!JsonRpcHelper.IsResponseValid(rpcResult.ResponseObject)) {
                 // TODO: Handle malformed RPC object.
+                Debug.Print("RPC response is invalid.");
                 return;
             }
 
@@ -87,6 +88,7 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs {
 
             if (!JsonRpcHelper.IsResponseValid(result.ResponseObject)) {
                 // TODO: Handle malformed RPC object.
+                Debug.Print("RPC response is invalid.");
                 return;
             }
 

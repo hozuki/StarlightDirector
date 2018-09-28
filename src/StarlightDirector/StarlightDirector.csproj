@@ -38,6 +38,9 @@
     <ApplicationIcon>Resources\Icons\SD-Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CommandLine, Version=2.3.0.0, Culture=neutral, PublicKeyToken=de6f01bd326f8c32, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommandLineParser.2.3.0\lib\net45\CommandLine.dll</HintPath>
+    </Reference>
     <Reference Include="Common.Logging, Version=2.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.2.0.0\lib\2.0\Common.Logging.dll</HintPath>
     </Reference>
@@ -83,6 +86,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DirectorApplication\StartupOptions.cs" />
     <Compile Include="DirectorApplication\Subsystems\Bvs\Models\EditReloadRequestParams.cs" />
     <Compile Include="DirectorApplication\Subsystems\Bvs\Models\GeneralSimLaunchedNotificationParams.cs" />
     <Compile Include="DirectorApplication\Subsystems\Bvs\Models\GeneralSimInitializeRequestParams.cs" />
