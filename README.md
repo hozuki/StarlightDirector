@@ -1,10 +1,9 @@
 # Starlight Director
 
-**Work In Progress**
-
 [![AppVeyor](https://img.shields.io/appveyor/ci/hozuki/starlightdirector.svg)](https://ci.appveyor.com/project/hozuki/starlightdirector)
 [![GitHub contributors](https://img.shields.io/github/contributors/hozuki/StarlightDirector.svg)](https://github.com/hozuki/StarlightDirector/graphs/contributors)
 [![Libraries.io for GitHub](https://img.shields.io/librariesio/github/hozuki/StarlightDirector.svg)](https://github.com/hozuki/StarlightDirector)
+![GitHub (pre-)release](https://img.shields.io/github/release/hozuki/StarlightDirector/all.svg)
 [![Github All Releases](https://img.shields.io/github/downloads/hozuki/StarlightDirector/total.svg)](https://github.com/hozuki/StarlightDirector/releases)
 
 **Downloads:**
@@ -20,7 +19,7 @@ For those who want to view or play the beatmaps:
 ## What is this?
 
 The next generation of Starlight Director from [DereTore](https://github.com/OpenCGSS/DereTore). Starlight Director is the unofficial beatmap
-editor for [Idolmaster Cinderella Girls Starlight Stage](http://cinderella.idolmaster.jp/sl-stage/). (Will it support Million Live Theater Days? TBD)
+editor for [THE iDOLM@STER Cinderella Girls Starlight Stage](http://cinderella.idolmaster.jp/sl-stage/). (Will it support Million Live Theater Days? TBD)
 
 It is now in its beta phase. The old version is now removed.
 
