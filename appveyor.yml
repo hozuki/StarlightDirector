@@ -13,6 +13,7 @@ before_build:
   - cmd: nuget update -self
   - ps: .\scripts\nuget_restore.ps1
 after_build:
+  - ps: .\scripts\extract-openal-soft.ps1 -destination $Env:APPVEYOR_BUILD_FOLDER\src\StarlightDirector\bin\%CONFIGURATION%\
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.pdb
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\*.xml
   - cmd: del %APPVEYOR_BUILD_FOLDER%\src\StarlightDirector\bin\%CONFIGURATION%\libSkiaSharp.*

@@ -28,7 +28,7 @@ It is now in its beta phase. The old version is now removed.
 
 - Windows 7 or later
 - [.NET Framework 4.5](https://www.microsoft.com/en-us/download/details.aspx?id=42642)
-- [OpenAL](https://www.openal.org/downloads/) (You can either use [OpenAL-Soft](http://kcat.strangesoft.net/openal.html), which is newer, but remember to rename the DLL name to `openal32.dll`.)
+- [OpenAL](https://www.openal.org/downloads/) (bundled [OpenAL-Soft](http://kcat.strangesoft.net/openal.html) 1.18.2 in newer releases) *\* The file name is `openal32.dll`.*
 - Direct3D 11 and Direct2D
 
 ##  Usage
@@ -45,6 +45,9 @@ Experience with rhythm games is strongly recommended, so you can know whether pl
 4. Build the solution.
 
 ## Translation
+
+Currently Starlight Director ships with English and Simplified Chinese translations. If there are no translation files for your
+language, it displays English by default.
 
 You can find language files under [`Resources/Languages`](src/StarlightDirector/Resources/Languages) from the application's
 directory. Feel free to translate Starlight Director into your language. :D
