@@ -94,6 +94,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             manager.ApplyText(mnuTools, "ui.fmain.menu.tools.text");
             manager.ApplyText(mnuToolsExport, "ui.fmain.menu.tools.export.text");
             manager.ApplyText(mnuToolsExportCsv, "ui.fmain.menu.tools.export.csv.text");
+            manager.ApplyText(mnuToolsExportTxt, "ui.fmain.menu.tools.export.txt.text");
             manager.ApplyText(mnuToolsImport, "ui.fmain.menu.tools.import.text");
             manager.ApplyText(mnuToolsBuild, "ui.fmain.menu.tools.build.text");
             manager.ApplyText(mnuToolsBuildBdb, "ui.fmain.menu.tools.build.bdb.text");

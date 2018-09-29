@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
+using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.Globalization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Gaming;
@@ -35,11 +36,27 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private void UnregisterEventHandlers() {
             Load -= FSelectMusicID_Load;
             btnOK.Click -= BtnOK_Click;
+            cboDatabaseItems.SelectedIndexChanged -= CboDatabaseItems_SelectedIndexChanged;
         }
 
         private void RegisterEventHandlers() {
             Load += FSelectMusicID_Load;
             btnOK.Click += BtnOK_Click;
+            cboDatabaseItems.SelectedIndexChanged += CboDatabaseItems_SelectedIndexChanged;
+        }
+
+        private void CboDatabaseItems_SelectedIndexChanged(object sender, EventArgs e) {
+            var musicList = _musicList;
+
+            if (musicList == null) {
+                return;
+            }
+
+            var index = cboDatabaseItems.SelectedIndex;
+            var record = musicList[index];
+
+            label3.Text = record.LiveID.ToString();
+            label4.Text = record.MusicID.ToString();
         }
 
         private void BtnOK_Click(object sender, EventArgs e) {
@@ -145,6 +162,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             }
         }
 
+        [CanBeNull, ItemNotNull]
         private IReadOnlyList<LiveMusicRecord> _musicList;
 
         private int _musicID;

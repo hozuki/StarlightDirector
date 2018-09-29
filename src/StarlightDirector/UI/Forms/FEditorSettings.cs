@@ -62,6 +62,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
         private void BtnOK_Click(object sender, EventArgs e) {
             var s = _editorSettings;
+
             s.InvertedScrolling = radInvertedScrollingOn.Checked;
             s.ShowNoteIndicators = chkShowNoteIndicators.Checked;
             s.ScrollingSpeed = (int)txtScrollingSpeed.Value;
@@ -78,7 +79,14 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             if (s.Language != _originalLanguage) {
                 DirectorSettingsManager.ApplyLanguageSettings();
-                LocalizationHelper.Relocalize(LanguageManager.Current);
+
+                var languageManager = LanguageManager.Current;
+
+                if (languageManager == null) {
+                    throw new InvalidOperationException();
+                }
+
+                LocalizationHelper.Relocalize(languageManager);
             }
 
             DialogResult = DialogResult.OK;

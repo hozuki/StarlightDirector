@@ -1,9 +1,7 @@
 using System;
 using System.Drawing;
-using System.Timers;
 using System.Windows.Forms;
 using Microsoft.Win32;
-using MonoGame.Extended.WinForms;
 using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
 using OpenCGSS.StarlightDirector.Globalization;

@@ -1,5 +1,5 @@
 namespace OpenCGSS.StarlightDirector.Models.Gaming {
-    internal class LiveMusicRecord {
+    internal sealed class LiveMusicRecord {
 
         public int LiveID { get; set; }
         public int MusicID { get; set; }

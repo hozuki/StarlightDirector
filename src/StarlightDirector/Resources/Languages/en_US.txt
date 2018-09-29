@@ -1,4 +1,4 @@
-﻿# Name of the language file must be the same with language code name.
+# Name of the language file must be the same with language code name.
 # Put a hash tag ("#") at the beginning of a line to comment it out.
 # Use "\n" to start a new line.
 lang.display_name=English (United States)
@@ -11,7 +11,7 @@ ui.fmain.text_template={0} [{1}] - {2} {3}
 
 # ---
 
-ui.fmain.menu.project.text=&Project
+ui.fmain.menu.project.text=&File
 ui.fmain.menu.project.new.text=&New
 ui.fmain.menu.project.open.text=&Open...
 ui.fmain.menu.project.save.text=&Save
@@ -323,3 +323,33 @@ messages.fbuildbeatmap.custom_end_time_invalid=Please enter a correct number of 
 messages.fbuildbeatmap.csv_score_exported=The score is exported to '{0}'.
 # {0}: file path
 messages.fbuildbeatmap.bdb_scores_exported=The scores are exported to '{0}'.
+
+
+# +++ 2018-09 +++
+
+ui.fmain.menu.tools.export.txt.text=Deleste Single Beatmap (&TXT)...
+
+ui.fexporttxt.text=Export to Deleste TXT Beatmap
+ui.fexporttxt.label.title.text=Title:
+ui.fexporttxt.label.composer.text=Composer:
+ui.fexporttxt.label.lyricist.text=Lyricist:
+ui.fexporttxt.label.bg_file.text=BGI/BGA File:
+ui.fexporttxt.label.song_file.text=Song File:
+ui.fexporttxt.label.difficulty.text=Difficulty:
+ui.fexporttxt.label.level.text=Level:
+ui.fexporttxt.label.color.text=Attribute:
+ui.fexporttxt.label.bgm_volume.text=BGM Vol.:
+ui.fexporttxt.label.se_volume.text=SE Vol.:
+ui.fexporttxt.label.format.text=Format:
+ui.fexporttxt.button.export.text=&Export...
+ui.fexporttxt.button.cancel.text=Cancel
+
+misc.filter.deleste.txt=Deleste TXT Beatmap (*.txt)|*.txt
+
+messages.fexporttxt.txt_score_exported=The score is exported to '{0}'.
+messages.fexporttxt.level_input_requirement=Level should be an integer, at least 5.
+messages.fexporttxt.bgm_volume_input_requirement=BGM volume should be an integer between 0 and 100.
+messages.fexporttxt.se_volume_input_requirement=SE volume should be an integer between 0 and 100.
+
+misc.deleste.score_format.default=Default
+misc.deleste.score_format.converted=Converted （CSV-like)

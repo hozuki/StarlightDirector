@@ -1,6 +1,7 @@
 using System;
 using System.Data;
 using System.Data.SQLite;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -85,6 +86,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private void CboDurationDifficulty_SelectedIndexChanged(object sender, EventArgs e) {
             var difficulty = (Difficulty)(cboDurationDifficulty.SelectedIndex + 1);
             var score = _project.Project.GetScore(difficulty);
+            Debug.Assert(score != null, nameof(score) + " != null");
             var estimatedDuration = score.CalculateDuration();
             estimatedDuration += TimeSpan.FromSeconds(1);
             var durationText = estimatedDuration.TotalSeconds.ToString("0.###");
@@ -149,6 +151,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             }
 
             var score = _project.Project.GetScore(_difficulty);
+            Debug.Assert(score != null, nameof(score) + " != null");
             CompiledScore compiledScore;
             var isEndingCustom = radEndTimeCustom.Checked;
             if (isEndingCustom) {

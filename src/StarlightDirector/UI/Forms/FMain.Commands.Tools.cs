@@ -15,6 +15,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             FBuildBeatmap.ShowDialog(this, visualizer.Editor.Project, visualizer.Editor.Difficulty);
         }
 
+        private void CmdToolsExportTxt_Executed(object sender, ExecutedEventArgs e) {
+            FExportTxt.ShowDialog(this, visualizer.Editor.Project, visualizer.Editor.Difficulty);
+        }
+
         private void CmdToolsBuildBdb_Executed(object sender, ExecutedEventArgs e) {
             FBuildBeatmap.ShowDialog(this, visualizer.Editor.Project, Difficulty.Invalid);
         }
@@ -94,6 +98,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         }
 
         internal readonly Command CmdToolsExportCsv = CommandManager.CreateCommand();
+        internal readonly Command CmdToolsExportTxt = CommandManager.CreateCommand();
         internal readonly Command CmdToolsBuildBdb = CommandManager.CreateCommand();
         internal readonly Command CmdToolsBuildAcb = CommandManager.CreateCommand();
         internal readonly Command CmdToolsSettings = CommandManager.CreateCommand();

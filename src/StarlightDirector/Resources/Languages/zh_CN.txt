@@ -1,4 +1,4 @@
-﻿# 语言文件名必须为语言代码。
+# 语言文件名必须为语言代码。
 # 在一行的开始处使用“#”注释这一行
 # 用“\n”换行
 lang.display_name=中文（中国）
@@ -11,7 +11,7 @@ ui.fmain.text_template={0} [{1}] - {2} {3}
 
 # ---
 
-ui.fmain.menu.project.text=工程(&P)
+ui.fmain.menu.project.text=文件(&F)
 ui.fmain.menu.project.new.text=新建(&N)
 ui.fmain.menu.project.open.text=打开(&O)...
 ui.fmain.menu.project.save.text=保存(&S)
@@ -323,3 +323,33 @@ messages.fbuildbeatmap.custom_end_time_invalid=请输入正确的时间（秒）
 messages.fbuildbeatmap.csv_score_exported=谱面已经导出到 {0}。
 # {0}: 文件位置
 messages.fbuildbeatmap.bdb_scores_exported=所有谱面已经导出到 {0}。
+
+
+# +++ 2018-09 +++
+
+ui.fmain.menu.tools.export.txt.text=Deleste 单个谱面(TXT)(&T)...
+
+ui.fexporttxt.text=导出到 Deleste TXT 谱面
+ui.fexporttxt.label.title.text=标题:
+ui.fexporttxt.label.composer.text=作曲:
+ui.fexporttxt.label.lyricist.text=作词:
+ui.fexporttxt.label.bg_file.text=背景文件:
+ui.fexporttxt.label.song_file.text=歌曲文件:
+ui.fexporttxt.label.difficulty.text=难度:
+ui.fexporttxt.label.level.text=等级:
+ui.fexporttxt.label.color.text=属性:
+ui.fexporttxt.label.bgm_volume.text=音乐音量:
+ui.fexporttxt.label.se_volume.text=音效音量:
+ui.fexporttxt.label.format.text=格式:
+ui.fexporttxt.button.export.text=导出(&E)...
+ui.fexporttxt.button.cancel.text=取消
+
+misc.filter.deleste.txt=Deleste TXT 谱面 (*.txt)|*.txt
+
+messages.fexporttxt.txt_score_exported=谱面已导出到 '{0}'.
+messages.fexporttxt.level_input_requirement=难度应输入一个至少为5的整数。
+messages.fexporttxt.bgm_volume_input_requirement=音乐音量应输入一个0到100的整数。
+messages.fexporttxt.se_volume_input_requirement=音效音量应输入一个0到100的整数。
+
+misc.deleste.score_format.default=默认
+misc.deleste.score_format.converted=转换过的（接近 CSV)

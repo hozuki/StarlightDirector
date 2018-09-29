@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
@@ -25,7 +26,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         }
 
         public string StatusText {
-            get { return _statusText; }
+            get => _statusText;
             set {
                 if (value == null) {
                     value = string.Empty;
@@ -48,19 +49,23 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             if (project == null || !project.WasSaved()) {
                 editingFileName = LanguageManager.TryGetString("misc.default_doc_name") ?? DefaultDocumentName;
             } else {
-                var fileInfo = new FileInfo(project.SaveFilePath);
+                var saveFilePath = project.SaveFilePath;
+                Debug.Assert(saveFilePath != null, nameof(saveFilePath) + " != null");
+                var fileInfo = new FileInfo(saveFilePath);
                 editingFileName = fileInfo.Name;
             }
             var applicationTitle = AssemblyHelper.GetTitle();
             var difficultyDescription = DescribedEnumConverter.GetEnumDescription(currentDifficulty);
 
             string stateDescription;
+            var languageManager = LanguageManager.Current;
+            Debug.Assert(languageManager != null, nameof(languageManager) + " != null");
             switch (visualizer.Display) {
                 case VisualizerDisplay.Editor:
-                    stateDescription = LanguageManager.Current.GetString("misc.state.editing");
+                    stateDescription = languageManager.GetString("misc.state.editing");
                     break;
                 case VisualizerDisplay.Previewer:
-                    stateDescription = LanguageManager.Current.GetString("misc.state.previewing");
+                    stateDescription = languageManager.GetString("misc.state.previewing");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
@@ -83,7 +88,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             _cachedTitleDifficulty = currentDifficulty;
         }
 
-        public void ApplyColorScheme(ColorScheme scheme) {
+        public void ApplyColorScheme([NotNull] ColorScheme scheme) {
             BackColor = scheme.Workspace;
 
             sysMinimize.BackColor = scheme.SysMinNormalBackground;

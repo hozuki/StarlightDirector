@@ -43,6 +43,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.toolStripSeparator9 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbToolsBuildBdb = new System.Windows.Forms.ToolStripButton();
             this.tsbToolsBuildAcb = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbToolsTestLaunch = new System.Windows.Forms.ToolStripButton();
             this.tsbToolsTestReload = new System.Windows.Forms.ToolStripButton();
             this.gbStandard = new System.Windows.Forms.GroupBox();
@@ -199,9 +200,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.sysClose = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMaximizeRestore = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMinimize = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
+            this.mnuToolsExportTxt = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCaption = new OpenCGSS.StarlightDirector.UI.Controls.SingleLineLabel();
             this.visualizer = new OpenCGSS.StarlightDirector.UI.Controls.ScoreVisualizer();
-            this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.panel2.SuspendLayout();
             this.gbEditView.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -337,7 +338,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.tsbToolsTestReload});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(207, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(124, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
@@ -390,6 +391,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.tsbToolsBuildAcb.Name = "tsbToolsBuildAcb";
             this.tsbToolsBuildAcb.Size = new System.Drawing.Size(23, 22);
             this.tsbToolsBuildAcb.Text = "Build CGSS Live Music";
+            // 
+            // toolStripSeparator5
+            // 
+            this.toolStripSeparator5.Name = "toolStripSeparator5";
+            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator5.Visible = false;
             // 
             // tsbToolsTestLaunch
             // 
@@ -684,7 +691,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(373, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(472, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -701,41 +708,41 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuProjectSep2,
             this.mnuProjectExit});
             this.mnuProject.Name = "mnuProject";
-            this.mnuProject.Size = new System.Drawing.Size(60, 21);
-            this.mnuProject.Text = "&Project";
+            this.mnuProject.Size = new System.Drawing.Size(39, 21);
+            this.mnuProject.Text = "&File";
             // 
             // mnuProjectNew
             // 
             this.mnuProjectNew.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectNew;
             this.mnuProjectNew.Name = "mnuProjectNew";
-            this.mnuProjectNew.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectNew.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectNew.Text = "&New";
             // 
             // mnuProjectOpen
             // 
             this.mnuProjectOpen.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectOpen;
             this.mnuProjectOpen.Name = "mnuProjectOpen";
-            this.mnuProjectOpen.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectOpen.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectOpen.Text = "&Open...";
             // 
             // mnuProjectSave
             // 
             this.mnuProjectSave.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectSave;
             this.mnuProjectSave.Name = "mnuProjectSave";
-            this.mnuProjectSave.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectSave.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectSave.Text = "&Save";
             // 
             // mnuProjectSaveAs
             // 
             this.mnuProjectSaveAs.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectSaveAs;
             this.mnuProjectSaveAs.Name = "mnuProjectSaveAs";
-            this.mnuProjectSaveAs.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectSaveAs.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectSaveAs.Text = "Save &As...";
             // 
             // mnuProjectSep1
             // 
             this.mnuProjectSep1.Name = "mnuProjectSep1";
-            this.mnuProjectSep1.Size = new System.Drawing.Size(127, 6);
+            this.mnuProjectSep1.Size = new System.Drawing.Size(177, 6);
             // 
             // mnuProjectBeatmap
             // 
@@ -744,7 +751,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuProjectBeatmapSep1,
             this.mnuProjectBeatmapStats});
             this.mnuProjectBeatmap.Name = "mnuProjectBeatmap";
-            this.mnuProjectBeatmap.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectBeatmap.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectBeatmap.Text = "&Beatmap";
             // 
             // mnuProjectBeatmapSettings
@@ -769,7 +776,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuProjectMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProjectMusicSettings});
             this.mnuProjectMusic.Name = "mnuProjectMusic";
-            this.mnuProjectMusic.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectMusic.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectMusic.Text = "Mus&ic";
             // 
             // mnuProjectMusicSettings
@@ -781,13 +788,13 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             // mnuProjectSep2
             // 
             this.mnuProjectSep2.Name = "mnuProjectSep2";
-            this.mnuProjectSep2.Size = new System.Drawing.Size(127, 6);
+            this.mnuProjectSep2.Size = new System.Drawing.Size(177, 6);
             // 
             // mnuProjectExit
             // 
             this.mnuProjectExit.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectExit;
             this.mnuProjectExit.Name = "mnuProjectExit";
-            this.mnuProjectExit.Size = new System.Drawing.Size(130, 22);
+            this.mnuProjectExit.Size = new System.Drawing.Size(180, 22);
             this.mnuProjectExit.Text = "E&xit";
             // 
             // mnuEdit
@@ -1392,7 +1399,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             // mnuToolsExport
             // 
             this.mnuToolsExport.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuToolsExportCsv});
+            this.mnuToolsExportCsv,
+            this.mnuToolsExportTxt});
             this.mnuToolsExport.Name = "mnuToolsExport";
             this.mnuToolsExport.Size = new System.Drawing.Size(131, 22);
             this.mnuToolsExport.Text = "&Export";
@@ -1400,7 +1408,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             // mnuToolsExportCsv
             // 
             this.mnuToolsExportCsv.Name = "mnuToolsExportCsv";
-            this.mnuToolsExportCsv.Size = new System.Drawing.Size(246, 22);
+            this.mnuToolsExportCsv.Size = new System.Drawing.Size(257, 22);
             this.mnuToolsExportCsv.Text = "CGSS Single Beatmap (&CSV)...";
             // 
             // mnuToolsImport
@@ -1648,6 +1656,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.sysMinimize.TabIndex = 6;
             this.sysMinimize.UseVisualStyleBackColor = true;
             // 
+            // mnuToolsExportTxt
+            // 
+            this.mnuToolsExportTxt.Name = "mnuToolsExportTxt";
+            this.mnuToolsExportTxt.Size = new System.Drawing.Size(257, 22);
+            this.mnuToolsExportTxt.Text = "Deleste Single Beatmap (&TXT)...";
+            // 
             // lblCaption
             // 
             this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1674,12 +1688,6 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.visualizer.ScrollingSpeed = 5;
             this.visualizer.Size = new System.Drawing.Size(695, 509);
             this.visualizer.TabIndex = 12;
-            // 
-            // toolStripSeparator5
-            // 
-            this.toolStripSeparator5.Name = "toolStripSeparator5";
-            this.toolStripSeparator5.Size = new System.Drawing.Size(6, 25);
-            this.toolStripSeparator5.Visible = false;
             // 
             // FMain
             // 
@@ -1912,6 +1920,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private System.Windows.Forms.ToolStripButton tsbToolsTestLaunch;
         private System.Windows.Forms.ToolStripButton tsbToolsTestReload;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+        private System.Windows.Forms.ToolStripMenuItem mnuToolsExportTxt;
     }
 }
 

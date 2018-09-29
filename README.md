@@ -1,4 +1,4 @@
-﻿# Starlight Director
+# Starlight Director
 
 **Work In Progress**
 
@@ -14,7 +14,7 @@
 
 For those who want to view or play the beatmaps:
 
-- viewing: use [bmconv](https://github.com/OpenCGSS/bmconv/releases) to convert the beatmap to [Deleste](https://twitter.com/blueapple25130/status/859560616368812032) TXT format, then view in Deleste. `bmconv` is a commandline program, so please use Command Prompt to run it.
+- viewing: export the beatmap to [Deleste](https://twitter.com/blueapple25130/status/859560616368812032) TXT format, then view in Deleste.
 - playing: build the beatmap (BDB) and music (ACB, via [DereTore](https://github.com/OpenCGSS/DereTore)), then use IdolProxy to play it in real game.
 
 ## What is this?
@@ -35,7 +35,7 @@ It is now in its beta phase. The old version is now removed.
 
 Experience with rhythm games is strongly recommended, so you can know whether players are able to play your beatmap or not.
 
-[使用说明（部分完成）](src/StarlightDirector.App/Resources/Docs/Help.md)
+<del>[使用说明（已过时）](src/StarlightDirector/Resources/Docs/Help.md)</del>
 
 ## Building
 
@@ -46,7 +46,7 @@ Experience with rhythm games is strongly recommended, so you can know whether pl
 
 ## Translation
 
-You can find language files under [`Resources/Languages`](src/StarlightDirector.App/Resources/Languages) from the application's
+You can find language files under [`Resources/Languages`](src/StarlightDirector/Resources/Languages) from the application's
 directory. Feel free to translate Starlight Director into your language. :D
 
 ## Screenshot

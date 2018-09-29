@@ -157,6 +157,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             tsbPreviewStop.Bind(CmdPreviewStop);
 
             mnuToolsExportCsv.Bind(CmdToolsExportCsv);
+            mnuToolsExportTxt.Bind(CmdToolsExportTxt);
             mnuToolsBuildBdb.Bind(CmdToolsBuildBdb);
             tsbToolsBuildBdb.Bind(CmdToolsBuildBdb);
             mnuToolsBuildAcb.Bind(CmdToolsBuildAcb);
