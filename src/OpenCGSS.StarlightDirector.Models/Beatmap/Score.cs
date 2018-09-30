@@ -21,16 +21,25 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap {
 
         [NotNull, ItemNotNull]
         public IReadOnlyList<Note> GetAllNotes() {
-            return Bars.SelectMany(measure => measure.Notes).ToArray();
+            if (_noteCountChanged || _allNotesCache == null) {
+                _allNotesCache = Bars.SelectMany(measure => measure.Notes).ToArray();
+                _noteCountChanged = false;
+            }
+
+            return _allNotesCache;
         }
 
-        public bool HasAnyNote {
-            get {
-                return Bars.Count != 0 && Bars.Any(bar => bar.Notes.Count > 0);
-            }
-        }
+        public bool HasAnyNote => Bars.Count != 0 && Bars.Any(bar => bar.Notes.Count > 0);
 
         public bool HasAnyBar => Bars.Count != 0;
+
+        internal void InformNoteCountChanged() {
+            _noteCountChanged = true;
+        }
+
+        private bool _noteCountChanged = true;
+        [CanBeNull]
+        private Note[] _allNotesCache;
 
     }
 }

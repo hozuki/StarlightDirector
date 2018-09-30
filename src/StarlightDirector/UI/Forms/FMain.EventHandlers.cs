@@ -57,10 +57,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     return;
                 }
                 var now = (rawMusicTime + _liveControl.LiveSfxManager.BufferOffset).TotalSeconds;
-                if (now <= _liveControl.SfxBufferTime) {
+                var prev = _liveControl.SfxBufferTime;
+                if (now <= prev) {
                     return;
                 }
-                var prev = _liveControl.SfxBufferTime;
                 foreach (var note in score.GetAllNotes()) {
                     if (note.Temporary.HitTiming.TotalSeconds < prev || now <= note.Temporary.HitTiming.TotalSeconds) {
                         continue;

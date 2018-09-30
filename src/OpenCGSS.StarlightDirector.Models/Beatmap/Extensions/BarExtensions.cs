@@ -6,10 +6,12 @@ using JetBrains.Annotations;
 namespace OpenCGSS.StarlightDirector.Models.Beatmap.Extensions {
     public static class BarExtensions {
 
+        [NotNull]
         public static Note AddNote([NotNull] this Bar bar, int row, NotePosition column) {
             return AddNote(bar, Guid.NewGuid(), row, column);
         }
 
+        [NotNull]
         public static Note AddNote([NotNull] this Bar bar, int id, int row, NotePosition column) {
             var guid = StarlightID.GetGuidFromInt32(id);
             return AddNote(bar, guid, row, column);
@@ -42,6 +44,8 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap.Extensions {
 
             bar.Notes.Sort(Note.TimingThenPositionComparison);
 
+            bar.Basic.Score.InformNoteCountChanged();
+
             return note;
         }
 
@@ -69,15 +73,19 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap.Extensions {
             bar.Notes.Add(note);
             bar.Basic.Score.Project.UsedNoteIDs.Add(id);
 
+            bar.Basic.Score.InformNoteCountChanged();
+
             return note;
         }
 
+        [CanBeNull]
         public static Note RemoveNote([NotNull] this Bar bar, Guid id) {
             var note = FindNoteByID(bar, id);
 
             return note == null ? null : RemoveNote(bar, note);
         }
 
+        [CanBeNull]
         public static Note RemoveNote([NotNull] this Bar bar, [CanBeNull] Note note) {
             if (note == null) {
                 return null;
@@ -92,6 +100,8 @@ namespace OpenCGSS.StarlightDirector.Models.Beatmap.Extensions {
 
             bar.Notes.Remove(note);
             bar.Basic.Score.Project.UsedNoteIDs.Remove(note.StarlightID);
+
+            bar.Basic.Score.InformNoteCountChanged();
 
             return note;
         }

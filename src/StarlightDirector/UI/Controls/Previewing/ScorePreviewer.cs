@@ -33,15 +33,15 @@ namespace OpenCGSS.StarlightDirector.UI.Controls.Previewing {
         }
 
         public PreviewerRenderMode RenderMode {
-            get => _renderdeMode;
+            get => _renderMode;
             set {
-                var b = value != _renderdeMode;
+                var b = value != _renderMode;
 
                 if (!b) {
                     return;
                 }
 
-                _renderdeMode = value;
+                _renderMode = value;
 
                 switch (value) {
                     case PreviewerRenderMode.Standard:
@@ -172,7 +172,7 @@ namespace OpenCGSS.StarlightDirector.UI.Controls.Previewing {
 
         private Score _score;
         private IReadOnlyList<IReadOnlyList<TimeSpan>> _scoreTimingInfo;
-        private PreviewerRenderMode _renderdeMode;
+        private PreviewerRenderMode _renderMode;
         private ScorePreviewerRenderer _previewerRenderer;
         private ScoreEditorRenderer _editorRenderer;
         private ScoreEditorConfig _editorConfig;

@@ -48,12 +48,11 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             public void StartFromTime(double startTime) {
                 var currentDirectorSettings = DirectorSettingsManager.CurrentSettings;
+                var frameInterval = 0; // target frame interval in milliseconds
 
                 if (_liveTimer == null) {
-                    int interval;
-
                     if (currentDirectorSettings.PreviewTimerInterval > 0) {
-                        interval = currentDirectorSettings.PreviewTimerInterval;
+                        frameInterval = currentDirectorSettings.PreviewTimerInterval;
                     } else {
                         var refreshRate = ScreenHelper.GetCurrentRefreshRate();
 
@@ -63,10 +62,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                         }
 
                         // Why is there "-1"?
-                        interval = (int)(1000f / refreshRate) - 1;
+                        frameInterval = (int)(1000f / refreshRate) - 1;
                     }
 
-                    _liveTimer = new Timer(interval);
+                    _liveTimer = new Timer(frameInterval);
                     _liveTimer.Elapsed += LiveTimer_Elapsed;
                 }
 
@@ -80,7 +79,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     _liveMusicPlayer.CurrentTime = _liveStartTime;
                 }
 
-                SfxBufferTime = 0;
+                SfxBufferTime = startTime - frameInterval / 1000.0f;
 
                 _liveStopwatch.Start();
                 _liveMusicPlayer?.Play();
@@ -166,7 +165,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             private TimeSpan _lastStopwatchDifference;
 
-            private AudioManager _audioManager;
+            private readonly AudioManager _audioManager;
 
             [CanBeNull]
             private LiveMusicPlayer _liveMusicPlayer;
@@ -174,7 +173,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             private LiveMusicWaveStream _liveWaveStream;
             private Stream _liveFileStream;
 
-            private SfxManager _liveSfxManager;
+            private readonly SfxManager _liveSfxManager;
 
             private Timer _liveTimer;
 
