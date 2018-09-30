@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.Interop;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
+using OpenCGSS.StarlightDirector.Models.Editor.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;
 using OpenCGSS.StarlightDirector.UI.Extensions;
@@ -362,7 +363,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             var project = visualizer.Editor.Project;
             var val = project.IsModified;
             if (!val) {
-                project.IsModified = true;
+                project.MarkAsDirty();
                 UpdateUIIndications();
             }
         }

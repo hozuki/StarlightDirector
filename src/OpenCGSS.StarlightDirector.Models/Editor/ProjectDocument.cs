@@ -17,7 +17,7 @@ namespace OpenCGSS.StarlightDirector.Models.Editor {
         [NotNull]
         public Project Project { get; }
 
-        public bool IsModified { get; set; }
+        public bool IsModified { get; internal set; }
 
         [CanBeNull]
         public string SaveFilePath { get; set; }

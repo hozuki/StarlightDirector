@@ -168,6 +168,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             tsbToolsTestReload.Bind(CmdToolsTestReload);
             tsbToolsTestLaunch.Bind(CmdToolsTestLaunch);
+            tsbToolsTestRemotePreviewFromStart.Bind(CmdToolsTestRemotePreviewFromStart);
+            tsbToolsTestRemotePreviewStop.Bind(CmdToolsTestRemotePreviewStop);
 
             CommandManager.HookForm(this);
             RegisterCommandEvents(this);

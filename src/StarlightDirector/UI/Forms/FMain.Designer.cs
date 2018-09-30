@@ -171,6 +171,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuTools = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsExport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsExportCsv = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuToolsExportTxt = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsImport = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuToolsSep1 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuToolsBuild = new System.Windows.Forms.ToolStripMenuItem();
@@ -200,9 +201,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.sysClose = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMaximizeRestore = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
             this.sysMinimize = new OpenCGSS.StarlightDirector.UI.Controls.ModernSystemButton();
-            this.mnuToolsExportTxt = new System.Windows.Forms.ToolStripMenuItem();
             this.lblCaption = new OpenCGSS.StarlightDirector.UI.Controls.SingleLineLabel();
             this.visualizer = new OpenCGSS.StarlightDirector.UI.Controls.ScoreVisualizer();
+            this.tsbToolsTestRemotePreviewFromStart = new System.Windows.Forms.ToolStripButton();
+            this.tsbToolsTestRemotePreviewStop = new System.Windows.Forms.ToolStripButton();
             this.panel2.SuspendLayout();
             this.gbEditView.SuspendLayout();
             this.tlbEditAndView.SuspendLayout();
@@ -335,10 +337,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.tsbToolsBuildAcb,
             this.toolStripSeparator5,
             this.tsbToolsTestLaunch,
-            this.tsbToolsTestReload});
+            this.tsbToolsTestReload,
+            this.tsbToolsTestRemotePreviewFromStart,
+            this.tsbToolsTestRemotePreviewStop});
             this.tlbPostprocessing.Location = new System.Drawing.Point(5, 19);
             this.tlbPostprocessing.Name = "tlbPostprocessing";
-            this.tlbPostprocessing.Size = new System.Drawing.Size(124, 25);
+            this.tlbPostprocessing.Size = new System.Drawing.Size(253, 25);
             this.tlbPostprocessing.TabIndex = 0;
             this.tlbPostprocessing.Text = "Postprocessing";
             // 
@@ -691,7 +695,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mainMenuStrip.Location = new System.Drawing.Point(6, 40);
             this.mainMenuStrip.Margin = new System.Windows.Forms.Padding(0, 0, 0, 5);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(472, 25);
+            this.mainMenuStrip.Size = new System.Drawing.Size(352, 25);
             this.mainMenuStrip.TabIndex = 9;
             this.mainMenuStrip.Text = "Menu";
             // 
@@ -715,34 +719,34 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             // 
             this.mnuProjectNew.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectNew;
             this.mnuProjectNew.Name = "mnuProjectNew";
-            this.mnuProjectNew.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectNew.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectNew.Text = "&New";
             // 
             // mnuProjectOpen
             // 
             this.mnuProjectOpen.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectOpen;
             this.mnuProjectOpen.Name = "mnuProjectOpen";
-            this.mnuProjectOpen.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectOpen.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectOpen.Text = "&Open...";
             // 
             // mnuProjectSave
             // 
             this.mnuProjectSave.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectSave;
             this.mnuProjectSave.Name = "mnuProjectSave";
-            this.mnuProjectSave.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectSave.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectSave.Text = "&Save";
             // 
             // mnuProjectSaveAs
             // 
             this.mnuProjectSaveAs.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectSaveAs;
             this.mnuProjectSaveAs.Name = "mnuProjectSaveAs";
-            this.mnuProjectSaveAs.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectSaveAs.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectSaveAs.Text = "Save &As...";
             // 
             // mnuProjectSep1
             // 
             this.mnuProjectSep1.Name = "mnuProjectSep1";
-            this.mnuProjectSep1.Size = new System.Drawing.Size(177, 6);
+            this.mnuProjectSep1.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuProjectBeatmap
             // 
@@ -751,7 +755,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuProjectBeatmapSep1,
             this.mnuProjectBeatmapStats});
             this.mnuProjectBeatmap.Name = "mnuProjectBeatmap";
-            this.mnuProjectBeatmap.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectBeatmap.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectBeatmap.Text = "&Beatmap";
             // 
             // mnuProjectBeatmapSettings
@@ -776,7 +780,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuProjectMusic.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuProjectMusicSettings});
             this.mnuProjectMusic.Name = "mnuProjectMusic";
-            this.mnuProjectMusic.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectMusic.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectMusic.Text = "Mus&ic";
             // 
             // mnuProjectMusicSettings
@@ -788,13 +792,13 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             // mnuProjectSep2
             // 
             this.mnuProjectSep2.Name = "mnuProjectSep2";
-            this.mnuProjectSep2.Size = new System.Drawing.Size(177, 6);
+            this.mnuProjectSep2.Size = new System.Drawing.Size(127, 6);
             // 
             // mnuProjectExit
             // 
             this.mnuProjectExit.Image = global::OpenCGSS.StarlightDirector.Properties.Resources.IconProjectExit;
             this.mnuProjectExit.Name = "mnuProjectExit";
-            this.mnuProjectExit.Size = new System.Drawing.Size(180, 22);
+            this.mnuProjectExit.Size = new System.Drawing.Size(130, 22);
             this.mnuProjectExit.Text = "E&xit";
             // 
             // mnuEdit
@@ -1411,6 +1415,12 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.mnuToolsExportCsv.Size = new System.Drawing.Size(257, 22);
             this.mnuToolsExportCsv.Text = "CGSS Single Beatmap (&CSV)...";
             // 
+            // mnuToolsExportTxt
+            // 
+            this.mnuToolsExportTxt.Name = "mnuToolsExportTxt";
+            this.mnuToolsExportTxt.Size = new System.Drawing.Size(257, 22);
+            this.mnuToolsExportTxt.Text = "Deleste Single Beatmap (&TXT)...";
+            // 
             // mnuToolsImport
             // 
             this.mnuToolsImport.Enabled = false;
@@ -1656,12 +1666,6 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.sysMinimize.TabIndex = 6;
             this.sysMinimize.UseVisualStyleBackColor = true;
             // 
-            // mnuToolsExportTxt
-            // 
-            this.mnuToolsExportTxt.Name = "mnuToolsExportTxt";
-            this.mnuToolsExportTxt.Size = new System.Drawing.Size(257, 22);
-            this.mnuToolsExportTxt.Text = "Deleste Single Beatmap (&TXT)...";
-            // 
             // lblCaption
             // 
             this.lblCaption.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -1688,6 +1692,26 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.visualizer.ScrollingSpeed = 5;
             this.visualizer.Size = new System.Drawing.Size(695, 509);
             this.visualizer.TabIndex = 12;
+            // 
+            // tsbToolsTestRemotePreviewFromStart
+            // 
+            this.tsbToolsTestRemotePreviewFromStart.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsTestRemotePreviewFromStart.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestRemotePreviewFromStart.Image")));
+            this.tsbToolsTestRemotePreviewFromStart.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsTestRemotePreviewFromStart.Name = "tsbToolsTestRemotePreviewFromStart";
+            this.tsbToolsTestRemotePreviewFromStart.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsTestRemotePreviewFromStart.Text = "toolStripButton1";
+            this.tsbToolsTestRemotePreviewFromStart.Visible = false;
+            // 
+            // tsbToolsTestRemotePreviewStop
+            // 
+            this.tsbToolsTestRemotePreviewStop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbToolsTestRemotePreviewStop.Image = ((System.Drawing.Image)(resources.GetObject("tsbToolsTestRemotePreviewStop.Image")));
+            this.tsbToolsTestRemotePreviewStop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbToolsTestRemotePreviewStop.Name = "tsbToolsTestRemotePreviewStop";
+            this.tsbToolsTestRemotePreviewStop.Size = new System.Drawing.Size(23, 22);
+            this.tsbToolsTestRemotePreviewStop.Text = "toolStripButton1";
+            this.tsbToolsTestRemotePreviewStop.Visible = false;
             // 
             // FMain
             // 
@@ -1921,6 +1945,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private System.Windows.Forms.ToolStripButton tsbToolsTestReload;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
         private System.Windows.Forms.ToolStripMenuItem mnuToolsExportTxt;
+        private System.Windows.Forms.ToolStripButton tsbToolsTestRemotePreviewFromStart;
+        private System.Windows.Forms.ToolStripButton tsbToolsTestRemotePreviewStop;
     }
 }
 

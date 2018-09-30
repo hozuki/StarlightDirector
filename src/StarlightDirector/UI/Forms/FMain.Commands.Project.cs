@@ -72,6 +72,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 Debug.Assert(project.SaveFilePath != null, "project.SaveFilePath != null");
 
                 writer.WriteProject(project.Project, project.SaveFilePath);
+
+                project.MarkAsClean();
+
                 UpdateUIIndications();
             } else {
                 CmdProjectSaveAs.Execute(sender, e.Parameter);

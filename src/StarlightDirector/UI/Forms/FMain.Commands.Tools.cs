@@ -97,6 +97,14 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             var process = Process.Start(startInfo);
         }
 
+        private void CmdToolsTestRemotePreviewFromStart_Executed(object sender, ExecutedEventArgs e) {
+            _communication?.Client.SendPlayRequest();
+        }
+
+        private void CmdToolsTestRemotePreviewStop_Executed(object sender, ExecutedEventArgs e) {
+            _communication?.Client.SendStopRequest();
+        }
+
         internal readonly Command CmdToolsExportCsv = CommandManager.CreateCommand();
         internal readonly Command CmdToolsExportTxt = CommandManager.CreateCommand();
         internal readonly Command CmdToolsBuildBdb = CommandManager.CreateCommand();
@@ -105,6 +113,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
         internal readonly Command CmdToolsTestReload = CommandManager.CreateCommand();
         internal readonly Command CmdToolsTestLaunch = CommandManager.CreateCommand();
+        internal readonly Command CmdToolsTestRemotePreviewFromStart = CommandManager.CreateCommand();
+        internal readonly Command CmdToolsTestRemotePreviewStop = CommandManager.CreateCommand();
 
     }
 }
