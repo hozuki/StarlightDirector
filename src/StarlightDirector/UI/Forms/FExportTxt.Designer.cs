@@ -296,6 +296,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FExportTxt";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Export to Deleste TXT Beatmap";
             this.ResumeLayout(false);
