@@ -94,6 +94,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             var project = visualizer.Editor.Project;
             var writer = new SldprojV4Writer();
             writer.WriteProject(project.Project, saveFileDialog.FileName);
+            project.SaveFilePath = saveFileDialog.FileName;
+            project.MarkAsClean();
             UpdateUIIndications();
         }
 

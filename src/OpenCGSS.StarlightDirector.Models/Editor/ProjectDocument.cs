@@ -12,6 +12,7 @@ namespace OpenCGSS.StarlightDirector.Models.Editor {
 
             Project = project;
             SaveFilePath = filePath;
+            IsModified = false;
         }
 
         [NotNull]
