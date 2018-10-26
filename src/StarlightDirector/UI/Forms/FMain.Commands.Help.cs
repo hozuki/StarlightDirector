@@ -1,4 +1,4 @@
-using OpenCGSS.StarlightDirector.Input;
+using System.Windows.Forms.Input;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FMain {
@@ -11,7 +11,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             FAbout.ShowDialog(this, easterEggEnabled);
         }
 
-        internal readonly Command CmdHelpAbout = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdHelpAbout = CommandHelper.CreateUIBinding();
 
     }
 }

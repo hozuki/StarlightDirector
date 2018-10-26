@@ -1,7 +1,12 @@
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Text;
+using System.Linq;
+using System.Reflection;
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
+using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.Interop;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
@@ -93,7 +98,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData) {
             switch (keyData) {
                 case Keys.Escape:
-                    CmdEditSelectClearAll.Execute(this, null);
+                    CmdEditSelectClearAll.Command.Execute(null);
                     return true;
                 default:
                     return base.ProcessCmdKey(ref msg, keyData);
@@ -104,32 +109,32 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             switch (e.KeyData) {
                 case Keys.D0:
                 case Keys.NumPad0:
-                    CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.Default);
                     e.Handled = true;
                     break;
                 case Keys.D1:
                 case Keys.NumPad1:
-                    CmdScoreNoteStartPositionAt1.Execute(this, NotePosition.P1);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.P1);
                     e.Handled = true;
                     break;
                 case Keys.D2:
                 case Keys.NumPad2:
-                    CmdScoreNoteStartPositionAt2.Execute(this, NotePosition.P2);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.P2);
                     e.Handled = true;
                     break;
                 case Keys.D3:
                 case Keys.NumPad3:
-                    CmdScoreNoteStartPositionAt3.Execute(this, NotePosition.P3);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.P3);
                     e.Handled = true;
                     break;
                 case Keys.D4:
                 case Keys.NumPad4:
-                    CmdScoreNoteStartPositionAt4.Execute(this, NotePosition.P4);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.P4);
                     e.Handled = true;
                     break;
                 case Keys.D5:
                 case Keys.NumPad5:
-                    CmdScoreNoteStartPositionAt5.Execute(this, NotePosition.P5);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.P5);
                     e.Handled = true;
                     break;
             }
@@ -164,52 +169,52 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     break;
                 case Keys.A:
                     if (modifiers == Keys.None) {
-                        CmdEditModeTap.Execute(this, ScoreEditMode.Tap);
+                        CmdEditModeSet.Command.Execute(ScoreEditMode.Tap);
                     }
                     break;
                 case Keys.S:
                     if (modifiers == Keys.None) {
-                        CmdEditModeSlide.Execute(this, ScoreEditMode.HoldFlick);
+                        CmdEditModeSet.Command.Execute(ScoreEditMode.HoldFlick);
                     }
                     break;
                 case Keys.D:
                     if (modifiers == Keys.None) {
-                        CmdEditModeSlide.Execute(this, ScoreEditMode.Slide);
+                        CmdEditModeSet.Command.Execute(ScoreEditMode.Slide);
                     }
                     break;
                 case Keys.F:
                     if (modifiers == Keys.None) {
-                        CmdEditModeSlide.Execute(this, ScoreEditMode.Select);
+                        CmdEditModeSet.Command.Execute(ScoreEditMode.Select);
                     }
                     break;
                 case Keys.Q:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P1);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.P1);
                     }
                     break;
                 case Keys.W:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P2);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.P2);
                     }
                     break;
                 case Keys.E:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P3);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.P3);
                     }
                     break;
                 case Keys.R:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P4);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.P4);
                     }
                     break;
                 case Keys.T:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.P5);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.P5);
                     }
                     break;
                 case Keys.P:
                     if (modifiers == Keys.None) {
-                        CmdScoreNoteStartPositionSetTo.Execute(this, NotePosition.Default);
+                        CmdScoreNoteStartPositionSetTo.Command.Execute(NotePosition.Default);
                     }
                     break;
             }
@@ -230,7 +235,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 case Keys.NumPad4:
                 case Keys.D5:
                 case Keys.NumPad5:
-                    CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
+                    CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.Default);
                     break;
                 default:
                     base.OnKeyUp(e);
@@ -376,6 +381,17 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.InvertedScrolling = settings.InvertedScrolling;
             visualizer.ScrollingSpeed = settings.ScrollingSpeed;
             editor.Invalidate();
+        }
+
+        [NotNull, ItemNotNull]
+        private static IEnumerable<FieldInfo> SearchPrivateCommandBindingFields([NotNull] Form form) {
+            var formType = form.GetType();
+            var commandType = typeof(CommandBinding);
+
+            var commandFields = formType.GetFields(ReflectionBindings.PrivateInstance)
+                .Where(field => field.FieldType == commandType || field.FieldType.IsSubclassOf(commandType));
+
+            return commandFields;
         }
 
     }

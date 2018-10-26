@@ -7,3 +7,6 @@
 [submodule "thirdparty/piyopiyo"]
 	path = thirdparty/piyopiyo
 	url = https://github.com/hozuki/piyopiyo.git
+[submodule "thirdparty/WinFormsCommanding"]
+	path = thirdparty/WinFormsCommanding
+	url = https://github.com/hozuki/WinFormsCommanding.git

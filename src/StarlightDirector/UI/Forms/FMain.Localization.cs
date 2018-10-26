@@ -1,7 +1,4 @@
-using System.Linq;
-using System.Reflection;
 using OpenCGSS.StarlightDirector.Globalization;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.UI.Extensions;
 
@@ -153,17 +150,11 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             // FMain as a special form, needs an extra title setting.
             UpdateUIIndications();
-            var formType = GetType();
-            var commandType = typeof(Command);
-            const BindingFlags privateInstance = BindingFlags.Instance | BindingFlags.NonPublic;
-            var commandFields = formType.GetFields(privateInstance)
-                .Where(field => field.FieldType == commandType || field.FieldType.IsSubclassOf(commandType));
-            foreach (var field in commandFields) {
-                var commandObject = field.GetValue(this) as Command;
-                commandObject?.UpdateItemText();
-            }
+
+            CommandHelper.UpdateAllSourceText();
+
             // Right now the key is definitely released, just set the start position.
-            CmdScoreNoteStartPositionAt0.Execute(this, NotePosition.Default);
+            CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.Default);
         }
 
     }

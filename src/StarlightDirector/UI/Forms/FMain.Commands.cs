@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Input;
+using System.Windows.Forms.Input;
+using JetBrains.Annotations;
+using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;
 
@@ -11,215 +13,188 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FMain {
 
         private void RegisterCommands() {
-            mnuProjectNew.Bind(CmdProjectNew);
-            tsbProjectNew.Bind(CmdProjectNew);
-            mnuProjectOpen.Bind(CmdProjectOpen);
-            tsbProjectOpen.Bind(CmdProjectOpen);
-            mnuProjectSave.Bind(CmdProjectSave);
-            tsbProjectSave.Bind(CmdProjectSave);
-            mnuProjectSaveAs.Bind(CmdProjectSaveAs);
-            mnuProjectExit.Bind(CmdProjectExit);
-            sysClose.Bind(CmdProjectExit);
+            mnuProjectNew.BindCommand(CmdProjectNew);
+            tsbProjectNew.BindCommand(CmdProjectNew);
+            mnuProjectOpen.BindCommand(CmdProjectOpen);
+            tsbProjectOpen.BindCommand(CmdProjectOpen);
+            mnuProjectSave.BindCommand(CmdProjectSave);
+            tsbProjectSave.BindCommand(CmdProjectSave);
+            mnuProjectSaveAs.BindCommand(CmdProjectSaveAs);
+            mnuProjectExit.BindCommand(CmdProjectExit);
+            sysClose.BindCommand(CmdProjectExit);
 
-            mnuProjectBeatmapSettings.Bind(CmdProjectBeatmapSettings);
-            mnuProjectBeatmapStats.Bind(CmdProjectBeatmapStats);
-            mnuProjectMusicSettings.Bind(CmdProjectMusicSettings);
+            mnuProjectBeatmapSettings.BindCommand(CmdProjectBeatmapSettings);
+            mnuProjectBeatmapStats.BindCommand(CmdProjectBeatmapStats);
+            mnuProjectMusicSettings.BindCommand(CmdProjectMusicSettings);
 
-            mnuScoreDifficultyDebut.SetParameter(Difficulty.Debut);
-            mnuScoreDifficultyRegular.SetParameter(Difficulty.Regular);
-            mnuScoreDifficultyPro.SetParameter(Difficulty.Pro);
-            mnuScoreDifficultyMaster.SetParameter(Difficulty.Master);
-            mnuScoreDifficultyMasterPlus.SetParameter(Difficulty.MasterPlus);
-            mnuScoreDifficultyDebut.Bind(CmdScoreDifficultySelect);
-            mnuScoreDifficultyRegular.Bind(CmdScoreDifficultySelect);
-            mnuScoreDifficultyPro.Bind(CmdScoreDifficultySelect);
-            mnuScoreDifficultyMaster.Bind(CmdScoreDifficultySelect);
-            mnuScoreDifficultyMasterPlus.Bind(CmdScoreDifficultySelect);
+            mnuScoreDifficultyDebut.BindCommand(CmdScoreDifficultySelect, Difficulty.Debut);
+            mnuScoreDifficultyRegular.BindCommand(CmdScoreDifficultySelect, Difficulty.Regular);
+            mnuScoreDifficultyPro.BindCommand(CmdScoreDifficultySelect, Difficulty.Pro);
+            mnuScoreDifficultyMaster.BindCommand(CmdScoreDifficultySelect, Difficulty.Master);
+            mnuScoreDifficultyMasterPlus.BindCommand(CmdScoreDifficultySelect, Difficulty.MasterPlus);
 
-            mnuEditUndo.Bind(CmdEditUndo);
-            mnuEditRedo.Bind(CmdEditRedo);
-            mnuEditCut.Bind(CmdEditCut);
-            mnuEditCopy.Bind(CmdEditCopy);
-            mnuEditPaste.Bind(CmdEditPaste);
-            tsbEditUndo.Bind(CmdEditUndo);
-            tsbEditRedo.Bind(CmdEditRedo);
-            tsbEditCut.Bind(CmdEditCut);
-            tsbEditCopy.Bind(CmdEditCopy);
-            tsbEditPaste.Bind(CmdEditPaste);
+            mnuEditUndo.BindCommand(CmdEditUndo);
+            mnuEditRedo.BindCommand(CmdEditRedo);
+            mnuEditCut.BindCommand(CmdEditCut);
+            mnuEditCopy.BindCommand(CmdEditCopy);
+            mnuEditPaste.BindCommand(CmdEditPaste);
+            tsbEditUndo.BindCommand(CmdEditUndo);
+            tsbEditRedo.BindCommand(CmdEditRedo);
+            tsbEditCut.BindCommand(CmdEditCut);
+            tsbEditCopy.BindCommand(CmdEditCopy);
+            tsbEditPaste.BindCommand(CmdEditPaste);
 
-            mnuEditModeSelect.SetParameter(ScoreEditMode.Select);
-            mnuEditModeTap.SetParameter(ScoreEditMode.Tap);
-            mnuEditModeHoldFlick.SetParameter(ScoreEditMode.HoldFlick);
-            mnuEditModeSlide.SetParameter(ScoreEditMode.Slide);
-            mnuEditModeSelect.Bind(CmdEditModeSelect);
-            mnuEditModeTap.Bind(CmdEditModeTap);
-            mnuEditModeHoldFlick.Bind(CmdEditModeHoldFlick);
-            mnuEditModeSlide.Bind(CmdEditModeSlide);
+            mnuEditModeSelect.BindCommand(CmdEditModeSet, ScoreEditMode.Select);
+            mnuEditModeTap.BindCommand(CmdEditModeSet, ScoreEditMode.Tap);
+            mnuEditModeHoldFlick.BindCommand(CmdEditModeSet, ScoreEditMode.HoldFlick);
+            mnuEditModeSlide.BindCommand(CmdEditModeSet, ScoreEditMode.Slide);
 
-            mnuEditGoToMeasure.Bind(CmdEditGoToMeasure);
-            mnuEditGoToTime.Bind(CmdEditGoToTime);
+            mnuEditGoToMeasure.BindCommand(CmdEditGoToMeasure);
+            mnuEditGoToTime.BindCommand(CmdEditGoToTime);
 
             // The ShortcutDisplayStrings are set separately in Form_Load.
-            mnuScoreNoteStartPositionAt0.SetParameter(NotePosition.Default);
-            mnuScoreNoteStartPositionAt1.SetParameter(NotePosition.P1);
-            mnuScoreNoteStartPositionAt2.SetParameter(NotePosition.P2);
-            mnuScoreNoteStartPositionAt3.SetParameter(NotePosition.P3);
-            mnuScoreNoteStartPositionAt4.SetParameter(NotePosition.P4);
-            mnuScoreNoteStartPositionAt5.SetParameter(NotePosition.P5);
-            mnuScoreNoteStartPositionAt0.Bind(CmdScoreNoteStartPositionAt0);
-            mnuScoreNoteStartPositionAt1.Bind(CmdScoreNoteStartPositionAt1);
-            mnuScoreNoteStartPositionAt2.Bind(CmdScoreNoteStartPositionAt2);
-            mnuScoreNoteStartPositionAt3.Bind(CmdScoreNoteStartPositionAt3);
-            mnuScoreNoteStartPositionAt4.Bind(CmdScoreNoteStartPositionAt4);
-            mnuScoreNoteStartPositionAt5.Bind(CmdScoreNoteStartPositionAt5);
+            mnuScoreNoteStartPositionAt0.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.Default);
+            mnuScoreNoteStartPositionAt1.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.P1);
+            mnuScoreNoteStartPositionAt2.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.P2);
+            mnuScoreNoteStartPositionAt3.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.P3);
+            mnuScoreNoteStartPositionAt4.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.P4);
+            mnuScoreNoteStartPositionAt5.BindCommand(CmdScoreNoteStartPositionSetAt, NotePosition.P5);
 
-            mnuScoreNoteStartPositionMoveLeft.Bind(CmdScoreNoteStartPositionMoveLeft);
-            mnuScoreNoteStartPositionMoveRight.Bind(CmdScoreNoteStartPositionMoveRight);
+            mnuScoreNoteStartPositionMoveLeft.BindCommand(CmdScoreNoteStartPositionMoveLeft);
+            mnuScoreNoteStartPositionMoveRight.BindCommand(CmdScoreNoteStartPositionMoveRight);
 
-            mnuScoreNoteStartPositionTo0.SetParameter(NotePosition.Default);
-            mnuScoreNoteStartPositionTo1.SetParameter(NotePosition.P1);
-            mnuScoreNoteStartPositionTo2.SetParameter(NotePosition.P2);
-            mnuScoreNoteStartPositionTo3.SetParameter(NotePosition.P3);
-            mnuScoreNoteStartPositionTo4.SetParameter(NotePosition.P4);
-            mnuScoreNoteStartPositionTo5.SetParameter(NotePosition.P5);
-            mnuScoreNoteStartPositionTo0.Bind(CmdScoreNoteStartPositionTo0);
-            mnuScoreNoteStartPositionTo1.Bind(CmdScoreNoteStartPositionTo1);
-            mnuScoreNoteStartPositionTo2.Bind(CmdScoreNoteStartPositionTo2);
-            mnuScoreNoteStartPositionTo3.Bind(CmdScoreNoteStartPositionTo3);
-            mnuScoreNoteStartPositionTo4.Bind(CmdScoreNoteStartPositionTo4);
-            mnuScoreNoteStartPositionTo5.Bind(CmdScoreNoteStartPositionTo5);
+            mnuScoreNoteStartPositionTo0.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.Default);
+            mnuScoreNoteStartPositionTo1.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.P1);
+            mnuScoreNoteStartPositionTo2.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.P2);
+            mnuScoreNoteStartPositionTo3.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.P3);
+            mnuScoreNoteStartPositionTo4.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.P4);
+            mnuScoreNoteStartPositionTo5.BindCommand(CmdScoreNoteStartPositionSetTo, NotePosition.P5);
 
-            mnuScoreNoteDelete.Bind(CmdScoreNoteDelete);
-            tsbScoreNoteDelete.Bind(CmdScoreNoteDelete);
-            ctxScoreNoteDelete.Bind(CmdScoreNoteDelete);
-            mnuScoreNoteResetToTap.Bind(CmdScoreNoteResetToTap);
-            tsbScoreNoteResetToTap.Bind(CmdScoreNoteResetToTap);
-            ctxScoreNoteResetToTap.Bind(CmdScoreNoteResetToTap);
+            mnuScoreNoteDelete.BindCommand(CmdScoreNoteDelete);
+            tsbScoreNoteDelete.BindCommand(CmdScoreNoteDelete);
+            ctxScoreNoteDelete.BindCommand(CmdScoreNoteDelete);
+            mnuScoreNoteResetToTap.BindCommand(CmdScoreNoteResetToTap);
+            tsbScoreNoteResetToTap.BindCommand(CmdScoreNoteResetToTap);
+            ctxScoreNoteResetToTap.BindCommand(CmdScoreNoteResetToTap);
 
-            mnuScoreNoteInsertSpecial.Bind(CmdScoreNoteInsertSpecial);
-            tsbScoreNoteInsertSpecial.Bind(CmdScoreNoteInsertSpecial);
-            ctxScoreNoteInsertSpecial.Bind(CmdScoreNoteInsertSpecial);
-            ctxScoreNoteModifySpecial.Bind(CmdScoreNoteModifySpecial);
-            ctxScoreNoteDeleteSpecial.Bind(CmdScoreNoteDeleteSpecial);
+            mnuScoreNoteInsertSpecial.BindCommand(CmdScoreNoteInsertSpecial);
+            tsbScoreNoteInsertSpecial.BindCommand(CmdScoreNoteInsertSpecial);
+            ctxScoreNoteInsertSpecial.BindCommand(CmdScoreNoteInsertSpecial);
+            ctxScoreNoteModifySpecial.BindCommand(CmdScoreNoteModifySpecial);
+            ctxScoreNoteDeleteSpecial.BindCommand(CmdScoreNoteDeleteSpecial);
 
-            mnuEditSelectAllMeasures.Bind(CmdEditSelectAllMeasures);
-            mnuEditSelectAllNotes.Bind(CmdEditSelectAllNotes);
+            mnuEditSelectAllMeasures.BindCommand(CmdEditSelectAllMeasures);
+            mnuEditSelectAllNotes.BindCommand(CmdEditSelectAllNotes);
             // For its key handling, see FMain.OnProcessCmdKey:
             // http://stackoverflow.com/questions/18930318/previewkeydown-not-firing.
-            mnuEditSelectClearAll.Bind(CmdEditSelectClearAll);
+            mnuEditSelectClearAll.BindCommand(CmdEditSelectClearAll);
 
-            mnuScoreMeasureAppend.Bind(CmdScoreMeasureAppend);
-            tsbScoreMeasureAppend.Bind(CmdScoreMeasureAppend);
-            mnuScoreMeasureAppendMultiple.Bind(CmdScoreMeasureAppendMultiple);
-            tsbScoreMeasureAppendMultiple.Bind(CmdScoreMeasureAppendMultiple);
-            mnuScoreMeasureInsert.Bind(CmdScoreMeasureInsert);
-            tsbScoreMeasureInsert.Bind(CmdScoreMeasureInsert);
-            mnuScoreMeasureInsertMultiple.Bind(CmdScoreMeasureInsertMultiple);
-            tsbScoreMeasureInsertMultiple.Bind(CmdScoreMeasureInsertMultiple);
-            mnuScoreMeasureDelete.Bind(CmdScoreMeasureDelete);
-            tsbScoreMeasureDelete.Bind(CmdScoreMeasureDelete);
-            ctxScoreMeasureDelete.Bind(CmdScoreMeasureDelete);
+            mnuScoreMeasureAppend.BindCommand(CmdScoreMeasureAppend);
+            tsbScoreMeasureAppend.BindCommand(CmdScoreMeasureAppend);
+            mnuScoreMeasureAppendMultiple.BindCommand(CmdScoreMeasureAppendMultiple);
+            tsbScoreMeasureAppendMultiple.BindCommand(CmdScoreMeasureAppendMultiple);
+            mnuScoreMeasureInsert.BindCommand(CmdScoreMeasureInsert);
+            tsbScoreMeasureInsert.BindCommand(CmdScoreMeasureInsert);
+            mnuScoreMeasureInsertMultiple.BindCommand(CmdScoreMeasureInsertMultiple);
+            tsbScoreMeasureInsertMultiple.BindCommand(CmdScoreMeasureInsertMultiple);
+            mnuScoreMeasureDelete.BindCommand(CmdScoreMeasureDelete);
+            tsbScoreMeasureDelete.BindCommand(CmdScoreMeasureDelete);
+            ctxScoreMeasureDelete.BindCommand(CmdScoreMeasureDelete);
 
-            mnuViewZoomIn.Bind(CmdViewZoomIn);
-            tsbViewZoomIn.Bind(CmdViewZoomIn);
-            mnuViewZoomOut.Bind(CmdViewZoomOut);
-            tsbViewZoomOut.Bind(CmdViewZoomOut);
+            mnuViewZoomIn.BindCommand(CmdViewZoomIn);
+            tsbViewZoomIn.BindCommand(CmdViewZoomIn);
+            mnuViewZoomOut.BindCommand(CmdViewZoomOut);
+            tsbViewZoomOut.BindCommand(CmdViewZoomOut);
 
-            mnuViewZoomToBeat1O4.SetParameter(4);
-            mnuViewZoomToBeat1O6.SetParameter(6);
-            mnuViewZoomToBeat1O8.SetParameter(8);
-            mnuViewZoomToBeat1O12.SetParameter(12);
-            mnuViewZoomToBeat1O16.SetParameter(16);
-            mnuViewZoomToBeat1O24.SetParameter(24);
-            mnuViewZoomToBeat1O32.SetParameter(32);
-            mnuViewZoomToBeat1O48.SetParameter(48);
-            mnuViewZoomToBeat1O96.SetParameter(96);
-            mnuViewZoomToBeat1O4.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O6.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O8.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O12.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O16.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O24.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O32.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O48.Bind(CmdViewZoomToBeat);
-            mnuViewZoomToBeat1O96.Bind(CmdViewZoomToBeat);
+            mnuViewZoomToBeat1O4.BindCommand(CmdViewZoomToBeat, 4);
+            mnuViewZoomToBeat1O6.BindCommand(CmdViewZoomToBeat, 6);
+            mnuViewZoomToBeat1O8.BindCommand(CmdViewZoomToBeat, 8);
+            mnuViewZoomToBeat1O12.BindCommand(CmdViewZoomToBeat, 12);
+            mnuViewZoomToBeat1O16.BindCommand(CmdViewZoomToBeat, 16);
+            mnuViewZoomToBeat1O24.BindCommand(CmdViewZoomToBeat, 24);
+            mnuViewZoomToBeat1O32.BindCommand(CmdViewZoomToBeat, 32);
+            mnuViewZoomToBeat1O48.BindCommand(CmdViewZoomToBeat, 48);
+            mnuViewZoomToBeat1O96.BindCommand(CmdViewZoomToBeat, 96);
 
-            mnuViewHighlightModeFourBeats.SetParameter(PrimaryBeatMode.EveryFourBeats);
-            mnuViewHighlightModeThreeBeats.SetParameter(PrimaryBeatMode.EveryThreeBeats);
-            mnuViewHighlightModeFourBeats.Bind(CmdViewHighlightModeSet);
-            mnuViewHighlightModeThreeBeats.Bind(CmdViewHighlightModeSet);
+            mnuViewHighlightModeFourBeats.BindCommand(CmdViewHighlightModeSet, PrimaryBeatMode.EveryFourBeats);
+            mnuViewHighlightModeThreeBeats.BindCommand(CmdViewHighlightModeSet, PrimaryBeatMode.EveryThreeBeats);
 
-            mnuPreviewFromThisMeasure.Bind(CmdPreviewFromThisMeasure);
-            tsbPreviewFromThisMeasure.Bind(CmdPreviewFromThisMeasure);
-            mnuPreviewFromStart.Bind(CmdPreviewFromStart);
-            tsbPreviewFromStart.Bind(CmdPreviewFromStart);
-            mnuPreviewStop.Bind(CmdPreviewStop);
-            tsbPreviewStop.Bind(CmdPreviewStop);
+            mnuPreviewFromThisMeasure.BindCommand(CmdPreviewFromThisMeasure);
+            tsbPreviewFromThisMeasure.BindCommand(CmdPreviewFromThisMeasure);
+            mnuPreviewFromStart.BindCommand(CmdPreviewFromStart);
+            tsbPreviewFromStart.BindCommand(CmdPreviewFromStart);
+            mnuPreviewStop.BindCommand(CmdPreviewStop);
+            tsbPreviewStop.BindCommand(CmdPreviewStop);
 
-            mnuToolsExportCsv.Bind(CmdToolsExportCsv);
-            mnuToolsExportTxt.Bind(CmdToolsExportTxt);
-            mnuToolsBuildBdb.Bind(CmdToolsBuildBdb);
-            tsbToolsBuildBdb.Bind(CmdToolsBuildBdb);
-            mnuToolsBuildAcb.Bind(CmdToolsBuildAcb);
-            tsbToolsBuildAcb.Bind(CmdToolsBuildAcb);
-            mnuToolsSettings.Bind(CmdToolsSettings);
+            mnuToolsExportCsv.BindCommand(CmdToolsExportCsv);
+            mnuToolsExportTxt.BindCommand(CmdToolsExportTxt);
+            mnuToolsBuildBdb.BindCommand(CmdToolsBuildBdb);
+            tsbToolsBuildBdb.BindCommand(CmdToolsBuildBdb);
+            mnuToolsBuildAcb.BindCommand(CmdToolsBuildAcb);
+            tsbToolsBuildAcb.BindCommand(CmdToolsBuildAcb);
+            mnuToolsSettings.BindCommand(CmdToolsSettings);
 
-            mnuHelpAbout.Bind(CmdHelpAbout);
+            mnuHelpAbout.BindCommand(CmdHelpAbout);
 
-            tsbToolsTestReload.Bind(CmdToolsTestReload);
-            tsbToolsTestLaunch.Bind(CmdToolsTestLaunch);
-            tsbToolsTestRemotePreviewFromStart.Bind(CmdToolsTestRemotePreviewFromStart);
-            tsbToolsTestRemotePreviewStop.Bind(CmdToolsTestRemotePreviewStop);
+            tsbToolsTestReload.BindCommand(CmdToolsTestReload);
+            tsbToolsTestLaunch.BindCommand(CmdToolsTestLaunch);
+            tsbToolsTestRemotePreviewFromStart.BindCommand(CmdToolsTestRemotePreviewFromStart);
+            tsbToolsTestRemotePreviewStop.BindCommand(CmdToolsTestRemotePreviewStop);
 
-            CommandManager.HookForm(this);
+            CommandManager.Instance.HookForm(this);
             RegisterCommandEvents(this);
         }
 
-        private void UnregisterCommands() {
-            CommandManager.UnhookForm(this);
-        }
-
-        private static void RegisterCommandEvents(Form form) {
+        private static void RegisterCommandEvents([NotNull] Form form) {
             var formType = form.GetType();
-            var commandType = typeof(Command);
-            const BindingFlags privateInstance = BindingFlags.Instance | BindingFlags.NonPublic;
-            const BindingFlags publicInstance = BindingFlags.Instance | BindingFlags.Public;
-            var commandFields = formType.GetFields(privateInstance)
-                .Where(field => field.FieldType == commandType || field.FieldType.IsSubclassOf(commandType));
-            foreach (var field in commandFields) {
-                var commandObject = field.GetValue(form) as Command;
-                if (commandObject == null) {
+            var commandBindingFields = SearchPrivateCommandBindingFields(form);
+
+            foreach (var field in commandBindingFields) {
+                if (!(field.GetValue(form) is CommandBinding binding)) {
                     continue;
                 }
+
                 var commandName = field.Name;
-                SubscribeEvent(commandObject, commandName, "Executed", typeof(EventHandler<ExecutedEventArgs>), true);
-                SubscribeEvent(commandObject, commandName, "Reverted", typeof(EventHandler<RevertedEventArgs>));
-                SubscribeEvent(commandObject, commandName, "QueryCanExecute", typeof(EventHandler<QueryCanExecuteEventArgs>));
-                SubscribeEvent(commandObject, commandName, "QueryCanRevert", typeof(EventHandler<QueryCanRevertEventArgs>));
-                SubscribeEvent(commandObject, commandName, "QueryRecordToHistory", typeof(EventHandler<QueryRecordToHistoryEventArgs>));
+
+                SubscribeEvent(binding, commandName, "Executed", typeof(EventHandler<ExecutedEventArgs>), true);
+                SubscribeEvent(binding, commandName, "Reverted", typeof(EventHandler<RevertedEventArgs>));
+                SubscribeEvent(binding, commandName, "QueryCanExecute", typeof(EventHandler<QueryCanExecuteEventArgs>));
+                SubscribeEvent(binding, commandName, "QueryCanRevert", typeof(EventHandler<QueryCanRevertEventArgs>));
+                SubscribeEvent(binding, commandName, "QueryCanRecord", typeof(EventHandler<QueryCanRecordEventArgs>));
             }
 
-            void SubscribeEvent(Command commandObject, string commandName, string eventName, Type handlerType, bool warnIfNotFound = false) {
+            void SubscribeEvent(CommandBinding binding, string commandName, string eventName, Type handlerType, bool warnIfErrored = false) {
                 var handlerName = commandName + "_" + eventName;
                 MethodInfo handlerMethod;
+
                 try {
-                    handlerMethod = formType.GetMethod(handlerName, privateInstance);
+                    handlerMethod = formType.GetMethod(handlerName, ReflectionBindings.PrivateInstance);
                 } catch (AmbiguousMatchException) {
+                    if (warnIfErrored) {
+                        Debug.Print($"Warning: multiple instances of handler method '{handlerName}' found in class '{formType.Name}'. Ignoring all.");
+                    }
+
                     return;
                 }
+
                 if (handlerMethod == null) {
-                    if (warnIfNotFound) {
+                    if (warnIfErrored) {
                         Debug.Print($"Warning: required instance handler method '{handlerName}' is not found in class '{formType.Name}'.");
                     }
+
                     return;
                 }
-                var cmdType = commandObject.GetType();
-                var eventField = cmdType.GetEvent(eventName, publicInstance | privateInstance);
+
+                var cmdType = binding.GetType();
+                var eventField = cmdType.GetEvent(eventName, ReflectionBindings.PrivateInstance | ReflectionBindings.PublicInstance);
+
                 if (eventField == null) {
                     return;
                 }
+
                 var methodDelegate = Delegate.CreateDelegate(handlerType, form, handlerMethod);
-                eventField.AddEventHandler(commandObject, methodDelegate);
+
+                eventField.AddEventHandler(binding, methodDelegate);
             }
         }
 

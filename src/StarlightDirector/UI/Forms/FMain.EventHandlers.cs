@@ -5,7 +5,6 @@ using Microsoft.Win32;
 using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
 using OpenCGSS.StarlightDirector.Globalization;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Interop;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Previewing.Audio;
@@ -136,9 +135,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
                     ctxScoreNoteDeleteSpecial.Visible = false;
-                    ctxScoreNoteInsertSpecial.DeleteParameter();
-                    ctxScoreNoteModifySpecial.DeleteParameter();
-                    ctxScoreNoteDeleteSpecial.DeleteParameter();
+                    ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+                    ctxScoreNoteModifySpecial.DeleteCommandParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
                     break;
                 case VisualizerContextMenu.Bar:
                     ctxSep1.Visible = false;
@@ -151,9 +150,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
                     ctxScoreNoteDeleteSpecial.Visible = false;
-                    ctxScoreNoteInsertSpecial.DeleteParameter();
-                    ctxScoreNoteModifySpecial.DeleteParameter();
-                    ctxScoreNoteDeleteSpecial.DeleteParameter();
+                    ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+                    ctxScoreNoteModifySpecial.DeleteCommandParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteAdd:
                     ctxSep1.Visible = false;
@@ -166,9 +165,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     ctxSep4.Visible = false;
                     ctxScoreNoteModifySpecial.Visible = false;
                     ctxScoreNoteDeleteSpecial.Visible = false;
-                    ctxScoreNoteInsertSpecial.SetParameter(e.HitTestResult);
-                    ctxScoreNoteModifySpecial.DeleteParameter();
-                    ctxScoreNoteDeleteSpecial.DeleteParameter();
+                    ctxScoreNoteInsertSpecial.SetCommandParameter(e.HitTestResult);
+                    ctxScoreNoteModifySpecial.DeleteCommandParameter();
+                    ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
                     break;
                 case VisualizerContextMenu.SpecialNoteModify:
                     ctxSep1.Visible = false;
@@ -181,9 +180,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                     ctxSep4.Visible = true;
                     ctxScoreNoteModifySpecial.Visible = true;
                     ctxScoreNoteDeleteSpecial.Visible = true;
-                    ctxScoreNoteInsertSpecial.DeleteParameter();
-                    ctxScoreNoteModifySpecial.SetParameter(e.HitTestResult);
-                    ctxScoreNoteDeleteSpecial.SetParameter(e.HitTestResult);
+                    ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+                    ctxScoreNoteModifySpecial.SetCommandParameter(e.HitTestResult);
+                    ctxScoreNoteDeleteSpecial.SetCommandParameter(e.HitTestResult);
                     break;
                 default:
                     break;
@@ -276,8 +275,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
             RegisterCommands();
 
-            CmdProjectNew.Execute(null, null);
-            CmdScoreNoteStartPositionAt0.Execute(null, NotePosition.Default);
+            CmdProjectNew.Command.Execute(null);
+            CmdScoreNoteStartPositionSetAt.Command.Execute(NotePosition.Default);
 
             if (Program.StartupOptions.BvspCommunicationEnabled) {
                 _communication = new SDCommunication(this);

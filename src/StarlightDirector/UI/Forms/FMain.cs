@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
 using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
 using OpenCGSS.StarlightDirector.Globalization;
@@ -21,7 +22,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         }
 
         ~FMain() {
-            UnregisterCommands();
+            CommandManager.Instance.UnhookForm(this);
+
             UnregisterEventHandlers();
         }
 

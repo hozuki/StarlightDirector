@@ -1,6 +1,6 @@
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.DirectorApplication;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls;
 
@@ -87,9 +87,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             UpdateUIIndications();
         }
 
-        internal readonly Command CmdPreviewFromThisMeasure = CommandManager.CreateCommand("F5");
-        internal readonly Command CmdPreviewFromStart = CommandManager.CreateCommand("Ctrl+F5");
-        internal readonly Command CmdPreviewStop = CommandManager.CreateCommand("F6");
+        internal readonly CommandBinding CmdPreviewFromThisMeasure = CommandHelper.CreateUIBinding("F5");
+        internal readonly CommandBinding CmdPreviewFromStart = CommandHelper.CreateUIBinding("Ctrl+F5");
+        internal readonly CommandBinding CmdPreviewStop = CommandHelper.CreateUIBinding("F6");
 
         private LiveControl _liveControl = new LiveControl();
 

@@ -1,6 +1,7 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
-using OpenCGSS.StarlightDirector.Input;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
@@ -27,10 +28,18 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         }
 
         private void CmdViewHighlightModeSet_Executed(object sender, ExecutedEventArgs e) {
+            Debug.Assert(e.Parameter != null, "e.Parameter != null");
+
             var primaryBeatMode = (PrimaryBeatMode)e.Parameter;
 
             foreach (var item in new[] { mnuViewHighlightModeFourBeats, mnuViewHighlightModeThreeBeats }) {
-                var bm = (PrimaryBeatMode)item.GetParameter();
+                var commandSource = CommandHelper.FindCommandSource(item);
+
+                Debug.Assert(commandSource != null, nameof(commandSource) + " != null");
+                Debug.Assert(commandSource.CommandParameter != null, "commandSource.CommandParameter != null");
+
+                var bm = (PrimaryBeatMode)commandSource.CommandParameter;
+
                 item.Checked = bm == primaryBeatMode;
             }
 
@@ -38,10 +47,10 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        internal readonly Command CmdViewZoomIn = CommandManager.CreateCommand("Ctrl+=");
-        internal readonly Command CmdViewZoomOut = CommandManager.CreateCommand("Ctrl+-");
-        internal readonly Command CmdViewZoomToBeat = CommandManager.CreateCommand();
-        internal readonly Command CmdViewHighlightModeSet = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdViewZoomIn = CommandHelper.CreateUIBinding("Ctrl+=");
+        internal readonly CommandBinding CmdViewZoomOut = CommandHelper.CreateUIBinding("Ctrl+-");
+        internal readonly CommandBinding CmdViewZoomToBeat = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdViewHighlightModeSet = CommandHelper.CreateUIBinding();
 
     }
 }

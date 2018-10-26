@@ -1,26 +1,35 @@
+using System.Diagnostics;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Input;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FMain {
 
         private void CmdScoreDifficultySelect_Executed(object sender, ExecutedEventArgs e) {
-            var menuItem = (ToolStripMenuItem)sender;
+            Debug.Assert(e.Parameter != null, "e.Parameter != null");
+
             var difficulty = (Difficulty)e.Parameter;
+
             if (difficulty == visualizer.Editor.Difficulty) {
                 return;
             }
+
             foreach (ToolStripMenuItem item in mnuScoreDifficulty.DropDownItems) {
-                item.Checked = false;
+                var commandSource = CommandHelper.FindCommandSource(item);
+
+                Debug.Assert(commandSource != null, nameof(commandSource) + " != null");
+                Debug.Assert(commandSource.CommandParameter != null, "commandSource.CommandParameter != null");
+
+                item.Checked = (Difficulty)commandSource.CommandParameter == difficulty;
             }
-            menuItem.Checked = true;
+
             visualizer.Editor.Difficulty = difficulty;
             UpdateUIIndications(difficulty);
         }
 
 
-        internal readonly Command CmdScoreDifficultySelect = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdScoreDifficultySelect = CommandHelper.CreateUIBinding();
 
     }
 }

@@ -1,6 +1,6 @@
 using System.Linq;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Input;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
@@ -37,7 +37,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private void CmdScoreMeasureInsert_Executed(object sender, ExecutedEventArgs e) {
             var score = visualizer.Editor.CurrentScore;
             if (score == null || !score.HasAnyBar) {
-                CmdScoreMeasureAppend.Execute(sender, e);
+                CmdScoreMeasureAppend.Command.Execute(e);
                 return;
             }
 
@@ -53,7 +53,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 selectedBar = visualizer.Editor.GetFirstVisibleBarWithVisibleHead();
             }
             if (selectedBar == null) {
-                CmdScoreMeasureAppend.Execute(sender, e);
+                CmdScoreMeasureAppend.Command.Execute(e);
                 return;
             }
 
@@ -69,7 +69,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
         private void CmdScoreMeasureInsertMultiple_Executed(object sender, ExecutedEventArgs e) {
             var score = visualizer.Editor.CurrentScore;
             if (score == null || !score.HasAnyBar) {
-                CmdScoreMeasureAppendMultiple.Execute(sender, e);
+                CmdScoreMeasureAppendMultiple.Command.Execute(e);
                 return;
             }
 
@@ -85,7 +85,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 selectedBar = visualizer.Editor.GetFirstVisibleBarWithVisibleHead();
             }
             if (selectedBar == null) {
-                CmdScoreMeasureAppendMultiple.Execute(sender, e);
+                CmdScoreMeasureAppendMultiple.Command.Execute(e);
                 return;
             }
 
@@ -113,11 +113,11 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.Editor.UpdateBarStartTimeText();
         }
 
-        internal readonly Command CmdScoreMeasureAppend = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreMeasureAppendMultiple = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreMeasureInsert = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreMeasureInsertMultiple = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreMeasureDelete = CommandManager.CreateCommand("Shift+Delete");
+        internal readonly CommandBinding CmdScoreMeasureAppend = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreMeasureAppendMultiple = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreMeasureInsert = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreMeasureInsertMultiple = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreMeasureDelete = CommandHelper.CreateUIBinding("Shift+Delete");
 
     }
 }

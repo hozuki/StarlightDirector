@@ -2,9 +2,9 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.DirectorApplication;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs.Models;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Editor;
 
@@ -105,16 +105,16 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             _communication?.Client.SendStopRequest();
         }
 
-        internal readonly Command CmdToolsExportCsv = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsExportTxt = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsBuildBdb = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsBuildAcb = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsSettings = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdToolsExportCsv = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsExportTxt = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsBuildBdb = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsBuildAcb = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsSettings = CommandHelper.CreateUIBinding();
 
-        internal readonly Command CmdToolsTestReload = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsTestLaunch = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsTestRemotePreviewFromStart = CommandManager.CreateCommand();
-        internal readonly Command CmdToolsTestRemotePreviewStop = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdToolsTestReload = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsTestLaunch = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsTestRemotePreviewFromStart = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdToolsTestRemotePreviewStop = CommandHelper.CreateUIBinding();
 
     }
 }

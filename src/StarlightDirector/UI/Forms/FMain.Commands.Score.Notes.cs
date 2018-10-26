@@ -1,7 +1,8 @@
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.Globalization;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;
@@ -10,6 +11,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FMain {
 
         private void CmdScoreNoteStartPositionSetAt_Executed(object sender, ExecutedEventArgs e) {
+            Debug.Assert(e.Parameter != null, "e.Parameter != null");
+
             var startPosition = (NotePosition)e.Parameter;
             visualizer.Editor.NoteStartPosition = startPosition;
 
@@ -17,40 +20,19 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 mnuScoreNoteStartPositionAt0, mnuScoreNoteStartPositionAt1, mnuScoreNoteStartPositionAt2,
                 mnuScoreNoteStartPositionAt3, mnuScoreNoteStartPositionAt4, mnuScoreNoteStartPositionAt5
             };
+
             foreach (var it in atMenuItems) {
-                var param = it.GetParameter();
-                if (param == null) {
-                    continue;
-                }
-                var pos = (NotePosition)param;
+                var commandSource = CommandHelper.FindCommandSource(it);
+
+                Debug.Assert(commandSource != null, nameof(commandSource) + " != null");
+                Debug.Assert(commandSource.CommandParameter != null, "commandSource.CommandParameter != null");
+
+                var pos = (NotePosition)commandSource.CommandParameter;
+
                 it.Checked = pos == startPosition;
             }
 
             tsbScoreNoteStartPosition.Text = DescribedEnumConverter.GetEnumDescription(startPosition);
-        }
-
-        private void CmdScoreNoteStartPositionAt0_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionAt1_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionAt2_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionAt3_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionAt4_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionAt5_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetAt.Execute(sender, e.Parameter);
         }
 
         private void CmdScoreNoteStartPositionMoveLeft_Executed(object sender, ExecutedEventArgs e) {
@@ -102,30 +84,6 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             visualizer.Editor.Invalidate();
         }
 
-        private void CmdScoreNoteStartPositionTo0_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionTo1_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionTo2_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionTo3_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionTo4_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
-        private void CmdScoreNoteStartPositionTo5_Executed(object sender, ExecutedEventArgs e) {
-            CmdScoreNoteStartPositionSetTo.Execute(sender, e.Parameter);
-        }
-
         private void CmdScoreNoteResetToTap_Executed(object sender, ExecutedEventArgs e) {
             if (!visualizer.Editor.HasSelectedNotes) {
                 return;
@@ -171,26 +129,36 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 bar = hit.Bar;
                 newRowIndex = hit.Row;
             }
+
             var note = bar.AddSpecialNote(NoteType.VariantBpm);
+
+            Debug.Assert(note.Params != null, "note.Params != null");
+
             note.Params.NewBpm = newBpm;
             note.Basic.IndexInGrid = newRowIndex;
 
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
 
-            ctxScoreNoteInsertSpecial.DeleteParameter();
-            ctxScoreNoteModifySpecial.DeleteParameter();
-            ctxScoreNoteDeleteSpecial.DeleteParameter();
+            ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+            ctxScoreNoteModifySpecial.DeleteCommandParameter();
+            ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
         }
 
         private void CmdScoreNoteModifySpecial_Executed(object sender, ExecutedEventArgs e) {
             var hit = (ScoreEditorHitTestResult)e.Parameter;
+
             if (hit == null || !hit.HitAnyNote) {
                 return;
             }
+
             var note = hit.Note;
+
+            Debug.Assert(note.Params != null, "note.Params != null");
+
             var originalBpm = note.Params.NewBpm;
             var (r, newBpm) = FSpecialNote.VariantBpmRequestInput(this, hit.Bar.Basic.Index, hit.Row, originalBpm);
+
             if (r == DialogResult.Cancel) {
                 return;
             }
@@ -198,9 +166,9 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
 
-            ctxScoreNoteInsertSpecial.DeleteParameter();
-            ctxScoreNoteModifySpecial.DeleteParameter();
-            ctxScoreNoteDeleteSpecial.DeleteParameter();
+            ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+            ctxScoreNoteModifySpecial.DeleteCommandParameter();
+            ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
         }
 
         private void CmdScoreNoteDeleteSpecial_Executed(object sender, ExecutedEventArgs e) {
@@ -213,32 +181,20 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             InformProjectModified();
             visualizer.Editor.UpdateBarStartTimeText();
 
-            ctxScoreNoteInsertSpecial.DeleteParameter();
-            ctxScoreNoteModifySpecial.DeleteParameter();
-            ctxScoreNoteDeleteSpecial.DeleteParameter();
+            ctxScoreNoteInsertSpecial.DeleteCommandParameter();
+            ctxScoreNoteModifySpecial.DeleteCommandParameter();
+            ctxScoreNoteDeleteSpecial.DeleteCommandParameter();
         }
 
-        internal readonly Command CmdScoreNoteStartPositionSetAt = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt0 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt1 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt2 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt3 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt4 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionAt5 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionMoveLeft = CommandManager.CreateCommand("Alt+A");
-        internal readonly Command CmdScoreNoteStartPositionMoveRight = CommandManager.CreateCommand("Alt+D");
-        internal readonly Command CmdScoreNoteStartPositionSetTo = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo0 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo1 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo2 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo3 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo4 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteStartPositionTo5 = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteResetToTap = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteDelete = CommandManager.CreateCommand("Delete");
-        internal readonly Command CmdScoreNoteInsertSpecial = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteModifySpecial = CommandManager.CreateCommand();
-        internal readonly Command CmdScoreNoteDeleteSpecial = CommandManager.CreateCommand();
+        internal readonly CommandBinding CmdScoreNoteStartPositionSetAt = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreNoteStartPositionMoveLeft = CommandHelper.CreateUIBinding("Alt+A");
+        internal readonly CommandBinding CmdScoreNoteStartPositionMoveRight = CommandHelper.CreateUIBinding("Alt+D");
+        internal readonly CommandBinding CmdScoreNoteStartPositionSetTo = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreNoteResetToTap = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreNoteDelete = CommandHelper.CreateUIBinding("Delete");
+        internal readonly CommandBinding CmdScoreNoteInsertSpecial = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreNoteModifySpecial = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdScoreNoteDeleteSpecial = CommandHelper.CreateUIBinding();
 
     }
 }

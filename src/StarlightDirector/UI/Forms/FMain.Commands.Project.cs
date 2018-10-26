@@ -1,8 +1,8 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Windows.Forms.Input;
 using OpenCGSS.StarlightDirector.Globalization;
-using OpenCGSS.StarlightDirector.Input;
 using OpenCGSS.StarlightDirector.Models.Editor;
 using OpenCGSS.StarlightDirector.Models.Editor.Extensions;
 using OpenCGSS.StarlightDirector.Models.Editor.Serialization;
@@ -77,7 +77,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
 
                 UpdateUIIndications();
             } else {
-                CmdProjectSaveAs.Execute(sender, e.Parameter);
+                CmdProjectSaveAs.Command.Execute(e.Parameter);
             }
         }
 
@@ -134,14 +134,14 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
             Close();
         }
 
-        internal readonly Command CmdProjectNew = CommandManager.CreateCommand("Ctrl+N");
-        internal readonly Command CmdProjectOpen = CommandManager.CreateCommand("Ctrl+O");
-        internal readonly Command CmdProjectSave = CommandManager.CreateCommand("Ctrl+S");
-        internal readonly Command CmdProjectSaveAs = CommandManager.CreateCommand("F12");
-        internal readonly Command CmdProjectBeatmapSettings = CommandManager.CreateCommand();
-        internal readonly Command CmdProjectBeatmapStats = CommandManager.CreateCommand();
-        internal readonly Command CmdProjectMusicSettings = CommandManager.CreateCommand();
-        internal readonly Command CmdProjectExit = CommandManager.CreateCommand("Ctrl+W");
+        internal readonly CommandBinding CmdProjectNew = CommandHelper.CreateUIBinding("Ctrl+N");
+        internal readonly CommandBinding CmdProjectOpen = CommandHelper.CreateUIBinding("Ctrl+O");
+        internal readonly CommandBinding CmdProjectSave = CommandHelper.CreateUIBinding("Ctrl+S");
+        internal readonly CommandBinding CmdProjectSaveAs = CommandHelper.CreateUIBinding("F12");
+        internal readonly CommandBinding CmdProjectBeatmapSettings = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdProjectBeatmapStats = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdProjectMusicSettings = CommandHelper.CreateUIBinding();
+        internal readonly CommandBinding CmdProjectExit = CommandHelper.CreateUIBinding("Ctrl+W");
 
     }
 }
