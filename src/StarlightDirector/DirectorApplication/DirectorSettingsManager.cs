@@ -2,7 +2,7 @@ using System;
 using System.IO;
 using System.Windows.Forms;
 using Newtonsoft.Json;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 
 namespace OpenCGSS.StarlightDirector.DirectorApplication {
     internal static class DirectorSettingsManager {
@@ -53,7 +53,7 @@ namespace OpenCGSS.StarlightDirector.DirectorApplication {
             if (!File.Exists(path)) {
                 return;
             }
-            var manager = LanguageManager.FromFile(path, language);
+            var manager = LanguageManager.LoadOrCreateFromFile(path, language);
             LanguageManager.Current = manager;
         }
 

@@ -2,7 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Windows.Forms.Input;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Editor;
 using OpenCGSS.StarlightDirector.Models.Editor.Extensions;
 using OpenCGSS.StarlightDirector.Models.Editor.Serialization;

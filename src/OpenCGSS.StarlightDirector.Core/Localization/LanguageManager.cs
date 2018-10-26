@@ -2,20 +2,30 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Text;
 using JetBrains.Annotations;
 
-namespace OpenCGSS.StarlightDirector.Globalization {
-    public sealed class LanguageManager {
+namespace OpenCGSS.StarlightDirector.Localization {
+    public sealed class LanguageManager : ILanguageManager {
 
-        public void SetString([CanBeNull] string key, [CanBeNull] string value) {
+        // ReSharper disable once NotNullMemberIsNotInitialized
+        private LanguageManager([NotNull] string language) {
+            Guard.NotNullOrEmpty(language, nameof(language));
+
+            Language = language;
+        }
+
+        public void SetString(string key, string value) {
             if (key == null) {
                 return;
             }
 
             value = value ?? string.Empty;
 
-            if (value.Contains(@"\n")) {
-                value = value.Replace(@"\n", Environment.NewLine);
+            var indexOfBackslash = value.IndexOf('\\');
+
+            if (indexOfBackslash >= 0) {
+                value = Unescape(value, indexOfBackslash);
             }
 
             _translations[key] = value;
@@ -38,8 +48,7 @@ namespace OpenCGSS.StarlightDirector.Globalization {
         /// </summary>
         /// <param name="key">The key of local string.</param>
         /// <returns>Retrieved locale string, or <see cref="string.Empty"/>.</returns>
-        [NotNull]
-        public string GetString([CanBeNull] string key) {
+        public string GetString(string key) {
             Guard.ArgumentNotNull(key, nameof(key));
 
             var gotString = GetString(key, string.Empty);
@@ -49,8 +58,7 @@ namespace OpenCGSS.StarlightDirector.Globalization {
             return gotString;
         }
 
-        [CanBeNull]
-        public string GetString([CanBeNull] string key, [CanBeNull] string defaultValue) {
+        public string GetString(string key, string defaultValue) {
             if (key == null) {
                 return null;
             }
@@ -60,15 +68,90 @@ namespace OpenCGSS.StarlightDirector.Globalization {
             return value ?? defaultValue;
         }
 
-        public string this[[CanBeNull] string key] {
+        public string this[string key] {
             [NotNull]
             get => GetString(key);
             set => SetString(key, value);
         }
 
+        public string Language { get; }
+
+        public string DisplayName { get; private set; }
+
+        public string CodeName { get; private set; }
+
+        [CanBeNull]
+        public static ILanguageManager Current { get; set; }
+
+        [NotNull]
+        public static ILanguageManager CreateFromFile([NotNull] string fileName, [NotNull] string language) {
+            Guard.ArgumentNotNull(fileName, nameof(fileName));
+            Guard.ArgumentNotNull(language, nameof(language));
+            Guard.FileExists(fileName);
+
+            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read)) {
+                return CreateFromFile(fileStream, language);
+            }
+        }
+
+        [NotNull]
+        public static ILanguageManager CreateFromFile([NotNull] FileStream fileStream, [NotNull] string language) {
+            Guard.ArgumentNotNull(fileStream, nameof(fileStream));
+            Guard.ArgumentNotNull(language, nameof(language));
+
+            using (var reader = new StreamReader(fileStream)) {
+                return CreateFromFile(reader, language);
+            }
+        }
+
+        [NotNull]
+        public static ILanguageManager CreateFromFile([NotNull] StreamReader reader, [NotNull] string language) {
+            Guard.NotNull(reader, nameof(reader));
+            Guard.NotNullOrEmpty(language, nameof(language));
+
+            var manager = CreateNewNotRecorded(language);
+
+            FillDictionary(reader, manager);
+
+            return manager;
+        }
+
+        [NotNull]
+        public static ILanguageManager LoadOrCreateFromFile([NotNull] string fileName, [NotNull] string language) {
+            Guard.ArgumentNotNull(fileName, nameof(fileName));
+            Guard.ArgumentNotNull(language, nameof(language));
+            Guard.FileExists(fileName);
+
+            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read)) {
+                return LoadOrCreateFromFile(fileStream, language);
+            }
+        }
+
+        [NotNull]
+        public static ILanguageManager LoadOrCreateFromFile([NotNull] FileStream fileStream, [NotNull] string language) {
+            Guard.ArgumentNotNull(fileStream, nameof(fileStream));
+            Guard.ArgumentNotNull(language, nameof(language));
+
+            using (var reader = new StreamReader(fileStream)) {
+                return LoadOrCreateFromFile(reader, language);
+            }
+        }
+
+        [NotNull]
+        public static ILanguageManager LoadOrCreateFromFile([NotNull] StreamReader reader, [NotNull] string language) {
+            Guard.NotNull(reader, nameof(reader));
+            Guard.NotNullOrEmpty(language, nameof(language));
+
+            var manager = GetOrCreate(language);
+
+            FillDictionary(reader, manager);
+
+            return manager;
+        }
+
         [CanBeNull]
         [ContractAnnotation("language:null => null; language:notnull => notnull")]
-        public static LanguageManager GetOrCreate([CanBeNull] string language) {
+        private static LanguageManager GetOrCreate([CanBeNull] string language) {
             if (language == null) {
                 return null;
             }
@@ -82,91 +165,6 @@ namespace OpenCGSS.StarlightDirector.Globalization {
             Managers[language] = manager;
 
             return manager;
-        }
-
-        [NotNull]
-        public string Language { get; }
-
-        [NotNull]
-        public string DisplayName { get; set; }
-
-        [NotNull]
-        public string CodeName { get; set; }
-
-        [CanBeNull]
-        public static LanguageManager Current { get; set; }
-
-        [NotNull]
-        public static LanguageManager Load([NotNull] string fileName, [NotNull] string language) {
-            Guard.ArgumentNotNull(fileName, nameof(fileName));
-            Guard.ArgumentNotNull(language, nameof(language));
-            Guard.FileExists(fileName);
-
-            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read)) {
-                return Load(fileStream, language);
-            }
-        }
-
-        [NotNull]
-        public static LanguageManager Load([NotNull] FileStream fileStream, [NotNull] string language) {
-            Guard.ArgumentNotNull(fileStream, nameof(fileStream));
-            Guard.ArgumentNotNull(language, nameof(language));
-
-            using (var reader = new StreamReader(fileStream)) {
-                return Load(reader, language);
-            }
-        }
-
-        [NotNull]
-        public static LanguageManager Load([NotNull] StreamReader reader, [NotNull] string language) {
-            Guard.NotNull(reader, nameof(reader));
-            Guard.NotNullOrEmpty(language, nameof(language));
-
-            var manager = CreateNewNotRecorded(language);
-
-            FillDictionary(reader, manager);
-
-            return manager;
-        }
-
-        [NotNull]
-        public static LanguageManager FromFile([NotNull] string fileName, [NotNull] string language) {
-            Guard.ArgumentNotNull(fileName, nameof(fileName));
-            Guard.ArgumentNotNull(language, nameof(language));
-            Guard.FileExists(fileName);
-
-            using (var fileStream = File.Open(fileName, FileMode.Open, FileAccess.Read, FileShare.Read)) {
-                return FromFile(fileStream, language);
-            }
-        }
-
-        [NotNull]
-        public static LanguageManager FromFile([NotNull] FileStream fileStream, [NotNull] string language) {
-            Guard.ArgumentNotNull(fileStream, nameof(fileStream));
-            Guard.ArgumentNotNull(language, nameof(language));
-
-            using (var reader = new StreamReader(fileStream)) {
-                return FromFile(reader, language);
-            }
-        }
-
-        [NotNull]
-        public static LanguageManager FromFile([NotNull] StreamReader reader, [NotNull] string language) {
-            Guard.NotNull(reader, nameof(reader));
-            Guard.NotNullOrEmpty(language, nameof(language));
-
-            var manager = GetOrCreate(language);
-
-            FillDictionary(reader, manager);
-
-            return manager;
-        }
-
-        // ReSharper disable once NotNullMemberIsNotInitialized
-        private LanguageManager([NotNull] string language) {
-            Guard.NotNullOrEmpty(language, nameof(language));
-
-            Language = language;
         }
 
         [CanBeNull]
@@ -210,6 +208,44 @@ namespace OpenCGSS.StarlightDirector.Globalization {
 
             manager.DisplayName = manager.GetString("lang.display_name", null) ?? "Neutral";
             manager.CodeName = manager.GetString("lang.code_name", null) ?? "neutral";
+        }
+
+        [NotNull]
+        private static string Unescape([NotNull] string str, int searchStart) {
+            var newLine = Environment.NewLine;
+            var newLineLength = newLine.Length;
+            var searchIndex = searchStart;
+
+            var sb = new StringBuilder(str);
+            var len = sb.Length;
+
+            while (searchIndex < len) {
+                if (searchIndex != '\\') {
+                    continue;
+                }
+
+                if (searchIndex >= len - 1) {
+                    break;
+                }
+
+                if (sb[searchIndex + 1] == '\\') {
+                    sb.Replace(@"\\", @"\", searchIndex, 1);
+
+                    len = sb.Length;
+
+                    searchIndex += (2 - 1);
+                } else if (sb[searchIndex + 1] == 'n') {
+                    sb.Replace(@"\n", newLine, searchIndex, 1);
+
+                    len = sb.Length;
+
+                    searchIndex += (newLineLength - 1);
+                } else {
+                    ++searchIndex;
+                }
+            }
+
+            return sb.ToString();
         }
 
         private readonly Dictionary<string, string> _translations = new Dictionary<string, string>();

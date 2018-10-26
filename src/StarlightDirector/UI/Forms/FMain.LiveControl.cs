@@ -4,7 +4,7 @@ using System.IO;
 using System.Timers;
 using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.DirectorApplication;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models;
 using OpenCGSS.StarlightDirector.Previewing.Audio;
 

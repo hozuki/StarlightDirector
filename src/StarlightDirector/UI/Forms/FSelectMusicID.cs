@@ -5,7 +5,7 @@ using System.Data.SQLite;
 using System.IO;
 using System.Windows.Forms;
 using JetBrains.Annotations;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Gaming;
 

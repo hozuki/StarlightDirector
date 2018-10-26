@@ -5,7 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using OpenCGSS.StarlightDirector.DirectorApplication;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.UI.Controls.Previewing;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
@@ -98,7 +98,7 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 var fileNames = Directory.EnumerateFiles(directory.FullName, "*" + DirectorSettingsManager.LanguageFileExtension, SearchOption.TopDirectoryOnly);
                 foreach (var fileName in fileNames) {
                     // The language name is not important here.
-                    var manager = LanguageManager.Load(fileName, fileName);
+                    var manager = LanguageManager.CreateFromFile(fileName, fileName);
                     _languages.Add((manager.DisplayName, manager.CodeName));
                 }
             }

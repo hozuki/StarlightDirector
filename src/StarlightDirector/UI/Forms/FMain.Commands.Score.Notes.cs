@@ -2,7 +2,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Windows.Forms;
 using System.Windows.Forms.Input;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;

@@ -45,14 +45,15 @@
   <ItemGroup>
     <Compile Include="AssemblyHelper.cs" />
     <Compile Include="DisposableBase.cs" />
-    <Compile Include="Globalization\DescribedEnumConverter.cs" />
-    <Compile Include="Globalization\LocalizationKeyAttribute.cs" />
+    <Compile Include="Localization\DescribedEnumConverter.cs" />
+    <Compile Include="Localization\ILanguageManager.cs" />
+    <Compile Include="Localization\LocalizationKeyAttribute.cs" />
     <Compile Include="Guard.cs" />
     <Compile Include="ICloneable`1.cs" />
-    <Compile Include="Globalization\ILocalizable.cs" />
+    <Compile Include="Localization\ILocalizable.cs" />
     <Compile Include="Models\IStarlightObject.cs" />
-    <Compile Include="Globalization\LanguageManager.cs" />
-    <Compile Include="Globalization\LocalizationHelper.cs" />
+    <Compile Include="Localization\LanguageManager.cs" />
+    <Compile Include="Localization\LocalizationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\StarlightID.cs" />
   </ItemGroup>

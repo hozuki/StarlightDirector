@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Reflection;
 using JetBrains.Annotations;
 
-namespace OpenCGSS.StarlightDirector.Globalization {
+namespace OpenCGSS.StarlightDirector.Localization {
     public sealed class DescribedEnumConverter : EnumConverter {
 
         public DescribedEnumConverter([NotNull] Type type)

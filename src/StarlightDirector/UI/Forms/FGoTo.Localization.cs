@@ -1,10 +1,10 @@
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.UI.Extensions;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
     partial class FGoTo : ILocalizable {
 
-        public void Localize(LanguageManager manager) {
+        public void Localize(ILanguageManager manager) {
             if (manager == null) {
                 return;
             }

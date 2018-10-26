@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {
     public partial class FMusicSettings : Form {

@@ -1,7 +1,7 @@
 using System;
 using JetBrains.Annotations;
 
-namespace OpenCGSS.StarlightDirector.Globalization {
+namespace OpenCGSS.StarlightDirector.Localization {
     [AttributeUsage(AttributeTargets.Field)]
     public sealed class LocalizationKeyAttribute : Attribute {
 

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using JetBrains.Annotations;
 
-namespace OpenCGSS.StarlightDirector.Globalization {
+namespace OpenCGSS.StarlightDirector.Localization {
     public static class LocalizationHelper {
 
         public static void MonitorLocalizationChange([CanBeNull] this ILocalizable localizable) {
@@ -29,7 +29,7 @@ namespace OpenCGSS.StarlightDirector.Globalization {
             Handlers.Remove(localizable);
         }
 
-        public static void Relocalize([NotNull] LanguageManager languageManager) {
+        public static void Relocalize([NotNull] ILanguageManager languageManager) {
             Guard.ArgumentNotNull(languageManager, nameof(languageManager));
 
             foreach (var l in Handlers) {

@@ -3,7 +3,7 @@ using System.IO;
 using System.Text;
 using System.Windows.Forms;
 using JetBrains.Annotations;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.Models.Deleste;

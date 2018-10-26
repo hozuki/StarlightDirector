@@ -6,7 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.Models.Editor;

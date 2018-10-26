@@ -6,7 +6,7 @@ using System.Windows.Forms;
 using System.Windows.Forms.Input;
 using JetBrains.Annotations;
 using OpenCGSS.StarlightDirector.DirectorApplication.Subsystems.Bvs;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap;
 using OpenCGSS.StarlightDirector.Models.Editor.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls;

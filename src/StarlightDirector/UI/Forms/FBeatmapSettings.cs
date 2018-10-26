@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models;
 using OpenCGSS.StarlightDirector.Models.Editor;
 using OpenCGSS.StarlightDirector.UI.Controls;

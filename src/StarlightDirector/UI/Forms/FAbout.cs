@@ -4,7 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using OpenCGSS.StarlightDirector.DirectorApplication;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Properties;
 
 namespace OpenCGSS.StarlightDirector.UI.Forms {

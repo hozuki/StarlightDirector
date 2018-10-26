@@ -1,5 +1,5 @@
 using System.ComponentModel;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 
 namespace OpenCGSS.StarlightDirector.Models.Deleste {
     public enum TxtScoreFormat {

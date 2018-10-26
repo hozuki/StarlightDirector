@@ -1,6 +1,6 @@
 using System;
 using System.Windows.Forms;
-using OpenCGSS.StarlightDirector.Globalization;
+using OpenCGSS.StarlightDirector.Localization;
 using OpenCGSS.StarlightDirector.Models.Beatmap.Extensions;
 using OpenCGSS.StarlightDirector.UI.Controls.Editing;
 
