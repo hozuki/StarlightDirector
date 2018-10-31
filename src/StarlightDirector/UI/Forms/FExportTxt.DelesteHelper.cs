@@ -32,8 +32,8 @@ namespace OpenCGSS.StarlightDirector.UI.Forms {
                 //writer.WriteLine("#BPM {0:F2}", score.Project.Settings.GlobalBpm);
                 //writer.WriteLine("#Offset {0}", (int)Math.Round(score.Project.Settings.StartTimeOffset * 1000));
                 writer.WriteLine("#BPM 240");
-                // Don't know why, but the 40 ms lag shows up from nowhere.
-                writer.WriteLine("#Offset -40");
+                // Force offset 0. -40 seems to be a garbage value.
+                writer.WriteLine("#Offset 0");
 
                 string s;
                 switch (difficulty) {
